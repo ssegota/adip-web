@@ -175,7 +175,9 @@ a:hover {
 
 .header__logo img {
     height: 50px;
-    width: auto;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .header__title {
