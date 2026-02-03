@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initActivityModal();
     initActivityForm();
 
-    // Load activities if on index or aktivnosti page
+    // Load mixed content on homepage
     const activitiesContainer = document.getElementById('activities-container');
     if (activitiesContainer) {
-        loadActivities(activitiesContainer, 3); // Show 3 on homepage
+        loadHomepageContent(activitiesContainer, 6); // Show 6 mixed items
     }
 
     const allActivities = document.getElementById('all-activities');
@@ -26,6 +26,85 @@ document.addEventListener('DOMContentLoaded', () => {
     // Init Radovi
     initRadoviPage();
 });
+
+// ==================== Homepage Logic (Mixed Content) ====================
+async function loadHomepageContent(container, limit = 6) {
+    try {
+        // Fetch both sources parallel
+        const [actRes, radRes] = await Promise.all([
+            fetch('/api/aktivnosti').catch(() => ({ json: () => [] })),
+            fetch('/api/radovi').catch(() => ({ json: () => [] }))
+        ]);
+
+        const activities = await actRes.json();
+        const radovi = await radRes.json();
+
+        // Normalize data for merging
+        const normalizedActivities = (activities || []).map(a => ({
+            ...a,
+            type: 'activity',
+            sortDate: parseDate(a.date)
+        }));
+
+        const normalizedRadovi = (radovi || []).map(r => ({
+            ...r,
+            // Radovi have 'year' but maybe no exact date. Use Jan 1st of year + small offset or 'dateAdded' if available?
+            // User added 'dateAdded' in json manually. Let's use that if exists, else year.
+            sortDate: parseDate(r.dateAdded || `01. 01. ${r.year}.`),
+            isRad: true
+        }));
+
+        // Merge and sort desc
+        const mixed = [...normalizedActivities, ...normalizedRadovi]
+            .sort((a, b) => b.sortDate - a.sortDate)
+            .slice(0, limit);
+
+        container.innerHTML = mixed.map(item => {
+            if (item.isRad) {
+                // Render Rad card
+                const isPdf = item.type === 'pdf';
+                const icon = isPdf ? '📄' : '🔗';
+                const linkText = isPdf ? 'Preuzmi PDF' : 'Otvori poveznicu';
+                return `
+                <div class="activity-card" style="border-left: 3px solid var(--accent-secondary);">
+                    <div class="activity-card__date">Publikacija | ${item.year}</div>
+                    <h3 class="activity-card__title">${icon} ${item.title}</h3>
+                    <p class="activity-card__content" style="flex:1;">${item.abstract ? item.abstract.substring(0, 100) + '...' : 'Nema sažetka.'}</p>
+                    <div style="margin-top: 1rem;">
+                            <a href="${item.link}" target="_blank" class="btn btn--secondary btn--sm">${linkText}</a>
+                    </div>
+                </div>`;
+            } else {
+                // Render Activity card
+                const imageHtml = item.images && item.images.length > 0
+                    ? `<div class="activity-card__image" style="background-image: url('${item.images[0]}')"></div>`
+                    : '';
+                return `
+                <div class="activity-card" onclick="openActivityModal(${item.id})">
+                    ${imageHtml}
+                    <div class="activity-card__content-wrapper">
+                        <div class="activity-card__date">${item.date}</div>
+                        <h3 class="activity-card__title">${item.title}</h3>
+                        <p class="activity-card__content">${item.content.substring(0, 100)}...</p>
+                    </div>
+                </div>`;
+            }
+        }).join('');
+
+    } catch (err) {
+        console.error('Error loading homepage content:', err);
+        container.innerHTML = '<p>Greška pri učitavanju sadržaja.</p>';
+    }
+}
+
+// Helper: Parse DD. MM. YYYY. to Date object
+function parseDate(dateStr) {
+    if (!dateStr) return new Date(0);
+    const parts = dateStr.replace('.', '').split('.');
+    if (parts.length < 3) return new Date(0);
+    // hr date format: DD. MM. YYYY. -> parts[2]-parts[1]-parts[0]
+    return new Date(`${parts[2].trim()}-${parts[1].trim()}-${parts[0].trim()}`);
+}
 
 // ==================== Radovi Page Logic ====================
 function initRadoviPage() {
