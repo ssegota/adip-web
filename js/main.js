@@ -215,6 +215,16 @@ function parseDate(dateStr) {
 function initRadoviPage() {
     const listContainer = document.getElementById('radovi-list');
     const uploadForm = document.getElementById('radovi-upload-form');
+    // Admin Upload Logic
+    const adminPanel = document.getElementById('radovi-admin-panel');
+    const loginBtn = document.getElementById('sidebar-login-btn');
+
+    const isLoggedIn = localStorage.getItem('adip_token');
+
+    if (isLoggedIn && adminPanel) {
+        adminPanel.classList.remove('hidden');
+        if (loginBtn) loginBtn.textContent = 'Odjava'; // Hardcoded for now or use t('logout') if available in context
+    }
 
     // Load list
     if (listContainer) {
@@ -257,6 +267,7 @@ async function loadRadovi(container) {
     try {
         const response = await fetch('/api/radovi');
         const radovi = await response.json();
+        const isLoggedIn = localStorage.getItem('adip_token');
 
         container.innerHTML = '';
 
@@ -270,12 +281,19 @@ async function loadRadovi(container) {
             const icon = isPdf ? '📄' : '🔗';
             const linkText = isPdf ? t('downloadPdf') : t('openLink');
 
+            const deleteBtn = isLoggedIn ?
+                `<button onclick="deleteRad(${rad.id})" class="btn btn--danger btn--sm" style="margin-left: auto;">${t('deleteConfirm') ? '🗑️' : '🗑️'}</button>` : '';
+
             const card = document.createElement('div');
             card.className = 'activity-card'; // Reuse activity card style
+            card.id = `rad-${rad.id}`;
             card.style.display = 'flex';
             card.style.flexDirection = 'column';
             card.innerHTML = `
-                <div class="activity-card__date">${rad.year} | ${rad.authors}</div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div class="activity-card__date">${rad.year} | ${rad.authors}</div>
+                    ${deleteBtn}
+                </div>
                 <h3 class="activity-card__title">${icon} ${rad.title}</h3>
                 <p class="activity-card__content" style="flex:1;">${rad.abstract || t('noAbstract')}</p>
                 <div style="margin-top: 1rem;">
@@ -290,6 +308,25 @@ async function loadRadovi(container) {
         container.innerHTML = `<p>${t('errorLoading')}</p>`;
     }
 }
+
+// Global function for onclick
+window.deleteRad = async function (id) {
+    if (!confirm(t('deleteConfirm'))) return;
+
+    try {
+        const res = await fetch(`/api/radovi/${id}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (data.success) {
+            const el = document.getElementById(`rad-${id}`);
+            if (el) el.remove();
+        } else {
+            alert(t('errorAdd')); // Reuse error message or add 'Error deleting'
+        }
+    } catch (err) {
+        console.error(err);
+        alert(t('serverError'));
+    }
+};
 
 // ==================== Activity Form (Upload with Images) ====================
 function initActivityForm() {
@@ -307,6 +344,13 @@ function initActivityForm() {
         });
     }
 
+    const dateInput = document.getElementById('activity-date');
+    if (dateInput) {
+        // Set default date to today
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.value = today;
+    }
+
     if (form) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -317,6 +361,15 @@ function initActivityForm() {
             formData.append('year', document.getElementById('activity-year').value);
 
             const dateInput = document.getElementById('activity-date');
+
+            // Set default date to today if empty (on load, this should be done outside submit, but user asked for default)
+            // Ideally we set it when form inits.
+            if (dateInput && !dateInput.value) {
+                // dateInput type="date" expects YYYY-MM-DD
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.value = today;
+            }
+
             if (dateInput && dateInput.value) {
                 formData.append('date', dateInput.value);
             }
@@ -814,8 +867,11 @@ function navigateLightbox(direction) {
 
 function updateLightboxImage() {
     const img = lightboxImages[currentImageIndex];
-    document.getElementById('lightbox-image').src = img.src;
-    document.getElementById('lightbox-caption').textContent = img.description || '';
+    const desc = getLocalizedDescription(img.description);
+    // Ensure absolute path
+    const src = img.src.startsWith('/') ? img.src : '/' + img.src;
+    document.getElementById('lightbox-image').src = src;
+    document.getElementById('lightbox-caption').textContent = desc || '';
 }
 
 // Load gallery from JSON
@@ -832,22 +888,66 @@ async function loadGallery(category, containerId) {
             images = data.astrofotografija?.[category] || [];
         }
 
-        renderGallery(images, containerId);
+        renderGallery(images, containerId, category);
     } catch (err) {
         console.error('Error loading gallery:', err);
     }
 }
 
-function renderGallery(images, containerId) {
+function renderGallery(images, containerId, category) {
     const container = document.getElementById(containerId);
     if (!container) return;
 
-    container.innerHTML = images.map((img, index) => `
-        <div class="gallery-item" onclick="openLightbox(galleryImages, ${index})">
-            <img src="${img.src}" alt="${img.description || ''}" loading="lazy">
+    const isLoggedIn = localStorage.getItem('adip_token');
+
+    container.innerHTML = images.map((img, index) => {
+        const desc = getLocalizedDescription(img.description);
+        // Ensure src is absolute path
+        const imgSrc = img.src.startsWith('/') ? img.src : '/' + img.src;
+
+        const deleteBtn = isLoggedIn ?
+            `<button onclick="event.stopPropagation(); deleteGalleryImage('${imgSrc}', '${category}', '${containerId}')" class="btn btn--danger btn--sm" style="position: absolute; top: 5px; right: 5px; z-index: 10; padding: 2px 6px; font-size: 12px; opacity: 0.8; border: none; border-radius: 4px; color: white;">✕</button>`
+            : '';
+
+        return `
+        <div class="gallery-item" onclick="openLightbox(galleryImages, ${index})" style="position: relative;">
+            ${deleteBtn}
+            <img src="${imgSrc}" alt="${desc || ''}" loading="lazy">
         </div>
-    `).join('');
+    `}).join('');
 
     // Store for lightbox
     window.galleryImages = images;
+}
+
+// Global function to delete gallery image
+window.deleteGalleryImage = async function (src, category, containerId) {
+    if (!confirm(t('deleteConfirm'))) return;
+
+    try {
+        const res = await fetch('/api/galerija/delete', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ src, category })
+        });
+
+        const data = await res.json();
+        if (data.success) {
+            // Reload gallery
+            loadGallery(category, containerId);
+        } else {
+            alert(t('errorAdd')); // Reuse error message
+        }
+    } catch (err) {
+        console.error(err);
+        alert(t('serverError'));
+    }
+};
+
+function getLocalizedDescription(desc) {
+    if (!desc) return '';
+    if (typeof desc === 'string') return desc;
+
+    const isEnglish = window.location.pathname.includes('/en/');
+    return isEnglish ? (desc.en || desc.hr || '') : (desc.hr || desc.en || '');
 }

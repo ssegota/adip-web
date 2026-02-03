@@ -157,13 +157,12 @@
         return;
       }
 
-      container.innerHTML = images.map((img, index) => `
-        <div class="gallery-item" onclick="openLightbox(astroData['${category}'], ${index})">
-          <img src="${img.src}" alt="${img.description || ''}" loading="lazy">
-        </div>
-      `).join('');
-
-      window.galleryImages = images;
+      // Use shared renderGallery from main.js
+      if (typeof renderGallery === 'function') {
+        renderGallery(images, 'gallery-container', category);
+      } else {
+        console.error('renderGallery function missing');
+      }
     }
   </script>
 </body>
