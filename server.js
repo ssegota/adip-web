@@ -246,6 +246,67 @@ app.post('/api/galerija/upload', galleryUpload.single('image'), (req, res) => {
     });
 });
 
+// ==================== RADOVI API ====================
+
+
+
+// Get all radovi
+app.get('/api/radovi', (req, res) => {
+    fs.readFile(RADOVI_FILE, 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.json([]);
+        }
+        try {
+            res.json(JSON.parse(data));
+        } catch (e) {
+            res.json([]);
+        }
+    });
+});
+
+// Upload Rad (PDF or Link)
+app.post('/api/radovi/upload', radoviUpload.single('file'), (req, res) => {
+    const { title, authors, abstract, year, link, type } = req.body;
+
+    let finalLink = link || '';
+    let finalType = type || 'link';
+
+    if (req.file) {
+        finalLink = 'radovi-files/' + req.file.filename;
+        finalType = 'pdf';
+    }
+
+    const newRad = {
+        id: Date.now(),
+        title: title || 'Bez naslova',
+        authors: authors || '',
+        abstract: abstract || '',
+        year: parseInt(year) || new Date().getFullYear(),
+        link: finalLink,
+        type: finalType,
+        dateAdded: new Date().toLocaleDateString('hr-HR')
+    };
+
+    fs.readFile(RADOVI_FILE, 'utf8', (err, data) => {
+        let radovi = [];
+        if (!err && data) {
+            try {
+                radovi = JSON.parse(data);
+            } catch (e) { console.error(e); }
+        }
+
+        radovi.unshift(newRad);
+
+        fs.writeFile(RADOVI_FILE, JSON.stringify(radovi, null, 2), (err) => {
+            if (err) {
+                return res.status(500).json({ success: false });
+            }
+            res.json({ success: true, rad: newRad });
+        });
+    });
+});
+
 // Start Server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
