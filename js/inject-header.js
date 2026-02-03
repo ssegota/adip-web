@@ -43,6 +43,7 @@
                 <a href="${basePath}povijest-zvjezdarnice.html" class="nav__link">📜 Povijest</a>
                 <a href="${basePath}posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Posjeti</a>
                 <a href="${basePath}radovi.html" class="nav__link">📚 Radovi</a>
+                <a href="${basePath}servisi.html" class="nav__link">⚙️ Servisi</a>
                 <a href="${basePath}astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ O nama</a>
                 <div class="nav__spacer"></div>
                 <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Prijava</button>
