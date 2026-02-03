@@ -36,6 +36,35 @@ app.post('/api/login', (req, res) => {
 
 // Activities API
 const ACTIVITIES_FILE = path.join(__dirname, 'data', 'aktivnosti.json');
+const RADOVI_FILE = path.join(__dirname, 'data', 'radovi.json');
+
+// Storage for Radovi (PDFs)
+const radoviStorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        const dir = 'radovi-files/';
+        if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir, { recursive: true });
+        }
+        cb(null, dir);
+    },
+    filename: function (req, file, cb) {
+        // Safe filename
+        const cleanName = file.originalname.replace(/[^a-zA-Z0-9.-]/g, '_');
+        cb(null, Date.now() + '-' + cleanName);
+    }
+});
+
+const radoviUpload = multer({
+    storage: radoviStorage,
+    fileFilter: function (req, file, cb) {
+        // Accept PDF only
+        if (file.mimetype === 'application/pdf') {
+            cb(null, true);
+        } else {
+            cb(null, false);
+        }
+    }
+});
 
 // Storage for activity images
 const activityImageStorage = multer.diskStorage({

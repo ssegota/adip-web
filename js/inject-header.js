@@ -42,6 +42,7 @@
                 <a href="${basePath}galerija-slika.html" class="nav__link">🖼️ Galerija</a>
                 <a href="${basePath}povijest-zvjezdarnice.html" class="nav__link">📜 Povijest</a>
                 <a href="${basePath}posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Posjeti</a>
+                <a href="${basePath}radovi.html" class="nav__link">📚 Radovi</a>
                 <a href="${basePath}astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ O nama</a>
                 <div class="nav__spacer"></div>
                 <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Prijava</button>
@@ -107,6 +108,8 @@
             } else if (currentPath.includes('galerija') && href.includes('galerija')) {
                 link.classList.add('active');
             } else if (currentPath.includes('posjet') && href.includes('posjet')) {
+                link.classList.add('active');
+            } else if (currentPath.includes('radovi') && href.includes('radovi')) {
                 link.classList.add('active');
             } else if (currentPath.includes('astronomsko-drustvo') && href.includes('astronomsko-drustvo')) {
                 link.classList.add('active');

@@ -22,7 +22,90 @@ document.addEventListener('DOMContentLoaded', () => {
     if (allActivities) {
         loadActivities(allActivities, 100); // Show all on activities page
     }
+
+    // Init Radovi
+    initRadoviPage();
 });
+
+// ==================== Radovi Page Logic ====================
+function initRadoviPage() {
+    const listContainer = document.getElementById('radovi-list');
+    const uploadForm = document.getElementById('radovi-upload-form');
+
+    // Load list
+    if (listContainer) {
+        loadRadovi(listContainer);
+    }
+
+    // Handle upload
+    if (uploadForm) {
+        uploadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const messageDiv = document.getElementById('radovi-message');
+            const formData = new FormData(e.target);
+
+            try {
+                const response = await fetch('/api/radovi/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    messageDiv.textContent = 'Rad uspješno dodan!';
+                    messageDiv.style.color = '#00ff88';
+                    e.target.reset();
+                    if (listContainer) loadRadovi(listContainer); // Reload list
+                } else {
+                    messageDiv.textContent = 'Greška pri dodavanju.';
+                    messageDiv.style.color = '#ff4444';
+                }
+            } catch (err) {
+                console.error(err);
+                messageDiv.textContent = 'Greška servera.';
+                messageDiv.style.color = '#ff4444';
+            }
+        });
+    }
+}
+
+async function loadRadovi(container) {
+    try {
+        const response = await fetch('/api/radovi');
+        const radovi = await response.json();
+
+        container.innerHTML = '';
+
+        if (!radovi || radovi.length === 0) {
+            container.innerHTML = '<p style="color: var(--text-muted);">Nema objavljenih radova.</p>';
+            return;
+        }
+
+        radovi.forEach(rad => {
+            const isPdf = rad.type === 'pdf';
+            const icon = isPdf ? '📄' : '🔗';
+            const linkText = isPdf ? 'Preuzmi PDF' : 'Otvori poveznicu';
+
+            const card = document.createElement('div');
+            card.className = 'activity-card'; // Reuse activity card style
+            card.style.display = 'flex';
+            card.style.flexDirection = 'column';
+            card.innerHTML = `
+                <div class="activity-card__date">${rad.year} | ${rad.authors}</div>
+                <h3 class="activity-card__title">${icon} ${rad.title}</h3>
+                <p class="activity-card__content" style="flex:1;">${rad.abstract || 'Nema sažetka.'}</p>
+                <div style="margin-top: 1rem;">
+                     <a href="${rad.link}" target="_blank" class="btn btn--secondary btn--sm">${linkText}</a>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+
+    } catch (err) {
+        console.error(err);
+        container.innerHTML = '<p>Greška pri učitavanju.</p>';
+    }
+}
 
 // ==================== Activity Form (Upload with Images) ====================
 function initActivityForm() {
