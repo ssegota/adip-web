@@ -557,7 +557,7 @@ function updateLoginButton() {
 async function loadActivities(container, limit = 10, filterYear = null) {
     try {
         // Use absolute path for robustness
-        const response = await fetch('/data/aktivnosti.json');
+        const response = await fetch(window.location.pathname.includes('/en/') ? '../data/aktivnosti.json' : 'data/aktivnosti.json');
         allActivitiesData = await response.json();
 
         if (!allActivitiesData || allActivitiesData.length === 0) {
@@ -878,7 +878,7 @@ function updateLightboxImage() {
 async function loadGallery(category, containerId) {
     try {
         // Use absolute path
-        const response = await fetch('/data/galerija.json');
+        const response = await fetch(window.location.pathname.includes('/en/') ? '../data/galerija.json' : 'data/galerija.json');
         const data = await response.json();
 
         let images;
@@ -950,4 +950,382 @@ function getLocalizedDescription(desc) {
 
     const isEnglish = window.location.pathname.includes('/en/');
     return isEnglish ? (desc.en || desc.hr || '') : (desc.hr || desc.en || '');
+}
+
+// ==================== Library Catalog (CSV) ====================
+async function loadLibraryCatalog(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    // Detect if we consider this an English page
+    const isEnglish = window.location.pathname.includes('/en/');
+    const csvPath = isEnglish ? '../books.csv' : 'books.csv';
+
+    try {
+        if (window.location.protocol === 'file:') {
+            throw new Error('Local file access blocked by browser security (CORS). Please run via server (node server.js).');
+        }
+
+        const response = await fetch(csvPath);
+        if (!response.ok) throw new Error(`Failed to fetch CSV: ${response.statusText}`);
+        const csvText = await response.text();
+        const books = parseCSV(csvText);
+
+        renderLibraryCatalog(books, container);
+    } catch (err) {
+        console.error('Error loading library catalog:', err);
+        const errorMsg = isEnglish
+            ? 'Error loading data. If using local files, please use a local server (node server.js).'
+            : 'Greška pri učitavanju. Ako koristite lokalne datoteke, molimo pokrenite lokalni server (node server.js).';
+
+        container.innerHTML = `
+            <div class="text-center" style="color: var(--text-muted); padding: 1rem;">
+                <p>⚠️ ${t('errorLoad') || 'Error loading data'}</p>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #e74c3c;">${err.message || errorMsg}</p>
+            </div>
+        `;
+    }
+}
+
+function parseCSV(text) {
+    const lines = text.trim().split('\n');
+    // We expect standard headers, but let's be robust
+    const result = [];
+
+    for (let i = 1; i < lines.length; i++) {
+        // Handle CSV lines with potential quoted fields containing commas
+        // Regex: Match quoted string OR non-comma-non-quote sequence
+        const row = lines[i].match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g);
+        if (!row) continue;
+
+        // Manual mapping based on "Naslov,Autor(i),Godina izdanja,Naklada,Mjesto,ISBN,ADIP-broj,Jezik,Stanje (1-5)"
+        // Note: User edited the CSV to potentially remove empty fields, so we rely on index.
+
+        const clean = (val) => {
+            if (!val) return '';
+            val = val.trim();
+            if (val.startsWith('"') && val.endsWith('"')) return val.slice(1, -1);
+            return val;
+        };
+
+        result.push({
+            title: clean(row[0]),
+            author: clean(row[1]),
+            year: clean(row[2]),
+            publisher: clean(row[3]),
+            place: clean(row[4]),
+            isbn: clean(row[5]),
+            adip_id: clean(row[6]),
+            language: clean(row[7]),
+            condition: clean(row[8])
+        });
+    }
+    return result;
+}
+
+function renderLibraryCatalog(books, container) {
+    const isEnglish = window.location.pathname.includes('/en/');
+    container.innerHTML = ''; // Clear "Loading..."
+
+    // State for filtering and sorting
+    let state = {
+        data: [...books],
+        sortField: null,
+        sortAsc: true,
+        filters: {}
+    };
+
+    // Helper: Sort and Filter Data
+    const processData = () => {
+        let processed = books.filter(book => {
+            return Object.keys(state.filters).every(key => {
+                const term = state.filters[key].toLowerCase();
+                const val = (book[key] || '').toLowerCase();
+                return val.includes(term);
+            });
+        });
+
+        if (state.sortField) {
+            processed.sort((a, b) => {
+                const valA = (a[state.sortField] || '').toLowerCase();
+                const valB = (b[state.sortField] || '').toLowerCase();
+                if (valA < valB) return state.sortAsc ? -1 : 1;
+                if (valA > valB) return state.sortAsc ? 1 : -1;
+                return 0;
+            });
+        }
+        return processed;
+    };
+
+    const render = () => {
+        const filteredBooks = processData();
+
+        const headers = [
+            { key: 'title', label: isEnglish ? 'Title' : 'Naslov' },
+            { key: 'author', label: isEnglish ? 'Author' : 'Autor' },
+            { key: 'year', label: isEnglish ? 'Year' : 'Godina' },
+            { key: 'publisher', label: isEnglish ? 'Publisher' : 'Naklada' },
+            { key: 'place', label: isEnglish ? 'Place' : 'Mjesto' },
+            { key: 'isbn', label: 'ISBN' }, // Often empty but present
+            { key: 'adip_id', label: 'ID' },
+            { key: 'language', label: isEnglish ? 'Lang' : 'Jezik' }
+        ];
+
+        // Create Header (Sortable) + Filter Row
+        let tableHtml = `
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; min-width: 900px; font-size: 0.9rem;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--accent-primary);">
+                            ${headers.map(h => `
+                                <th style="padding: 0.5rem; text-align: left; vertical-align: top; min-width: 100px;">
+                                    <div class="sort-header" data-key="${h.key}" style="cursor: pointer; color: var(--accent-primary); margin-bottom: 0.25rem;">
+                                        ${h.label} ${state.sortField === h.key ? (state.sortAsc ? '▲' : '▼') : ''}
+                                    </div>
+                                    <input type="text" data-filter="${h.key}" class="column-filter form-input" 
+                                           placeholder="..." 
+                                           value="${state.filters[h.key] || ''}"
+                                           style="width: 100%; padding: 0.25rem; font-size: 0.8rem;">
+                                </th>
+                            `).join('')}
+                        </tr>
+                    </thead>
+                    <tbody>
+        `;
+
+        if (filteredBooks.length === 0) {
+            tableHtml += `<tr><td colspan="${headers.length}" style="padding: 1rem; text-align: center;">${isEnglish ? 'No books found.' : 'Nema pronađenih knjiga.'}</td></tr>`;
+        } else {
+            filteredBooks.forEach(book => {
+                tableHtml += `
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 0.5rem;">${book.title || ''}</td>
+                        <td style="padding: 0.5rem;">${book.author || ''}</td>
+                        <td style="padding: 0.5rem;">${book.year || ''}</td>
+                        <td style="padding: 0.5rem;">${book.publisher || ''}</td>
+                        <td style="padding: 0.5rem;">${book.place || ''}</td>
+                        <td style="padding: 0.5rem;">${book.isbn || ''}</td>
+                        <td style="padding: 0.5rem;">${book.adip_id || ''}</td>
+                        <td style="padding: 0.5rem;">${book.language || ''}</td>
+                    </tr>
+                `;
+            });
+        }
+
+        tableHtml += '</tbody></table></div>';
+        tableHtml += `<p style="margin-top: 0.5rem; font-size: 0.8rem; text-align: right; color: var(--text-muted);">${filteredBooks.length} ${isEnglish ? 'books' : 'knjiga'}</p>`;
+
+        container.innerHTML = tableHtml;
+
+        // Re-attach event listeners
+        container.querySelectorAll('.sort-header').forEach(th => {
+            th.addEventListener('click', () => {
+                const key = th.dataset.key;
+                if (state.sortField === key) {
+                    state.sortAsc = !state.sortAsc;
+                } else {
+                    state.sortField = key;
+                    state.sortAsc = true;
+                }
+                render();
+            });
+        });
+
+        container.querySelectorAll('.column-filter').forEach(input => {
+            input.addEventListener('input', (e) => {
+                const key = e.target.dataset.filter;
+                state.filters[key] = e.target.value;
+                // Debounce could be added here, but for client-side valid
+                requestAnimationFrame(() => {
+                    // We don't partial render, we re-render full table but keep input focus?
+                    // Re-rendering replacing inputs makes them lose focus. 
+                    // Better strategy: Filter data, update rows only? 
+                    // For simplicity, we just update the specific rows. BUT replacing HTML kills focus.
+                    // Let's implement a simpler "Enter to search" or just live filter but careful with focus.
+
+                    // Actually, re-rendering the whole table on every keystroke causes input focus loss.
+                    // Solution: Don't re-render inputs. Just re-render tbody.
+                });
+            });
+            // Optimization: Only re-render on 'change' or 'blur' or Enter?
+            // Or better: Separate Header and Body logic.
+        });
+
+        // Quick fix for focus loss: Re-focus the input after render
+        // This is a bit hacky but works for simple implementations
+        const focused = document.activeElement;
+        if (focused && focused.dataset && focused.dataset.filter) {
+            const input = container.querySelector(`input[data-filter="${focused.dataset.filter}"]`);
+            if (input) {
+                input.focus();
+                input.selectionStart = input.value.length;
+                input.selectionEnd = input.value.length;
+            }
+        }
+    };
+
+    // Split render to avoid destroying inputs
+    // We will render the Structure once, then update Body
+
+    // Initial Render Loop
+    // To handle focus correctly, we need to bind listeners once or preserve elements.
+    // Simplified approach: Render structure once. Update rows on change.
+
+    const headers = [
+        { key: 'title', label: isEnglish ? 'Title' : 'Naslov' },
+        { key: 'author', label: isEnglish ? 'Author' : 'Autor' },
+        { key: 'year', label: isEnglish ? 'Year' : 'Godina' },
+        { key: 'publisher', label: isEnglish ? 'Publisher' : 'Naklada' },
+        { key: 'place', label: isEnglish ? 'Place' : 'Mjesto' },
+        { key: 'isbn', label: 'ISBN' },
+        { key: 'adip_id', label: 'ID' },
+        { key: 'language', label: isEnglish ? 'Lang' : 'Jezik' }
+    ];
+
+    container.innerHTML = `
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; min-width: 900px; font-size: 0.9rem;">
+                <thead>
+                    <tr style="border-bottom: 2px solid var(--accent-primary);">
+                        ${headers.map(h => `
+                            <th style="padding: 0.5rem; text-align: left; vertical-align: top; min-width: 120px;">
+                                <div class="sort-header" data-key="${h.key}" style="cursor: pointer; color: var(--accent-primary); margin-bottom: 0.25rem;">
+                                    ${h.label} <span class="sort-icon"></span>
+                                </div>
+                                <input type="text" data-filter="${h.key}" class="column-filter form-input" 
+                                       placeholder="..." 
+                                       style="width: 100%; padding: 0.25rem; font-size: 0.8rem; padding-left: 0.5rem;">
+                            </th>
+                        `).join('')}
+                    </tr>
+                </thead>
+                <tbody id="library-table-body"></tbody>
+            </table>
+        </div>
+        <p id="library-count" style="margin-top: 0.5rem; font-size: 0.8rem; text-align: right; color: var(--text-muted);"></p>
+    `;
+
+    const updateTable = () => {
+        const processed = processData();
+        const tbody = document.getElementById('library-table-body');
+        const count = document.getElementById('library-count');
+
+        if (!tbody) return;
+
+        if (processed.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="${headers.length}" style="padding: 1rem; text-align: center;">${isEnglish ? 'No books found.' : 'Nema pronađenih knjiga.'}</td></tr>`;
+        } else {
+            tbody.innerHTML = processed.map(book => `
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                    <td style="padding: 0.5rem;">${book.title || ''}</td>
+                    <td style="padding: 0.5rem;">${book.author || ''}</td>
+                    <td style="padding: 0.5rem;">${book.year || ''}</td>
+                    <td style="padding: 0.5rem;">${book.publisher || ''}</td>
+                    <td style="padding: 0.5rem;">${book.place || ''}</td>
+                    <td style="padding: 0.5rem;">${book.isbn || ''}</td>
+                    <td style="padding: 0.5rem;">${book.adip_id || ''}</td>
+                    <td style="padding: 0.5rem;">${book.language || ''}</td>
+                </tr>
+            `).join('');
+        }
+
+        count.textContent = `${processed.length} ${isEnglish ? 'books' : 'knjiga'}`;
+
+        // Update Sort Icons
+        container.querySelectorAll('.sort-icon').forEach(span => span.textContent = '');
+        if (state.sortField) {
+            const activeHeader = container.querySelector(`.sort-header[data-key="${state.sortField}"] .sort-icon`);
+            if (activeHeader) activeHeader.textContent = state.sortAsc ? '▲' : '▼';
+        }
+    };
+
+    // Bind Events
+    container.querySelectorAll('.sort-header').forEach(th => {
+        th.addEventListener('click', () => {
+            const key = th.dataset.key;
+            if (state.sortField === key) {
+                state.sortAsc = !state.sortAsc;
+            } else {
+                state.sortField = key;
+                state.sortAsc = true;
+            }
+            updateTable();
+        });
+    });
+
+    container.querySelectorAll('.column-filter').forEach(input => {
+        input.addEventListener('input', (e) => {
+            const key = e.target.dataset.filter;
+            state.filters[key] = e.target.value;
+            updateTable();
+        });
+    });
+
+    // Initial Render
+    updateTable();
+}
+
+function openLibraryModal() {
+    const isEnglish = window.location.pathname.includes('/en/');
+    const title = isEnglish ? 'Pula Observatory Book Catalog' : 'Katalog knjiga Pulske Zvjezdarnice';
+
+    const modal = document.getElementById('service-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalBody = document.getElementById('modal-body');
+    const closeBtn = document.getElementById('close-modal');
+
+    if (!modal || !modalBody) return;
+
+    modalTitle.textContent = title;
+    modalBody.innerHTML = '<div id="library-catalog-container" style="padding: 1rem;">Loading...</div>';
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // Close handler
+    const closeModal = () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        modalBody.innerHTML = '';
+        closeBtn.removeEventListener('click', closeModal);
+    };
+    closeBtn.addEventListener('click', closeModal);
+
+    loadLibraryCatalog('library-catalog-container');
+}
+
+function openAsteroidGame() {
+    const isEnglish = window.location.pathname.includes('/en/');
+    const title = 'Spot the Asteroid';
+
+    // Path to the game file.
+    // If we are in /en/, we need ../games/asteroid.html
+    const gameUrl = isEnglish ? '../games/asteroid.html' : 'games/asteroid.html';
+
+    const modal = document.getElementById('service-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalBody = document.getElementById('modal-body');
+    const closeBtn = document.getElementById('close-modal');
+
+    if (!modal || !modalBody) return;
+
+    modalTitle.textContent = title;
+    modalBody.innerHTML = `
+        <div style="width: 100%; height: 80vh;">
+            <iframe src="${gameUrl}" 
+                    style="width: 100%; height: 100%; border: none; border-radius: 8px;" 
+                    allow="autoplay; encrypted-media"></iframe>
+        </div>
+    `;
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        modalBody.innerHTML = '';
+        closeBtn.removeEventListener('click', closeModal);
+    };
+    closeBtn.addEventListener('click', closeModal);
 }

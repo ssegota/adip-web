@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lovac na Asteroide</title>
+  <style>
+    :root { color-scheme: dark; }
+    body {
+      margin: 0; font: 16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #0b0b0b; color: #eaeaea; display: grid; place-items: center; min-height: 100vh;
+    }
+    .wrap { width: min(2200px, 96vw); padding: 16px; }
+    h1 { font-size: 1.1rem; margin: 0 0 8px; color: #f2f2f2; }
+    .row { display:flex; gap: 16px; align-items:center; flex-wrap: wrap; }
+    .canvases { display:flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
+    canvas { background: #000; border: 2px solid white; box-shadow: 0 0 0 1px #222, 0 6px 18px rgba(0,0,0,.6);}
+    .stats { display:flex; gap: 18px; align-items:center; margin: 10px 0 4px; }
+    .badge { padding: 4px 8px; border-radius: 999px; font-weight: 700; }
+    .ok { background:#143; color:#9f9; }
+    .err{ background:#411; color:#fbb; }
+    .msg { min-height: 1.4em; font-weight:600; }
+    .tiny {opacity:.7; font-size:.9rem}
+    code { background:#111; padding:2px 6px; border-radius:6px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Lovac na Asteroide</h1>
+    <div class="stats">
+      <span class="badge ok">Correct: <span id="score-ok">0</span></span>
+      <span class="badge err">Wrong: <span id="score-err">0</span></span>
+      <span class="msg" id="msg"></span>
+    </div>
+    <div class="tiny">Simulacija traženja asteroida u polju zvijezda! Usporedi dvije slike - asteroid je ona točka koja se pomakla! Kada je nađeš, na bilo kojoj slici klikni na asteroid! Igra će pratiti tvoje uspjehe (i neuspjehe) dok ne osvježiš stranicu!</div>
+
+    <div class="canvases">
+      <canvas id="c1" width="300" height="300" aria-label="Image 1"></canvas>
+      <canvas id="c2" width="300" height="300" aria-label="Image 2 (click the dot here)"></canvas>
+    </div>
+
+  </div>
+
+<script>
+// ==========================
+// CONFIG — tweak values here
+// ==========================
+const CONFIG = {
+  WIDTH: 300,               // canvas width (px)
+  HEIGHT: 300,              // canvas height (px)
+  STAR_COUNT_MIN: 75,       // inclusive
+  STAR_COUNT_MAX: 125,       // inclusive
+  STAR_RADIUS_MIN: 0.5,      // px (0.5 gives nicely small pinpricks)
+  STAR_RADIUS_MAX: 1.5,      // px (diameters ~1–5 px)
+  DOT_RADIUS: 3,             // px (click target; separate CLICK_TOLERANCE below)
+  DOT_COLOR: { r: 200, g: 200, b: 200 }, // default red
+  CLICK_TOLERANCE: 20,        // extra px around dot to accept as a hit
+  EDGE_MARGIN: 4,            // keep stars/dots away from edges (px)
+  REGEN_DELAY_MS: 800        // pause after victory before regenerating
+};
+
+// =====================================
+// Helpers
+// =====================================
+const rand = (min, max) => Math.random() * (max - min) + min;
+const randi = (min, max) => Math.floor(rand(min, max + 1));
+const dist2 = (x1, y1, x2, y2) => (x2-x1)*(x2-x1) + (y2-y1)*(y2-y1);
+
+function rgb({r,g,b}){ return `rgb(${r|0}, ${g|0}, ${b|0})`; }
+
+function pickNonOverlappingPoint(stars, dotRadius) {
+  const maxAttempts = 5000;
+  const pad = CONFIG.EDGE_MARGIN + dotRadius + CONFIG.CLICK_TOLERANCE;
+  for (let k=0; k<maxAttempts; k++) {
+    const x = rand(pad, CONFIG.WIDTH - pad);
+    const y = rand(pad, CONFIG.HEIGHT - pad);
+    // ensure dot does not overlap any star (simple circle separation)
+    let ok = true;
+    for (const s of stars) {
+      const minDist = s.r + dotRadius + 1; // +1px breathing room
+      if (dist2(x,y,s.x,s.y) < minDist*minDist) { ok = false; break; }
+    }
+    if (ok) return {x,y};
+  }
+  // fallback: accept even if close (extremely unlikely to be needed)
+  return { x: rand(pad, CONFIG.WIDTH - pad), y: rand(pad, CONFIG.HEIGHT - pad) };
+}
+
+// =====================================
+// Game state
+// =====================================
+let stars = [];
+let dot1 = {x:0,y:0};
+let dot2 = {x:0,y:0};
+let scoreOK = 0;
+let scoreERR = 0;
+let locked = false; // lock clicks during victory pause
+
+const c1 = document.getElementById('c1');
+const c2 = document.getElementById('c2');
+const g1 = c1.getContext('2d');
+const g2 = c2.getContext('2d');
+const msgEl = document.getElementById('msg');
+const scoreOkEl = document.getElementById('score-ok');
+const scoreErrEl = document.getElementById('score-err');
+
+function clearCanvas(g){ g.fillStyle = '#000'; g.fillRect(0,0,CONFIG.WIDTH,CONFIG.HEIGHT); }
+
+function drawStars(g){
+  g.save();
+  g.fillStyle = '#fff';
+  for (const s of stars) {
+    g.beginPath();
+    g.arc(s.x, s.y, s.r, 0, Math.PI*2);
+    g.fill();
+  }
+  g.restore();
+}
+
+function drawDot(g, dot){
+  g.save();
+  g.fillStyle = rgb(CONFIG.DOT_COLOR);
+  g.beginPath();
+  g.arc(dot.x, dot.y, CONFIG.DOT_RADIUS, 0, Math.PI*2);
+  g.fill();
+  g.restore();
+}
+
+function generateStars(){
+  const n = randi(CONFIG.STAR_COUNT_MIN, CONFIG.STAR_COUNT_MAX);
+  const margin = CONFIG.EDGE_MARGIN;
+  const arr = [];
+  for (let i=0;i<n;i++){
+    arr.push({
+      x: rand(margin, CONFIG.WIDTH  - margin),
+      y: rand(margin, CONFIG.HEIGHT - margin),
+      r: rand(CONFIG.STAR_RADIUS_MIN, CONFIG.STAR_RADIUS_MAX)
+    });
+  }
+  return arr;
+}
+
+function regenerate(){
+  stars = generateStars();           // same starfield for both images
+  dot1  = pickNonOverlappingPoint(stars, CONFIG.DOT_RADIUS);
+  do { dot2 = pickNonOverlappingPoint(stars, CONFIG.DOT_RADIUS); }
+  while (dist2(dot1.x,dot1.y,dot2.x,dot2.y) < (CONFIG.DOT_RADIUS*4)*(CONFIG.DOT_RADIUS*4)); // ensure noticeably different positions
+
+  // Draw both canvases
+  clearCanvas(g1); clearCanvas(g2);
+  drawStars(g1);   drawStars(g2);
+  drawDot(g1, dot1);
+  drawDot(g2, dot2);
+  msg('');
+}
+
+function canvasClickHandler(ev, which){
+  if (locked) return;
+  const rect = ev.target.getBoundingClientRect();
+  const x = (ev.clientX - rect.left) * (ev.target.width / rect.width);
+  const y = (ev.clientY - rect.top)  * (ev.target.height / rect.height);
+
+  // target is the dot for the canvas that was clicked
+  const target = (which === 2) ? dot2 : dot1;
+  const hitR = CONFIG.DOT_RADIUS + CONFIG.CLICK_TOLERANCE;
+  const isHit = dist2(x,y,target.x,target.y) <= hitR*hitR;
+
+  if (isHit) {
+    scoreOK++; updateScores(); msg('victory');   // or msg(which===1 ? 'victory (left)' : 'victory (right)')
+    locked = true;
+    setTimeout(()=>{ locked = false; regenerate(); }, CONFIG.REGEN_DELAY_MS);
+  } else {
+    scoreERR++; updateScores(); msg('miss');
+  }
+}
+
+function msg(text){
+  msgEl.textContent = text;
+  if (text === 'victory') {
+    msgEl.style.color = '#9f9';
+  } else if (text === 'miss') {
+    msgEl.style.color = '#f88';
+  } else {
+    msgEl.style.color = '#eaeaea';
+  }
+}
+
+function updateScores(){
+  scoreOkEl.textContent = String(scoreOK);
+  scoreErrEl.textContent = String(scoreERR);
+}
+
+c1.addEventListener('click', (e)=> canvasClickHandler(e, 1));
+c2.addEventListener('click', (e)=> canvasClickHandler(e, 2));
+
+// Initial draw
+regenerate();
+</script>
+</body>
+</html>
+
+
+
+
+
+
