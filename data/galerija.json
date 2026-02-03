@@ -1,0 +1,370 @@
+{
+  "povijest": [
+    {
+      "src": "galerija/povijest/povijest_1.jpg",
+      "description": "Povijesna fotografija 1"
+    },
+    {
+      "src": "galerija/povijest/povijest_2.jpg",
+      "description": "Povijesna fotografija 2"
+    },
+    {
+      "src": "galerija/povijest/povijest_3.jpg",
+      "description": "Povijesna fotografija 3"
+    },
+    {
+      "src": "galerija/povijest/povijest_4.jpg",
+      "description": "Povijesna fotografija 4"
+    },
+    {
+      "src": "galerija/povijest/povijest_5.jpg",
+      "description": "Povijesna fotografija 5"
+    },
+    {
+      "src": "galerija/povijest/povijest_6.jpg",
+      "description": "Povijesna fotografija 6"
+    },
+    {
+      "src": "galerija/povijest/povijest_7.jpg",
+      "description": "Povijesna fotografija 7"
+    },
+    {
+      "src": "galerija/povijest/povijest_8.jpg",
+      "description": "Povijesna fotografija 8"
+    },
+    {
+      "src": "galerija/povijest/povijest_9.jpg",
+      "description": "Povijesna fotografija 9"
+    },
+    {
+      "src": "galerija/povijest/povijest_10.jpg",
+      "description": "Povijesna fotografija 10"
+    },
+    {
+      "src": "galerija/povijest/povijest_11.jpg",
+      "description": "Povijesna fotografija 11"
+    },
+    {
+      "src": "galerija/povijest/povijest_12.jpg",
+      "description": "Povijesna fotografija 12"
+    },
+    {
+      "src": "galerija/povijest/povijest_13.jpg",
+      "description": "Povijesna fotografija 13"
+    },
+    {
+      "src": "galerija/povijest/povijest_14.jpg",
+      "description": "Povijesna fotografija 14"
+    },
+    {
+      "src": "galerija/povijest/povijest_15.jpg",
+      "description": "Povijesna fotografija 15"
+    },
+    {
+      "src": "galerija/povijest/povijest_16.jpg",
+      "description": "Povijesna fotografija 16"
+    },
+    {
+      "src": "galerija/povijest/povijest_17.jpg",
+      "description": "Povijesna fotografija 17"
+    },
+    {
+      "src": "galerija/povijest/povijest_18.jpg",
+      "description": "Povijesna fotografija 18"
+    },
+    {
+      "src": "galerija/povijest/povijest_19.jpg",
+      "description": "Povijesna fotografija 19"
+    },
+    {
+      "src": "galerija/povijest/povijest_20.jpg",
+      "description": "Povijesna fotografija 20"
+    },
+    {
+      "src": "galerija/povijest/povijest_21.jpg",
+      "description": "Povijesna fotografija 21"
+    },
+    {
+      "src": "galerija/povijest/povijest_22.jpg",
+      "description": "Povijesna fotografija 22"
+    },
+    {
+      "src": "galerija/povijest/povijest_23.jpg",
+      "description": "Povijesna fotografija 23"
+    },
+    {
+      "src": "galerija/povijest/povijest_24.jpg",
+      "description": "Povijesna fotografija 24"
+    },
+    {
+      "src": "galerija/povijest/povijest_25.jpg",
+      "description": "Povijesna fotografija 25"
+    },
+    {
+      "src": "galerija/povijest/povijest_26.jpg",
+      "description": "Povijesna fotografija 26"
+    },
+    {
+      "src": "galerija/povijest/povijest_27.jpg",
+      "description": "Povijesna fotografija 27"
+    },
+    {
+      "src": "galerija/povijest/povijest_28.jpg",
+      "description": "Povijesna fotografija 28"
+    },
+    {
+      "src": "galerija/povijest/povijest_29.jpg",
+      "description": "Povijesna fotografija 29"
+    },
+    {
+      "src": "galerija/povijest/povijest_30.jpg",
+      "description": "Povijesna fotografija 30"
+    },
+    {
+      "src": "galerija/povijest/povijest_31.jpg",
+      "description": "Povijesna fotografija 31"
+    },
+    {
+      "src": "galerija/povijest/povijest_32.jpg",
+      "description": "Povijesna fotografija 32"
+    },
+    {
+      "src": "galerija/povijest/povijest_33.jpg",
+      "description": "Povijesna fotografija 33"
+    },
+    {
+      "src": "galerija/povijest/povijest_34.jpg",
+      "description": "Povijesna fotografija 34"
+    },
+    {
+      "src": "galerija/povijest/povijest_35.jpg",
+      "description": "Povijesna fotografija 35"
+    },
+    {
+      "src": "galerija/povijest/povijest_36.jpg",
+      "description": "Povijesna fotografija 36"
+    },
+    {
+      "src": "galerija/povijest/povijest_37.jpg",
+      "description": "Povijesna fotografija 37"
+    },
+    {
+      "src": "galerija/povijest/povijest_38.jpg",
+      "description": "Povijesna fotografija 38"
+    },
+    {
+      "src": "galerija/povijest/povijest_39.jpg",
+      "description": "Povijesna fotografija 39"
+    },
+    {
+      "src": "galerija/povijest/povijest_40.jpg",
+      "description": "Povijesna fotografija 40"
+    },
+    {
+      "src": "galerija/povijest/povijest_41.jpg",
+      "description": "Povijesna fotografija 41"
+    },
+    {
+      "src": "galerija/povijest/povijest_42.jpg",
+      "description": "Povijesna fotografija 42"
+    },
+    {
+      "src": "galerija/povijest/povijest_43.jpg",
+      "description": "Povijesna fotografija 43"
+    },
+    {
+      "src": "galerija/povijest/povijest_44.jpg",
+      "description": "Povijesna fotografija 44"
+    },
+    {
+      "src": "galerija/povijest/povijest_45.jpg",
+      "description": "Povijesna fotografija 45"
+    }
+  ],
+  "astrofotografija": {
+    "mjesec": [
+      {
+        "src": "galerija/astrofotografija/mjesec/mjesec_1.jpg",
+        "description": "mjesec - fotografija 1"
+      },
+      {
+        "src": "galerija/astrofotografija/mjesec/mjesec_2.jpg",
+        "description": "mjesec - fotografija 2"
+      },
+      {
+        "src": "galerija/astrofotografija/mjesec/mjesec_3.jpg",
+        "description": "mjesec - fotografija 3"
+      },
+      {
+        "src": "galerija/astrofotografija/mjesec/mjesec_4.jpg",
+        "description": "mjesec - fotografija 4"
+      },
+      {
+        "src": "galerija/astrofotografija/mjesec/mjesec_5.jpg",
+        "description": "mjesec - fotografija 5"
+      },
+      {
+        "src": "galerija/astrofotografija/mjesec/mjesec_6.jpg",
+        "description": "mjesec - fotografija 6"
+      },
+      {
+        "src": "galerija/astrofotografija/mjesec/mjesec_7.jpg",
+        "description": "mjesec - fotografija 7"
+      },
+      {
+        "src": "galerija/astrofotografija/mjesec/mjesec_8.jpg",
+        "description": "mjesec - fotografija 8"
+      }
+    ],
+    "venera": [
+      {
+        "src": "galerija/astrofotografija/venera/venera_1.jpg",
+        "description": "venera - fotografija 1"
+      },
+      {
+        "src": "galerija/astrofotografija/venera/venera_2.jpg",
+        "description": "venera - fotografija 2"
+      }
+    ],
+    "kometi": [
+      {
+        "src": "galerija/astrofotografija/kometi/kometi_1.jpg",
+        "description": "kometi - fotografija 1"
+      },
+      {
+        "src": "galerija/astrofotografija/kometi/kometi_2.jpg",
+        "description": "kometi - fotografija 2"
+      },
+      {
+        "src": "galerija/astrofotografija/kometi/kometi_3.jpg",
+        "description": "kometi - fotografija 3"
+      },
+      {
+        "src": "galerija/astrofotografija/kometi/kometi_4.jpg",
+        "description": "kometi - fotografija 4"
+      },
+      {
+        "src": "galerija/astrofotografija/kometi/kometi_5.jpg",
+        "description": "kometi - fotografija 5"
+      },
+      {
+        "src": "galerija/astrofotografija/kometi/kometi_6.jpg",
+        "description": "kometi - fotografija 6"
+      },
+      {
+        "src": "galerija/astrofotografija/kometi/kometi_7.jpg",
+        "description": "kometi - fotografija 7"
+      },
+      {
+        "src": "galerija/astrofotografija/kometi/kometi_8.jpg",
+        "description": "kometi - fotografija 8"
+      },
+      {
+        "src": "galerija/astrofotografija/kometi/kometi_9.jpg",
+        "description": "kometi - fotografija 9"
+      }
+    ],
+    "mars": [
+      {
+        "src": "galerija/astrofotografija/mars/mars_1.jpg",
+        "description": "mars - fotografija 1"
+      },
+      {
+        "src": "galerija/astrofotografija/mars/mars_2.jpg",
+        "description": "mars - fotografija 2"
+      },
+      {
+        "src": "galerija/astrofotografija/mars/mars_3.jpg",
+        "description": "mars - fotografija 3"
+      },
+      {
+        "src": "galerija/astrofotografija/mars/mars_4.jpg",
+        "description": "mars - fotografija 4"
+      },
+      {
+        "src": "galerija/astrofotografija/mars/mars_5.jpg",
+        "description": "mars - fotografija 5"
+      }
+    ],
+    "meteori": [
+      {
+        "src": "galerija/astrofotografija/meteori/meteori_1.jpg",
+        "description": "meteori - fotografija 1"
+      },
+      {
+        "src": "galerija/astrofotografija/meteori/meteori_2.jpg",
+        "description": "meteori - fotografija 2"
+      },
+      {
+        "src": "galerija/astrofotografija/meteori/meteori_3.jpg",
+        "description": "meteori - fotografija 3"
+      },
+      {
+        "src": "galerija/astrofotografija/meteori/meteori_4.jpg",
+        "description": "meteori - fotografija 4"
+      },
+      {
+        "src": "galerija/astrofotografija/meteori/meteori_5.jpg",
+        "description": "meteori - fotografija 5"
+      },
+      {
+        "src": "galerija/astrofotografija/meteori/meteori_6.jpg",
+        "description": "meteori - fotografija 6"
+      }
+    ],
+    "jupiter": [
+      {
+        "src": "galerija/astrofotografija/jupiter/jupiter_1.jpg",
+        "description": "jupiter - fotografija 1"
+      },
+      {
+        "src": "galerija/astrofotografija/jupiter/jupiter_2.jpg",
+        "description": "jupiter - fotografija 2"
+      }
+    ],
+    "saturn": [
+      {
+        "src": "galerija/astrofotografija/saturn/saturn_1.jpg",
+        "description": "saturn - fotografija 1"
+      }
+    ],
+    "duboki-svemir": [
+      {
+        "src": "galerija/astrofotografija/duboki-svemir/duboki-svemir_1.jpg",
+        "description": "duboki-svemir - fotografija 1"
+      },
+      {
+        "src": "galerija/astrofotografija/duboki-svemir/duboki-svemir_2.jpg",
+        "description": "duboki-svemir - fotografija 2"
+      },
+      {
+        "src": "galerija/astrofotografija/duboki-svemir/duboki-svemir_3.jpg",
+        "description": "duboki-svemir - fotografija 3"
+      },
+      {
+        "src": "galerija/astrofotografija/duboki-svemir/duboki-svemir_4.jpg",
+        "description": "duboki-svemir - fotografija 4"
+      },
+      {
+        "src": "galerija/astrofotografija/duboki-svemir/duboki-svemir_5.jpg",
+        "description": "duboki-svemir - fotografija 5"
+      },
+      {
+        "src": "galerija/astrofotografija/duboki-svemir/duboki-svemir_6.jpg",
+        "description": "duboki-svemir - fotografija 6"
+      },
+      {
+        "src": "galerija/astrofotografija/duboki-svemir/duboki-svemir_7.jpg",
+        "description": "duboki-svemir - fotografija 7"
+      },
+      {
+        "src": "galerija/astrofotografija/duboki-svemir/duboki-svemir_8.jpg",
+        "description": "duboki-svemir - fotografija 8"
+      },
+      {
+        "src": "galerija/astrofotografija/duboki-svemir/duboki-svemir_9.jpg",
+        "description": "duboki-svemir - fotografija 9"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+.tablica {
+  margin: 0 auto;
+  border: 0;
+  width: 100%;
+}
+
+.lenjinova-nocu-slika {
+  height: 169px;
+  width: 250px;
+}
+
+.lenjinova-danju-slika {
+  height: 164px;
+  width: 250px;
+}
+
+.mladi-slika {
+  height: 154px;
+  width: 250px;
+}
+
+.astereoid-istra-slika {
+  height: 159px;
+  width: 250px;
+}
+
+.djemo-slika {
+  height: 225px;
+  width: 165px;
+}
+
+.mladi-1-slika {
+  height: 153px;
+  width: 250px;
+}
+
+.teleskop-slika {
+  float: left;
+  height: 288px;
+  margin: 5px 10px;
+  width: 148px;
+}

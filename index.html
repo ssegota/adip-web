@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulska Zvjezdarnica - Astronomsko društvo "Istra" Pula</title>
+  <meta name="description"
+    content="Astronomsko društvo Istra Pula - Zvjezdarnica, edukacija, promatranje neba, astrofotografija">
+  <link rel="shortcut icon" href="sites/all/themes/black_hole/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/modern.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <a href="index.html" class="header__logo">
+      <img src="sites/all/themes/black_hole/logo.png" alt="ADIP Logo">
+      <div>
+        <div class="header__title">Pulska Zvjezdarnica</div>
+        <div class="header__subtitle">Astronomsko društvo "Istra" Pula</div>
+      </div>
+    </a>
+
+    <nav class="nav" id="main-nav">
+      <button class="nav__close" id="nav-close">✕</button>
+      <a href="index.html" class="nav__link active">🏠 Naslovna</a>
+      <a href="aktivnosti.html" class="nav__link">📅 Aktivnosti</a>
+      <a href="galerija-slika.html" class="nav__link">🖼️ Galerija</a>
+      <a href="povijest-zvjezdarnice.html" class="nav__link">📜 Povijest</a>
+      <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Posjeti</a>
+      <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ O nama</a>
+      <div class="nav__spacer"></div>
+      <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Prijava</button>
+    </nav>
+    <div class="nav-overlay" id="nav-overlay"></div>
+
+    <div class="user-controls">
+      <button class="lang-toggle" id="lang-toggle">EN</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero__content">
+      <span class="hero__badge animate-in">🔭 Dobrodošli na Zvjezdarnicu</span>
+      <h1 class="hero__title animate-in animate-delay-1">
+        Istražujte <span>svemir</span> s nama
+      </h1>
+      <p class="hero__description animate-in animate-delay-2">
+        Astronomsko društvo "Istra" Pula djeluje od 1976. godine. Organiziramo predavanja,
+        promatranje neba, radionice i edukativne programe za sve uzraste.
+      </p>
+      <p class="hero__location animate-in animate-delay-2"
+        style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+        📍 <strong>44° 51' 49" N &nbsp;|&nbsp; 13° 50' 44" E</strong> &nbsp;•&nbsp; MPC #538
+      </p>
+      <div class="animate-in animate-delay-3">
+        <a href="aktivnosti.html" class="btn btn--primary">Pogledaj aktivnosti</a>
+        <a href="posjet-pulskoj-zvjezdarnici.html" class="btn btn--secondary" style="margin-left: 1rem;">Posjeti nas</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Activities Section -->
+  <section class="section" id="aktivnosti">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">Najnovije <span class="text-gradient">aktivnosti</span></h2>
+        <p class="section__subtitle">Pratite naša predavanja, promatranja i događanja</p>
+      </div>
+
+      <div class="grid grid--3" id="activities-container">
+        <!-- Activities loaded via JS -->
+      </div>
+
+      <div class="text-center" style="margin-top: 2rem;">
+        <a href="aktivnosti.html" class="btn btn--secondary">Sve aktivnosti →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="grid grid--2" style="align-items: center;">
+        <div>
+          <h2 class="section__title" style="text-align: left; margin-bottom: 1rem;">
+            O <span class="text-gradient">Zvjezdarnici</span>
+          </h2>
+          <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+            Zvjezdarnica u Puli smještena je u parku Monte Zaro, na lokaciji nekadašnjeg
+            austro-ugarskog Hidrografskog zavoda. Od 1976. godine služi kao centar
+            astronomskih aktivnosti u Istri.
+          </p>
+          <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+            Naši članovi bave se vizualnim promatranjima, astrofotografijom,
+            praćenjem meteora i popularizacijom astronomije među građanima.
+          </p>
+          <a href="povijest-zvjezdarnice.html" class="btn btn--secondary">Saznaj više</a>
+        </div>
+        <div class="glass-card">
+          <h3 style="margin-bottom: 1rem;">📍 Kako do nas?</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">
+            <strong>Adresa:</strong> Park Monte Zaro 2, 52100 Pula
+          </p>
+          <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">
+            <strong>Kontakt:</strong> 091/214-1966
+          </p>
+          <p style="color: var(--text-secondary);">
+            <strong>Email:</strong>
+            <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__contact">
+      <strong>Astronomsko društvo "Istra" Pula</strong><br>
+      Zajednica tehničke kulture Pula<br>
+      Glavinićev uspon 1, 52100 Pula - HR<br>
+      Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: 091/214-1966<br>
+      <span style="color: var(--text-muted);">(Zvjezdarnica, Park Monte Zaro 2, Pula)</span>
+    </div>
+  </footer>
+
+  <!-- Login Modal -->
+  <div class="modal-overlay" id="login-modal">
+    <div class="modal">
+      <div class="modal__header">
+        <h3 class="modal__title">Prijava</h3>
+        <p style="color: var(--text-secondary);">Unesite vaše podatke</p>
+      </div>
+      <form id="login-form">
+        <div class="form-group">
+          <label class="form-label">Korisničko ime</label>
+          <input type="text" class="form-input" id="login-username" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Lozinka</label>
+          <input type="password" class="form-input" id="login-password" required>
+        </div>
+        <div id="login-message" style="margin-bottom: 1rem; font-size: 0.9rem;"></div>
+        <button type="submit" class="btn btn--primary" style="width: 100%;">Prijavi se</button>
+      </form>
+      <button class="btn btn--secondary" style="width: 100%; margin-top: 0.5rem;" id="close-modal">Odustani</button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>

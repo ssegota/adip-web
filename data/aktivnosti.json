@@ -1,0 +1,630 @@
+[
+  {
+    "id": 1770122363373,
+    "year": 2026,
+    "title": "Test",
+    "date": "03. 02. 2026.",
+    "content": "test",
+    "images": [
+      "aktivnosti-slike/1770122363368-zadatak2skica.jpg",
+      "aktivnosti-slike/1770122363370-Skica_manipulatora.jpg"
+    ]
+  },
+  {
+    "id": 1770122363363,
+    "year": 2026,
+    "title": "Test",
+    "date": "03. 02. 2026.",
+    "content": "test",
+    "images": []
+  },
+  {
+    "id": 166,
+    "year": 2016,
+    "title": "Posjet studenata Politehnike",
+    "date": "2016",
+    "content": "Večeras su studenti prve godine preddiplomskog i kratkog stručnog studija Politehnike posjetili Zvjezdarnicu u sklopu izvannastavne aktivnosti predmeta Primjenjena fizika čiji je nositelj i predavač naš dugogodišnji član Goran Zgrablić. Pored predavanja o povijesti Zvjezdarnice, upriličeno je i promatranje Mjeseca u fazi prve četvrti."
+  },
+  {
+    "id": 165,
+    "year": 2016,
+    "title": "40 godina Astronomskog društva Višnjan",
+    "date": "2016",
+    "content": "Danas je obilježena 40 godišnjica osnutka Astronomskog društva Višnjan. Na poziv dragih nam prijatelja, rado smo se odazvali pozivu te evocirali uspomene na neka drugačija vremena amaterske astronomije."
+  },
+  {
+    "id": 164,
+    "year": 2016,
+    "title": "Znanstveni skup pri RGN Zagreb",
+    "date": "29.10.2016",
+    "content": "Ove smo godine putem našeg tajnika uzeli učešća u znanstvenom skupu 'Matematičke metode i nazivlje u geologiji 2016' održanom 29. listopada 2016. godine na RGN fakultetu Sveučilišta u Zagrebu. Damir tom prilikom je održao predavanje o metodama astrometrijske kalibracije snimaka kamera Hrvatske meteorske mreže."
+  },
+  {
+    "id": 163,
+    "year": 2016,
+    "title": "Posjet Gimnazijalaca - astronoma iz Pule",
+    "date": "2016",
+    "content": "Danas su nas posjetili učenici Gimnazije Pula, polaznici fakultativne nastave Astronomija koju vodi profesor Igor Macuka. Tajnik Damir Šegon upoznao ih je s poviješću zgrade te uputio u današnje aktivnosti."
+  },
+  {
+    "id": 162,
+    "year": 2016,
+    "title": "Rad ADIP-a i METRISa u Zborniku RGN",
+    "date": "2016",
+    "content": "Na naslovnoj stranici znanstvenog časopisa Rudarsko-geološko-naftnog Fakulteta Sveučilišta u Zagrebu objavljena je slika koja prezentira sažetak rada ADIP-a i Centra za istraživanje materijala Istarske županije METRIS."
+  },
+  {
+    "id": 161,
+    "year": 2016,
+    "title": "Nevrijeme nad Pulom 17/18 rujna 2016.",
+    "date": "17.09.2016",
+    "content": "Snažno grmljavinsko nevrijeme koje je noćas pogodilo Pulu zabilježeno je i na automatskoj meteorološkoj postaji pri Zvjezdarnici. Pored više od 45 litara kiše, zabilježeno je ukupno 727 udara munje na udaljenosti manjoj od 10km od Zvjezdarnice."
+  },
+  {
+    "id": 160,
+    "year": 2016,
+    "title": "Posjeti učenika osnovnih škola",
+    "date": "2016",
+    "content": "Danas su nam u posjetu bile dvije grupe učenika osnovnih škola."
+  },
+  {
+    "id": 147,
+    "year": 2016,
+    "title": "All-Sky kamera instalirana na Zvjezdarnici",
+    "date": "2016",
+    "content": "U svrhu opažanja sjajnih meteora na Zvjezdarnicu instalirana all-sky kamera koja pokriva gotovo cijeli nebeski svod. Kamera radi kao dio Hrvatske meteorske mreže. U noći pojačane aktivnosti Perzeida 11/12. kolovoza, kamera je zabilježila ukupno 77 meteora."
+  },
+  {
+    "id": 146,
+    "year": 2016,
+    "title": "Višnjanska škola astronomije na Zvjezdarnici",
+    "date": "2016",
+    "content": "Polaznici Višnjanske škole astronomije 2016 posjetili su Zvjezdarnicu u Puli, kojom su prilikom uz obilazak imali i predavanje o značaju Zvjezdarnice i Johana Palise u povijesti astronomije."
+  },
+  {
+    "id": 145,
+    "year": 2016,
+    "title": "Škola 'Korak u znanost' u posjeti Zvjezdarnici",
+    "date": "2016",
+    "content": "Mladi polaznici škole 'Korak u znanost' posjetili su Zvjezdarnicu."
+  },
+  {
+    "id": 144,
+    "year": 2016,
+    "title": "Međunarodna meteorska konferencija 2016.",
+    "date": "2016",
+    "content": "Damir Šegon, tajnik ADIP-a uzeo je aktivnog učešća na Međunarodnoj meteorskoj konferenciji 2016 u Egmondu, Nizozemska. Konferencija je bila rekordna po broju učesnika - 158 učesnika iz 30 zemalja."
+  },
+  {
+    "id": 132,
+    "year": 2016,
+    "title": "Posjet dječjeg vrtića Monte Zaro - Tintilinići",
+    "date": "2016",
+    "content": "U posjet su nam došli polaznici dječjeg vrtića Monte Zaro - Tintilinići."
+  },
+  {
+    "id": 131,
+    "year": 2016,
+    "title": "Instaliran uređaj za motrenje kvalitete noćnog neba",
+    "date": "2016",
+    "content": "Instaliran uređaj za motrenje kvalitete noćnog neba."
+  },
+  {
+    "id": 130,
+    "year": 2016,
+    "title": "Upogonjen sustav za detekciju atmosferskih pražnjenja",
+    "date": "2016",
+    "content": "Upogonjen sustav za detekciju atmosferskih pražnjenja."
+  },
+  {
+    "id": 129,
+    "year": 2016,
+    "title": "Tranzit Merkura preko Sunčeva diska",
+    "date": "09.05.2016",
+    "content": "Sa Zvjezdarnice u Puli održalo se opažanje tranzita Merkura preko Sunčeva diska unatoč nepovoljnim vremenskim uvjetima. Stotinjak građana uspjelo je pogledati ovaj rijedak astronomski događaj."
+  },
+  {
+    "id": 128,
+    "year": 2016,
+    "title": "Radioamateri na Zvjezdarnici",
+    "date": "2016",
+    "content": "Radioamateri posjetili Zvjezdarnicu."
+  },
+  {
+    "id": 127,
+    "year": 2016,
+    "title": "Festival Znanosti 2016",
+    "date": "2016",
+    "content": "I ove godine smo učestvovali na Festival Znanosti - na Zvjezdarnici i ZTK Pula."
+  },
+  {
+    "id": 126,
+    "year": 2016,
+    "title": "Messierov Maraton 2016 odgođen",
+    "date": "2016",
+    "content": "Messierov Maraton 2016. odgođen zbog lošeg vremena."
+  },
+  {
+    "id": 125,
+    "year": 2016,
+    "title": "Posjet učenika OŠ Centar",
+    "date": "2016",
+    "content": "Danas su nas posjetili učenici OŠ Centar."
+  },
+  {
+    "id": 124,
+    "year": 2016,
+    "title": "Dodijeljene godišnje nagrade ZTK Pula",
+    "date": "2016",
+    "content": "Dodijeljene godišnje nagrade ZTK Pula - prof. Mario Turić dobitnik nagrade za 2015. godinu."
+  },
+  {
+    "id": 123,
+    "year": 2016,
+    "title": "Posjet pulskih vrtića RinTinTin - Delfini",
+    "date": "2016",
+    "content": "Posjet pulskih vrtića RinTinTin - Delfini."
+  },
+  {
+    "id": 122,
+    "year": 2016,
+    "title": "Posjet učenika OŠ Giuseppina Martinuzzi - Galižana",
+    "date": "2016",
+    "content": "Posjet učenika OŠ Giuseppina Martinuzzi - Galižana."
+  },
+  {
+    "id": 121,
+    "year": 2016,
+    "title": "Automatska meteorološka stanica ponovno u funkciji",
+    "date": "2016",
+    "content": "Ponovno u funkciji automatska meteorološka stanica pri Zvjezdarnici na Monte Zaru."
+  },
+  {
+    "id": 120,
+    "year": 2015,
+    "title": "Jesenski ciklus predavanja - Sunce: nuklearni procesi",
+    "date": "10.12.2015",
+    "content": "Petim predavanjem, poslijednjim iz trilogije o Suncu završen je ovogodišnji dio jesenskog ciklusa. Prof. Mario Turić održao je predavanje 'Sunce: nuklearni procesi'."
+  },
+  {
+    "id": 119,
+    "year": 2015,
+    "title": "Jesenski ciklus predavanja - Meteori očima astronoma amatera",
+    "date": "29.10.2015",
+    "content": "Drugo predavanje iz jesenskog ciklusa predavanja održao je Damir Šegon o meteorima i doprinosu astronoma amatera u otkrivanju misterija meteorskih potoka."
+  },
+  {
+    "id": 118,
+    "year": 2015,
+    "title": "Jesenski ciklus predavanja - Sunce: masa i temperatura",
+    "date": "12.11.2015",
+    "content": "Treće predavanje iz ciklusa održao je prof. Mario Turić o povijesnom razvoju spoznaja o masi i temperaturi Sunca."
+  },
+  {
+    "id": 117,
+    "year": 2015,
+    "title": "Tradicionalno promatranje Perzeida",
+    "date": "13.08.2015",
+    "content": "U noći 12/13. kolovoza 15 članova promatralo je nebo kroz cijelu noć. Kamera Hrvatske meteorske mreže te je noći snimila ukupno 124 meteora."
+  },
+  {
+    "id": 116,
+    "year": 2015,
+    "title": "Posjet Astronomskom centru Rijeka",
+    "date": "20.11.2015",
+    "content": "30-ak članova ADIP-a pohodilo je Astronomski centar 'Rijeka'. Uz projekciju u planetariju nazočili su tribini o svjetlosnom onečišćenju kao globalnom problemu."
+  },
+  {
+    "id": 115,
+    "year": 2015,
+    "title": "Jesenski ciklus predavanja - Misija ROSETTA",
+    "date": "26.11.2015",
+    "content": "Predavanje o svemirskoj sondi ROSETTA i misiji na komet Churyumov-Gerasimenko održao je Damir Šegon."
+  },
+  {
+    "id": 114,
+    "year": 2015,
+    "title": "Započeo jesenski ciklus predavanja na Zvjezdarnici",
+    "date": "15.10.2015",
+    "content": "Pri Zvjezdarnici je započeo jesenski ciklus predavanja za učenike i građanstvo. Prvo predavanje 'Sunce: veličina, udaljenost, masa' održao je prof. Mario Turić."
+  },
+  {
+    "id": 113,
+    "year": 2015,
+    "title": "Festival Znanosti na Zvjezdarnici",
+    "date": "24.04.2015",
+    "content": "Tradicionalno učešće u Festivalu Znanosti s promatranjem Sunca. Posjetitelji su vidjeli i rijetku pojavu 'Sun dog'."
+  },
+  {
+    "id": 112,
+    "year": 2015,
+    "title": "Pomrčina Sunca 20.03.2015.",
+    "date": "20.03.2015",
+    "content": "Sa Zvjezdarnice u Puli popraćena je pomrčina Sunca, uz velik broj posjetitelja uključujući djecu predškolskog uzrasta."
+  },
+  {
+    "id": 111,
+    "year": 2015,
+    "title": "Snimljen komet C/2014 Q2 Lovejoy",
+    "date": "30.12.2014",
+    "content": "Tijekom najhladnijih večeri, sa Zvjezdarnice je snimljen komet C/2014 Q2 Lovejoy. Snimio Dean Dubovac."
+  },
+  {
+    "id": 110,
+    "year": 2014,
+    "title": "Posjet OŠ Veruda",
+    "date": "2014",
+    "content": "Učenici OŠ Veruda učili o osnovama gibanja planeta Sunčevog sustava kroz interaktivnu prezentaciju."
+  },
+  {
+    "id": 109,
+    "year": 2014,
+    "title": "Posjet učenika OŠ Glina",
+    "date": "2014",
+    "content": "Tradicionalni posjet učenika osnovne škole Glina s predavanjem o povijesti Zvjezdarnice i teleskopima."
+  },
+  {
+    "id": 108,
+    "year": 2014,
+    "title": "Posjet učenika Škole za odgoj i obrazovanje Pula",
+    "date": "2014",
+    "content": "Danas su nas posjetili učenici Škole za odgoj i obrazovanje Pula."
+  },
+  {
+    "id": 107,
+    "year": 2013,
+    "title": "Svečanom Skupštinom obilježeno 40 godina rada ADIP",
+    "date": "2013",
+    "content": "Svečanom Skupštinom i druženjem obilježeno 40 godina rada Astronomskog društva 'Istra' Pula."
+  },
+  {
+    "id": 106,
+    "year": 2014,
+    "title": "Obilježen Dan ulične astronomije",
+    "date": "2014",
+    "content": "Obilježen Dan ulične astronomije, koji polako postaje tradicija."
+  },
+  {
+    "id": 105,
+    "year": 2014,
+    "title": "Proljeće u Šijanskoj šumi",
+    "date": "2014",
+    "content": "Druge godine za redom ADIP uzima učešća u projektu 'Proljeće u Šijanskoj šumi'."
+  },
+  {
+    "id": 104,
+    "year": 2014,
+    "title": "Festival Znanosti 2014 - predavanje 'Biljke u zemlji kvanta'",
+    "date": "2014",
+    "content": "U sklopu Festivala Znanosti 2014. na Zvjezdarnici održano predavanje 'Biljke u zemlji kvanta'."
+  },
+  {
+    "id": 103,
+    "year": 2012,
+    "title": "Bolid 2012-10-20",
+    "date": "20.10.2012",
+    "content": "Vatrena kugla sjajnosti punog Mjeseca snimljena kamerama HMM. Meteor je završio put na 28 km visine iznad otoka Krka."
+  },
+  {
+    "id": 102,
+    "year": 2012,
+    "title": "Međunarodna meteorska konferencija La Palma",
+    "date": "20.09.2012",
+    "content": "Tajnik ADIP-a Damir Šegon održao je dva predavanja na IMC konferenciji na Kanarskim otocima te posjetio observatorij 'Roque de los Muchacos' i najveći optički teleskop na svijetu GTC."
+  },
+  {
+    "id": 101,
+    "year": 2012,
+    "title": "Posjet učenika OŠ Veli Vrh",
+    "date": "25.09.2012",
+    "content": "Učenici 7. razreda OŠ 'Veli Vrh' Pula posjetili Zvjezdarnicu i promatrali Mjesec teleskopom."
+  },
+  {
+    "id": 100,
+    "year": 2012,
+    "title": "Posjet Marine Funker Club Austria",
+    "date": "2012",
+    "content": "Zvjezdarnicu su posjetili članovi udruge Marine Funker Club Austria uz predavanje o povijesti."
+  },
+  {
+    "id": 99,
+    "year": 2012,
+    "title": "Snimljene munje Sprite",
+    "date": "2012",
+    "content": "Po prolasku nevremena, kamera sa Zvjezdarnice zabilježila je rijetke munje Sprite koje traju svega nekoliko tisućitih dijelova sekunde."
+  },
+  {
+    "id": 98,
+    "year": 2012,
+    "title": "Promatranje Perzeida",
+    "date": "2012",
+    "content": "Članovi ADIP-a promatrali meteorski potok Perzeidi (Suze Svetog Lovre) sa terase Zvjezdarnice. Kamere HMM snimile tri najsjajnija meteora."
+  },
+  {
+    "id": 97,
+    "year": 2012,
+    "title": "Sjajan meteor snimljen kamerama HMM",
+    "date": "20.06.2012",
+    "content": "Kamere Hrvatske meteorske mreže snimile vrlo rijetki meteor koji je započeo let na visini preko 130 km. Vidljiv je bio preko 7 stanica, a putanja projicirana na Zemljinu površinu bila je duža od 300 km!"
+  },
+  {
+    "id": 96,
+    "year": 2012,
+    "title": "Tranzit Venere",
+    "date": "06.06.2012",
+    "content": "Prolazak planeta Venere između Sunca i Zemlje. Iz Pule se vidio kraj pojave. Prethodna prigoda bila je 2004. godine."
+  },
+  {
+    "id": 95,
+    "year": 2012,
+    "title": "Posjet učenika OŠ Pušća",
+    "date": "2012",
+    "content": "Posjet učenika OŠ Pušća."
+  },
+  {
+    "id": 94,
+    "year": 2012,
+    "title": "Posjet učenika OŠ Desinić",
+    "date": "2012",
+    "content": "Posjet učenika OŠ Desinić."
+  },
+  {
+    "id": 93,
+    "year": 2012,
+    "title": "Posjet učenika OŠ Duga Resa",
+    "date": "2012",
+    "content": "Posjet učenika OŠ Duga Resa."
+  },
+  {
+    "id": 92,
+    "year": 2012,
+    "title": "Posjet učenika OŠ Banova Jaruga",
+    "date": "2012",
+    "content": "Posjet učenika OŠ Banova Jaruga."
+  },
+  {
+    "id": 91,
+    "year": 2012,
+    "title": "Posjet učenika OŠ Lasinja",
+    "date": "2012",
+    "content": "Posjet učenika OŠ Lasinja."
+  },
+  {
+    "id": 90,
+    "year": 2012,
+    "title": "Posjet učenika OŠ Glina",
+    "date": "2012",
+    "content": "Preko 100 učenika iz Gline, polaznici škole u prirodi, imalo je priliku opažati Sunčeve pjege te saslušati predavanje o astronomiji."
+  },
+  {
+    "id": 89,
+    "year": 2012,
+    "title": "X Festival znanosti - izložba razvoja Pule",
+    "date": "24.04.2012",
+    "content": "U sklopu X. Festivala znanosti u OŠ 'Veli vrh' otvorena je izložba razvoja grada Pule od 1815.-1918. Pulska Zvjezdarnica našla se na panou o Ratnoj mornarici."
+  },
+  {
+    "id": 88,
+    "year": 2012,
+    "title": "Posjet vrtića Maslačak",
+    "date": "23.04.2012",
+    "content": "Djeca iz vrtića Maslačak posjetila Zvjezdarnicu. Upriličeno opažanje Sunčevih pjega metodom projekcije."
+  },
+  {
+    "id": 86,
+    "year": 2012,
+    "title": "120 godina od rođenja Iva Žmaka",
+    "date": "02.04.2012",
+    "content": "Obilježavamo 120. godina od rođenja Iva Žmaka Barčićeva, astronoma i domoljuba koji je radio u pariškom opservatoriju Meudon. Prijateljevao je s Tinom Ujevićem i pokrenuo časopis 'Kritike'."
+  },
+  {
+    "id": 85,
+    "year": 2012,
+    "title": "Posjet učenika Talijanske srednje škole Dante Alighieri",
+    "date": "2012",
+    "content": "40-ak učenika prvih razreda Talijanske srednje škole posjetilo Zvjezdarnicu. Upriličeno promatranje Venere, Jupitera, Marsa i Mjeseca."
+  },
+  {
+    "id": 82,
+    "year": 2012,
+    "title": "Konjukcija Jupitera i Venere",
+    "date": "2012",
+    "content": "Dance of the Planets - ples planeta Venere i Jupitera nad zapadnim nebom. Jupiter i Venera prividno su bili najbliže 13. ožujka."
+  },
+  {
+    "id": 81,
+    "year": 2012,
+    "title": "Posjet učenika Županijskog ekološkog kviza",
+    "date": "2012",
+    "content": "Zvjezdarnicu su posjetili učenici, učesnici Županijskog ekološkog kviza 'Lijepa naša'."
+  },
+  {
+    "id": 80,
+    "year": 2012,
+    "title": "Dance of the Planets",
+    "date": "2012",
+    "content": "'Dance of the Planets' (Ples planeta) nad večernjim zapadnim obzorom."
+  },
+  {
+    "id": 79,
+    "year": 2012,
+    "title": "Mjesečni prikaz dnevnih kretanja temperature",
+    "date": "2012",
+    "content": "Naše servisne informacije dopunjene sa mjesečnim prikazom dnevnih kretanja temperature."
+  },
+  {
+    "id": 78,
+    "year": 2012,
+    "title": "Sjajni meteor snimljen",
+    "date": "13.02.2012",
+    "content": "Pet kamera Hrvatske meteorske mreže zabilježilo meteor vrlo visokog sjaja noću 12/13. veljače."
+  },
+  {
+    "id": 77,
+    "year": 2012,
+    "title": "Sjajan meteor nad Kvarnerom",
+    "date": "20.01.2012",
+    "content": "Meteorske kamere iz Pule i Duina snimile vrlo sjajan meteor nad Kvarnerom."
+  },
+  {
+    "id": 76,
+    "year": 2012,
+    "title": "Prezentacija Pule u Cerviji - Maggio in fiore",
+    "date": "2012",
+    "content": "Grad Pula u suradnji s ADIP-om prezentirao Pulsku Zvjezdarnicu cvjetnom instalacijom u talijanskoj Cerviji u sklopu manifestacije 'Maggio in fiore'."
+  },
+  {
+    "id": 75,
+    "year": 2012,
+    "title": "Županijsko natjecanje iz astronomije",
+    "date": "08.03.2012",
+    "content": "Učenici koji su radnje pripremali u ADIP-u sudjelovali na županijskom natjecanju iz astronomije u Višnjanu. Postigli odlične rezultate."
+  },
+  {
+    "id": 71,
+    "year": 2014,
+    "title": "Sretnu Novu 2014. godinu!",
+    "date": "01.01.2014",
+    "content": "Sretnu Novu 2014. godinu žele vam članovi Astronomskog društva 'Istra' Pula!"
+  },
+  {
+    "id": 65,
+    "year": 2013,
+    "title": "Sunce sa sunčevim pjegama",
+    "date": "2013",
+    "content": "Sunce sa sunčevim pjegama."
+  },
+  {
+    "id": 64,
+    "year": 2013,
+    "title": "Snimljena maglica Veo - NGC 6960",
+    "date": "2013",
+    "content": "Zlatko je sa Kamenjaka snimio maglicu Veo - NGC 6960."
+  },
+  {
+    "id": 63,
+    "year": 2013,
+    "title": "Astronomi iz Njemačke u posjetu",
+    "date": "2013",
+    "content": "Zvjezdarnicu su posjetili astronomi iz Njemačke."
+  },
+  {
+    "id": 62,
+    "year": 2013,
+    "title": "Snimljena tamna maglica Barnard 104",
+    "date": "2013",
+    "content": "Zlatko je sa Kamenjaka snimio tamnu maglicu Barnard 104."
+  },
+  {
+    "id": 61,
+    "year": 2013,
+    "title": "Posjet učenika OŠ 'Ivan Goran Kovačić' iz Duge Rese",
+    "date": "2013",
+    "content": "Zvjezdarnicu su posjetili učenici OŠ 'Ivan Goran Kovačić' iz Duge Rese."
+  },
+  {
+    "id": 60,
+    "year": 2013,
+    "title": "Praćenje kometa Panstarrs",
+    "date": "2013",
+    "content": "Sa Kamenjaka nastavljeno praćenje kometa Panstarrs."
+  },
+  {
+    "id": 59,
+    "year": 2013,
+    "title": "Državno natjecanje iz astronomije u Požegi",
+    "date": "2013",
+    "content": "U Požegi je održano Državno natjecanje iz astronomije za osnovne i srednje škole."
+  },
+  {
+    "id": 58,
+    "year": 2013,
+    "title": "Predavanje u sklopu Festivala Znanosti 2013",
+    "date": "2013",
+    "content": "Na Zvjezdarnici je održano prigodno predavanje u sklopu ovogodišnjeg Festivala znanosti."
+  },
+  {
+    "id": 57,
+    "year": 2013,
+    "title": "Posjet učenika Talijanske srednje škole 'Dante Alighieri'",
+    "date": "2013",
+    "content": "Zvjezdarnicu su posjetili učenici Talijanske srednje škole Pula 'Dante Alighieri'."
+  },
+  {
+    "id": 56,
+    "year": 2013,
+    "title": "Snimljene munje 'vatrenjaci' (Sprite)",
+    "date": "2013",
+    "content": "Nad Pulom su snimljene munje 'vatrenjaci' (Sprite)."
+  },
+  {
+    "id": 55,
+    "year": 2013,
+    "title": "Dodani servisi za praćenje grmljavinskih oluja",
+    "date": "2013",
+    "content": "U 'Servise' dodan pregled grmljavinskih oluja nad Europom i Sredozemljem."
+  },
+  {
+    "id": 54,
+    "year": 2013,
+    "title": "Obilježen Dan planeta Zemlje u Šijanskoj šumi",
+    "date": "2013",
+    "content": "U Šijanskoj šumi obilježen Dan planeta Zemlje."
+  },
+  {
+    "id": 53,
+    "year": 2013,
+    "title": "Snimljeni kometi McNaught i Panstarrs",
+    "date": "2013",
+    "content": "Sa rta Kamenjak snimljeni kometi McNaught i Panstarrs."
+  },
+  {
+    "id": 52,
+    "year": 2013,
+    "title": "Posjet učenika OŠ 'Stoja'",
+    "date": "2013",
+    "content": "Zvjezdarnicu su posjetili učenici OŠ 'Stoja'."
+  },
+  {
+    "id": 51,
+    "year": 2013,
+    "title": "Dodijeljene godišnje nagrade za doprinos u tehničkoj kulturi",
+    "date": "2013",
+    "content": "Dodijeljene su godišnje nagrade za doprinos u tehničkoj kulturi Pula."
+  },
+  {
+    "id": 50,
+    "year": 2013,
+    "title": "Astrofotografija - galaksija M 51",
+    "date": "2013",
+    "content": "Astrofotografija - galaksija M 51."
+  },
+  {
+    "id": 49,
+    "year": 2013,
+    "title": "Usporedna godišnja krivulja dnevnih temperatura 2011-12",
+    "date": "2013",
+    "content": "Izrađena usporedna godišnja krivulja dnevnih temperatura za 2011-12."
+  },
+  {
+    "id": 39,
+    "year": 2013,
+    "title": "Posjet učenika OŠ 'Centar' Pula",
+    "date": "2013",
+    "content": "Zvjezdarnicu su posjetili učenici OŠ 'Centar' Pula."
+  },
+  {
+    "id": 38,
+    "year": 2013,
+    "title": "Natjecanje iz astronomije u Tehničkoj školi Pula",
+    "date": "2013",
+    "content": "Ovogodišnje natjecanje iz astronomije održano je u Tehničkoj školi Pula."
+  },
+  {
+    "id": 37,
+    "year": 2013,
+    "title": "Snimljen komet 2011/L4 PANSTARSS",
+    "date": "12.03.2013",
+    "content": "Komet PANSTARSS snimljen sa Pulske Zvjezdarnice u sumrak, nad zapadnim obzorom. Snimljeno Canon 300D i teleobjektivom Zeiss Sonar 200mm."
+  }
+]

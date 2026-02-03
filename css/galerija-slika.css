@@ -1,0 +1,21 @@
+.slika {
+  height: clamp(80px, 7vw, 150px);
+  width: clamp(80px, 7vw, 150px);
+}
+
+.povijest-zvjezdarnice {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.title-subsection {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.field-content {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5vw;
+}
