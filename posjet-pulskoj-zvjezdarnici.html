@@ -1,237 +1,173 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="hr" version="XHTML+RDFa 1.0" dir="ltr"
-  xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/terms/"
-  xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:og="http://ogp.me/ns#"
-  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:sioc="http://rdfs.org/sioc/ns#"
-  xmlns:sioct="http://rdfs.org/sioc/types#" xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<!DOCTYPE html>
+<html lang="hr">
 
-<head profile="http://www.w3.org/1999/xhtml/vocab">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Posjet Pulskoj Zvjezdarnici | Pulska Zvjezdarnica</title>
-  <meta name="ver" content="bh7-1.6" />
-  <meta http-equiv="X-UA-Compatible" content="edge" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link rel="stylesheet" href="css/posjet-pulskoj-zvjezdarnici.css" />
-  <link rel="shortcut icon" href="sites/all/themes/black_hole/favicon.ico" type="image/vnd.microsoft.icon" />
-  <meta content="Posjet Pulskoj Zvjezdarnici" about="/posjet-pulskoj-zvjezdarnici" property="dc:title" />
-  <link rel="stylesheet" href="css/sablona.css" />
-  <link rel="canonical" href="posjet-pulskoj-zvjezdarnici.html" />
-  <meta name="Generator" content="Drupal 7 (http://drupal.org)" />
-  <link rel="shortlink" href="node/3.html" />
-  <style type="text/css" media="all">
-    @import url("http://adip.hr/modules/system/system.base.css?n3z5fc");
-    @import url("http://adip.hr/modules/system/system.menus.css?n3z5fc");
-    @import url("http://adip.hr/modules/system/system.messages.css?n3z5fc");
-    @import url("http://adip.hr/modules/system/system.theme.css?n3z5fc");
-  </style>
-  <style type="text/css" media="all">
-    @import url("sites/all/modules/date/date_api/date.css%3Fn3z5fc.css");
-    @import url("sites/all/modules/date/date_popup/themes/datepicker.1.7.css%3Fn3z5fc.css");
-    @import url("http://adip.hr/modules/field/theme/field.css?n3z5fc");
-    @import url("http://adip.hr/modules/node/node.css?n3z5fc");
-    @import url("http://adip.hr/modules/search/search.css?n3z5fc");
-    @import url("http://adip.hr/modules/user/user.css?n3z5fc");
-    @import url("sites/all/modules/views/css/views.css%3Fn3z5fc.css");
-  </style>
-  <style type="text/css" media="all">
-    @import url("sites/all/modules/ckeditor/ckeditor.css%3Fn3z5fc.css");
-    @import url("sites/all/modules/colorbox/styles/default/colorbox_style.css%3Fn3z5fc.css");
-    @import url("sites/all/modules/ctools/css/ctools.css%3Fn3z5fc.css");
-    @import url("sites/all/modules/panels/css/panels.css%3Fn3z5fc.css");
-  </style>
-  <style type="text/css" media="all">
-    @import url("sites/all/themes/black_hole/css/style-bh.css%3Fn3z5fc.css");
-    @import url("sites/all/themes/black_hole/css/protostar.css%3Fn3z5fc.css");
-    @import url("sites/all/themes/black_hole/_custom/custom-style.css%3Fn3z5fc.css");
-    @import url("sites/all/themes/black_hole/css/round.css%3Fn3z5fc.css");
-  </style>
-  <style type="text/css" media="print">
-    @import url("sites/all/themes/black_hole/css/print.css%3Fn3z5fc.css");
-  </style>
+  <meta name="description"
+    content="Posjet Pulskoj Zvjezdarnici - informacije o posjetima, predavanjima i promatranjima">
+  <link rel="icon" href="sites/all/themes/black_hole/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/modern.css">
+  <style>
+    /* Specific styles for this page */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
 
-  <!--[if lte IE 6]>
-      <link
-        type="text/css"
-        rel="stylesheet"
-        href="http://adip.hr/sites/all/themes/black_hole/css/ie6.css?n3z5fc"
-        media="all"
-      />
-    <![endif]-->
+    .image-grid img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      transition: transform 0.3s ease;
+      box-shadow: var(--shadow-md);
+    }
 
-  <!--[if IE 7]>
-      <link
-        type="text/css"
-        rel="stylesheet"
-        href="http://adip.hr/sites/all/themes/black_hole/css/ie7.css?n3z5fc"
-        media="all"
-      />
-    <![endif]-->
-  <script type="text/javascript" src="http://adip.hr/misc/jquery.js?v=1.4.4"></script>
-  <script type="text/javascript" src="http://adip.hr/misc/jquery.once.js?v=1.2"></script>
-  <script type="text/javascript" src="http://adip.hr/misc/drupal.js?n3z5fc"></script>
-  <script type="text/javascript"
-    src="sites/default/files/languages/hr_B2HHOlUFDpz_9u9tRYTUYab4TsnQlB_Jvoy3k6sulWg.js%3Fn3z5fc"></script>
-  <script type="text/javascript" src="sites/all/libraries/colorbox/jquery.colorbox-min.js%3Fn3z5fc"></script>
-  <script type="text/javascript" src="sites/all/modules/colorbox/js/colorbox.js%3Fn3z5fc"></script>
-  <script type="text/javascript" src="sites/all/modules/colorbox/styles/default/colorbox_style.js%3Fn3z5fc"></script>
-  <script type="text/javascript" src="sites/all/modules/colorbox/js/colorbox_load.js%3Fn3z5fc"></script>
-  <script type="text/javascript" src="sites/all/modules/colorbox/js/colorbox_inline.js%3Fn3z5fc"></script>
-  <script type="text/javascript" src="sites/all/themes/black_hole/js/jquery.hoverIntent.minified.js%3Fn3z5fc"></script>
-  <script type="text/javascript" src="sites/all/themes/black_hole/js/dropdown.js%3Fn3z5fc"></script>
-  <script src="js/loadContent.js" defer></script>
-  <script src="js/inject-header.js" defer></script>
-  <script type="text/javascript" src="js/posjet-pulskoj-zvjezdarnici.js" defer></script>
+    .image-grid img:hover {
+      transform: translateY(-5px);
+    }
+
+    .contact-info {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      border-left: 4px solid var(--accent-primary);
+    }
+  </style>
 </head>
 
-<body id="pid-posjet-pulskoj-zvjezdarnici"
-  class="html not-front not-logged-in no-sidebars page-node page-node- page-node-3 node-type-stranica not-admin section-posjet-pulskoj-zvjezdarnici page-posjet-pulskoj-zvjezdarnici layout-jello var bnicons32 picons himg lg-hr">
-  <div id="skip-nav">
-    <a href="posjet-pulskoj-zvjezdarnici.html#main">Jump to Navigation</a>
-  </div>
-
-  <header class="clearfix">
-    <div class="logo-title">
-      <a class="logo" href="index.html" title="Početna">
-        <img src="sites/all/themes/black_hole/logo.png" alt="Početna" />
-      </a>
-      <div id="name-and-slogan">
-        <h1 class="main-title">
-          <a href="index.html" title="Početna">Pulska Zvjezdarnica</a>
-        </h1>
-        <h2 class="drugi-naslov">Astronomsko društvo "Istra" Pula - ADIP</h2>
-      </div>
+<body class="page-blur">
+  <!-- Header -->
+  <header class="header">
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
 
-    <div class="user-links">
-      <ul class="links inline">
-        <li class="first">
-          <a href="user.html" rel="nofollow">Prijava</a>
-        </li>
-        <li>
-          <a href="http://adip.hr/user/register" rel="nofollow">Registriraj se</a>
-        </li>
-      </ul>
+    <a href="index.html" class="header__logo">
+      <img src="sites/all/themes/black_hole/logo.png" alt="ADIP Logo">
+      <div>
+        <div class="header__title">Pulska Zvjezdarnica</div>
+        <div class="header__subtitle">Astronomsko društvo "Istra" Pula</div>
+      </div>
+    </a>
+
+    <nav class="nav" id="main-nav">
+      <button class="nav__close" id="nav-close">✕</button>
+      <a href="index.html" class="nav__link">🏠 Naslovna</a>
+      <a href="aktivnosti.html" class="nav__link">📅 Aktivnosti</a>
+      <a href="galerija-slika.html" class="nav__link">🖼️ Galerija</a>
+      <a href="povijest-zvjezdarnice.html" class="nav__link">📜 Povijest</a>
+      <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link active">🔭 Posjeti</a>
+      <a href="radovi.html" class="nav__link">📚 Radovi</a>
+      <a href="servisi.html" class="nav__link">⚙️ Servisi</a>
+      <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ O nama</a>
+      <div class="nav__spacer"></div>
+      <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Prijava</button>
+    </nav>
+    <div class="nav-overlay" id="nav-overlay"></div>
+
+    <div class="user-controls">
+      <button class="lang-toggle" id="lang-toggle">EN</button>
     </div>
   </header>
 
-  <ul class="nav-buttons">
-    <li class="menu-218 first">
-      <a href="index.html" title="">Naslovna</a>
-    </li>
-    <li class="menu-575">
-      <a href="aktivnosti.html">Aktivnosti</a>
-    </li>
-    <li class="menu-583">
-      <a href="servisi.html">Servisi</a>
-    </li>
-    <li class="menu-421 active-trail">
-      <a href="povijest-zvjezdarnice.html" title="" class="active-trail">Povijest</a>
-    </li>
-    <li class="menu-366">
-      <a href="posjet-pulskoj-zvjezdarnici.html" title="">Posjeti</a>
-    </li>
-    <li class="menu-571">
-      <a href="galerija-slika.html" title="">Galerija</a>
-    </li>
-    <li class="menu-582">
-      <a href="astrofotografija.html" title="">Astrofoto</a>
-    </li>
-    <li class="menu-584">
-      <a href="index.html" title="">Radovi</a>
-    </li>
-    <li class="menu-365 last">
-      <a href="astronomsko-drustvo-istra-pula.html">O nama</a>
-    </li>
-  </ul>
+  <!-- Page Content -->
+  <main class="page-content">
+    <div class="container">
+      <div class="section__header" style="padding-top: 2rem;">
+        <h1 class="section__title">Posjet <span class="text-gradient">Pulskoj Zvjezdarnici</span></h1>
+        <p class="section__subtitle">Informacije za posjetitelje i grupe</p>
+      </div>
 
-  <div class="content">
-    <div class="easy-breadcrumb">
-      <a href="index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Naslovnica</a><span
-        class="easy-breadcrumb_segment-separator"> &gt;&gt; </span><span
-        class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Posjet Pulskoj Zvjezdarnici</span>
+      <div class="glass-card">
+        <div class="text-content">
+          <p style="margin-bottom: 1.5rem;">
+            Kako bi Astronomsko društvo "Istra" što uspješnije provodilo svoju
+            temeljnu djelatnost, popularizaciju astronomije i ostalih srodnih
+            znanosti, na Pulskoj Zvjezdarnici se upriličuju posjeti
+            zainteresiranih pojedinaca i grupa.
+          </p>
+
+          <div class="alert alert--info"
+            style="margin-bottom: 1.5rem; background: rgba(var(--accent-primary-rgb), 0.1); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--accent-primary);">
+            <strong>Važna napomena:</strong> Posjet Zvjezdarnici je za sada moguć
+            <strong><u>isključivo uz prethodni dogovor.</u></strong>
+          </div>
+
+          <div class="contact-info">
+            <h3 style="margin-bottom: 0.5rem; color: var(--accent-primary);">Kontakt za dogovor</h3>
+            <p>
+              Posjetitelji se mogu najaviti i dogovoriti posjet na GSM: <a href="tel:+385912141966"
+                class="link-highlight">+385 91 214 1966</a>, te na e-mail <a href="mailto:adippula@gmail.com"
+                class="link-highlight">adippula@gmail.com</a>
+            </p>
+          </div>
+
+          <p style="margin-top: 1.5rem;">
+            Posjet ovisno o uzrastu posjetitelja uključuje općenito multimedijalno
+            predavanje o svemiru, povijesti Pulske Zvjezdarnice, o trenutnim
+            aktivnostima i promatranje teleskopom (ovisno o vremenskim uvjetima i
+            objektima koji se u tom trenutku mogu vidjeti).
+          </p>
+
+          <div class="image-grid">
+            <img src="http://www.adip.hr/sites/default/files/images/02.jpg" alt="Posjet zvjezdarnici 1"
+              loading="lazy" />
+            <img src="http://www.adip.hr/sites/default/files/images/P3030001_m.jpg" alt="Posjet zvjezdarnici 2"
+              loading="lazy" />
+            <img src="http://www.adip.hr/sites/default/files/images/2_big.jpg" alt="Posjet zvjezdarnici 3"
+              loading="lazy" />
+            <img src="http://www.adip.hr/sites/default/files/images/udmp_4.jpg" alt="Posjet zvjezdarnici 4"
+              loading="lazy" />
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="main-content">
-      <h1 class="title">Posjet Pulskoj Zvjezdarnici</h1>
-      <div class="text-div">
-        Kako bi Astronomsko društvo "Istra" što uspješnije provodilo svoju
-        temeljnu djelatnost, popularizaciju astronomije i ostalih srodnih
-        znanosti, na Pulskoj Zvjezdarnici se upriličuju posjeti
-        zainteresiranih pojedinaca i grupa.
-      </div>
+  </main>
 
-      <div class="text-div">
-        Posjet Zvjezdarnici je za sada moguć
-        <strong><u>isključivo uz prethodni dogovor.</u></strong>
-      </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__contact">
+      <strong>Astronomsko društvo "Istra" Pula</strong><br>
+      <a href="https://www.ztkpula.hr/hr/" target="_blank"
+        style="color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.5);">Zajednica
+        tehničke kulture Pula</a><br>
+      Glavinićev uspon 1, 52100 Pula - HR<br>
+      Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: 091/214-1966
+    </div>
+  </footer>
 
-      <div class="text-div">
-        Posjetitelji se mogu najaviti i dogovoriti posjet na GSM:
-        <a id="hidden-phone-number"></a>, te na e-mail:
-        <a id="hidden-email"></a>
+  <!-- Login Modal -->
+  <div class="modal-overlay" id="login-modal">
+    <div class="modal">
+      <div class="modal__header">
+        <h3 class="modal__title">Prijava</h3>
+        <p style="color: var(--text-secondary);">Unesite vaše podatke</p>
       </div>
-
-      <div class="text-div">
-        Posjet ovisno o uzrastu posjetitelja uključuje općenito multimedijalno
-        predavanje o svemiru, povijesti Pulske Zvjezdarnice, o trenutnim
-        aktivnostima i promatranje teleskopom (ovisno o vremenskim uvjetima i
-        objektima koji se u tom trenutku mogu vidjeti).
-      </div>
-
-      <table cellpadding="10" cellspacing="1" class="tablica">
-        <tbody>
-          <tr>
-            <td class="rtecenter">
-              <img alt="" src="http://www.adip.hr/sites/default/files/images/02.jpg" class="slika-1" />
-            </td>
-            <td class="rtecenter">
-              <img alt="" src="http://www.adip.hr/sites/default/files/images/P3030001_m.jpg" class="slika" />
-            </td>
-          </tr>
-          <tr>
-            <td class="rtecenter">
-              <img alt="" src="http://www.adip.hr/sites/default/files/images/2_big.jpg" class="slika" />
-            </td>
-            <td class="rtecenter">
-              <img alt="" src="http://www.adip.hr/sites/default/files/images/udmp_4.jpg" class="slika" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <form id="login-form">
+        <div class="form-group">
+          <label class="form-label">Korisničko ime</label>
+          <input type="text" class="form-input" id="login-username" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Lozinka</label>
+          <input type="password" class="form-input" id="login-password" required>
+        </div>
+        <div id="login-message" style="margin-bottom: 1rem; font-size: 0.9rem;"></div>
+        <button type="submit" class="btn btn--primary" style="width: 100%;">Prijavi se</button>
+      </form>
+      <button class="btn btn--secondary" style="width: 100%; margin-top: 0.5rem;" id="close-modal">Odustani</button>
     </div>
   </div>
 
-  <hr class="division-line" />
-
-  <ul id="navlist2" class="links clearfix nav-bottom">
-    <li class="menu-218 first">
-      <a href="index.html" title="">Naslovna</a>
-    </li>
-    <li class="menu-575">
-      <a href="aktivnosti.html">Aktivnosti</a>
-    </li>
-    <li class="menu-583"><a href="servisi.html">Servisi</a></li>
-    <li class="menu-421 active-trail">
-      <a href="povijest-zvjezdarnice.html" title="" class="active-trail">Povijest</a>
-    </li>
-    <li class="menu-366">
-      <a class="active" href="posjet-pulskoj-zvjezdarnici.html" title="">Posjeti</a>
-    </li>
-    <li class="menu-571">
-      <a href="galerija-slika.html" title="">Galerija</a>
-    </li>
-    <li class="menu-582">
-      <a href="astrofotografija.html" title="">Astrofoto</a>
-    </li>
-    <li class="menu-584">
-      <a href="index.html" title="">Radovi</a>
-    </li>
-    <li class="menu-365 last">
-      <a href="astronomsko-drustvo-istra-pula.html">O nama</a>
-    </li>
-  </ul>
-
-  <footer class="rtecenter"></footer>
-  <!-- /block -->
+  <script src="js/main.js"></script>
 </body>
 
 </html>

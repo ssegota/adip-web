@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="hr">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aktivnosti | Pulska Zvjezdarnica</title>
-  <meta name="description" content="Aktivnosti Astronomskog društva Istra Pula - predavanja, promatranja, događanja">
-  <link rel="icon" href="sites/all/themes/black_hole/logo.png" type="image/png">
-  <link rel="stylesheet" href="css/modern.css">
+  <title>Activities | Pula Observatory</title>
+  <meta name="description" content="Activities of Astronomical Society Istra Pula - lectures, observations, events">
+  <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
+  <link rel="stylesheet" href="../css/modern.css">
 </head>
 
 <body class="page-blur">
@@ -20,30 +20,30 @@
     </div>
 
     <a href="index.html" class="header__logo">
-      <img src="sites/all/themes/black_hole/logo.png" alt="ADIP Logo">
+      <img src="../sites/all/themes/black_hole/logo.png" alt="ADIP Logo">
       <div>
-        <div class="header__title">Pulska Zvjezdarnica</div>
-        <div class="header__subtitle">Astronomsko društvo "Istra" Pula</div>
+        <div class="header__title">Pula Observatory</div>
+        <div class="header__subtitle">Astronomical Society "Istra" Pula</div>
       </div>
     </a>
 
     <nav class="nav" id="main-nav">
       <button class="nav__close" id="nav-close">✕</button>
-      <a href="index.html" class="nav__link">🏠 Naslovna</a>
-      <a href="aktivnosti.html" class="nav__link active">📅 Aktivnosti</a>
-      <a href="galerija-slika.html" class="nav__link">🖼️ Galerija</a>
-      <a href="povijest-zvjezdarnice.html" class="nav__link">📜 Povijest</a>
-      <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Posjeti</a>
-      <a href="radovi.html" class="nav__link">📚 Radovi</a>
-      <a href="servisi.html" class="nav__link">⚙️ Servisi</a>
-      <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ O nama</a>
+      <a href="index.html" class="nav__link">🏠 Home</a>
+      <a href="aktivnosti.html" class="nav__link active">📅 Activities</a>
+      <a href="galerija-slika.html" class="nav__link">🖼️ Gallery</a>
+      <a href="povijest-zvjezdarnice.html" class="nav__link">📜 History</a>
+      <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Visit Us</a>
+      <a href="radovi.html" class="nav__link">📚 Papers</a>
+      <a href="servisi.html" class="nav__link">⚙️ Services</a>
+      <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ About Us</a>
       <div class="nav__spacer"></div>
-      <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Prijava</button>
+      <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Login</button>
     </nav>
     <div class="nav-overlay" id="nav-overlay"></div>
 
     <div class="user-controls">
-      <button class="lang-toggle" id="lang-toggle">EN</button>
+      <button class="lang-toggle" id="lang-toggle">HR</button>
     </div>
   </header>
 
@@ -51,21 +51,21 @@
   <main class="page-content">
     <div class="container">
       <div class="section__header" style="padding-top: 2rem;">
-        <h1 class="section__title">Naše <span class="text-gradient">Aktivnosti</span></h1>
-        <p class="section__subtitle">Predavanja, promatranja, radionice i događanja</p>
+        <h1 class="section__title">Our <span class="text-gradient">Activities</span></h1>
+        <p class="section__subtitle">Lectures, observations, workshops and events</p>
       </div>
 
       <!-- Admin Panel (visible only when logged in) -->
       <div class="admin-panel hidden glass-card" style="margin-bottom: 2rem;">
-        <h3 style="margin-bottom: 1rem;">➕ Nova aktivnost</h3>
+        <h3 style="margin-bottom: 1rem;">➕ New Activity</h3>
         <form id="activity-form" enctype="multipart/form-data">
           <div class="form-group">
-            <label class="form-label">Naslov</label>
+            <label class="form-label">Title</label>
             <input type="text" class="form-input" id="activity-title" name="title" required>
           </div>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
             <div class="form-group">
-              <label class="form-label">Godina</label>
+              <label class="form-label">Year</label>
               <select class="form-input" id="activity-year" name="year" required>
                 <option value="2026">2026</option>
                 <option value="2025">2025</option>
@@ -77,28 +77,28 @@
               </select>
             </div>
             <div class="form-group">
-              <label class="form-label">Datum</label>
+              <label class="form-label">Date</label>
               <input type="date" class="form-input" id="activity-date" name="date">
             </div>
           </div>
           <div class="form-group">
-            <label class="form-label">Sadržaj</label>
+            <label class="form-label">Content</label>
             <textarea class="form-textarea" id="activity-content" name="content" required></textarea>
           </div>
           <div class="form-group">
-            <label class="form-label">Slike (do 3)</label>
+            <label class="form-label">Images (max 3)</label>
             <input type="file" class="form-input" id="activity-images" name="images" accept="image/*" multiple
               style="padding: 0.75rem;">
-            <small style="color: var(--text-muted);">Maksimalno 3 slike</small>
+            <small style="color: var(--text-muted);">Max 3 images</small>
           </div>
-          <button type="submit" class="btn btn--primary">Objavi aktivnost</button>
+          <button type="submit" class="btn btn--primary">Publish Activity</button>
         </form>
         <div id="post-message" style="margin-top: 1rem;"></div>
       </div>
 
       <!-- Year Filter -->
       <div style="margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem;">
-        <label style="color: var(--text-secondary);">Filtriraj po godini:</label>
+        <label style="color: var(--text-secondary);">Filter by year:</label>
         <select id="year-filter" class="form-input" style="width: auto; min-width: 120px;">
           <!-- Options populated by JS -->
         </select>
@@ -106,7 +106,7 @@
 
       <!-- All Activities -->
       <div class="grid grid--2" id="all-activities">
-        <p style="color: var(--text-muted);">Učitavanje aktivnosti...</p>
+        <p style="color: var(--text-muted);">Loading activities...</p>
       </div>
     </div>
   </main>
@@ -126,9 +126,9 @@
       <div id="activity-modal-content" style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
       </div>
       <div style="display: flex; gap: 1rem;">
-        <button class="btn btn--secondary" id="close-activity-btn" style="flex: 1;">Zatvori</button>
+        <button class="btn btn--secondary" id="close-activity-btn" style="flex: 1;">Close</button>
         <button class="btn btn--danger hidden" id="delete-activity-btn" style="background: #e74c3c; flex: 0 0 auto;">🗑️
-          Obriši</button>
+          Delete</button>
       </div>
     </div>
   </div>
@@ -136,12 +136,12 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer__contact">
-      <strong>Astronomsko društvo "Istra" Pula</strong><br>
+      <strong>Astronomical Society "Istra" Pula</strong><br>
       <a href="https://www.ztkpula.hr/hr/" target="_blank"
-        style="color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.5);">Zajednica
-        tehničke kulture Pula</a><br>
+        style="color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.5);">Association of
+        Technical Culture Pula</a><br>
       Glavinićev uspon 1, 52100 Pula - HR<br>
-      Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: 091/214-1966
+      Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: +385 91 214 1966
     </div>
   </footer>
 
@@ -149,26 +149,26 @@
   <div class="modal-overlay" id="login-modal">
     <div class="modal">
       <div class="modal__header">
-        <h3 class="modal__title">Prijava</h3>
-        <p style="color: var(--text-secondary);">Unesite vaše podatke</p>
+        <h3 class="modal__title">Login</h3>
+        <p style="color: var(--text-secondary);">Enter your credentials</p>
       </div>
       <form id="login-form">
         <div class="form-group">
-          <label class="form-label">Korisničko ime</label>
+          <label class="form-label">Username</label>
           <input type="text" class="form-input" id="login-username" required>
         </div>
         <div class="form-group">
-          <label class="form-label">Lozinka</label>
+          <label class="form-label">Password</label>
           <input type="password" class="form-input" id="login-password" required>
         </div>
         <div id="login-message" style="margin-bottom: 1rem; font-size: 0.9rem;"></div>
-        <button type="submit" class="btn btn--primary" style="width: 100%;">Prijavi se</button>
+        <button type="submit" class="btn btn--primary" style="width: 100%;">Login</button>
       </form>
-      <button class="btn btn--secondary" style="width: 100%; margin-top: 0.5rem;" id="close-modal">Odustani</button>
+      <button class="btn btn--secondary" style="width: 100%; margin-top: 0.5rem;" id="close-modal">Cancel</button>
     </div>
   </div>
 
-  <script src="js/main.js"></script>
+  <script src="../js/main.js"></script>
   <script>
     // Activity form submission
     document.getElementById('activity-form')?.addEventListener('submit', async (e) => {
@@ -179,12 +179,12 @@
 
       const result = await postActivity(title, content);
       if (result.success) {
-        msg.textContent = 'Aktivnost objavljena!';
+        msg.textContent = 'Activity published!';
         msg.style.color = '#00ff88';
         document.getElementById('activity-form').reset();
         setTimeout(() => location.reload(), 1000);
       } else {
-        msg.textContent = 'Greška pri objavi';
+        msg.textContent = 'Error publishing';
         msg.style.color = '#ff4444';
       }
     });

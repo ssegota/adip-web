@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="hr">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galerija slika | Pulska Zvjezdarnica</title>
+  <title>Gallery | Pula Observatory</title>
   <meta name="description"
-    content="Galerija slika Astronomskog društva Istra Pula - astrofotografije, događanja, zvjezdarnica">
-  <link rel="icon" href="sites/all/themes/black_hole/logo.png" type="image/png">
-  <link rel="stylesheet" href="css/modern.css">
+    content="Image Gallery of Astronomical Society Istra Pula - astrophotography, events, observatory">
+  <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
+  <link rel="stylesheet" href="../css/modern.css">
   <style>
     .gallery-category {
       margin-bottom: 3rem;
@@ -32,30 +32,30 @@
     </div>
 
     <a href="index.html" class="header__logo">
-      <img src="sites/all/themes/black_hole/logo.png" alt="ADIP Logo">
+      <img src="../sites/all/themes/black_hole/logo.png" alt="ADIP Logo">
       <div>
-        <div class="header__title">Pulska Zvjezdarnica</div>
-        <div class="header__subtitle">Astronomsko društvo "Istra" Pula</div>
+        <div class="header__title">Pula Observatory</div>
+        <div class="header__subtitle">Astronomical Society "Istra" Pula</div>
       </div>
     </a>
 
     <nav class="nav" id="main-nav">
       <button class="nav__close" id="nav-close">✕</button>
-      <a href="index.html" class="nav__link">🏠 Naslovna</a>
-      <a href="aktivnosti.html" class="nav__link">📅 Aktivnosti</a>
-      <a href="galerija-slika.html" class="nav__link active">🖼️ Galerija</a>
-      <a href="povijest-zvjezdarnice.html" class="nav__link">📜 Povijest</a>
-      <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Posjeti</a>
-      <a href="radovi.html" class="nav__link">📚 Radovi</a>
-      <a href="servisi.html" class="nav__link">⚙️ Servisi</a>
-      <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ O nama</a>
+      <a href="index.html" class="nav__link">🏠 Home</a>
+      <a href="aktivnosti.html" class="nav__link">📅 Activities</a>
+      <a href="galerija-slika.html" class="nav__link active">🖼️ Gallery</a>
+      <a href="povijest-zvjezdarnice.html" class="nav__link">📜 History</a>
+      <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Visit Us</a>
+      <a href="radovi.html" class="nav__link">📚 Papers</a>
+      <a href="servisi.html" class="nav__link">⚙️ Services</a>
+      <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ About Us</a>
       <div class="nav__spacer"></div>
-      <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Prijava</button>
+      <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Login</button>
     </nav>
     <div class="nav-overlay" id="nav-overlay"></div>
 
     <div class="user-controls">
-      <button class="lang-toggle" id="lang-toggle">EN</button>
+      <button class="lang-toggle" id="lang-toggle">HR</button>
     </div>
   </header>
 
@@ -63,37 +63,37 @@
   <main class="page-content">
     <div class="container">
       <div class="section__header" style="padding-top: 2rem;">
-        <h1 class="section__title">Galerija <span class="text-gradient">slika</span></h1>
-        <p class="section__subtitle">Fotografije sa zvjezdarnice i astrofotografije</p>
+        <h1 class="section__title">Image <span class="text-gradient">Gallery</span></h1>
+        <p class="section__subtitle">Photos from the observatory and astrophotography</p>
       </div>
 
       <!-- Admin Panel (visible only when logged in) -->
       <div class="admin-panel hidden glass-card" style="margin-bottom: 2rem;">
-        <h3 style="margin-bottom: 1rem;">📷 Upload nove slike</h3>
+        <h3 style="margin-bottom: 1rem;">📷 Upload new image</h3>
         <form id="upload-form" enctype="multipart/form-data">
           <div class="form-group">
-            <label class="form-label">Kategorija</label>
+            <label class="form-label">Category</label>
             <select name="category" class="form-input" id="category-select" required>
-              <option value="povijest">Povijest zvjezdarnice</option>
-              <optgroup label="Astrofotografija">
-                <option value="mjesec">Mjesec</option>
-                <option value="venera">Venera</option>
+              <option value="povijest">Observatory History</option>
+              <optgroup label="Astrophotography">
+                <option value="mjesec">Moon</option>
+                <option value="venera">Venus</option>
                 <option value="mars">Mars</option>
                 <option value="jupiter">Jupiter</option>
                 <option value="saturn">Saturn</option>
-                <option value="kometi">Kometi</option>
-                <option value="meteori">Meteori</option>
-                <option value="duboki-svemir">Duboki svemir</option>
+                <option value="kometi">Comets</option>
+                <option value="meteori">Meteors</option>
+                <option value="duboki-svemir">Deep Space</option>
               </optgroup>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label">Opis slike</label>
+            <label class="form-label">Image Description</label>
             <textarea name="description" class="form-input" id="image-description" rows="2"
-              placeholder="Npr. Mjesečeva pomrčina, lipanj 2024"></textarea>
+              placeholder="E.g. Lunar Eclipse, June 2024"></textarea>
           </div>
           <div class="form-group">
-            <label class="form-label">Odaberi sliku</label>
+            <label class="form-label">Select Image</label>
             <input type="file" name="image" class="form-input" id="image-input" accept="image/*" required>
           </div>
           <button type="submit" class="btn btn--primary">Upload</button>
@@ -104,15 +104,15 @@
       <!-- Gallery Categories -->
       <div class="grid grid--2">
         <a href="galerija-povijest.html" class="glass-card" style="text-decoration: none;">
-          <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">📸 Povijest zvjezdarnice</h3>
-          <p style="color: var(--text-secondary);">Povijesne fotografije Pulske zvjezdarnice kroz godine.</p>
-          <span style="color: var(--accent-secondary); font-size: 0.9rem;">45 fotografija →</span>
+          <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">📸 Observatory History</h3>
+          <p style="color: var(--text-secondary);">Historical photos of Pula Observatory throughout the years.</p>
+          <span style="color: var(--accent-secondary); font-size: 0.9rem;">45 photos →</span>
         </a>
 
         <a href="astrofotografija.html" class="glass-card" style="text-decoration: none;">
-          <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">🌌 Astrofotografije</h3>
-          <p style="color: var(--text-secondary);">Astrofotografije snimljene od članova društva.</p>
-          <span style="color: var(--accent-secondary); font-size: 0.9rem;">Mjesec, Mars, Jupiter, Saturn i više →</span>
+          <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">🌌 Astrofotography</h3>
+          <p style="color: var(--text-secondary);">Astrophotographs taken by society members.</p>
+          <span style="color: var(--accent-secondary); font-size: 0.9rem;">Moon, Mars, Jupiter, Saturn and more →</span>
         </a>
       </div>
     </div>
@@ -121,12 +121,12 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer__contact">
-      <strong>Astronomsko društvo "Istra" Pula</strong><br>
+      <strong>Astronomical Society "Istra" Pula</strong><br>
       <a href="https://www.ztkpula.hr/hr/" target="_blank"
-        style="color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.5);">Zajednica
-        tehničke kulture Pula</a><br>
+        style="color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.5);">Association of
+        Technical Culture Pula</a><br>
       Glavinićev uspon 1, 52100 Pula - HR<br>
-      Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: 091/214-1966
+      Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: +385 91 214 1966
     </div>
   </footer>
 
@@ -134,26 +134,26 @@
   <div class="modal-overlay" id="login-modal">
     <div class="modal">
       <div class="modal__header">
-        <h3 class="modal__title">Prijava</h3>
-        <p style="color: var(--text-secondary);">Unesite vaše podatke</p>
+        <h3 class="modal__title">Login</h3>
+        <p style="color: var(--text-secondary);">Enter your credentials</p>
       </div>
       <form id="login-form">
         <div class="form-group">
-          <label class="form-label">Korisničko ime</label>
+          <label class="form-label">Username</label>
           <input type="text" class="form-input" id="login-username" required>
         </div>
         <div class="form-group">
-          <label class="form-label">Lozinka</label>
+          <label class="form-label">Password</label>
           <input type="password" class="form-input" id="login-password" required>
         </div>
         <div id="login-message" style="margin-bottom: 1rem; font-size: 0.9rem;"></div>
-        <button type="submit" class="btn btn--primary" style="width: 100%;">Prijavi se</button>
+        <button type="submit" class="btn btn--primary" style="width: 100%;">Login</button>
       </form>
-      <button class="btn btn--secondary" style="width: 100%; margin-top: 0.5rem;" id="close-modal">Odustani</button>
+      <button class="btn btn--secondary" style="width: 100%; margin-top: 0.5rem;" id="close-modal">Cancel</button>
     </div>
   </div>
 
-  <script src="js/main.js"></script>
+  <script src="../js/main.js"></script>
   <script>
     // Upload form for admin
     document.getElementById('upload-form')?.addEventListener('submit', async (e) => {
@@ -169,15 +169,15 @@
         const result = await response.json();
 
         if (result.success) {
-          msg.textContent = 'Slika uspješno uploadana!';
+          msg.textContent = 'Image successfully uploaded!';
           msg.style.color = '#00ff88';
           e.target.reset();
         } else {
-          msg.textContent = 'Greška pri uploadu: ' + (result.message || 'Nepoznata greška');
+          msg.textContent = 'Error uploading: ' + (result.message || 'Unknown error');
           msg.style.color = '#ff4444';
         }
       } catch (err) {
-        msg.textContent = 'Greška pri komunikaciji sa serverom';
+        msg.textContent = 'Error communicating with server';
         msg.style.color = '#ff4444';
         console.error(err);
       }

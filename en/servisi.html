@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="hr">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Servisi - Astronomsko društvo "Istra" Pula</title>
-  <link rel="icon" href="sites/all/themes/black_hole/logo.png" type="image/png">
-  <link rel="stylesheet" href="css/modern.css">
+  <title>Services | Pula Observatory</title>
+  <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
+  <link rel="stylesheet" href="../css/modern.css">
 
   <!-- External Libraries for Widgets -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/suncalc/1.9.0/suncalc.min.js"></script>
@@ -105,45 +105,45 @@
     </div>
 
     <a href="index.html" class="header__logo">
-      <img src="sites/all/themes/black_hole/logo.png" alt="ADIP Logo">
+      <img src="../sites/all/themes/black_hole/logo.png" alt="ADIP Logo">
       <div>
-        <div class="header__title">Pulska Zvjezdarnica</div>
-        <div class="header__subtitle">Astronomsko društvo "Istra" Pula</div>
+        <div class="header__title">Pula Observatory</div>
+        <div class="header__subtitle">Astronomical Society "Istra" Pula</div>
       </div>
     </a>
 
     <nav class="nav" id="main-nav">
       <button class="nav__close" id="nav-close">✕</button>
-      <a href="index.html" class="nav__link">🏠 Naslovna</a>
-      <a href="aktivnosti.html" class="nav__link">📅 Aktivnosti</a>
-      <a href="galerija-slika.html" class="nav__link">🖼️ Galerija</a>
-      <a href="povijest-zvjezdarnice.html" class="nav__link">📜 Povijest</a>
-      <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Posjeti</a>
-      <a href="radovi.html" class="nav__link">📚 Radovi</a>
-      <a href="servisi.html" class="nav__link active">⚙️ Servisi</a>
-      <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ O nama</a>
+      <a href="index.html" class="nav__link">🏠 Home</a>
+      <a href="aktivnosti.html" class="nav__link">📅 Activities</a>
+      <a href="galerija-slika.html" class="nav__link">🖼️ Gallery</a>
+      <a href="povijest-zvjezdarnice.html" class="nav__link">📜 History</a>
+      <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Visit Us</a>
+      <a href="radovi.html" class="nav__link">📚 Papers</a>
+      <a href="servisi.html" class="nav__link active">⚙️ Services</a>
+      <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ About Us</a>
       <div class="nav__spacer"></div>
-      <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Prijava</button>
+      <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Login</button>
     </nav>
     <div class="nav-overlay" id="nav-overlay"></div>
-    <div class="user-controls"><button class="lang-toggle" id="lang-toggle">EN</button></div>
+    <div class="user-controls"><button class="lang-toggle" id="lang-toggle">HR</button></div>
   </header>
 
   <div class="content" style="padding-top: 100px;">
     <section class="section">
       <div class="container">
         <div class="section__header">
-          <h2 class="section__title">Korisni <span class="text-gradient">Servisi</span></h2>
-          <p class="section__subtitle">Alati, prognoze i mjerenja</p>
+          <h2 class="section__title">Useful <span class="text-gradient">Services</span></h2>
+          <p class="section__subtitle">Tools, forecasts and measurements</p>
         </div>
 
         <!-- Admin Panel -->
         <div class="admin-panel hidden glass-card" id="admin-service-panel" style="margin-bottom: 2rem;">
-          <h3>➕ Dodaj novi servis</h3>
+          <h3>➕ Add new service</h3>
           <form id="service-form"
             style="display: grid; grid-template-columns: 1fr 2fr 1fr auto; gap: 1rem; align-items: end;">
             <div class="form-group">
-              <label class="form-label">Naziv</label>
+              <label class="form-label">Title</label>
               <input type="text" class="form-input" id="service-title" required>
             </div>
             <div class="form-group">
@@ -151,13 +151,13 @@
               <input type="text" class="form-input" id="service-url" required>
             </div>
             <div class="form-group">
-              <label class="form-label">Tip</label>
+              <label class="form-label">Type</label>
               <select class="form-input" id="service-type">
-                <option value="iframe">Web stranica (Iframe)</option>
-                <option value="image">Slika</option>
+                <option value="iframe">Webpage (Iframe)</option>
+                <option value="image">Image</option>
               </select>
             </div>
-            <button type="submit" class="btn btn--primary">Dodaj</button>
+            <button type="submit" class="btn btn--primary">Add</button>
           </form>
         </div>
 
@@ -176,28 +176,28 @@
             onclick="openModal('Lightning Maps', 'https://www.lightningmaps.org/blitzortung/europe/index.php?bo_page=map&lang=en', 'iframe')">
             <div class="service-icon">⚡</div>
             <h3 class="service-title">Lightning Maps</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Sustav detekcije munja</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Lightning detection system</p>
           </div>
 
           <!-- 3. Astronomy (Dynamic) -->
           <div class="service-card glass-card" onclick="openAstronomyModal()" style="cursor: pointer;">
             <div class="widget-content">
               <h3 class="service-title" style="margin-bottom: 1rem; text-align: center; color: var(--accent-primary);">
-                Sunce i Mjesec (Pula)</h3>
+                Sun and Moon (Pula)</h3>
               <div class="astro-stat">
-                <span>Izlazak Sunca:</span>
+                <span>Sunrise:</span>
                 <span class="astro-value" id="astro-sunrise">--:--</span>
               </div>
               <div class="astro-stat">
-                <span>Zalazak Sunca:</span>
+                <span>Sunset:</span>
                 <span class="astro-value" id="astro-sunset">--:--</span>
               </div>
               <div class="astro-stat">
-                <span>Faza Mjeseca:</span>
+                <span>Moon Phase:</span>
                 <span class="astro-value" id="astro-moon-phase">--</span>
               </div>
               <div class="astro-stat">
-                <span>Osvijetljenost:</span>
+                <span>Illumination:</span>
                 <span class="astro-value" id="astro-moon-illum">--%</span>
               </div>
             </div>
@@ -207,7 +207,7 @@
           <div class="service-card glass-card" onclick="openTideModal()" style="cursor: pointer; grid-column: span 1;">
             <div class="widget-content">
               <h3 class="service-title" style="margin-bottom: 1rem; text-align: center; color: var(--accent-primary);">
-                Plima i Oseka (24h)</h3>
+                Tides (24h)</h3>
               <canvas id="tideChart" style="width: 100%; height: 150px;"></canvas>
             </div>
           </div>
@@ -227,7 +227,7 @@
   <div class="modal-overlay" id="service-modal" style="z-index: 2000;">
     <div class="modal-content-full">
       <div class="modal-header-bar">
-        <h3 id="modal-title" style="margin: 0; color: var(--text-primary);">Naslov</h3>
+        <h3 id="modal-title" style="margin: 0; color: var(--text-primary);">Title</h3>
         <button id="close-modal"
           style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;">✕</button>
       </div>
@@ -242,40 +242,39 @@
   <div class="modal-overlay" id="login-modal">
     <div class="modal">
       <div class="modal__header">
-        <h3 class="modal__title">Prijava</h3>
-        <p style="color: var(--text-secondary);">Unesite vaše podatke</p>
+        <h3 class="modal__title">Login</h3>
+        <p style="color: var(--text-secondary);">Enter your credentials</p>
       </div>
       <form id="login-form">
         <div class="form-group">
-          <label class="form-label">Korisničko ime</label>
+          <label class="form-label">Username</label>
           <input type="text" class="form-input" id="login-username" required>
         </div>
         <div class="form-group">
-          <label class="form-label">Lozinka</label>
+          <label class="form-label">Password</label>
           <input type="password" class="form-input" id="login-password" required>
         </div>
         <div id="login-message" style="margin-bottom: 1rem; font-size: 0.9rem;"></div>
-        <button type="submit" class="btn btn--primary" style="width: 100%;">Prijavi se</button>
+        <button type="submit" class="btn btn--primary" style="width: 100%;">Login</button>
       </form>
-      <button class="btn btn--secondary" style="width: 100%; margin-top: 0.5rem;"
-        id="close-modal-login">Odustani</button>
+      <button class="btn btn--secondary" style="width: 100%; margin-top: 0.5rem;" id="close-modal-login">Cancel</button>
     </div>
   </div>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="footer__contact">
-      <strong>Astronomsko društvo "Istra" Pula</strong><br>
+      <strong>Astronomical Society "Istra" Pula</strong><br>
       <a href="https://www.ztkpula.hr/hr/" target="_blank"
-        style="color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.5);">Zajednica
-        tehničke kulture Pula</a><br>
+        style="color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.5);">Association of
+        Technical Culture Pula</a><br>
       Glavinićev uspon 1, 52100 Pula - HR<br>
-      Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: 091/214-1966
+      Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: +385 91 214 1966
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
-  <script src="js/services.js?v=11"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/services.js?v=11"></script>
 
   <script>
     // Handle Login Modal Close from Main.js trigger
