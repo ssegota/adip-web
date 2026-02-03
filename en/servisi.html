@@ -204,12 +204,27 @@
           </div>
 
           <!-- 4. Tides (Dynamic Graph) -->
-          <div class="service-card glass-card" onclick="openTideModal()" style="cursor: pointer; grid-column: span 1;">
+          <div class="service-card glass-card" onclick="openTideModal()" style="cursor: pointer;">
             <div class="widget-content">
               <h3 class="service-title" style="margin-bottom: 1rem; text-align: center; color: var(--accent-primary);">
                 Tides (24h)</h3>
               <canvas id="tideChart" style="width: 100%; height: 150px;"></canvas>
             </div>
+          </div>
+
+          <!-- 5. Library Catalog -->
+          <div class="service-card glass-card" onclick="openLibraryModal()" style="cursor: pointer;">
+            <div class="service-icon">📖</div>
+            <h3 class="service-title">Books</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Search library materials</p>
+          </div>
+
+          <!-- 6. Spot the Asteroid -->
+          <div class="service-card glass-card" onclick="openAsteroidGame()" style="cursor: pointer;">
+            <div class="service-icon">☄️</div>
+            <h3 class="service-title">Spot the Asteroid</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Find the asteroid in the image
+            </p>
           </div>
 
         </div>

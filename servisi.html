@@ -161,66 +161,82 @@
           </form>
         </div>
 
-        <div class="services-grid" id="main-services-grid">
+      </div>
 
-          <!-- 1. Meteo -->
-          <div class="service-card glass-card"
-            onclick="openModal('Meteo Pula (Pljusak.com)', 'https://pljusak.com/meteo.php?stanica=pulacentar', 'iframe')">
-            <div class="service-icon">🌦️</div>
-            <h3 class="service-title">Meteo Pula</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Pljusak.com</p>
-          </div>
+      <div class="services-grid" id="main-services-grid">
 
-          <!-- 2. Lightning -->
-          <div class="service-card glass-card"
-            onclick="openModal('Lightning Maps', 'https://www.lightningmaps.org/blitzortung/europe/index.php?bo_page=map&lang=en', 'iframe')">
-            <div class="service-icon">⚡</div>
-            <h3 class="service-title">Lightning Maps</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Sustav detekcije munja</p>
-          </div>
-
-          <!-- 3. Astronomy (Dynamic) -->
-          <div class="service-card glass-card" onclick="openAstronomyModal()" style="cursor: pointer;">
-            <div class="widget-content">
-              <h3 class="service-title" style="margin-bottom: 1rem; text-align: center; color: var(--accent-primary);">
-                Sunce i Mjesec (Pula)</h3>
-              <div class="astro-stat">
-                <span>Izlazak Sunca:</span>
-                <span class="astro-value" id="astro-sunrise">--:--</span>
-              </div>
-              <div class="astro-stat">
-                <span>Zalazak Sunca:</span>
-                <span class="astro-value" id="astro-sunset">--:--</span>
-              </div>
-              <div class="astro-stat">
-                <span>Faza Mjeseca:</span>
-                <span class="astro-value" id="astro-moon-phase">--</span>
-              </div>
-              <div class="astro-stat">
-                <span>Osvijetljenost:</span>
-                <span class="astro-value" id="astro-moon-illum">--%</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 4. Tides (Dynamic Graph) -->
-          <div class="service-card glass-card" onclick="openTideModal()" style="cursor: pointer; grid-column: span 1;">
-            <div class="widget-content">
-              <h3 class="service-title" style="margin-bottom: 1rem; text-align: center; color: var(--accent-primary);">
-                Plima i Oseka (24h)</h3>
-              <canvas id="tideChart" style="width: 100%; height: 150px;"></canvas>
-            </div>
-          </div>
-
+        <!-- 1. Meteo -->
+        <div class="service-card glass-card"
+          onclick="openModal('Meteo Pula (Pljusak.com)', 'https://pljusak.com/meteo.php?stanica=pulacentar', 'iframe')">
+          <div class="service-icon">🌦️</div>
+          <h3 class="service-title">Meteo Pula</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Pljusak.com</p>
         </div>
 
-        <!-- User Added Services -->
-        <div class="services-grid" id="user-services-grid">
-          <!-- Populated via JS -->
+        <!-- 2. Lightning -->
+        <div class="service-card glass-card"
+          onclick="openModal('Lightning Maps', 'https://www.lightningmaps.org/blitzortung/europe/index.php?bo_page=map&lang=en', 'iframe')">
+          <div class="service-icon">⚡</div>
+          <h3 class="service-title">Lightning Maps</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Sustav detekcije munja</p>
+        </div>
+
+        <!-- 3. Astronomy (Dynamic) -->
+        <div class="service-card glass-card" onclick="openAstronomyModal()" style="cursor: pointer;">
+          <div class="widget-content">
+            <h3 class="service-title" style="margin-bottom: 1rem; text-align: center; color: var(--accent-primary);">
+              Sunce i Mjesec (Pula)</h3>
+            <div class="astro-stat">
+              <span>Izlazak Sunca:</span>
+              <span class="astro-value" id="astro-sunrise">--:--</span>
+            </div>
+            <div class="astro-stat">
+              <span>Zalazak Sunca:</span>
+              <span class="astro-value" id="astro-sunset">--:--</span>
+            </div>
+            <div class="astro-stat">
+              <span>Faza Mjeseca:</span>
+              <span class="astro-value" id="astro-moon-phase">--</span>
+            </div>
+            <div class="astro-stat">
+              <span>Osvijetljenost:</span>
+              <span class="astro-value" id="astro-moon-illum">--%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Tides (Dynamic Graph) -->
+        <div class="service-card glass-card" onclick="openTideModal()" style="cursor: pointer;">
+          <div class="widget-content">
+            <h3 class="service-title" style="margin-bottom: 1rem; text-align: center; color: var(--accent-primary);">
+              Plima i Oseka (24h)</h3>
+            <canvas id="tideChart" style="width: 100%; height: 150px;"></canvas>
+          </div>
+        </div>
+
+        <!-- 5. Library Catalog -->
+        <div class="service-card glass-card" onclick="openLibraryModal()" style="cursor: pointer;">
+          <div class="service-icon">📖</div>
+          <h3 class="service-title">Knjige</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Pretraživanje knjižnične građe</p>
+        </div>
+
+        <!-- 6. Spot the Asteroid -->
+        <div class="service-card glass-card" onclick="openAsteroidGame()" style="cursor: pointer;">
+          <div class="service-icon">☄️</div>
+          <h3 class="service-title">Spot the Asteroid</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Pronađi asteroid na slici</p>
         </div>
 
       </div>
-    </section>
+
+      <!-- User Added Services -->
+      <div class="services-grid" id="user-services-grid">
+        <!-- Populated via JS -->
+      </div>
+
+  </div>
+  </section>
   </div>
 
   <!-- Service Modal -->
