@@ -1,0 +1,101 @@
+/**
+Neke klase se vise puta koriste jer su imali identicne dimenzije
+*/
+
+.slika {
+  height: clamp(150px, 12vw, 300px);
+  width: clamp(150px, 12vw, 300px);
+}
+
+.table {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+  row-gap: 3vh;
+}
+
+.saturn {
+  height: clamp(150px, 12vw, 300px);
+  width: auto;
+}
+.saturn-rotation {
+  rotate: -35deg;
+}
+.anti-saturn-rotation {
+  rotate: 35deg;
+}
+
+.table > a {
+  text-decoration: none;
+}
+
+.element {
+  display: grid;
+  place-items: center;
+}
+
+.slika,
+.hidden {
+  grid-area: stack;
+}
+
+.hidden {
+  z-index: 2;
+  display: flex;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.75);
+
+  color: #a0a0a0;
+  font-weight: bold;
+  font-size: 1.75em;
+
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  transition: opacity 0.5s linear, visibility 0.5s linear;
+}
+
+.slika:hover + .hidden {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ne-planeti {
+  border-radius: unset;
+}
+
+.slika-meteor {
+  height: clamp(100px, 12vw, 300px);
+  width: auto;
+}
+
+.slika-meteori-veca {
+  height: clamp(100px, 15vw, 300px);
+  width: auto;
+}
+
+.slika-halo {
+  width: clamp(100px, 70vw, 700px);
+  height: auto;
+}
+
+.slika-mjesec-halo {
+  width: clamp(100px, 30vw, 500px);
+  height: auto;
+}
+
+.table-halo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-items: center;
+  row-gap: 3vh;
+}

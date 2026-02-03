@@ -1,0 +1,19 @@
+.tablica {
+  width: 100%;
+  border: 0;
+}
+
+.t-s-teleskop {
+  height: 174px;
+  width: 150px;
+}
+
+.brachyt-slika {
+  height: 214px;
+  width: 150px;
+}
+
+.steinheil-slika {
+  height: 199px;
+  width: 150px;
+}
