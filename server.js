@@ -357,6 +357,75 @@ app.post('/api/servisi', (req, res) => {
     });
 });
 
+// Delete Rad
+app.delete('/api/radovi/:id', (req, res) => {
+    const radId = parseInt(req.params.id);
+
+    fs.readFile(RADOVI_FILE, 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).send('Error reading data');
+        }
+
+        let radovi = [];
+        try {
+            radovi = JSON.parse(data);
+        } catch (e) {
+            return res.status(500).send('Error parsing data');
+        }
+
+        const initialLength = radovi.length;
+        radovi = radovi.filter(r => r.id !== radId);
+
+        if (radovi.length === initialLength) {
+            return res.status(404).json({ success: false, message: 'Paper not found' });
+        }
+
+        fs.writeFile(RADOVI_FILE, JSON.stringify(radovi, null, 2), (err) => {
+            if (err) {
+                return res.status(500).send('Error writing data');
+            }
+            res.json({ success: true });
+        });
+    });
+});
+
+// Delete Gallery Image
+app.post('/api/galerija/delete', (req, res) => {
+    const { src, category } = req.body;
+
+    fs.readFile(GALLERY_FILE, 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).json({ success: false });
+        }
+
+        let gallery = { povijest: [], astrofotografija: {} };
+        try {
+            gallery = JSON.parse(data);
+        } catch (e) {
+            return res.status(500).json({ success: false });
+        }
+
+        if (category === 'povijest') {
+            gallery.povijest = gallery.povijest.filter(img => img.src !== src);
+        } else {
+            if (gallery.astrofotografija[category]) {
+                gallery.astrofotografija[category] = gallery.astrofotografija[category].filter(img => img.src !== src);
+            }
+        }
+
+        fs.writeFile(GALLERY_FILE, JSON.stringify(gallery, null, 2), (err) => {
+            if (err) {
+                return res.status(500).json({ success: false });
+            }
+            // Optional: Delete physical file (careful with this in dev)
+            // const filePath = path.join(__dirname, src);
+            // if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+
+            res.json({ success: true });
+        });
+    });
+});
+
 // Start Server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

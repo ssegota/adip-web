@@ -534,6 +534,13 @@ a:hover {
 }
 
 /* === Modal === */
+select,
+option {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+/* === Modal === */
 .modal-overlay {
     position: fixed;
     inset: 0;

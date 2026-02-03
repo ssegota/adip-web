@@ -37,18 +37,548 @@
     "images": []
   },
   {
+    "id": 232,
+    "year": 2021,
+    "title": "Mjesec, detalji",
+    "date": "14.12.2021",
+    "content": "Noć 14.12. djelovala je obećavajuće po pitanju stabilnosti atmosfere, snimke Mjeseca kroz C11 pokazuju da je setup u redu te kvaliteta ovisi u najvećoj mjeri o atmosferskim uvjetima (turbulencijama).",
+    "images": []
+  },
+  {
+    "id": 231,
+    "year": 2021,
+    "title": "Jupiter",
+    "date": "2021",
+    "content": "Katarina, Rade i Adrian presložili su setup na Celestronu 11 i testirali, prva meta bio je Jupiter. Iako atmosferski uvjeti nisu bili pretjerano (uopće) dobri, prvi rezultati djeluju ohrabrujuće.",
+    "images": []
+  },
+  {
+    "id": 230,
+    "year": 2021,
+    "title": "Predavanje o bolidu iznad Rijeke",
+    "date": "28.10.2021",
+    "content": "Predavanje o sjajnoj vatrenoj kugli između ostalih opažanoj i sa Zvjezdarnice u Puli održano je online 28.10.2021. u organizaciji AAD Rijeka i Hrvatskoga astronomskog saveza.",
+    "images": []
+  },
+  {
+    "id": 229,
+    "year": 2021,
+    "title": "Otkriće novog meteorskog potoka",
+    "date": "2021",
+    "content": "Kamere Globalne meteorske mreže otkrile su novi meteorski potok, nazvan October Zeta Perseids. U periodu od svega tri sata snimljeno je 14 meteora čije su orbite gotovo identične, ukazujući na to da je riječ o meteorskom potoku.",
+    "images": []
+  },
+  {
+    "id": 228,
+    "year": 2021,
+    "title": "Obilježeno 150 godina Zvjezdarnice",
+    "date": "2021",
+    "content": "Prigodnim predavanjem u prostorijama Zajednice tehničke kulture Pula obilježeno je 150 godina postojanja Zvjezdarnice na Monte Zaru. Tom je prilikom prezentirana i prigodna brošura, a u ime Hrvatskog astronomskog saveza, tajnik Dorian Božićević uručio je Povelju Astronomskom društvu \"Istra\" Pula za doprinos razvoju astronomije u Hrvatskoj.",
+    "images": []
+  },
+  {
+    "id": 227,
+    "year": 2021,
+    "title": "Globalana meteorska mreža: Metodologija i prvi rezultati",
+    "date": "2021",
+    "content": "Prestižni časopis \"Monthly Notices of the Royal Astronomical Society\" (MNRAS) objavio je članak kojim se metodologija i prvi rezultati rada Globalne meteorske mreže prezentiraju znanstvenoj zajednici. Rad pokriva kompletne procedure sa dodatnim pojašnjenjima, kao i prve rezultate koji potvrđuju ispravnost osnovnih pretpostavki funkcioniranja ovog globalnog sustava.",
+    "images": []
+  },
+  {
+    "id": 226,
+    "year": 2021,
+    "title": "Vatrena kugla iznad Rijeke",
+    "date": "14.08.2021",
+    "content": "Kamere Hrvatske meteorske mreže, dio Globalne meteorske mreže, snimile su u ranim jutarnjim satima 14.08.2021. sjajnu vatrenu kuglu sjaja nešto manjeg od sjaja punog Mjeseca. Izračun putanje sa desetak stanica ukazuje na to da je moguće da se radi o padu meteorita.",
+    "images": []
+  },
+  {
+    "id": 225,
+    "year": 2021,
+    "title": "Izborna skupština Astronomskog društva \"Istra\" Pula",
+    "date": "17.07.2021",
+    "content": "Dana 17.07.2021. na Zvjezdarnici u Puli je održana redovna Izborna skupština. Za tajnika Astronomskog društva \"Istra\" Pula izabran je Adrian Celija, a za predsjednika Damir Šegon.",
+    "images": []
+  },
+  {
+    "id": 224,
+    "year": 2021,
+    "title": "Godišnje nagrade ZTK",
+    "date": "29.06.2021",
+    "content": "Dodijeljene su godišnje nagrade Zajednice tehničke kulture za 2019. i 2020. godinu. Za 2019. godinu od članova Astronomskog društva \"Istra\" Pula nagradu je dobio Vanja Vitasović, dok je za 2020. godinu ona dodijeljena Sandiju Šegoti.",
+    "images": []
+  },
+  {
+    "id": 223,
+    "year": 2021,
+    "title": "ESA radionica",
+    "date": "2021",
+    "content": "Astronomsko društvo \"Istra\" Pula pozvano je na radionicu Europske svemirske agencije (ESA) o vatrenim kuglama. Kroz dvodnevnu raspravu iskazana je potreba za brzo procesiranje i razmjenu podataka te uspostavljanje jedinstvenog formata podataka.",
+    "images": []
+  },
+  {
+    "id": 222,
+    "year": 2021,
+    "title": "Djelomična pomrčina Sunca",
+    "date": "10.06.2021",
+    "content": "Dana 10.06.2021. sa Zvjezdarnice je opažana djelomična pomrčina Sunca. Iako vremenski uvjeti nisu bili idealni, uspjeli smo opažati i snimiti ovu prirodnu pojavu.",
+    "images": []
+  },
+  {
+    "id": 221,
+    "year": 2021,
+    "title": "Radionica Globalne meteorske mreže",
+    "date": "20.02.2021",
+    "content": "Dana 20.02.2021. održana je online radionica Globalne meteorske mreže. Aktivnosti Astronomskog društva \"Istra\" Pula na polju meteorske astronomije tom su prilikom prenesena kroz dva izlaganja.",
+    "images": []
+  },
+  {
+    "id": 220,
+    "year": 2020,
+    "title": "Komet C/2020 F3 (NEOWISE)",
+    "date": "2020",
+    "content": "Komet C/2020 F3 (NEOWISE) izazvao je veliku zainteresiranost astronomske javnosti. Adrian, Marko i Rade su u 03:30 snimili komet sa zvjezdarnice u Puli.",
+    "images": []
+  },
+  {
+    "id": 219,
+    "year": 2020,
+    "title": "Posjet austrijskih astronoma",
+    "date": "2020",
+    "content": "Večeras su nam u posjeti bili astronomi amateri iz austrijskog Klagenfurta (Celovec), predvođeni Christianom Zechnerom. Prezentirana je povijest zvjezdarnice u Puli te trenutne aktivnosti Astronomskog društva \"Istra\" Pula.",
+    "images": []
+  },
+  {
+    "id": 218,
+    "year": 2020,
+    "title": "NASA koristi opažanja županijske meteorske mreže",
+    "date": "2020",
+    "content": "U prestižnom časopisu Monthly Notices of the Royal Astronomical Society objavljen je rad koji prikazuje istraživanja mogućeg gravitacijskog fokusiranja meteoridskih potoka, a temeljni rezultati dolaze iz mjerenja kamerama projekta meteorske mreže Istarske županije.",
+    "images": []
+  },
+  {
+    "id": 217,
+    "year": 2020,
+    "title": "Triplet galaksija u zviježđu Lava",
+    "date": "2020",
+    "content": "Adrian je iskoristio tamno nebo daleko od Pule kako bi testirao novi Maksutov-Newton 190/1000 i kameru QHY 294c. Prvi rezultati prikazuju triplet galaksija u zviježđu Lava.",
+    "images": []
+  },
+  {
+    "id": 216,
+    "year": 2020,
+    "title": "Obustavljene aktivnosti na zvjezdarnici u Puli",
+    "date": "2020",
+    "content": "U skladu s preporukama koje je donio Stožer civilne zaštite Istarske županije, prekinute su aktivnosti na zvjezdarnici u Puli vezane za posjete građana.",
+    "images": []
+  },
+  {
+    "id": 215,
+    "year": 2020,
+    "title": "Vatrena kugla nad Kvarnerom",
+    "date": "23.01.2020",
+    "content": "U večernjim satima 23. siječnja nebo nad Kvarnerom obasjala je jako sjajna vatrena kugla, koju je snimilo 8 kamera Hrvatske meteorske mreže. Izračun ukazuje da je nekoliko meteorita mase 20ak grama završilo u moru između otoka Cresa i Krka.",
+    "images": []
+  },
+  {
+    "id": 214,
+    "year": 2020,
+    "title": "Vatrena kugla nad Likom",
+    "date": "20.01.2020",
+    "content": "U ranim jutarnjim satima 20. siječnja nebo nad Hrvatskom obasjala je vatrena kugla koja je svoj svijetli put završila nad Likom. Bolid je snimljen sa 9 stanica iz hrvatskog dijela GMN među kojima i cjelonebna kamera sa zvjezdarnice u Puli.",
+    "images": []
+  },
+  {
+    "id": 213,
+    "year": 2020,
+    "title": "Posjet djece vrtića Monte Zaro",
+    "date": "2020",
+    "content": "Tijekom siječnja ugostili smo nekoliko grupa učenika pulskih osnovnih i srednjih škola, no najdraži su nam gosti ipak bili naši najmlađi sugrađani iz dječjeg vrtića Monte Zaro.",
+    "images": []
+  },
+  {
+    "id": 212,
+    "year": 2020,
+    "title": "Sretna Nova 2020!",
+    "date": "01.01.2020",
+    "content": "Članovi astronomskog društva \"Istra\" Pula žele Vam sretnu i uspješnu 2020. godinu - sriće i zdravlja!",
+    "images": []
+  },
+  {
+    "id": 211,
+    "year": 2019,
+    "title": "Prosinac u Puli 2019.",
+    "date": "13.12.2019",
+    "content": "Kako maksimum aktivnosti meteorskog potoka Geminida pada baš 13.12. prigodno je predavanje uz ovogodišnju akciju \"Prosinac u Puli\" upriličeno baš na taj datum.",
+    "images": []
+  },
+  {
+    "id": 204,
+    "year": 2019,
+    "title": "Tranzit Merkura preko Sunčevog diska",
+    "date": "11.11.2019",
+    "content": "U ponedjeljak, 11.11. na Zvjezdarnici na Monte Zaru popratili smo rijetku pojava prijelaska Merkura ispred Sunčevog diska.",
+    "images": []
+  },
+  {
+    "id": 210,
+    "year": 2019,
+    "title": "Dječji tjedan 2019.",
+    "date": "2019",
+    "content": "Obilježavanje dječjeg tjedna i ove godine je popraćeno od strane Astronomskog društva \"Istra\". Stotinjak djece najmlađih uzrasta posjetilo je Zvjezdarnicu na Monte Zaru.",
+    "images": []
+  },
+  {
+    "id": 209,
+    "year": 2019,
+    "title": "Petrova gora star party - park tamnog neba",
+    "date": "2019",
+    "content": "Na poziv Astronomskog društva \"Beskraj\" iz Zagreba prisustvovali smo prvom Star party održanom u parku tamnog neba Petrova gora.",
+    "images": []
+  },
+  {
+    "id": 208,
+    "year": 2019,
+    "title": "Susreti astronomskih udruga Alpe-Adria",
+    "date": "22.09.2019",
+    "content": "U Malom Lošinju, sjedištu Hrvatskog astronomskog saveza su 22. rujna održani susreti astronomskih udruga Alpe-Adria.",
+    "images": []
+  },
+  {
+    "id": 207,
+    "year": 2019,
+    "title": "Susreti astronomskih udruga Hrvatske",
+    "date": "21.09.2019",
+    "content": "U Malom Lošinju, sjedištu Hrvatskog astronomskog saveza su 21. rujna održani susreti astronomskih udruga Hrvatske.",
+    "images": []
+  },
+  {
+    "id": 206,
+    "year": 2019,
+    "title": "Dani Huma 2019.",
+    "date": "2019",
+    "content": "Ove smo godine uzeli učešća i na Danima Huma, najmanjeg grada na svijetu. Tom prilikom je održano predavanje \"Od smrznutog dalekozora do globalne meteorske mreže\".",
+    "images": []
+  },
+  {
+    "id": 205,
+    "year": 2019,
+    "title": "Meteorski potok Perzeida",
+    "date": "2019",
+    "content": "Tradicionalno opažanje meteorskog potoka Perzeida ove je godine u velikoj mjeri bilo onemogućeno lošim astronomskim i meteorološkim uvjetima.",
+    "images": []
+  },
+  {
+    "id": 203,
+    "year": 2019,
+    "title": "50 godina od osvajanja Mjeseca i djelomična pomrčina Mjeseca",
+    "date": "16.07.2019",
+    "content": "U utorak, 16. srpnja s početkom u 21 sat pri Zvjezdarnici na Monte Zaru upriličeno je prigodno obilježavanje 50. godišnjice počekta misije Apollo 11.",
+    "images": []
+  },
+  {
+    "id": 202,
+    "year": 2019,
+    "title": "Unaprijeđena meteorološka stanica",
+    "date": "2019",
+    "content": "Kako bi unaprijedili informiranje i prikupljanje meteoroloških podataka sa Zvjezdarnice, automatska meteorološka postaja je obnovljena novom verzijom.",
+    "images": []
+  },
+  {
+    "id": 201,
+    "year": 2019,
+    "title": "Istrijada 2019.",
+    "date": "2019",
+    "content": "Na poziv istarskih studenata, članova Kluba Studenata Istre „Mate Balota“ i Kluba studenata „Istarski klub“ Rijeka uzeli smo učešća u ovogodišnjoj \"Istrijadi\".",
+    "images": []
+  },
+  {
+    "id": 200,
+    "year": 2019,
+    "title": "Godišnje priznanje ZTK grada Pule",
+    "date": "2019",
+    "content": "Godišnje priznanje Zajednice tehničke kulture grada Pule za 2018. godinu zaslužio je Adrian Celija, svojim iznimnim angažmanom prilikom opažačkih akcija Astronomskog društva \"Istra\" Pula.",
+    "images": []
+  },
+  {
+    "id": 199,
+    "year": 2019,
+    "title": "Izlet članova u Rovinj i Tićan",
+    "date": "2019",
+    "content": "Članovi Astronomskog društva \"Istra\" i učenici Gimnazije polaznici izborne nastave iz Astronomije pohodili su dvije astronomima zanimljive destinacije: lokaciju povijesne meteorološke mjerne postaje u Rovinju te zvjezdarnicu na Tićanu.",
+    "images": []
+  },
+  {
+    "id": 198,
+    "year": 2019,
+    "title": "Festival znanosti - boje zvijezda",
+    "date": "2019",
+    "content": "U sklopu ovogodišnjeg Festivala znanosti, pri Zvjezdarnici je održano predavanje \"Boje zvijezda\".",
+    "images": []
+  },
+  {
+    "id": 197,
+    "year": 2019,
+    "title": "Messierov maraton - Tićan",
+    "date": "2019",
+    "content": "Na ovogodišnjem Messierovom maratonu održali smo predavanje o događanjima u meteorskoj astronmiji između dva maratona.",
+    "images": []
+  },
+  {
+    "id": 196,
+    "year": 2019,
+    "title": "Global Meteor Network allsky kamera",
+    "date": "2019",
+    "content": "Umjesto analogne kamere koju smo do kraja 2018. koristili u svrhu praćenja noćnih događanja na nebu iznad Pule, instalirana je nova digitalna kamera.",
+    "images": []
+  },
+  {
+    "id": 195,
+    "year": 2019,
+    "title": "\"Žene u astronomiji\" - predavanje",
+    "date": "08.03.2019",
+    "content": "U sklopu obilježavanja 100. godišnjice Međunarodne astronomske unije, u petak 8. ožujka je održano predavanje o doprinosu žena astronomiji.",
+    "images": []
+  },
+  {
+    "id": 194,
+    "year": 2019,
+    "title": "100 sati astronomije",
+    "date": "11.01.2019",
+    "content": "Ove se godine u svijetu obilježava 100. godišnjica Međunarodne astronomske unije (IAU). Prva aktivnost u tom smislu održana je 11. siječnja.",
+    "images": []
+  },
+  {
+    "id": 193,
+    "year": 2018,
+    "title": "Prosinac u Puli - Zvjezdarnica",
+    "date": "2018",
+    "content": "U sklopu projetkta \"Prosinac u Puli 2018.\" zvjezdarnica na Monte Zaru biti će otvorena za građanstvo svakog dana od 17. do 21. prosinca.",
+    "images": []
+  },
+  {
+    "id": 192,
+    "year": 2018,
+    "title": "Potpuna pomrčina Mjeseca 27. srpnja",
+    "date": "27.07.2018",
+    "content": "U petak, 27. srpnja 2018. godine pri Zvjezdarnici na Monte Zaru organizirano je promatranje potpune pomrčine Mjeseca. Velik broj sugrađana te domaćih i stranih gostiju pohodio je Zvjezdarnicu.",
+    "images": []
+  },
+  {
+    "id": 191,
+    "year": 2018,
+    "title": "Sajam mogućnosti 2018.",
+    "date": "2018",
+    "content": "Ove se godine po prvi put u održao \"Sajam mogućnosti\", skup koji se organizirao u povodu obilježavanja Međunarodnog dana borbe protiv zlouporabe droga i nezakonitog prometa drogama.",
+    "images": []
+  },
+  {
+    "id": 190,
+    "year": 2018,
+    "title": "Vatrena kugla nad Kvarnerom",
+    "date": "28.05.2018",
+    "content": "Izuzetno sjajan meteor proletio je kroz atmosferu 28.05.2018. godine u 23:23:18 po ukaznom mjerenju vremena, te nakratko dodatno obasjao šire područje Kvarnera.",
+    "images": []
+  },
+  {
+    "id": 189,
+    "year": 2018,
+    "title": "Mladi članovi uspješni na državnom natjecanju iz astronomije!",
+    "date": "2018",
+    "content": "I ove godine su mladi članovi Astronomskog društava Istra Pula odnosno učesnici županijskog projekta Hrvatske meteorske mreže iz Rovinja bili vrlo uspješni na državnom natjecanju iz astronomije!",
+    "images": []
+  },
+  {
+    "id": 188,
+    "year": 2018,
+    "title": "Festival znanosti 2018",
+    "date": "2018",
+    "content": "U sklopu projekta \"Festival znanosti 2018\" pri zvjezdarnici je održano predavanje o otkrićima Zvjezdarnice u Puli iz njenog najplodnijeg razdoblja.",
+    "images": []
+  },
+  {
+    "id": 187,
+    "year": 2018,
+    "title": "Tradicionalno na Messierovom maratonu u Višnjanu",
+    "date": "2018",
+    "content": "Tradicionalno druženje pod kupolom teleskopa na Tićanu ni ove godine nije prošlo bez članova Astronomskog društva \"Istra\" Pula.",
+    "images": []
+  },
+  {
+    "id": 186,
+    "year": 2018,
+    "title": "Luciano Gržinić dobitnik godišnje nagrade ZTK Pula",
+    "date": "2018",
+    "content": "Jedan od ovogodišnjih dobitnika godišnje nagrade Zajednice tehničke kulture grada Pule je Luciano Gržinić, predsjednik Astronomskog društva \"Istra\" Pula.",
+    "images": []
+  },
+  {
+    "id": 185,
+    "year": 2018,
+    "title": "Posjet učenika Osnovne škole Kaštanjer",
+    "date": "2018",
+    "content": "Danas su nam u posjet došli učenici iz Osnovne škole Kaštanjer. Pored predavanja kojim su naši mladi sugrađani upoznati su sa povijesnim zbivanjima vezanim za Zvjezdarnicu.",
+    "images": []
+  },
+  {
+    "id": 184,
+    "year": 2018,
+    "title": "Završena izložba \"U susret 45 godina rada ADIP-a\"",
+    "date": "2018",
+    "content": "Izuzetno dobro posjećena i organizirana izložba \"U susret 45 godina rada Astronomskog društva Istra Pula\" danas je zatvorena.",
+    "images": []
+  },
+  {
+    "id": 183,
+    "year": 2017,
+    "title": "Posjet najmlađih sugrađana, vrtića Monte Zaro",
+    "date": "2017",
+    "content": "Vrtić Monte zaro prvi je susjed naše Zvjezdarnice, pa su vrtićke skupine Bubamare, Tintilinići, Pčelice i Brzići posjetili izložbu.",
+    "images": []
+  },
+  {
+    "id": 182,
+    "year": 2017,
+    "title": "Prosinac u Puli",
+    "date": "15.12.2017",
+    "content": "U sklopu projekta \"Prosinac u gradu\" pri Zvjezdarnici u Puli je 15.12. od 19 do 21 sat održana prigodna izložba.",
+    "images": []
+  },
+  {
+    "id": 181,
+    "year": 2017,
+    "title": "Posjet zvjezdarnicama Višnjan i Tićan",
+    "date": "2017",
+    "content": "Ove smo godine za članove ADIP-a te učenike srednjih škola organizirali posjet nekoliko znamenitih objekata i institucija u Istri.",
+    "images": []
+  },
+  {
+    "id": 180,
+    "year": 2017,
+    "title": "Fascinantne duge nad Pulom",
+    "date": "2017",
+    "content": "Česte i obilne kiše ovih dana donijele su i priliku da u nekoliko pred sam zalazak Sunca uživamo u prekrasnim dugama.",
+    "images": []
+  },
+  {
+    "id": 179,
+    "year": 2017,
+    "title": "Međunarodna meteorska konferencija Petnica 2017",
+    "date": "2017",
+    "content": "Članovi ADIPa i ove su godine uzeli aktivnog učešća na Međunarodnoj meteorskoj konferenciji koja je ovo prilikom održana u Petnici, Srbija.",
+    "images": []
+  },
+  {
+    "id": 178,
+    "year": 2017,
+    "title": "Peter Gural održao predavanje u Gimnaziji Pula",
+    "date": "2017",
+    "content": "Prije učešća na Međunarodnoj meteorskoj konferenciji u Petnici, u goste nam je stigao vodeći svjetski stručnjak po pitanju video meteorske astronomije, Peter Gural.",
+    "images": []
+  },
+  {
+    "id": 177,
+    "year": 2017,
+    "title": "ADIP - Predavanja na Politehnici (HMM)",
+    "date": "25.05.2017",
+    "content": "U četvrtak, 25.05. je pri Visokoj tehničko-poslovnoj školi Politehnika Pula tajnik ADIP-a Damir Šegon održao predavanje o Hrvatskoj meteorskoj mreži.",
+    "images": []
+  },
+  {
+    "id": 176,
+    "year": 2017,
+    "title": "ADIP - Predavanja na Politehnici (Povijest)",
+    "date": "18.05.2017",
+    "content": "U četvrtak, 18.05. je pri Visokoj tehničko-poslovnoj školi Politehnika Pula predsjednik ADIP-a Luciano Gržinić održao predavanje o povijesti Zvjezdarnice.",
+    "images": []
+  },
+  {
+    "id": 175,
+    "year": 2017,
+    "title": "Prvo mjesto na natjecanju iz astronomije ponovno u Puli!",
+    "date": "2017",
+    "content": "Aurora Vareško, učenica Gimnazije Pula (mentor prof. Igor Macuka) osvojila je prvo mjesto na državnom natjecanju iz astronomije u kategoriji učenika drugih razreda srednjih škola.",
+    "images": []
+  },
+  {
+    "id": 174,
+    "year": 2017,
+    "title": "Festival Znanosti 2017.",
+    "date": "2017",
+    "content": "Već od prvog Festivala Znanosti u Puli, Astronomsko društvo \"Istra\" Pula aktivno učestvuje u ovoj manifestaciji. Ove godine tema festivala je \"vrijeme\".",
+    "images": []
+  },
+  {
+    "id": 173,
+    "year": 2017,
+    "title": "Astronomi gimnazijalci i Mjesec",
+    "date": "2017",
+    "content": "Novosti iz svijeta mobitela primjenjene su i na astronomiju - mladi astronomi iz pulske Gimnazije snimali su Mjesec okularnom projekcijom kroz teleskop i njihove vlastite mobitele.",
+    "images": []
+  },
+  {
+    "id": 172,
+    "year": 2017,
+    "title": "Posjet učenika Osnovne škole Monte Zaro",
+    "date": "2017",
+    "content": "Danas su nam u posjet došli učenici iz Osnovne škole Monte Zaro, pod vodstvom Ane Okmaca.",
+    "images": []
+  },
+  {
+    "id": 171,
+    "year": 2017,
+    "title": "Posjet djece iz vrtića Pingvin Pula",
+    "date": "2017",
+    "content": "Danas smo ugostili najmlađe sugrađane, iz dječjeg vrtića Šikići.",
+    "images": []
+  },
+  {
+    "id": 170,
+    "year": 2017,
+    "title": "Tradicionalno na Messierovom maratonu u Višnjanu",
+    "date": "2017",
+    "content": "Tradicionalno druženje pod kupolom teleskopa na Tićanu ni ove godine nije prošlo bez članova Astronomskog društva \"Istra\" Pula.",
+    "images": []
+  },
+  {
+    "id": 169,
+    "year": 2017,
+    "title": "Posjet Škole za turizam, ugostiteljstvo i trgovinu Pula",
+    "date": "2017",
+    "content": "Profesor povijesti, Marin Pekica nam je danas u goste doveo svoje učenike Škole za turizam, ugostiteljstvo i trgovinu Pula.",
+    "images": []
+  },
+  {
+    "id": 168,
+    "year": 2017,
+    "title": "Obrađeni su rezultati SQM mjerenja u Puli",
+    "date": "2017",
+    "content": "Prvi rezultati obrade mjerenja Sky Quality Meter (SQM) uređaja pokazuju da se u periodu između svibnja i studenog 2016. godine sa Zvjezdarnice u najpovoljnijoj noći teoretski moglo vidjeti zvijezde do 5,3 zvjezdane veličine.",
+    "images": []
+  },
+  {
+    "id": 167,
+    "year": 2017,
+    "title": "Sretna nova 2017. godina!",
+    "date": "01.01.2017",
+    "content": "Početak nove 2017. godine započeo je neuobičajeno niskim temperaturama. Naši sugrađani poslali su nam slike zaleđene fontane na Monte Zaru.",
+    "images": []
+  },
+  {
     "id": 166,
     "year": 2016,
     "title": "Posjet studenata Politehnike",
     "date": "2016",
-    "content": "Večeras su studenti prve godine preddiplomskog i kratkog stručnog studija Politehnike posjetili Zvjezdarnicu u sklopu izvannastavne aktivnosti predmeta Primjenjena fizika čiji je nositelj i predavač naš dugogodišnji član Goran Zgrablić. Pored predavanja o povijesti Zvjezdarnice, upriličeno je i promatranje Mjeseca u fazi prve četvrti."
+    "content": "Večeras su studenti prve godine preddiplomskog i kratkog stručnog studija Politehnike posjetili Zvjezdarnicu u sklopu izvannastavne aktivnosti predmeta Primjenjena fizika čiji je nositelj i predavač naš dugogodišnji član Goran Zgrablić. Pored predavanja o povijesti Zvjezdarnice, upriličeno je i promatranje Mjeseca u fazi prve četvrti.",
+    "images": []
   },
   {
     "id": 165,
     "year": 2016,
     "title": "40 godina Astronomskog društva Višnjan",
     "date": "2016",
-    "content": "Danas je obilježena 40 godišnjica osnutka Astronomskog društva Višnjan. Na poziv dragih nam prijatelja, rado smo se odazvali pozivu te evocirali uspomene na neka drugačija vremena amaterske astronomije."
+    "content": "Danas je obilježena 40 godišnjica osnutka Astronomskog društva Višnjan. Na poziv dragih nam prijatelja, rado smo se odazvali pozivu te evocirali uspomene na neka drugačija vremena amaterske astronomije.",
+    "images": []
   },
   {
     "id": 164,

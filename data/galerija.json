@@ -2,183 +2,318 @@
   "povijest": [
     {
       "src": "galerija/povijest/povijest_1.jpg",
-      "description": "Povijesna fotografija 1"
+      "description": {
+        "hr": "Naslovnica knjige 'Zvjezdarnica u Puli' (K. u. K. Marine-Sternwarte)",
+        "en": "Book cover 'The Observatory in Pula' (K. u. K. Marine-Sternwarte)"
+      }
     },
     {
       "src": "galerija/povijest/povijest_2.jpg",
-      "description": "Povijesna fotografija 2"
+      "description": {
+        "hr": "Panoramski pogled na povijesnu zgradu Hidrografskog zavoda",
+        "en": "Panoramic view of the historic Hydrographic Institute building"
+      }
     },
     {
       "src": "galerija/povijest/povijest_3.jpg",
-      "description": "Povijesna fotografija 3"
+      "description": {
+        "hr": "Povijesna fotografija Zvjezdarnice u Puli na brežuljku Monte Zaro",
+        "en": "Historical photo of the Pula Observatory on Monte Zaro hill"
+      }
     },
     {
       "src": "galerija/povijest/povijest_4.jpg",
-      "description": "Povijesna fotografija 4"
+      "description": {
+        "hr": "Nacrt pročelja Carskog i kraljevskog hidrografskog zavoda u Puli",
+        "en": "Facade drawing of the Imperial and Royal Hydrographic Institute in Pula"
+      }
     },
     {
       "src": "galerija/povijest/povijest_5.jpg",
-      "description": "Povijesna fotografija 5"
+      "description": {
+        "hr": "Tlocrt prizemlja i prvog kata Hidrografskog zavoda",
+        "en": "Ground floor and first floor plan of the Hydrographic Institute"
+      }
     },
     {
       "src": "galerija/povijest/povijest_6.jpg",
-      "description": "Povijesna fotografija 6"
+      "description": {
+        "hr": "Plan parka i okoliša Hidrografskog zavoda u Puli",
+        "en": "Park and surroundings plan of the Hydrographic Institute in Pula"
+      }
     },
     {
       "src": "galerija/povijest/povijest_7.jpg",
-      "description": "Povijesna fotografija 7"
+      "description": {
+        "hr": "Detalj pročelja s balkonom i ulazom u zavod",
+        "en": "Facade detail with balcony and entrance to the institute"
+      }
     },
     {
       "src": "galerija/povijest/povijest_8.jpg",
-      "description": "Povijesna fotografija 8"
+      "description": {
+        "hr": "Kip Neptuna ispred zgrade Hidrografskog zavoda",
+        "en": "Statue of Neptune in front of the Hydrographic Institute building"
+      }
     },
     {
       "src": "galerija/povijest/povijest_9.jpg",
-      "description": "Povijesna fotografija 9"
+      "description": {
+        "hr": "Detalj sata i natpisa 'K. K. Hydrographisches Amt' na zabatu",
+        "en": "Detail of the clock and inscription 'K. K. Hydrographisches Amt' on the gable"
+      }
     },
     {
       "src": "galerija/povijest/povijest_10.jpg",
-      "description": "Povijesna fotografija 10"
+      "description": {
+        "hr": "Bočni pogled na zgradu zvjezdarnice s mjernim instrumentima na krovu",
+        "en": "Side view of the observatory building with measuring instruments on the roof"
+      }
     },
     {
       "src": "galerija/povijest/povijest_11.jpg",
-      "description": "Povijesna fotografija 11"
+      "description": {
+        "hr": "Fotografija Hidrografskog zavoda sa sjeverne strane",
+        "en": "Photograph of the Hydrographic Institute from the north side"
+      }
     },
     {
       "src": "galerija/povijest/povijest_12.jpg",
-      "description": "Povijesna fotografija 12"
+      "description": {
+        "hr": "Pogled na kupolu teleskopa i krov zvjezdarnice",
+        "en": "View of the telescope dome and observatory roof"
+      }
     },
     {
       "src": "galerija/povijest/povijest_13.jpg",
-      "description": "Povijesna fotografija 13"
+      "description": {
+        "hr": "Spomenik viceadmiralu Tegetthoffu ispred zgrade Hidrografskog zavoda",
+        "en": "Monument to Vice Admiral Tegetthoff in front of the Hydrographic Institute"
+      }
     },
     {
       "src": "galerija/povijest/povijest_14.jpg",
-      "description": "Povijesna fotografija 14"
+      "description": {
+        "hr": "Razglednica s motivom spomenika Tegetthoffu i zgrade zavoda, 1900. godina",
+        "en": "Postcard featuring the Tegetthoff monument and institute building, 1900"
+      }
     },
     {
       "src": "galerija/povijest/povijest_15.jpg",
-      "description": "Povijesna fotografija 15"
+      "description": {
+        "hr": "Obojana razglednica spomenika Tegetthoffu u parku Monte Zaro",
+        "en": "Colored postcard of the Tegetthoff monument in Monte Zaro park"
+      }
     },
     {
       "src": "galerija/povijest/povijest_16.jpg",
-      "description": "Povijesna fotografija 16"
+      "description": {
+        "hr": "Krupni plan spomenika Tegetthoffu s alegorijskim figurama",
+        "en": "Close-up of the Tegetthoff monument with allegorical figures"
+      }
     },
     {
       "src": "galerija/povijest/povijest_17.jpg",
-      "description": "Povijesna fotografija 17"
+      "description": {
+        "hr": "Spomenik Tegetthoffu s mornarom u prvom planu",
+        "en": "Tegetthoff monument with a sailor in the foreground"
+      }
     },
     {
       "src": "galerija/povijest/povijest_18.jpg",
-      "description": "Povijesna fotografija 18"
+      "description": {
+        "hr": "Pogled na spomenik i zgradu zavoda s bočne strane",
+        "en": "Side view of the monument and the institute building"
+      }
     },
     {
       "src": "galerija/povijest/povijest_19.jpg",
-      "description": "Povijesna fotografija 19"
+      "description": {
+        "hr": "Crno-bijela fotografija spomenika Tegetthoffu",
+        "en": "Black and white photograph of the Tegetthoff monument"
+      }
     },
     {
       "src": "galerija/povijest/povijest_20.jpg",
-      "description": "Povijesna fotografija 20"
+      "description": {
+        "hr": "Obojana fotografija spomenika Tegetthoffu",
+        "en": "Colored photograph of the Tegetthoff monument"
+      }
     },
     {
       "src": "galerija/povijest/povijest_21.jpg",
-      "description": "Povijesna fotografija 21"
+      "description": {
+        "hr": "Panoramski pogled s Monte Zara na pulsku luku i Arsenal, s Tegetthoffovim spomenikom u prvom planu",
+        "en": "Panoramic view from Monte Zaro of Pula harbor and Arsenal, with Tegetthoff monument in foreground"
+      }
     },
     {
       "src": "galerija/povijest/povijest_22.jpg",
-      "description": "Povijesna fotografija 22"
+      "description": {
+        "hr": "Pogled na ratnu luku sa Zvjezdarnice",
+        "en": "View of the naval harbor from the Observatory"
+      }
     },
     {
       "src": "galerija/povijest/povijest_23.jpg",
-      "description": "Povijesna fotografija 23"
+      "description": {
+        "hr": "Široka panorama Pule i luke s Monte Zara",
+        "en": "Wide panorama of Pula and the harbor from Monte Zaro"
+      }
     },
     {
       "src": "galerija/povijest/povijest_24.jpg",
-      "description": "Povijesna fotografija 24"
+      "description": {
+        "hr": "Obojana razglednica s pogledom na ratnu luku (Veduta del porto di guerra)",
+        "en": "Colored postcard with a view of the war harbor (Veduta del porto di guerra)"
+      }
     },
     {
       "src": "galerija/povijest/povijest_25.jpg",
-      "description": "Povijesna fotografija 25"
+      "description": {
+        "hr": "Pogled na spomenik Tegetthoffu s leđa, s pogledom na luku",
+        "en": "Rear view of the Tegetthoff monument overlooking the harbor"
+      }
     },
     {
       "src": "galerija/povijest/povijest_26.jpg",
-      "description": "Povijesna fotografija 26"
+      "description": {
+        "hr": "Razglednica 'Pozdrav iz Pule' s kolažom motiva: spomenik, luka i slavoluk",
+        "en": "Postcard 'Greetings from Pula' with a collage of motifs: monument, harbor, and arch"
+      }
     },
     {
       "src": "galerija/povijest/povijest_27.jpg",
-      "description": "Povijesna fotografija 27"
+      "description": {
+        "hr": "Razglednica u obliku djeteline s motivima Pule: Arena, spomenik, slavoluk i luka",
+        "en": "Clover-shaped postcard with Pula motifs: Arena, monument, arch, and harbor"
+      }
     },
     {
       "src": "galerija/povijest/povijest_28.jpg",
-      "description": "Povijesna fotografija 28"
+      "description": {
+        "hr": "Obojana razglednica spomenika Tegetthoffu s posjetiteljima",
+        "en": "Colored postcard of the Tegetthoff monument with visitors"
+      }
     },
     {
       "src": "galerija/povijest/povijest_29.jpg",
-      "description": "Povijesna fotografija 29"
+      "description": {
+        "hr": "Obojana fotografija cijelog spomenika Tegetthoffu",
+        "en": "Colored photograph of the entire Tegetthoff monument"
+      }
     },
     {
       "src": "galerija/povijest/povijest_30.jpg",
-      "description": "Povijesna fotografija 30"
+      "description": {
+        "hr": "Zgrada Zvjezdarnice (Specola) okružena parkom",
+        "en": "The Observatory building (Specola) surrounded by the park"
+      }
     },
     {
       "src": "galerija/povijest/povijest_31.jpg",
-      "description": "Povijesna fotografija 31"
+      "description": {
+        "hr": "Panoramska fotografija Pule iz zraka s parkom Monte Zaro i Zvjezdarnicom",
+        "en": "Aerial panoramic photo of Pula with Monte Zaro park and the Observatory"
+      }
     },
     {
       "src": "galerija/povijest/povijest_32.jpg",
-      "description": "Povijesna fotografija 32"
+      "description": {
+        "hr": "Pročelje zgrade Hidrografskog zavoda s mjernim instrumentima",
+        "en": "Facade of the Hydrographic Institute building with measuring instruments"
+      }
     },
     {
       "src": "galerija/povijest/povijest_33.jpg",
-      "description": "Povijesna fotografija 33"
+      "description": {
+        "hr": "Radovi na postavljanju spomenika Tegetthoffu, skela oko kipa",
+        "en": "Construction works on the Tegetthoff monument, scaffolding around the statue"
+      }
     },
     {
       "src": "galerija/povijest/povijest_34.jpg",
-      "description": "Povijesna fotografija 34"
+      "description": {
+        "hr": "Fontana u parku Monte Zaro okružena zelenilom",
+        "en": "Fountain in Monte Zaro park surrounded by greenery"
+      }
     },
     {
       "src": "galerija/povijest/povijest_35.jpg",
-      "description": "Povijesna fotografija 35"
+      "description": {
+        "hr": "Park Monte Zaro sa stubištem i fontanom ispred Zvjezdarnice",
+        "en": "Monte Zaro park with staircase and fountain in front of the Observatory"
+      }
     },
     {
       "src": "galerija/povijest/povijest_36.jpg",
-      "description": "Povijesna fotografija 36"
+      "description": {
+        "hr": "Djeca u parku Monte Zaro ispred fontane i stuba",
+        "en": "Children in Monte Zaro park in front of the fountain and stairs"
+      }
     },
     {
       "src": "galerija/povijest/povijest_37.jpg",
-      "description": "Povijesna fotografija 37"
+      "description": {
+        "hr": "Šetači u javnom vrtu na Monte Zaru",
+        "en": "Walkers in the public garden on Monte Zaro"
+      }
     },
     {
       "src": "galerija/povijest/povijest_38.jpg",
-      "description": "Povijesna fotografija 38"
+      "description": {
+        "hr": "Umjetnički prikaz (slika) parka i fontane na Monte Zaru",
+        "en": "Artistic depiction (painting) of the park and fountain on Monte Zaro"
+      }
     },
     {
       "src": "galerija/povijest/povijest_39.jpg",
-      "description": "Povijesna fotografija 39"
+      "description": {
+        "hr": "Ruševine Zvjezdarnice nakon bombardiranja u Drugom svjetskom ratu",
+        "en": "Ruins of the Observatory after bombing in World War II"
+      }
     },
     {
       "src": "galerija/povijest/povijest_40.jpg",
-      "description": "Povijesna fotografija 40"
+      "description": {
+        "hr": "Oštećena zgrada zvjezdarnice s kupolom nakon rata",
+        "en": "Damaged observatory building with dome after the war"
+      }
     },
     {
       "src": "galerija/povijest/povijest_41.jpg",
-      "description": "Povijesna fotografija 41"
+      "description": {
+        "hr": "Obnovljena zgrada Zvjezdarnice s novom kupolom",
+        "en": "Renovated Observatory building with a new dome"
+      }
     },
     {
       "src": "galerija/povijest/povijest_42.jpg",
-      "description": "Povijesna fotografija 42"
+      "description": {
+        "hr": "Pogled na poslijeratnu Zvjezdarnicu i ulaz za posjetitelje",
+        "en": "View of the post-war Observatory and visitor entrance"
+      }
     },
     {
       "src": "galerija/povijest/povijest_43.jpg",
-      "description": "Povijesna fotografija 43"
+      "description": {
+        "hr": "Fotografija spomenika Tegetthoffu iz 1996., pogled odozdo",
+        "en": "Photograph of the Tegetthoff monument from 1996, view from below"
+      }
     },
     {
       "src": "galerija/povijest/povijest_44.jpg",
-      "description": "Povijesna fotografija 44"
+      "description": {
+        "hr": "Model spomenika Tegetthoffu postavljen u Grazu",
+        "en": "Model of the Tegetthoff monument installed in Graz"
+      }
     },
     {
       "src": "galerija/povijest/povijest_45.jpg",
-      "description": "Povijesna fotografija 45"
+      "description": {
+        "hr": "Današnji izgled Zvjezdarnice, žuta fasada i obnovljena kupola",
+        "en": "Modern appearance of the Observatory, yellow facade and renovated dome"
+      }
     },
     {
       "src": "/galerija/povijest/1770125916276-orion.jpg",
