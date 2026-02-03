@@ -3,6 +3,111 @@
  * Handles: Navigation, Login Modal, Activity Loading, Language Toggle
  */
 
+const translations = {
+    hr: {
+        publication: 'Publikacija',
+        downloadPdf: 'Preuzmi PDF',
+        openLink: 'Otvori poveznicu',
+        noAbstract: 'Nema sažetka.',
+        noContent: 'Nema sadržaja.',
+        readMore: 'Klikni za više →',
+        errorLoading: 'Greška pri učitavanju sadržaja.',
+        serverError: 'Greška servera.',
+        successAdd: 'Rad uspješno dodan!',
+        errorAdd: 'Greška pri dodavanju.',
+        loginSuccess: 'Uspješna prijava!',
+        loginError: 'Pogrešni podaci!',
+        logout: 'Odjava',
+        login: 'Prijava',
+        noActivities: 'Nema aktivnosti za prikaz.',
+        noActivitiesYear: 'Nema aktivnosti za odabranu godinu.',
+        untitled: 'Bez naslova',
+        deleteConfirm: 'Jeste li sigurni da želite obrisati ovu aktivnost?',
+        deleteDisabled: 'Brisanje nije omogućeno na statičkoj demo verziji.',
+        publishSuccess: 'Aktivnost objavljena!',
+        publishError: 'Greška pri objavi',
+        publishDisabled: 'Objavljivanje nije omogućeno na statičkoj demo verziji.',
+        maxImages: 'Maksimalno 3 slike!',
+        allYears: 'Sve godine',
+        serverConnectionError: 'Greška pri povezivanju sa serverom',
+        // Services
+        serviceAdded: 'Servis dodan!',
+        serviceAddError: 'Greška pri dodavanju servisa.',
+        astroSunrise: 'Izlazak Sunca',
+        astroSunset: 'Zalazak Sunca',
+        astroMoonPhase: 'Faza Mjeseca',
+        astroDate: 'Datum',
+        tideTitle: 'PLIME I OSEKE ZA',
+        tideLevel: 'Razina mora (m)',
+        tideDisclaimer: '* Grafikoni su simulacije temeljene na mjesečevim fazama. Nisu za navigaciju.',
+        suncalcError: 'SunCalc biblioteka nije učitana.',
+        genericError: 'Došlo je do greške: ',
+        moonNew: 'Mlađak',
+        moonWaxingCrescent: 'Rastući srp',
+        moonFirstQuarter: 'Prva četvrt',
+        moonWaxingGibbous: 'Rastući izbočeni',
+        moonFull: 'Pun Mjesec',
+        moonWaningGibbous: 'Padajući izbočeni',
+        moonLastQuarter: 'Zadnja četvrt',
+        moonWaningCrescent: 'Padajući srp',
+        sunMoonTitle: 'Sunce i Mjesec -'
+    },
+    en: {
+        publication: 'Publication',
+        downloadPdf: 'Download PDF',
+        openLink: 'Open Link',
+        noAbstract: 'No abstract available.',
+        noContent: 'No content.',
+        readMore: 'Read more →',
+        errorLoading: 'Error loading content.',
+        serverError: 'Server error.',
+        successAdd: 'Paper successfully added!',
+        errorAdd: 'Error adding paper.',
+        loginSuccess: 'Login successful!',
+        loginError: 'Invalid credentials!',
+        logout: 'Logout',
+        login: 'Login',
+        noActivities: 'No activities to display.',
+        noActivitiesYear: 'No activities for selected year.',
+        untitled: 'Untitled',
+        deleteConfirm: 'Are you sure you want to delete this activity?',
+        deleteDisabled: 'Deletion is not enabled on static demo version.',
+        publishSuccess: 'Activity published!',
+        publishError: 'Error publishing',
+        publishDisabled: 'Publishing is not enabled on static demo version.',
+        maxImages: 'Max 3 images!',
+        allYears: 'All years',
+        serverConnectionError: 'Error connecting to server',
+        // Services
+        serviceAdded: 'Service added!',
+        serviceAddError: 'Error adding service.',
+        astroSunrise: 'Sunrise',
+        astroSunset: 'Sunset',
+        astroMoonPhase: 'Moon Phase',
+        astroDate: 'Date',
+        tideTitle: 'TIDES FOR',
+        tideLevel: 'Sea Level (m)',
+        tideDisclaimer: '* Charts are simulations based on moon phases. Not for navigation.',
+        suncalcError: 'SunCalc library not loaded.',
+        genericError: 'An error occurred: ',
+        moonNew: 'New Moon',
+        moonWaxingCrescent: 'Waxing Crescent',
+        moonFirstQuarter: 'First Quarter',
+        moonWaxingGibbous: 'Waxing Gibbous',
+        moonFull: 'Full Moon',
+        moonWaningGibbous: 'Waning Gibbous',
+        moonLastQuarter: 'Last Quarter',
+        moonWaningCrescent: 'Waning Crescent',
+        sunMoonTitle: 'Sun and Moon -'
+    }
+};
+
+function t(key) {
+    const isEnglish = window.location.pathname.includes('/en/');
+    const lang = isEnglish ? 'en' : 'hr';
+    return translations[lang][key] || key;
+}
+
 let allActivitiesData = [];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -64,12 +169,12 @@ async function loadHomepageContent(container, limit = 6) {
                 // Render Rad card
                 const isPdf = item.type === 'pdf';
                 const icon = isPdf ? '📄' : '🔗';
-                const linkText = isPdf ? 'Preuzmi PDF' : 'Otvori poveznicu';
+                const linkText = isPdf ? t('downloadPdf') : t('openLink');
                 return `
                 <div class="activity-card" style="border-left: 3px solid var(--accent-secondary);">
-                    <div class="activity-card__date">Publikacija | ${item.year}</div>
+                    <div class="activity-card__date">${t('publication')} | ${item.year}</div>
                     <h3 class="activity-card__title">${icon} ${item.title}</h3>
-                    <p class="activity-card__content" style="flex:1;">${item.abstract ? item.abstract.substring(0, 100) + '...' : 'Nema sažetka.'}</p>
+                    <p class="activity-card__content" style="flex:1;">${item.abstract ? item.abstract.substring(0, 100) + '...' : t('noAbstract')}</p>
                     <div style="margin-top: 1rem;">
                             <a href="${item.link}" target="_blank" class="btn btn--secondary btn--sm">${linkText}</a>
                     </div>
@@ -93,7 +198,7 @@ async function loadHomepageContent(container, limit = 6) {
 
     } catch (err) {
         console.error('Error loading homepage content:', err);
-        container.innerHTML = '<p>Greška pri učitavanju sadržaja.</p>';
+        container.innerHTML = `<p>${t('errorLoading')}</p>`;
     }
 }
 
@@ -131,17 +236,17 @@ function initRadoviPage() {
                 const result = await response.json();
 
                 if (result.success) {
-                    messageDiv.textContent = 'Rad uspješno dodan!';
+                    messageDiv.textContent = t('successAdd');
                     messageDiv.style.color = '#00ff88';
                     e.target.reset();
                     if (listContainer) loadRadovi(listContainer); // Reload list
                 } else {
-                    messageDiv.textContent = 'Greška pri dodavanju.';
+                    messageDiv.textContent = t('errorAdd');
                     messageDiv.style.color = '#ff4444';
                 }
             } catch (err) {
                 console.error(err);
-                messageDiv.textContent = 'Greška servera.';
+                messageDiv.textContent = t('serverError');
                 messageDiv.style.color = '#ff4444';
             }
         });
@@ -156,14 +261,14 @@ async function loadRadovi(container) {
         container.innerHTML = '';
 
         if (!radovi || radovi.length === 0) {
-            container.innerHTML = '<p style="color: var(--text-muted);">Nema objavljenih radova.</p>';
+            container.innerHTML = `<p style="color: var(--text-muted);">${t('noContent')}</p>`;
             return;
         }
 
         radovi.forEach(rad => {
             const isPdf = rad.type === 'pdf';
             const icon = isPdf ? '📄' : '🔗';
-            const linkText = isPdf ? 'Preuzmi PDF' : 'Otvori poveznicu';
+            const linkText = isPdf ? t('downloadPdf') : t('openLink');
 
             const card = document.createElement('div');
             card.className = 'activity-card'; // Reuse activity card style
@@ -172,7 +277,7 @@ async function loadRadovi(container) {
             card.innerHTML = `
                 <div class="activity-card__date">${rad.year} | ${rad.authors}</div>
                 <h3 class="activity-card__title">${icon} ${rad.title}</h3>
-                <p class="activity-card__content" style="flex:1;">${rad.abstract || 'Nema sažetka.'}</p>
+                <p class="activity-card__content" style="flex:1;">${rad.abstract || t('noAbstract')}</p>
                 <div style="margin-top: 1rem;">
                      <a href="${rad.link}" target="_blank" class="btn btn--secondary btn--sm">${linkText}</a>
                 </div>
@@ -182,7 +287,7 @@ async function loadRadovi(container) {
 
     } catch (err) {
         console.error(err);
-        container.innerHTML = '<p>Greška pri učitavanju.</p>';
+        container.innerHTML = `<p>${t('errorLoading')}</p>`;
     }
 }
 
@@ -196,7 +301,7 @@ function initActivityForm() {
     if (imageInput) {
         imageInput.addEventListener('change', () => {
             if (imageInput.files.length > 3) {
-                alert('Maksimalno 3 slike!');
+                alert(t('maxImages'));
                 imageInput.value = '';
             }
         });
@@ -234,21 +339,21 @@ function initActivityForm() {
 
                 if (data.success) {
                     if (messageDiv) {
-                        messageDiv.textContent = 'Aktivnost objavljena!';
+                        messageDiv.textContent = t('publishSuccess');
                         messageDiv.style.color = '#00ff88';
                     }
                     form.reset();
                     setTimeout(() => window.location.reload(), 1000);
                 } else {
                     if (messageDiv) {
-                        messageDiv.textContent = 'Greška pri objavi';
+                        messageDiv.textContent = t('publishError');
                         messageDiv.style.color = '#ff4444';
                     }
                 }
             } catch (err) {
                 console.error(err);
                 if (messageDiv) {
-                    messageDiv.textContent = 'Greška pri povezivanju sa serverom';
+                    messageDiv.textContent = t('serverConnectionError');
                     messageDiv.style.color = '#ff4444';
                 }
             }
@@ -351,7 +456,7 @@ function initLoginModal() {
             // Client-side mock login for GitHub Pages
             if (username === 'admin' && password === 'adip2026') {
                 localStorage.setItem('adip_token', 'demo-token');
-                loginMessage.textContent = 'Uspješna prijava!';
+                loginMessage.textContent = t('loginSuccess');
                 loginMessage.style.color = '#00ff88';
                 setTimeout(() => {
                     modal.classList.remove('active');
@@ -359,7 +464,7 @@ function initLoginModal() {
                     window.location.reload();
                 }, 1000);
             } else {
-                loginMessage.textContent = 'Pogrešni podaci!';
+                loginMessage.textContent = t('loginError');
                 loginMessage.style.color = '#ff4444';
             }
         });
@@ -374,11 +479,11 @@ function updateLoginButton() {
     function updateBtn(btn) {
         if (btn) {
             if (token) {
-                btn.textContent = 'Odjava';
+                btn.textContent = t('logout');
                 btn.classList.remove('btn--secondary');
                 btn.classList.add('btn--primary');
             } else {
-                btn.textContent = 'Prijava';
+                btn.textContent = t('login');
                 btn.classList.add('btn--secondary');
                 btn.classList.remove('btn--primary');
             }
@@ -398,11 +503,12 @@ function updateLoginButton() {
 // ==================== Load Activities ====================
 async function loadActivities(container, limit = 10, filterYear = null) {
     try {
-        const response = await fetch('data/aktivnosti.json');
+        // Use absolute path for robustness
+        const response = await fetch('/data/aktivnosti.json');
         allActivitiesData = await response.json();
 
         if (!allActivitiesData || allActivitiesData.length === 0) {
-            container.innerHTML = '<p style="color: var(--text-muted);">Nema aktivnosti za prikaz.</p>';
+            container.innerHTML = `<p style="color: var(--text-muted);">${t('noActivities')}</p>`;
             return;
         }
 
@@ -423,7 +529,7 @@ async function loadActivities(container, limit = 10, filterYear = null) {
         container.innerHTML = '';
 
         if (toShow.length === 0) {
-            container.innerHTML = '<p style="color: var(--text-muted);">Nema aktivnosti za odabranu godinu.</p>';
+            container.innerHTML = `<p style="color: var(--text-muted);">${t('noActivitiesYear')}</p>`;
             return;
         }
 
@@ -433,16 +539,16 @@ async function loadActivities(container, limit = 10, filterYear = null) {
             card.style.cursor = 'pointer';
             card.innerHTML = `
                 <div class="activity-card__date">${activity.date || 'N/A'}</div>
-                <h3 class="activity-card__title">${activity.title || 'Bez naslova'}</h3>
+                <h3 class="activity-card__title">${activity.title || t('untitled')}</h3>
                 <p class="activity-card__content">${truncateText(activity.content, 150)}</p>
-                <span style="color: var(--accent-primary); font-size: 0.85rem;">Klikni za više →</span>
+                <span style="color: var(--accent-primary); font-size: 0.85rem;">${t('readMore')}</span>
             `;
             card.addEventListener('click', () => showActivityModal(activity));
             container.appendChild(card);
         });
     } catch (err) {
         console.error('Error loading activities:', err);
-        container.innerHTML = '<p style="color: var(--text-muted);">Greška pri učitavanju aktivnosti.</p>';
+        container.innerHTML = `<p style="color: var(--text-muted);">${t('errorLoading')}</p>`;
     }
 }
 
@@ -453,7 +559,7 @@ function setupYearFilter(select, activities) {
     // Add "All" option
     const allOption = document.createElement('option');
     allOption.value = 'all';
-    allOption.textContent = 'Sve godine';
+    allOption.textContent = t('allYears');
     select.appendChild(allOption);
 
     years.forEach(year => {
@@ -495,7 +601,7 @@ function renderFilteredActivities(container, limit, filterYear) {
     container.innerHTML = '';
 
     if (toShow.length === 0) {
-        container.innerHTML = '<p style="color: var(--text-muted);">Nema aktivnosti za odabranu godinu.</p>';
+        container.innerHTML = `<p style="color: var(--text-muted);">${t('noActivitiesYear')}</p>`;
         return;
     }
 
@@ -505,9 +611,9 @@ function renderFilteredActivities(container, limit, filterYear) {
         card.style.cursor = 'pointer';
         card.innerHTML = `
             <div class="activity-card__date">${activity.date || 'N/A'}</div>
-            <h3 class="activity-card__title">${activity.title || 'Bez naslova'}</h3>
+            <h3 class="activity-card__title">${activity.title || t('untitled')}</h3>
             <p class="activity-card__content">${truncateText(activity.content, 150)}</p>
-            <span style="color: var(--accent-primary); font-size: 0.85rem;">Klikni za više →</span>
+            <span style="color: var(--accent-primary); font-size: 0.85rem;">${t('readMore')}</span>
         `;
         card.addEventListener('click', () => showActivityModal(activity));
         container.appendChild(card);
@@ -544,8 +650,8 @@ function initActivityModal() {
     if (deleteBtn) {
         deleteBtn.addEventListener('click', async () => {
             if (!currentActivityId) return;
-            if (!confirm('Jeste li sigurni da želite obrisati ovu aktivnost?')) return;
-            alert('Brisanje nije omogućeno na statičkoj demo verziji.');
+            if (!confirm(t('deleteConfirm'))) return;
+            alert(t('deleteDisabled'));
         });
     }
 
@@ -570,7 +676,7 @@ function showActivityModal(activity) {
     currentActivityId = activity.id;
 
     if (modal && title && content) {
-        title.textContent = activity.title || 'Bez naslova';
+        title.textContent = activity.title || t('untitled');
         date.textContent = activity.date || '';
         content.textContent = activity.content || '';
 
@@ -607,24 +713,41 @@ function showActivityModal(activity) {
 // ==================== Language Toggle ====================
 function initLanguageToggle() {
     const langToggle = document.getElementById('lang-toggle');
+    if (!langToggle) return;
 
-    if (langToggle) {
-        const currentLang = localStorage.getItem('adip_lang') || 'hr';
-        langToggle.textContent = currentLang === 'hr' ? 'EN' : 'HR';
+    // Detect language from URL
+    const path = window.location.pathname;
+    const isEnglish = path.includes('/en/');
 
-        langToggle.addEventListener('click', () => {
-            const newLang = currentLang === 'hr' ? 'en' : 'hr';
-            localStorage.setItem('adip_lang', newLang);
-            // In a real app, this would switch the page content
-            alert('Prijevod na engleski jezik je u pripremi / English translation coming soon');
-        });
-    }
+    // Set Button Text
+    langToggle.textContent = isEnglish ? 'HR' : 'EN';
+
+    langToggle.addEventListener('click', () => {
+        let newPath;
+
+        if (isEnglish) {
+            // Switch to Croatian (remove /en/)
+            newPath = path.replace('/en/', '/');
+            // Handle edge case where /en/ might be at the start but replaced to //
+            newPath = newPath.replace('//', '/');
+        } else {
+            // Switch to English (prepend /en/)
+            // Ensure we handle root path correctly
+            if (path === '/' || path === '/index.html') {
+                newPath = '/en/index.html';
+            } else {
+                newPath = '/en' + path;
+            }
+        }
+
+        // Redirect
+        window.location.href = newPath;
+    });
 }
 
 // ==================== Post Activity (for admin) ====================
-// ==================== Post Activity (for admin) ====================
 async function postActivity(title, content) {
-    alert('Objavljivanje nije omogućeno na statičkoj demo verziji.');
+    alert(t('publishDisabled'));
     return { success: false };
 }
 
@@ -698,7 +821,8 @@ function updateLightboxImage() {
 // Load gallery from JSON
 async function loadGallery(category, containerId) {
     try {
-        const response = await fetch('data/galerija.json');
+        // Use absolute path
+        const response = await fetch('/data/galerija.json');
         const data = await response.json();
 
         let images;

@@ -307,6 +307,56 @@ app.post('/api/radovi/upload', radoviUpload.single('file'), (req, res) => {
     });
 });
 
+// ==================== SERVISI API ====================
+
+const SERVISI_FILE = path.join(__dirname, 'data', 'servisi.json');
+
+// Get all services
+app.get('/api/servisi', (req, res) => {
+    fs.readFile(SERVISI_FILE, 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.json([]);
+        }
+        try {
+            res.json(JSON.parse(data));
+        } catch (e) {
+            res.json([]);
+        }
+    });
+});
+
+// Add new service
+app.post('/api/servisi', (req, res) => {
+    const { title, url, type } = req.body;
+
+    const newService = {
+        id: Date.now(),
+        title: title || 'Novi servis',
+        url: url,
+        type: type || 'iframe', // iframe or image
+        dateAdded: new Date().toISOString()
+    };
+
+    fs.readFile(SERVISI_FILE, 'utf8', (err, data) => {
+        let services = [];
+        if (!err && data) {
+            try {
+                services = JSON.parse(data);
+            } catch (e) { console.error(e); }
+        }
+
+        services.push(newService);
+
+        fs.writeFile(SERVISI_FILE, JSON.stringify(services, null, 2), (err) => {
+            if (err) {
+                return res.status(500).json({ success: false });
+            }
+            res.json({ success: true, service: newService });
+        });
+    });
+});
+
 // Start Server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

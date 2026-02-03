@@ -1,343 +1,284 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="hr" version="XHTML+RDFa 1.0" dir="ltr"
-  xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/terms/"
-  xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:og="http://ogp.me/ns#"
-  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:sioc="http://rdfs.org/sioc/ns#"
-  xmlns:sioct="http://rdfs.org/sioc/types#" xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<!DOCTYPE html>
+<html lang="hr">
 
-<head profile="http://www.w3.org/1999/xhtml/vocab">
-  <title>
-    Astronomsko društvo &quot;ISTRA&quot; Pula | Pulska Zvjezdarnica
-  </title>
-  <meta name="ver" content="bh7-1.6" />
-  <meta http-equiv="X-UA-Compatible" content="edge" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link rel="stylesheet" href="css/astronomsko-drustvo-istra-pula.css" />
-  <link rel="shortcut icon" href="sites/all/themes/black_hole/favicon.ico" type="image/vnd.microsoft.icon" />
-  <meta content=' Astronomsko društvo "ISTRA" Pula' about="/astronomsko-drustvo-istra-pula" property="dc:title" />
-  <link rel="stylesheet" href="css/sablona.css" />
-  <link rel="canonical" href="astronomsko-drustvo-istra-pula.html" />
-  <meta name="Generator" content="Drupal 7 (http://drupal.org)" />
-  <link rel="shortlink" href="node/1.html" />
-  <style type="text/css" media="all">
-    @import url("http://adip.hr/modules/system/system.base.css?n3z5fc");
-    @import url("http://adip.hr/modules/system/system.menus.css?n3z5fc");
-    @import url("http://adip.hr/modules/system/system.messages.css?n3z5fc");
-    @import url("http://adip.hr/modules/system/system.theme.css?n3z5fc");
-  </style>
-  <style type="text/css" media="all">
-    @import url("sites/all/modules/date/date_api/date.css%3Fn3z5fc.css");
-    @import url("sites/all/modules/date/date_popup/themes/datepicker.1.7.css%3Fn3z5fc.css");
-    @import url("http://adip.hr/modules/field/theme/field.css?n3z5fc");
-    @import url("http://adip.hr/modules/node/node.css?n3z5fc");
-    @import url("http://adip.hr/modules/search/search.css?n3z5fc");
-    @import url("http://adip.hr/modules/user/user.css?n3z5fc");
-    @import url("sites/all/modules/views/css/views.css%3Fn3z5fc.css");
-  </style>
-  <style type="text/css" media="all">
-    @import url("sites/all/modules/ckeditor/ckeditor.css%3Fn3z5fc.css");
-    @import url("sites/all/modules/colorbox/styles/default/colorbox_style.css%3Fn3z5fc.css");
-    @import url("sites/all/modules/ctools/css/ctools.css%3Fn3z5fc.css");
-    @import url("sites/all/modules/panels/css/panels.css%3Fn3z5fc.css");
-  </style>
-  <style type="text/css" media="all">
-    @import url("sites/all/themes/black_hole/css/style-bh.css%3Fn3z5fc.css");
-    @import url("sites/all/themes/black_hole/css/protostar.css%3Fn3z5fc.css");
-    @import url("sites/all/themes/black_hole/_custom/custom-style.css%3Fn3z5fc.css");
-    @import url("sites/all/themes/black_hole/css/round.css%3Fn3z5fc.css");
-  </style>
-  <style type="text/css" media="print">
-    @import url("sites/all/themes/black_hole/css/print.css%3Fn3z5fc.css");
-  </style>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Astronomsko društvo "ISTRA" Pula | Pulska Zvjezdarnica</title>
+  <meta name="description" content="O Astronomskom društvu Istra Pula - povijest, djelatnost i zvjezdarnica">
+  <link rel="icon" href="sites/all/themes/black_hole/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/modern.css">
+  <style>
+    /* Specific styles for this page */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
 
-  <!--[if lte IE 6]>
-      <link
-        type="text/css"
-        rel="stylesheet"
-        href="http://adip.hr/sites/all/themes/black_hole/css/ie6.css?n3z5fc"
-        media="all"
-      />
-    <![endif]-->
+    .image-card {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
 
-  <!--[if IE 7]>
-      <link
-        type="text/css"
-        rel="stylesheet"
-        href="http://adip.hr/sites/all/themes/black_hole/css/ie7.css?n3z5fc"
-        media="all"
-      />
-    <![endif]-->
-  <script type="text/javascript" src="http://adip.hr/misc/jquery.js?v=1.4.4"></script>
-  <script type="text/javascript" src="http://adip.hr/misc/jquery.once.js?v=1.2"></script>
-  <script type="text/javascript" src="http://adip.hr/misc/drupal.js?n3z5fc"></script>
-  <script type="text/javascript"
-    src="sites/default/files/languages/hr_B2HHOlUFDpz_9u9tRYTUYab4TsnQlB_Jvoy3k6sulWg.js%3Fn3z5fc"></script>
-  <script type="text/javascript" src="sites/all/libraries/colorbox/jquery.colorbox-min.js%3Fn3z5fc"></script>
-  <script type="text/javascript" src="sites/all/modules/colorbox/js/colorbox.js%3Fn3z5fc"></script>
-  <script type="text/javascript" src="sites/all/modules/colorbox/styles/default/colorbox_style.js%3Fn3z5fc"></script>
-  <script type="text/javascript" src="sites/all/modules/colorbox/js/colorbox_load.js%3Fn3z5fc"></script>
-  <script type="text/javascript" src="sites/all/modules/colorbox/js/colorbox_inline.js%3Fn3z5fc"></script>
-  <script type="text/javascript" src="sites/all/themes/black_hole/js/jquery.hoverIntent.minified.js%3Fn3z5fc"></script>
-  <script type="text/javascript" src="sites/all/themes/black_hole/js/dropdown.js%3Fn3z5fc"></script>
-  <script src="js/astronomsko-drustvo-istra-pula.js" type="text/javascript"></script>
-  <script src="js/loadContent.js" defer></script>
-  <script src="js/inject-header.js" defer></script>
+    .image-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .image-caption {
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .telescope-highlight {
+      margin: 2rem 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+
+    .telescope-highlight img {
+      width: 100%;
+      display: block;
+    }
+
+    .telescope-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    }
+  </style>
 </head>
 
-<body id="pid-astronomsko-drustvo-istra-pula"
-  class="html not-front not-logged-in no-sidebars page-node page-node- page-node-1 node-type-stranica not-admin section-astronomsko-drustvo-istra-pula page-astronomsko-drustvo-istra-pula layout-jello var bnicons32 picons himg lg-hr">
-  <div id="skip-nav">
-    <a href="astronomsko-drustvo-istra-pula.html#main">Jump to Navigation</a>
-  </div>
-
-  <header class="clearfix">
-    <div class="logo-title">
-      <a class="logo" href="index.html" title="Početna">
-        <img src="sites/all/themes/black_hole/logo.png" alt="Početna" />
-      </a>
-      <div id="name-and-slogan">
-        <h1 class="main-title">
-          <a href="index.html" title="Početna">Pulska Zvjezdarnica</a>
-        </h1>
-        <h2 class="drugi-naslov">Astronomsko društvo "Istra" Pula - ADIP</h2>
-      </div>
+<body class="page-blur">
+  <!-- Header -->
+  <header class="header">
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
 
-    <div class="user-links">
-      <ul class="links inline">
-        <li class="first">
-          <a href="user.html" rel="nofollow">Prijava</a>
-        </li>
-        <li>
-          <a href="http://adip.hr/user/register" rel="nofollow">Registriraj se</a>
-        </li>
-      </ul>
+    <a href="index.html" class="header__logo">
+      <img src="sites/all/themes/black_hole/logo.png" alt="ADIP Logo">
+      <div>
+        <div class="header__title">Pulska Zvjezdarnica</div>
+        <div class="header__subtitle">Astronomsko društvo "Istra" Pula</div>
+      </div>
+    </a>
+
+    <nav class="nav" id="main-nav">
+      <button class="nav__close" id="nav-close">✕</button>
+      <a href="index.html" class="nav__link">🏠 Naslovna</a>
+      <a href="aktivnosti.html" class="nav__link">📅 Aktivnosti</a>
+      <a href="galerija-slika.html" class="nav__link">🖼️ Galerija</a>
+      <a href="povijest-zvjezdarnice.html" class="nav__link">📜 Povijest</a>
+      <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Posjeti</a>
+      <a href="radovi.html" class="nav__link">📚 Radovi</a>
+      <a href="servisi.html" class="nav__link">⚙️ Servisi</a>
+      <a href="astronomsko-drustvo-istra-pula.html" class="nav__link active">ℹ️ O nama</a>
+      <div class="nav__spacer"></div>
+      <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Prijava</button>
+    </nav>
+    <div class="nav-overlay" id="nav-overlay"></div>
+
+    <div class="user-controls">
+      <button class="lang-toggle" id="lang-toggle">EN</button>
     </div>
   </header>
 
-  <ul class="nav-buttons">
-    <li class="menu-218 first">
-      <a href="index.html" title="">Naslovna</a>
-    </li>
-    <li class="menu-575">
-      <a href="aktivnosti.html">Aktivnosti</a>
-    </li>
-    <li class="menu-583">
-      <a href="servisi.html">Servisi</a>
-    </li>
-    <li class="menu-421 active-trail">
-      <a href="povijest-zvjezdarnice.html" title="" class="active-trail">Povijest</a>
-    </li>
-    <li class="menu-366">
-      <a href="posjet-pulskoj-zvjezdarnici.html" title="">Posjeti</a>
-    </li>
-    <li class="menu-571">
-      <a href="galerija-slika.html" title="">Galerija</a>
-    </li>
-    <li class="menu-582">
-      <a href="astrofotografija.html" title="">Astrofoto</a>
-    </li>
-    <li class="menu-584">
-      <a href="index.html" title="">Radovi</a>
-    </li>
-    <li class="menu-365 last">
-      <a href="astronomsko-drustvo-istra-pula.html">O nama</a>
-    </li>
-  </ul>
+  <!-- Page Content -->
+  <main class="page-content">
+    <div class="container">
+      <div class="section__header" style="padding-top: 2rem;">
+        <h1 class="section__title">Astronomsko društvo <span class="text-gradient">"ISTRA"</span> Pula</h1>
+        <p class="section__subtitle">Povijest, misija i djelovanje društva</p>
+      </div>
 
-  <div class="content">
-    <div class="easy-breadcrumb">
-      <a href="index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Naslovnica</a><span
-        class="easy-breadcrumb_segment-separator"> &gt;&gt; </span><span
-        class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Astronomsko društvo "ISTRA" Pula</span>
+      <div class="glass-card">
+        <div class="text-content">
+          <p>
+            Astronomsko društvo "Istra" je na poticaj zainteresiranih građana i
+            školske mladeži utemeljeno 27. 12. 1973. godine. Najvažnija zadaća
+            Društva je bila i ostala do danas popularizacija astronomije.
+          </p>
+          <p>
+            Kako Društvo nije imalo svoje prostorije, prva su se promatranja nebeskih
+            tijela za članove i građanstvo održavala na terasi u Lenjinovoj ulici
+            br. 10. (sada Flanatička ulica). Društvo je odmah po utemeljenju
+            postalo član Narodne tehnike Pula (sada Zajednica tehničke kulture
+            grada Pule), tako da su sastanci i prigodna predavanja održavani u
+            njenim prostorima.
+          </p>
+          <p>
+            U svrhu promidžbe i pridobivanja novih članova,
+            povremeno su na gradska šetališta postavljani teleskopi, dok su u
+            svrhu pridobivanja školske mladeži utemeljene sekcije po školama. U to
+            vrijeme se zbog teškoća pri nabavi teleskopa, dosta napora ulagalo i u
+            njihovu samoizradu.
+          </p>
+
+          <div class="image-grid">
+            <div class="image-card">
+              <img src="http://www.adip.hr/sites/default/files/images/Lenjinova_10a-m.jpg" alt="Lenjinova noću"
+                loading="lazy" />
+              <div class="image-caption">Na terasi u Lenjinovoj ulici noću</div>
+            </div>
+            <div class="image-card">
+              <img src="http://www.adip.hr/sites/default/files/images/Lenjinova_10b-m.jpg" alt="Lenjinova danju"
+                loading="lazy" />
+              <div class="image-caption">Na terasi u Lenjinovoj ulici danju</div>
+            </div>
+            <div class="image-card">
+              <img src="http://www.adip.hr/sites/default/files/images/Mladi_01-m.jpg" alt="Korado Korlević"
+                loading="lazy" />
+              <div class="image-caption">U sredini: Korado Korlević</div>
+            </div>
+            <div class="image-card">
+              <img src="http://www.adip.hr/sites/default/files/images/100_god_Istra-m.jpg" alt="Asteroid Istra"
+                loading="lazy" />
+              <div class="image-caption">100. godina otkrića asteroida "Istra" 1978.</div>
+            </div>
+            <div class="image-card">
+              <img src="http://www.adip.hr/sites/default/files/images/Djemo-m.jpg" alt="Džemal Rupić" loading="lazy" />
+              <div class="image-caption">Samogradnja: pok. Džemal Rupić - Džemo</div>
+            </div>
+            <div class="image-card">
+              <img src="http://www.adip.hr/sites/default/files/images/Mladi_02-m.jpg" alt="Mladi" loading="lazy" />
+              <div class="image-caption">Kontinuirani rad s mladima</div>
+            </div>
+          </div>
+
+          <h2 class="text-gradient" style="margin-top: 3rem; margin-bottom: 1.5rem;">Obnova Zvjezdarnice</h2>
+
+          <p>
+            Ključna stvar za razvoj Društva se zbila 1979. godine. Tada je na
+            uporabu dobiven preostali dio nekadašnje austrijske Mornaričke
+            zvjezdarnice u parku Monte Zaro (tada park Ruđera Boškovića). Kako je
+            zgrada bila u jako zapuštenom stanju, odmah je pokrenuta akcija za
+            njeno obnavljanje.
+          </p>
+          <p>
+            Glavna kupola je uz pomoć rečene tvrtke
+            obnovljena tek u prvom dijelu 1999. godine, nažalost u manjem opsegu
+            od predviđenog, no i to je bila velika stvar za pulske astronome.
+          </p>
+
+          <div class="alert alert--info" style="margin: 2rem 0; border-left: 4px solid var(--accent-primary);">
+            Pulsku Zvjezdarnicu je 1983. godine Regionalni zavod za zaštitu spomenika kulture iz Rijeke registrirao kao
+            <strong>spomenik kulture</strong>.
+          </div>
+
+          <p>
+            Sljedeća faza obnove je otpočela 2006. godine, kad je uz materijalnu
+            potporu gradskih vlasti u zadnji tren obnovljen ravni krov nad
+            učionicom i salom za predavanja, te je istodobno prepravljen u terasu
+            za ljetna promatranja i predavanja.
+          </p>
+
+          <p>
+            Smještena na jednom od najljepših mjesta u Puli, nadomak samoga
+            gradskog središta, s pogledom koji se s nje pruža prema pulskom
+            zaljevu i luci, stara pulska Zvjezdarnica je zaslužila cjelovitu
+            obnovu kako bi dostojna znanstvenih otkrića koja su sa nje učinjena,
+            svojim izgledom i sadržajima oplemenila povijesni i kulturni sadržaj
+            našeg tri tisućljetnog grada.
+          </p>
+
+          <p>
+            Iako sadašnja pulska Zvjezdarnica nema ni značaj ni ulogu one
+            nekadašnje iz druge polovine XIX stoljeća, kada je pod okriljem
+            dvoglavog orla nestale austro-ugarske monarhije bila jedno od mjesta
+            gdje je plamtjela luč znanosti, obje veže nit povijesne opstojnosti.
+            <strong>Ako ne drugo, sada kao i u vrijeme naših slavnih prethodnika, isto je
+              tlo pod nama i iste su zvijezde nad nama.</strong>
+          </p>
+
+          <h2 class="text-gradient" style="margin-top: 3rem; margin-bottom: 1.5rem;">Instrumenti</h2>
+
+          <div class="telescope-highlight">
+            <img src="http://www.adip.hr/sites/default/files/images/cge11.jpg" alt="Teleskop Celestron 11 CGE"
+              loading="lazy" />
+          </div>
+
+          <p>
+            U četiri metarskoj kupoli pulske Zvjezdarnice postavljen je krajem
+            2006. godine katadioptrički teleskop "Celestron 11 CGE" sa promjerom
+            objektiva od 11 inča i žarišnom daljinom od skoro 3000 mm (F10),
+            umjesto teleskopa "Celestron 8" koji je bio kupljen davne 1975. godine
+            i koji je do sada vjerno služio pulskim astronomima.
+          </p>
+          <p>
+            Uz ta dva teleskopa, na Zvjezdarnici se nalaze još nekoliko manjih
+            prijenosnih teleskopa sa promjerima objektiva od 200, 100, 90, 80, 70
+            i 50 mm, dvogledi, kao i više različitih teleobjektiva i filtera,
+            druge, večinom elektronske opreme.
+          </p>
+
+        </div>
+      </div>
     </div>
-    <div class="main-content">
-      <h1 class="title">Astronomsko društvo &quot;ISTRA&quot; Pula</h1>
+  </main>
 
-      <div class="text-div">
-        Astronomsko društvo "Istra" je na poticaj zainteresiranih građana i
-        školske mladeži utemeljeno 27. 12. 1973. godine. Najvažnija zadaća
-        Društva je bila i ostala do danas popularizacija astronomije. Kako
-        Društvo nije imalo svoje prostorije, prva su se promatranja nebeskih
-        tijela za članove i građanstvo održavala na terasi u Lenjinovoj ulici
-        br. 10. (sada Flanatička ulica). Društvo je odmah po utemeljenju
-        postalo član Narodne tehnike Pula (sada Zajednica tehničke kulture
-        grada Pule), tako da su sastanci i prigodna predavanja održavani u
-        njenim prostorima. U svrhu promidžbe i pridobivanja novih članova,
-        povremeno su na gradska šetališta postavljani teleskopi, dok su u
-        svrhu pridobivanja školske mladeži utemeljene sekcije po školama. U to
-        vrijeme se zbog teškoća pri nabavi teleskopa, dosta napora ulagalo i u
-        njihovu samoizradu.
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__contact">
+      <strong>Astronomsko društvo "Istra" Pula</strong><br>
+      <a href="https://www.ztkpula.hr/hr/" target="_blank"
+        style="color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.5);">Zajednica
+        tehničke kulture Pula</a><br>
+      Glavinićev uspon 1, 52100 Pula - HR<br>
+      Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: 091/214-1966
+    </div>
+  </footer>
+
+  <!-- Login Modal -->
+  <div class="modal-overlay" id="login-modal">
+    <div class="modal">
+      <div class="modal__header">
+        <h3 class="modal__title">Prijava</h3>
+        <p style="color: var(--text-secondary);">Unesite vaše podatke</p>
       </div>
-
-      <table class="tablica" cellpadding="5" cellspacing="1">
-        <tbody>
-          <tr>
-            <td class="rtecenter">
-              <img alt="" src="http://www.adip.hr/sites/default/files/images/Lenjinova_10a-m.jpg"
-                class="lenjinova-nocu-slika" /><br />
-              Na terasi u Lenjinovoj ulici noću
-            </td>
-            <td class="rtecenter">
-              <img alt="" src="http://www.adip.hr/sites/default/files/images/Lenjinova_10b-m.jpg"
-                class="lenjinova-danju-slika" /><br />
-              Na terasi u Lenjinovoj ulici danju
-            </td>
-            <td class="rtecenter">
-              <img alt="" src="http://www.adip.hr/sites/default/files/images/Mladi_01-m.jpg"
-                class="mladi-slika" /><br />
-              U sredini: Korado Korlević
-            </td>
-          </tr>
-          <tr>
-            <td class="rtecenter">
-              <img alt="" src="http://www.adip.hr/sites/default/files/images/100_god_Istra-m.jpg"
-                class="astereoid-istra-slika" /><br />
-              100. godina otkrića asteroida "Istra" 1978.<br />
-            </td>
-            <td class="rtecenter">
-              <img alt="" src="http://www.adip.hr/sites/default/files/images/Djemo-m.jpg" class="djemo-slika" /><br />
-              Samogradnja: pok. Džemal Rupić - Džemo
-            </td>
-            <td class="rtecenter">
-              <img alt="" src="http://www.adip.hr/sites/default/files/images/Mladi_02-m.jpg"
-                class="mladi-1-slika" /><br />
-              Kontinuirani rad s mladima
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="text-div">
-        Ključna stvar za razvoj Društva se zbila 1979. godine. Tada je na
-        uporabu dobiven preostali dio nekadašnje austrijske Mornaričke
-        zvjezdarnice u parku Monte Zaro (tada park Ruđera Boškovića). Kako je
-        zgrada bila u jako zapuštenom stanju, odmah je pokrenuta akcija za
-        njeno obnavljanje. To je i djelomično učinjeno uz pomoć šire društvene
-        zajednice, no to je još uvijek bilo daleko od potrebnog. Neobnovljena
-        je ostala promatračka kupola, tako da su se promatranja morala
-        obavljati sa terase, što je bilo vrlo nepraktično i nadasve
-        neatraktivno. Pokušaj obnove kupole je pod pokroviteljstvom pulskog
-        brodogradilišta "Uljanik" poduzet 1989. godine, no to zbog tada
-        predstojećih političkih promjena i ratnih zbivanja vezanih uz to, nije
-        bilo moguće provesti. Glavna kupola je uz pomoć rečene tvrtke
-        obnovljena tek u prvom dijelu 1999. godine, nažalost u manjem opsegu
-        od predviđenog, no i to je bila velika stvar za pulske astronome.
-      </div>
-
-      <div class="text-div">
-        Pulsku Zvjezdarnicu je zalaganjem Društva, Regionalni zavod za zaštitu
-        spomenika kulture iz Rijeke 1983. godine registrirao kao spomenik
-        kulture. Sada nadzor nad zaštitom Zvjezdarnice kao zaštićenim
-        kulturnim dobrom provodi Konzervatorski odjel Ministarstva kulture RH
-        u Puli.
-      </div>
-
-      <div class="text-div">
-        Sljedeća faza obnove je otpočela 2006. godine, kad je uz materijalnu
-        potporu gradskih vlasti u zadnji tren obnovljen ravni krov nad
-        učionicom i salom za predavanja, te je istodobno prepravljen u terasu
-        za ljetna promatranja i predavanja koja se održavaju tijekom
-        klimatološki povoljnijeg dijela godine.
-      </div>
-
-      <div class="text-div">
-        Iduće, 2007. godine je obnovljen sanitarni čvor, te saniran podrum.
-        2008. godine je sanirana terasa oko glavne kupole, a 2009. je
-        obnovljena fasada. Time je veći dio poslova oko sanacije Pulske
-        Zvjezdarnice dogotovljen. Ostalo je još nekoliko manjih zahvata koji
-        će se odraditi u skladu s novčanom potporom Grada Pule, koji je i
-        vlasnik objekta.
-      </div>
-
-      <div class="text-div">
-        Smještena na jednom od najljepših mjesta u Puli, nadomak samoga
-        gradskog središta, s pogledom koji se s nje pruža prema pulskom
-        zaljevu i luci, stara pulska Zvjezdarnica je zaslužila cjelovitu
-        obnovu kako bi dostojna znanstvenih otkrića koja su sa nje učinjena,
-        svojim izgledom i sadržajima oplemenila povijesni i kulturni sadržaj
-        našeg tri tisućljetnog grada.
-      </div>
-
-      <div class="text-div">
-        Članovi Društva se u Zvjezdarnici sastaju u večernjim satima po
-        prethodnom dogovoru. Uz druženje, vrše se promatranja za članove i
-        posjetitelje, održavaju prigodna tematska predavanja, prate novosti na
-        internetu, te izmjenjuju iskustva. Sve vrijeme postojanja Društva,
-        naši članovi pozorno prate događaje na nebu kao što su to pojave
-        kometa, pomrčine Sunca i Mjeseca i drugo, te unutar svojih skromnih
-        materijalnih mogućnosti organiziraju promatranja za sve zainteresirane
-        dajući o tome obavijest u medijima.
-      </div>
-
-      <div class="text-div">
-        Iako sadašnja pulska Zvjezdarnica nema ni značaj ni ulogu one
-        nekadašnje iz druge polovine XIX stoljeća, kada je pod okriljem
-        dvoglavog orla nestale austro-ugarske monarhije bila jedno od mjesta
-        gdje je plamtjela luč znanosti, obje veže nit povijesne opstojnosti.
-        Ako ne drugo, sada kao i u vrijeme naših slavnih prethodnika, isto je
-        tlo pod nama i iste su zvijezde nad nama.
-      </div>
-
-      <h2 class="podnaslov rtejustify">INSTRUMENTI</h2>
-
-      <img alt="" src="http://www.adip.hr/sites/default/files/images/cge11.jpg" class="teleskop-slika" />
-
-      <div class="text-div">
-        U četiri metarskoj kupoli pulske Zvjezdarnice postavljen je krajem
-        2006. godine katadioptrički teleskop "Celestron 11 CGE" sa promjerom
-        objektiva od 11 inča i žarišnom daljinom od skoro 3000 mm (F10),
-        umjesto teleskopa "Celestron 8" koji je bio kupljen davne 1975. godine
-        i koji je do sada vjerno služio pulskim astronomima.
-      </div>
-
-      <div class="text-div">
-        Teleskop "Celestron 8" će biti prepravljen u prijenosni i moći će ga
-        se tijekom klimatološki povoljnijeg dijela godine postaviti na novu
-        terasu pulske Zvjezdarnice.
-      </div>
-
-      <div class="text-div">
-        Uz ta dva teleskopa, na Zvjezdarnici se nalaze još nekoliko manjih
-        prijenosnih teleskopa sa promjerima objektiva od 200, 100, 90, 80, 70
-        i 50 mm, dvogledi, kao i više različitih teleobjektiva i filtera,
-        druge, večinom elektronske opreme.
-      </div>
+      <form id="login-form">
+        <div class="form-group">
+          <label class="form-label">Korisničko ime</label>
+          <input type="text" class="form-input" id="login-username" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Lozinka</label>
+          <input type="password" class="form-input" id="login-password" required>
+        </div>
+        <div id="login-message" style="margin-bottom: 1rem; font-size: 0.9rem;"></div>
+        <button type="submit" class="btn btn--primary" style="width: 100%;">Prijavi se</button>
+      </form>
+      <button class="btn btn--secondary" style="width: 100%; margin-top: 0.5rem;" id="close-modal">Odustani</button>
     </div>
   </div>
 
-  <hr class="division-line" />
-
-  <ul id="navlist2" class="links clearfix nav-bottom">
-    <li class="menu-218 first">
-      <a href="index.html" title="">Naslovna</a>
-    </li>
-    <li class="menu-575">
-      <a href="aktivnosti.html">Aktivnosti</a>
-    </li>
-    <li class="menu-583"><a href="servisi.html">Servisi</a></li>
-    <li class="menu-421 active-trail">
-      <a href="povijest-zvjezdarnice.html" title="" class="active-trail">Povijest</a>
-    </li>
-    <li class="menu-366">
-      <a href="posjet-pulskoj-zvjezdarnici.html" title="">Posjeti</a>
-    </li>
-    <li class="menu-571">
-      <a href="galerija-slika.html" title="">Galerija</a>
-    </li>
-    <li class="menu-582">
-      <a href="astrofotografija.html" title="">Astrofoto</a>
-    </li>
-    <li class="menu-584">
-      <a href="index.html" title="">Radovi</a>
-    </li>
-    <li class="menu-365 last">
-      <a href="astronomsko-drustvo-istra-pula.html" class="active">O nama</a>
-    </li>
-  </ul>
-
-  <footer class="rtecenter"></footer>
-  <!-- /block -->
+  <script src="js/main.js"></script>
+  <!-- <script src="js/astronomsko-drustvo-istra-pula.js"></script> -->
 </body>
 
 </html>
