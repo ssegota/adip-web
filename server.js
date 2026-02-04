@@ -180,13 +180,16 @@ app.get('/api/galerija', (req, res) => {
 });
 
 // Gallery upload with category support
+// Top-level gallery categories (not astrofotografija subcategories)
+const topLevelCategories = ['povijest', 'posjete', 'ostalo'];
+
 const galleryStorage = multer.diskStorage({
     destination: function (req, file, cb) {
         const category = req.body.category || 'povijest';
         let dir = 'galerija/';
 
-        if (category === 'povijest') {
-            dir += 'povijest/';
+        if (topLevelCategories.includes(category)) {
+            dir += category + '/';
         } else {
             dir += 'astrofotografija/' + category + '/';
         }
@@ -213,23 +216,26 @@ app.post('/api/galerija/upload', galleryUpload.single('image'), (req, res) => {
     const filename = req.file.filename;
 
     let imagePath;
-    if (category === 'povijest') {
-        imagePath = '/galerija/povijest/' + filename;
+    if (topLevelCategories.includes(category)) {
+        imagePath = '/galerija/' + category + '/' + filename;
     } else {
         imagePath = '/galerija/astrofotografija/' + category + '/' + filename;
     }
 
     // Update galerija.json
     fs.readFile(GALLERY_FILE, 'utf8', (err, data) => {
-        let gallery = { povijest: [], astrofotografija: {} };
+        let gallery = { povijest: [], astrofotografija: {}, posjete: [], ostalo: [] };
         if (!err) {
             gallery = JSON.parse(data);
         }
 
         const newImage = { src: imagePath, description: description };
 
-        if (category === 'povijest') {
-            gallery.povijest.push(newImage);
+        if (topLevelCategories.includes(category)) {
+            if (!gallery[category]) {
+                gallery[category] = [];
+            }
+            gallery[category].push(newImage);
         } else {
             if (!gallery.astrofotografija[category]) {
                 gallery.astrofotografija[category] = [];
@@ -398,15 +404,17 @@ app.post('/api/galerija/delete', (req, res) => {
             return res.status(500).json({ success: false });
         }
 
-        let gallery = { povijest: [], astrofotografija: {} };
+        let gallery = { povijest: [], astrofotografija: {}, posjete: [], ostalo: [] };
         try {
             gallery = JSON.parse(data);
         } catch (e) {
             return res.status(500).json({ success: false });
         }
 
-        if (category === 'povijest') {
-            gallery.povijest = gallery.povijest.filter(img => img.src !== src);
+        if (topLevelCategories.includes(category)) {
+            if (gallery[category]) {
+                gallery[category] = gallery[category].filter(img => img.src !== src);
+            }
         } else {
             if (gallery.astrofotografija[category]) {
                 gallery.astrofotografija[category] = gallery.astrofotografija[category].filter(img => img.src !== src);
