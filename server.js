@@ -426,6 +426,127 @@ app.post('/api/galerija/delete', (req, res) => {
     });
 });
 
+// ==================== DOWNLOADS API ====================
+
+const DOWNLOADS_FILE = path.join(__dirname, 'data', 'downloads.json');
+
+// Storage for Downloadable Files
+const downloadStorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        const dir = 'downloads-files/';
+        if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir, { recursive: true });
+        }
+        cb(null, dir);
+    },
+    filename: function (req, file, cb) {
+        // Safe filename
+        const cleanName = file.originalname.replace(/[^a-zA-Z0-9.-]/g, '_');
+        cb(null, Date.now() + '-' + cleanName);
+    }
+});
+
+const downloadsUpload = multer({ storage: downloadStorage });
+
+// Get all downloads
+app.get('/api/downloads', (req, res) => {
+    fs.readFile(DOWNLOADS_FILE, 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.json([]);
+        }
+        try {
+            res.json(JSON.parse(data));
+        } catch (e) {
+            res.json([]);
+        }
+    });
+});
+
+// Upload Downloadable File
+app.post('/api/downloads/upload', downloadsUpload.single('file'), (req, res) => {
+    const { title, description } = req.body;
+
+    if (!req.file) {
+        return res.status(400).json({ success: false, message: 'No file uploaded' });
+    }
+
+    const newFile = {
+        id: Date.now(),
+        title: title || req.file.originalname,
+        description: description || '',
+        fileName: req.file.originalname,
+        filePath: 'downloads-files/' + req.file.filename,
+        fileSize: (req.file.size / 1024 / 1024).toFixed(2) + ' MB', // Size in MB
+        fileType: path.extname(req.file.filename).substring(1), // Extension without dot
+        dateAdded: new Date().toLocaleDateString('hr-HR'), // Or ISO if preferred
+        uploadDateIso: new Date().toISOString()
+    };
+
+    fs.readFile(DOWNLOADS_FILE, 'utf8', (err, data) => {
+        let downloads = [];
+        if (!err && data) {
+            try {
+                downloads = JSON.parse(data);
+            } catch (e) { ui.console.error(e); }
+        }
+
+        downloads.unshift(newFile);
+
+        fs.writeFile(DOWNLOADS_FILE, JSON.stringify(downloads, null, 2), (err) => {
+            if (err) {
+                return res.status(500).json({ success: false });
+            }
+            res.json({ success: true, file: newFile });
+        });
+    });
+});
+
+// Delete Download
+app.delete('/api/downloads/:id', (req, res) => {
+    const fileId = parseInt(req.params.id);
+
+    fs.readFile(DOWNLOADS_FILE, 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).send('Error reading data'); // Consistent error handling
+        }
+
+        let downloads = [];
+        try {
+            downloads = JSON.parse(data);
+        } catch (e) {
+            return res.status(500).send('Error parsing data');
+        }
+
+        const initialLength = downloads.length;
+        const fileToDelete = downloads.find(f => f.id === fileId);
+
+        if (!fileToDelete) {
+            return res.status(404).json({ success: false, message: 'File not found' });
+        }
+
+        downloads = downloads.filter(f => f.id !== fileId);
+
+        fs.writeFile(DOWNLOADS_FILE, JSON.stringify(downloads, null, 2), (err) => {
+            if (err) {
+                return res.status(500).send('Error writing data');
+            }
+
+            // Allow file deletion fail safely (dev vs prod paths)
+            try {
+                const filePath = path.join(__dirname, fileToDelete.filePath);
+                if (fs.existsSync(filePath)) {
+                    fs.unlinkSync(filePath);
+                }
+            } catch (e) {
+                console.error("Error deleting physical file:", e);
+            }
+
+            res.json({ success: true });
+        });
+    });
+});
+
 // Start Server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
