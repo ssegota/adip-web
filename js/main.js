@@ -1000,9 +1000,12 @@ async function loadGallery(category, containerId) {
         const response = await fetch(isSubdir ? '../data/galerija.json' : 'data/galerija.json');
         const data = await response.json();
 
+        // Top-level categories (not astrofotografija subcategories)
+        const topLevelCategories = ['povijest', 'posjete', 'ostalo'];
+
         let images;
-        if (category === 'povijest') {
-            images = data.povijest || [];
+        if (topLevelCategories.includes(category)) {
+            images = data[category] || [];
         } else {
             images = data.astrofotografija?.[category] || [];
         }

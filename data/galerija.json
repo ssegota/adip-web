@@ -718,5 +718,17 @@
         }
       }
     ]
-  }
+  },
+  "posjete": [
+    {
+      "src": "/galerija/posjete/1770234755490-book-of-ra.jpg",
+      "description": ""
+    }
+  ],
+  "ostalo": [
+    {
+      "src": "/galerija/ostalo/1770234773289-gundam-3.jpg",
+      "description": ""
+    }
+  ]
 }
