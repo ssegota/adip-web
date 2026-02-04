@@ -50,7 +50,12 @@ const translations = {
         moonWaningGibbous: 'Padajući izbočeni',
         moonLastQuarter: 'Zadnja četvrt',
         moonWaningCrescent: 'Padajući srp',
-        sunMoonTitle: 'Sunce i Mjesec -'
+        sunMoonTitle: 'Sunce i Mjesec -',
+        sunriseSunsetTitle: 'Izlazak i zalazak Sunca',
+        selectMonth: 'Mjesec',
+        selectYear: 'Godina',
+        show: 'Prikaži',
+        imageNotFound: 'Slika nije dostupna za odabrani mjesec'
     },
     en: {
         publication: 'Publication',
@@ -98,7 +103,12 @@ const translations = {
         moonWaningGibbous: 'Waning Gibbous',
         moonLastQuarter: 'Last Quarter',
         moonWaningCrescent: 'Waning Crescent',
-        sunMoonTitle: 'Sun and Moon -'
+        sunMoonTitle: 'Sun and Moon -',
+        sunriseSunsetTitle: 'Sunrise and Sunset',
+        selectMonth: 'Month',
+        selectYear: 'Year',
+        show: 'Show',
+        imageNotFound: 'Image not available for selected month'
     },
     it: {
         publication: 'Pubblicazione',
@@ -146,7 +156,12 @@ const translations = {
         moonWaningGibbous: 'Gibbosa Calante',
         moonLastQuarter: 'Ultimo Quarto',
         moonWaningCrescent: 'Luna Calante',
-        sunMoonTitle: 'Sole e Luna -'
+        sunMoonTitle: 'Sole e Luna -',
+        sunriseSunsetTitle: 'Alba e tramonto',
+        selectMonth: 'Mese',
+        selectYear: 'Anno',
+        show: 'Mostra',
+        imageNotFound: 'Immagine non disponibile per il mese selezionato'
     }
 };
 
