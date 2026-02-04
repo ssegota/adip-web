@@ -167,81 +167,61 @@ function renderAstronomyWidget() {
     document.getElementById('astro-moon-illum').textContent = `${Math.round(moonIllumination.fraction * 100)}%`;
 }
 
-// Open Astronomy Modal with Monthly Data
+// Open Astronomy Modal with Sunrise/Sunset Image
 window.openAstronomyModal = function openAstronomyModal() {
     console.log("Opening Astronomy Modal");
     try {
-        if (typeof SunCalc === 'undefined') {
-            alert(t('suncalcError'));
-            return;
-        }
-
         const modal = document.getElementById('service-modal');
         const modalTitle = document.getElementById('modal-title');
         const modalBody = document.getElementById('modal-body');
 
         const now = new Date();
-        const currentMonth = now.getMonth();
+        const currentMonth = now.getMonth() + 1; // 1-12
         const currentYear = now.getFullYear();
-        const locale = getLocale();
 
-        const monthName = now.toLocaleString(locale, { month: 'long' });
-        // Capitalize first letter
-        const monthNameCap = monthName.charAt(0).toUpperCase() + monthName.slice(1);
+        modalTitle.textContent = t('sunriseSunsetTitle') || 'Izlazak i zalazak Sunca';
 
-        modalTitle.textContent = `${t('sunMoonTitle')} ${monthNameCap} ${currentYear}`;
+        // Build month/year selectors
+        const monthOptions = [];
+        const monthNames = getLocale().includes('en')
+            ? ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+            : getLocale().includes('it')
+                ? ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre']
+                : ['Siječanj', 'Veljača', 'Ožujak', 'Travanj', 'Svibanj', 'Lipanj', 'Srpanj', 'Kolovoz', 'Rujan', 'Listopad', 'Studeni', 'Prosinac'];
 
-        // Generate Table
-        let html = `
-        <div style="overflow-x: auto;">
-            <table style="width: 100%; border-collapse: collapse; min-width: 600px;">
-                <thead style="background: rgba(255,255,255,0.05); border-bottom: 2px solid var(--border-glass);">
-                    <tr>
-                        <th style="padding: 0.75rem; text-align: left;">${t('astroDate')}</th>
-                        <th style="padding: 0.75rem; text-align: left;">${t('astroSunrise')}</th>
-                        <th style="padding: 0.75rem; text-align: left;">${t('astroSunset')}</th>
-                        <th style="padding: 0.75rem; text-align: left;">${t('astroMoonPhase')}</th>
-                    </tr>
-                </thead>
-                <tbody>
-        `;
-
-        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-        const formatTime = (date) => date ? date.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' }) : '--:--';
-
-        for (let day = 1; day <= daysInMonth; day++) {
-            const date = new Date(currentYear, currentMonth, day, 12, 0, 0); // Noon to avoid timezone issues
-            const sunTimes = SunCalc.getTimes(date, PULA_COORDS.lat, PULA_COORDS.lng);
-            const moonIllum = SunCalc.getMoonIllumination(date);
-
-            let phaseIcon = '';
-            const p = moonIllum.phase;
-            if (p < 0.03) phaseIcon = '🌑';
-            else if (p < 0.25) phaseIcon = '🌒';
-            else if (p < 0.28) phaseIcon = '🌓';
-            else if (p < 0.5) phaseIcon = '🌔';
-            else if (p < 0.53) phaseIcon = '🌕';
-            else if (p < 0.75) phaseIcon = '🌖';
-            else if (p < 0.78) phaseIcon = '🌗';
-            else phaseIcon = '🌘';
-
-            // Highlight current day
-            const isToday = day === now.getDate();
-            const rowStyle = isToday ? 'background: rgba(52, 152, 219, 0.1); font-weight: bold;' : 'border-bottom: 1px solid rgba(0,0,0,0.05);';
-
-            html += `
-                <tr style="${rowStyle}">
-                    <td style="padding: 0.75rem;">${day}.${currentMonth + 1}.</td>
-                    <td style="padding: 0.75rem;">${formatTime(sunTimes.sunrise)}</td>
-                    <td style="padding: 0.75rem;">${formatTime(sunTimes.sunset)}</td>
-                    <td style="padding: 0.75rem;">${phaseIcon} ${Math.round(moonIllum.fraction * 100)}%</td>
-                </tr>
-            `;
+        for (let m = 1; m <= 12; m++) {
+            const selected = m === currentMonth ? 'selected' : '';
+            monthOptions.push(`<option value="${m}" ${selected}>${monthNames[m - 1]}</option>`);
         }
 
-        html += `
-                </tbody>
-            </table>
+        const yearOptions = [];
+        for (let y = 2014; y <= 2026; y++) {
+            const selected = y === currentYear ? 'selected' : '';
+            yearOptions.push(`<option value="${y}" ${selected}>${y}</option>`);
+        }
+
+        const basePath = getImageBasePath();
+        const initialImageUrl = getSunriseImageUrl(currentYear, currentMonth, basePath);
+
+        let html = `
+        <div style="padding: 1rem;">
+            <div style="display: flex; gap: 1rem; margin-bottom: 1rem; align-items: center; flex-wrap: wrap; justify-content: center;">
+                <label style="color: var(--text-secondary);">${t('selectMonth') || 'Mjesec'}:</label>
+                <select id="sunrise-month-select" class="form-input" style="width: auto; min-width: 120px;">
+                    ${monthOptions.join('')}
+                </select>
+                <label style="color: var(--text-secondary);">${t('selectYear') || 'Godina'}:</label>
+                <select id="sunrise-year-select" class="form-input" style="width: auto; min-width: 100px;">
+                    ${yearOptions.join('')}
+                </select>
+                <button class="btn btn--primary" onclick="updateSunriseImage()">${t('show') || 'Prikaži'}</button>
+            </div>
+            <div id="sunrise-image-container" style="text-align: center;">
+                <img id="sunrise-image" src="${initialImageUrl}" alt="Sunrise/Sunset Calendar" 
+                     style="max-width: 100%; max-height: 70vh; border-radius: 8px;"
+                     onerror="this.src=''; this.alt='${t('imageNotFound') || 'Slika nije dostupna za odabrani mjesec'}'; this.style.display='none'; document.getElementById('sunrise-error').style.display='block';">
+                <p id="sunrise-error" style="display: none; color: var(--text-muted); padding: 2rem;">${t('imageNotFound') || 'Slika nije dostupna za odabrani mjesec'}</p>
+            </div>
         </div>
         `;
 
@@ -251,6 +231,33 @@ window.openAstronomyModal = function openAstronomyModal() {
         console.error("Error in openAstronomyModal:", e);
         alert(t('genericError') + e.message);
     }
+}
+
+// Helper to get base path for images
+function getImageBasePath() {
+    const isSubdir = window.location.pathname.includes('/en/') || window.location.pathname.includes('/it/');
+    return isSubdir ? '../sites/default/files/images/servisi/sunrises-tides/' : 'sites/default/files/images/servisi/sunrises-tides/';
+}
+
+// Get sunrise image URL - tries different naming patterns
+function getSunriseImageUrl(year, month, basePath) {
+    const monthPadded = month.toString().padStart(2, '0');
+    // Primary format: ncal_YYYY_MM.gif
+    return `${basePath}ncal_${year}_${monthPadded}.gif`;
+}
+
+// Update sunrise image based on selections
+window.updateSunriseImage = function () {
+    const month = parseInt(document.getElementById('sunrise-month-select').value);
+    const year = parseInt(document.getElementById('sunrise-year-select').value);
+    const basePath = getImageBasePath();
+
+    const img = document.getElementById('sunrise-image');
+    const errorMsg = document.getElementById('sunrise-error');
+
+    img.style.display = 'block';
+    errorMsg.style.display = 'none';
+    img.src = getSunriseImageUrl(year, month, basePath);
 }
 
 
@@ -315,100 +322,86 @@ function renderTideWidget() {
     });
 }
 
-// Open Tide Modal with Monthly Calendar
+// Open Tide Modal with Tide Image
 window.openTideModal = function openTideModal() {
     console.log("Opening Tide Modal");
     const modal = document.getElementById('service-modal');
     const modalTitle = document.getElementById('modal-title');
     const modalBody = document.getElementById('modal-body');
 
-    if (typeof SunCalc === 'undefined') {
-        alert(t('suncalcError'));
-        return;
-    }
-
     const now = new Date();
-    const currentMonth = now.getMonth();
+    const currentMonth = now.getMonth() + 1; // 1-12
     const currentYear = now.getFullYear();
-    const locale = getLocale();
 
-    const monthName = now.toLocaleString(locale, { month: 'long' });
+    modalTitle.textContent = t('tideTitle') || 'Plima i oseka';
 
-    modalTitle.textContent = `${t('tideTitle')} ${monthName.toUpperCase()} ${currentYear}.`;
+    // Build month/year selectors
+    const monthOptions = [];
+    const monthNames = getLocale().includes('en')
+        ? ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+        : getLocale().includes('it')
+            ? ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre']
+            : ['Siječanj', 'Veljača', 'Ožujak', 'Travanj', 'Svibanj', 'Lipanj', 'Srpanj', 'Kolovoz', 'Rujan', 'Listopad', 'Studeni', 'Prosinac'];
 
-    // Calendar Grid Structure
+    for (let m = 1; m <= 12; m++) {
+        const selected = m === currentMonth ? 'selected' : '';
+        monthOptions.push(`<option value="${m}" ${selected}>${monthNames[m - 1]}</option>`);
+    }
+
+    const yearOptions = [];
+    for (let y = 2014; y <= 2026; y++) {
+        const selected = y === currentYear ? 'selected' : '';
+        yearOptions.push(`<option value="${y}" ${selected}>${y}</option>`);
+    }
+
+    const basePath = getImageBasePath();
+    const initialImageUrl = getTideImageUrl(currentYear, currentMonth, basePath);
+
     let html = `
-    <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; background: var(--border-glass); border: 1px solid var(--border-glass);">
-    `;
-
-    // Headers - Dynamic based on locale, starting Monday
-    // Generate dates for a known Monday week (e.g. Jan 5 1970)
-    const dayHeaders = [];
-    for (let i = 0; i < 7; i++) {
-        // Jan 5, 1970 is Monday
-        const d = new Date(1970, 0, 5 + i);
-        dayHeaders.push(d.toLocaleDateString(locale, { weekday: 'short' }).toUpperCase());
-    }
-
-    dayHeaders.forEach(day => {
-        html += `<div style="background: var(--bg-card); padding: 5px; text-align: center; font-weight: bold; font-size: 0.8rem;">${day}</div>`;
-    });
-
-    const firstDay = new Date(currentYear, currentMonth, 1);
-    const startingDayIndex = (firstDay.getDay() + 6) % 7; // Shift so Mon=0, Sun=6
-    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-
-    // Empty cells before 1st of month
-    for (let i = 0; i < startingDayIndex; i++) {
-        html += `<div style="background: var(--bg-card); min-height: 100px;"></div>`;
-    }
-
-    // Days
-    for (let day = 1; day <= daysInMonth; day++) {
-        const date = new Date(currentYear, currentMonth, day);
-        const dayOfWeek = date.getDay(); // 0=Sun
-        const isSunday = dayOfWeek === 0;
-        const color = isSunday ? '#e74c3c' : 'var(--text-primary)';
-        const moonIllum = SunCalc.getMoonIllumination(date);
-
-        let moonIcon = '';
-        if (moonIllum.phase < 0.05) moonIcon = '🌑'; // New
-        else if (moonIllum.phase > 0.23 && moonIllum.phase < 0.27) moonIcon = '🌓'; // First Q
-        else if (moonIllum.phase > 0.48 && moonIllum.phase < 0.52) moonIcon = '🌕'; // Full
-        else if (moonIllum.phase > 0.73 && moonIllum.phase < 0.77) moonIcon = '🌗'; // Last Q
-
-        const canvasId = `tide-canvas-${day}`;
-
-        html += `
-        <div style="background: #fff; color: #000; position: relative; min-height: 100px; padding: 2px; overflow: hidden;">
-            <div style="position: absolute; top: 2px; left: 2px; font-weight: bold; color: ${isSunday ? 'red' : 'black'}; font-size: 0.9rem; z-index: 2;">${day}</div>
-            <div style="position: absolute; top: 2px; right: 2px; font-size: 1rem; z-index: 2;">${moonIcon}</div>
-            <div style="margin-top: 15px; height: 80px; width: 100%;">
-                <canvas id="${canvasId}" width="150" height="80" style="width: 100%; height: 100%; display: block;"></canvas>
-            </div>
+    <div style="padding: 1rem;">
+        <div style="display: flex; gap: 1rem; margin-bottom: 1rem; align-items: center; flex-wrap: wrap; justify-content: center;">
+            <label style="color: var(--text-secondary);">${t('selectMonth') || 'Mjesec'}:</label>
+            <select id="tide-month-select" class="form-input" style="width: auto; min-width: 120px;">
+                ${monthOptions.join('')}
+            </select>
+            <label style="color: var(--text-secondary);">${t('selectYear') || 'Godina'}:</label>
+            <select id="tide-year-select" class="form-input" style="width: auto; min-width: 100px;">
+                ${yearOptions.join('')}
+            </select>
+            <button class="btn btn--primary" onclick="updateTideImage()">${t('show') || 'Prikaži'}</button>
         </div>
-        `;
-    }
-
-    html += `</div>`; // Close grid
-
-    // Add Legend/Footer
-    html += `
-    <div style="margin-top: 10px; font-size: 0.8rem; text-align: center; color: var(--text-muted);">
-        ${t('tideDisclaimer')}
+        <div id="tide-image-container" style="text-align: center;">
+            <img id="tide-image" src="${initialImageUrl}" alt="Tide Calendar" 
+                 style="max-width: 100%; max-height: 70vh; border-radius: 8px;"
+                 onerror="this.src=''; this.alt='${t('imageNotFound') || 'Slika nije dostupna za odabrani mjesec'}'; this.style.display='none'; document.getElementById('tide-error').style.display='block';">
+            <p id="tide-error" style="display: none; color: var(--text-muted); padding: 2rem;">${t('imageNotFound') || 'Slika nije dostupna za odabrani mjesec'}</p>
+        </div>
     </div>
     `;
 
     modalBody.innerHTML = html;
     modal.classList.add('active');
+}
 
-    // Draw the graphs after DOM insertion
-    setTimeout(() => {
-        for (let day = 1; day <= daysInMonth; day++) {
-            const date = new Date(currentYear, currentMonth, day);
-            drawTideCanvas(`tide-canvas-${day}`, date);
-        }
-    }, 50);
+// Get tide image URL
+function getTideImageUrl(year, month, basePath) {
+    const monthPadded = month.toString().padStart(2, '0');
+    // Primary format: adip_YYYY-MM.jpg
+    return `${basePath}adip_${year}-${monthPadded}.jpg`;
+}
+
+// Update tide image based on selections
+window.updateTideImage = function () {
+    const month = parseInt(document.getElementById('tide-month-select').value);
+    const year = parseInt(document.getElementById('tide-year-select').value);
+    const basePath = getImageBasePath();
+
+    const img = document.getElementById('tide-image');
+    const errorMsg = document.getElementById('tide-error');
+
+    img.style.display = 'block';
+    errorMsg.style.display = 'none';
+    img.src = getTideImageUrl(year, month, basePath);
 }
 
 function drawTideCanvas(canvasId, date) {
