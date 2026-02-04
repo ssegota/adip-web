@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Johann Palisa | Osservatorio di Pola</title>
+    <link rel="icon" href="../../../sites/all/themes/black_hole/logo.png" type="image/png">
+    <link rel="stylesheet" href="../../../css/modern.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        .bio-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .bio-dates {
+            font-size: 1.5rem;
+            color: var(--accent-primary);
+            font-weight: bold;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-item {
+            text-align: center;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 0.5rem;
+        }
+
+        .asteroid-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+        }
+
+        .asteroid-item {
+            padding: 0.5rem;
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .highlight-asteroid {
+            color: var(--accent-secondary);
+            font-weight: bold;
+        }
+
+        .period-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+        <a href="../../index.html" class="header__logo">
+            <img src="../../../sites/all/themes/black_hole/logo.png" alt="ADIP Logo">
+            <div>
+                <div class="header__title">Osservatorio di Pola</div>
+                <div class="header__subtitle">Società Astronomica "Istra" Pola</div>
+            </div>
+        </a>
+        <nav class="nav" id="main-nav">
+            <button class="nav__close" id="nav-close">✕</button>
+            <a href="../../index.html" class="nav__link">🏠 Home</a>
+            <a href="../../aktivnosti.html" class="nav__link">📅 Attività</a>
+            <a href="../../galerija-slika.html" class="nav__link">🖼️ Galleria</a>
+            <a href="../../povijest-zvjezdarnice.html" class="nav__link active">📜 Storia</a>
+            <a href="../../posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Visitaci</a>
+            <a href="../../radovi.html" class="nav__link">📚 Pubblicazioni</a>
+            <a href="../../servisi.html" class="nav__link">⚙️ Servizi</a>
+            <a href="../../astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ Chi siamo</a>
+            <div class="nav__spacer"></div>
+            <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Accedi</button>
+        </nav>
+        <div class="nav-overlay" id="nav-overlay"></div>
+        <div class="user-controls">
+            <div class="lang-selector">
+                <button class="lang-current">🇮🇹 IT ▼</button>
+                <div class="lang-dropdown">
+                    <a href="/povijest-zvjezdarnice/povijesne-licnosti/johann-palisa.html" class="lang-option"
+                        data-lang="hr">🇭🇷 Hrvatski</a>
+                    <a href="/en/povijest-zvjezdarnice/povijesne-licnosti/johann-palisa.html" class="lang-option"
+                        data-lang="en">🇬🇧 English</a>
+                    <a href="/it/povijest-zvjezdarnice/povijesne-licnosti/johann-palisa.html" class="lang-option active"
+                        data-lang="it">🇮🇹 Italiano</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <div class="breadcrumbs">
+            <a href="../../index.html">Home</a> &raquo;
+            <a href="../../povijest-zvjezdarnice.html">Storia dell'osservatorio</a> &raquo;
+            <span>Johann Palisa</span>
+        </div>
+
+        <section class="section-header">
+            <h1 class="gradient-text">Johann Palisa</h1>
+            <div class="bio-dates">(1848 - 1925)</div>
+        </section>
+
+        <div class="glass-card padding-2">
+
+            <p>
+                Nacque il 6 dicembre 1848 nella città austriaca di Troppau (oggi Opava, Repubblica Ceca), come figlio
+                maggiore del commerciante locale Franz Palisa e della madre Caterina.
+            </p>
+
+            <!-- Galleria biografica -->
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="http://adip.hr/sites/default/files/images/palisa/pal_dom2.jpg" alt="Casa natale">
+                    <p class="text-xs text-muted">La casa natale di Palisa (distrutta nella 2ª guerra mondiale)</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="http://adip.hr/sites/default/files/images/palisa/pal_dom1.jpg" alt="Aspetto attuale">
+                    <p class="text-xs text-muted">L'aspetto della casa oggi</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="http://adip.hr/sites/default/files/images/palisa/PalisaM2.jpg" alt="Ritratto di Palisa">
+                </div>
+                <div class="gallery-item">
+                    <img src="http://adip.hr/sites/default/files/images/palisa/PalisaM1.jpg" alt="Ritratto di Palisa">
+                </div>
+            </div>
+            <p class="text-center text-muted mb-4">Immagini di Palisa risalenti circa al 1900</p>
+
+            <div class="period-card">
+                <h3 style="margin-bottom: 1rem;">Carriera e arrivo a Pola</h3>
+                <p>
+                    Palisa completò la scuola elementare e il ginnasio nella sua città natale, Opava. Successivamente,
+                    nel 1866, si iscrisse a matematica all'Università di Vienna. I suoi professori furono Carl von
+                    Litrow, Edmund Weiss e Theodor von Oppolzer.
+                </p>
+                <br>
+                <p>
+                    All'inizio del 1871 fu trasferito all'<strong>Osservatorio della Marina a Pola</strong> come
+                    direttore. Il suo compito principale era la cura dei cronometri di bordo della Marina da Guerra
+                    austriaca. Poiché questi compiti regolari gli lasciavano abbastanza tempo libero, Palisa iniziò la
+                    ricerca di piccoli pianeti.
+                </p>
+            </div>
+
+            <div class="period-card">
+                <h3 style="margin-bottom: 1rem; color: var(--accent-secondary);">Scoperte da Pola</h3>
+                <p>
+                    Finalmente, il 18 marzo 1874, Palisa riuscì a scoprire il suo primo piccolo pianeta, che chiamò
+                    <strong>AUSTRIA</strong>, essendo il primo scoperto in Austria.
+                </p>
+                <p class="mt-2">
+                    Durante una visita a Pola nel 1875, l'Imperatore Francesco Giuseppe I diede personalmente i nomi a
+                    due piccoli pianeti appena scoperti: <strong>(142) Polana</strong> e <strong>(143) Adria</strong>.
+                    Se aggiungiamo <strong>(183) Istria</strong>, esistono nello spazio tre corpi celesti che portano
+                    nomi dei nostri concetti geografici.
+                </p>
+
+                <h4 class="mt-4 mb-2">Piccoli pianeti (asteroidi) scoperti da Palisa a Pola</h4>
+                <div class="asteroid-list">
+                    <div class="asteroid-item">01. (136) Austria (1874)</div>
+                    <div class="asteroid-item">02. (137) Meliboea (1874)</div>
+                    <div class="asteroid-item">03. (140) Siwa (1874)</div>
+                    <div class="asteroid-item highlight-asteroid">04. (142) Polana (1875)</div>
+                    <div class="asteroid-item highlight-asteroid">05. (143) Adria (1875)</div>
+                    <div class="asteroid-item">06. (151) Abudantia (1875)</div>
+                    <div class="asteroid-item">07. (153) Hilda (1875)</div>
+                    <div class="asteroid-item">08. (155) Scylla (1875)</div>
+                    <div class="asteroid-item">09. (156) Xanthippe (1875)</div>
+                    <div class="asteroid-item">10. (178) Belisana (1877)</div>
+                    <div class="asteroid-item">11. (182) Elsa (1878)</div>
+                    <div class="asteroid-item highlight-asteroid">12. (183) Istria (1878)</div>
+                    <div class="asteroid-item">13. (184) Dejopeja (1878)</div>
+                    <div class="asteroid-item">14. (192) Nausikea (1879)</div>
+                    <div class="asteroid-item">15. (195) Eurikleia (1879)</div>
+                    <div class="asteroid-item">16. (197) Arete (1879)</div>
+                    <div class="asteroid-item">17. (201) Penelope (1879)</div>
+                    <div class="asteroid-item">18. C/1879 Q1 (1879)</div>
+                    <div class="asteroid-item">19. (204) Kalisto (1879)</div>
+                    <div class="asteroid-item">20. (205) Marta (1879)</div>
+                    <div class="asteroid-item">21. (207) Hedda (1879)</div>
+                    <div class="asteroid-item">22. (208) Lacrimosa (1879)</div>
+                    <div class="asteroid-item">23. (210) Isabela (1879)</div>
+                    <div class="asteroid-item">24. (211) Isolda (1879)</div>
+                    <div class="asteroid-item">25. (212) Medea (1880)</div>
+                    <div class="asteroid-item">26. (214) Aschera (1880)</div>
+                    <div class="asteroid-item">27. (216) Kleopatra (1880)</div>
+                    <div class="asteroid-item">28. (218) Bianca (1880)</div>
+                    <div class="asteroid-item">29. (219) Thusnelda (1880)</div>
+                </div>
+            </div>
+
+            <div class="text-center my-4">
+                <img src="http://adip.hr/sites/default/files/images/palisa/zv_bec1.jpg" class="img-fluid rounded shadow"
+                    alt="Osservatorio di Vienna">
+                <p class="text-muted mt-2">Osservatorio di Vienna</p>
+            </div>
+
+            <p>
+                Da Vienna, Palisa scoprì altri 94 piccoli pianeti, che insieme a quelli scoperti a Pola ammontano a un
+                totale di <strong>123 nuovi piccoli pianeti</strong>. Per quanto si sa, Palisa scoprì tutti i piccoli
+                pianeti visualmente, cioè osservando "a occhio nudo" attraverso il telescopio.
+            </p>
+
+            <div class="grid-2-col my-4" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div>
+                    <img src="http://adip.hr/sites/default/files/images/palisa/pal_pom_sun.jpg"
+                        class="img-fluid rounded" alt="Spedizione">
+                    <p class="text-xs text-muted">1883: Palisa (al centro) in una spedizione sull'isola Carolina (Oceano
+                        Pacifico).</p>
+                </div>
+                <div>
+                    <img src="http://adip.hr/sites/default/files/images/palisa/maxwolf.jpg" class="img-fluid rounded"
+                        alt="Max Wolf">
+                    <p class="text-xs text-muted">Maximilian Wolf (1863-1932)</p>
+                </div>
+            </div>
+
+            <p>
+                Oltre a dedicarsi alla scoperta di piccoli pianeti, Palisa, insieme a Max Wolf dell'Osservatorio di
+                Heidelberg, realizzò un atlante fotografico del cielo.
+            </p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="http://adip.hr/sites/default/files/images/palisa/Wolf_2.jpg" alt="Orione">
+                    <p class="text-xs">Nebulosa di Orione</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="http://adip.hr/sites/default/files/images/palisa/Wolf_3.jpg" alt="Cintura di Orione">
+                    <p class="text-xs">Cintura di Orione</p>
+                </div>
+            </div>
+
+            <div class="period-card">
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 200px;">
+                        <p>
+                            A 71 anni (1919), la vista di Palisa iniziò a deteriorarsi. Morì il 2 maggio 1925. Nel luogo
+                            dove un tempo si trovava la casa natale di Palisa, il 15 ottobre 2000 fu posta una targa
+                            commemorativa.
+                        </p>
+                        <p class="mt-2">
+                            Vi è incisa anche la frase preferita di Palisa: <strong><em>"SIC ITUR AD
+                                    ASTRA"</em></strong> (Così si va verso le stelle).
+                        </p>
+                    </div>
+                    <div style="flex: 0 0 150px;">
+                        <img src="http://adip.hr/sites/default/files/images/palisa/Palisam.jpg" alt="Palisa anziano"
+                            style="width: 100%; border-radius: 8px;">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__contact">
+            <strong>Società Astronomica "Istra" Pola</strong><br>
+            <a href="https://www.ztkpula.hr/hr/" target="_blank"
+                style="color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.5);">Associazione
+                della Cultura Tecnica di Pola</a><br>
+            Glavinićev uspon 1, 52100 Pola - HR<br>
+            Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: 091/214-1966<br>
+            <span style="color: var(--text-muted);">(Osservatorio, Parco Monte Zaro 2, Pola)</span>
+        </div>
+    </footer>
+
+    <script src="../../../js/main.js"></script>
+</body>
+
+</html>

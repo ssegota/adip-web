@@ -866,3 +866,89 @@ option {
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     }
 }
+
+/* === Language Selector Dropdown === */
+.lang-selector {
+    position: relative;
+    display: inline-block;
+}
+
+.lang-current {
+    padding: 0.5rem 1rem;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.lang-current:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-primary);
+}
+
+.lang-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.5rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    min-width: 120px;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: var(--transition-fast);
+    z-index: 1100;
+    overflow: hidden;
+}
+
+.lang-selector:hover .lang-dropdown,
+.lang-selector.active .lang-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.lang-option {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.lang-option:hover {
+    background: var(--bg-glass);
+    color: var(--text-primary);
+}
+
+.lang-option.active {
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--accent-primary);
+}
+
+/* Blue Visit Button Style */
+.btn--blue {
+    background: linear-gradient(135deg, #0066ff 0%, #0099ff 100%);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 102, 255, 0.4);
+    font-weight: 600;
+    padding: 1rem 2rem;
+    font-size: 1.05rem;
+}
+
+.btn--blue:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 102, 255, 0.5);
+    color: #fff;
+}

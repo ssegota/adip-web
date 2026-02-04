@@ -99,12 +99,66 @@ const translations = {
         moonLastQuarter: 'Last Quarter',
         moonWaningCrescent: 'Waning Crescent',
         sunMoonTitle: 'Sun and Moon -'
+    },
+    it: {
+        publication: 'Pubblicazione',
+        downloadPdf: 'Scarica PDF',
+        openLink: 'Apri Link',
+        noAbstract: 'Nessun riassunto disponibile.',
+        noContent: 'Nessun contenuto.',
+        readMore: 'Leggi tutto →',
+        errorLoading: 'Errore nel caricamento del contenuto.',
+        serverError: 'Errore del server.',
+        successAdd: 'Articolo aggiunto con successo!',
+        errorAdd: 'Errore durante l\'aggiunta.',
+        loginSuccess: 'Accesso effettuato!',
+        loginError: 'Credenziali non valide!',
+        logout: 'Esci',
+        login: 'Accedi',
+        noActivities: 'Nessuna attività da visualizzare.',
+        noActivitiesYear: 'Nessuna attività per l\'anno selezionato.',
+        untitled: 'Senza titolo',
+        deleteConfirm: 'Sei sicuro di voler eliminare questa attività?',
+        deleteDisabled: 'L\'eliminazione non è abilitata nella versione demo.',
+        publishSuccess: 'Attività pubblicata!',
+        publishError: 'Errore nella pubblicazione',
+        publishDisabled: 'La pubblicazione non è abilitata nella versione demo.',
+        maxImages: 'Massimo 3 immagini!',
+        allYears: 'Tutti gli anni',
+        serverConnectionError: 'Errore di connessione al server',
+        // Services
+        serviceAdded: 'Servizio aggiunto!',
+        serviceAddError: 'Errore durante l\'aggiunta del servizio.',
+        astroSunrise: 'Alba',
+        astroSunset: 'Tramonto',
+        astroMoonPhase: 'Fase Lunare',
+        astroDate: 'Data',
+        tideTitle: 'MAREE PER',
+        tideLevel: 'Livello del mare (m)',
+        tideDisclaimer: '* I grafici sono simulazioni basate sulle fasi lunari. Non per la navigazione.',
+        suncalcError: 'Libreria SunCalc non caricata.',
+        genericError: 'Si è verificato un errore: ',
+        moonNew: 'Luna Nuova',
+        moonWaxingCrescent: 'Luna Crescente',
+        moonFirstQuarter: 'Primo Quarto',
+        moonWaxingGibbous: 'Gibbosa Crescente',
+        moonFull: 'Luna Piena',
+        moonWaningGibbous: 'Gibbosa Calante',
+        moonLastQuarter: 'Ultimo Quarto',
+        moonWaningCrescent: 'Luna Calante',
+        sunMoonTitle: 'Sole e Luna -'
     }
 };
 
+function getCurrentLang() {
+    const path = window.location.pathname;
+    if (path.includes('/it/')) return 'it';
+    if (path.includes('/en/')) return 'en';
+    return 'hr';
+}
+
 function t(key) {
-    const isEnglish = window.location.pathname.includes('/en/');
-    const lang = isEnglish ? 'en' : 'hr';
+    const lang = getCurrentLang();
     return translations[lang][key] || key;
 }
 
@@ -556,8 +610,9 @@ function updateLoginButton() {
 // ==================== Load Activities ====================
 async function loadActivities(container, limit = 10, filterYear = null) {
     try {
-        // Use absolute path for robustness
-        const response = await fetch(window.location.pathname.includes('/en/') ? '../data/aktivnosti.json' : 'data/aktivnosti.json');
+        // Use relative path based on language directory
+        const isSubdir = window.location.pathname.includes('/en/') || window.location.pathname.includes('/it/');
+        const response = await fetch(isSubdir ? '../data/aktivnosti.json' : 'data/aktivnosti.json');
         allActivitiesData = await response.json();
 
         if (!allActivitiesData || allActivitiesData.length === 0) {
@@ -765,36 +820,84 @@ function showActivityModal(activity) {
 
 // ==================== Language Toggle ====================
 function initLanguageToggle() {
-    const langToggle = document.getElementById('lang-toggle');
-    if (!langToggle) return;
+    // The language selector is now a dropdown in HTML
+    // This function sets the current language indicator and handles link generation
+    const langSelector = document.querySelector('.lang-selector');
+    const langCurrent = document.querySelector('.lang-current');
+    const langOptions = document.querySelectorAll('.lang-option');
 
-    // Detect language from URL
+    if (!langSelector && !langCurrent) {
+        // Fallback for old toggle button
+        const langToggle = document.getElementById('lang-toggle');
+        if (langToggle) {
+            handleOldToggle(langToggle);
+        }
+        return;
+    }
+
+    const currentLang = getCurrentLang();
     const path = window.location.pathname;
-    const isEnglish = path.includes('/en/');
 
-    // Set Button Text
-    langToggle.textContent = isEnglish ? 'HR' : 'EN';
+    // Update current language display
+    if (langCurrent) {
+        const langLabels = { hr: '🇭🇷 HR', en: '🇬🇧 EN', it: '🇮🇹 IT' };
+        langCurrent.textContent = langLabels[currentLang] + ' ▼';
+    }
 
-    langToggle.addEventListener('click', () => {
-        let newPath;
+    // Mark current language as active and set correct hrefs
+    langOptions.forEach(option => {
+        const targetLang = option.dataset.lang;
+        if (!targetLang) return;
 
-        if (isEnglish) {
-            // Switch to Croatian (remove /en/)
-            newPath = path.replace('/en/', '/');
-            // Handle edge case where /en/ might be at the start but replaced to //
-            newPath = newPath.replace('//', '/');
+        // Mark active
+        if (targetLang === currentLang) {
+            option.classList.add('active');
         } else {
-            // Switch to English (prepend /en/)
-            // Ensure we handle root path correctly
-            if (path === '/' || path === '/index.html') {
-                newPath = '/en/index.html';
-            } else {
-                newPath = '/en' + path;
-            }
+            option.classList.remove('active');
         }
 
-        // Redirect
-        window.location.href = newPath;
+        // Calculate href
+        option.href = getPathForLanguage(path, currentLang, targetLang);
+    });
+}
+
+function getPathForLanguage(currentPath, fromLang, toLang) {
+    let basePath = currentPath;
+
+    // Remove current language prefix if present
+    if (fromLang === 'en') {
+        basePath = currentPath.replace('/en/', '/');
+    } else if (fromLang === 'it') {
+        basePath = currentPath.replace('/it/', '/');
+    }
+    // Clean up any double slashes
+    basePath = basePath.replace('//', '/');
+
+    // Handle root path
+    if (basePath === '/' || basePath === '') {
+        basePath = '/index.html';
+    }
+
+    // Add target language prefix
+    if (toLang === 'hr') {
+        return basePath;
+    } else {
+        return '/' + toLang + basePath;
+    }
+}
+
+// Fallback for old single toggle button
+function handleOldToggle(langToggle) {
+    const path = window.location.pathname;
+    const currentLang = getCurrentLang();
+
+    // Set button text to next language
+    const nextLang = currentLang === 'hr' ? 'EN' : 'HR';
+    langToggle.textContent = nextLang;
+
+    langToggle.addEventListener('click', () => {
+        const targetLang = nextLang.toLowerCase();
+        window.location.href = getPathForLanguage(path, currentLang, targetLang);
     });
 }
 
@@ -877,8 +980,9 @@ function updateLightboxImage() {
 // Load gallery from JSON
 async function loadGallery(category, containerId) {
     try {
-        // Use absolute path
-        const response = await fetch(window.location.pathname.includes('/en/') ? '../data/galerija.json' : 'data/galerija.json');
+        // Use relative path based on language directory
+        const isSubdir = window.location.pathname.includes('/en/') || window.location.pathname.includes('/it/');
+        const response = await fetch(isSubdir ? '../data/galerija.json' : 'data/galerija.json');
         const data = await response.json();
 
         let images;
@@ -948,8 +1052,10 @@ function getLocalizedDescription(desc) {
     if (!desc) return '';
     if (typeof desc === 'string') return desc;
 
-    const isEnglish = window.location.pathname.includes('/en/');
-    return isEnglish ? (desc.en || desc.hr || '') : (desc.hr || desc.en || '');
+    const lang = getCurrentLang();
+    if (lang === 'en') return desc.en || desc.hr || '';
+    if (lang === 'it') return desc.it || desc.hr || '';
+    return desc.hr || desc.en || '';
 }
 
 // ==================== Library Catalog (CSV) ====================
@@ -957,9 +1063,9 @@ async function loadLibraryCatalog(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
 
-    // Detect if we consider this an English page
-    const isEnglish = window.location.pathname.includes('/en/');
-    const csvPath = isEnglish ? '../books.csv' : 'books.csv';
+    // Detect if we are in a language subdirectory
+    const isSubdir = window.location.pathname.includes('/en/') || window.location.pathname.includes('/it/');
+    const csvPath = isSubdir ? '../books.csv' : 'books.csv';
 
     try {
         if (window.location.protocol === 'file:') {
