@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="hr">
+<html lang="it">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radovi - Astronomsko društvo "Istra" Pula</title>
-    <link rel="icon" href="sites/all/themes/black_hole/logo.png" type="image/png">
-    <link rel="stylesheet" href="css/modern.css">
+    <title>Pubblicazioni - Società Astronomica "Istra" Pola</title>
+    <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
+    <link rel="stylesheet" href="../css/modern.css">
     <style>
         /* Specific styles for upload form */
         .admin-panel {
@@ -45,50 +45,36 @@
 </head>
 
 <body>
-    <!-- Header injected by main.js/desktop nav or manually here if needed. 
-       Since this is a new modern page, we can use the same structure as aktivnosti.html 
-       OR use inject-header strategy. Since index.html has hardcoded header, 
-       we'll copy the header structure for consistency implicitly via main.js? 
-       No, main.js does NOT inject header. inject-header.js does. 
-       Let's stick to the convention: hardcode header for modern pages or include inject-header.js. 
-       Legacy pages use inject-header.js. Modern pages (aktivnosti.html) have it hardcoded.
-       I will hardcode it here for stability.
-  -->
-
     <header class="header">
-        <div class="menu-toggle" id="menu-toggle">
-            <span></span><span></span><span></span>
-        </div>
-
+        <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
         <a href="index.html" class="header__logo">
-            <img src="sites/all/themes/black_hole/logo.png" alt="ADIP Logo">
+            <img src="../sites/all/themes/black_hole/logo.png" alt="ADIP Logo">
             <div>
-                <div class="header__title">Pulska Zvjezdarnica</div>
-                <div class="header__subtitle">Astronomsko društvo "Istra" Pula</div>
+                <div class="header__title">Osservatorio di Pola</div>
+                <div class="header__subtitle">Società Astronomica "Istra" Pola</div>
             </div>
         </a>
-
         <nav class="nav" id="main-nav">
             <button class="nav__close" id="nav-close">✕</button>
-            <a href="index.html" class="nav__link">🏠 Naslovna</a>
-            <a href="aktivnosti.html" class="nav__link">📅 Aktivnosti</a>
-            <a href="galerija-slika.html" class="nav__link">🖼️ Galerija</a>
-            <a href="povijest-zvjezdarnice.html" class="nav__link">📜 Povijest</a>
-            <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Posjeti</a>
-            <a href="radovi.html" class="nav__link active">📚 Radovi</a>
-            <a href="servisi.html" class="nav__link">⚙️ Servisi</a>
-            <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ O nama</a>
+            <a href="index.html" class="nav__link">🏠 Home</a>
+            <a href="aktivnosti.html" class="nav__link">📅 Attività</a>
+            <a href="galerija-slika.html" class="nav__link">🖼️ Galleria</a>
+            <a href="povijest-zvjezdarnice.html" class="nav__link">📜 Storia</a>
+            <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Visitaci</a>
+            <a href="radovi.html" class="nav__link active">📚 Pubblicazioni</a>
+            <a href="servisi.html" class="nav__link">⚙️ Servizi</a>
+            <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ Chi siamo</a>
             <div class="nav__spacer"></div>
-            <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Prijava</button>
+            <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Accedi</button>
         </nav>
         <div class="nav-overlay" id="nav-overlay"></div>
         <div class="user-controls">
             <div class="lang-selector">
-                <button class="lang-current">🇭🇷 HR ▼</button>
+                <button class="lang-current">🇮🇹 IT ▼</button>
                 <div class="lang-dropdown">
-                    <a href="radovi.html" class="lang-option active" data-lang="hr">🇭🇷 Hrvatski</a>
+                    <a href="/radovi.html" class="lang-option" data-lang="hr">🇭🇷 Hrvatski</a>
                     <a href="/en/radovi.html" class="lang-option" data-lang="en">🇬🇧 English</a>
-                    <a href="/it/radovi.html" class="lang-option" data-lang="it">🇮🇹 Italiano</a>
+                    <a href="/it/radovi.html" class="lang-option active" data-lang="it">🇮🇹 Italiano</a>
                 </div>
             </div>
         </div>
@@ -98,55 +84,55 @@
         <section class="section">
             <div class="container">
                 <div class="section__header">
-                    <h2 class="section__title">Znanstveni i stručni <span class="text-gradient">radovi</span></h2>
-                    <p class="section__subtitle">Publikacije, članci i istraživanja naših članova</p>
+                    <h2 class="section__title">Pubblicazioni <span class="text-gradient">scientifiche</span></h2>
+                    <p class="section__subtitle">Pubblicazioni, articoli e ricerche dei nostri membri</p>
                 </div>
 
                 <!-- Admin Upload Form -->
                 <div class="admin-panel hidden" id="radovi-admin-panel">
-                    <h3>Dodaj novi rad</h3>
+                    <h3>Aggiungi nuova pubblicazione</h3>
                     <form id="radovi-upload-form">
                         <div class="grid grid--2">
                             <div class="form-group">
-                                <label>Naslov rada</label>
+                                <label>Titolo</label>
                                 <input type="text" name="title" required>
                             </div>
                             <div class="form-group">
                                 <label>Autori</label>
-                                <input type="text" name="authors" placeholder="npr. I. Ivić, M. Marić" required>
+                                <input type="text" name="authors" placeholder="es. I. Ivić, M. Marić" required>
                             </div>
                         </div>
 
                         <div class="grid grid--2">
                             <div class="form-group">
-                                <label>Godina</label>
+                                <label>Anno</label>
                                 <input type="number" name="year" value="2024" required>
                             </div>
                             <div class="form-group">
-                                <label>Tip unosa</label>
+                                <label>Tipo</label>
                                 <select name="type" id="upload-type-select">
-                                    <option value="link">Web Poveznica</option>
-                                    <option value="pdf">PDF Datoteka</option>
+                                    <option value="link">Link Web</option>
+                                    <option value="pdf">File PDF</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="form-group" id="link-input-group">
-                            <label>Poveznica (URL)</label>
+                            <label>Link (URL)</label>
                             <input type="url" name="link" placeholder="https://...">
                         </div>
 
                         <div class="form-group hidden" id="file-input-group">
-                            <label>PDF Datoteka</label>
+                            <label>File PDF</label>
                             <input type="file" name="file" accept="application/pdf">
                         </div>
 
                         <div class="form-group">
-                            <label>Sažetak (Abstract)</label>
+                            <label>Riassunto (Abstract)</label>
                             <textarea name="abstract" rows="3"></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn--primary">Dodaj Rad</button>
+                        <button type="submit" class="btn btn--primary">Aggiungi Pubblicazione</button>
                         <p id="radovi-message" style="margin-top: 0.5rem; font-weight: bold;"></p>
                     </form>
                 </div>
@@ -154,7 +140,7 @@
                 <!-- List -->
                 <div class="grid grid--2" id="radovi-list">
                     <!-- Loaded via JS -->
-                    <p style="color: var(--text-secondary);">Učitavanje radova...</p>
+                    <p style="color: var(--text-secondary);">Caricamento pubblicazioni...</p>
                 </div>
 
             </div>
@@ -164,15 +150,40 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer__contact">
-            <strong>Astronomsko društvo "Istra" Pula</strong><br>
+            <strong>Società Astronomica "Istra" Pola</strong><br>
             <a href="https://www.ztkpula.hr/hr/" target="_blank"
-                style="color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.5);">Zajednica
-                tehničke kulture Pula</a><br>
-            Glavinićev uspon 1, 52100 Pula - HR<br>
-            Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: 091/214-1966
+                style="color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.5);">Associazione
+                della Cultura Tecnica Pola</a><br>
+            Glavinićev uspon 1, 52100 Pola - HR<br>
+            Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: +385 91 214 1966
         </div>
     </footer>
-    <script src="js/main.js"></script>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="login-modal">
+        <div class="modal">
+            <div class="modal__header">
+                <h3 class="modal__title">Accedi</h3>
+                <p style="color: var(--text-secondary);">Inserisci le tue credenziali</p>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label class="form-label">Nome utente</label>
+                    <input type="text" class="form-input" id="login-username" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" id="login-password" required>
+                </div>
+                <div id="login-message" style="margin-bottom: 1rem; font-size: 0.9rem;"></div>
+                <button type="submit" class="btn btn--primary" style="width: 100%;">Accedi</button>
+            </form>
+            <button class="btn btn--secondary" style="width: 100%; margin-top: 0.5rem;"
+                id="close-modal">Annulla</button>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
     <script>
         // Toggle inputs based on type
         const typeSelect = document.getElementById('upload-type-select');

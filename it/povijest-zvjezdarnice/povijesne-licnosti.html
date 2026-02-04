@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Figure storiche | Osservatorio di Pola</title>
+    <link rel="icon" href="../../sites/all/themes/black_hole/logo.png" type="image/png">
+    <link rel="stylesheet" href="../../css/modern.css" />
+    <style>
+        .person-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .person-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+            color: var(--text-primary);
+            display: block;
+        }
+
+        .person-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-primary);
+        }
+
+        .person-card img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            border: 3px solid var(--accent-secondary);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+        <a href="../index.html" class="header__logo">
+            <img src="../../sites/all/themes/black_hole/logo.png" alt="ADIP Logo">
+            <div>
+                <div class="header__title">Osservatorio di Pola</div>
+                <div class="header__subtitle">Società Astronomica "Istra" Pola</div>
+            </div>
+        </a>
+        <nav class="nav" id="main-nav">
+            <button class="nav__close" id="nav-close">✕</button>
+            <a href="../index.html" class="nav__link">🏠 Home</a>
+            <a href="../aktivnosti.html" class="nav__link">📅 Attività</a>
+            <a href="../galerija-slika.html" class="nav__link">🖼️ Galleria</a>
+            <a href="../povijest-zvjezdarnice.html" class="nav__link active">📜 Storia</a>
+            <a href="../posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Visitaci</a>
+            <a href="../radovi.html" class="nav__link">📚 Pubblicazioni</a>
+            <a href="../servisi.html" class="nav__link">⚙️ Servizi</a>
+            <a href="../astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ Chi siamo</a>
+            <div class="nav__spacer"></div>
+            <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Accedi</button>
+        </nav>
+        <div class="nav-overlay" id="nav-overlay"></div>
+        <div class="user-controls">
+            <div class="lang-selector">
+                <button class="lang-current">🇮🇹 IT ▼</button>
+                <div class="lang-dropdown">
+                    <a href="/povijest-zvjezdarnice/povijesne-licnosti.html" class="lang-option" data-lang="hr">🇭🇷
+                        Hrvatski</a>
+                    <a href="/en/povijest-zvjezdarnice/povijesne-licnosti.html" class="lang-option" data-lang="en">🇬🇧
+                        English</a>
+                    <a href="/it/povijest-zvjezdarnice/povijesne-licnosti.html" class="lang-option active"
+                        data-lang="it">🇮🇹 Italiano</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &raquo;
+            <a href="../povijest-zvjezdarnice.html">Storia</a> &raquo;
+            <span>Figure storiche</span>
+        </div>
+
+        <section class="section-header">
+            <h1 class="gradient-text">Figure storiche</h1>
+            <p class="subtitle">Persone importanti nella storia dell'Osservatorio di Pola</p>
+        </section>
+
+        <div class="glass-card padding-2">
+            <div class="person-grid">
+                <a href="povijesne-licnosti/johann-palisa.html" class="person-card">
+                    <img src="http://www.adip.hr/sites/default/files/images/povijest_Palisam.jpg" alt="Johann Palisa">
+                    <h3>Johann Palisa</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">1848-1925 | Scopritore di 122 asteroidi
+                    </p>
+                </a>
+                <a href="povijesne-licnosti/barun-ivo-benko-von-boinik.html" class="person-card">
+                    <img src="http://www.adip.hr/sites/default/files/images/povijest_Benko.jpg" alt="Ivo Benko">
+                    <h3>Barone Ivo Benko von Boinik</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Astronomo della Marina</p>
+                </a>
+                <a href="povijesne-licnosti/viceadmiral-wilhelm-von-tegetthoff.html" class="person-card">
+                    <img src="http://www.adip.hr/sites/default/files/images/povijest_Tegetthoff.jpg"
+                        alt="Wilhelm von Tegetthoff">
+                    <h3>Viceammiraglio Wilhelm von Tegetthoff</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">1827-1871 | Ammiraglio austriaco</p>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__contact">
+            <strong>Società Astronomica "Istra" Pola</strong><br>
+            Glavinićev uspon 1, 52100 Pola - HR<br>
+            Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: +385 91 214 1966
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+
+</html>

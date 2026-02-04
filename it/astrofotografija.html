@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astrofotografia | Osservatorio di Pola</title>
+    <meta name="description" content="Astrofotografie scattate dai membri della Società Astronomica Istra Pola">
+    <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
+    <link rel="stylesheet" href="../css/modern.css">
+    <style>
+        .astro-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .astro-category {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-md);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .astro-category:hover,
+        .astro-category.active {
+            background: rgba(var(--accent-primary-rgb), 0.2);
+            border-color: var(--accent-primary);
+        }
+
+        .astro-category-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body class="page-blur">
+    <header class="header">
+        <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+        <a href="index.html" class="header__logo">
+            <img src="../sites/all/themes/black_hole/logo.png" alt="ADIP Logo">
+            <div>
+                <div class="header__title">Osservatorio di Pola</div>
+                <div class="header__subtitle">Società Astronomica "Istra" Pola</div>
+            </div>
+        </a>
+        <nav class="nav" id="main-nav">
+            <button class="nav__close" id="nav-close">✕</button>
+            <a href="index.html" class="nav__link">🏠 Home</a>
+            <a href="aktivnosti.html" class="nav__link">📅 Attività</a>
+            <a href="galerija-slika.html" class="nav__link active">🖼️ Galleria</a>
+            <a href="povijest-zvjezdarnice.html" class="nav__link">📜 Storia</a>
+            <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Visitaci</a>
+            <a href="radovi.html" class="nav__link">📚 Pubblicazioni</a>
+            <a href="servisi.html" class="nav__link">⚙️ Servizi</a>
+            <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ Chi siamo</a>
+            <div class="nav__spacer"></div>
+            <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Accedi</button>
+        </nav>
+        <div class="nav-overlay" id="nav-overlay"></div>
+        <div class="user-controls">
+            <div class="lang-selector">
+                <button class="lang-current">🇮🇹 IT ▼</button>
+                <div class="lang-dropdown">
+                    <a href="/astrofotografija.html" class="lang-option" data-lang="hr">🇭🇷 Hrvatski</a>
+                    <a href="/en/astrofotografija.html" class="lang-option" data-lang="en">🇬🇧 English</a>
+                    <a href="/it/astrofotografija.html" class="lang-option active" data-lang="it">🇮🇹 Italiano</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-content">
+        <div class="container">
+            <div class="section__header" style="padding-top: 2rem;">
+                <a href="galerija-slika.html" class="btn btn--secondary" style="margin-bottom: 1rem;">← Torna alla
+                    galleria</a>
+                <h1 class="section__title"><span class="text-gradient">Astrofotografia</span></h1>
+                <p class="section__subtitle">Immagini di corpi celesti catturate dai nostri membri</p>
+            </div>
+
+            <div class="astro-categories">
+                <div class="astro-category active" data-category="all">
+                    <div class="astro-category-icon">🌌</div>
+                    <div>Tutti</div>
+                </div>
+                <div class="astro-category" data-category="mjesec">
+                    <div class="astro-category-icon">🌙</div>
+                    <div>Luna</div>
+                </div>
+                <div class="astro-category" data-category="mars">
+                    <div class="astro-category-icon">🔴</div>
+                    <div>Marte</div>
+                </div>
+                <div class="astro-category" data-category="jupiter">
+                    <div class="astro-category-icon">🟠</div>
+                    <div>Giove</div>
+                </div>
+                <div class="astro-category" data-category="saturn">
+                    <div class="astro-category-icon">🪐</div>
+                    <div>Saturno</div>
+                </div>
+                <div class="astro-category" data-category="duboki-svemir">
+                    <div class="astro-category-icon">✨</div>
+                    <div>Spazio profondo</div>
+                </div>
+            </div>
+
+            <div class="grid grid--3" id="astro-gallery">
+                <p style="color: var(--text-muted);">Caricamento immagini...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox__content">
+            <button class="lightbox__close">✕</button>
+            <button class="lightbox__nav lightbox__nav--prev">‹</button>
+            <img class="lightbox__image" id="lightbox-image" src="" alt="">
+            <button class="lightbox__nav lightbox__nav--next">›</button>
+            <p class="lightbox__caption" id="lightbox-caption"></p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer__contact">
+            <strong>Società Astronomica "Istra" Pola</strong><br>
+            Glavinićev uspon 1, 52100 Pola - HR<br>
+            Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: +385 91 214 1966
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="login-modal">
+        <div class="modal">
+            <div class="modal__header">
+                <h3 class="modal__title">Accedi</h3>
+            </div>
+            <form id="login-form">
+                <div class="form-group"><label class="form-label">Nome utente</label><input type="text"
+                        class="form-input" id="login-username" required></div>
+                <div class="form-group"><label class="form-label">Password</label><input type="password"
+                        class="form-input" id="login-password" required></div>
+                <button type="submit" class="btn btn--primary" style="width: 100%;">Accedi</button>
+            </form>
+            <button class="btn btn--secondary" style="width: 100%; margin-top: 0.5rem;"
+                id="close-modal">Annulla</button>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        let currentCategory = 'mjesec';
+        let astroData = {};
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            initLightbox();
+
+            // Load all astro data - use relative path for language subdir
+            const response = await fetch('../data/galerija.json');
+            const data = await response.json();
+            astroData = data.astrofotografija || {};
+
+            // Initial load
+            loadAstroCategory('mjesec');
+
+            // Category click handlers
+            document.querySelectorAll('.astro-category').forEach(cat => {
+                cat.addEventListener('click', () => {
+                    document.querySelectorAll('.astro-category').forEach(c => c.classList.remove('active'));
+                    cat.classList.add('active');
+                    const category = cat.dataset.category;
+                    if (category === 'all') {
+                        loadAllAstroCategories();
+                    } else {
+                        loadAstroCategory(category);
+                    }
+                });
+            });
+        });
+
+        function loadAstroCategory(category) {
+            currentCategory = category;
+            const images = astroData[category] || [];
+            const container = document.getElementById('astro-gallery');
+
+            if (images.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1;">Nessuna foto in questa categoria.</p>';
+                return;
+            }
+
+            if (typeof renderGallery === 'function') {
+                renderGallery(images, 'astro-gallery', category);
+            }
+        }
+
+        function loadAllAstroCategories() {
+            const container = document.getElementById('astro-gallery');
+            let allImages = [];
+            Object.keys(astroData).forEach(cat => {
+                allImages = allImages.concat(astroData[cat] || []);
+            });
+
+            if (allImages.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1;">Nessuna foto disponibile.</p>';
+                return;
+            }
+
+            if (typeof renderGallery === 'function') {
+                renderGallery(allImages, 'astro-gallery', 'all');
+            }
+        }
+    </script>
+</body>
+
+</html>

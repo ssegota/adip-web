@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servizi - Società Astronomica "Istra" Pola</title>
+    <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
+    <link rel="stylesheet" href="../css/modern.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/suncalc/1.9.0/suncalc.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 180px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+        <a href="index.html" class="header__logo">
+            <img src="../sites/all/themes/black_hole/logo.png" alt="ADIP Logo">
+            <div>
+                <div class="header__title">Osservatorio di Pola</div>
+                <div class="header__subtitle">Società Astronomica "Istra" Pola</div>
+            </div>
+        </a>
+        <nav class="nav" id="main-nav">
+            <button class="nav__close" id="nav-close">✕</button>
+            <a href="index.html" class="nav__link">🏠 Home</a>
+            <a href="aktivnosti.html" class="nav__link">📅 Attività</a>
+            <a href="galerija-slika.html" class="nav__link">🖼️ Galleria</a>
+            <a href="povijest-zvjezdarnice.html" class="nav__link">📜 Storia</a>
+            <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Visitaci</a>
+            <a href="radovi.html" class="nav__link">📚 Pubblicazioni</a>
+            <a href="servisi.html" class="nav__link active">⚙️ Servizi</a>
+            <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ Chi siamo</a>
+            <div class="nav__spacer"></div>
+            <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Accedi</button>
+        </nav>
+        <div class="nav-overlay" id="nav-overlay"></div>
+        <div class="user-controls">
+            <div class="lang-selector">
+                <button class="lang-current">🇮🇹 IT ▼</button>
+                <div class="lang-dropdown">
+                    <a href="/servisi.html" class="lang-option" data-lang="hr">🇭🇷 Hrvatski</a>
+                    <a href="/en/servisi.html" class="lang-option" data-lang="en">🇬🇧 English</a>
+                    <a href="/it/servisi.html" class="lang-option active" data-lang="it">🇮🇹 Italiano</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="content" style="padding-top: 100px;">
+        <section class="section">
+            <div class="container">
+                <div class="section__header">
+                    <h2 class="section__title">Servizi <span class="text-gradient">utili</span></h2>
+                    <p class="section__subtitle">Strumenti, previsioni e misurazioni</p>
+                </div>
+            </div>
+            <div class="services-grid" id="main-services-grid">
+                <div class="service-card glass-card"
+                    onclick="openModal('Meteo Pola (Pljusak.com)', 'https://pljusak.com/meteo.php?stanica=pulacentar', 'iframe')">
+                    <div class="service-icon">🌦️</div>
+                    <h3 class="service-title">Meteo Pola</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Pljusak.com</p>
+                </div>
+                <div class="service-card glass-card"
+                    onclick="openModal('Lightning Maps', 'https://www.lightningmaps.org/blitzortung/europe/index.php?bo_page=map&lang=en', 'iframe')">
+                    <div class="service-icon">⚡</div>
+                    <h3 class="service-title">Lightning Maps</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Sistema di rilevamento
+                        fulmini</p>
+                </div>
+                <div class="service-card glass-card" onclick="openLibraryModal()" style="cursor: pointer;">
+                    <div class="service-icon">📖</div>
+                    <h3 class="service-title">Libri</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Ricerca nel catalogo
+                        della biblioteca</p>
+                </div>
+                <div class="service-card glass-card" onclick="openAsteroidGame()" style="cursor: pointer;">
+                    <div class="service-icon">☄️</div>
+                    <h3 class="service-title">Spot the Asteroid</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Trova l'asteroide
+                        nell'immagine</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="modal-overlay" id="service-modal" style="z-index: 2000;">
+        <div class="modal-content-full"
+            style="width: 90vw; height: 85vh; background: var(--bg-card); border-radius: var(--radius-lg); position: relative; display: flex; flex-direction: column; overflow: hidden;">
+            <div
+                style="padding: 1rem; border-bottom: 1px solid var(--border-glass); display: flex; justify-content: space-between; align-items: center; background: rgba(0, 0, 0, 0.4);">
+                <h3 id="modal-title" style="margin: 0; color: var(--text-primary);">Titolo</h3>
+                <button id="close-modal"
+                    style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;">✕</button>
+            </div>
+            <div id="modal-body"
+                style="flex-grow: 1; padding: 0.5rem; background: var(--bg-body); color: var(--text-primary); overflow: auto;">
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer__contact">
+            <strong>Società Astronomica "Istra" Pola</strong><br>
+            Glavinićev uspon 1, 52100 Pola - HR<br>
+            Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: +385 91 214 1966
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/services.js?v=11"></script>
+</body>
+
+</html>
