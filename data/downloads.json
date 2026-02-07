@@ -1,17 +1,5 @@
 [
   {
-    "id": 1770485238665,
-    "title": "test",
-    "description": "test",
-    "fileName": "adip-150-en.pdf",
-    "filePath": "downloads-files/1770485238577-adip-150-en.pdf",
-    "fileSize": "46.79 MB",
-    "fileType": "pdf",
-    "dateAdded": "07. 02. 2026.",
-    "uploadDateIso": "2026-02-07T17:27:18.665Z",
-    "thumbnailPath": "downloads-files/thumbnails/1770485238577-adip-150-en-01.png"
-  },
-  {
     "id": 1770485003284,
     "title": "Lunarij - 2026",
     "description": "",
@@ -46,16 +34,5 @@
     "dateAdded": "07. 02. 2026.",
     "uploadDateIso": "2026-02-07T17:21:22.825Z",
     "thumbnailPath": "downloads-files/thumbnails/1770484882789-adip.150-hr_compressed-01.png"
-  },
-  {
-    "id": 1770211718504,
-    "title": "asd",
-    "description": "asd",
-    "fileName": "ncal_2025_11.gif",
-    "filePath": "downloads-files/1770211718499-ncal_2025_11.gif",
-    "fileSize": "0.07 MB",
-    "fileType": "gif",
-    "dateAdded": "04. 02. 2026.",
-    "uploadDateIso": "2026-02-04T13:28:38.528Z"
   }
 ]
