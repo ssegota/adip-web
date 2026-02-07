@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Objects visible from Naval Observatory Pula</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 2rem; }
+    h1 { margin-bottom: .25rem; }
+    .row { display:flex; flex-wrap:wrap; gap:.75rem; align-items:center; margin:.5rem 0 .75rem; }
+    label { font-weight:600; }
+    input[type="date"] { padding:.4rem .5rem; }
+    button { padding:.5rem .8rem; cursor:pointer; }
+    .muted { color:#666; }
+    table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; vertical-align: top; }
+    th { background:#f4f4f4; position: sticky; top: 0; user-select:none; }
+    th.sortable { cursor: pointer; }
+    th.active::after { content: attr(data-arrow); margin-left: .35rem; font-size: .9em; }
+    @media print { .row { display:none !important; } th { background:#fff; } }
+    #results th,
+    #results td {
+      text-align: center;
+    }
+  </style>
+  <script src="./astronomy.browser.min.js"></script>
+</head>
+<body>
+  <h1>Objects visible from Naval Observatory Pula</h1>
+  Please Note: some of the objects may be hard to see due to weather and lightning conditions or obscured by terrain/buildings. We provide no guarantee that you will be able to see the below objects if you visit, and the list is only informative.
+  <div class="row">
+    <div>
+      <label for="date">Select date (default - today):</label>
+      <input id="date" type="date" />
+    </div>
+    <button id="btnPrint">Print the list</button>
+  </div>
+
+  <div id="status" class="muted"></div>
+  <div id="twilight" class="muted"></div>
+
+  <table id="results"></table>
+
+<script>
+/* ===== Location & filters ===== */
+const LAT  = 44 + 51/60 + 49/3600;   // 44.863611 N
+const LON  = 13 + 50/60 + 44/3600;   // 13.845556 E
+const ELEV = 30;
+
+const ALT_LIMIT = 10;
+const MAG_LIMIT = 5.0;
+
+/* ===== Catalogs ===== */
+const SOLAR = [
+  { key: 'Moon',    wiki:'Moon',                type:'Moon',   forceInclude:true },
+  { key: 'Mercury', wiki:'Mercury_(planet)',    type:'Planet' },
+  { key: 'Venus',   wiki:'Venus',               type:'Planet' },
+  { key: 'Mars',    wiki:'Mars',                type:'Planet' },
+  { key: 'Jupiter', wiki:'Jupiter',             type:'Planet' },
+  { key: 'Saturn',  wiki:'Saturn',              type:'Planet' },
+];
+
+const CATALOG = [
+  /* === Bright stars (Winter) === */
+  { name:'Sirius',      wiki:'Sirius',              type:'Star',   ra: 6.752,  dec:-16.716, mag:-1.46 },
+  { name:'Rigel',       wiki:'Rigel',               type:'Star',   ra: 5.243,  dec: -8.202, mag: 0.13 },
+  { name:'Betelgeuse',  wiki:'Betelgeuse',          type:'Star',   ra: 5.919,  dec:  7.407, mag: 0.42 },
+  { name:'Procyon',     wiki:'Procyon',             type:'Star',   ra: 7.655,  dec:  5.225, mag: 0.38 },
+  { name:'Aldebaran',   wiki:'Aldebaran',           type:'Star',   ra: 4.598,  dec: 16.509, mag: 0.85 },
+  { name:'Pollux',      wiki:'Pollux_(star)',       type:'Star',   ra: 7.755,  dec: 28.026, mag: 1.14 },
+  { name:'Castor',      wiki:'Castor_(star)',       type:'Star',   ra: 7.576,  dec: 31.889, mag: 1.58 },
+
+  /* === Bright stars (Spring) === */
+  { name:'Arcturus',    wiki:'Arcturus',            type:'Star',   ra:14.261,  dec: 19.187, mag:-0.05 },
+  { name:'Spica',       wiki:'Spica',               type:'Star',   ra:13.419,  dec:-11.161, mag: 0.97 },
+  { name:'Regulus',     wiki:'Regulus',             type:'Star',   ra:10.139,  dec: 11.967, mag: 1.36 },
+  { name:'Denebola',    wiki:'Denebola',            type:'Star',   ra:11.817,  dec: 14.571, mag: 2.1 },
+  { name:'Alphard',     wiki:'Alphard',             type:'Star',   ra: 9.459,  dec:-8.658,  mag: 1.98 },
+
+  /* === Bright stars (Summer) === */
+  { name:'Vega',        wiki:'Vega',                type:'Star',   ra:18.615,  dec: 38.783, mag: 0.03 },
+  { name:'Altair',      wiki:'Altair',              type:'Star',   ra:19.846,  dec:  8.868, mag: 0.77 },
+  { name:'Deneb',       wiki:'Deneb',               type:'Star',   ra:20.691,  dec: 45.280, mag: 1.25 },
+  { name:'Antares',     wiki:'Antares',             type:'Star',   ra:16.490,  dec:-26.432, mag: 1.06 },
+  { name:'Albireo',     wiki:'Albireo',             type:'Double', ra:19.512,  dec: 27.959, mag: 3.1 },
+
+  /* === Bright stars (Autumn) === */
+  { name:'Fomalhaut',   wiki:'Fomalhaut',           type:'Star',   ra:22.961,  dec:-29.622, mag: 1.16 },
+  { name:'Alpheratz',   wiki:'Alpheratz',           type:'Star',   ra: 0.139,  dec: 29.090, mag: 2.1 },
+  { name:'Mirach',      wiki:'Mirach',              type:'Star',   ra: 1.096,  dec: 35.620, mag: 2.0 },
+  { name:'Hamal',       wiki:'Hamal',               type:'Star',   ra: 2.119,  dec: 23.462, mag: 2.0 },
+  { name:'Scheat',      wiki:'Scheat',              type:'Star',   ra:23.063,  dec: 28.082, mag: 2.4 },
+
+  /* === Year-round northern === */
+  { name:'Capella',     wiki:'Capella',             type:'Star',   ra: 5.279,  dec: 45.997, mag: 0.08 },
+  { name:'Kochab',      wiki:'Beta_Ursae_Minoris',  type:'Star',   ra:14.845,  dec: 74.155, mag: 2.1 },
+  { name:'Polaris',     wiki:'Polaris',             type:'Star',   ra: 2.530,  dec: 89.264, mag: 1.98 },
+  { name:'Mizar & Alcor', wiki:'Mizar_and_Alcor',   type:'Double', ra:13.398,  dec: 54.925, mag: 2.0 },
+
+  /* === DSOs === */
+  { name:'M31 (Andromeda)', wiki:'Andromeda_Galaxy', type:'DSO',  ra: 0.712,  dec: 41.269, mag: 3.4 },
+  { name:'M42 (Orion Nebula)', wiki:'Orion_Nebula',  type:'DSO',  ra: 5.592,  dec: -5.391, mag: 4.0 },
+  { name:'M45 (Pleiades)', wiki:'Pleiades',         type:'DSO',  ra: 3.792,  dec: 24.117, mag: 1.6 },
+  { name:'M13 (Hercules Cluster)', wiki:'Messier_13', type:'DSO', ra:16.695,  dec: 36.467, mag: 5.8 },
+  { name:'M57 (Ring Nebula)', wiki:'Ring_Nebula',   type:'DSO',  ra:18.885,  dec: 33.034, mag: 8.8 },
+  { name:'M27 (Dumbbell Nebula)', wiki:'Dumbbell_Nebula', type:'DSO', ra:19.993, dec:22.721, mag: 7.4 },
+  { name:'M44 (Beehive Cluster)', wiki:'Beehive_Cluster', type:'DSO', ra:8.667, dec:19.667, mag: 3.7 }
+];
+
+/* ===== Sorting state ===== */
+let lastRows = [];
+let sortKey = 'mag';   // 'type' | 'name' | 'rise' | 'set' | 'mag'
+let sortDir = 1;        // 1 asc, -1 desc
+const collator = new Intl.Collator('hr', { numeric:false, sensitivity:'base' });
+
+/* ===== Utilities ===== */
+const byId = id => document.getElementById(id);
+const fmt2 = n => n.toString().padStart(2,'0');
+const dateEU = d => fmt2(d.getDate()) + "." + fmt2(d.getMonth()+1) + "." + d.getFullYear();
+const timeEU = d => d ? d.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', hour12:false}) : "—";
+
+/* ===== Astronomy helpers ===== */
+function sunAlt(A, obs, t) {
+  const eq = A.Equator('Sun', A.MakeTime(t), obs, true, true);
+  const h  = A.Horizon(A.MakeTime(t), obs, eq.ra, eq.dec, 'normal', true);
+  return h.altitude;
+}
+function findSunAltCrossing(A, obs, t0, t1, thrDeg, dir) {
+  const step = 2*60*1000;
+  let prev = t0, prevVal = sunAlt(A, obs, prev) - thrDeg;
+  for (let t = new Date(t0.getTime()+step); t <= t1; t = new Date(t.getTime()+step)) {
+    const val = sunAlt(A, obs, t) - thrDeg;
+    const down = prevVal > 0 && val <= 0;
+    const up   = prevVal < 0 && val >= 0;
+    if ((dir==='down' && down) || (dir==='up' && up)) {
+      let lo = prev, hi = t;
+      for (let i=0;i<14;i++) {
+        const mid = new Date((lo.getTime()+hi.getTime())/2);
+        const mv = sunAlt(A, obs, mid) - thrDeg;
+        if ((dir==='down' && mv>0) || (dir==='up' && mv<0)) lo = mid; else hi = mid;
+      }
+      return hi;
+    }
+    prev = t; prevVal = val;
+  }
+  return null;
+}
+function bodyAlt(A, obs, body, t) {
+  const eq = A.Equator(body, A.MakeTime(t), obs, true, true);
+  const h  = A.Horizon(A.MakeTime(t), obs, eq.ra, eq.dec, 'normal', true);
+  return { alt: h.altitude, ra: eq.ra, dec: eq.dec };
+}
+function altFromRaDec(A, obs, t, raHours, decDeg) {
+  const h = A.Horizon(A.MakeTime(t), obs, raHours, decDeg, 'normal', true);
+  return h.altitude;
+}
+
+/* Return null unless BOTH rise and set are found */
+function findRiseSetRaDec(A, obs, t0, t1, raHours, decDeg) {
+  const step = 4*60*1000;
+  let prev = t0, prevAlt = altFromRaDec(A, obs, prev, raHours, decDeg);
+  let rise=null, set=null;
+  for (let t=new Date(t0.getTime()+step); t<=t1; t=new Date(t.getTime()+step)) {
+    const a = altFromRaDec(A, obs, t, raHours, decDeg);
+    if (rise===null && prevAlt <= 0 && a > 0) { rise = t; }
+    if (set===null && prevAlt >= 0 && a < 0) { set = t; }
+    if (rise && set) break;
+    prev = t; prevAlt = a;
+  }
+  return (rise && set) ? { rise, set } : null;
+}
+
+/* ===== Sorting helpers ===== */
+function sortRows(rows) {
+  const r = rows.slice();
+  r.sort((a, b) => {
+    switch (sortKey) {
+      case 'type': return sortDir * collator.compare(a.type, b.type);
+      case 'name': return sortDir * collator.compare(a.name, b.name);
+      case 'mag': {
+        const na = Number(a.mag), nb = Number(b.mag);
+        const d = (isNaN(na) ? Infinity : na) - (isNaN(nb) ? Infinity : nb);
+        return sortDir * (d !== 0 ? d : collator.compare(a.name, b.name));
+      }
+      case 'rise': return sortDir * ((a.rise?.getTime() ?? 0) - (b.rise?.getTime() ?? 0));
+      case 'set':  return sortDir * ((a.set ?.getTime() ?? 0) - (b.set ?.getTime() ?? 0));
+      default: return 0;
+    }
+  });
+  return r;
+}
+
+function decorateHeader() {
+  const thead = byId('results').querySelector('thead');
+  if (!thead) return;
+  thead.querySelectorAll('th').forEach(th => {
+    const key = th.dataset.key;
+    const active = key === sortKey;
+    th.classList.toggle('active', active);
+    th.setAttribute('aria-sort', active ? (sortDir === 1 ? 'ascending' : 'descending') : 'none');
+    th.dataset.arrow = active ? (sortDir === 1 ? '▲' : '▼') : '';
+  });
+}
+
+/* ===== Main ===== */
+function computeForDate(selectedDate) {
+  const A = window.Astronomy;
+  const obs = new A.Observer(LAT, LON, ELEV);
+
+  const day  = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
+  const noon = new Date(day.getTime() + 12*3600*1000);
+
+  let sunset = null, sunrise = null;
+  try { const ev = A.SearchRiseSet('Sun', obs, -1, A.MakeTime(noon), 2); if (ev) sunset = ev.time.date; } catch {}
+  if (!sunset) sunset = findSunAltCrossing(A, obs, new Date(day.getTime()+12*3600*1000), new Date(day.getTime()+36*3600*1000), 0, 'down');
+
+  try { const ev = A.SearchRiseSet('Sun', obs, +1, A.MakeTime(new Date(sunset.getTime()+60*1000)), 2); if (ev) sunrise = ev.time.date; } catch {}
+  if (!sunrise) sunrise = findSunAltCrossing(A, obs, sunset, new Date(sunset.getTime()+36*3600*1000), 0, 'up');
+
+  const civilDusk = findSunAltCrossing(A, obs, sunset, sunrise, -6, 'down');
+  const astroDusk = findSunAltCrossing(A, obs, sunset, sunrise, -18,'down');
+  const astroDawn = findSunAltCrossing(A, obs, new Date(sunrise.getTime()-12*3600*1000), sunrise, -18,'up');
+  const civilDawn = findSunAltCrossing(A, obs, new Date(sunrise.getTime()-12*3600*1000), sunrise, -6, 'up');
+
+  byId('status').innerHTML =
+    `Date: <b>${dateEU(day)}</b> • Position: Naval Observatory Pula, Park Monte Zaro 2, 52100 Pula, Croatia (${LAT.toFixed(4)}° N, ${LON.toFixed(4)}° E, ${ELEV} m)<br>` +
+    `Sunset: <b>${timeEU(sunset)}</b> • Sunrise: <b>${timeEU(sunrise)}</b>`;
+  byId('twilight').innerHTML =
+    `Civil twilight (−6°): <b>${timeEU(civilDusk)}</b>, Astronomical twilight (−18°): <b>${timeEU(astroDusk)}</b> ` +
+    `| Astronomical sunrise (−18°): <b>${timeEU(astroDawn)}</b>, Civil sunrise (−6°): <b>${timeEU(civilDawn)}</b>`;
+
+  const nightStart = sunset, nightEnd = sunrise;
+  const rows = [];
+
+  /* Planets & Moon */
+  for (const b of SOLAR) {
+    let mag = null;
+    try { const il = A.Illumination(b.key, A.MakeTime(nightStart)); if (il && typeof il.mag === 'number') mag = il.mag; } catch {}
+    if (!b.forceInclude && mag !== null && mag > MAG_LIMIT) continue;
+
+    let visible = false;
+    for (let t=new Date(nightStart); t<=nightEnd; t=new Date(t.getTime()+30*60000)) {
+      if (bodyAlt(A, obs, b.key, t).alt >= ALT_LIMIT) { visible = true; break; }
+    }
+    if (!visible) continue;
+
+    const snap = bodyAlt(A, obs, b.key, nightStart);
+    const rs = findRiseSetRaDec(
+      A, obs,
+      new Date(nightStart.getTime()-18*3600*1000),
+      new Date(nightEnd.getTime()+18*3600*1000),
+      snap.ra, snap.dec
+    );
+    if (!rs) continue;
+
+    rows.push({ type:b.type, name:b.key, wiki:`https://en.wikipedia.org/wiki/${b.wiki}`, rise:rs.rise, set:rs.set, mag:(mag===null?'—':mag.toFixed(1)) });
+  }
+
+  /* Stars / DSOs */
+  for (const s of CATALOG) {
+    if (s.mag != null && s.mag > MAG_LIMIT) continue;
+    let visible = false;
+    for (let t=new Date(nightStart); t<=nightEnd; t=new Date(t.getTime()+30*60000)) {
+      if (altFromRaDec(A, obs, t, s.ra, s.dec) >= ALT_LIMIT) { visible = true; break; }
+    }
+    if (!visible) continue;
+
+    const rs = findRiseSetRaDec(
+      A, obs,
+      new Date(nightStart.getTime()-18*3600*1000),
+      new Date(nightEnd.getTime()+18*3600*1000),
+      s.ra, s.dec
+    );
+    if (!rs) continue;
+
+    rows.push({ type:s.type, name:s.name, wiki:`https://en.wikipedia.org/wiki/${s.wiki}`, rise:rs.rise, set:rs.set, mag:s.mag.toFixed(1) });
+  }
+
+  /* save + render sorted */
+  lastRows = rows.slice();
+  renderTable(sortRows(lastRows));
+}
+
+/* ===== Rendering (sortable headers) ===== */
+function renderTable(rows) {
+  const tbl = byId('results');
+  tbl.innerHTML = `
+    <thead>
+      <tr>
+        <th class="sortable" data-key="type" role="button" tabindex="0" aria-sort="none">Type</th>
+        <th class="sortable" data-key="name" role="button" tabindex="0" aria-sort="none">Name</th>
+        <th>Wikipedia</th>
+        <th class="sortable" data-key="rise" role="button" tabindex="0" aria-sort="none">Rise</th>
+        <th class="sortable" data-key="set"  role="button" tabindex="0" aria-sort="none">Set</th>
+        <th class="sortable" data-key="mag"  role="button" tabindex="0" aria-sort="none">Mag</th>
+      </tr>
+    </thead>
+  `;
+
+  const tbody = document.createElement('tbody');
+  if (!rows.length) {
+    tbody.innerHTML = `<tr><td colspan="6" class="muted">No objects meet tonight’s filters.</td></tr>`;
+  } else {
+    for (const r of rows) {
+      tbody.innerHTML += `<tr>
+        <td>${r.type}</td>
+        <td>${r.name}</td>
+        <td><a href="${r.wiki}" target="_blank" rel="noopener">Wikipedia</a></td>
+        <td>${timeEU(r.rise)}</td>
+        <td>${timeEU(r.set)}</td>
+        <td>${r.mag}</td>
+      </tr>`;
+    }
+  }
+  tbl.appendChild(tbody);
+
+  // Activate header decorations
+  decorateHeader();
+
+  // One-time (re)bind click & keyboard on thead
+  const thead = tbl.querySelector('thead');
+  thead.onclick = (e) => {
+    const th = e.target.closest('th.sortable');
+    if (!th) return;
+    const key = th.dataset.key;
+    if (sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = 1; }
+    renderTable(sortRows(lastRows));
+  };
+  thead.onkeydown = (e) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const th = e.target.closest('th.sortable');
+    if (!th) return;
+    e.preventDefault();
+    const key = th.dataset.key;
+    if (sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = 1; }
+    renderTable(sortRows(lastRows));
+  };
+}
+
+/* UI */
+document.getElementById('btnPrint').addEventListener('click', () => window.print());
+window.addEventListener('DOMContentLoaded', () => {
+  const today = new Date();
+  byId('date').value = today.toISOString().slice(0,10);
+  computeForDate(today);
+});
+byId('date').addEventListener('change', e => {
+  const [y,m,d] = e.target.value.split('-').map(Number);
+  computeForDate(new Date(y,m-1,d));
+});
+</script>
+</body>
+</html>
