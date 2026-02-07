@@ -42,11 +42,29 @@ function dt(key) {
     return downloadsTranslations[lang][key] || key;
 }
 
+// Store downloads globally for search filtering
+let allDownloads = [];
+
 async function loadDownloads() {
     try {
         const response = await fetch('/api/downloads');
-        const files = await response.json();
-        renderDownloads(files);
+        allDownloads = await response.json();
+        renderDownloads(allDownloads);
+
+        // Setup search functionality
+        const searchInput = document.getElementById('downloads-search');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                const filtered = allDownloads.filter(file => {
+                    return file.title.toLowerCase().includes(query) ||
+                        file.fileName.toLowerCase().includes(query) ||
+                        (file.description && file.description.toLowerCase().includes(query)) ||
+                        file.fileType.toLowerCase().includes(query);
+                });
+                renderDownloads(filtered);
+            });
+        }
     } catch (err) {
         console.error('Error loading downloads:', err);
     }
@@ -65,20 +83,34 @@ function renderDownloads(files) {
 
     const token = localStorage.getItem('adip_token'); // Check if admin
 
+    // Determine base path for file URLs (handle /en/ and /it/ subdirectories)
+    const isSubdir = window.location.pathname.includes('/en/') || window.location.pathname.includes('/it/');
+    const basePath = isSubdir ? '../' : '';
+
     files.forEach(file => {
         const card = document.createElement('div');
         card.className = 'download-card';
 
-        let icon = '📄';
         const ext = file.fileType.toLowerCase();
-        if (['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(ext)) icon = '🖼️';
-        else if (ext === 'pdf') icon = '📕';
-        else if (['zip', 'rar', '7z'].includes(ext)) icon = '📦';
-        else if (['doc', 'docx'].includes(ext)) icon = '📝';
-        else if (['xls', 'xlsx'].includes(ext)) icon = '📊';
+        const fullPath = basePath + file.filePath;
+
+        let iconContent = '';
+
+        // Check if it's an image file - show actual thumbnail
+        if (['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(ext)) {
+            iconContent = `<img class="file-thumbnail" src="${fullPath}" alt="${file.title}">`;
+        } else {
+            // Use emoji icons for non-image files
+            let icon = '📄';
+            if (ext === 'pdf') icon = '📕';
+            else if (['zip', 'rar', '7z'].includes(ext)) icon = '📦';
+            else if (['doc', 'docx'].includes(ext)) icon = '📝';
+            else if (['xls', 'xlsx'].includes(ext)) icon = '📊';
+            iconContent = `<div class="file-icon">${icon}</div>`;
+        }
 
         card.innerHTML = `
-            <div class="file-icon">${icon}</div>
+            ${iconContent}
             <div class="file-name" title="${file.fileName}">${file.title}</div>
             <div class="file-date">${file.dateAdded} • ${file.fileType.toUpperCase()}</div>
             ${token ? `<button class="delete-btn-overlay" onclick="deleteDownload(event, ${file.id})">✕</button>` : ''}
