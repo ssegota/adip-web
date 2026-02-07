@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
+const pdfPoppler = require('pdf-poppler');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -472,11 +473,45 @@ app.get('/api/downloads', (req, res) => {
 });
 
 // Upload Downloadable File
-app.post('/api/downloads/upload', downloadsUpload.single('file'), (req, res) => {
+app.post('/api/downloads/upload', downloadsUpload.single('file'), async (req, res) => {
     const { title, description } = req.body;
 
     if (!req.file) {
         return res.status(400).json({ success: false, message: 'No file uploaded' });
+    }
+
+    const fileExt = path.extname(req.file.filename).substring(1).toLowerCase();
+    let thumbnailPath = '';
+
+    // Generate thumbnail for PDF files
+    if (fileExt === 'pdf') {
+        try {
+            const pdfPath = path.join(__dirname, 'downloads-files', req.file.filename);
+            const thumbnailDir = path.join(__dirname, 'downloads-files', 'thumbnails');
+
+            // Ensure thumbnails directory exists
+            if (!fs.existsSync(thumbnailDir)) {
+                fs.mkdirSync(thumbnailDir, { recursive: true });
+            }
+
+            const outputName = req.file.filename.replace('.pdf', '').replace('.PDF', '');
+
+            const opts = {
+                format: 'png',
+                out_dir: thumbnailDir,
+                out_prefix: outputName,
+                page: 1, // Only first page
+                scale: 1024 // Width in pixels
+            };
+
+            await pdfPoppler.convert(pdfPath, opts);
+
+            // pdf-poppler creates files like outputName-1.png
+            thumbnailPath = 'downloads-files/thumbnails/' + outputName + '-1.png';
+        } catch (err) {
+            console.error('Error generating PDF thumbnail:', err);
+            // Continue without thumbnail if generation fails
+        }
     }
 
     const newFile = {
@@ -485,9 +520,10 @@ app.post('/api/downloads/upload', downloadsUpload.single('file'), (req, res) => 
         description: description || '',
         fileName: req.file.originalname,
         filePath: 'downloads-files/' + req.file.filename,
-        fileSize: (req.file.size / 1024 / 1024).toFixed(2) + ' MB', // Size in MB
-        fileType: path.extname(req.file.filename).substring(1), // Extension without dot
-        dateAdded: new Date().toLocaleDateString('hr-HR'), // Or ISO if preferred
+        thumbnailPath: thumbnailPath, // New field for thumbnail
+        fileSize: (req.file.size / 1024 / 1024).toFixed(2) + ' MB',
+        fileType: fileExt,
+        dateAdded: new Date().toLocaleDateString('hr-HR'),
         uploadDateIso: new Date().toISOString()
     };
 
@@ -496,7 +532,7 @@ app.post('/api/downloads/upload', downloadsUpload.single('file'), (req, res) => 
         if (!err && data) {
             try {
                 downloads = JSON.parse(data);
-            } catch (e) { ui.console.error(e); }
+            } catch (e) { console.error(e); }
         }
 
         downloads.unshift(newFile);
