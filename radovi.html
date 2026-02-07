@@ -152,17 +152,102 @@
                     </form>
                 </div>
 
-                <!-- Search Bar -->
-                <div class="search-container" style="margin-bottom: 1.5rem;">
-                    <input type="text" id="radovi-search" class="form-input"
-                        placeholder="🔍 Pretraži radove po naslovu, autorima ili godini..."
-                        style="width: 100%; padding: 1rem; font-size: 1rem; background: rgba(0,0,0,0.3); border: 1px solid var(--border-glass); border-radius: var(--radius-md); color: var(--text-primary);">
-                </div>
+                <!-- Main Layout with Sidebar -->
+                <style>
+                    .radovi-layout {
+                        display: grid;
+                        grid-template-columns: 250px 1fr;
+                        gap: 2rem;
+                        align-items: start;
+                    }
 
-                <!-- List -->
-                <div class="grid grid--2" id="radovi-list">
-                    <!-- Loaded via JS -->
-                    <p style="color: var(--text-secondary);">Učitavanje radova...</p>
+                    @media (max-width: 768px) {
+                        .radovi-layout {
+                            grid-template-columns: 1fr;
+                        }
+                    }
+
+                    .radovi-sidebar {
+                        background: rgba(0, 0, 0, 0.2);
+                        padding: 1.5rem;
+                        border-radius: var(--radius-md);
+                        border: 1px solid var(--border-glass);
+                    }
+
+                    .filter-group {
+                        margin-bottom: 1.5rem;
+                    }
+
+                    .filter-group label {
+                        display: block;
+                        margin-bottom: 0.5rem;
+                        font-weight: bold;
+                        color: var(--text-primary);
+                    }
+
+                    .filter-group select {
+                        width: 100%;
+                        padding: 0.5rem;
+                        background: rgba(0, 0, 0, 0.3);
+                        border: 1px solid var(--border-glass);
+                        color: var(--text-primary);
+                        border-radius: var(--radius-sm);
+                    }
+
+                    .checkbox-group div {
+                        margin-bottom: 0.5rem;
+                    }
+
+                    .checkbox-group input {
+                        margin-right: 0.5rem;
+                    }
+                </style>
+
+                <div class="radovi-layout">
+                    <!-- Sidebar -->
+                    <aside class="radovi-sidebar">
+                        <h3
+                            style="margin-bottom: 1rem; border-bottom: 1px solid var(--border-glass); padding-bottom: 0.5rem;">
+                            Filteri</h3>
+
+                        <!-- Year Filter -->
+                        <div class="filter-group">
+                            <label for="filter-year">Godina</label>
+                            <select id="filter-year">
+                                <option value="">Sve godine</option>
+                                <!-- Populated by JS -->
+                            </select>
+                        </div>
+
+                        <!-- Author Filter -->
+                        <div class="filter-group">
+                            <label>Autori</label>
+                            <div class="checkbox-group">
+                                <div><input type="checkbox" class="filter-author" value="D. Šegon"> D. Šegon</div>
+                                <div><input type="checkbox" class="filter-author" value="M. Šegon"> M. Šegon</div>
+                                <div><input type="checkbox" class="filter-author" value="J. Palisa"> J. Palisa</div>
+                            </div>
+                        </div>
+
+                        <button id="reset-filters" class="btn btn--secondary"
+                            style="width: 100%; font-size: 0.9rem;">Poništi filtre</button>
+                    </aside>
+
+                    <!-- Main Content -->
+                    <div class="radovi-content">
+                        <!-- Search Bar -->
+                        <div class="search-container" style="margin-bottom: 1.5rem;">
+                            <input type="text" id="radovi-search" class="form-input"
+                                placeholder="🔍 Pretraži radove po naslovu, autorima ili godini..."
+                                style="width: 100%; padding: 1rem; font-size: 1rem; background: rgba(0,0,0,0.3); border: 1px solid var(--border-glass); border-radius: var(--radius-md); color: var(--text-primary);">
+                        </div>
+
+                        <!-- List -->
+                        <div class="grid grid--2" id="radovi-list">
+                            <!-- Loaded via JS -->
+                            <p style="color: var(--text-secondary);">Učitavanje radova...</p>
+                        </div>
+                    </div>
                 </div>
 
             </div>

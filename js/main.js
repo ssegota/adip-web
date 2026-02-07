@@ -337,30 +337,109 @@ let allRadovi = [];
 
 async function loadRadovi(container) {
     try {
-        const response = await fetch('/api/radovi');
+        // Handle subdir path check
+        const isSubdir = window.location.pathname.includes('/en/') || window.location.pathname.includes('/it/');
+        const jsonPath = isSubdir ? '../data/radovi.json' : 'data/radovi.json';
+
+        const response = await fetch(jsonPath);
         allRadovi = await response.json();
 
+        // Initial Render
         renderRadovi(container, allRadovi);
 
-        // Setup search functionality
-        const searchInput = document.getElementById('radovi-search');
-        if (searchInput) {
-            searchInput.addEventListener('input', (e) => {
-                const query = e.target.value.toLowerCase().trim();
-                const filtered = allRadovi.filter(rad => {
-                    return rad.title.toLowerCase().includes(query) ||
-                        rad.authors.toLowerCase().includes(query) ||
-                        String(rad.year).includes(query) ||
-                        (rad.abstract && rad.abstract.toLowerCase().includes(query));
-                });
-                renderRadovi(container, filtered);
-            });
-        }
+        // Setup Filters
+        setupRadoviFilters(container);
 
     } catch (err) {
         console.error(err);
         container.innerHTML = `<p>${t('errorLoading')}</p>`;
     }
+}
+
+function setupRadoviFilters(container) {
+    const yearSelect = document.getElementById('filter-year');
+    const authorChecks = document.querySelectorAll('.filter-author');
+    const searchInput = document.getElementById('radovi-search');
+    const resetBtn = document.getElementById('reset-filters');
+
+    // Populate Year Dropdown
+    if (yearSelect) {
+        // Clear existing options except first
+        while (yearSelect.options.length > 1) {
+            yearSelect.remove(1);
+        }
+
+        const years = [...new Set(allRadovi.map(r => r.year))].filter(y => y).sort((a, b) => b - a);
+        years.forEach(y => {
+            const opt = document.createElement('option');
+            opt.value = y;
+            opt.textContent = y;
+            yearSelect.appendChild(opt);
+        });
+
+        yearSelect.addEventListener('change', () => applyRadoviFilters(container));
+    }
+
+    // Author Checkboxes
+    authorChecks.forEach(ch => {
+        ch.addEventListener('change', () => applyRadoviFilters(container));
+    });
+
+    // Search Input
+    if (searchInput) {
+        // Remove existing listeners by cloning (simple trick) or just add new one? 
+        // Since loadRadovi runs once, adding one is fine. 
+        // But previous version had an anonymous listener. 
+        // Replicating element removes listeners.
+        const newSearch = searchInput.cloneNode(true);
+        searchInput.parentNode.replaceChild(newSearch, searchInput);
+
+        newSearch.addEventListener('input', () => applyRadoviFilters(container));
+        // Also need to keep ID 'radovi-search' working? yes cloneNode preserves attributes.
+    }
+
+    // Reset Button
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            if (yearSelect) yearSelect.value = '';
+            authorChecks.forEach(ch => ch.checked = false);
+            const search = document.getElementById('radovi-search');
+            if (search) search.value = '';
+            applyRadoviFilters(container);
+        });
+    }
+}
+
+function applyRadoviFilters(container) {
+    const searchInput = document.getElementById('radovi-search');
+    const yearSelect = document.getElementById('filter-year');
+    const authorChecks = document.querySelectorAll('.filter-author:checked');
+
+    const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+    const year = yearSelect ? yearSelect.value : '';
+    const selectedAuthors = Array.from(authorChecks).map(cb => cb.value.toLowerCase());
+
+    const filtered = allRadovi.filter(rad => {
+        // Search
+        const matchesSearch = !query ||
+            rad.title.toLowerCase().includes(query) ||
+            rad.authors.toLowerCase().includes(query) ||
+            String(rad.year).includes(query) ||
+            (rad.abstract && rad.abstract.toLowerCase().includes(query));
+
+        // Year
+        const matchesYear = !year || String(rad.year) === year;
+
+        // Authors (OR logic: if ANY selected author is present)
+        let matchesAuthors = true;
+        if (selectedAuthors.length > 0) {
+            matchesAuthors = selectedAuthors.some(authName => rad.authors.toLowerCase().includes(authName));
+        }
+
+        return matchesSearch && matchesYear && matchesAuthors;
+    });
+
+    renderRadovi(container, filtered);
 }
 
 function renderRadovi(container, radovi) {
