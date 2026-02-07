@@ -454,9 +454,10 @@ function renderRadovi(container, radovi) {
         return;
     }
 
-    // Split: Top 4 vs Rest
-    const top4 = radovi.slice(0, 4);
-    const rest = radovi.slice(4);
+    // Split: Top 2 vs All in List
+    const featured = radovi.slice(0, 2);
+    // List includes ALL papers as per user request
+    const listItems = radovi;
 
     // Helper to create card
     const createCard = (rad) => {
@@ -485,16 +486,15 @@ function renderRadovi(container, radovi) {
         return card;
     };
 
-    // Render Top 4
-    top4.forEach(rad => {
+    // Render Featured (Top 2)
+    featured.forEach(rad => {
         container.appendChild(createCard(rad));
     });
 
-    // Render Rest (List View)
-    if (rest.length > 0) {
+    // Render List (All Papers)
+    if (listItems.length > 0) {
         const listContainer = document.createElement('div');
         listContainer.className = 'radovi-archive-list';
-        // Grid span handled in CSS or inline style
         listContainer.style.gridColumn = '1 / -1';
         listContainer.style.marginTop = '2rem';
 
@@ -503,7 +503,7 @@ function renderRadovi(container, radovi) {
         const list = document.createElement('div');
         list.className = 'radovi-list-items';
 
-        rest.forEach(rad => {
+        listItems.forEach(rad => {
             const isPdf = rad.type === 'pdf';
             const icon = isPdf ? '📄' : '🔗';
             const linkText = isPdf ? 'PDF' : 'Link';
@@ -513,7 +513,6 @@ function renderRadovi(container, radovi) {
 
             const item = document.createElement('div');
             item.className = 'radovi-item';
-            // Inline styles for list item (or move to CSS)
             item.style.cssText = `
                 display: flex; 
                 justify-content: space-between; 
@@ -522,8 +521,6 @@ function renderRadovi(container, radovi) {
                 border-bottom: 1px solid rgba(255,255,255,0.1); 
                 font-size: 0.9rem;
             `;
-
-            // Hover effect can be added via CSS class .radovi-item:hover
 
             item.innerHTML = `
                 <div style="display: flex; align-items: center; gap: 1rem; overflow: hidden; flex: 1;">
