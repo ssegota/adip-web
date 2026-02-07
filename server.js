@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
-const pdfPoppler = require('pdf-poppler');
+const { execSync } = require('child_process');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -483,7 +483,7 @@ app.post('/api/downloads/upload', downloadsUpload.single('file'), async (req, re
     const fileExt = path.extname(req.file.filename).substring(1).toLowerCase();
     let thumbnailPath = '';
 
-    // Generate thumbnail for PDF files
+    // Generate thumbnail for PDF files using pdftoppm
     if (fileExt === 'pdf') {
         try {
             const pdfPath = path.join(__dirname, 'downloads-files', req.file.filename);
@@ -494,20 +494,26 @@ app.post('/api/downloads/upload', downloadsUpload.single('file'), async (req, re
                 fs.mkdirSync(thumbnailDir, { recursive: true });
             }
 
-            const outputName = req.file.filename.replace('.pdf', '').replace('.PDF', '');
+            const outputName = req.file.filename.replace(/\.pdf$/i, '');
+            const outputPrefix = path.join(thumbnailDir, outputName);
 
-            const opts = {
-                format: 'png',
-                out_dir: thumbnailDir,
-                out_prefix: outputName,
-                page: 1, // Only first page
-                scale: 1024 // Width in pixels
-            };
+            // Use pdftoppm: -f 1 -l 1 = first page only, -png = PNG format, -scale-to 400 = width
+            execSync(`pdftoppm -f 1 -l 1 -png -scale-to 400 "${pdfPath}" "${outputPrefix}"`, {
+                stdio: 'pipe'
+            });
 
-            await pdfPoppler.convert(pdfPath, opts);
+            // pdftoppm creates files like outputName-1.png or outputName-01.png
+            const possibleNames = [
+                'downloads-files/thumbnails/' + outputName + '-1.png',
+                'downloads-files/thumbnails/' + outputName + '-01.png'
+            ];
 
-            // pdf-poppler creates files like outputName-1.png
-            thumbnailPath = 'downloads-files/thumbnails/' + outputName + '-1.png';
+            for (const testPath of possibleNames) {
+                if (fs.existsSync(path.join(__dirname, testPath))) {
+                    thumbnailPath = testPath;
+                    break;
+                }
+            }
         } catch (err) {
             console.error('Error generating PDF thumbnail:', err);
             // Continue without thumbnail if generation fails

@@ -1,5 +1,17 @@
 [
   {
+    "id": 1770485238665,
+    "title": "test",
+    "description": "test",
+    "fileName": "adip-150-en.pdf",
+    "filePath": "downloads-files/1770485238577-adip-150-en.pdf",
+    "fileSize": "46.79 MB",
+    "fileType": "pdf",
+    "dateAdded": "07. 02. 2026.",
+    "uploadDateIso": "2026-02-07T17:27:18.665Z",
+    "thumbnailPath": "downloads-files/thumbnails/1770485238577-adip-150-en-01.png"
+  },
+  {
     "id": 1770485003284,
     "title": "Lunarij - 2026",
     "description": "",
@@ -8,7 +20,8 @@
     "fileSize": "3.31 MB",
     "fileType": "pdf",
     "dateAdded": "07. 02. 2026.",
-    "uploadDateIso": "2026-02-07T17:23:23.284Z"
+    "uploadDateIso": "2026-02-07T17:23:23.284Z",
+    "thumbnailPath": "downloads-files/thumbnails/1770485003274-Lunarij_2026-1.png"
   },
   {
     "id": 1770484965619,
@@ -19,7 +32,8 @@
     "fileSize": "2.40 MB",
     "fileType": "pdf",
     "dateAdded": "07. 02. 2026.",
-    "uploadDateIso": "2026-02-07T17:22:45.619Z"
+    "uploadDateIso": "2026-02-07T17:22:45.619Z",
+    "thumbnailPath": "downloads-files/thumbnails/1770484965611-adip-150-en_compressed-01.png"
   },
   {
     "id": 1770484882801,
@@ -30,7 +44,8 @@
     "fileSize": "2.39 MB",
     "fileType": "pdf",
     "dateAdded": "07. 02. 2026.",
-    "uploadDateIso": "2026-02-07T17:21:22.825Z"
+    "uploadDateIso": "2026-02-07T17:21:22.825Z",
+    "thumbnailPath": "downloads-files/thumbnails/1770484882789-adip.150-hr_compressed-01.png"
   },
   {
     "id": 1770211718504,
