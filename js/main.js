@@ -246,7 +246,6 @@ async function loadHomepageContent(container, limit = 6) {
                 <div class="activity-card" style="border-left: 3px solid var(--accent-secondary);">
                     <div class="activity-card__date">${t('publication')} | ${item.year}</div>
                     <h3 class="activity-card__title">${icon} ${item.title}</h3>
-                    <p class="activity-card__content" style="flex:1;">${item.abstract ? item.abstract.substring(0, 100) + '...' : t('noAbstract')}</p>
                     <div style="margin-top: 1rem;">
                             <a href="${item.link}" target="_blank" class="btn btn--secondary btn--sm">${linkText}</a>
                     </div>
@@ -454,93 +453,52 @@ function renderRadovi(container, radovi) {
         return;
     }
 
-    // Split: Top 2 vs All in List
-    const featured = radovi.slice(0, 2);
-    // List includes ALL papers as per user request
-    const listItems = radovi;
+    // LIST VIEW ONLY (All papers)
+    const listContainer = document.createElement('div');
+    listContainer.className = 'radovi-archive-list';
+    listContainer.style.gridColumn = '1 / -1';
+    listContainer.style.marginTop = '0'; // No extra margin needed if it's the only thing
 
-    // Helper to create card
-    const createCard = (rad) => {
+    const list = document.createElement('div');
+    list.className = 'radovi-list-items';
+
+    radovi.forEach(rad => {
         const isPdf = rad.type === 'pdf';
         const icon = isPdf ? '📄' : '🔗';
-        const linkText = isPdf ? t('downloadPdf') : t('openLink');
+        const linkText = isPdf ? 'PDF' : 'Link';
 
         const deleteBtn = isLoggedIn ?
-            `<button onclick="deleteRad(${rad.id})" class="btn btn--danger btn--sm" style="margin-left: auto;">${t('deleteConfirm') ? '🗑️' : '🗑️'}</button>` : '';
+            `<button onclick="deleteRad(${rad.id})" class="btn btn--danger btn--xs" style="margin-left: 0.5rem; padding: 2px 5px; font-size: 0.7rem;">🗑️</button>` : '';
 
-        const card = document.createElement('div');
-        card.className = 'activity-card';
-        card.id = `rad-${rad.id}`;
-        card.style.display = 'flex';
-        card.style.flexDirection = 'column';
-        card.innerHTML = `
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <div class="activity-card__date">${rad.year} | ${rad.authors}</div>
+        const item = document.createElement('div');
+        item.className = 'radovi-item';
+        item.style.cssText = `
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 0.75rem; 
+            border-bottom: 1px solid rgba(255,255,255,0.1); 
+            font-size: 0.9rem;
+        `;
+
+        item.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 1rem; overflow: hidden; flex: 1;">
+                <span style="color: var(--text-muted); min-width: 40px; font-size: 0.85rem;">${rad.year}</span>
+                <div style="display: flex; flex-direction: column; overflow: hidden;">
+                    <span style="font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text-primary);" title="${rad.title}">${rad.title}</span>
+                    <span style="color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 0.85rem;" title="${rad.authors}">${rad.authors}</span>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; margin-left: 1rem;">
+                <a href="${rad.link}" target="_blank" class="btn btn--secondary btn--xs" style="font-size: 0.8rem; padding: 0.2rem 0.5rem;">${icon} ${linkText}</a>
                 ${deleteBtn}
             </div>
-            <h3 class="activity-card__title">${icon} ${rad.title}</h3>
-            <div style="margin-top: 1rem;">
-                 <a href="${rad.link}" target="_blank" class="btn btn--secondary btn--sm">${linkText}</a>
-            </div>
         `;
-        return card;
-    };
-
-    // Render Featured (Top 2)
-    featured.forEach(rad => {
-        container.appendChild(createCard(rad));
+        list.appendChild(item);
     });
 
-    // Render List (All Papers)
-    if (listItems.length > 0) {
-        const listContainer = document.createElement('div');
-        listContainer.className = 'radovi-archive-list';
-        listContainer.style.gridColumn = '1 / -1';
-        listContainer.style.marginTop = '2rem';
-
-        listContainer.innerHTML = `<h3 style="margin-bottom: 1rem; color: var(--text-primary); border-bottom: 1px solid var(--border-glass); padding-bottom: 0.5rem;">${t('olderPapers')}</h3>`;
-
-        const list = document.createElement('div');
-        list.className = 'radovi-list-items';
-
-        listItems.forEach(rad => {
-            const isPdf = rad.type === 'pdf';
-            const icon = isPdf ? '📄' : '🔗';
-            const linkText = isPdf ? 'PDF' : 'Link';
-
-            const deleteBtn = isLoggedIn ?
-                `<button onclick="deleteRad(${rad.id})" class="btn btn--danger btn--xs" style="margin-left: 0.5rem; padding: 2px 5px; font-size: 0.7rem;">🗑️</button>` : '';
-
-            const item = document.createElement('div');
-            item.className = 'radovi-item';
-            item.style.cssText = `
-                display: flex; 
-                justify-content: space-between; 
-                align-items: center; 
-                padding: 0.75rem; 
-                border-bottom: 1px solid rgba(255,255,255,0.1); 
-                font-size: 0.9rem;
-            `;
-
-            item.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 1rem; overflow: hidden; flex: 1;">
-                    <span style="color: var(--text-muted); min-width: 40px; font-size: 0.85rem;">${rad.year}</span>
-                    <div style="display: flex; flex-direction: column; overflow: hidden;">
-                        <span style="font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text-primary);" title="${rad.title}">${rad.title}</span>
-                        <span style="color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 0.85rem;" title="${rad.authors}">${rad.authors}</span>
-                    </div>
-                </div>
-                <div style="display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; margin-left: 1rem;">
-                    <a href="${rad.link}" target="_blank" class="btn btn--secondary btn--xs" style="font-size: 0.8rem; padding: 0.2rem 0.5rem;">${icon} ${linkText}</a>
-                    ${deleteBtn}
-                </div>
-            `;
-            list.appendChild(item);
-        });
-
-        listContainer.appendChild(list);
-        container.appendChild(listContainer);
-    }
+    listContainer.appendChild(list);
+    container.appendChild(listContainer);
 }
 
 // Global function for onclick
