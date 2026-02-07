@@ -434,6 +434,14 @@
           "en": "Moon - photo 8",
           "it": "Luna - foto 8"
         }
+      },
+      {
+        "src": "/galerija/astrofotografija/mjesec/1770490711749-2026-02-07_18-56_1.png",
+        "description": "Mjesec tijekom djelomične pomrčine, K. Šprem"
+      },
+      {
+        "src": "/galerija/astrofotografija/mjesec/1770490898318-2026-02-07_19-01.png",
+        "description": "Pomrčina Mjeseca 2025, D. Štimac"
       }
     ],
     "venera": [
@@ -640,6 +648,10 @@
           "en": "Jupiter - photo 2",
           "it": "Giove - foto 2"
         }
+      },
+      {
+        "src": "/galerija/astrofotografija/jupiter/1770490563075-2026-02-07_18-57_1.png",
+        "description": "A. Celija, C11"
       }
     ],
     "saturn": [
@@ -734,6 +746,18 @@
       {
         "src": "/galerija/astrofotografija/sunce/1770404725496-605526370_4316273275274347_2027571233631081291_n.jpg",
         "description": "Sunce korištenjem Seestar S50 teleskopa"
+      },
+      {
+        "src": "/galerija/astrofotografija/sunce/1770490693157-2026-02-07_18-57.png",
+        "description": "Pomrčina Sunca, djelomična, 2022. A. Celija"
+      },
+      {
+        "src": "/galerija/astrofotografija/sunce/1770490739998-2026-02-07_18-55.png",
+        "description": "Djelomična pomrčina Sunca 2025, kroz oblake. R. Rašković, D. Šegon"
+      },
+      {
+        "src": "/galerija/astrofotografija/sunce/1770490881695-2026-02-07_19-00_1.png",
+        "description": "H-alfa Sunce, D. Šegon, R. Rašković"
       }
     ]
   },
@@ -809,6 +833,22 @@
     {
       "src": "/galerija/posjete/1770404372449-549075745_4212140052354337_7136060302066785187_n.jpg",
       "description": "Posjeta uz promatranje Saturna"
+    },
+    {
+      "src": "/galerija/posjete/1770490547828-2026-02-07_18-58.png",
+      "description": "Predavanje \"Čovjek i Svemir\" Katarine Šprem."
+    },
+    {
+      "src": "/galerija/posjete/1770490587822-2026-02-07_18-59.png",
+      "description": "Pomrčina mjeseca nad Zvjezdarnicom"
+    },
+    {
+      "src": "/galerija/posjete/1770490636849-2026-02-07_19-00.png",
+      "description": "Predavanje u sklopu festivala znanosti - \"U potrazi za inteligentnim životom\", Katarina Šprem"
+    },
+    {
+      "src": "/galerija/posjete/1770490810589-2026-02-07_18-59_1.png",
+      "description": "Učenici Ugostiteljske škole u posjeti Zvjezdarnici, povodom Festivala Znanosti"
     }
   ],
   "ostalo": [
@@ -831,6 +871,18 @@
     {
       "src": "/galerija/ostalo/1770404349613-556099555_3810339775941986_1529156227718192823_n.jpg",
       "description": "Posjet Novozelandskog astronoma Pulskoj Zvjezdarnici"
+    },
+    {
+      "src": "/galerija/ostalo/1770490663221-2026-02-07_18-58_1.png",
+      "description": "Damir Šegon u testiranju mikroskopa"
+    },
+    {
+      "src": "/galerija/ostalo/1770490775593-2026-02-07_18-56.png",
+      "description": "Testiranje prepoznavanja meteorita Dronom, u suradnji sa učenicima Gimanzije Pula, S. Baressi Šegota"
+    },
+    {
+      "src": "/galerija/ostalo/1770490944271-487513368_4037696203132057_5902765861972678582_n.jpg",
+      "description": "Promatranje pomrčine Mjeseca"
     }
   ]
 }
