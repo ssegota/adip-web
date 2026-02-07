@@ -6,7 +6,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Astrofotografija | ADIP</title>
   <meta name="description" content="Astrofotografije članova Astronomskog društva Istra Pula">
+  <link rel="icon" href="sites/all/themes/black_hole/logo.png" type="image/png">
   <link rel="stylesheet" href="css/modern.css">
+  <style>
+    .astro-categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .astro-category {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+
+    .astro-category:hover,
+    .astro-category.active {
+      background: rgba(var(--accent-primary-rgb), 0.2);
+      border-color: var(--accent-primary);
+    }
+
+    .astro-category-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
 </head>
 
 <body class="page-blur">
@@ -63,20 +93,50 @@
         <p class="section__subtitle">Fotografije svemirskih objekata snimljene od članova društva</p>
       </div>
 
-      <!-- Category Pills -->
-      <div class="category-pills" id="category-pills">
-        <button class="category-pill active" data-category="mjesec">🌙 Mjesec</button>
-        <button class="category-pill" data-category="venera">🌟 Venera</button>
-        <button class="category-pill" data-category="mars">🔴 Mars</button>
-        <button class="category-pill" data-category="jupiter">🟠 Jupiter</button>
-        <button class="category-pill" data-category="saturn">💍 Saturn</button>
-        <button class="category-pill" data-category="kometi">☄️ Kometi</button>
-        <button class="category-pill" data-category="meteori">💫 Meteori</button>
-        <button class="category-pill" data-category="duboki-svemir">🌌 Duboki svemir</button>
+      <div class="astro-categories">
+        <div class="astro-category active" data-category="all">
+          <div class="astro-category-icon">🌌</div>
+          <div>Sve</div>
+        </div>
+        <div class="astro-category" data-category="mjesec">
+          <div class="astro-category-icon">🌙</div>
+          <div>Mjesec</div>
+        </div>
+        <div class="astro-category" data-category="sunce">
+          <div class="astro-category-icon">☀️</div>
+          <div>Sunce</div>
+        </div>
+        <div class="astro-category" data-category="venera">
+          <div class="astro-category-icon">🌟</div>
+          <div>Venera</div>
+        </div>
+        <div class="astro-category" data-category="mars">
+          <div class="astro-category-icon">🔴</div>
+          <div>Mars</div>
+        </div>
+        <div class="astro-category" data-category="jupiter">
+          <div class="astro-category-icon">🟠</div>
+          <div>Jupiter</div>
+        </div>
+        <div class="astro-category" data-category="saturn">
+          <div class="astro-category-icon">🪐</div>
+          <div>Saturn</div>
+        </div>
+        <div class="astro-category" data-category="kometi">
+          <div class="astro-category-icon">☄️</div>
+          <div>Kometi</div>
+        </div>
+        <div class="astro-category" data-category="meteori">
+          <div class="astro-category-icon">💫</div>
+          <div>Meteori</div>
+        </div>
+        <div class="astro-category" data-category="duboki-svemir">
+          <div class="astro-category-icon">✨</div>
+          <div>Duboki svemir</div>
+        </div>
       </div>
 
-      <!-- Gallery Grid -->
-      <div class="gallery-grid" id="gallery-container">
+      <div class="grid grid--3" id="astro-gallery">
         <p style="color: var(--text-muted);">Učitavanje galerije...</p>
       </div>
     </div>
@@ -131,7 +191,7 @@
 
   <script src="js/main.js"></script>
   <script>
-    let currentCategory = 'mjesec';
+    let currentCategory = 'all';
     let astroData = {};
 
     document.addEventListener('DOMContentLoaded', async () => {
@@ -142,16 +202,20 @@
       const data = await response.json();
       astroData = data.astrofotografija || {};
 
-      // Initial load
-      loadAstroCategory('mjesec');
+      // Initial load - show all
+      loadAllAstroCategories();
 
-      // Category pill click handlers
-      document.querySelectorAll('.category-pill').forEach(pill => {
-        pill.addEventListener('click', () => {
-          document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
-          pill.classList.add('active');
-          const category = pill.dataset.category;
-          loadAstroCategory(category);
+      // Category click handlers
+      document.querySelectorAll('.astro-category').forEach(cat => {
+        cat.addEventListener('click', () => {
+          document.querySelectorAll('.astro-category').forEach(c => c.classList.remove('active'));
+          cat.classList.add('active');
+          const category = cat.dataset.category;
+          if (category === 'all') {
+            loadAllAstroCategories();
+          } else {
+            loadAstroCategory(category);
+          }
         });
       });
     });
@@ -159,18 +223,32 @@
     function loadAstroCategory(category) {
       currentCategory = category;
       const images = astroData[category] || [];
-      const container = document.getElementById('gallery-container');
+      const container = document.getElementById('astro-gallery');
 
       if (images.length === 0) {
         container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1;">Nema fotografija u ovoj kategoriji.</p>';
         return;
       }
 
-      // Use shared renderGallery from main.js
       if (typeof renderGallery === 'function') {
-        renderGallery(images, 'gallery-container', category);
-      } else {
-        console.error('renderGallery function missing');
+        renderGallery(images, 'astro-gallery', category);
+      }
+    }
+
+    function loadAllAstroCategories() {
+      const container = document.getElementById('astro-gallery');
+      let allImages = [];
+      Object.keys(astroData).forEach(cat => {
+        allImages = allImages.concat(astroData[cat] || []);
+      });
+
+      if (allImages.length === 0) {
+        container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1;">Nema dostupnih fotografija.</p>';
+        return;
+      }
+
+      if (typeof renderGallery === 'function') {
+        renderGallery(allImages, 'astro-gallery', 'all');
       }
     }
   </script>

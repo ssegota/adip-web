@@ -332,50 +332,73 @@ function initRadoviPage() {
     }
 }
 
+// Store radovi globally for search filtering
+let allRadovi = [];
+
 async function loadRadovi(container) {
     try {
         const response = await fetch('/api/radovi');
-        const radovi = await response.json();
-        const isLoggedIn = localStorage.getItem('adip_token');
+        allRadovi = await response.json();
 
-        container.innerHTML = '';
+        renderRadovi(container, allRadovi);
 
-        if (!radovi || radovi.length === 0) {
-            container.innerHTML = `<p style="color: var(--text-muted);">${t('noContent')}</p>`;
-            return;
+        // Setup search functionality
+        const searchInput = document.getElementById('radovi-search');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                const filtered = allRadovi.filter(rad => {
+                    return rad.title.toLowerCase().includes(query) ||
+                        rad.authors.toLowerCase().includes(query) ||
+                        String(rad.year).includes(query) ||
+                        (rad.abstract && rad.abstract.toLowerCase().includes(query));
+                });
+                renderRadovi(container, filtered);
+            });
         }
-
-        radovi.forEach(rad => {
-            const isPdf = rad.type === 'pdf';
-            const icon = isPdf ? '📄' : '🔗';
-            const linkText = isPdf ? t('downloadPdf') : t('openLink');
-
-            const deleteBtn = isLoggedIn ?
-                `<button onclick="deleteRad(${rad.id})" class="btn btn--danger btn--sm" style="margin-left: auto;">${t('deleteConfirm') ? '🗑️' : '🗑️'}</button>` : '';
-
-            const card = document.createElement('div');
-            card.className = 'activity-card'; // Reuse activity card style
-            card.id = `rad-${rad.id}`;
-            card.style.display = 'flex';
-            card.style.flexDirection = 'column';
-            card.innerHTML = `
-                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                    <div class="activity-card__date">${rad.year} | ${rad.authors}</div>
-                    ${deleteBtn}
-                </div>
-                <h3 class="activity-card__title">${icon} ${rad.title}</h3>
-                <p class="activity-card__content" style="flex:1;">${rad.abstract || t('noAbstract')}</p>
-                <div style="margin-top: 1rem;">
-                     <a href="${rad.link}" target="_blank" class="btn btn--secondary btn--sm">${linkText}</a>
-                </div>
-            `;
-            container.appendChild(card);
-        });
 
     } catch (err) {
         console.error(err);
         container.innerHTML = `<p>${t('errorLoading')}</p>`;
     }
+}
+
+function renderRadovi(container, radovi) {
+    const isLoggedIn = localStorage.getItem('adip_token');
+
+    container.innerHTML = '';
+
+    if (!radovi || radovi.length === 0) {
+        container.innerHTML = `<p style="color: var(--text-muted);">${t('noContent')}</p>`;
+        return;
+    }
+
+    radovi.forEach(rad => {
+        const isPdf = rad.type === 'pdf';
+        const icon = isPdf ? '📄' : '🔗';
+        const linkText = isPdf ? t('downloadPdf') : t('openLink');
+
+        const deleteBtn = isLoggedIn ?
+            `<button onclick="deleteRad(${rad.id})" class="btn btn--danger btn--sm" style="margin-left: auto;">${t('deleteConfirm') ? '🗑️' : '🗑️'}</button>` : '';
+
+        const card = document.createElement('div');
+        card.className = 'activity-card'; // Reuse activity card style
+        card.id = `rad-${rad.id}`;
+        card.style.display = 'flex';
+        card.style.flexDirection = 'column';
+        card.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div class="activity-card__date">${rad.year} | ${rad.authors}</div>
+                ${deleteBtn}
+            </div>
+            <h3 class="activity-card__title">${icon} ${rad.title}</h3>
+            <p class="activity-card__content" style="flex:1;">${rad.abstract || t('noAbstract')}</p>
+            <div style="margin-top: 1rem;">
+                 <a href="${rad.link}" target="_blank" class="btn btn--secondary btn--sm">${linkText}</a>
+            </div>
+        `;
+        container.appendChild(card);
+    });
 }
 
 // Global function for onclick
@@ -452,7 +475,7 @@ function initActivityForm() {
             }
 
             try {
-                const response = await fetch('http://localhost:3000/api/aktivnosti', {
+                const response = await fetch('/api/aktivnosti', {
                     method: 'POST',
                     body: formData
                 });
@@ -774,7 +797,33 @@ function initActivityModal() {
         deleteBtn.addEventListener('click', async () => {
             if (!currentActivityId) return;
             if (!confirm(t('deleteConfirm'))) return;
-            alert(t('deleteDisabled'));
+
+            try {
+                const response = await fetch(`/api/aktivnosti/${currentActivityId}`, {
+                    method: 'DELETE'
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    alert(t('serviceAdded') ? 'Aktivnost obrisana!' : 'Activity deleted!'); // Reuse or add trans
+                    activityModal.classList.remove('active');
+                    // Reload activities
+                    const allActivities = document.getElementById('all-activities');
+                    if (allActivities) {
+                        loadActivities(allActivities, 100);
+                    }
+                    // Also reload homepage if needed
+                    const activitiesContainer = document.getElementById('activities-container');
+                    if (activitiesContainer) {
+                        loadHomepageContent(activitiesContainer, 6);
+                    }
+                } else {
+                    alert(t('errorAdd') || 'Error deleting');
+                }
+            } catch (err) {
+                console.error(err);
+                alert(t('serverError'));
+            }
         });
     }
 

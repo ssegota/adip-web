@@ -363,6 +363,10 @@
     {
       "src": "/galerija/povijest/1770125916276-orion.jpg",
       "description": ""
+    },
+    {
+      "src": "/galerija/povijest/1770403568296-594190369_4293783834189958_5058517656330386459_n.jpg",
+      "description": ""
     }
   ],
   "astrofotografija": {
@@ -522,6 +526,10 @@
           "en": "Comet - photo 9",
           "it": "Cometa - foto 9"
         }
+      },
+      {
+        "src": "/galerija/astrofotografija/kometi/1770404071579-564609076_3831589450483685_3312132785669861035_n.jpg",
+        "description": "Lemmon C/2025 komet, Seestar S50, u posudbi od D. Štimca"
       }
     ],
     "mars": [
@@ -716,19 +724,113 @@
           "en": "Deep space - photo 9",
           "it": "Spazio profondo - foto 9"
         }
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1770403503943-605092299_4314528455448829_837834427445088847_n.jpg",
+        "description": "M45 - Plejade, Seestar S50"
+      }
+    ],
+    "sunce": [
+      {
+        "src": "/galerija/astrofotografija/sunce/1770404725496-605526370_4316273275274347_2027571233631081291_n.jpg",
+        "description": "Sunce korištenjem Seestar S50 teleskopa"
       }
     ]
   },
   "posjete": [
     {
-      "src": "/galerija/posjete/1770234755490-book-of-ra.jpg",
-      "description": ""
+      "src": "/galerija/posjete/1770403595804-533095413_4172569829644693_2368675355552707279_n.jpg",
+      "description": "Promatranje Perzeida, 8.2025."
+    },
+    {
+      "src": "/galerija/posjete/1770403614770-532511413_4172569922978017_1123186568267970870_n.jpg",
+      "description": "Promatranje Saturna, 8.2025."
+    },
+    {
+      "src": "/galerija/posjete/1770403688860-537195650_3776887965953834_5883757759445722472_n.jpg",
+      "description": "Predavanje u sklopu I-STEM projekta ZTK Istre"
+    },
+    {
+      "src": "/galerija/posjete/1770403727138-538259968_3776887962620501_5936122631041473753_n.jpg",
+      "description": "Predavanje o astronomiji u sklopu I-STEM projekta."
+    },
+    {
+      "src": "/galerija/posjete/1770403825170-545069206_4197449293823413_6580080939654771185_n.jpg",
+      "description": "Žive slike Austrougarske - predavanje o J. Palisi"
+    },
+    {
+      "src": "/galerija/posjete/1770403934752-544784503_3791934517782512_2588574335372699245_n.jpg",
+      "description": "Potpuna pomrčina Mjeseca, u suradnji sa udrugom Visualia, rujan 2025."
+    },
+    {
+      "src": "/galerija/posjete/1770403946323-544936383_3791934551115842_3624282445736960051_n.jpg",
+      "description": "Potpuna pomrčina Mjeseca, u suradnji sa udrugom Visualia, rujan 2025."
+    },
+    {
+      "src": "/galerija/posjete/1770403958094-544913478_3791934697782494_6351978954446806585_n.jpg",
+      "description": "Potpuna pomrčina Mjeseca, u suradnji sa udrugom Visualia, rujan 2025."
+    },
+    {
+      "src": "/galerija/posjete/1770403968627-545000788_3791934541115843_2277919838765829524_n.jpg",
+      "description": "Potpuna pomrčina Mjeseca, u suradnji sa udrugom Visualia, rujan 2025."
+    },
+    {
+      "src": "/galerija/posjete/1770403980043-544834869_3791934667782497_93946651045986079_n.jpg",
+      "description": "Potpuna pomrčina Mjeseca, u suradnji sa udrugom Visualia, rujan 2025."
+    },
+    {
+      "src": "/galerija/posjete/1770404137111-563563306_3824236307885666_5625506230769229491_n.jpg",
+      "description": "Predavanje o Robotima u Svemiru (S. Baressi Šegota) - povodom Svjetskog tjedna Svemira 2025."
+    },
+    {
+      "src": "/galerija/posjete/1770404147397-559139460_3824236337885663_6739351734504408789_n.jpg",
+      "description": "Predavanje o Robotima u Svemiru (S. Baressi Šegota) - povodom Svjetskog tjedna Svemira 2025."
+    },
+    {
+      "src": "/galerija/posjete/1770404201303-549164571_4211906079044401_3220903474974681935_n.jpg",
+      "description": "Promatranje Sunca za mladež"
+    },
+    {
+      "src": "/galerija/posjete/1770404290573-555103508_3810337152608915_7106795201373713818_n.jpg",
+      "description": "Promatranje Sunca u sklopu Izviđačkog kampa, uz predavanje o astrognoziji i meteorologiji."
+    },
+    {
+      "src": "/galerija/posjete/1770404304214-555349818_3810337165942247_5249209516027418677_n.jpg",
+      "description": "Promatranje Sunca u sklopu Izviđačkog kampa, uz predavanje o astrognoziji i meteorologiji."
+    },
+    {
+      "src": "/galerija/posjete/1770404315591-554582981_3810337062608924_4055687908525851036_n.jpg",
+      "description": "Promatranje Sunca u sklopu Izviđačkog kampa, uz predavanje o astrognoziji i meteorologiji."
+    },
+    {
+      "src": "/galerija/posjete/1770404327588-555751797_3810337065942257_5179689385446798832_n.jpg",
+      "description": "Promatranje Sunca u sklopu Izviđačkog kampa, uz predavanje o astrognoziji i meteorologiji."
+    },
+    {
+      "src": "/galerija/posjete/1770404372449-549075745_4212140052354337_7136060302066785187_n.jpg",
+      "description": "Posjeta uz promatranje Saturna"
     }
   ],
   "ostalo": [
     {
-      "src": "/galerija/ostalo/1770234773289-gundam-3.jpg",
-      "description": ""
+      "src": "/galerija/ostalo/1770403766626-540699679_4189545421280467_2939452787748047451_n.jpg",
+      "description": "Posjeta susretu astronoma u Humu - D. Šegon, K. Šprem, S. Baressi Šegota i R. Rašković"
+    },
+    {
+      "src": "/galerija/ostalo/1770403790703-541339486_3788081724834458_2017871327339578468_n.jpg",
+      "description": "Sprites nad Zvjezdarnicom"
+    },
+    {
+      "src": "/galerija/ostalo/1770404015865-546794440_4205118863056456_3869783341865130929_n.jpg",
+      "description": "Posjeta susretu Astronoma Alpe-Adria regije 2025. - K. Šprem, I. Macuka, S. Baressi Šegota"
+    },
+    {
+      "src": "/galerija/ostalo/1770404033212-547372942_1932919327280944_5269866777028924041_n.jpg",
+      "description": "Posjeta susretu Astronoma Alpe-Adria regije 2025. - K. Šprem, I. Macuka, S. Baressi Šegota"
+    },
+    {
+      "src": "/galerija/ostalo/1770404349613-556099555_3810339775941986_1529156227718192823_n.jpg",
+      "description": "Posjet Novozelandskog astronoma Pulskoj Zvjezdarnici"
     }
   ]
 }

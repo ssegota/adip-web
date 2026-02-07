@@ -1,22 +1,1142 @@
 [
   {
-    "id": 1770127553217,
-    "title": "klasklaklfdajlnlkansfk",
-    "authors": "D. Šegon",
-    "abstract": "afnkklasdkasfnlgakkfmklsnvljknydsljnbčdsn",
-    "year": 2024,
-    "link": "radovi-files/1770127553210-Baressi-Application.pdf",
-    "type": "pdf",
+    "title": "M2024-N1 activity confirmed in 2025",
+    "authors": "P. Roggemans, D. Vida, D. Šegon, J. M. Scott, J. Wood",
+    "year": 2026,
+    "link": "https://ui.adsabs.harvard.edu/abs/2026eMetN..11...47R",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470968,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "M2024-H1 activity confirmed in 2025",
+    "authors": "P. Roggemans, D. Vida, D. Šegon, J. M. Scott, J. Wood",
+    "year": 2026,
+    "link": "https://ui.adsabs.harvard.edu/abs/2026eMetN..11...42R",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470969,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "29-Piscids (PIS#1046) return in 2025",
+    "authors": "P. Roggemans, D. Vida, D. Šegon, J. M. Scott, J. Wood",
+    "year": 2026,
+    "link": "https://ui.adsabs.harvard.edu/abs/2026eMetN..11...31R",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470970,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New meteor shower in Monoceros (M2025-V1)",
+    "authors": "D. Šegon, D. Vida, P. Roggemans, J. M. Scott, J. Wood",
+    "year": 2026,
+    "link": "https://ui.adsabs.harvard.edu/abs/2026eMetN..11...23S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470971,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New meteor shower in Pegasus (M2025-U1)",
+    "authors": "D. Šegon, D. Vida, P. Roggemans, J. M. Scott, J. Wood",
+    "year": 2026,
+    "link": "https://ui.adsabs.harvard.edu/abs/2026eMetN..11...16S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470972,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "A Carinids (842#CRN) outburst in 2025",
+    "authors": "P. Roggemans, D. Vida, D. Šegon, J. M. Scott, J. Wood",
+    "year": 2026,
+    "link": "https://ui.adsabs.harvard.edu/abs/2026eMetN..11....8R",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470973,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "October epsilon-Carinids (OEC#1172)",
+    "authors": "P. Roggemans, D. Vida, D. Šegon, J. M. Scott, J. Wood",
+    "year": 2026,
+    "link": "https://ui.adsabs.harvard.edu/abs/2026eMetN..11....1R",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470974,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "id": 1770127553246,
+    "title": "The structure and dynamics of meteoroid streams observed by modern video networks",
+    "authors": "D. Vida, D. Šegon, J. Vaubaillon",
+    "abstract": "This study investigates the internal structure of meteoroid streams using high-quality video meteor orbits. Dynamical processes shaping stream evolution are analyzed.",
+    "year": 2025,
+    "link": "https://www.nature.com/articles/s41550-025-02659-8",
+    "type": "link",
     "dateAdded": "03. 02. 2026."
   },
   {
-    "id": 1770127515610,
-    "title": "Tito",
-    "authors": "asd",
-    "abstract": "Coronavirus (COVID-19) is a highly infectious disease that has captured the attention of the worldwide public. Modeling of such diseases can be extremely important in the prediction of their impact. While classic, statistical, modeling can provide satisfactory models, it can also fail to comprehend the intricacies contained within the data. In this paper, authors use a publicly available dataset, containing information on infected, recovered, and deceased patients in 406 locations over 51 days (22nd January 2020 to 12th March 2020). This dataset, intended to be a time-series dataset, is transformed into a regression dataset and used in training a multilayer perceptron (MLP) artificial neural network (ANN). The aim of training is to achieve a worldwide model of the maximal number of patients across all locations in each time unit. Hyperparameters of the MLP are varied using a grid search algorithm, with a total of 5376 hyperparameter combinations. Using those combinations, a total of 48384 ANNs are trained (16128 for each patient group—deceased, recovered, and infected), and each model is evaluated using the coefficient of determination (R2). Cross-validation is performed using K-fold algorithm with 5-folds. Best models achieved consists of 4 hidden layers with 4 neurons in each of those layers, and use a ReLU activation function, with R2 scores of 0.98599 for confirmed, 0.99429 for deceased, and 0.97941 for recovered patient models. When cross-validation is performed, these scores drop to 0.94 for confirmed, 0.781 for recovered, and 0.986 for deceased patient models, showing high robustness of the deceased patient model, good robustness for confirmed, and low robustness for recovered patient model.",
-    "year": 2024,
-    "link": "https://onlinelibrary.wiley.com/doi/full/10.1155/2020/5714714",
+    "title": "Delta-Horologiids (DHO#1146) in 2025",
+    "authors": "P. Roggemans, D. Šegon, D. Vida, J. M. Scott, J. Wood",
+    "year": 2025,
+    "link": "https://ui.adsabs.harvard.edu/abs/2025eMetN..10..378R",
     "type": "link",
-    "dateAdded": "03. 02. 2026."
+    "abstract": "",
+    "id": 1770483470975,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New meteor shower in Hydrus (M2025-S2)",
+    "authors": "D. Šegon, D. Vida, P. Roggemans, J. M. Scott, J. Wood",
+    "year": 2025,
+    "link": "https://ui.adsabs.harvard.edu/abs/2025eMetN..10..368S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470976,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Epsilon-Ursae Minorids (EPU#1044) enhanced activity in 2025",
+    "authors": "P. Roggemans, D. Vida, D. Šegon",
+    "year": 2025,
+    "link": "https://ui.adsabs.harvard.edu/abs/2025eMetN..10..360R",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470977,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "M2024-S1 activity confirmed in 2025",
+    "authors": "P. Roggemans, D. Vida, D. Šegon",
+    "year": 2025,
+    "link": "https://ui.adsabs.harvard.edu/abs/2025eMetN..10..353R",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470978,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New meteor shower in Delphinus (M2025-S1)",
+    "authors": "D. Šegon, D. Vida, P. Roggemans",
+    "year": 2025,
+    "link": "https://ui.adsabs.harvard.edu/abs/2025eMetN..10..348S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470979,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Catastrophic disruption of asteroid 2023 CX1 and implications for planetary defence",
+    "authors": "Auriane Egal, Denis Vida, Franccois Colas, Brigitte Zanda, Sylvain Bouley, Asma Steinhausser, Pierre Vernazza, Ludovic Ferri`ere, J'er^ome Gattacceca, Mirel Birlan, J'er'emie Vaubaillon, Karl Antier, Simon Anghel, Josselin Desmars, K'evin Bailli'e, Lucie Maquet, S'ebastien Bouquillon, Adrien Malgoyre, Simon Jeanne, Fripon International Team, Josep Maria Trigo-Rodriguez, Enrique Herrero, Jim Rowe, Andrew R. D. Smedley, Ashley King, Salma Sylla, Daniele Gardiol, Dario Barghini, Herv'e Lamy, Emmanuel Jehin, Detlef Koschny, Bjorn Poppe, Andr'es Jord'an, Rene A. Mendez, Katherine Vieira, Hebe Cremades, Hasnaa Chennaoui Aoudjehane, Zouhair Benkhaldoun, Jivr'i Borovička, Pavel Spurn'y, Hadrien A. R. Devillepoix, Marco Micheli, Davide Farnocchia, Shantanu Naidu, Peter Brown, Paul Wiegert, Kriszti'an S'arneczky, Andr'as P'al, Nick Moskovitz, Theodore Kareta, Toni Santana-Ros, Alexis Le Pichon, Gilles Mazet-Roux, Julien Vergoz, Luke McFadden, Jelle Assink, Läslo Evers, Daniela Krietsch, Henner Busemann, Colin Maden, Lisa Maria Eckart, Jean-Alix Barrat, Pavel Povinec, Ivan S'ykora, Ivan Kontul', Oscar Marchhart, Martin Martschini, Silke Merchel, Alexander Wieser, Matthieu Gounelle, Sylvain Pont, Pierre Sans-Jofre, Sebastiaan de Vet, Ioannis Baziotis, Miroslav Brož, Micha\"el Marsset, J'er^ome Vergne, Josef Hanuš, Maxime Devog`ele, Luca Conversi, Francisco Oca na, Luca Buzzi, Dan Alin Nedelcu, Adrian Sonka, Florent Losse, Philippe Dupouy, Korado Korlević, Dieter Husar, Jost Jahn, Damir Šegon, Mark McIntyre, Ralf Neubert, Pierre Beck, Patrick Shober, Anthony Lagain, Olivier Hernandez, Darrel Robertson, Peter Jenniskens",
+    "year": 2025,
+    "link": "https://ui.adsabs.harvard.edu/abs/2025NatAs...9.1624E",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470980,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Outburst of a new meteor shower in Aries",
+    "authors": "D. Šegon, D. Vida, P. Roggemans",
+    "year": 2025,
+    "link": "https://ui.adsabs.harvard.edu/abs/2025eMetN..10..287S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470981,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New meteor shower in Eridanus",
+    "authors": "D. Šegon, D. Vida, P. Roggemans",
+    "year": 2025,
+    "link": "https://ui.adsabs.harvard.edu/abs/2025eMetN..10..282S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470982,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Two meteor shower outbursts with potential connection to comet 73P/Schwassmann-Wachmann",
+    "authors": "D. Vida, D. Šegon, P. Roggemans",
+    "year": 2025,
+    "link": "https://ui.adsabs.harvard.edu/abs/2025eMetN..10..275V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470983,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "June delta Pavonids (JDP#835) in 2025",
+    "authors": "P. Roggemans, D. Šegon, D. Vida",
+    "year": 2025,
+    "link": "https://ui.adsabs.harvard.edu/abs/2025eMetN..10..269R",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470984,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New meteor shower in Indus",
+    "authors": "D. Vida, D. Šegon, P. Roggemans",
+    "year": 2025,
+    "link": "https://ui.adsabs.harvard.edu/abs/2025eMetN..10..264V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470985,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New meteor shower in Equuleus",
+    "authors": "D. Vida, D. Šegon, P. Roggemans",
+    "year": 2025,
+    "link": "https://ui.adsabs.harvard.edu/abs/2025eMetN..10..259V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470986,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New Meteor Shower M2025-Q1 in ARIES",
+    "authors": "D. Vida, D. Segon",
+    "year": 2025,
+    "link": "https://ui.adsabs.harvard.edu/abs/2025CBET.5600....1V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470987,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New meteor shower in Octans",
+    "authors": "D. Vida, D. Šegon, P. Roggemans",
+    "year": 2025,
+    "link": "https://ui.adsabs.harvard.edu/abs/2025eMetN..10..218V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470988,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Two Meteor Shower Outbursts with Potential Connection to Comet 73P",
+    "authors": "D. Vida, P. Brown, A. Egal, D. Segon",
+    "year": 2025,
+    "link": "https://ui.adsabs.harvard.edu/abs/2025CBET.5561....1V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470989,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New meteor shower in Puppis",
+    "authors": "D. Šegon, D. Vida, P. Roggemans",
+    "year": 2025,
+    "link": "https://ui.adsabs.harvard.edu/abs/2025eMetN..10..165S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470990,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New Meteor Shower M2025-F1 in Puppis",
+    "authors": "D. Vida, D. Segon",
+    "year": 2025,
+    "link": "https://ui.adsabs.harvard.edu/abs/2025CBET.5535....1V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470991,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Global Meteor Network report 2024",
+    "authors": "P. Roggemans, P. Campbell-Burns, M. Kalina, M. McIntyre, J. M. Scott, D. Šegon, D. Vida",
+    "year": 2025,
+    "link": "https://ui.adsabs.harvard.edu/abs/2025eMetN..10...67R",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470992,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New meteor shower in Lyra, 26–27 October 2024",
+    "authors": "D. Šegon, D. Vida, P. Roggemans",
+    "year": 2025,
+    "link": "https://ui.adsabs.harvard.edu/abs/2025eMetN..10...22S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470993,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New meteor shower in Ursa Minor, 23–24 September 2024",
+    "authors": "D. Šegon, D. Vida, P. Roggemans",
+    "year": 2025,
+    "link": "https://ui.adsabs.harvard.edu/abs/2025eMetN..10...12S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470994,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New meteor shower in Cassiopeia, 4 September 2024",
+    "authors": "D. Šegon, D. Vida, P. Roggemans",
+    "year": 2025,
+    "link": "https://ui.adsabs.harvard.edu/abs/2025eMetN..10....5S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470995,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Telescope-to-Fireball Characterization of Earth Impactor 2022 WJ1",
+    "authors": "Theodore Kareta, Denis Vida, Marco Micheli, Nicholas Moskovitz, Paul Wiegert, Peter G. Brown, Phil J. A. McCausland, Hadrien A. R. Devillepoix, Barbara Malečić, Maja Telišman Prtenjak, Damir Šegon, Benjamin Shafransky, Davide Farnocchia",
+    "year": 2024,
+    "link": "https://ui.adsabs.harvard.edu/abs/2024PSJ.....5..253K",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470996,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New Meteor Shower M2024-U1 in Lyra",
+    "authors": "D. Vida, D. Segon",
+    "year": 2024,
+    "link": "https://ui.adsabs.harvard.edu/abs/2024CBET.5470....1V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470997,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New Meteor Shower M2024-S1 in Ursa Minor",
+    "authors": "D. Vida, D. Segon",
+    "year": 2024,
+    "link": "https://ui.adsabs.harvard.edu/abs/2024CBET.5452....1V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470998,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New meteor shower in Fornax",
+    "authors": "D. Šegon, D. Vida, P. Roggemans, D. Rollinson, J. M. Scott",
+    "year": 2024,
+    "link": "https://ui.adsabs.harvard.edu/abs/2024eMetN...9..279S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483470999,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Psi-Fornacid Meteors 2024 = M2024-N1",
+    "authors": "D. Segon, D. Vida, P. Roggemans",
+    "year": 2024,
+    "link": "https://ui.adsabs.harvard.edu/abs/2024CBET.5416....1S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471000,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New shower in Hercules",
+    "authors": "D. Vida, D. Šegon",
+    "year": 2024,
+    "link": "https://ui.adsabs.harvard.edu/abs/2024eMetN...9..161V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471001,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New Zealand's meteor camera network leads to recovery of the Tekapo/Takap=o meteorite",
+    "authors": "J. M. Scott, D. Vida, D. Behan, M. R. Boothroyd, D. L. Burgin, D. Grieg, P. McKellar, M. C. Palmer, T. Richardson, J. Rowe, D. Šegon, J. Stayte, T. Stevenson, T. Wang, J. Weterings, S. Wyn-Harris",
+    "year": 2024,
+    "link": "https://ui.adsabs.harvard.edu/abs/2024eMetN...9..155S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471002,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New Meteor Shower in Hercules",
+    "authors": "D. Vida, D. Segon, P. Jenniskens",
+    "year": 2024,
+    "link": "https://ui.adsabs.harvard.edu/abs/2024CBET.5395....1V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471003,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Global Meteor Network report 2023",
+    "authors": "P. Roggemans, P. Campbell-Burns, M. Kalina, M. McIntyre, J. M. Scott, D. Šegon, R. Stano, D. Vida",
+    "year": 2024,
+    "link": "https://ui.adsabs.harvard.edu/abs/2024eMetN...9...56R",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471004,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "First observed meteors from comet 46P/Wirtanen (lambda-Sculptorids, LSC)",
+    "authors": "P. Roggemans, D. Vida, J. M. Scott, P. Jenniskens, D. Šegon, D. Rollinson",
+    "year": 2024,
+    "link": "https://ui.adsabs.harvard.edu/abs/2024eMetN...9....8R",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471005,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "The meteorite-dropping-Pinkster-fireball, 2023 May 27, over Belgium and the Netherlands",
+    "authors": "K. Habraken, D. Vida, H. Lamy, P. de Ponthiere, R. Gloudemans, J. Masson, U. Glässner, J. Dörr, T. M. Dijkema, S. Rau, Grindweg 3 Šegon, Department Of Physics, London Astronomy, Belgium. (Ad) Global Meteor Network (Ae) Global Meteor Network (Af) Global Meteor Network (Ag) Global Meteor Network (Ah) Global Meteor Network (Ai) Global Meteor Network (Aj) Global Meteor Network (Ak) Global Meteor Network Royal Belgian Institute For Space Aeronomy",
+    "year": 2023,
+    "link": "https://ui.adsabs.harvard.edu/abs/2023eMetN...8..312H",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471006,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Ground-Based Observations of 2022 WJ1 and 2023 CX1 Asteroid Entries",
+    "authors": "D. Vida, P. G. Brown, J. Borovička, P. Spurn'y, H. A. R. Devillepoix, F. Colas, D. Šegon, P. McCausland, M. McIntyre",
+    "year": 2023,
+    "link": "https://ui.adsabs.harvard.edu/abs/2023LPICo2851.2049V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471007,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "A possibly new meteor shower in Sagitta",
+    "authors": "D. Šegon, D. Vida, P. Roggemans",
+    "year": 2023,
+    "link": "https://ui.adsabs.harvard.edu/abs/2023eMetN...8..246S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471008,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New meteor shower in Bootes",
+    "authors": "D. Šegon, D. Vida, P. Roggemans",
+    "year": 2023,
+    "link": "https://ui.adsabs.harvard.edu/abs/2023eMetN...8..177S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471009,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New meteor shower in Draco",
+    "authors": "D. Šegon, D. Vida, P. Roggemans",
+    "year": 2023,
+    "link": "https://ui.adsabs.harvard.edu/abs/2023eMetN...8..171S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471010,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Global Meteor Network report 2022",
+    "authors": "P. Roggemans, P. Campbell-Burns, D. Šegon, M. McIntyre, D. Vida",
+    "year": 2023,
+    "link": "https://ui.adsabs.harvard.edu/abs/2023eMetN...8...77R",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471011,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "2023 activity omega-Carinids (OCR#1033)",
+    "authors": "D. Šegon, D. Vida, P. Roggemans, J. Wood, M. Boothroyd, R. Fraser, G. Hanigan, D. Poulton, G. Scott, J. Scott, C. Zink",
+    "year": 2023,
+    "link": "https://ui.adsabs.harvard.edu/abs/2023eMetN...8...74S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471012,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "June Bootids (JBO#170) in 2022 recorded by Global Meteor Network",
+    "authors": "P. Roggemans, D. Šegon, D. Vida",
+    "year": 2023,
+    "link": "https://ui.adsabs.harvard.edu/abs/2023eMetN...8...65R",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471013,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "October Camelopardalids (OCT#281) recorded by Global Meteor Network",
+    "authors": "P. Roggemans, D. Šegon, Vida D.",
+    "year": 2023,
+    "link": "https://ui.adsabs.harvard.edu/abs/2023eMetN...8....1R",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471014,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Near anti-helion meteor shower outburst recorded by Global Meteor Network",
+    "authors": "P. Roggemans, D. Šegon, D. Vida, J. Greaves, T. Sekiguchi, A. Angelsky, A. Davydov",
+    "year": 2022,
+    "link": "https://ui.adsabs.harvard.edu/abs/2022eMetN...7..293R",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471015,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Enhanced Camelopardalids (CAM #0451) activity recorded in 2022 by Global Meteor Network",
+    "authors": "D. Šegon, D. Vida, P. Roggemans",
+    "year": 2022,
+    "link": "https://ui.adsabs.harvard.edu/abs/2022eMetN...7..236S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471016,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Tau Herculid Meteors 2022",
+    "authors": "P. Jenniskens, J. Albers, E. Egland, B. Grigsby, T. Beck, D. Samuels, N. Moskovitz, L. Juneau, A. Howell, P. Gural, C. Johannink, M. Breukers, S. Rau, O. Unsalan, M. Boyukata, M. Odeh, T. Hanke, E. Fahl, R. van Wyk, T. Cooper, M. Towner, J. Baggaley, S. Heathcote, T. Abbott, E. Jehin, M. de Cicco, D. Vida, D. Segon",
+    "year": 2022,
+    "link": "https://ui.adsabs.harvard.edu/abs/2022CBET.5126....1J",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471017,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Global Meteor Network report 2021",
+    "authors": "Paul Roggemans, Denis Vida, Damir Šegon",
+    "year": 2022,
+    "link": "https://ui.adsabs.harvard.edu/abs/2022eMetN...7...76R",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471018,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "October zeta Perseid meteor shower (OZP#01131)",
+    "authors": "Denis Vida, Damir Šegon, Paul Roggemans",
+    "year": 2021,
+    "link": "https://ui.adsabs.harvard.edu/abs/2021eMetN...6..536V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471019,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "The Global Meteor Network - Methodology and first results",
+    "authors": "Denis Vida, Damir Šegon, Peter S. Gural, Peter G. Brown, Mark J. M. McIntyre, Tammo Jan Dijkema, Lovro Pavletić, Patrik Kukić, Michael J. Mazur, Peter Eschman, Paul Roggemans, Aleksandar Merlak, Dario Zubović",
+    "year": 2021,
+    "link": "https://ui.adsabs.harvard.edu/abs/2021MNRAS.506.5046V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471020,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "October Zeta Perseid Meteor Shower",
+    "authors": "D. Vida, D. Segon",
+    "year": 2021,
+    "link": "https://ui.adsabs.harvard.edu/abs/2021CBET.5062....1V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471021,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Novo Mesto meteorite fall - trajectory, orbit, and fragmentation analysis from optical observations",
+    "authors": "Denis Vida, Damir Šegon, Marko Šegon, Jure Atanackov, Bojan Ambrožič, Luke McFadden, Ludovic Ferri`ere, Javor Kac, Gregor Kladnik, Mladen Živčić, Aleksandar Merlak, Ivica Skokić, Lovro Pavletić, Gojko Vinčić, Ivica Ćiković, Zsolt Perk'o, Martino Ilari, Mirjana Malarić, Igor Macuka",
+    "year": 2021,
+    "link": "https://ui.adsabs.harvard.edu/abs/2021EPSC...15..139V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471022,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Gamma Draconid (GAD#1106) meteor shower",
+    "authors": "D. Vida, D. Šegon",
+    "year": 2021,
+    "link": "https://ui.adsabs.harvard.edu/abs/2021eMetN...6..337V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471023,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Gamma Draconid Meteor Shower",
+    "authors": "D. Vida, D. Segon",
+    "year": 2021,
+    "link": "https://ui.adsabs.harvard.edu/abs/2021CBET.4957....1V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471024,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "COMET C/2019 F1 (ATLAS-Africano)",
+    "authors": "B. M. Africano, C. Caselli, K. Korlevic, L. Buzzi, A. Novichonok, H. Sato, A. Baransky, R. Weryk, U. Laux, B. Stecklum, F. Ludwig, C. Hoegner, P. Bacci, M. Maestripieri, L. Tesi, G. Fagioli, H. Mikuz, S. Gajdos, A. Coffano, W. Marinello, M. Micheli, G. Pizzetti, A. Soffiantini, R. Haver, R. Gorelli, S. Foglia, G. Galli, M. Tichy, J. Ticha, P. Camilleri, J. Oey, R. Groom, K. Stranger, M. Calcagno, A. Fumagalli, P. Sicoli, A. Testa, R. A. Mastaler, J. G. Ries, D. T. Durig, A. B. Babcock, A. L. Turrentine, J. E. Yates, M. Emmerich, S. Melchert, M. Jaeger, E. Prosperi, S. Prosperi, W. Vollmann, P. Lindner, G. Dangl, A. Mantero, N. Ruocco, J. Jahn, H. B. Zhao, B. Li, G. Zhaori, R. Q. Hong, L. F. Hu, H. Lu, J. Bulger, K. Chambers, T. Lowe, E. Magnier, A. Schultz, M. Willman, S. Chastel, M. Huber, Y. Ramanjooloo, R. Wainscoat, T. de Boer, L. Denneau, J. Fairlamb, H. Flewelling, C.-C. Lin, B. Lutkenhoner, E. J. Christensen, G. A. Farneth, D. C. Fuls, A. R. Gibbs, A. D. Grauer, H. Groeller, R. A. Kowalski, S. M. Larson, G. J. Leonard, T. A. Pruyne, R. L. Seaman, F. C. Shelly, S. M. Tilley, M. Masek, F. Losse, J. Gonzalez, G. Baj, V. Luna, M. Adamovsky, G. Pascoli Observatory, R. Bacci, L. Grazzini, M. Tombelli, B. Haeusler, J. Vinko, K. Sarneczky, D. Segon, F. Matkovic, G. Kervina, F. Valentine, E. Glavas, L. Hudin, L. Leonelli, A. Leonelli, P. Punzo, D. Alboresi, A. Valvasori, J.-F. Soulier, S. Urakawa, T. Nimura, T. Ikemura, J. Tonry, A. Heinze, H. Weiland, B. Stalder, A. Fitzsimmons, D. Young, N. Erasmus, G. Wells, D. Bamberger, G. V. Williams",
+    "year": 2019,
+    "link": "https://ui.adsabs.harvard.edu/abs/2019MPEC....G..124A",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471025,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "2019 FM1",
+    "authors": "J. G. Ries, B. M. Africano, D. C. Fuls, E. J. Christensen, G. A. Farneth, A. R. Gibbs, A. D. Grauer, H. Groeller, R. A. Kowalski, S. M. Larson, G. J. Leonard, T. A. Pruyne, R. L. Seaman, F. C. Shelly, W. H. Ryan, E. V. Ryan, K. Korlevic, D. Segon, F. Valentine",
+    "year": 2019,
+    "link": "https://ui.adsabs.harvard.edu/abs/2019MPEC....F..144R",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471026,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Croatian Meteor Network: ongoing work 2017-2018",
+    "authors": "Damir Segon, Denis Vida, Zeljko Andreic, Korado Korlevic, Aleksandar Merlak, Patrik Kukic, Matej Butkovic, Renato Turcinov",
+    "year": 2019,
+    "link": "https://ui.adsabs.harvard.edu/abs/2019pimo.conf...77S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471027,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Spectral sensitivity of photographic emulsions",
+    "authors": "Zeljko Andreic, Damir Segon, Peter S. Gural",
+    "year": 2019,
+    "link": "https://ui.adsabs.harvard.edu/abs/2019pimo.conf...46A",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471028,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "The overview of the Global Meteor Network project and preliminary results of the 2018 Geminids",
+    "authors": "Denis Vida, Damir Šegon, Aleksandar Merlak",
+    "year": 2019,
+    "link": "https://ui.adsabs.harvard.edu/abs/2019eMetN...4...22V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471029,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Correction for meteor centroids observed using rolling shutter cameras",
+    "authors": "Patrik (AA) Kukic, Peter (AB) Gural, Denis (AC) Vida, Damir (AD) Segon, Aleksandar (AE) Merlak",
+    "year": 2018,
+    "link": "https://ui.adsabs.harvard.edu/abs/2018JIMO...46..154K",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471030,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Compressive strength of a skirting Daytime Arietid - first science results from low-cost Raspberry Pi-based meteor stations",
+    "authors": "Denis Vida, Michael J. Mazur, Damir Segon, Patrik Kukic, Aleksandar Merlak",
+    "year": 2018,
+    "link": "https://ui.adsabs.harvard.edu/abs/2018JIMO...46..113V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471031,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Ten Years of the Croatian Meteor Network",
+    "authors": "Damir Segon, Korado Korlevic, Zeljko Andreic, Denis Vida, Filip Novoselnik, Ivica Skokic",
+    "year": 2018,
+    "link": "https://ui.adsabs.harvard.edu/abs/2018JIMO...46...87S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471032,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "2018 Draconids as seen by a low-cost RPI based meteor camera",
+    "authors": "Denis Vida, Aleksandar Merlak, Damir Šegon",
+    "year": 2018,
+    "link": "https://ui.adsabs.harvard.edu/abs/2018eMetN...3..298V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471033,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Perseids observed using low-cost Raspberry Pi based meteor stations",
+    "authors": "Denis Vida, Aleksandar Merlak, Damir Šegon",
+    "year": 2018,
+    "link": "https://ui.adsabs.harvard.edu/abs/2018eMetN...3..276V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471034,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "First results of a Raspberry Pi based meteor camera system",
+    "authors": "Denis Vida, Michael J. Mazur, Damir Segon, Dario Zubovic, Patrik Kukic, Filip Parag, Anton Macan",
+    "year": 2018,
+    "link": "https://ui.adsabs.harvard.edu/abs/2018JIMO...46...71V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471035,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "First simultaneous radiometric and video observations of fireballs using a low-cost radiometer",
+    "authors": "Damir Segon, Denis Vida, Matej Butkovic, Mirjana Malaric, Renato Turcinov",
+    "year": 2018,
+    "link": "https://ui.adsabs.harvard.edu/abs/2018JIMO...46...62S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471036,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Calendar of meteor activity based on IMO video observations 2006-2015",
+    "authors": "Filip Fabris, Marija Kosic, Snjezana Stefanic Hoefel, Damir Segon, Mateja Dumbovi",
+    "year": 2018,
+    "link": "https://ui.adsabs.harvard.edu/abs/2018pimo.conf..203F",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471037,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Meteors in the near-infrared as seen in the Ondrejov catalogue of representative meteor spectra",
+    "authors": "Damir Segon, Maria Vukic, Marko Segon, Zeljko Andreic, Peter S. Gural",
+    "year": 2018,
+    "link": "https://ui.adsabs.harvard.edu/abs/2018pimo.conf..107S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471038,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Dynamical modeling validation of parent bodies associated with newly discovered CMN meteor showers",
+    "authors": "Damir Šegon, J'er'emie Vaubaillon, Peter S. Gural, Denis Vida, Željko Andreić, Korado Korlević, Ivica Skokić",
+    "year": 2017,
+    "link": "https://ui.adsabs.harvard.edu/abs/2017A&A...598A..15S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471039,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Open-source meteor detection software for low-cost single-board computers",
+    "authors": "D. Vida, D. Zubović, D. Šegon, P. Gural, R. Cupec",
+    "year": 2016,
+    "link": "https://ui.adsabs.harvard.edu/abs/2016pimo.conf..307V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471040,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "On the accuracy of orbits from video meteor observations",
+    "authors": "I. Skokić, D. Šegon, G. Kurtović",
+    "year": 2016,
+    "link": "https://ui.adsabs.harvard.edu/abs/2016pimo.conf..280S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471041,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Croatian Meteor Network: Ongoing work 2015 - 2016",
+    "authors": "D. Šegon, D. Vida, K. Korlević, Ž. Andreić",
+    "year": 2016,
+    "link": "https://ui.adsabs.harvard.edu/abs/2016pimo.conf..270S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471042,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Four possible new high-declination showers",
+    "authors": "Damir Šegon, Peter Gural, Željko Andreiae, Denis Vida, Ivica Skokić, Filip Novoselnik",
+    "year": 2015,
+    "link": "https://ui.adsabs.harvard.edu/abs/2015JIMO...43..147S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471043,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Latest news on the modeling of meteor showers",
+    "authors": "J. J. Vaubaillon, L. Neslusan, M. Hajdukova, A. Sekhar, D. Asher, D. Segon, R. Rudawska",
+    "year": 2015,
+    "link": "https://ui.adsabs.harvard.edu/abs/2015EPSC...10..423V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471044,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "The instrumentally recorded fall of the Križevci meteorite, Croatia, February 4, 2011",
+    "authors": "J. Borovička, P. Spurn'y, D. Šegon, Ž. Andreić, J. Kac, K. Korlević, J. Atanackov, G. Kladnik, H. Mucke, D. Vida, F. Novoselnik",
+    "year": 2015,
+    "link": "https://ui.adsabs.harvard.edu/abs/2015M&PS...50.1244B",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471045,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Low-cost meteor radiometer",
+    "authors": "D. Vida, R. Turčinov, D. Šegon, E. Silađi",
+    "year": 2015,
+    "link": "https://ui.adsabs.harvard.edu/abs/2015pimo.conf..180V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471046,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Advances in the development of a low-cost video meteor station",
+    "authors": "D. Zubović, D. Vida, P. Gural, D. Šegon",
+    "year": 2015,
+    "link": "https://ui.adsabs.harvard.edu/abs/2015pimo.conf...94Z",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471047,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Croatian Meteor Network: ongoing work 2014 - 2015",
+    "authors": "D. Šegon, Ž. Andreić, K. Korlević, D. Vida",
+    "year": 2015,
+    "link": "https://ui.adsabs.harvard.edu/abs/2015pimo.conf...51S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471048,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Results of CMN 2013 search for new showers across CMN and SonotaCo databases III",
+    "authors": "Damir Šegon, Željko Andreić, Peter Gural, Ivica Skokić, Korado Korlević, Denis Vida, Filip Novoselnik, David Gostinski",
+    "year": 2014,
+    "link": "https://ui.adsabs.harvard.edu/abs/2014JIMO...42..227S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471049,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "A possible new shower on Eridanus-Orion border",
+    "authors": "Damir Šegon, Peter Gural, Željko Andreić, Denis Vida, Ivica Skokić, Filip Novoselnik, Luciano Gržinić",
+    "year": 2014,
+    "link": "https://ui.adsabs.harvard.edu/abs/2014JIMO...42..218S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471050,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "The Križevci H6 Chondrite and the Origin of H Chondrites",
+    "authors": "I. Lyon, Z. Andreic, D. Segon, K. Korlevic",
+    "year": 2014,
+    "link": "https://ui.adsabs.harvard.edu/abs/2014LPICo1800.5418L",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471051,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Results of CMN 2013 search for new showers across CMN and SonotaCo databases II",
+    "authors": "Peter Gural, Damir Šegon, Željko Andreić, Ivica Skokić, Korado Korlević, Denis Vida, Filip Novoselnik, David Gostinski",
+    "year": 2014,
+    "link": "https://ui.adsabs.harvard.edu/abs/2014JIMO...42..132G",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471052,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Draconids 2011: Outburst Observations by the Croatian Meteor Network",
+    "authors": "Damir Šegon, Željko Andreić, Peter S. Gural, Korado Korlević, Denis Vida, Filip Novoselnik, Ivica Skokić",
+    "year": 2014,
+    "link": "https://ui.adsabs.harvard.edu/abs/2014EM&P..112...33S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471053,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "A parent body search across several video meteor data bases",
+    "authors": "D. Šegon, P. Gural, Ž. Andreić, I. Skokić, K. Korlević, D. Vida, F. Novoselnik",
+    "year": 2014,
+    "link": "https://ui.adsabs.harvard.edu/abs/2014me13.conf..251S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471054,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Results of CMN 2013 search for new showers across CMN and SonotaCo databases I-0.5mm",
+    "authors": "Željko Andreić, Peter Gural, Damir Šegon, Ivica Skokić, Korado Korlević, Denis Vida, Filip Novoselnik, David Gostinski",
+    "year": 2014,
+    "link": "https://ui.adsabs.harvard.edu/abs/2014JIMO...42...90A",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471055,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New showers from parent body search across several video meteor databases",
+    "authors": "Damir Šegon, Peter Gural, Željko Andreić, Ivica Skokić, Korado Korlević, Denis Vida, Filip Novoselnik",
+    "year": 2014,
+    "link": "https://ui.adsabs.harvard.edu/abs/2014JIMO...42...57S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471056,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "A statistical walk through the IAU MDC database",
+    "authors": "Željko Andreić, Damir Šegon, Denis Vida",
+    "year": 2014,
+    "link": "https://ui.adsabs.harvard.edu/abs/2014pim4.conf..126A",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471057,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "CMN_ADAPT and CMN_binViewer software",
+    "authors": "Denis Vida, Damir Šegon, Peter S. Gural, Goran Martinović, Ivica Skokić",
+    "year": 2014,
+    "link": "https://ui.adsabs.harvard.edu/abs/2014pim4.conf...59V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471058,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Meteor shower search for amateurs",
+    "authors": "Denis Vida, Filip Novoselnik, Damir Šegon, Željko Andreić, Ivica Skokić",
+    "year": 2014,
+    "link": "https://ui.adsabs.harvard.edu/abs/2014pim3.conf..130V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471059,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Meteor shower search in the CMN and SonotaCo orbital databases",
+    "authors": "Damir Šegon, Peter Gural, Željko Andreić, Denis Vida, Ivica Skokić, Korado Korlević, Filip Novoselnik",
+    "year": 2014,
+    "link": "https://ui.adsabs.harvard.edu/abs/2014pim3.conf...97S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471060,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "The interesting case of the Iota-Cygnids (525 ICY)",
+    "authors": "Željko Andreić, Damir Šegon, Denis Vida, Filip Novoselnik, Ivica Skokić",
+    "year": 2014,
+    "link": "https://ui.adsabs.harvard.edu/abs/2014pim3.conf...87A",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471061,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "A possible new meteor shower - ensurematheta Hydrids",
+    "authors": "Damir Šegon, Željko Andreić, Korado Korlević, Filip Novoselnik, Denis Vida, Ivica Skokić",
+    "year": 2013,
+    "link": "https://ui.adsabs.harvard.edu/abs/2013JIMO...41..157S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471062,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Ten possible new showers from the Croatian Meteor Network and SonotaCo datasets",
+    "authors": "Željko Andreić, Damir Šegon, Korado Korlević, Filip Novoselnik, Denis Vida, Ivica Skokić",
+    "year": 2013,
+    "link": "https://ui.adsabs.harvard.edu/abs/2013JIMO...41..103A",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471063,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "8 new showers from Croatian Meteor Network data",
+    "authors": "Damir Šegon, Željko Andreić, Korado Korlević, Filip Novoselnik, Denis Vida, Ivica Skokić",
+    "year": 2013,
+    "link": "https://ui.adsabs.harvard.edu/abs/2013JIMO...41...70S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471064,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Croatian Meteor Network Catalogues of Orbits for 2008 and 2009",
+    "authors": "Korado Korlević, Damir Šegon, Željko Andreić, Filip Novoselnik, Denis Vida, Ivica Skokić",
+    "year": 2013,
+    "link": "https://ui.adsabs.harvard.edu/abs/2013JIMO...41...48K",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471065,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "August ensuremathi Cetids, a Possible New Meteor Shower in August",
+    "authors": "Željko Andreić, Denis Vida, Filip Novoselnik, Damir Šegon, Korado Korlević, Filip Matijević, Džan Jašarević, Anton Perkov, Ciobanu Tudor",
+    "year": 2013,
+    "link": "https://ui.adsabs.harvard.edu/abs/2013JIMO...41...40A",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471066,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Meteors in the near-infrared",
+    "authors": "Damir Segon, Zeljko Andreic, Denis Vida, Filip Novoselnik, Korado Korlevic",
+    "year": 2013,
+    "link": "https://ui.adsabs.harvard.edu/abs/2013pimo.conf..111S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471067,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Possible new meteor shower detected from CMN and SonotaCo data",
+    "authors": "Denis Vida, Filip Novoselnik, Zeljko Andreic, Damir Segon, Korado Korlevic, Filip Matijevic, Dzan Jasarevic, Anton Perkov, Tudor Ciobanu",
+    "year": 2013,
+    "link": "https://ui.adsabs.harvard.edu/abs/2013pimo.conf...31V",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471068,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "New shower in Cassiopeia",
+    "authors": "Damir Segon, Zeljko Andreic, Korado Korlevic, Peter Gural, Filip Novoselnik, Denis Vida, Ivica Skokic",
+    "year": 2012,
+    "link": "https://ui.adsabs.harvard.edu/abs/2012JIMO...40..195S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471069,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Croatian Meteor Network Catalogue of Orbits for 2007",
+    "authors": "Damir Segon, Zeljko Andreic, Korado Korlevic, Filip Novoselnik, Denis Vida",
+    "year": 2012,
+    "link": "https://ui.adsabs.harvard.edu/abs/2012JIMO...40...94S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471070,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Meteorite-dropping bolide over north Croatia on 4th February, 2011",
+    "authors": "D. Segon",
+    "year": 2012,
+    "link": "https://ui.adsabs.harvard.edu/abs/2012pimo.conf...13S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471071,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Meteorite-dropping bolide over north Croatia on 4th February 2011",
+    "authors": "Damir Segon, Korado Korlevic, Zeljko Andreic, Javor Kac, Jure Atanackov, Gregor Kladnik",
+    "year": 2011,
+    "link": "https://ui.adsabs.harvard.edu/abs/2011JIMO...39...98S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471072,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "The First Year of Croatian Meteor Network",
+    "authors": "Zeljko Andreic, Damir Segon",
+    "year": 2010,
+    "link": "https://ui.adsabs.harvard.edu/abs/2010pim8.conf...16A",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471073,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Correction - 2008 Ursid maximum from Croatian Meteor Network video data",
+    "authors": "Ž. Andreić, D. Šegon, K. Gašparini",
+    "year": 2010,
+    "link": "https://ui.adsabs.harvard.edu/abs/2010JIMO...38....3A",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471074,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "The Second Year of Croatian Meteor Network",
+    "authors": "Zeljko Andreic, Korado Korlevic, Damir Segon",
+    "year": 2010,
+    "link": "https://ui.adsabs.harvard.edu/abs/2010pim9.conf...26A",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471075,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "Organizer's notes",
+    "authors": "Zeljko Andreic, Damir Segon, Korado Korlevic",
+    "year": 2010,
+    "link": "https://ui.adsabs.harvard.edu/abs/2010pim9.conf....1A",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471076,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "2008 Ursid maximum from Croatian Meteor Network video data",
+    "authors": "Ž. Andreić, D. Šegon, K. Gasparini",
+    "year": 2009,
+    "link": "https://ui.adsabs.harvard.edu/abs/2009JIMO...37..177A",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471077,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "How many stars are needed for a good camera calibration?",
+    "authors": "D. Segon",
+    "year": 2009,
+    "link": "https://ui.adsabs.harvard.edu/abs/2009JIMO...37...80S",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471078,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "A new meteor detection processing approach for observations collected by the Croatian Meteor Network (CMN)",
+    "authors": "Peter Gural, Damir Šegon",
+    "year": 2009,
+    "link": "https://ui.adsabs.harvard.edu/abs/2009JIMO...37...28G",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471079,
+    "dateAdded": "07. 02. 2026."
+  },
+  {
+    "title": "2006-2007 Geminids from Croatian Meteor Network video data",
+    "authors": "Željko Andreić, Damir Šegon",
+    "year": 2008,
+    "link": "https://ui.adsabs.harvard.edu/abs/2008JIMO...36...99A",
+    "type": "link",
+    "abstract": "",
+    "id": 1770483471080,
+    "dateAdded": "07. 02. 2026."
   }
 ]
