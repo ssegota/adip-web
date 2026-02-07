@@ -159,9 +159,7 @@ a:hover {
     right: 0;
     z-index: 1000;
     padding: 0.5rem 2rem;
-    /* background: rgba(10, 10, 15, 0.8); */
-    background: rgba(0, 51, 153, 0.9);
-    /* Temporary blue color */
+    background: rgba(10, 10, 15, 0.8);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-glass);
     display: flex;
