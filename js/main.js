@@ -55,7 +55,8 @@ const translations = {
         selectMonth: 'Mjesec',
         selectYear: 'Godina',
         show: 'Prikaži',
-        imageNotFound: 'Slika nije dostupna za odabrani mjesec'
+        imageNotFound: 'Slika nije dostupna za odabrani mjesec',
+        olderPapers: 'Arhiva radova'
     },
     en: {
         publication: 'Publication',
@@ -108,7 +109,8 @@ const translations = {
         selectMonth: 'Month',
         selectYear: 'Year',
         show: 'Show',
-        imageNotFound: 'Image not available for selected month'
+        imageNotFound: 'Image not available for selected month',
+        olderPapers: 'Older Papers'
     },
     it: {
         publication: 'Pubblicazione',
@@ -161,7 +163,8 @@ const translations = {
         selectMonth: 'Mese',
         selectYear: 'Anno',
         show: 'Mostra',
-        imageNotFound: 'Immagine non disponibile per il mese selezionato'
+        imageNotFound: 'Immagine non disponibile per il mese selezionato',
+        olderPapers: 'Archivio documenti'
     }
 };
 
@@ -451,7 +454,12 @@ function renderRadovi(container, radovi) {
         return;
     }
 
-    radovi.forEach(rad => {
+    // Split: Top 4 vs Rest
+    const top4 = radovi.slice(0, 4);
+    const rest = radovi.slice(4);
+
+    // Helper to create card
+    const createCard = (rad) => {
         const isPdf = rad.type === 'pdf';
         const icon = isPdf ? '📄' : '🔗';
         const linkText = isPdf ? t('downloadPdf') : t('openLink');
@@ -460,7 +468,7 @@ function renderRadovi(container, radovi) {
             `<button onclick="deleteRad(${rad.id})" class="btn btn--danger btn--sm" style="margin-left: auto;">${t('deleteConfirm') ? '🗑️' : '🗑️'}</button>` : '';
 
         const card = document.createElement('div');
-        card.className = 'activity-card'; // Reuse activity card style
+        card.className = 'activity-card';
         card.id = `rad-${rad.id}`;
         card.style.display = 'flex';
         card.style.flexDirection = 'column';
@@ -474,8 +482,68 @@ function renderRadovi(container, radovi) {
                  <a href="${rad.link}" target="_blank" class="btn btn--secondary btn--sm">${linkText}</a>
             </div>
         `;
-        container.appendChild(card);
+        return card;
+    };
+
+    // Render Top 4
+    top4.forEach(rad => {
+        container.appendChild(createCard(rad));
     });
+
+    // Render Rest (List View)
+    if (rest.length > 0) {
+        const listContainer = document.createElement('div');
+        listContainer.className = 'radovi-archive-list';
+        // Grid span handled in CSS or inline style
+        listContainer.style.gridColumn = '1 / -1';
+        listContainer.style.marginTop = '2rem';
+
+        listContainer.innerHTML = `<h3 style="margin-bottom: 1rem; color: var(--text-primary); border-bottom: 1px solid var(--border-glass); padding-bottom: 0.5rem;">${t('olderPapers')}</h3>`;
+
+        const list = document.createElement('div');
+        list.className = 'radovi-list-items';
+
+        rest.forEach(rad => {
+            const isPdf = rad.type === 'pdf';
+            const icon = isPdf ? '📄' : '🔗';
+            const linkText = isPdf ? 'PDF' : 'Link';
+
+            const deleteBtn = isLoggedIn ?
+                `<button onclick="deleteRad(${rad.id})" class="btn btn--danger btn--xs" style="margin-left: 0.5rem; padding: 2px 5px; font-size: 0.7rem;">🗑️</button>` : '';
+
+            const item = document.createElement('div');
+            item.className = 'radovi-item';
+            // Inline styles for list item (or move to CSS)
+            item.style.cssText = `
+                display: flex; 
+                justify-content: space-between; 
+                align-items: center; 
+                padding: 0.75rem; 
+                border-bottom: 1px solid rgba(255,255,255,0.1); 
+                font-size: 0.9rem;
+            `;
+
+            // Hover effect can be added via CSS class .radovi-item:hover
+
+            item.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 1rem; overflow: hidden; flex: 1;">
+                    <span style="color: var(--text-muted); min-width: 40px; font-size: 0.85rem;">${rad.year}</span>
+                    <div style="display: flex; flex-direction: column; overflow: hidden;">
+                        <span style="font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text-primary);" title="${rad.title}">${rad.title}</span>
+                        <span style="color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 0.85rem;" title="${rad.authors}">${rad.authors}</span>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; margin-left: 1rem;">
+                    <a href="${rad.link}" target="_blank" class="btn btn--secondary btn--xs" style="font-size: 0.8rem; padding: 0.2rem 0.5rem;">${icon} ${linkText}</a>
+                    ${deleteBtn}
+                </div>
+            `;
+            list.appendChild(item);
+        });
+
+        listContainer.appendChild(list);
+        container.appendChild(listContainer);
+    }
 }
 
 // Global function for onclick

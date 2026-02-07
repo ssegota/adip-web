@@ -1002,3 +1002,10 @@ option {
     box-shadow: 0 8px 25px rgba(0, 102, 255, 0.5);
     color: #fff;
 }
+/* Radovi List View */
+.radovi-item {
+    transition: background 0.2s ease;
+}
+.radovi-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
