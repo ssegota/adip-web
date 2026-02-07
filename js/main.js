@@ -424,8 +424,7 @@ function applyRadoviFilters(container) {
         const matchesSearch = !query ||
             rad.title.toLowerCase().includes(query) ||
             rad.authors.toLowerCase().includes(query) ||
-            String(rad.year).includes(query) ||
-            (rad.abstract && rad.abstract.toLowerCase().includes(query));
+            String(rad.year).includes(query);
 
         // Year
         const matchesYear = !year || String(rad.year) === year;
@@ -471,7 +470,6 @@ function renderRadovi(container, radovi) {
                 ${deleteBtn}
             </div>
             <h3 class="activity-card__title">${icon} ${rad.title}</h3>
-            <p class="activity-card__content" style="flex:1;">${rad.abstract || t('noAbstract')}</p>
             <div style="margin-top: 1rem;">
                  <a href="${rad.link}" target="_blank" class="btn btn--secondary btn--sm">${linkText}</a>
             </div>
