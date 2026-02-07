@@ -99,6 +99,10 @@ function renderDownloads(files) {
         // Check if it's an image file - show actual thumbnail
         if (['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(ext)) {
             iconContent = `<img class="file-thumbnail" src="${fullPath}" alt="${file.title}">`;
+        } else if (ext === 'pdf' && file.thumbnailPath) {
+            // Show PDF thumbnail if available
+            const thumbPath = basePath + file.thumbnailPath;
+            iconContent = `<img class="file-thumbnail" src="${thumbPath}" alt="${file.title}">`;
         } else {
             // Use emoji icons for non-image files
             let icon = '📄';
