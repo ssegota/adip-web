@@ -177,26 +177,7 @@
   </div>
 
   <script src="../js/main.js"></script>
-  <script>
-    // Activity form submission
-    document.getElementById('activity-form')?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const title = document.getElementById('activity-title').value;
-      const content = document.getElementById('activity-content').value;
-      const msg = document.getElementById('post-message');
 
-      const result = await postActivity(title, content);
-      if (result.success) {
-        msg.textContent = 'Activity published!';
-        msg.style.color = '#00ff88';
-        document.getElementById('activity-form').reset();
-        setTimeout(() => location.reload(), 1000);
-      } else {
-        msg.textContent = 'Error publishing';
-        msg.style.color = '#ff4444';
-      }
-    });
-  </script>
 </body>
 
 </html>
