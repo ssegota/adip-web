@@ -200,7 +200,7 @@ window.openAstronomyModal = function openAstronomyModal() {
             yearOptions.push(`<option value="${y}" ${selected}>${y}</option>`);
         }
 
-        const basePath = getImageBasePath();
+        const basePath = getSunriseBasePath();
         const initialImageUrl = getSunriseImageUrl(currentYear, currentMonth, basePath);
 
         let html = `
@@ -233,10 +233,15 @@ window.openAstronomyModal = function openAstronomyModal() {
     }
 }
 
-// Helper to get base path for images
-function getImageBasePath() {
+// Helpers to get base paths for images
+function getSunriseBasePath() {
     const isSubdir = window.location.pathname.includes('/en/') || window.location.pathname.includes('/it/');
-    return isSubdir ? '../sites/default/files/images/servisi/sunrises-tides/' : 'sites/default/files/images/servisi/sunrises-tides/';
+    return isSubdir ? '../servisi/sunrises/' : 'servisi/sunrises/';
+}
+
+function getTideBasePath() {
+    const isSubdir = window.location.pathname.includes('/en/') || window.location.pathname.includes('/it/');
+    return isSubdir ? '../servisi/tides/' : 'servisi/tides/';
 }
 
 // Get sunrise image URL - tries different naming patterns
@@ -250,7 +255,7 @@ function getSunriseImageUrl(year, month, basePath) {
 window.updateSunriseImage = function () {
     const month = parseInt(document.getElementById('sunrise-month-select').value);
     const year = parseInt(document.getElementById('sunrise-year-select').value);
-    const basePath = getImageBasePath();
+    const basePath = getSunriseBasePath();
 
     const img = document.getElementById('sunrise-image');
     const errorMsg = document.getElementById('sunrise-error');
@@ -354,7 +359,7 @@ window.openTideModal = function openTideModal() {
         yearOptions.push(`<option value="${y}" ${selected}>${y}</option>`);
     }
 
-    const basePath = getImageBasePath();
+    const basePath = getTideBasePath();
     const initialImageUrl = getTideImageUrl(currentYear, currentMonth, basePath);
 
     let html = `
@@ -390,11 +395,10 @@ function getTideImageUrl(year, month, basePath) {
     return `${basePath}adip_${year}-${monthPadded}.jpg`;
 }
 
-// Update tide image based on selections
 window.updateTideImage = function () {
     const month = parseInt(document.getElementById('tide-month-select').value);
     const year = parseInt(document.getElementById('tide-year-select').value);
-    const basePath = getImageBasePath();
+    const basePath = getTideBasePath();
 
     const img = document.getElementById('tide-image');
     const errorMsg = document.getElementById('tide-error');
