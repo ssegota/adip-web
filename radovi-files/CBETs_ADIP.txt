@@ -1,0 +1,13 @@
+Central Bureau of Astronomical Telegrams
+    CBET 5653 : 20260107 : VOLANTID METEORS 2025-2026 http://www.cbat.eps.harvard.edu/iau/cbet/005600/CBET005653.txt
+    CBET 5613 : 20250927 : NEW METEOR SHOWER M2025-S2 IN HYDRUS http://www.cbat.eps.harvard.edu/iau/cbet/005600/CBET005613.txt
+    CBET 5600 : 20250903 : NEW METEOR SHOWER M2025-Q1 IN ARIES http://www.cbat.eps.harvard.edu/iau/cbet/005600/CBET005600.txt
+    CBET 5561 : 20250606 : TWO METEOR SHOWER OUTBURSTS WITH POTENTIAL CONNECTION TO COMET 73P http://www.cbat.eps.harvard.edu/iau/cbet/005500/CBET005561.txt
+    CBET 5559 : 20250602 : NEW METEOR SHOWER IN OCTANS http://www.cbat.eps.harvard.edu/iau/cbet/005500/CBET005559.txt
+    CBET 5535 : 20250401 : NEW METEOR SHOWER M2025-F1 IN PUPPIS http://www.cbat.eps.harvard.edu/iau/cbet/005500/CBET005535.txt
+    CBET 5470 : 20241103 : NEW METEOR SHOWER M2024-U1 IN LYRA http://www.cbat.eps.harvard.edu/iau/cbet/005400/CBET005470.txt
+    CBET 5469 : 20241103 : NEW METEOR SHOWER M2024-U1 IN LYRA http://www.cbat.eps.harvard.edu/iau/cbet/005400/CBET005469.txt
+    CBET 5452 : 20241001 : NEW METEOR SHOWER M2024-S1 IN URSA MINOR http://www.cbat.eps.harvard.edu/iau/cbet/005400/CBET005452.txt
+    CBET 5416 : 20240716 : PSI-FORNACID METEORS 2024 = M2024-N1 http://www.cbat.eps.harvard.edu/iau/cbet/005400/CBET005416.txt
+    CBET 5395 : 20240520 : NEW METEOR SHOWER IN HERCULES http://www.cbat.eps.harvard.edu/iau/cbet/005300/CBET005395.txt
+    CBET 5126 : 20220603 : TAU HERCULID METEORS 2022 http://www.cbat.eps.harvard.edu/iau/cbet/005100/CBET005126.txt
