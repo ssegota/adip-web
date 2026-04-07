@@ -1268,7 +1268,7 @@ function parseCSV(text) {
     for (let i = 1; i < lines.length; i++) {
         // Handle CSV lines with potential quoted fields containing commas
         // Regex: Match quoted string OR non-comma-non-quote sequence
-        const row = lines[i].match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g);
+        const row = lines[i].match(/(".*?"|[^\t"]+)(?=\s*\t|\s*$)/g);
         if (!row) continue;
 
         // Manual mapping based on "Naslov,Autor(i),Godina izdanja,Naklada,Mjesto,ISBN,ADIP-broj,Jezik,Stanje (1-5)"
