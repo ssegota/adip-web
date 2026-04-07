@@ -1,33 +1,82 @@
-Naslov,Autor(i),Godina izdanja,Naklada,Mjesto,ISBN,ADIP-broj,Jezik,Stanje (1-5)
-Wie schwer sind die himmelskorper?,"Guntzel-Linger, Ulrich",1955,URANIA-VERLAG,leipzig,398,Njemački,2
-Mars Seine Ratfel und feine Geichichte,"henfeling, Robert",1925,"Kosmos, Gefellfchaft fer Naturfreunde",Stuttgart,,397,Njemački,5
-Das Wiener Planetarium,"Thomas, Oswald",1927,Verlag der Wiener Messe,Wien,,396,Njemački,4
-Allgemeinen Himmelsbefchreibung,"Klein, Hermann",1901,Braunfchweig,,,395,Njemački,3
-Aus ferner Welten,"Wenee, Wilheim",1910,Der Beffafer,Berlin,,394,Njemački,3
-Dynamische Meteorologie,"Exner, Felix",1917,Verlag und druck von B.G. Trubner,Leipzig,,393,Njemački,4
-Didaktik der himmelskunde und der astronomichen geographie,"von Hofler, Alois",1913,Verlag und druck von B.G. Trubner,Leipzig,,392,Njemački,3
-Aus fernen Welten,"Burgel, Bruno",1939,Im Deutfchen Verlag,Berlin,,413,Njemački,4
-Das polarlicht und die Probleme der hochsten Atmospharenschichten,"Harng, Leiv",1940,Akademische Verlagsgesellschaft Becker&Erler,leipzig,,412,Njemački,4
-nautisches Jahrbuch Ephermeriden und Tafeln,Deutschen Seewarte,1944,Broschek & Co.,Hamburg,,411,Njemački,5
-nautisches Jahrbuch Ephermeriden und Tafeln,"Shrader, C",1909,Carl heymans Verlag,Berlin,,410,Njemački,5
-Sternbuchlen,"henfeling, Robert",1939,franch che Verlagshandlung,Stuttgart,,409,Njemački,4
-Sternbuchlen,"henfeling, Robert",1927,franch che Verlagshandlung,Stuttgart,,408,Njemački,4
-Sternbuchlen,"henfeling, Robert",1921,franch che Verlagshandlung,Stuttgart,,407,Njemački,4
-Sternbuchlen,"henfeling, Robert",1920,franch che Verlagshandlung,Stuttgart,,406,Njemački,4
-Sternbuchlen,"henfeling, Robert",1941,franch che Verlagshandlung,Stuttgart,,405,Njemački,4
-Sternbuchlen,"henfeling, Robert",1917,franch che Verlagshandlung,Stuttgart,,404,Njemački,4
-Sternbuchlen,"henfeling, Robert",1918,franch che Verlagshandlung,Stuttgart,,403,Njemački,4
-Uftronomische ubende,"Rritzinger, Hans Hermann",1920,Eduard heinrich Maher,Leipzig,,402,Njemački,4
-Abris der Astronomie,"Voigt, Hans Heinrich",1969,Bibliographisches Institut Mannheim,Wien/Zurich,,401,Njemački,4
-Die milchstrasse,"kahn, Frik",1914,Kosmos Gefellichaft der naturfrnde,Stuttgart,,400,Njemački,4
-Die Meteore,"Hoffmeister, C",1937,Akademische Verlagsgesellschaft M.B.H.,leipzig,,399,Njemački,4
-Pleneter geschwister der erde,"Sandner, Werner",1971,Verlag Chemie,,3-527-25350-5,422,Njemački,5
-Einfuhrung in das studim Der Veranderlichen Sterne,"Schiller, Karl",1923,Verlag Von Johann Ambrosius Barth,leipzig,,421,Njemački,4
-Das problem der Entwicklung unseres Planetensystems,"Nolke, Driedrich",1919,Verlag von Julius Springer,Berlin,,420,Njemački,4
-Bis Zum ende des weltalls,"Lause, Fritz",1938,Franckhsche verlagshandlung,Stuttgart,,419,Njemački,4
-Das Rlativitatsprinzip,"Laue, M",1913,Friedr. Vieweg & Sohn,Braunschweig,,418,Njemački,3
-Die Sonne Stern des Lebenk,"Doebel, Gunter",,Kosmos Gefellichaft der naturfrnde,Stuttgart,3-440-04216-2,417,Njemački,3
-Das Uhrwer des Himmels,"Stumpff, kard",1943,Franckhsche verlagshandlung,Stuttgart,,416,Njemački,3
-Astronomisches ABC fur jedermann,"Muller, Rold",1938,Verlag Von Johann Ambrosius Barth,leipzig,,415,Njemački,4
-Das Fernrohr fur jedermann,"Rohr, hans",,Orell Fussli Verlag,Zurich,3-280-00020-3,414,Njemački,4
-Die Sonnenflecken,Epstein,,,,,424,Njemački,3
+Naslov	Autor(i)	Godina izdanja	Naklada	Mjesto	ISBN	ADIP-broj	Jezik	Stanje (1-5)		Stanje	
+Wie schwer sind die Himmelskörper?	Güntzel-Linger, Ulrich	1955	Urania-Verlag	Leipzig	-	398	Njemački	2		1	Značajno oštečeno - otpao uvez, vlaga
+Mars: Seine Rätsel und seine Geschichte	Henseling, Robert	1925	Kosmos, Gesellschaft der Naturfreunde	Stuttgart	-	397	Njemački	5		2	Oštečenje uveza
+Das Wiener Planetarium	Thomas, Oswald	1927	Verlag der Wiener Messe	Wien	-	396	Njemački	4		3	Dobro stanje, "prenosiva" knjiga
+Allgemeine Himmelsbeschreibung	Klein, Hermann	1901	Friedrich Vieweg & Sohn	Braunschweig	-	395	Njemački	3		4	Manja oštećenja, "zub vremena"
+Aus fernen Welten	Wenée, Wilhelm	1910	Der Verfasser (Self-published)	Berlin	-	394	Njemački	3		5	Good as new
+Dynamische Meteorologie	Exner, Felix	1917	B. G. Teubner	Leipzig	-	393	Njemački	4			
+Didaktik der Himmelskunde und der astronomischen Geographie	Höfler, Alois von	1913	B. G. Teubner	Leipzig	-	392	Njemački	3			
+Aus fernen Welten	Bürgel, Bruno H.	1939	Im Deutschen Verlag	Berlin	-	413	Njemački	4			
+Das Polarlicht und die Probleme der höchsten Atmosphärenschichten	Harang, Leiv	1940	Akademische Verlagsgesellschaft Becker & Erler	Leipzig	-	412	Njemački	4			
+Nautisches Jahrbuch: Ephemeriden und Tafeln	Deutsche Seewarte	1944	Broschek & Co.	Hamburg	-	411	Njemački	5			
+Nautisches Jahrbuch: Ephemeriden und Tafeln	Schrader, C.	1909	Carl Heymanns Verlag	Berlin	-	410	Njemački	5			
+Sternbüchlein	Henseling, Robert	1939	Franckh’sche Verlagshandlung	Stuttgart	-	409	Njemački	4			
+Sternbüchlein	Henseling, Robert	1927	Franckh’sche Verlagshandlung	Stuttgart	-	408	Njemački	4			
+Sternbüchlein	Henseling, Robert	1921	Franckh’sche Verlagshandlung	Stuttgart	-	407	Njemački	4			
+Sternbüchlein	Henseling, Robert	1920	Franckh’sche Verlagshandlung	Stuttgart	-	406	Njemački	4			
+Sternbüchlein	Henseling, Robert	1941	Franckh’sche Verlagshandlung	Stuttgart	-	405	Njemački	4			
+Sternbüchlein	Henseling, Robert	1917	Franckh’sche Verlagshandlung	Stuttgart	-	404	Njemački	4			
+Sternbüchlein	Henseling, Robert	1918	Franckh’sche Verlagshandlung	Stuttgart	-	403	Njemački	4			
+Astronomische Abende	Kritzinger, Hans Hermann	1920	Eduard Heinrich Mayer	Leipzig	-	402	Njemački	4			
+Abriss der Astronomie	Voigt, Hans Heinrich	1969	Bibliographisches Institut	Wien/Zürich	-	401	Njemački	4			
+Die Milchstraße	Kahn, Fritz	1914	Kosmos, Gesellschaft der Naturfreunde	Stuttgart	-	400	Njemački	4			
+Die Meteore	Hoffmeister, C.	1937	Akademische Verlagsgesellschaft	Leipzig	-	399	Njemački	4			
+Planeten: Geschwister der Erde	Sandner, Werner	1971	Verlag Chemie	-	3-527-25350-5	422	Njemački	5			
+Einführung in das Studium der veränderlichen Sterne	Schiller, Karl	1923	Johann Ambrosius Barth	Leipzig	-	421	Njemački	4			
+Das Problem der Entwicklung unseres Planetensystems	Nölke, Friedrich	1919	Julius Springer	Berlin	-	420	Njemački	4			
+Bis zum Ende des Weltalls	Lause, Fritz	1938	Franckh’sche Verlagshandlung	Stuttgart	-	419	Njemački	4			
+Das Relativitätsprinzip	Laue, Max von	1913	Friedr. Vieweg & Sohn	Braunschweig	-	418	Njemački	3			
+Die Sonne: Stern des Lebens	Doebel, Günter	-	Kosmos, Gesellschaft der Naturfreunde	Stuttgart	3-440-04216-2	417	Njemački	3			
+Das Uhrwerk des Himmels	Stumpff, Karl	1943	Franckh’sche Verlagshandlung	Stuttgart	-	416	Njemački	3			
+Astronomisches ABC für jedermann	Müller, Rolf	1938	Johann Ambrosius Barth	Leipzig	-	415	Njemački	4			
+Das Fernrohr für jedermann	Rohr, Hans	-	Orell Füssli Verlag	Zürich	3-280-00020-3	414	Njemački	4			
+Die Sonnenflecken	Epstein, T.	-	-	-	-	424	Njemački	3			
+Handbuch für Freunde der Astronomie und kosmischen Physik	Plassmann, Joseph	1922	Mit vielen Abbildungen	Berlin	-	435	Njemački	4			
+Das Polarlicht	Harang, Leiv	1940	Akademische Verlagsgesellschaft Becker & Erler	Leipzig	-	436	Njemački	4			
+Grundriss der theoretischen Astronomie und der Geschichte der Planetentheorien	Frischauf, Johannes	1922	Wilhelm Engelmann	Leipzig	-	434	Njemački	3			
+Aufbau und Entwicklung der Sterne	Vogt, Heinrich	1957	Akademische Verlagsgesellschaft Geest & Portig	Leipzig	-	432	Njemački	4			
+Die Entstehung der Mondkrater	Wegener, Alfred	1921	Friedr. Vieweg & Sohn	Braunschweig	-	431	Njemački	4			
+Leitfaden der astronomischen Beobachtung	Gramatzki, H. J.	1928	Ferdinand Dümmlers Verlag	Berlin	-	430	Njemački	4			
+Hilfsbuch der astronomischen Fotografie	Gramatzki, H. J.	1930	Ferdinand Dümmlers Verlag	Berlin	-	429	Njemački	4			
+Die Sonne	Krause, A.	1911	B. G. Teubner	Leipzig	-	428	Njemački	4			
+Astronomischer Jahresbericht	Wislicenus, Walter	1918	Vereinigung wissenschaftlicher Verleger	Berlin	-	433	Njemački	3			
+Das Reich der Nebel	Hubble, Edwin	1938	Friedr. Vieweg & Sohn	Braunschweig	-	439	Njemački	4			
+Elemente der geometrischen Optik	Meisel, Ferdinand	1908	Verlagsbuchhandlung Max Jänecke	Hannover	-	427	Njemački	4			
+Populäre Astronomie	Ludendorff, Hans	1921	Wilhelm Engelmann	Leipzig	-	423	Njemački	4			
+Astronomisches Handbuch	Neugebauer, P. V. et al.	1925	Franckh’sche Verlagshandlung	Stuttgart	-	425	Njemački	4			
+Einführung in die Geophysik	Prey, A. et al.	1922	Julius Springer	Berlin	-	445	Njemački	4			
+Astronomisch-chronologische Tafeln für Sonne, Mond und Planeten	Ahnert, Paul	1960	Johann Ambrosius Barth	Leipzig	-	444	Njemački	4			
+Das Spiegelteleskop in der Astronomie	Auflage, Zweite	1930	Johann Ambrosius Barth	Leipzig	-	443	Njemački	4			
+Astronomie: Tatsachen und Probleme	Thomas, Oswald	1942	Verlag Das Bergland-Buch	Salzburg	-	441	Njemački	3			
+Die Meteore	Hoffmeister, C.	1937	Akademische Verlagsgesellschaft	Leipzig	-	440	Njemački	4			
+Entdeckung des Planeten Neptun	Grosser, Morton	1970	Harvard University Press	-	-	438	Njemački	5			
+Meteorologisches Taschenbuch	Linke, Franz	-	Akademische Verlagsgesellschaft Becker & Erler	Leipzig	-	437	Njemački	3			
+Physikalische Grundlagen der Naturwissenschaften	Exner, Franz	1919	Franz Deuticke	Wien	-	442	Njemački	3			
+Populäre Astrophysik	Graff, Kasimir	1922	B. G. Teubner	Leipzig	-	446	Njemački	3			
+Astronomie für Alle	Henseling, Robert	1929	Franckh’sche Verlagshandlung	Stuttgart	-	447	Njemački	4			
+Die Kleinwelt des Sonnensystems: Meteorite, Feuerkugeln und Sternschnuppen	Henseling, Robert	1929	Franckh’sche Verlagshandlung	Stuttgart	-	448	Njemački	4			
+Jena: Ursprung und Sitz der Carl-Zeiss-Stiftung	Biermann, Wolfgang / Abicht, Joachim	1980	Carl Zeiss Jena	-	-	453	Njemački	5			
+Publikationen des Astrophysikalischen Observatoriums zu Potsdam	Hassenstein, Walter	1927	-	-	-	427	Njemački	5			
+Falkauer Atlas: Photographischer Sternatlas	Vehrenberg, Hans	1985	Treugessel	Düsseldorf	-	451	Njemački	5			
+Der neu entdeckte Himmel	Henseling, Robert	1950	Deutsche Buch-Gemeinschaft	Berlin	-	450	Njemački	5			
+Populäre Astronomie	Newcomb, Simon / Engelmann, Rudolf	1922	Wilhelm Engelmann	Leipzig	-	449	Njemački	4			
+Lehrbuch der Physik	Chwolson, O. D.	1902	Friedr. Vieweg & Sohn	Braunschweig	-	426	Njemački	2			
+Ebene und spharische Trigonometrie	Hessenberg, G.	1904	G.J. Guscgen'sche Verlag	Leipzig		289	Njemački	4			
+Le Stelle Nel Loro Corso	jeans, J.	1934	Fratelli Treves Editori	Milano		288	Talijanski	4			
+Astronomia e Geodesia	Armellini, G.	1941	Valentino Bompiani			289	Talijanski	4			
+Da Mercurio a Plutone	Humbert, P	1940	Valentino Bompiani			256	Talijanski	4			
+Planeti e Satelliti	kaiser, H.	1969	La scuola Editrice	Brescia		255	Talijanski	4			
+Atlante di Astronomia	Hermman, J	1972	Arnoldo Mondadori Editore	Milano		304	Talijanski	2			
+Effermeridi Astronomische ad use dei naviganti	instituto idrografico Della Marina	1946	instituto idrografico Della Marina	Genova		299	Talijanski	4			
+Lezioni di Astrofisica	Abrami, A.	1963	Itergrafia	Trieste		297	Talijanski	4			
+Galileo Galilei nella Storia e nella Legenda	Carotenuto, S.						Talijanski	1			
+frontiere dello spazio	Bono, P.; Gatland, K	1973	Blandford press	London		301	Talijanski	4			
+Boletin de Atronomio Fabra		1957		Barcelona		292	Talijanski	1			
+Observazioni Solari (orriche e radio)	Osservatirio Astronomico di trieste	1967	Osservatirio Astronomico di trieste	Trieste		291	Talijanski	3			
+Osservatorio Astronomico di trieste	Ministro della Pubblica Istruzione	1956	Ministro della Pubblica Istruzione	Roma		295	Talijanski	4			
+Annuario Astronomico	Osservatirio Astronomico di trieste	1960	Osservatirio Astronomico di trieste	Trieste		293	Talijanski	4			
+Annuario Astronomico	Osservatirio Astronomico di trieste	1970	Osservatirio Astronomico di trieste	Trieste		293	Talijanski	4			
+Osservare i Pianeti	Falorni, M.; Tanga, P.	1956	i quaderni di astronomia			296	Talijanski	4			
+Le piu belle pagine di Astronomia Popolare	Gabba, L.	1941	ulrico Hoepli	Milano		303	Talijanski	3			
+Almanacco	Cester, B.	1988	i quaderni di astronomia			290	Talijanski	4			
+Corso di Astronomia	Hack, M.	1973	Osservatirio Astronomico di trieste	Trieste		302	Talijanski	4			
