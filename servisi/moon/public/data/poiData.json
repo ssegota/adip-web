@@ -1,0 +1,505 @@
+[
+  {
+    "id": "apollo11",
+    "title": "Apollo 11",
+    "lat": 0.6741,
+    "long": 23.473,
+    "type": "landing_site",
+    "image": "https://www.nasa.gov/wp-content/uploads/2023/03/584392main_m150157327le_25cm_ap11_area.jpg",
+    "description": "The site of the first human landing on the Moon (July 1969) in Mare Tranquillitatis. High-resolution orbital images from the LRO clearly show the descent stage of the Lunar Module 'Eagle,' the Lunar Surface Experiments Package (ALSEP), and the dark paths of astronaut footprints etched into the regolith."
+  },
+  {
+    "id": "apollo12",
+    "title": "Apollo 12",
+    "lat": -3.0124,
+    "long": -23.4215,
+    "type": "landing_site",
+    "image": "https://www.nasa.gov/wp-content/uploads/2023/03/584394main_m114216503le_25cm_ap12_area.jpg",
+    "description": "Landed in Oceanus Procellarum in November 1969. This mission was a masterpiece of precision navigation, as Pete Conrad and Alan Bean landed within walking distance of the robotic Surveyor 3 probe. They retrieved the probe's camera to study how three years of lunar exposure affected its components."
+  },
+  {
+    "id": "tycho",
+    "title": "Tycho Crater",
+    "lat": -43.31,
+    "long": -11.36,
+    "type": "crater",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA14417.jpg",
+    "description": "A very prominent impact crater in the southern highlands, approximately 108 million years old. Its brilliant ray system, created by ejecta during the impact, stretches across much of the Moon's near side and is easily visible from Earth with binoculars."
+  },
+  {
+    "id": "copernicus",
+    "title": "Copernicus Crater",
+    "lat": 9.62,
+    "long": -20.08,
+    "type": "crater",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA14312.jpg",
+    "description": "Often called the 'Monarch of the Moon,' Copernicus is a classic complex crater with terraced walls and a cluster of central peaks. It sits in eastern Oceanus Procellarum and was a primary study site for understanding the timeline of lunar impacts."
+  },
+  {
+    "id": "shackleton",
+    "title": "Shackleton Crater",
+    "lat": -89.67,
+    "long": 0.0,
+    "type": "crater",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA15194.jpg",
+    "description": "Located at the Lunar South Pole, the rim of this crater is almost constantly bathed in sunlight, while its interior remains in permanent shadow. It is considered one of the most valuable locations for future human bases due to the likely presence of water ice in its dark floor."
+  },
+  {
+    "id": "mare_tranquillitatis",
+    "title": "Mare Tranquillitatis",
+    "lat": 8.5,
+    "long": 31.4,
+    "type": "mare",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA13123.jpg",
+    "description": "The 'Sea of Tranquility' is a large, relatively flat volcanic plain. It has a slightly blue tint compared to other maria due to a higher concentration of titanium in its basaltic rocks. Beyond Apollo 11, it is home to many distinctive 'wrinkle ridges' formed by tectonic cooling."
+  },
+  {
+    "id": "aristarchus",
+    "title": "Aristarchus Crater",
+    "lat": 23.73,
+    "long": -47.49,
+    "type": "crater",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA14532.jpg",
+    "description": "The brightest large formation on the lunar surface. Aristarchus is so reflective that it can often be seen when the Moon is lit only by 'Earthshine.' It is situated on a volcanic plateau that shows evidence of diverse minerals and ancient 'fire fountain' eruptions."
+  },
+  {
+    "id": "change4",
+    "title": "Chang'e 4 (Von Kármán)",
+    "lat": -45.45,
+    "long": 177.59,
+    "type": "robotic_site",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA23049.jpg",
+    "description": "China's Chang'e 4 made history in 2019 by becoming the first spacecraft to land on the far side of the Moon. Located in the Von Kármán crater within the massive South Pole-Aitken basin, it continues to explore the mineral composition of the lunar mantle."
+  },
+  {
+    "id": "luna17",
+    "title": "Luna 17 (Lunokhod 1)",
+    "lat": 38.28,
+    "long": -35.0,
+    "type": "robotic_site",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA12918.jpg",
+    "description": "The landing site of the first successful robotic lunar rover, Lunokhod 1, in 1970. The rover traveled over 10 kilometers across the Sea of Rains, conducting chemical analysis of the soil and transmitting thousands of panoramic images."
+  },
+  {
+    "id": "oceanus_procellarum",
+    "title": "Oceanus Procellarum",
+    "lat": 18.4,
+    "long": -57.4,
+    "type": "mare",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA18833.jpg",
+    "description": "The 'Ocean of Storms' is the largest of the lunar maria, covering more than 4 million square kilometers. Unlike other maria, it may have been formed by internal volcanic processes fueled by radioactive heating rather than a single massive impact."
+  },
+  {
+    "id": "apollo15",
+    "title": "Apollo 15",
+    "lat": 26.13,
+    "long": 3.63,
+    "type": "landing_site",
+    "image": "https://www.nasa.gov/wp-content/uploads/2023/03/584396main_m111578606le_25cm_ap15_area.jpg",
+    "description": "Landed near Hadley Rille and the Apennine Mountains in 1971. This was the first 'J-series' mission, featuring the Lunar Roving Vehicle which allowed David Scott and James Irwin to explore the winding volcanic rille and collect the 'Genesis Rock'."
+  },
+  {
+    "id": "plato",
+    "title": "Plato Crater",
+    "lat": 51.62,
+    "long": -9.38,
+    "type": "crater",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA14311.jpg",
+    "description": "Known for its exceptionally dark, flat floor, Plato is a 100-km wide crater located on the northern shore of Mare Imbrium. Its smooth floor is filled with flooded basaltic lava, making it a favorite for amateur astronomers."
+  },
+  {
+    "id": "grimaldi",
+    "title": "Grimaldi Crater",
+    "lat": -5.2,
+    "long": -68.6,
+    "type": "crater",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA18850.jpg",
+    "description": "A large basin near the western limb. Its floor is one of the darkest spots on the Moon, providing a stark contrast to the surrounding bright highland terrain. It is often used as a reference point for lunar photography."
+  },
+  {
+    "id": "mare_orientale",
+    "title": "Mare Orientale",
+    "lat": -19.4,
+    "long": -92.8,
+    "type": "mare",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA14316.jpg",
+    "description": "A striking multi-ring impact basin located on the extreme western edge of the near side. It resembles a giant 'bullseye' from space and is the best-preserved example of a large impact basin on the Moon."
+  },
+  {
+    "id": "vallis_schroteri",
+    "title": "Vallis Schröteri",
+    "lat": 26.2,
+    "long": -50.8,
+    "type": "mare",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA14532.jpg",
+    "description": "The largest sinuous rille on the Moon, likely formed by a massive, ancient lava flow. It winds through the Aristarchus plateau and features a 'Cobra Head' volcanic vent at its source."
+  },
+  {
+    "id": "chandrayaan3",
+    "title": "Chandrayaan-3",
+    "lat": -69.37,
+    "long": 32.35,
+    "type": "robotic_site",
+    "image": "https://www.nasa.gov/wp-content/uploads/2023/09/chandrayaan3-lro.jpg",
+    "description": "The historic 2023 landing site of India's Vikram lander. This mission made India the first nation to successfully land in the lunar south polar region, a prime area for water ice exploration."
+  },
+  {
+    "id": "apollo17",
+    "title": "Apollo 17",
+    "lat": 20.19,
+    "long": 30.77,
+    "type": "landing_site",
+    "image": "https://www.nasa.gov/wp-content/uploads/2023/03/584398main_m109080376le_25cm_ap17_area.jpg",
+    "description": "The final mission of the Apollo program (1972). Gene Cernan and Harrison Schmitt explored the Taurus-Littrow valley, finding 'orange soil'—tiny glass beads created by ancient volcanic eruptions."
+  },
+  {
+    "id": "mare_imbrium",
+    "title": "Mare Imbrium",
+    "lat": 32.8,
+    "long": -15.6,
+    "type": "mare",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA13122.jpg",
+    "description": "The 'Sea of Rains' is the second largest mare and fills a massive impact basin. It is surrounded by the Apennine, Carpathian, and Jura mountain ranges, formed by the force of the original impact."
+  },
+  {
+    "id": "surveyor1",
+    "title": "Surveyor 1",
+    "lat": -2.45,
+    "long": -43.22,
+    "type": "robotic_site",
+    "image": "https://www.nasa.gov/wp-content/uploads/2023/03/surveyor1_lro.jpg",
+    "description": "The first American spacecraft to land softly on the Moon (1966). It landed in Oceanus Procellarum and proved that the lunar surface was solid enough to support a heavy lander."
+  },
+  {
+    "id": "messier",
+    "title": "Messier Crater",
+    "lat": -1.9,
+    "long": 47.6,
+    "type": "crater",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA14420.jpg",
+    "description": "An unusual pair of oblong craters in Mare Fecunditatis. They were formed by a single object striking the Moon at a very shallow angle, creating a unique 'butterfly' ejecta pattern."
+  },
+  {
+    "id": "sinus_iridum",
+    "title": "Sinus Iridum",
+    "lat": 44.1,
+    "long": -31.5,
+    "type": "mare",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA13456.jpg",
+    "description": "The 'Bay of Rainbows' is a large, semi-circular bay on the edge of Mare Imbrium. It is the remains of a flooded impact crater that was breached when lava filled the Imbrium basin."
+  },
+  {
+    "id": "reiner_gamma",
+    "title": "Reiner Gamma",
+    "lat": 7.5,
+    "long": -59.0,
+    "type": "mare",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA15531.jpg",
+    "description": "A mysterious 'lunar swirl'—a high-albedo pattern on the surface associated with a localized magnetic field. It looks like a bright, swirling smudge and is not related to any physical impact or volcano."
+  },
+  {
+    "id": "clavius",
+    "title": "Clavius Crater",
+    "lat": -58.4,
+    "long": -14.4,
+    "type": "crater",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA24180.jpg",
+    "description": "One of the Moon's largest and most recognizable craters, located in the rugged southern highlands. In 2020, NASA confirmed the presence of water molecules in the sunlit soil of this crater."
+  },
+  {
+    "id": "mare_crisium",
+    "title": "Mare Crisium",
+    "lat": 17.0,
+    "long": 59.1,
+    "type": "mare",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA13125.jpg",
+    "description": "An isolated, elliptical mare on the eastern edge of the Moon. It is famous for its distinct borders and for being the site where the Soviet Luna 24 probe returned soil samples in 1976."
+  },
+  {
+    "id": "change5",
+    "title": "Chang'e 5",
+    "lat": 43.06,
+    "long": -51.92,
+    "type": "robotic_site",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA24269.jpg",
+    "description": "The site of China's successful 2020 sample-return mission. It landed near Mons Rümker and returned the youngest volcanic rocks ever collected from the Moon (approx. 2 billion years old)."
+  },
+  {
+    "id": "gassendi",
+    "title": "Gassendi Crater",
+    "lat": -17.5,
+    "long": -39.9,
+    "type": "crater",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA14310.jpg",
+    "description": "A 'floor-fractured' crater on the northern edge of Mare Humorum. magma pushed up from beneath the floor after the impact, causing it to uplift and crack into a network of internal rilles."
+  },
+  {
+    "id": "mare_fecunditatis",
+    "title": "Mare Fecunditatis",
+    "lat": -7.8,
+    "long": 51.3,
+    "type": "mare",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA14420.jpg",
+    "description": "The 'Sea of Fertility' is where the Soviet Luna 16 probe landed in 1970, becoming the first robotic mission to successfully return a sample of lunar regolith to Earth."
+  },
+  {
+    "id": "theophilus",
+    "title": "Theophilus Crater",
+    "lat": -11.45,
+    "long": 26.28,
+    "type": "crater",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA14421.jpg",
+    "description": "A stunning 100-km wide crater with a massive triple-peaked central mountain. It encroaches on the older crater Cyrillus, providing a clear visual example of geological sequencing."
+  },
+  {
+    "id": "mare_nectaris",
+    "title": "Mare Nectaris",
+    "lat": -15.2,
+    "long": 35.5,
+    "type": "mare",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA14421.jpg",
+    "description": "The 'Sea of Nectar' is a relatively small mare basin. It is surrounded by the Altai Scarp, a massive cliff that represents the outer rim of the impact basin that created the sea."
+  },
+  {
+    "id": "tsiolkovskiy",
+    "title": "Tsiolkovskiy Crater",
+    "lat": -20.38,
+    "long": 128.97,
+    "type": "crater",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA11707.jpg",
+    "description": "A spectacular crater on the far side of the Moon. It features a dark, lava-flooded floor—rare for the far side—and a brilliant white central peak that stands out against the dark basalt."
+  },
+  {
+    "id": "kepler",
+    "title": "Kepler Crater",
+    "lat": 8.12,
+    "long": -38.01,
+    "type": "crater",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA13083.jpg",
+    "description": "A small but brilliant crater with a ray system that overlaps with the rays of Copernicus. It is located between Oceanus Procellarum and Mare Insularum."
+  },
+  {
+    "id": "apollo14",
+    "title": "Apollo 14",
+    "lat": -3.64,
+    "long": -17.47,
+    "type": "landing_site",
+    "image": "https://www.nasa.gov/wp-content/uploads/2023/03/584395main_m114071275le_25cm_ap14_area.jpg",
+    "description": "Landed in the Fra Mauro highlands in 1971. Alan Shepard famously hit two golf balls on the surface. The mission focused on sampling ancient material from the deep crust thrown out by the Imbrium impact."
+  },
+  {
+    "id": "apollo16",
+    "title": "Apollo 16",
+    "lat": -8.97,
+    "long": 15.50,
+    "type": "landing_site",
+    "image": "https://www.nasa.gov/wp-content/uploads/2023/03/584397main_m140151121le_25cm_ap16_area.jpg",
+    "description": "The first mission to land in the lunar highlands (Descartes region) in 1972. It proved that the highlands were not volcanic but composed of impact breccias."
+  },
+  {
+    "id": "mare_serenitatis",
+    "title": "Mare Serenitatis",
+    "lat": 28.0,
+    "long": 17.5,
+    "type": "mare",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA13124.jpg",
+    "description": "The 'Sea of Serenity' is a circular mare located east of Imbrium. It is known for its clear borders and the landing site of Apollo 17 on its southeastern edge."
+  },
+  {
+    "id": "vallis_alpes",
+    "title": "Vallis Alpes",
+    "lat": 48.5,
+    "long": 3.2,
+    "type": "mare",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA13567.jpg",
+    "description": "The Alpine Valley is a spectacular rift valley that cuts through the Alps Mountains, connecting Mare Imbrium and Mare Frigoris. It features a narrow rille on its floor."
+  },
+  {
+    "id": "mare_frigoris",
+    "title": "Mare Frigoris",
+    "lat": 56.0,
+    "long": 1.4,
+    "type": "mare",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA13567.jpg",
+    "description": "The 'Sea of Cold' is a long, narrow mare located in the far northern region. It stretches across the northern side of Mare Imbrium and Mare Serenitatis."
+  },
+  {
+    "id": "luna24",
+    "title": "Luna 24",
+    "lat": 12.25,
+    "long": 62.20,
+    "type": "robotic_site",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA14309.jpg",
+    "description": "The last Soviet robotic probe to return samples from the Moon (1976). It landed in Mare Crisium and returned a core sample that showed traces of water."
+  },
+  {
+    "id": "petavius",
+    "title": "Petavius Crater",
+    "lat": -25.3,
+    "long": 60.4,
+    "type": "crater",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA13565.jpg",
+    "description": "A large crater with a prominent central peak and a massive floor rille. It is located near the southeastern limb of the Moon."
+  },
+  {
+    "id": "langrenus",
+    "title": "Langrenus Crater",
+    "lat": -8.86,
+    "long": 61.11,
+    "type": "crater",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA13565.jpg",
+    "description": "A large crater on the eastern edge of Mare Fecunditatis. It features complex terraced walls and was a major landmark for the Apollo 8 crew."
+  },
+  {
+    "id": "maurolycus",
+    "title": "Maurolycus Crater",
+    "lat": -41.8,
+    "long": 14.0,
+    "type": "crater",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA14421.jpg",
+    "description": "A heavily battered crater in the southern highlands, illustrating the billions of years of impact history that have shaped the lunar surface."
+  },
+  {
+    "id": "luna21",
+    "title": "Luna 21 (Lunokhod 2)",
+    "lat": 25.85,
+    "long": 30.45,
+    "type": "robotic_site",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA15535.jpg",
+    "description": "Landed in 1973 carrying the Lunokhod 2 rover. The rover covered roughly 39 km across the Le Monnier crater, a record distance for a robotic rover at the time."
+  },
+  {
+    "id": "mare_humorum",
+    "title": "Mare Humorum",
+    "lat": -24.4,
+    "long": -38.6,
+    "type": "mare",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA14310.jpg",
+    "description": "The 'Sea of Moisture' is a circular mare basin. Its floor is heavily cracked and features several prominent wrinkle ridges and buried craters."
+  },
+  {
+    "id": "endymion",
+    "title": "Endymion Crater",
+    "lat": 53.6,
+    "long": 56.5,
+    "type": "crater",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA13567.jpg",
+    "description": "A 125-km wide crater with a floor completely covered in dark, smooth lava, similar to a small sea. It is located near the Moon's northeastern limb."
+  },
+  {
+    "id": "mons_pico",
+    "title": "Mons Pico",
+    "lat": 45.7,
+    "long": -8.9,
+    "type": "mare",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA14311.jpg",
+    "description": "A solitary mountain peak standing in the northern Mare Imbrium. It is 2.4 km high and is a remnant of the inner ring of the Imbrium impact basin."
+  },
+  {
+    "id": "odysseus",
+    "title": "Odysseus (IM-1)",
+    "lat": -80.13,
+    "long": 1.44,
+    "type": "robotic_site",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA26232.jpg",
+    "description": "The 2024 landing site of the Intuitive Machines 'Odysseus' lander. It was the first private spacecraft to successfully land on the Moon, touching down near the South Pole."
+  },
+  {
+    "id": "slim",
+    "title": "SLIM (JAXA)",
+    "lat": -13.31,
+    "long": 25.25,
+    "type": "robotic_site",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA26233.jpg",
+    "description": "Japan's 'Smart Lander for Investigating Moon' landed in 2024. Despite landing on its nose, it achieved an unprecedented level of landing accuracy within 100 meters of its target."
+  },
+  {
+    "id": "posidonius",
+    "title": "Posidonius Crater",
+    "lat": 31.8,
+    "long": 29.9,
+    "type": "crater",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA13124.jpg",
+    "description": "A floor-fractured crater on the edge of Mare Serenitatis. Its interior contains a winding rille and a tilted floor, showing significant post-impact volcanic activity."
+  },
+  {
+    "id": "stadius",
+    "title": "Stadius Crater",
+    "lat": 10.5,
+    "long": -13.7,
+    "type": "crater",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA14312.jpg",
+    "description": "A 'ghost' crater that has been almost entirely buried by lava flows from Mare Imbrium. Only a faint, circular outline of its rim remains visible under low sun angles."
+  },
+  {
+    "id": "herodotus",
+    "title": "Herodotus Crater",
+    "lat": 23.2,
+    "long": -49.7,
+    "type": "crater",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA14532.jpg",
+    "description": "Located just west of Aristarchus, this crater has a flooded floor and marks the starting point of the massive Vallis Schröteri rille."
+  },
+  {
+    "id": "mons_rumker",
+    "title": "Mons Rümker",
+    "lat": 40.8,
+    "long": -58.1,
+    "type": "mare",
+    "image": "https://photojournal.jpl.nasa.gov/jpeg/PIA24269.jpg",
+    "description": "A massive volcanic mound in northern Oceanus Procellarum. It is a collection of over 30 shield-like volcanic domes and was the target for the Chang'e 5 mission."
+  },
+  {"id":"hipparchus","title":"Hipparchus Crater","lat":-5.5,"long":-5.0,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14312.jpg","description":"A large ancient crater 150 km wide, heavily eroded and bisected by rilles. It lies near the centre of the Moon's near side."},
+  {"id":"albategnius","title":"Albategnius Crater","lat":-11.2,"long":4.1,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14312.jpg","description":"A 114 km ancient crater with a central peak, adjacent to the famous Ptolemaeus–Alphonsus–Arzachel chain."},
+  {"id":"autolycus","title":"Autolycus Crater","lat":30.7,"long":1.5,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14311.jpg","description":"A 39 km impact crater in southern Mare Imbrium, forming a prominent trio with the larger craters Aristillus and Archimedes to the north."},
+  {"id":"aristillus","title":"Aristillus Crater","lat":33.9,"long":1.2,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14311.jpg","description":"A 55 km well-preserved crater with distinctive bright rays spreading out across Mare Imbrium."},
+  {"id":"eudoxus","title":"Eudoxus Crater","lat":44.3,"long":16.3,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA13567.jpg","description":"A 67 km Eratosthenian-era crater with a central peak. It forms a well-known pair with the larger Aristoteles to the north."},
+  {"id":"timocharis","title":"Timocharis Crater","lat":26.7,"long":-13.1,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14311.jpg","description":"A 34 km crater in Mare Imbrium with a relatively flat floor and a low central hill. A historically significant target for early astronomical measurement."},
+  {"id":"lambert","title":"Lambert Crater","lat":25.8,"long":-20.9,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14311.jpg","description":"A 30 km complex crater in Mare Imbrium with terraced inner walls emerging from the flat mare floor."},
+  {"id":"birt","title":"Birt Crater","lat":-22.4,"long":-8.5,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14312.jpg","description":"A small 17 km crater in Mare Nubium, notable for the nearby Birt Rille — a long sinuous valley running parallel to the Rupes Recta fault scarp."},
+  {"id":"purbach","title":"Purbach Crater","lat":-25.5,"long":-2.3,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14312.jpg","description":"A large 118 km ancient walled plain in the southern highlands, with heavily worn walls and a flat floor with smaller embedded craters."},
+  {"id":"piccolomini","title":"Piccolomini Crater","lat":-29.7,"long":32.2,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA13565.jpg","description":"A 88 km crater at the eastern end of the Altai Scarp. Its terraced inner walls and central peak group make it a prime example of a fresh complex crater."},
+  {"id":"stofler","title":"Stöfler Crater","lat":-41.1,"long":6.0,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14421.jpg","description":"A large 126 km ancient walled plain in the rugged southern highlands, its interior heavily pocked with superimposed smaller craters from billions of years of bombardment."},
+  {"id":"faraday","title":"Faraday Crater","lat":-42.4,"long":8.7,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14421.jpg","description":"A highly degraded 70 km crater adjacent to Stöfler, its walls heavily worn by subsequent impacts. Named after the pioneering physicist Michael Faraday."},
+  {"id":"longomontanus","title":"Longomontanus Crater","lat":-49.5,"long":-21.7,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14417.jpg","description":"A large 145 km walled plain in the southern highlands. The crater interior contains several smaller impact scars and a low central peak."},
+  {"id":"schiller","title":"Schiller Crater","lat":-51.8,"long":-40.0,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14417.jpg","description":"An unusually elongated crater 179 km long and only 70 km wide. Its oval shape suggests it may have formed from a low-angle, oblique impact."},
+  {"id":"wargentin","title":"Wargentin Crater","lat":-49.6,"long":-60.2,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14417.jpg","description":"One of the rarest features on the Moon — a plateau crater. Lava filled it completely to the top of its rim, leaving a flat-topped mesa rather than an interior bowl."},
+  {"id":"euclides","title":"Euclides Crater","lat":-7.4,"long":-29.5,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14312.jpg","description":"A small but bright 12 km crater at the southern tip of Oceanus Procellarum, notable for its distinct rays on the dark mare surface."},
+  {"id":"flammarion","title":"Flammarion Crater","lat":3.4,"long":-3.7,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14312.jpg","description":"A heavily eroded ancient 75 km walled plain near the center of the Moon's near side, adjacent to Ptolemaeus."},
+  {"id":"manilius","title":"Manilius Crater","lat":14.5,"long":9.1,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14421.jpg","description":"A bright 39 km crater on the southern shore of Mare Serenitatis, with high reflectivity walls and a small ray system indicating a relatively recent age."},
+  {"id":"menelaus","title":"Menelaus Crater","lat":16.3,"long":16.0,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14421.jpg","description":"A 27 km bright, young crater on the southern rim of Mare Serenitatis, with distinct rays that cross the surrounding terrain."},
+  {"id":"plinius","title":"Plinius Crater","lat":15.4,"long":23.7,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14421.jpg","description":"A 43 km crater standing at the boundary between Mare Serenitatis and Mare Tranquillitatis. An excellent example of a relatively well-preserved complex crater."},
+  {"id":"vitruvius","title":"Vitruvius Crater","lat":17.6,"long":31.3,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14421.jpg","description":"A 30 km crater near the Apollo 17 landing site. The elevated plateau nearby, called Vitruvius Plateau, was studied by the Apollo 17 crew."},
+  {"id":"romer","title":"Römer Crater","lat":25.4,"long":36.4,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA13567.jpg","description":"A 40 km complex crater with pronounced inner wall terraces and a central mountain. Located in the highlands between Mare Serenitatis and Mare Crisium."},
+  {"id":"madler","title":"Mädler Crater","lat":-11.0,"long":29.8,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14421.jpg","description":"A 28 km crater on the eastern shore of Mare Nectaris. It is a well-preserved example of a small complex impact crater adjacent to a larger lava-flooded basin."},
+  {"id":"cyrillus","title":"Cyrillus Crater","lat":-13.2,"long":24.0,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14421.jpg","description":"A 98 km walled plain adjacent to Theophilus. It is significantly older than Theophilus, with Theophilus' rim actually overlapping Cyrillus' northern wall."},
+  {"id":"catharina","title":"Catharina Crater","lat":-18.0,"long":23.6,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14421.jpg","description":"The southernmost of the famous trio on the western shore of Mare Nectaris (with Theophilus and Cyrillus). An ancient, heavily degraded 100 km walled plain."},
+  {"id":"polybius","title":"Polybius Crater","lat":-22.4,"long":25.6,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA13565.jpg","description":"A 41 km well-preserved crater southeast of Mare Nectaris. It shows clear terracing on its inner walls and a subdued central peak."},
+  {"id":"goclenius","title":"Goclenius Crater","lat":-10.0,"long":45.0,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14420.jpg","description":"A floor-fractured crater 72 km wide on the western shore of Mare Fecunditatis, displaying a network of rilles on its uplifted floor."},
+  {"id":"colombo","title":"Colombo Crater","lat":-15.1,"long":45.8,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14420.jpg","description":"A 76 km ancient floor-fractured crater on the edge of Mare Fecunditatis. Despite heavy bombardment, part of its original rim and central peak are still identifiable."},
+  {"id":"stevinus","title":"Stevinus Crater","lat":-32.5,"long":54.1,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA13565.jpg","description":"A well-preserved 75 km crater with terraced inner walls and a central peak. Located in the southeastern highlands near the prominent trio of Stevinus, Snellius, and Rheita."},
+  {"id":"snellius","title":"Snellius Crater","lat":-29.3,"long":56.0,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA13565.jpg","description":"A 83 km crater near the eastern limb. A prominent rille, the Rima Snellius, runs through the surrounding terrain, part of the Rheita Valley system."},
+  {"id":"metius","title":"Metius Crater","lat":-40.3,"long":43.3,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA13565.jpg","description":"An 88 km crater whose western wall is shared with Fabricius. Together they form a distinctive interlocking pair visible near the Moon's southeastern quadrant."},
+  {"id":"fabricius","title":"Fabricius Crater","lat":-42.9,"long":41.8,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA13565.jpg","description":"A 78 km relatively fresh crater with a distinct central peak and terraced walls. It intrudes into the older Janssen crater to the south."},
+  {"id":"janssen","title":"Janssen Crater","lat":-45.5,"long":40.3,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA13565.jpg","description":"A massive, ancient 190 km walled plain, one of the largest on the Moon's near side. Its floor is heavily cratered and crossed by the Rheita Valley rille system."},
+  {"id":"rabbi_levi","title":"Rabbi Levi Crater","lat":-34.7,"long":23.5,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14421.jpg","description":"A 81 km heavily degraded crater in the lunar southern highlands, its walls worn down by billions of years of micrometeorite erosion and overlapping impacts."},
+  {"id":"pitatus","title":"Pitatus Crater","lat":-29.8,"long":-13.5,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14417.jpg","description":"A flooded walled plain 97 km wide on the southern shore of Mare Nubium. Its floor has rilles, suggesting magmatic activity after its formation uplifted and cracked the floor."},
+  {"id":"hesiodus","title":"Hesiodus Crater","lat":-29.4,"long":-16.3,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14417.jpg","description":"A 43 km crater attached to the northwest rim of Pitatus. The combined Pitatus-Hesiodus formation is a striking feature on the southern bank of Mare Nubium."},
+  {"id":"campanus","title":"Campanus Crater","lat":-28.0,"long":-27.8,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14417.jpg","description":"A 48 km Eratosthenian-era crater bordering the southern part of Mare Cognitum. It forms a matched pair with the adjacent Mercator crater."},
+  {"id":"mercator","title":"Mercator Crater","lat":-29.3,"long":-26.1,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14417.jpg","description":"A 47 km walled plain south of Mare Nubium that forms a natural double crater with Campanus. Both have flat, lava-flooded floors."},
+  {"id":"clavius2","title":"Clavius Chain","lat":-58.0,"long":-17.0,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA24180.jpg","description":"The famous curved arc of decreasing craters inside Clavius: Rutherford, Clavius D, C, N, and J. Each subsequent crater in the chain was formed by a progressively smaller impactor over geological time."},
+  {"id":"sinus_medii","title":"Sinus Medii","lat":2.4,"long":-1.7,"type":"mare","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14312.jpg","description":"The 'Bay of the Centre'. A small lava-flooded region almost exactly at the centre of the Moon's near-side disk, making it a historical reference point for early selenographers (Moon mapmakers)."},
+  {"id":"sinus_aestuum","title":"Sinus Aestuum","lat":12.1,"long":-8.8,"type":"mare","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14312.jpg","description":"The 'Seething Bay'. A small mare region at the southern edge of Imbrium. The dark pyroclastic deposits covering the surrounding terrain indicate it was once the site of volcanic fire-fountain eruptions."},
+  {"id":"sinus_roris","title":"Sinus Roris","lat":54.0,"long":-46.5,"type":"mare","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA13567.jpg","description":"The 'Bay of Dew'. A narrow appendage of Oceanus Procellarum along the northwestern edge of the near side of the Moon, adjacent to the Jura Mountains."},
+  {"id":"lacus_somniorum","title":"Lacus Somniorum","lat":38.0,"long":29.2,"type":"mare","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA13567.jpg","description":"The 'Lake of Dreams'. A small, irregularly shaped mare between Mare Serenitatis and Mare Humboldtianum, featuring a subtle gradation in colour across its lava-flooded floor."},
+  {"id":"lacus_mortis","title":"Lacus Mortis","lat":45.0,"long":27.2,"type":"mare","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA13567.jpg","description":"The 'Lake of Death'. A small, isolated mare patch in the northeastern highlands. The nearby Burg crater (with its prominent rilles) makes this an interesting telescopic target."},
+  {"id":"rupes_recta","title":"Rupes Recta (Straight Wall)","lat":-22.1,"long":-7.8,"type":"rille","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14417.jpg","description":"'The Straight Wall', a remarkably linear 110 km fault scarp in Mare Nubium. About 300 m high with a 40° slope, it casts a dramatic shadow near first quarter and appears as a bright ridge near last quarter."},
+  {"id":"hyginus_rille","title":"Rima Hyginus","lat":7.8,"long":6.3,"type":"rille","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14312.jpg","description":"A 220 km long rille (graben) that bisects the centre of the near side. Unusually, it contains a line of small volcanic collapse pits, including the 11 km Hyginus crater at its midpoint."},
+  {"id":"hadley_rille","title":"Hadley Rille","lat":25.0,"long":3.5,"type":"rille","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14311.jpg","description":"A 120 km long sinuous channel carved by a massive ancient lava flow. The Apollo 15 crew landed beside it, descending into its edge to sample exposed ancient rock layers."},
+  {"id":"montes_caucasus","title":"Montes Caucasus","lat":38.4,"long":10.0,"type":"mountain","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14311.jpg","description":"A mountain range forming the northeastern rim of Mare Imbrium. The range creates a natural boundary between Mare Imbrium and Mare Serenitatis, reaching heights of over 3,000 metres."},
+  {"id":"montes_alpes","title":"Montes Alpes","lat":46.4,"long":-0.8,"type":"mountain","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14311.jpg","description":"The 'Lunar Alps', a prominent mountain range bordering the northern edge of Mare Imbrium. The range is famously cut through by the spectacular Vallis Alpes rift valley."},
+  {"id":"montes_jura","title":"Montes Jura","lat":47.0,"long":-36.0,"type":"mountain","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA13456.jpg","description":"A curved mountain range forming the northern rim of Sinus Iridum (the Bay of Rainbows). Its peaks rise over 3,000 m and create a backdrop for one of the Moon's most beautiful vistas."},
+  {"id":"montes_taurus","title":"Montes Taurus","lat":28.0,"long":41.0,"type":"mountain","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14421.jpg","description":"A broad highland region of jumbled peaks on the northeastern edge of Mare Serenitatis. The Apollo 17 landing site is located in the Taurus-Littrow valley, cut through this range."},
+  {"id":"tycho_central_peak","title":"Tycho Central Peak","lat":-43.4,"long":-11.4,"type":"mountain","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14417.jpg","description":"The central mountain of Tycho crater. LRO imagery revealed a massive boulder sitting on its summit — estimated at 120 metres across — likely a fragment that fell back into the crater after the initial impact."},
+  {"id":"palisa","title":"Palisa Crater","lat":-9.4,"long":7.2,"type":"crater","image":"https://photojournal.jpl.nasa.gov/jpeg/PIA14312.jpg","description":"A 33 km crater near the centre of the lunar near side, located in the rough highland terrain between Sinus Medii and the Ptolemaeus chain. Named after the Austrian astronomer Johann Palisa, who discovered more asteroids than any other person in history."}
+]

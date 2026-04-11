@@ -1,0 +1,498 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+
+:root {
+    --bg-color: #05070a;
+    --text-color: #e0e6ed;
+    --accent-color: #3a86ff;
+    --glass-bg: rgba(15, 23, 42, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --marker-glow: rgba(58, 134, 255, 0.6);
+    --landing-site: #3a86ff;
+    --robotic-site: #ffd60a;
+    --crater: #ffffff;
+    --mare: #ff006e;
+    --mountain: #8338ec;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+#app {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.map-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #1a1c2c 0%, #05070a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#moonMap {
+    max-width: 95%;
+    max-height: 95%;
+    object-fit: contain;
+    border-radius: 5px;
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.05);
+    user-select: none;
+    pointer-events: auto;
+}
+
+#markersOverlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 5;
+}
+
+.marker {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: var(--landing-site);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: auto;
+    cursor: pointer;
+    box-shadow: 0 0 8px currentColor;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+}
+
+.marker.type-landing_site { background-color: var(--landing-site); color: var(--landing-site); }
+.marker.type-robotic_site { background-color: var(--robotic-site); color: var(--robotic-site); }
+.marker.type-crater { background-color: var(--crater); color: var(--crater); }
+.marker.type-mare { background-color: var(--mare); color: var(--mare); }
+.marker.type-mountain { background-color: var(--mountain); color: var(--mountain); }
+.marker.type-rille { background-color: #06d6a0; color: #06d6a0; }
+.marker.type-albedo_feature { background-color: #fb8500; color: #fb8500; }
+
+.marker:hover {
+    transform: translate(-50%, -50%) scale(2);
+    box-shadow: 0 0 15px currentColor, 0 0 30px currentColor;
+    z-index: 100;
+}
+
+.marker.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.overlay-panels {
+    width: 560px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 10;
+    overflow-y: auto;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#poiSearch {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 10px 15px;
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#poiSearch:focus {
+    border-color: var(--landing-site);
+}
+
+.filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 5px 12px;
+    color: var(--text-color);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.filter-btn.active {
+    background: var(--landing-site);
+    border-color: var(--landing-site);
+    font-weight: 600;
+}
+
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.panel-header {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 10px;
+}
+
+#zoomPanel {
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+}
+
+#zoomView {
+    flex: 1;
+    border-radius: 8px;
+    background-color: #000;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--glass-border);
+    background-image: url('/moon.jpg');
+    background-repeat: no-repeat;
+    background-size: 400%; /* Default zoom level */
+}
+
+#infoPanel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+#infoContent {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#poiTitle {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#poiDescription {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#poiImageContainer {
+    width: 100%;
+    height: 220px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    transition: opacity 0.3s ease;
+}
+
+#poiImageContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#poiDescription {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #b0b8c4;
+    overflow-y: auto;
+}
+
+/* Edit controls */
+.edit-controls {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+#editModeBtn, #exportBtn {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#editModeBtn:hover, #exportBtn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#editModeBtn.active {
+    background: rgba(255, 100, 80, 0.2);
+    border-color: #ff6450;
+    color: #ff6450;
+}
+
+#exportBtn {
+    border-color: #06d6a0;
+    color: #06d6a0;
+    background: rgba(6, 214, 160, 0.1);
+}
+
+#coordReadout {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.75rem;
+    color: #ff6450;
+    padding: 6px 10px;
+    background: rgba(255, 100, 80, 0.1);
+    border: 1px solid rgba(255, 100, 80, 0.3);
+    border-radius: 6px;
+    text-align: center;
+    margin-top: 4px;
+    letter-spacing: 1px;
+}
+
+/* Edit mode active state */
+body.edit-mode .marker {
+    cursor: grab !important;
+    width: 10px;
+    height: 10px;
+    border: 2px solid rgba(255, 100, 80, 0.7);
+}
+
+body.edit-mode .marker:active {
+    cursor: grabbing !important;
+}
+
+body.edit-mode #moonMap {
+    cursor: crosshair;
+}
+
+/* Image edit overlay */
+#imageEditOverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 15, 30, 0.92);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    z-index: 20;
+}
+
+#imageEditOverlay input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    outline: none;
+}
+
+#imageEditOverlay input:focus {
+    border-color: var(--accent-color);
+}
+
+#imageEditOverlay button {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+#imageUrlSave { background: var(--accent-color); color: #fff; }
+#imageUrlCancel { background: rgba(255,255,255,0.08); color: var(--text-color); }
+
+/* Edit mode hint on image */
+body.edit-mode #poiImageContainer::after {
+    content: 'Click image to edit URL';
+    position: absolute;
+    bottom: 8px;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 0.7rem;
+    color: #ff6450;
+    pointer-events: none;
+}
+
+body.edit-mode #poiImageContainer {
+    position: relative;
+    cursor: pointer;
+}
+
+.hidden { display: none !important; }
+
+/* Save button */
+#saveBtn {
+    flex: 1;
+    background: rgba(255, 100, 80, 0.15);
+    border: 1px solid #ff6450;
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: #ff6450;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#saveBtn:hover { background: rgba(255, 100, 80, 0.3); }
+#saveBtn.saving { opacity: 0.6; cursor: wait; }
+
+/* Password modal */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-box {
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 36px 40px;
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+.modal-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ff6450;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.modal-sub {
+    font-size: 0.85rem;
+    color: #8090a0;
+}
+
+.modal-box input[type="password"] {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.modal-box input[type="password"]:focus {
+    border-color: #ff6450;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-actions button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#passwordCancel {
+    background: rgba(255,255,255,0.06);
+    color: var(--text-color);
+}
+
+#passwordCancel:hover { background: rgba(255,255,255,0.12); }
+
+#passwordConfirm {
+    background: #ff6450;
+    color: #fff;
+}
+
+#passwordConfirm:hover { background: #ff7a6a; }
+
+#passwordError {
+    color: #ff6450;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(58, 134, 255, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(58, 134, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(58, 134, 255, 0); }
+}
+
+.marker::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}

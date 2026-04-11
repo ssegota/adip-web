@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Lunar Map</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="map-container" id="mapContainer">
+            <img id="moonMap" src="/moon.jpg" alt="Moon Map">
+            <div id="markersOverlay"></div>
+        </div>
+
+        <div class="overlay-panels">
+            <div id="searchPanel" class="glass-panel">
+                <div class="panel-header">Explore</div>
+                <div class="search-container">
+                    <input type="text" id="poiSearch" placeholder="Search craters, sites...">
+                    <div class="filter-group">
+                        <button class="filter-btn active" data-type="all">All</button>
+                        <button class="filter-btn" data-type="landing_site">Apollo</button>
+                        <button class="filter-btn" data-type="robotic_site">Robotic</button>
+                        <button class="filter-btn" data-type="crater">Craters</button>
+                        <button class="filter-btn" data-type="mare">Seas</button>
+                        <button class="filter-btn" data-type="mountain">Mountains</button>
+                    </div>
+                    <div class="edit-controls">
+                        <button id="editModeBtn">Edit Mode</button>
+                        <button id="saveBtn" class="hidden">Save</button>
+                        <button id="exportBtn" class="hidden">Export</button>
+                    </div>
+                    <div id="coordReadout" class="hidden">lat: — long: —</div>
+                </div>
+            </div>
+
+            <div id="zoomPanel" class="glass-panel">
+                <div class="panel-header">Zoom View</div>
+                <div id="zoomView"></div>
+            </div>
+
+            <div id="infoPanel" class="glass-panel">
+                <div id="infoContent">
+                    <div class="panel-header" id="poiTitle">Select a Site</div>
+                    <div id="poiImageContainer">
+                        <div id="imageEditOverlay" class="hidden">
+                            <input type="text" id="imageUrlInput" placeholder="Paste image URL...">
+                            <button id="imageUrlSave">Save</button>
+                            <button id="imageUrlCancel">Cancel</button>
+                        </div>
+                    </div>
+                    <p id="poiDescription">Hover over a marker to see details.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="./main.js"></script>
+
+    <!-- Password Modal -->
+    <div id="passwordModal" class="modal-backdrop hidden">
+        <div class="modal-box">
+            <div class="modal-title">Edit Mode</div>
+            <p class="modal-sub">Enter password to unlock editing</p>
+            <input type="password" id="passwordInput" placeholder="Password" autocomplete="off">
+            <div class="modal-actions">
+                <button id="passwordCancel">Cancel</button>
+                <button id="passwordConfirm">Unlock</button>
+            </div>
+            <p id="passwordError" class="hidden">Incorrect password</p>
+        </div>
+    </div>
+</body>
+</html>
