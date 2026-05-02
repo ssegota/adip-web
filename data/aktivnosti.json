@@ -1,38 +1,57 @@
 [
   {
-    "id": 1770494759900,
+    "id": 1777713916828,
     "year": 2026,
-    "title": "Proba",
-    "date": "2026-02-07",
-    "content": "Test",
-    "images": []
-  },
-  {
-    "id": 1770125896177,
-    "year": 2026,
-    "title": "Test",
-    "date": "03. 02. 2026.",
-    "content": "asd",
-    "images": []
-  },
-  {
-    "id": 1770122363373,
-    "year": 2026,
-    "title": "Test",
-    "date": "03. 02. 2026.",
-    "content": "test",
+    "title": "Priznanje za izvanredan doprinos tehničkoj kulturi dodjeljeno Damiru Šegonu",
+    "date": "2026-05-02",
+    "content": "Damir Šegon, član i bivši predsjednik Astronomskog Društva \"Istra\" Pula je od strane Zajednice Tehničke Kulture danas primio Priznanje za izvanredan doprinos tehničkoj kulturi unutar grada Pule.",
     "images": [
-      "aktivnosti-slike/1770122363368-zadatak2skica.jpg",
-      "aktivnosti-slike/1770122363370-Skica_manipulatora.jpg"
+      "/aktivnosti-slike/1777713916820-damir2.jpeg",
+      "/aktivnosti-slike/1777713916824-damir.jpeg"
     ]
   },
   {
-    "id": 1770122363363,
+    "id": 1777713783756,
     "year": 2026,
-    "title": "Test",
-    "date": "03. 02. 2026.",
-    "content": "test",
-    "images": []
+    "title": "155 godina Pulske Zvjezdarnice na Kaiserball 2026.",
+    "date": "2026-05-02",
+    "content": "Danas, u sklopu serije predavanje unutar Kaiserball događaja, naš Damir Šegon je u Domu Hrvatskih Branitelja održao predavanje o 155-toj obljetnici postojanja Pulske Zvjezdarnice.",
+    "images": [
+      "/aktivnosti-slike/1777713783745-683325192_4006065783036050_4491841448640180269_n.jpg",
+      "/aktivnosti-slike/1777713783748-681344501_4006065809702714_4605860341422747662_n.jpg"
+    ]
+  },
+  {
+    "id": 1777713708771,
+    "year": 2026,
+    "title": "Posjeta članice Petrovoj Gori",
+    "date": "2026-04-18",
+    "content": "Naša članica, Katarina Šprem je posjetila Park tamnog neba Petrova Gora.",
+    "images": [
+      "/aktivnosti-slike/1777713708766-kate.jpeg"
+    ]
+  },
+  {
+    "id": 1777713610301,
+    "year": 2026,
+    "title": "Predavanja u sklopu Festivala Znanosti 2026",
+    "date": "2026-04-24",
+    "content": "U sklopu Festivala Znanosti 2026, pod temom \"Energija\" održano je predavanje na temu \"Koliko energije ima u Svemiru i kako je iskoristiti?\". Predavanje je održao Sandi Baressi Šegota, u sklopu I-STEM projekta.",
+    "images": [
+      "/aktivnosti-slike/1777713610296-Untitled2.jpeg",
+      "/aktivnosti-slike/1777713610299-Untitled.jpeg"
+    ]
+  },
+  {
+    "id": 1777713401372,
+    "year": 2026,
+    "title": "Posjeta učenika Pulske Gimnazije",
+    "date": "2026-05-02",
+    "content": "Danas je skupina učenika Gimnazije Pula, u sklopu Zavičajne nastave i u pratnji profesora Davida Orlovića, posjetila našu Zvjezdarnicu. Tijekom posjeta učenicima je predstavljena bogata povijest Zvjezdarnice, njezina važnost u vrijeme Austro-Ugarske Monarhije te značajna otkrića i djelovanje predstojnika Johanna Palise. Također su upoznati s današnjim znanstvenim i edukativnim aktivnostima Zvjezdarnice – od promatranja neba s građanima do sudjelovanja u Meteorskoj mreži.",
+    "images": [
+      "/aktivnosti-slike/1777713401360-669587652_3989948984647730_3334330514073923614_n.jpg",
+      "/aktivnosti-slike/1777713401367-669593826_3989949011314394_2665590285535897345_n.jpg"
+    ]
   },
   {
     "id": 232,
