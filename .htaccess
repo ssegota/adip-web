@@ -1,5 +1,22 @@
 RewriteEngine On
-RewriteRule ^$ http://127.0.0.1:%{ENV:PORT}/ [P,L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ http://127.0.0.1:%{ENV:PORT}/$1 [P,L]
+
+# Preserve host header - IMPORTANT for correct URLs
+ProxyPreserveHost On
+ProxyRequests Off
+
+# Pass through static file requests directly if they exist
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# WebSocket support
+RewriteCond %{HTTP:Upgrade} websocket [NC]
+RewriteCond %{HTTP:Connection} upgrade [NC]
+RewriteRule ^/?(.*) "ws://127.0.0.1:3000/$1" [P,L]
+
+# Proxy everything to Node.js
+RewriteRule ^(.*)$ http://127.0.0.1:3000/$1 [P,L,NE]
+
+# Set proper proxy headers
+RequestHeader set X-Forwarded-Proto "https"
+RequestHeader set X-Forwarded-Host "adip.hr"
