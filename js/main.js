@@ -273,13 +273,29 @@ async function loadHomepageContent(container, limit = 6) {
     }
 }
 
-// Helper: Parse DD. MM. YYYY. to Date object
+// Helper: Parse multiple date formats to Date object
 function parseDate(dateStr) {
     if (!dateStr) return new Date(0);
-    const parts = dateStr.replace('.', '').split('.');
-    if (parts.length < 3) return new Date(0);
-    // hr date format: DD. MM. YYYY. -> parts[2]-parts[1]-parts[0]
-    return new Date(`${parts[2].trim()}-${parts[1].trim()}-${parts[0].trim()}`);
+
+    const cleaned = dateStr.trim();
+    const hrMatch = cleaned.match(/^(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})\.?$/);
+    const isoMatch = cleaned.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+    const yearMatch = cleaned.match(/^(\d{4})$/);
+
+    if (hrMatch) {
+        return new Date(`${hrMatch[3]}-${hrMatch[2].padStart(2, '0')}-${hrMatch[1].padStart(2, '0')}`);
+    }
+
+    if (isoMatch) {
+        return new Date(`${isoMatch[1]}-${isoMatch[2].padStart(2, '0')}-${isoMatch[3].padStart(2, '0')}`);
+    }
+
+    if (yearMatch) {
+        return new Date(`${yearMatch[1]}-01-01`);
+    }
+
+    const fallback = new Date(cleaned);
+    return Number.isNaN(fallback.getTime()) ? new Date(0) : fallback;
 }
 
 // ==================== Radovi Page Logic ====================
