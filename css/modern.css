@@ -57,7 +57,8 @@ body {
     position: relative;
 }
 
-/* Background Image Layer */
+/* Background Image Layer — image-set lets modern browsers fetch the WebP
+   variant (~1/10th the size of the PNG) while keeping the PNG as a fallback. */
 body::before {
     content: '';
     position: fixed;
@@ -65,7 +66,16 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('../background.png') center center / cover no-repeat fixed;
+    background: url('../assets/img-optimized/background-1200.webp') center center / cover no-repeat fixed;
+    background-image: image-set(
+        url('../assets/img-optimized/background-1200.avif') type('image/avif'),
+        url('../assets/img-optimized/background-1200.webp') type('image/webp'),
+        url('../assets/img-optimized/background-fallback.jpg')
+    );
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     z-index: -2;
 }
 

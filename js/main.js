@@ -182,6 +182,74 @@ function t(key) {
 
 let allActivitiesData = [];
 
+// ==================== Optimized Image Helpers ====================
+// Maps an original image path (e.g. "/aktivnosti-slike/foo.jpg" or
+// "galerija/povijest/x.jpg") to the locations of its optimized variants
+// under /assets/img-optimized/. Mirrors the output layout of
+// scripts/optimize-images.js (run from the repo root).
+function optimizedVariants(originalPath) {
+    const clean = (originalPath || '').replace(/^\/+/, '');
+    if (!clean) return null;
+    const slash = clean.lastIndexOf('/');
+    const dir = slash >= 0 ? clean.substring(0, slash) : '';
+    const filename = slash >= 0 ? clean.substring(slash + 1) : clean;
+    const dot = filename.lastIndexOf('.');
+    const base = dot > 0 ? filename.substring(0, dot) : filename;
+    const baseOut = '/assets/img-optimized/' + (dir ? dir + '/' : '') + base;
+    const widths = [480, 768, 1200, 1920];
+    return {
+        original: '/' + clean,
+        avifSrcset: widths.map(w => `${baseOut}-${w}.avif ${w}w`).join(', '),
+        webpSrcset: widths.map(w => `${baseOut}-${w}.webp ${w}w`).join(', '),
+        webp1200: `${baseOut}-1200.webp`,
+        avif1200: `${baseOut}-1200.avif`,
+        fallback1200: `${baseOut}-fallback.jpg`,
+        thumbWebp: `${baseOut}-thumb.webp`,
+        thumbJpg: `${baseOut}-thumb.jpg`,
+    };
+}
+
+function escapeAttr(s) {
+    return String(s || '')
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+}
+
+// Picture element pointing at the 480w thumbnail variant. Used in
+// gallery grids and activity cards where the displayed size is small.
+function thumbPictureHtml(originalPath, alt, extraImgAttrs = '') {
+    const v = optimizedVariants(originalPath);
+    if (!v) return '';
+    const altSafe = escapeAttr(alt || '');
+    return `<picture>
+        <source type="image/webp" srcset="${v.thumbWebp}">
+        <img src="${v.thumbJpg}" alt="${altSafe}" loading="lazy" decoding="async"${extraImgAttrs ? ' ' + extraImgAttrs : ''}>
+    </picture>`;
+}
+
+// Responsive picture with AVIF + WebP, fallback to the generated JPEG.
+// Used for the lightbox/large views where higher resolution matters.
+function responsivePictureHtml(originalPath, alt, sizes, extraImgAttrs = '') {
+    const v = optimizedVariants(originalPath);
+    if (!v) return '';
+    const altSafe = escapeAttr(alt || '');
+    const sizesAttr = sizes ? ` sizes="${escapeAttr(sizes)}"` : '';
+    return `<picture>
+        <source type="image/avif" srcset="${v.avifSrcset}"${sizesAttr}>
+        <source type="image/webp" srcset="${v.webpSrcset}"${sizesAttr}>
+        <img src="${v.fallback1200}" alt="${altSafe}" loading="lazy" decoding="async"${extraImgAttrs ? ' ' + extraImgAttrs : ''}>
+    </picture>`;
+}
+
+// CSS url() for background-image — uses the 480w jpeg thumb so
+// activity cards don't pull megabyte-sized originals.
+function optimizedBackgroundUrl(originalPath) {
+    const v = optimizedVariants(originalPath);
+    return v ? v.thumbJpg : originalPath;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initLoginModal();
@@ -253,7 +321,7 @@ async function loadHomepageContent(container, limit = 6) {
             } else {
                 // Render Activity card
                 const imageHtml = item.images && item.images.length > 0
-                    ? `<div class="activity-card__image" style="background-image: url('${item.images[0]}')"></div>`
+                    ? `<div class="activity-card__image" style="background-image: url('${optimizedBackgroundUrl(item.images[0])}')"></div>`
                     : '';
                 return `
                 <div class="activity-card" onclick="openActivityModal(${item.id})">
@@ -982,14 +1050,26 @@ function showActivityModal(activity) {
             imagesContainer.innerHTML = '';
             if (activity.images && activity.images.length > 0) {
                 activity.images.forEach(imgUrl => {
+                    const v = optimizedVariants(imgUrl);
+                    const wrapper = document.createElement('picture');
+                    if (v) {
+                        const sourceWebp = document.createElement('source');
+                        sourceWebp.type = 'image/webp';
+                        sourceWebp.srcset = v.thumbWebp;
+                        wrapper.appendChild(sourceWebp);
+                    }
                     const img = document.createElement('img');
-                    img.src = imgUrl;
+                    img.src = v ? v.thumbJpg : imgUrl;
                     img.alt = activity.title;
+                    img.loading = 'lazy';
+                    img.decoding = 'async';
                     img.style.cssText = 'width: 150px; height: 100px; object-fit: cover; border-radius: 8px; cursor: pointer;';
                     img.addEventListener('click', () => {
-                        window.open(imgUrl, '_blank');
+                        // Open the largest WebP variant we have, falling back to the original.
+                        window.open(v ? v.webp1200 : imgUrl, '_blank');
                     });
-                    imagesContainer.appendChild(img);
+                    wrapper.appendChild(img);
+                    imagesContainer.appendChild(wrapper);
                 });
             }
         }
@@ -1151,9 +1231,18 @@ function navigateLightbox(direction) {
 function updateLightboxImage() {
     const img = lightboxImages[currentImageIndex];
     const desc = getLocalizedDescription(img.description);
-    // Ensure absolute path
-    const src = img.src.startsWith('/') ? img.src : '/' + img.src;
-    document.getElementById('lightbox-image').src = src;
+    const v = optimizedVariants(img.src);
+    const lightboxImg = document.getElementById('lightbox-image');
+    if (v) {
+        // Prefer 1200w webp fallback for the lightbox; the browser may upgrade
+        // via srcset if we render via <picture>, but the existing markup uses
+        // a bare <img>, so pick a good single source.
+        lightboxImg.srcset = `${v.webpSrcset}`;
+        lightboxImg.src = v.fallback1200;
+    } else {
+        lightboxImg.removeAttribute('srcset');
+        lightboxImg.src = img.src.startsWith('/') ? img.src : '/' + img.src;
+    }
     document.getElementById('lightbox-caption').textContent = desc || '';
 }
 
@@ -1199,7 +1288,7 @@ function renderGallery(images, containerId, category) {
         return `
         <div class="gallery-item" onclick="openLightbox(galleryImages, ${index})" style="position: relative;">
             ${deleteBtn}
-            <img src="${imgSrc}" alt="${desc || ''}" loading="lazy">
+            ${thumbPictureHtml(imgSrc, desc)}
         </div>
     `}).join('');
 
