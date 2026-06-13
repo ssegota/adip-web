@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Johann Palisa — Asteroid Discoveries at Pula Observatory</title>
+  <meta name="description" content="Asteroids discovered by Dr. Johann Palisa as director of the Pola (Pula) Observatory." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+
+  <header class="hero">
+    <img class="portrait" src="assets/palisa.jpg" alt="Portrait of Dr. Johann Palisa" />
+    <h1>Dr. Johann Palisa</h1>
+    <p class="subtitle">Asteroid Discoveries as the Director of Pula Observatory</p>
+    <p class="motto">Sic Itur Ad Astra</p>
+  </header>
+
+  <main>
+    <p class="intro">
+      Between 1874 and 1880, Johann Palisa discovered the following minor planets while
+      serving as director of the Imperial &amp; Royal Naval Observatory at Pola (Pula).
+      Select an asteroid to reveal its physical and orbital data from NASA/JPL.
+    </p>
+    <div id="grid" class="grid"></div>
+  </main>
+
+  <footer>
+    <p>Data: <a href="https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html" target="_blank" rel="noopener">NASA/JPL Small-Body Database</a>
+       &amp; <a href="https://en.wikipedia.org/wiki/Johann_Palisa" target="_blank" rel="noopener">Wikipedia</a>.
+       Portrait: Wikimedia Commons (public domain).</p>
+  </footer>
+
+  <script src="assets/asteroids.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

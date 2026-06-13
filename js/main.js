@@ -1584,12 +1584,10 @@ function openLibraryModal() {
 }
 
 function openAsteroidGame() {
-    const isEnglish = window.location.pathname.includes('/en/');
     const title = 'Spot the Asteroid';
 
-    // Path to the game file.
-    // If we are in /en/, we need ../games/asteroid.html
-    const gameUrl = isEnglish ? '../games/asteroid.html' : 'games/asteroid.html';
+    // Root-anchored path works from /, /en/, and /it/.
+    const gameUrl = '/games/asteroid.html';
 
     const modal = document.getElementById('service-modal');
     const modalTitle = document.getElementById('modal-title');
