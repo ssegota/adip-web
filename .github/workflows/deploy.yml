@@ -9,10 +9,6 @@ concurrency:
   group: deploy-production
   cancel-in-progress: false
 
-env:
-  APP_DIR: /home/adip/repositories/adip-web
-  NODE_VENV: /home/adip/nodevenv/repositories/adip-web/20/bin/activate
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -21,36 +17,47 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: SSH ključ
-        run: |
-          install -m 700 -d ~/.ssh
-          printf '%s\n' "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          printf '%s\n' "${{ secrets.DEPLOY_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
-
-      - name: Rsync na server
-        run: |
-          rsync -rlptz --checksum --itemize-changes \
-            --exclude-from=deploy/rsync-exclude.txt \
-            ./ "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:$APP_DIR/"
-
-      - name: npm install (ako se package.json promijenio)
-        run: |
-          if git diff --name-only HEAD~1 HEAD 2>/dev/null | grep -qE '^package(-lock)?\.json$'; then
-            ssh "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" \
-              "source $NODE_VENV && cd $APP_DIR && npm install --omit=dev"
-          else
-            echo "package.json nepromijenjen, preskačem."
-          fi
+      # Hosting nema shell pristup, pa se deploya preko FTPS-a.
+      # Mape koje puni admin panel se ne diraju (ni upload ni brisanje).
+      - name: FTPS upload
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          server-dir: repositories/adip-web/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            deploy/**
+            **/node_modules/**
+            deploy.zip
+            tmp/**
+            data/**
+            galerija/**
+            galerija-slika/**
+            aktivnosti-slike/**
+            radovi-files/**
+            downloads-files/**
 
       - name: Restart Node aplikacije (Passenger)
         run: |
-          ssh "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" \
-            "mkdir -p $APP_DIR/tmp && touch $APP_DIR/tmp/restart.txt"
+          mkdir -p tmp && date > tmp/restart.txt
+          curl -sS --ssl-reqd --ftp-create-dirs -T tmp/restart.txt \
+            -u "${{ secrets.FTP_USER }}:${{ secrets.FTP_PASSWORD }}" \
+            "ftp://${{ secrets.FTP_HOST }}/repositories/adip-web/tmp/restart.txt"
+
+      - name: Upozorenje za package.json
+        run: |
+          if git diff --name-only HEAD~1 HEAD 2>/dev/null | grep -qE '^package(-lock)?\.json$'; then
+            echo "::warning::package.json promijenjen - pokreni 'Run NPM Install' u cPanel -> Setup Node.js App"
+          fi
 
       - name: Provjera
         run: |
-          sleep 5
+          sleep 10
           code=$(curl -s -o /dev/null -w '%{http_code}' https://adip.hr/)
           echo "https://adip.hr/ -> HTTP $code"
           test "$code" = 200
