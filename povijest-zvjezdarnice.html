@@ -4,60 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Povijest zvjezdarnice | Pulska Zvjezdarnica</title>
-  <meta name="description" content="Povijest Pulske zvjezdarnice, njezini instrumenti i povijesne ličnosti.">
+  <title>Povijest Zvjezdarnice | Pulska Zvjezdarnica</title>
+  <meta name="description" content="Povijest Pulske zvjezdarnice od 1869. do danas: Hidrografski zavod, Johann Palisa i njegovi asteroidi, stari instrumenti, razaranje 1944., obnova i Astronomsko društvo «Istra» Pula.">
   <link rel="icon" href="sites/all/themes/black_hole/logo.png" type="image/png">
   <link rel="stylesheet" href="css/modern.css?v=20260928">
-  <style>
-    /* Specific styles for this page */
-    .history-categories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .category-card {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      text-align: center;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-decoration: none;
-      color: var(--text-primary);
-    }
-
-    .category-card:hover {
-      transform: translateY(-5px);
-      background: rgba(255, 255, 255, 0.1);
-      border-color: var(--accent-primary);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .category-card img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-      border: 3px solid var(--accent-secondary);
-      transition: border-color 0.3s ease;
-    }
-
-    .category-card:hover img {
-      border-color: var(--accent-primary);
-    }
-
-    .category-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-top: 0.5rem;
-    }
-  </style>
+  <link rel="stylesheet" href="css/povijest.css?v=20261012">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 
 <body class="page-blur">
@@ -107,54 +59,902 @@
   </header>
 
   <!-- Page Content -->
-  <main class="page-content">
+    <main class="page-content ph">
     <div class="container">
-      <div class="section__header" style="padding-top: 2rem;">
-        <h1 class="section__title">Povijest <span class="text-gradient">Zvjezdarnice</span></h1>
-        <p class="section__subtitle">Istražite bogatu povijest i nasljeđe Pulske zvjezdarnice</p>
-      </div>
 
-      <div class="history-categories">
-        <a href="povijest-zvjezdarnice/zvjezdarnica-nekada.html" class="category-card">
-          <img src="sites/default/files/images/povijest_Zvmioni.jpg" alt="Pulska zvjezdarnica nekada" loading="lazy" />
-          <div class="category-title">Pulska zvjezdarnica nekada</div>
-        </a>
+      <!-- ===================== HERO ===================== -->
+      <section class="ph-hero" id="vrh">
+        <span class="ph-hero__eyebrow">Monte Zaro · Pula · od 1869.</span>
+        <h1>Povijest <span class="text-gradient">Zvjezdarnice</span></h1>
+        <p class="ph-hero__lead">Carska i kraljevska Mornarička zvjezdarnica u Puli (K.u.K. Marine-Sternwarte)
+          najstarija je astronomska ustanova na području Republike Hrvatske. Ovo je njezina priča — od utvrde na
+          brežuljku Zaro, preko otkrića Johanna Palise i razaranja u Drugom svjetskom ratu, do obnove i rada
+          Astronomskog društva «Istra» Pula danas.</p>
 
-        <a href="povijest-zvjezdarnice/mornaricka-knjiznica.html" class="category-card">
-          <img src="sites/default/files/images/povijest__Biblio.jpg" alt="Mornarička knjižnica" loading="lazy" />
-          <div class="category-title">Mornarička knjižnica</div>
-        </a>
+        <div class="ph-stats">
+          <div class="ph-stat"><div class="ph-stat__num" data-count="1869">1869.</div><div class="ph-stat__label">osnutak Zvjezdarnice</div></div>
+          <div class="ph-stat"><div class="ph-stat__num" data-count="28">28</div><div class="ph-stat__label">asteroida otkrivenih iz Pule</div></div>
+          <div class="ph-stat"><div class="ph-stat__num" data-count="123">123</div><div class="ph-stat__label">Palisinih otkrića ukupno</div></div>
+          <div class="ph-stat"><div class="ph-stat__num" data-count="1982">1982.</div><div class="ph-stat__label">ADIP preuzima Zvjezdarnicu</div></div>
+          <div class="ph-stat"><div class="ph-stat__num" data-count="8">8</div><div class="ph-stat__label">novih meteorskih potoka (HMM)</div></div>
+        </div>
 
-        <a href="povijest-zvjezdarnice/stari-instrumenti.html" class="category-card">
-          <img src="sites/default/files/images/povijest_bracom.jpg" alt="Stari instrumenti" loading="lazy" />
-          <div class="category-title">Stari instrumenti</div>
-        </a>
-      </div>
+        <div class="ph-hero__actions">
+          <a href="#pocetci" class="btn btn--primary">Kreni kroz povijest ↓</a>
+          <a href="downloads.html" class="btn btn--secondary">Brošura «150 godina Zvjezdarnice u Puli»</a>
+        </div>
+      </section>
 
-      <div class="section__header" style="padding-top: 4rem;">
-        <h2 class="section__title">Povijesne <span class="text-gradient">Ličnosti</span></h2>
-      </div>
+      <!-- ===================== NAVIGACIJA ===================== -->
+      <nav class="ph-nav" aria-label="Poglavlja">
+        <ul class="ph-nav__list">
+          <li><a class="ph-nav__link" href="#pocetci">Počeci</a></li>
+          <li><a class="ph-nav__link" href="#zlatno-doba">Zlatno doba</a></li>
+          <li><a class="ph-nav__link" href="#palisa">Johann Palisa</a></li>
+          <li><a class="ph-nav__link" href="#benko">Ivo Benko</a></li>
+          <li><a class="ph-nav__link" href="#instrumenti">Instrumenti</a></li>
+          <li><a class="ph-nav__link" href="#knjiznica">Mornarička knjižnica</a></li>
+          <li><a class="ph-nav__link" href="#tegetthoff">Tegetthoff</a></li>
+          <li><a class="ph-nav__link" href="#rat">Rat i razaranje</a></li>
+          <li><a class="ph-nav__link" href="#meteoroloska-postaja">Meteorološka postaja</a></li>
+          <li><a class="ph-nav__link" href="#adip">ADIP</a></li>
+          <li><a class="ph-nav__link" href="#obnova">Obnova 2006.–2009.</a></li>
+          <li><a class="ph-nav__link" href="#danas">Zvjezdarnica danas</a></li>
+          <li><a class="ph-nav__link" href="#izvori">Izvori</a></li>
+        </ul>
+        <div class="ph-progress" aria-hidden="true"></div>
+      </nav>
 
-      <div class="history-categories">
-        <a href="povijest-zvjezdarnice/povijesne-licnosti/johann-palisa.html" class="category-card">
-          <img src="sites/default/files/images/povijest_Palisam.jpg" alt="Johann Palisa" loading="lazy" />
-          <div class="category-title">Astronom Johann Palisa</div>
-        </a>
+      <!-- ===================== VREMENSKA CRTA ===================== -->
+      <section class="ph-timeline" aria-label="Vremenska crta">
+        <div class="ph-timeline__eras" role="group" aria-label="Razdoblja">
+          <button type="button" class="ph-chip is-active" data-era="all">Sve</button>
+          <button type="button" class="ph-chip" data-era="au">Austro-Ugarska (do 1918.)</button>
+          <button type="button" class="ph-chip" data-era="rat">1918.–1972.</button>
+          <button type="button" class="ph-chip" data-era="adip">ADIP (od 1973.)</button>
+        </div>
+        <div class="ph-timeline__track" id="ph-timeline"></div>
+      </section>
 
-        <a href="povijest-zvjezdarnice/povijesne-licnosti/barun-ivo-benko-von-boinik.html" class="category-card">
-          <img src="sites/default/files/images/povijest_Benko.jpg" alt="Ivo Benko von Boinik" loading="lazy" />
-          <div class="category-title">Astronom Ivo Benko von Boinik</div>
-        </a>
+      <!-- ===================== 1. POČECI ===================== -->
+      <section class="ph-chapter" id="pocetci">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1802. – 1871.</span>
+          <h2>Počeci: od Venecije do Monte Zara</h2>
+        </header>
 
-        <a href="povijest-zvjezdarnice/povijesne-licnosti/viceadmiral-wilhelm-von-tegetthoff.html"
-          class="category-card">
-          <img src="sites/default/files/images/povijest_Tegetthoff.jpg" alt="Wilhelm von Tegetthoff" loading="lazy" />
-          <div class="category-title">Viceadmiral Wilhelm von Tegetthoff</div>
-        </a>
-      </div>
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>Začetci Pulske Zvjezdarnice naziru se još <strong>1840. godine</strong> u Pomorskoj zvjezdarnici u
+              Veneciji, koja je djelovala u sklopu austrijske Vojno-pomorske akademije. Nakon ratnih zbivanja
+              1848. godine Austrija gasi Vojno-pomorsku akademiju u Veneciji i <strong>1850.</strong> u Trstu
+              utemeljuje novu Mornaričku akademiju, u čijem se sklopu kao odjel nalazi i Zvjezdarnica.</p>
+            <p>Nakon što je Pula <strong>1853.</strong> postala glavna luka austrijske Ratne mornarice
+              (K.K. Kriegsmarine), pristupilo se planskoj izgradnji fortifikacija. Iste je godine na gradskom
+              brežuljku <strong>Zaro (Monte Zaro)</strong> započela gradnja utvrde čiji su topovi imali na dosegu
+              gotovo cijeli pulski zaljev.</p>
+            <p>Usavršavanjem obrambene gradnje i tehnologije — prije svega povećanjem dosega i preciznosti
+              topovskih projektila — te izgradnjom novih utvrda dalje od središta grada, utvrda Zaro izgubila je
+              izvorni značaj. Rastom pulske ratne luke pojavila se potreba za ustanovom koja će biti znanstveni
+              servis Ratnoj mornarici, prije svega za što precizniju navigaciju.</p>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="pocetci"><img src="povijest-zvjezdarnice/img/pula-luka-19st.jpg" width="482" height="288" alt="Pula u drugoj polovici 19. stoljeća – ratna luka podno gradskih brežuljaka" loading="lazy" decoding="async"><figcaption>Pula u drugoj polovici 19. stoljeća – ratna luka podno gradskih brežuljaka.</figcaption></figure>
+            <figure class="ph-fig ph-fig--small" data-group="pocetci" style="--mw: 298px"><img src="povijest-zvjezdarnice/img/utvrda-zaro.jpg" width="229" height="155" alt="Utvrda Zaro, sagrađena od 1853. Na njezinu mjestu 1869. započinje gradnja Hidrografskog zavoda" loading="lazy" decoding="async"><figcaption>Utvrda Zaro, sagrađena od 1853. Na njezinu mjestu 1869. započinje gradnja Hidrografskog zavoda.</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="ph-split ph-split--rev ph-reveal">
+          <div>
+            <p>Odlučeno je da se utvrda Zaro sruši i da se na tom mjestu sagradi moderna zgrada
+              <strong>Hidrografskog zavoda</strong> sa svim potrebnim sadržajima, što je i započeto
+              <strong>1869. godine</strong>. Položaj nije bio slučajan: zgrada se vidjela iz gotovo cijele luke, što
+              je brodovima davalo nesmetan pogled na uređaj za davanje signala točnog vremena na njezinu krovu.</p>
+            <p>Austro-ugarska Mornarička zvjezdarnica u Puli utemeljena je 1869. kao jedan od odjela
+              <strong>Carskog i kraljevskog Hidrografskog zavoda</strong> (ureda) Ratne mornarice
+              (K. und K. Hydrographisches Amt). Izgradnju je u proračun za 1870. uvrstio viceadmiral Wilhelm von
+              Tegetthoff, a odobrio ju je car Franjo Josip I. <strong>10. rujna 1869.</strong> Utemeljenjem zavoda u
+              pulsku je Zvjezdarnicu preseljen i dio inventara tršćanske Zvjezdarnice.</p>
+            <p>Već <strong>1871.</strong> na mjestu nekadašnje utvrde stoji nova zgrada Hidrografskog ureda,
+              zamišljena i kao zvjezdarnica sa zadaćom održavanja službe točnog vremena astronomskim metodama.
+              Zavod je imao četiri odjela:</p>
+            <ul class="ph-facts">
+              <li><strong>Zvjezdarnica</strong>astronomska opažanja i služba točnog vremena</li>
+              <li><strong>Spremište nautičko-fizikalnih instrumenata</strong>brodski instrumenti i kronometri</li>
+              <li><strong>Spremište pomorskih karata</strong>karte za plovidbu Jadranom i svijetom</li>
+              <li><strong>Mornarička biblioteka</strong>znanstvena i stručna knjižnica mornarice</li>
+            </ul>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="pocetci"><img src="povijest-zvjezdarnice/img/zgrada-1871.jpg" width="483" height="326" alt="Nova zgrada Hidrografskog ureda na Monte Zaru, podignuta 1871. na mjestu utvrde" loading="lazy" decoding="async"><figcaption>Nova zgrada Hidrografskog ureda na Monte Zaru, podignuta 1871. na mjestu utvrde.</figcaption></figure>
+            <figure class="ph-fig" data-group="pocetci"><img src="povijest-zvjezdarnice/img/procelje-nacrt.jpg" width="422" height="268" alt="Nacrt pročelja: «K. und K. Hydrographisches Amt in Pola»" loading="lazy" decoding="async"><figcaption>Nacrt pročelja: «K. und K. Hydrographisches Amt in Pola».</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="ph-figs ph-figs--2 ph-reveal">
+          <figure class="ph-fig ph-fig--small" data-group="pocetci" style="--mw: 380px"><img src="povijest-zvjezdarnice/img/panorama-1870.jpg" width="482" height="563" alt="Panorama Pule iz razdoblja 1870" loading="lazy" decoding="async"><figcaption>Panorama Pule iz razdoblja 1870.–1880., prema svemu sudeći snimljena s brežuljka Monte Ghiro. Zvjezdarnica dominira pogledom ne samo nad lukom, već i puno šire.</figcaption></figure>
+          <figure class="ph-fig ph-fig--small" data-group="pocetci" style="--mw: 380px"><img src="povijest-zvjezdarnice/img/luka-1900.jpg" width="482" height="561" alt="Panorama pulske luke oko 1900. Uz novu zgradu podignut je park, jedan od najljepših u Puli" loading="lazy" decoding="async"><figcaption>Panorama pulske luke oko 1900. Uz novu zgradu podignut je park, jedan od najljepših u Puli – brodovi ratne mornarice sa znanstvenih su misija po cijelom svijetu donosili raznoliku floru kojom je uređivan.</figcaption></figure>
+        </div>
+      </section>
+
+      <!-- ===================== 2. ZLATNO DOBA ===================== -->
+      <section class="ph-chapter" id="zlatno-doba">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1871. – 1918.</span>
+          <h2>Zlatno doba Mornaričke zvjezdarnice</h2>
+        </header>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>Pulska Carska i kraljevska Mornarička zvjezdarnica (K.u.K. Marine-Sternwarte)
+              <strong>najstarija je astronomska ustanova na području Republike Hrvatske</strong>. U svrhu precizne
+              navigacije u njoj su bile ustrojene četiri službe, a koristili su se vrlo moderni instrumenti za to
+              doba:</p>
+            <ul class="ph-facts">
+              <li><strong>Služba točnog vremena</strong>mjerenje prolaska zvijezda kroz meridijan i signal točnog vremena za brodove u luci</li>
+              <li><strong>Kronometarska služba</strong>skrb o brodskim kronometrima austrijske ratne mornarice</li>
+              <li><strong>Geomagnetska služba</strong>među ostalim, geomagnetska karta Jadrana izdana 1913.</li>
+              <li><strong>Meteorološka služba</strong>mjerenja instrumentima koji su tada bili tehnološki vrh</li>
+            </ul>
+            <p>Svaka je služba, uz osnovne zadaće, dala i znanstveni doprinos. Službenici odjela Zvjezdarnica, kao
+              vojne osobe, uz poslove propisane Statutom uglavnom su se samopoduzetno bavili i drugim astronomskim
+              opažanjima. Zahvaljujući izuzetnom zalaganju astronoma <a class="ph-link" href="#palisa">Johanna
+              Palise</a>, u desetak godina (1871.–1880.) Mornarička zvjezdarnica u Puli upisala se u trajnu listu
+              eminentnih svjetskih astronomskih promatračnica.</p>
+            <p>Da su neki od tadašnjih instrumenata i danas standardna oprema meteoroloških postaja svjedoči
+              <strong>heliograf</strong> — jednostavan instrument kojim se mjeri broj sunčanih sati u danu. Takav
+              instrument i danas postoji na Zvjezdarnici i njime se svakodnevno obavljaju mjerenja.</p>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="zlatno"><img src="povijest-zvjezdarnice/img/geomagnetska-karta-1913.jpg" width="482" height="374" alt="Geomagnetska karta Jadrana, izdana 1913. – jedan od znanstvenih doprinosa Zvjezdarnice" loading="lazy" decoding="async"><figcaption>Geomagnetska karta Jadrana, izdana 1913. – jedan od znanstvenih doprinosa Zvjezdarnice.</figcaption></figure>
+            <div class="ph-figs ph-figs--2" style="margin: 0;">
+              <figure class="ph-fig ph-fig--small" data-group="zlatno" style="--mw: 303px"><img src="povijest-zvjezdarnice/img/heliograf-crtez.jpg" width="233" height="197" alt="Heliograf – crtež instrumenta" loading="lazy" decoding="async"><figcaption>Heliograf – crtež instrumenta.</figcaption></figure>
+              <figure class="ph-fig ph-fig--small" data-group="zlatno" style="--mw: 317px"><img src="povijest-zvjezdarnice/img/heliograf-danas.jpg" width="244" height="208" alt="Heliograf na Zvjezdarnici danas, i dalje u svakodnevnoj upotrebi" loading="lazy" decoding="async"><figcaption>Heliograf na Zvjezdarnici danas, i dalje u svakodnevnoj upotrebi.</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="ph-reveal">Spomenik Tegetthoffu i park</h3>
+        <p class="ph-reveal">Godine <strong>1877.</strong> ispred Hidrografskog ureda postavljen je spomenik
+          viceadmiralu <a class="ph-link" href="#tegetthoff">Wilhelmu von Tegetthoffu</a>, koji je postao slavan
+          kada je 1866. kao zapovjednik austrijske ratne flote porazio talijansku kod Visa. Fotografije s kraja
+          19. i početka 20. stoljeća rijetko prikazuju zgradu u cijelosti; na nekima se još vide sve kupole i
+          proporcije velike meridijanske kupole, odakle su se mjerila vremena prolaska zvijezda kroz meridijan.</p>
+
+        <div class="ph-figs ph-reveal">
+          <figure class="ph-fig" data-group="zlatno"><img src="povijest-zvjezdarnice/img/spomenik-tegetthoff.jpg" width="482" height="383" alt="Spomenik viceadmiralu Tegetthoffu ispred Zvjezdarnice, postavljen 1877" loading="lazy" decoding="async"><figcaption>Spomenik viceadmiralu Tegetthoffu ispred Zvjezdarnice, postavljen 1877.</figcaption></figure>
+          <figure class="ph-fig" data-group="zlatno"><img src="povijest-zvjezdarnice/img/razglednica-spomenik.jpg" width="481" height="327" alt="Zvjezdarnica i Tegetthoffov spomenik na razglednici iz doba Austro-Ugarske" loading="lazy" decoding="async"><figcaption>Zvjezdarnica i Tegetthoffov spomenik na razglednici iz doba Austro-Ugarske.</figcaption></figure>
+          <figure class="ph-fig" data-group="zlatno"><img src="povijest-zvjezdarnice/img/park-fontana.jpg" width="481" height="337" alt="Park na Monte Zaru s fontanom i stubištem prema Zvjezdarnici" loading="lazy" decoding="async"><figcaption>Park na Monte Zaru s fontanom i stubištem prema Zvjezdarnici.</figcaption></figure>
+          <figure class="ph-fig" data-group="zlatno"><img src="povijest-zvjezdarnice/img/razglednica-specola.jpg" width="482" height="304" alt="«Pola – Specola»: Zvjezdarnica na razglednici" loading="lazy" decoding="async"><figcaption>«Pola – Specola»: Zvjezdarnica na razglednici.</figcaption></figure>
+          <figure class="ph-fig ph-fig--small" data-group="zlatno" style="--mw: 380px"><img src="povijest-zvjezdarnice/img/straznja-strana.jpg" width="348" height="255" alt="Pogled na središnji dio Zvjezdarnice sa stražnje strane, s meteorološkim instrumentima za mjerenje brzine i smjera vjetra" loading="lazy" decoding="async"><figcaption>Pogled na središnji dio Zvjezdarnice sa stražnje strane, s meteorološkim instrumentima za mjerenje brzine i smjera vjetra.</figcaption></figure>
+          <figure class="ph-fig" data-group="zlatno"><img src="povijest-zvjezdarnice/img/sjeverna-kupola.jpg" width="482" height="344" alt="Sjeverna kupola – jedina koja je preživjela savezničko bombardiranje 1944" loading="lazy" decoding="async"><figcaption>Sjeverna kupola – jedina koja je preživjela savezničko bombardiranje 1944.</figcaption></figure>
+          <figure class="ph-fig" data-group="zlatno"><img src="povijest-zvjezdarnice/img/sredisnji-dio.jpg" width="482" height="327" alt="Središnji dio zgrade Hidrografskog zavoda" loading="lazy" decoding="async"><figcaption>Središnji dio zgrade Hidrografskog zavoda.</figcaption></figure>
+        </div>
+      </section>
+
+      <!-- ===================== 3. PALISA ===================== -->
+      <section class="ph-chapter" id="palisa">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1848. – 1925.</span>
+          <h2>Johann Palisa – lovac na asteroide</h2>
+        </header>
+
+        <div class="ph-clear ph-reveal">
+          <figure class="ph-fig ph-portrait" data-group="palisa">
+            <img src="povijest-zvjezdarnice/img/palisa-portret.jpg" width="411" height="584" alt="Johann Palisa" loading="lazy" decoding="async">
+            <figcaption>Johann Palisa (1848.–1925.)</figcaption>
+          </figure>
+          <p>Najznamenitiji astronom po kojem je Zvjezdarnica u Puli zauvijek upisana u povijest je
+            <strong>Johann Palisa</strong>. Rođen je <strong>6. prosinca 1848.</strong> u tada austrijskom mjestu
+            Troppau (danas Opava, Češka Republika), kao najstariji sin mjesnog trgovca Franza Palise i majke
+            Katarine. Temeljnu školu i gimnaziju završio je u rodnoj Opavi, a 1866. upisao je matematiku na
+            Bečkom sveučilištu, gdje su mu predavali Carl von Littrow, Edmund Weiss i Theodor von Oppolzer.</p>
+          <p>Studij matematike i astronomije nastavio je u praksi kao asistent na Bečkoj zvjezdarnici 1870., gdje
+            je radio na određivanju položaja zvijezda i planeta te crtanju sunčevih pjega. Početkom 1871.
+            premješten je na zvjezdarnicu u Ženevi, a već nekoliko mjeseci kasnije u Mornaričku zvjezdarnicu u
+            Puli, gdje sa samo <strong>24 godine</strong> postaje predstojnik Astronomskog odjela. Glavna mu je
+            zadaća bila skrb o brodskim kronometrima austrijske ratne mornarice, a kako su mu redoviti poslovi
+            ostavljali dovoljno slobodnog vremena, otpočeo je potragu za malim planetima.</p>
+          <p>Provodeći opažanja poznatih malih planeta, tragao je i za novima. Trud je nagrađen
+            <strong>18. ožujka 1874.</strong>, kada je otkrio svoj prvi mali planet — kao prvom asteroidu
+            otkrivenom iz Austrije, dao mu je ime <strong>(136) Austria</strong>. Iz Pule je ukupno otkrio
+            <strong>28 asteroida i jedan komet (C/1879 Q1)</strong>, jedan od kojih je dobio ime «Istria».</p>
+          <p>Prigodom posjeta Puli <strong>8. travnja 1875.</strong> car Franjo Josip I. osobno je dvama
+            novootkrivenim malim planetima dao imena: <strong>(142) Polana</strong> i <strong>(143) Adria</strong>.
+            Dodamo li tome <strong>(183) Istria</strong>, u svemiru postoje tri nebeska tijela koja nose imena
+            naših zemljopisnih pojmova: Polana (Puležanka), Adria (Jadran) i Istria (Istra).</p>
+        </div>
+
+        <h3 class="ph-reveal">Mali planeti (asteroidi) koje je Palisa otkrio iz Pule</h3>
+        <p class="ph-reveal">Odaberite godinu ili kliknite na istaknuto tijelo za više informacija.</p>
+        <div class="ph-reveal">
+          <div class="ph-disc__filters" role="group" aria-label="Godina otkrića" id="ph-disc-filters"></div>
+          <ol class="ph-disc__list" id="ph-disc-list"></ol>
+          <div class="ph-disc__note" id="ph-disc-note" aria-live="polite">Klikni na istaknuti asteroid (plavi obrub) za priču iza imena.</div>
+        </div>
+
+        <h3 class="ph-reveal">Pula u svjetskim razmjerima</h3>
+        <p class="ph-reveal">Koliko su Palisina otkrića značila u svjetskim razmjerima pokazuju statistike iz
+          razdoblja njegova rada u Puli. Godine 1879. Palisa je otkrio polovicu svih novih asteroida na svijetu, a
+          1880. — kada je unaprijeđen na Zvjezdarnicu u Beču — čak 63 %.</p>
+
+        <div class="ph-chart ph-reveal" id="ph-chart">
+          <div class="ph-chart__title">Otkriveni asteroidi po godinama, 1874.–1880.</div>
+          <div class="ph-chart__sub">Broj novih asteroida: Palisa u Puli i ostatak svijeta</div>
+          <div class="ph-legend">
+            <span style="--swatch: var(--ph-palisa)">Palisa (Pula)</span>
+            <span style="--swatch: var(--ph-world)">Ostatak svijeta</span>
+          </div>
+          <div id="ph-chart-svg"></div>
+          <button type="button" class="ph-table-toggle" aria-expanded="false" aria-controls="ph-chart-table">Prikaži tablicu</button>
+          <table class="ph-table" id="ph-chart-table" hidden>
+            <thead><tr><th>Godina</th><th>Palisa</th><th>Ostatak svijeta</th><th>Ukupno</th><th>Udio Palise</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div class="ph-ranks ph-reveal">
+          <div>
+            <div class="ph-chart__title">Otkrića po zvjezdarnicama, 1874.–1880.</div>
+            <div class="ph-chart__sub">Broj novootkrivenih asteroida</div>
+            <ol class="ph-rank" id="ph-rank-obs"></ol>
+          </div>
+          <div>
+            <div class="ph-chart__title">Otkrića po otkrivačima, 1874.–1880.</div>
+            <div class="ph-chart__sub">Broj novootkrivenih asteroida</div>
+            <ol class="ph-rank" id="ph-rank-people"></ol>
+          </div>
+        </div>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <h3>Nakon Pule</h3>
+            <p>Godine 1880. Palisa je unaprijeđen na Zvjezdarnicu u Beču, odakle je otkrio još 94 mala planeta —
+              ukupno <strong>123</strong>. Koliko je poznato, sve ih je otkrio vizualnim putem, promatrajući
+              «golim» okom kroz teleskop, pa i danas ima najveći broj otkrića vizualnim putem. Sa Maxom Wolfom sa
+              zvjezdarnice u Heidelbergu izradio je i fotografski atlas neba.</p>
+            <p>U znak priznanja Međunarodne astronomske unije, uz krater na Mjesecu, Palisino ime nose i dva
+              asteroida: <strong>(914) Palisana</strong>, nazvan po njemu, te <strong>(1152) Pawona</strong>,
+              nazvan u čast Johanna Palise i Maxa Wolfa.</p>
+            <p>U 71. godini života (1919.) Palisi je počeo slabiti vid. Preminuo je <strong>2. svibnja
+              1925.</strong> Na mjestu njegove rodne kuće <strong>15. listopada 2000.</strong> postavljena je
+              spomen-ploča s Palisinom omiljenom uzrečicom:</p>
+            <blockquote class="ph-quote">«Sic itur ad astra» — Tako se ide k zvijezdama.</blockquote>
+          </div>
+          <div>
+            <h3>Palisa u svemiru: 243 Ida</h3>
+            <figure class="ph-fig ph-fig--small" data-group="palisa" style="--mw: 341px"><img src="povijest-zvjezdarnice/img/asteroid-ida.jpg" width="262" height="333" alt="Asteroid 243 Ida sa satelitom Dactylom, snimljen sondom Galileo 1993. Tri regije na Idi nazvane su Palisa, Vienna i Pola" loading="lazy" decoding="async"><figcaption>Asteroid 243 Ida sa satelitom Dactylom, snimljen sondom Galileo 1993. Tri regije na Idi nazvane su Palisa, Vienna i Pola.</figcaption></figure>
+            <p>Svemirske sonde na putu prema vanjskim planetima Sunčeva sustava morale su proći blizu nekog od
+              asteroida. Budući da je Palisa otkrivao mahom velike asteroide, neki su snimljeni i sondama — riječ
+              je o asteroidima <strong>243 Ida</strong> i <strong>253 Mathilde</strong>.</p>
+            <p>Na opće iznenađenje, snimke sonde Galileo iz 1993. pokazale su da Ida ima prirodni satelit,
+              nazvan <strong>Dactyl</strong>. Kako je Ida snimljena vrlo detaljno, postala je prvi asteroid kojem
+              su imenovana i geološka obilježja: tri regije nazvane su <strong>Palisa</strong> (po otkrivaču) te
+              <strong>Vienna</strong> i <strong>Pola</strong> (po zvjezdarnicama s kojih je Palisa tragao za
+              asteroidima).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 4. BENKO I DRUGI ===================== -->
+      <section class="ph-chapter" id="benko">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1851. – 1903.</span>
+          <h2>Barun Ivo Benko von Boinik i drugi astronomi</h2>
+        </header>
+
+        <div class="ph-clear ph-reveal">
+          <figure class="ph-fig ph-portrait" style="width: 150px;" data-group="benko">
+            <img src="sites/default/files/images/benko_grb.jpg" width="214" height="288" alt="Grb baruna Benka von Boinika" loading="lazy" decoding="async">
+            <figcaption>Grb baruna Benka von Boinika. Ivo Benko bio je C. i K. kapetan linijskog broda.</figcaption>
+          </figure>
+          <p>Od astronoma koji su poslije Johanna Palise službovali na Mornaričkoj zvjezdarnici u Puli,
+            najznačajniji je <strong>Ivo Benko</strong>. Rođen je <strong>26. rujna 1851.</strong> u Karlovcu. U
+            austrijsku Ratnu mornaricu primljen je 27. srpnja 1868. kao polaznik Mornaričke akademije u Rijeci, a u
+            službu je stupio 28. travnja 1872. u zvanju zastavnika linijskog broda. Službovao je na brodovima
+            «Helgoland», «Adria» i «Kerka».</p>
+          <p>Godine 1884./1885. privremeno je obnašao dužnost upravitelja Mornaričke zvjezdarnice u Puli.
+            Oduševio se znanstvenim radom i iskazao kao vrstan promatrač, pa je upisao izvanredni studij
+            astronomije u Grazu. Do 1893. službuje na brodovima «Lissa», «Minerva», «Custoza», «Zriny», «Don
+            Juan», «Laudon», «Radetzky» i «Taurus», kada nakon smrti upravitelja Franza Laschobera preuzima
+            upravu Zvjezdarnice.</p>
+          <p>Uvidjevši da se znanstveni program neće moći nastaviti otkrićima poput Palisinih, Benko je razvio
+            program sustavnih promatranja te je u tu svrhu dao obnoviti meridijanski krug i druge instrumente.
+            Radove iz desetogodišnjeg upravljanja objavljivao je u tada vodećem časopisu «Astronomische
+            Nachrichten», kao i u «Astronomische Rundschau», koji je izdavao astronom Leo Brenner sa zvjezdarnice
+            «Manora» u Malom Lošinju. S dužnosti upravitelja odstupio je 1901. zbog zdravstvenih tegoba.</p>
+          <p>Mjesto u povijesti astronomije donijelo mu je jedno jedino opažanje, <strong>4. veljače 1898.</strong>,
+            kojim je dokazao da <strong>Zemlja nema drugi, tamni, prirodni satelit</strong>. U njegovu je čast
+            asteroid otkriven sa Zvjezdarnice Višnjan nazvan <strong>(9814) Ivobenko</strong>. Prvi hrvatski
+            profesionalni astronom preminuo je 21. prosinca 1903. u Gorici.</p>
+        </div>
+
+        <blockquote class="ph-quote ph-reveal">«Narodu svom hrvatskom ostao je do smrti vjeran i odan sin, koji je
+          svojim radom podičio i njegovo ime u svijetu. Prilike u domovini svojoj pratio je živim interesom. Neka
+          mi bude dozvoljeno iznijeti ovu crticu. Kada je u veljači g. 1901. saznao, da je hrvatski srednjoškolski
+          đak Dolanski samostalno otkrio novu zvijezdu u Perzeju, ta ga je vijest u velike obradovala, pak me u
+          pismu nagovarao, neka je svakako publiciram u ‹Astronomische Nachrichten›, a to sam i učinio (Astr.
+          Nach. br. 3699. od g. 1901.). ‹Ne će škoditi›, piše on, ‹ako astronomski svijet sazna, da se i u našoj
+          domovini gdjekad svraćaju oči na nebeski svod i da obuka u njoj stoji na tako visokom stepenu›.»
+          <cite>— Oton Kučera, hrvatski astronom na čiju je pobudu 1903. podignuta zvjezdarnica u Zagrebu</cite>
+        </blockquote>
+
+        <div class="ph-card ph-reveal">
+          <p>Uz Palisu i Benka, značajna imena pulske Zvjezdarnice su i <strong>Bernhard Walter</strong>,
+            <strong>Spiridion Gopčević</strong> (Leo Brenner), <strong>Oton Kučera</strong> i <strong>Niko
+            Miličević</strong>.</p>
+        </div>
+      </section>
+
+      <!-- ===================== 5. INSTRUMENTI ===================== -->
+      <section class="ph-chapter" id="instrumenti">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1842. – 1898.</span>
+          <h2>Stari instrumenti</h2>
+        </header>
+        <p class="ph-reveal">Opsežnijim izučavanjem povijesti pulske Zvjezdarnice došlo se do saznanja o
+          postojanju sljedećih astronomskih instrumenata K. i K. Mornaričke zvjezdarnice u Puli. Filtrirajte ih
+          prema tome gdje se nalaze danas.</p>
+
+        <div class="ph-disc__filters ph-reveal" role="group" aria-label="Sudbina instrumenta">
+          <button type="button" class="ph-chip is-active" data-fate="all">Svi (6)</button>
+          <button type="button" class="ph-chip" data-fate="trst">Danas u Trstu</button>
+          <button type="button" class="ph-chip" data-fate="nepoznato">Sudbina nepoznata</button>
+        </div>
+
+        <div class="ph-instr ph-reveal">
+          <article class="ph-instr__card" data-fate="nepoznato">
+            <div class="ph-instr__body">
+              <h4>Pasažni instrument «Brunner»</h4>
+              <div class="ph-instr__meta">izrađen 1842. · meridijanska sala</div>
+              <p>Izrađen u mehaničkoj radionici Politehničkog instituta u Beču. Korišten je na Zvjezdarnici dok
+                je još bila u Trstu, a u Pulu je prenesen 1866., kad i sama Zvjezdarnica. Postavljen je u
+                meridijansku salu, gdje je služio službi točnog vremena te određivanju zemljopisnih dužina i
+                širina. Uklonjen je 1874.</p>
+              <div class="ph-instr__fate"><strong>Danas:</strong> nije poznato gdje se nalazi.</div>
+            </div>
+          </article>
+
+          <article class="ph-instr__card" data-fate="nepoznato">
+            <div class="ph-instr__body">
+              <h4>Refraktor «Schaffler»</h4>
+              <div class="ph-instr__meta">postavljen 1871. · jugozapadna kupola</div>
+              <ul class="ph-instr__specs"><li>objektiv 170 mm</li><li>žarišna daljina 2500 mm</li><li>njemačka ekvatorijalna montaža</li><li>mjerni krugovi 240 mm</li></ul>
+              <p>Izradio ga je bečki mehaničar Otto Schaffler.</p>
+              <div class="ph-instr__fate"><strong>Danas:</strong> nije poznato gdje se nalazi.</div>
+            </div>
+          </article>
+
+          <article class="ph-instr__card" data-fate="trst">
+            <figure class="ph-fig ph-fig--small" data-group="instrumenti" style="--mw: 269px"><img src="povijest-zvjezdarnice/img/troughton-simms.jpg" width="207" height="234" alt="Meridijanski krug «Troughton &amp; Simms»" loading="lazy" decoding="async"><figcaption>Meridijanski krug «Troughton &amp; Simms».</figcaption></figure>
+            <div class="ph-instr__body">
+              <h4>Meridijanski krug «Troughton &amp; Simms»</h4>
+              <div class="ph-instr__meta">u Puli od kolovoza 1874.</div>
+              <ul class="ph-instr__specs"><li>objektiv 160 mm</li><li>žarišna daljina 2105 mm</li><li>mjerni krugovi 900 mm</li><li>4 mikroskopa sa svake strane</li></ul>
+              <p>Izradila ga je engleska tvrtka «Troughton &amp; Simms». Korišten je za službu točnog vremena i za
+                određivanje položaja zvijezda potrebnih za izradu zvjezdanih kataloga.</p>
+              <div class="ph-instr__fate"><strong>Danas:</strong> nakon Prvog svjetskog rata preuzeo ga je tršćanski astronomski opservatorij, u čijem je posjedu i danas.</div>
+            </div>
+          </article>
+
+          <article class="ph-instr__card" data-fate="nepoznato">
+            <figure class="ph-fig ph-fig--small" data-group="instrumenti" style="--mw: 257px"><img src="povijest-zvjezdarnice/img/reflektor-brachyt.jpg" width="198" height="240" alt="Reflektor tipa «Brachyt»" loading="lazy" decoding="async"><figcaption>Reflektor tipa «Brachyt».</figcaption></figure>
+            <div class="ph-instr__body">
+              <h4>Reflektor «Brachyt»</h4>
+              <div class="ph-instr__meta">postavljen 1. lipnja 1881.</div>
+              <ul class="ph-instr__specs"><li>zrcalo 300 mm</li><li>najveći reflektor te vrste na svijetu</li></ul>
+              <p>Izradila ga je bečka tvrtka Fritsch. Čestice soli koje je vjetar donosio s mora prečesto su
+                uništavale srebrni premaz na zrcalima, pa je teleskop uklonjen već 1886.</p>
+              <div class="ph-instr__fate"><strong>Danas:</strong> nije poznato gdje se nalazi.</div>
+            </div>
+          </article>
+
+          <article class="ph-instr__card" data-fate="trst">
+            <figure class="ph-fig ph-fig--small" data-group="instrumenti" style="--mw: 361px"><img src="povijest-zvjezdarnice/img/refraktor-steinheil.jpg" width="278" height="368" alt="Refraktor «Steinheil» u kupoli Zvjezdarnice" loading="lazy" decoding="async"><figcaption>Refraktor «Steinheil» u kupoli Zvjezdarnice.</figcaption></figure>
+            <div class="ph-instr__body">
+              <h4>Refraktor «Steinheil»</h4>
+              <div class="ph-instr__meta">postavljen 1886. · sjeveroistočna kupola</div>
+              <ul class="ph-instr__specs"><li>objektiv 160 mm*</li><li>žarišna daljina 2100 mm</li></ul>
+              <p>Objektiv je izradila tvrtka Reinfelder und Hertel. Korišten je za promatranje kometa i crtanje
+                sunčevih pjega.</p>
+              <p style="font-size: 0.78rem; color: var(--text-muted);">* Prema brošuri «150 godina Zvjezdarnice u
+                Puli»; u ranijim tekstovima navodi se promjer od 60 mm.</p>
+              <div class="ph-instr__fate"><strong>Danas:</strong> nakon Prvog svjetskog rata preuzeo ga je tršćanski astronomski opservatorij.</div>
+            </div>
+          </article>
+
+          <article class="ph-instr__card" data-fate="nepoznato">
+            <div class="ph-instr__body">
+              <h4>Pasažni instrument «Repsold»</h4>
+              <div class="ph-instr__meta">postavljen 1898. · sjeveroistočna kupola</div>
+              <p>Koristila ga je Služba točnog vremena kad bi meridijanski krug bio zauzet određivanjem položaja
+                zvijezda. Njegove optičke karakteristike nisu poznate.</p>
+              <div class="ph-instr__fate"><strong>Danas:</strong> nije poznato gdje se nalazi.</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===================== 6. KNJIŽNICA ===================== -->
+      <section class="ph-chapter" id="knjiznica">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1802. – danas</span>
+          <h2>Mornarička knjižnica (K. u. k. Marine-Bibliothek)</h2>
+        </header>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p><strong>Mornarička knjižnica</strong> (Marine-Bibliothek), kasnije nazvana Carska i kraljevska
+              Mornarička knjižnica (K. u. k. Marine-Bibliothek), osnovana je pri vrhovnom zapovjedništvu
+              austrijske Ratne mornarice u Veneciji <strong>1802.</strong>, na poticaj ministra mornarice i rata,
+              nadvojvode Karla. Od samog osnutka bila je znanstvena i stručna knjižnica namijenjena potrebama
+              mornarice.</p>
+            <p>Na zahtjev zapovjednika mornarice, nadvojvode Ferdinanda Maksimilijana, Pula se šezdesetih godina
+              19. stoljeća izgrađuje kao glavna ratna luka austrijske Ratne mornarice. U skladu s planom
+              viceadmirala Wilhelma von Tegetthoffa za reorganizaciju mornarice, 1869. u Puli je osnovan
+              Hidrografski zavod (Hydrographisches Amt), u koji je kao zaseban odjel bila uključena i Mornarička
+              knjižnica.</p>
+            <p>Više informacija na stranicama
+              <a class="ph-link" href="https://www.skpu.hr/" target="_blank" rel="noopener">Sveučilišne knjižnice u Puli</a>.</p>
+          </div>
+          <div>
+            <ul class="ph-facts" style="grid-template-columns: 1fr; margin-top: 0;">
+              <li><strong>1802. – Venecija</strong>osnutak pri vrhovnom zapovjedništvu Ratne mornarice</li>
+              <li><strong>1850. – Trst</strong>cijeli fond preseljen iz Venecije u Trst</li>
+              <li><strong>1869. – Pula</strong>knjižnica postaje odjel Hidrografskog zavoda</li>
+              <li><strong>1918.</strong>raspadom Austro-Ugarske knjižnicu preuzima talijanska vojska</li>
+              <li><strong>1944.</strong>nakon kapitulacije Italije (1943.) njemačka vojska vlakom odvozi cijeli fond u Češku</li>
+              <li><strong>1950. – Beč</strong>fond vraćen u Beč i smješten u Ratni arhiv</li>
+              <li><strong>1975. – povratak u Pulu</strong>oko 20.000 svezaka «kao znak dobre volje» Republike Austrije dodijeljeno Naučnoj biblioteci (danas Sveučilišnoj knjižnici)</li>
+              <li><strong>1996./1997.</strong>preseljenje u Dom hrvatskih branitelja (bivši Marine-Kasino) i ponovno otvaranje za javnost</li>
+            </ul>
+            <figure class="ph-fig" data-group="knjiznica"><img src="povijest-zvjezdarnice/img/puh-knjiga.jpg" width="412" height="265" alt="Naslovnica knjige «Zvjezdarnica u Puli» i pečat knjižnice K.u.K. Kriegsmarine (Hydrographisches Amt, Bibliothek)" loading="lazy" decoding="async"><figcaption>Naslovnica knjige «Zvjezdarnica u Puli» i pečat knjižnice K.u.K. Kriegsmarine (Hydrographisches Amt, Bibliothek).</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 7. TEGETTHOFF ===================== -->
+      <section class="ph-chapter" id="tegetthoff">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1827. – 1871.</span>
+          <h2>Viceadmiral Wilhelm von Tegetthoff</h2>
+        </header>
+
+        <div class="ph-clear ph-reveal">
+          <figure class="ph-fig ph-portrait" style="width: 170px;" data-group="tegetthoff">
+            <img src="sites/default/files/images/220px-Tegetthoff-lithographie.jpg" width="220" height="264" alt="Wilhelm von Tegetthoff, litografija" loading="lazy" decoding="async">
+            <figcaption>Wilhelm von Tegetthoff (Maribor 1827. – Beč 1871.), litografija</figcaption>
+          </figure>
+          <p>Wilhelm von Tegetthoff rodio se u Mariboru (njem. Marburg), Slovenija, <strong>23. prosinca
+            1827.</strong>, kao drugo dijete u obitelji Karla i Leopoldine Tegetthoff. Njegova se rodna kuća nalazi
+            u Slovenskoj ulici br. 12, gdje je danas zgrada Ljubljanske banke. Nakon Mornaričke akademije u
+            Veneciji, koju je završio u razdoblju 1840.–1845., uspinjao se kroz ustroj Ratne mornarice.</p>
+          <p>Rođeni Mariborčanin, po ocu Nijemac (iz Westfalije), a po majci Čeh, zapažen je već u Krimskom ratu,
+            gdje je zapovijedao parobrodom «Taurus». U sam zapovjedni vrh došao je nakon što se 1864. istakao kao
+            zapovjednik austrijskog ratnog brodovlja u pomorskoj bitci kod Helgolanda u ratu protiv Danske, kad je
+            promaknut u čin kontraadmirala.</p>
+        </div>
+
+        <h3 class="ph-reveal">Viški boj 1866.</h3>
+        <p class="ph-reveal">Dana <strong>19. srpnja 1866.</strong>, po zaprimljenom brzojavu s otoka Visa da ga
+          opsjeda i napada talijansko ratno brodovlje, isplovio je na čelu austrijske Ratne mornarice iz
+          Fažanskog kanala i za samo 15 sati plovidbe, 20. srpnja, došao pod Vis. Znao je da ide na triput jačeg
+          neprijatelja, s jačim topništvom i pet oklopnjača više, ali i da ishod boja ne određuje uvijek
+          brojnost, nego i pripremljenost i srčanost. U do tada na Jadranu neviđenom pomorskom boju austrijska
+          mornarica porazila je talijansku, na čijem je čelu bio admiral Carlo Pellion di Persano. Admiralski
+          brod «Ferdinand Max» kljunom je silovito udario u bok talijanske oklopnjače «Re d'Italia», koja je
+          potonula za dvije i pol minute. Austrijska flota nije izgubila nijedan brod; poginulo je 35 mornara i
+          tri časnika. Tom je pobjedom Beču osigurana polustoljetna vladavina nad Jadranskim morem.</p>
+        <blockquote class="ph-quote ph-reveal">«Busali smo se jedan u drugega kako da smo prazi. Jedan dobar tir i
+          brod gre u konobu.»
+          <cite>— Mate Jurašin – Matesina, jedan od trojice Premanturaca u Viškom boju («Sudarali smo se kao
+            ovnovi. Jedan dobar udarac i brod ide u podrum – na morsko dno.»)</cite>
+        </blockquote>
+
+        <h3 class="ph-reveal">Utemeljitelj Zvjezdarnice</h3>
+        <p class="ph-reveal">Tegetthoff je 1868. pokrenuo preustroj Ratne mornarice, čime su obuhvaćene i njezine
+          znanstvene djelatnosti. Uvidjevši da bi postojeće stanje dovelo do zaostajanja za drugim mornaricama,
+          predložio je da se u proračun za 1870. uvrsti izgradnja Hidrografskog zavoda (zvjezdarnice) u Puli, što
+          je car Franjo Josip I. odobrio 10. rujna 1869. Natpis na spomeniku glasio je:</p>
+        <blockquote class="ph-quote ph-reveal">«Viceadmiralu Wilhelmu Tegetthoffu, car Franjo Josip I, 1877.,
+          hrabrom borcu kod Helgolanda, slavno pobijednio kod Visa i stekao vječnu slavu za sebe i za austrijsku
+          flotu».</blockquote>
+        <p class="ph-reveal">Nakon što je 1918. Pulu okupirala talijanska vojska, spomenik postavljen 1877. ispred
+          Zvjezdarnice uklonjen je <strong>14. travnja 1920.</strong> Tek pred Drugi svjetski rat Italija ga je
+          predala Austriji te je postavljen na Elizabetin trg u Grazu, gradu u kojem je slavni viceadmiral
+          pokopan i gdje se nalazi i danas. Godine 1998. na Visu je ponovno postavljena replika spomenika
+          Viškom boju.</p>
+      </section>
+
+      <!-- ===================== 8. RAT ===================== -->
+      <section class="ph-chapter" id="rat">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1918. – 1946.</span>
+          <h2>Između ratova, bombardiranje i razaranje</h2>
+        </header>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>Nakon raspada Austro-Ugarske i talijanskog vojnog zaposjedanja Pule <strong>5. studenoga
+              1918.</strong> prestaju djelatnosti Zvjezdarnice. Instrumenti i knjižnica dobrim su dijelom
+              preseljeni u Trst i druge talijanske gradove, a uklonjen je i spomenik admiralu Tegetthoffu, na
+              čiju je inicijativu Hidrografski ured osnovan.</p>
+            <p>Sudbina Zvjezdarnice podudara se s općom stagnacijom grada Pule. Hidrografski ured preimenovan je u
+              talijanski <strong>Kraljevski hidrografski institut</strong>, sa statusom podružnice središnje
+              talijanske hidrografske ustanove. Provodila su se meteorološka i geomagnetska opažanja, dok su
+              astronomska potpuno zamrla.</p>
+            <p>Po povlačenju talijanskih snaga, tijekom <strong>1944.</strong> anglo-američko zrakoplovstvo u
+              više navrata bombardira Pulu. Kako su se na kartama Hidrografski ured i Zvjezdarnica i dalje vodili
+              kao vojni objekti, savezničke bombe do temelja uništavaju zgradu. Na snimkama iz naleta bombardera
+              Zvjezdarnica se vidi još netaknuta, a zatim izravno pogođena i razrušena.</p>
+          </div>
+          <div class="ph-figs ph-figs--2" style="margin-top: 0;">
+            <figure class="ph-fig" data-group="rat"><img src="povijest-zvjezdarnice/img/bombardiranje-1.jpg" width="482" height="271" alt="Snimka iz naleta savezničkih bombardera 1944. – Zvjezdarnica još netaknuta" loading="lazy" decoding="async"><figcaption>Snimka iz naleta savezničkih bombardera 1944. – Zvjezdarnica još netaknuta.</figcaption></figure>
+            <figure class="ph-fig" data-group="rat"><img src="povijest-zvjezdarnice/img/bombardiranje-2.jpg" width="482" height="375" alt="Snimka iz naleta bombardera – pogođeno područje Monte Zara" loading="lazy" decoding="async"><figcaption>Snimka iz naleta bombardera – pogođeno područje Monte Zara.</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="ph-split ph-split--rev ph-reveal">
+          <div>
+            <h3 style="margin-top: 0;">Što je preživjelo?</h3>
+            <p>Djelomično je sačuvan samo dio <strong>sjeveroistočnog krila</strong>, dok je ostatak do temelja
+              uništen. Iz izvornih tlocrta može se procijeniti da je od zgrade preostao samo jedan manji dio i
+              <strong>svega jedna kupola</strong>. Prebacite prikaz na tlocrtu:</p>
+            <div class="ph-segmented" role="group" aria-label="Prikaz tlocrta">
+              <button type="button" aria-pressed="true" data-plan="before">Zgrada 1871.</button>
+              <button type="button" aria-pressed="false" data-plan="after">Nakon 1944.</button>
+            </div>
+            <div class="ph-plan" id="ph-plan">
+              <img src="povijest-zvjezdarnice/img/tlocrt.jpg" width="452" height="318" alt="Tlocrt prizemlja i prvog kata K. und K. Hydrographisches Amt in Pola" loading="lazy" decoding="async">
+              <svg viewBox="0 0 452 318" aria-hidden="true">
+                <path class="shade" fill-rule="evenodd" d="M0 0H452V318H0Z M15 50 L50 12 L93 55 L103 82 L103 150 L60 150 L60 95 Z"/>
+                <path class="outline" d="M15 50 L50 12 L93 55 L103 82 L103 150 L60 150 L60 95 Z"/>
+              </svg>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.5rem;">Tlocrt prizemlja (gore) i
+              prvog kata (dolje). Crveno: dio zgrade koji je preživio bombardiranje (prema brošuri «150 godina
+              Zvjezdarnice u Puli»).</p>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="rat"><img src="povijest-zvjezdarnice/img/rusevine.jpg" width="482" height="314" alt="Ostaci Zvjezdarnice nakon savezničkog bombardiranja. Sačuvan je samo dio sjeveroistočnog krila s kupolom" loading="lazy" decoding="async"><figcaption>Ostaci Zvjezdarnice nakon savezničkog bombardiranja. Sačuvan je samo dio sjeveroistočnog krila s kupolom.</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 9. METEOROLOŠKA POSTAJA ===================== -->
+      <section class="ph-chapter" id="meteoroloska-postaja">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1947. – 1982.</span>
+          <h2>Meteorološka postaja i kupole koje su preživjele</h2>
+        </header>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>Djelomično sačuvani dio sjeveroistočnog krila obnovljen je <strong>1947./1948.</strong> i u njemu je
+              smještena meteorološka postaja Jugoslavenske ratne mornarice. Godine <strong>1949.</strong> postaju
+              preuzima novoutemeljena Uprava hidrometeorološke službe pri Vladi NR Hrvatske, današnji
+              <strong>Državni hidrometeorološki zavod</strong>.</p>
+            <p>Obnova ostataka Zvjezdarnice nije bila u potpunosti uspješna, mahom iz tehnoloških razloga.
+              Temperatura, tlak i vlažnost zraka mjerili su se u mjernoj kućici u ograđenom prostoru ispred
+              zgrade, a heliograf i anemometar smješteni su na pomoćnu skelu s južne strane kupole. U zgradu su
+              useljene dvije obitelji meteorologa, koje su nastavile opažanja s Monte Zara. Meteorološka se
+              opažanja i danas obavljaju s iste lokacije — postaja DHMZ-a na Monte Zaru danas ima status
+              <strong>klimatološke postaje</strong>.</p>
+          </div>
+          <div class="ph-figs ph-figs--2" style="margin-top: 0;">
+            <figure class="ph-fig" data-group="meteo"><img src="povijest-zvjezdarnice/img/meteo-postaja.jpg" width="482" height="333" alt="Obnovljeni dio zgrade kao meteorološka postaja" loading="lazy" decoding="async"><figcaption>Obnovljeni dio zgrade kao meteorološka postaja.</figcaption></figure>
+            <figure class="ph-fig" data-group="meteo"><img src="povijest-zvjezdarnice/img/kupola-skela.jpg" width="482" height="320" alt="Kupola i pomoćna skela s heliografom i anemometrom" loading="lazy" decoding="async"><figcaption>Kupola i pomoćna skela s heliografom i anemometrom.</figcaption></figure>
+          </div>
+        </div>
+
+        <h3 class="ph-reveal">Dvije kupole</h3>
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>Prilikom sanacije rekonstruirane su dvije kupole — klasična i meridijanska. Kostur klasične kupole
+              koji je ostao nakon bombardiranja iskorišten je za vraćanje prvobitnog oblika, pokrivenog drvenom
+              građom iznutra i pocinčanim limom izvana. Mehanizam za okretanje polukuglaste kupole ostao je
+              iskoristiv, kao i djelomično mehanizam za otvaranje. Otvor je, međutim, saniran tako da se moglo
+              opažati tek do 30° od horizonta, pa je najveći i najkvalitetniji dio neba bio nedostupan. Udari
+              tijekom bombardiranja iskrivili su i samu kupolu, pa sila potrebna za okretanje ovisi o položaju
+              otvora. Kako se kupola tada nije koristila, do nje nije ni postojao pristup — stepenice su vodile
+              samo do terase.</p>
+            <p>Unutrašnjost glavne kupole i njezina izvorna funkcionalnost otvaranja i okretanja u potpunosti su
+              očuvane do danas. <strong>Aksijalni kuglični ležaj</strong> na kojem počiva kupola izliven je u vrijeme
+              izgradnje Zvjezdarnice u pulskom Arsenalu, gdje su se takvi ležajevi proizvodili za topovske kupole
+              ratnih brodova Austro-Ugarske. Prema našim spoznajama, riječ je o <strong>najvećem ležaju te vrste
+              koji je još u funkciji</strong>.</p>
+            <p><strong>Meridijanska kupola</strong> teže je nastradala: mehanizam postoji u izvornom obliku, ali je
+              neiskoristiv. Rekonstruiran je samo pokrivni dio kako bi se kupola zaštitila od daljnjeg propadanja;
+              osovine zupčanika iskrivljene su od siline udara, a lančani prijenosi nisu kompletni, pa njezina
+              obnova i dalje čeka bolje dane.</p>
+          </div>
+          <div class="ph-figs ph-figs--2" style="margin-top: 0;">
+            <figure class="ph-fig ph-fig--small" data-group="meteo" style="--mw: 244px"><img src="povijest-zvjezdarnice/img/kupola-unutrasnjost.jpg" width="188" height="320" alt="Unutrašnjost glavne kupole – izvorni mehanizam otvaranja i okretanja i danas radi" loading="lazy" decoding="async"><figcaption>Unutrašnjost glavne kupole – izvorni mehanizam otvaranja i okretanja i danas radi.</figcaption></figure>
+            <figure class="ph-fig ph-fig--small" data-group="meteo" style="--mw: 380px"><img src="povijest-zvjezdarnice/img/kupola-mehanizam.jpg" width="299" height="320" alt="Mehanizam glavne kupole s kotačem za otvaranje" loading="lazy" decoding="async"><figcaption>Mehanizam glavne kupole s kotačem za otvaranje.</figcaption></figure>
+            <figure class="ph-fig" data-group="meteo"><img src="povijest-zvjezdarnice/img/meridijanska-kupola.jpg" width="482" height="320" alt="Meridijanska kupola danas" loading="lazy" decoding="async"><figcaption>Meridijanska kupola danas – elementi mehanizma kliznih vrata i dalje odolijevaju zubu vremena.</figcaption></figure>
+            <figure class="ph-fig ph-fig--small" data-group="meteo" style="--mw: 347px"><img src="povijest-zvjezdarnice/img/meridijanska-unutrasnjost.jpg" width="267" height="333" alt="Unutrašnjost meridijanske kupole, s očitim znakovima propadanja" loading="lazy" decoding="async"><figcaption>Unutrašnjost meridijanske kupole, s očitim znakovima propadanja.</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 10. ADIP ===================== -->
+      <section class="ph-chapter" id="adip">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1973. – 1999.</span>
+          <h2>Astronomsko društvo «Istra» Pula</h2>
+        </header>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>Astronomsko društvo «Istra» Pula osnovano je <strong>27. prosinca 1973.</strong>, u vrijeme velikih
+              istraživačkih pothvata u astronomiji i astronautici, kada je žeđ za znanjem bilo teško utažiti zbog
+              nedostatka literature, sredstava i organizacije. Prvenstvena zadaća društva bila je popularizacija
+              astronomije i drugih prirodnih znanosti, kroz predavanja i promatranja nebeskih pojava za sve
+              uzraste.</p>
+            <p>Dobra povezanost sa školama rezultirala je masovnim odazivom učenika na izborni predmet astronomije,
+              pa su krajem 1970-ih zabilježeni odlični rezultati na natjecanjima pokreta «Nauka mladima» u
+              organizaciji tadašnje Narodne tehnike, prethodnice današnje Zajednice tehničke kulture.</p>
+            <p>Teleskop nije bio dostupan kao danas — uz visoke cijene, problem su bila i državna ograničenja
+              uvoza. Ipak, društvo je <strong>1975.</strong> prikupilo sredstva i kupilo teleskop
+              <strong>«Celestron 8»</strong>, koji se i danas koristi. Nekoliko je mjeseci bio izložen u izlogu
+              «Narodne tehnike» i plijenio poglede prolaznika. Promatranja su se tada održavala na terasama
+              zgrada u središtu grada ili nedaleko grada — svjetlosno onečišćenje bilo je daleko manje nego
+              danas.</p>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="adip"><img src="povijest-zvjezdarnice/img/bazovica-1975.jpg" width="482" height="433" alt="Dio članstva ADIP" loading="lazy" decoding="async"><figcaption>Dio članstva ADIP-a u posjetu opservatoriju Bazovica 1975. – mašta o zvjezdarnici društva počela je uzimati maha.</figcaption></figure>
+            <figure class="ph-fig ph-fig--small" data-group="adip" style="--mw: 380px"><img src="povijest-zvjezdarnice/img/celestron-8.jpg" width="482" height="596" alt="Teleskop «Celestron 8», kupljen 1975. i u upotrebi do danas" loading="lazy" decoding="async"><figcaption>Teleskop «Celestron 8», kupljen 1975. i u upotrebi do danas.</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="ph-split ph-split--rev ph-reveal">
+          <div>
+            <p>Iako u počecima nije imalo izravne veze sa Zvjezdarnicom, društvo je njegovalo njezino nasljeđe.
+              Prilikom <strong>stote godišnjice otkrića asteroida «Istria»</strong> (1978.) održano je prigodno
+              predavanje te izložba radova i teleskopa koje su članovi sami izradili, a obilježavanju je nazočilo
+              više stotina ljudi. S filatelističkim društvom «Arena» pripremljena je filatelistička izložba s
+              temama iz astronomije i astronautike te izdana spomen-kuverta i prigodna značka.</p>
+            <p>Zamolba za korištenje zgrade upućena je već <strong>1974.</strong> tadašnjem Republičkom
+              hidrometeorološkom zavodu, vlasniku zgrade, uz njegov načelni pristanak. Budući da su u zgradi
+              živjele dvije obitelji meteorologa, trebalo je pričekati njihovo stambeno zbrinjavanje, pa je
+              društvo <strong>1979.</strong> dobilo na korištenje najprije samo dvije pomoćne prostorije s istočne
+              strane zgrade.</p>
+          </div>
+          <div class="ph-figs ph-figs--2" style="margin-top: 0;">
+            <figure class="ph-fig" data-group="adip"><img src="povijest-zvjezdarnice/img/izlozba-1978.jpg" width="482" height="349" alt="Izložba povodom 100. godišnjice otkrića asteroida «Istria»" loading="lazy" decoding="async"><figcaption>Izložba povodom 100. godišnjice otkrića asteroida «Istria».</figcaption></figure>
+            <figure class="ph-fig ph-fig--small" data-group="adip" style="--mw: 380px"><img src="povijest-zvjezdarnice/img/kuverta-istria.jpg" width="337" height="237" alt="Spomen-kuverta «100-godišnjica otkrića asteroida Istra 1878.–1978.»" loading="lazy" decoding="async"><figcaption>Spomen-kuverta «100-godišnjica otkrića asteroida Istra 1878.–1978.»</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <h3>1982.: Zvjezdarnica postaje dom ADIP-a</h3>
+            <p><strong>1982.</strong> Zvjezdarnica je predana na korištenje Astronomskom društvu «Istra» Pula, koje
+              je obnovilo astronomska opažanja. Zgrada je bila u vrlo derutnom stanju, pa su se članovi odmah
+              prihvatili uređenja — uz pomoć radnih organizacija i velik dobrovoljni rad, prostoriju po prostoriju.
+              Kako je kupola tada bila nepristupačna, opažalo se s livada na Monte Zaru, kraj fontane, a
+              djelomično i s terase i meteorološke skele.</p>
+            <p>Na prijedlog društva Zvjezdarnica je <strong>30. svibnja 1983.</strong> rješenjem Regionalnog
+              zavoda za zaštitu spomenika iz Rijeke (br. 435) proglašena <strong>spomenikom kulture C
+              kategorije</strong>.</p>
+            <p>Zvjezdarnica je donijela novi polet: članovi su se posvetili astrofotografiji, prvenstveno Sunca, a
+              redovito su se provodila i vizualna opažanja Mjeseca, planeta i velikih meteorskih potoka (najviše
+              Perzeida i Orionida, jer su vremenske prilike obično onemogućavale opažanje Geminida i Kvadrantida).
+              Na Zvjezdarnici su se održavala i školska natjecanja «Nauku mladima», na kojima je svaki učenik uz
+              pismeni dio predstavljao i praktični rad — od opažanja meteora, planeta ili promjenjivih zvijezda do
+              istraživanja učinkovitosti iskorištenja Sunčeve energije. Najuspješnije je čekao astronomski kamp na
+              otoku Prviću.</p>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="adip"><img src="povijest-zvjezdarnice/img/zvjezdarnica-1979.jpg" width="483" height="411" alt="Zvjezdarnica krajem 1970-ih, u vrijeme kad društvo dobiva prve prostorije" loading="lazy" decoding="async"><figcaption>Zvjezdarnica krajem 1970-ih, u vrijeme kad društvo dobiva prve prostorije.</figcaption></figure>
+            <div class="ph-figs ph-figs--2" style="margin: 0;">
+              <figure class="ph-fig" data-group="adip"><img src="povijest-zvjezdarnice/img/opazanja-skela.jpg" width="482" height="374" alt="Opažanja s meteorološke skele uz kupolu" loading="lazy" decoding="async"><figcaption>Opažanja s meteorološke skele uz kupolu.</figcaption></figure>
+              <figure class="ph-fig" data-group="adip"><img src="povijest-zvjezdarnice/img/natjecanje.jpg" width="482" height="342" alt="Učenici na natjecanju iz astronomije" loading="lazy" decoding="async"><figcaption>Učenici na natjecanju iz astronomije.</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="ph-split ph-split--rev ph-reveal">
+          <div>
+            <p>Član društva <strong>Zdenko Kovač</strong> izradio je <strong>1985.</strong> kao diplomski rad na
+              studiju arhitekture projekt sanacije i dogradnje Zvjezdarnice planetarijem. Projekt je bio
+              prihvaćen, ali je zbog političkih previranja i rata pao u zaborav.</p>
+            <p>Godine <strong>1991.</strong> Edi Puh (tada član, kasnije tajnik) objavio je knjigu
+              <strong>«Zvjezdarnica u Puli: 1871–1991. (građa za povijest Istre)»</strong>, koja jednostavno i
+              razumljivo predstavlja povijest Zvjezdarnice i referentna je točka za sve koji žele ući u detalje.</p>
+            <p>Domovinski rat velikim je dijelom zaustavio rad društva. Zahvaljujući iznimnim naporima pojedinaca
+              — prvenstveno tadašnjeg tajnika <strong>Edija Puha</strong> i predsjednika <strong>Lorenza
+              Putigne</strong> — Zvjezdarnica je sačuvana od daljnjeg propadanja.</p>
+            <p>Uz pomoć brodogradilišta <strong>«Uljanik»</strong> 1999. konačno je sređen pristup glavnoj kupoli i
+              vraćena njezina funkcionalnost za astronomska opažanja, pa je Zvjezdarnica ponovno mogla primati
+              goste. Iste godine, za <strong>djelomične pomrčine Sunca 11. kolovoza 1999.</strong>, gotovo svi
+              aktivni članovi pomagali su i objašnjavali pojavu — procjenjuje se da je tog dana na Monte Zaru
+              nekoliko tisuća ljudi promatralo pomrčinu zajedno s nama.</p>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="adip"><img src="povijest-zvjezdarnice/img/kovac-planetarij.jpg" width="482" height="311" alt="Projekt Zdenka Kovača (1985.) – pročelje Zvjezdarnice s planetarijem" loading="lazy" decoding="async"><figcaption>Projekt Zdenka Kovača (1985.) – pročelje Zvjezdarnice s planetarijem.</figcaption></figure>
+            <div class="ph-figs ph-figs--2" style="margin: 0;">
+              <figure class="ph-fig" data-group="adip"><img src="povijest-zvjezdarnice/img/kupola-1999.jpg" width="482" height="316" alt="Glavna kupola ponovno u funkciji (1999.)" loading="lazy" decoding="async"><figcaption>Glavna kupola ponovno u funkciji (1999.).</figcaption></figure>
+              <figure class="ph-fig" data-group="adip"><img src="povijest-zvjezdarnice/img/pomrcina-1999.jpg" width="482" height="333" alt="Pomrčina Sunca 11. kolovoza 1999. – tisuće posjetitelja na Monte Zaru" loading="lazy" decoding="async"><figcaption>Pomrčina Sunca 11. kolovoza 1999. – tisuće posjetitelja na Monte Zaru.</figcaption></figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 11. OBNOVA ===================== -->
+      <section class="ph-chapter" id="obnova">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">2006. – 2009.</span>
+          <h2>Generalna sanacija u četiri faze</h2>
+        </header>
+        <p class="ph-reveal">Iako su članovi društva stalno održavali Zvjezdarnicu u skladu s mogućnostima i
+          sredstvima koje su dobivali od Grada Pule, to nije bilo dovoljno. Grad Pula stoga je početkom
+          <strong>2006.</strong> pokrenuo generalnu sanaciju zgrade u četiri faze.</p>
+
+        <div class="ph-steps ph-reveal" id="ph-steps">
+          <div class="ph-steps__tabs" role="tablist" aria-label="Faze sanacije">
+            <button type="button" class="ph-steps__tab" role="tab" aria-selected="true" aria-controls="faza-1" id="tab-faza-1"><b>2006.</b>1. faza · krovište</button>
+            <button type="button" class="ph-steps__tab" role="tab" aria-selected="false" aria-controls="faza-2" id="tab-faza-2"><b>2007.</b>2. faza · terasa</button>
+            <button type="button" class="ph-steps__tab" role="tab" aria-selected="false" aria-controls="faza-3" id="tab-faza-3"><b>2008.</b>3. faza · krovišta kupole</button>
+            <button type="button" class="ph-steps__tab" role="tab" aria-selected="false" aria-controls="faza-4" id="tab-faza-4"><b>2009.</b>4. faza · pročelja</button>
+          </div>
+
+          <div class="ph-steps__panel ph-split" role="tabpanel" id="faza-1" aria-labelledby="tab-faza-1">
+            <div><p>U prvoj fazi sanirano je <strong>krovište iznad središnjeg dijela</strong> zgrade
+              Zvjezdarnice.</p></div>
+            <div><figure class="ph-fig" data-group="obnova"><img src="povijest-zvjezdarnice/img/sanacija-2006.jpg" width="482" height="333" alt="Prva faza sanacije (2006.)" loading="lazy" decoding="async"><figcaption>Prva faza sanacije (2006.).</figcaption></figure></div>
+          </div>
+          <div class="ph-steps__panel ph-split" role="tabpanel" id="faza-2" aria-labelledby="tab-faza-2" hidden>
+            <div>
+              <p>Drugom fazom, provedenom 2007., završen je <strong>istočni dio terase</strong>, koji se do tada
+                nije mogao koristiti. Zvjezdarnica je time dobila vrlo vrijedan prostor za predavanja na otvorenom
+                i dio promatranja za građanstvo.</p>
+              <p>Zahvaljujući donaciji jedne telekomunikacijske tvrtke, društvo je kupilo teleskop
+                <strong>Celestron 11</strong> i instaliralo ga u glavnu kupolu.</p>
+            </div>
+            <div>
+              <figure class="ph-fig" data-group="obnova"><img src="povijest-zvjezdarnice/img/sanacija-2007.jpg" width="482" height="343" alt="Druga faza sanacije (2007.) – istočna terasa" loading="lazy" decoding="async"><figcaption>Druga faza sanacije (2007.) – istočna terasa.</figcaption></figure>
+              <figure class="ph-fig" data-group="obnova"><img src="povijest-zvjezdarnice/img/celestron-11.jpg" width="482" height="290" alt="Teleskop Celestron 11 u glavnoj kupoli" loading="lazy" decoding="async"><figcaption>Teleskop Celestron 11 u glavnoj kupoli.</figcaption></figure>
+            </div>
+          </div>
+          <div class="ph-steps__panel ph-split" role="tabpanel" id="faza-3" aria-labelledby="tab-faza-3" hidden>
+            <div>
+              <p>Trećom fazom, 2008., obuhvaćena su <strong>krovišta oko kupole</strong>, čime je nakon dugo godina
+                definitivno riješen problem prokišnjavanja.</p>
+              <p>Započeli su i radovi na južnoj fasadi, koja je nekada bila pregradni zid — ulaz je predstavljao
+                komunikaciju između središnje zgrade i krila s kupolama.</p>
+            </div>
+            <div><figure class="ph-fig" data-group="obnova"><img src="povijest-zvjezdarnice/img/sanacija-2008.jpg" width="482" height="320" alt="Treća faza sanacije (2008.)" loading="lazy" decoding="async"><figcaption>Treća faza sanacije (2008.).</figcaption></figure></div>
+          </div>
+          <div class="ph-steps__panel ph-split" role="tabpanel" id="faza-4" aria-labelledby="tab-faza-4" hidden>
+            <div>
+              <p>Završna faza 2009. obuhvatila je <strong>pročelja</strong>, po mnogočemu zahtjevna. Kako bi se u
+                najvećoj mogućoj mjeri zadržao izvorni oblik zgrade, rekonstruirani su svi dostupni detalji.
+                Meridijanska kupola nije bila obuhvaćena sanacijom.</p>
+              <p>Konačni oblik Zvjezdarnica je poprimila <strong>početkom svibnja 2009.</strong>, a otvorenje je
+                obilježeno prigodnom manifestacijom. U cijelosti su obnovljeni terasa, pročelje i okoliš.</p>
+            </div>
+            <div><figure class="ph-fig" data-group="obnova"><img src="povijest-zvjezdarnice/img/sanacija-2009.jpg" width="482" height="320" alt="Četvrta faza sanacije (2009.) – obnova pročelja" loading="lazy" decoding="async"><figcaption>Četvrta faza sanacije (2009.) – obnova pročelja.</figcaption></figure></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 12. DANAS ===================== -->
+      <section class="ph-chapter" id="danas">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">2009. – danas</span>
+          <h2>Zvjezdarnica danas</h2>
+        </header>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>Po završetku sanacije obnavlja se rad s mladima te se nastavlja popularizacija astronomije kroz
+              promatranja i predavanja za građanstvo. Zvjezdarnicu posjećuje velik broj skupina učenika i
+              studenata — ponekad i više od sto sudionika odjednom — koji pritom saznaju o njezinoj povijesti i
+              značaju za razvoj astronomije u svijetu. Mlađi uzrasti uz povijest uče i osnove gibanja tijela
+              Sunčeva sustava kroz interaktivnu prezentaciju.</p>
+            <p>Godine <strong>2010.</strong> društvo je dobilo <strong>Povelju Hrvatske zajednice tehničke
+              kulture</strong> za višegodišnji izvanredan doprinos razvoju i unapređivanju tehničke kulture i
+              astronomije te očuvanju spomenika kulture — Zvjezdarnice u Puli.</p>
+            <p>Mladi članovi pri Zvjezdarnici pripremaju radove za natjecanja iz astronomije u sklopu Agencije za
+              odgoj i obrazovanje i predstavljaju ih na zajedničkom predavanju, u prisutnosti roditelja. Nakon
+              2009. broj učenika na natjecanjima naglo je porastao, a svake godine barem nekoliko njih stigne do
+              državnog natjecanja, gdje su poneki osvajali i prva mjesta. Članovi izlaze i u prirodu, provodeći
+              opažanja Sunca uz potrebne mjere sigurnosti i upozoravajući na opasnost izravnog pogleda u Sunce.</p>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="danas"><img src="povijest-zvjezdarnice/img/posjet-terasa.jpg" width="482" height="333" alt="Posjetitelji na terasi obnovljene Zvjezdarnice" loading="lazy" decoding="async"><figcaption>Posjetitelji na terasi obnovljene Zvjezdarnice.</figcaption></figure>
+            <div class="ph-figs ph-figs--2" style="margin: 0;">
+              <figure class="ph-fig ph-fig--small" data-group="danas" style="--mw: 322px"><img src="povijest-zvjezdarnice/img/povelja-2010.jpg" width="248" height="320" alt="Povelja Hrvatske zajednice tehničke kulture (2010.)" loading="lazy" decoding="async"><figcaption>Povelja Hrvatske zajednice tehničke kulture (2010.).</figcaption></figure>
+              <figure class="ph-fig" data-group="danas"><img src="povijest-zvjezdarnice/img/predavanje.jpg" width="482" height="304" alt="Predavanje mladih članova na Zvjezdarnici" loading="lazy" decoding="async"><figcaption>Predavanje mladih članova na Zvjezdarnici.</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="ph-reveal">Od jedne kamere do globalne meteorske mreže</h3>
+        <div class="ph-split ph-split--rev ph-reveal">
+          <div>
+            <p>Još dok je sanacija bila u tijeku, za maksimuma Perzeida <strong>2006.</strong>, na Zvjezdarnici su
+              testirane kamere za video nadzor u svrhu opažanja meteora. Eksperiment je bio vrlo uspješan i iz
+              njega je proizašao projekt <strong>Hrvatske meteorske mreže (HMM)</strong>, u kojem je sudjelovalo
+              više od 40 udruga i pojedinaca diljem Hrvatske, a nekoliko kamera bilo je i u susjednim državama.</p>
+            <p>Osim meteora, kamere su zabilježile udare munja, ali i rijetko opažane tranzijentne pojave u
+              Zemljinoj atmosferi — takozvane <strong>«sprite»</strong> (hrv. «vatrenjak»).</p>
+            <p>Projekt je bio uspješan preko svih očekivanja. U suradnji sa Znanstveno-edukacijskim centrom
+              Višnjan iz njega je proizašao velik broj mladih astronoma koji su vlastitim rješenjima unaprijedili
+              dotad standardne metode opažanja meteora. Kao rezultat toga, od <strong>2018.</strong> postoji
+              <strong>Globalna meteorska mreža (GMN)</strong>, koja je 2021. premašila <strong>500 kamera</strong>
+              diljem svijeta. HMM-u je za sada priznato otkriće <strong>8 novih meteorskih potoka</strong>, a
+              članovi društva rezultate su izlagali na više izdanja Međunarodne meteorske konferencije.</p>
+            <p>Uz cjelonebnu kameru, na Zvjezdarnici je instalirana i kamera za <strong>teleskopske
+              meteore</strong>, preslabe da bi se vidjeli okom; zbog znatno manjeg vidnog polja bilježi ih
+              manje. Opažanja meteora — među ostalim i sa Zvjezdarnice u Puli — koriste vodeće svjetske
+              astronomske organizacije, među kojima i <strong>NASA</strong>.</p>
+          </div>
+          <div class="ph-figs ph-figs--2" style="margin-top: 0;">
+            <figure class="ph-fig ph-fig--small" data-group="danas" style="--mw: 380px"><img src="povijest-zvjezdarnice/img/geminidi-2020.jpg" width="482" height="591" alt="Cjelonebna snimka noći Geminida 2020. Uz meteore vide se i avioni i sateliti" loading="lazy" decoding="async"><figcaption>Cjelonebna snimka noći Geminida 2020. Uz meteore vide se i avioni i sateliti – kamere bilježe gotovo sve što vidi i ljudsko oko, a osjetljive su i u infracrvenom dijelu spektra.</figcaption></figure>
+            <figure class="ph-fig" data-group="danas"><img src="povijest-zvjezdarnice/img/sprite.jpg" width="482" height="335" alt="Munje i «sprite» (vatrenjak) zabilježeni kamerama meteorske mreže" loading="lazy" decoding="async"><figcaption>Munje i «sprite» (vatrenjak) zabilježeni kamerama meteorske mreže.</figcaption></figure>
+            <figure class="ph-fig" data-group="danas"><img src="povijest-zvjezdarnice/img/meteorske-orbite.jpg" width="482" height="328" alt="Orbite meteoroida izračunate iz opažanja meteorske mreže" loading="lazy" decoding="async"><figcaption>Orbite meteoroida izračunate iz opažanja meteorske mreže.</figcaption></figure>
+            <figure class="ph-fig" data-group="danas"><img src="povijest-zvjezdarnice/img/meteorit-krizevci.jpg" width="482" height="377" alt="Meteorit «Križevci» pod elektronskim mikroskopom" loading="lazy" decoding="async"><figcaption>Meteorit «Križevci» pod elektronskim mikroskopom – analiza predstavljena na Festivalu znanosti 2016.</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>Članovi društva svake godine aktivno sudjeluju na <strong>Festivalu znanosti</strong>. Godine 2016.
+              u suradnji s pulskim «Metrisom» predstavili su analizu meteorita <strong>«Križevci»</strong>, u čijem
+              je pronalasku društvo imalo vrlo bitan udio. Društvo sudjeluje i u zajedničkim projektima Hrvatskog
+              astronomskog saveza, poput teme «Žene u astronomiji», a članovi održavaju predavanja na susretima
+              astronoma amatera i srodnim skupovima, uvijek nastojeći širiti znanje o povijesti Zvjezdarnice.</p>
+            <p>Pandemija bolesti COVID-19 zaustavila je aktivnosti prema građanstvu, ali rad na opažanjima meteora
+              nastavljen je bez prekida, a uz opažanja se objavljuju i znanstveni radovi temeljeni na vlastitim
+              promatranjima. Posebno nas veseli što sve veći broj mladih članova — danas inženjera, magistara i
+              doktora znanosti — ostaje u kontaktu s društvom i rado se odaziva na njegove akcije.</p>
+            <div class="ph-card">
+              <p><strong>Hrvatska zajednica tehničke kulture</strong> — krovna organizacija kojoj pripada i ADIP —
+                povijesni je sljednik Republikanske komisije «Tehnika i sport», utemeljene <strong>23. lipnja
+                1946.</strong> u Zagrebu, čiji je prvi predsjednik bio akademik Andrija Mohorovičić. Istra je svoj
+                ogranak utemeljila 1947. Zajednica danas okuplja 18 nacionalnih saveza, 19 županijskih i 35
+                gradskih zajednica tehničke kulture.</p>
+            </div>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="danas"><img src="povijest-zvjezdarnice/img/clanovi.jpg" width="482" height="309" alt="Članovi Astronomskog društva «Istra» Pula na terasi Zvjezdarnice" loading="lazy" decoding="async"><figcaption>Članovi Astronomskog društva «Istra» Pula na terasi Zvjezdarnice.</figcaption></figure>
+            <figure class="ph-fig ph-fig--small" data-group="danas" style="--mw: 380px"><img src="povijest-zvjezdarnice/img/zracna-zvjezdarnica.jpg" width="623" height="879" alt="Zvjezdarnica na Monte Zaru iz zraka" loading="lazy" decoding="async"><figcaption>Zvjezdarnica na Monte Zaru iz zraka.</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="ph-card ph-reveal" style="text-align: center; margin-top: 2rem;">
+          <p style="margin-bottom: 0.9rem;">Posjetite Zvjezdarnicu i pogledajte više fotografija iz njezine povijesti.</p>
+          <div class="ph-hero__actions">
+            <a href="posjet-pulskoj-zvjezdarnici.html" class="btn btn--primary">Posjet Zvjezdarnici</a>
+            <a href="galerija-povijest.html" class="btn btn--secondary">Galerija: povijest</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== IZVORI ===================== -->
+      <section class="ph-chapter" id="izvori" style="padding-bottom: 4rem;">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">literatura</span>
+          <h2>Izvori i zahvale</h2>
+        </header>
+        <ul class="ph-sources ph-reveal">
+          <li>D. Šegon (prir.): <em>150 godina Zvjezdarnice u Puli</em>, Zajednica tehničke kulture Pula i
+            Astronomsko društvo «Istra» Pula, 2021. — dostupno na stranici <a href="downloads.html">Preuzimanja</a>.</li>
+          <li>E. Puh: <em>Zvjezdarnica u Puli: 1871–1991. (građa za povijest Istre)</em>, Histria Historica,
+            posebno izdanje, 1991.</li>
+          <li>Podaci o otkrićima Johanna Palise i njegovih suvremenika: Minor Planet Center.</li>
+          <li>Povijesne fotografije iz doba Austro-Ugarske: Povijesni i pomorski muzej Istre. Ostale fotografije:
+            arhiva Astronomskog društva «Istra» Pula te kolekcije Edija Puha i Luciana Gržinića; zračne snimke
+            ustupio je Igor Karasi.</li>
+          <li>Fotografija zgrade Hidrografskog zavoda: Erminio Mioni.</li>
+        </ul>
+      </section>
 
     </div>
   </main>
+
 
   <!-- Footer -->
   <footer class="footer">
@@ -193,7 +993,7 @@
   </div>
 
   <script src="js/main.js?v=20260928"></script>
-  <!-- <script src="js/povijest-zvjezdarnice.js"></script> -->
+  <script src="js/povijest.js?v=20261012"></script>
 </body>
 
 </html>
