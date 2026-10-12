@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5. Elektromagnetsko zračenje i crno tijelo | Tečaj astronomije</title>
+  <meta name="description"
+    content="Planckova krivulja, Wienov zakon, Stefan-Boltzmannov zakon, Kirchhoffovi zakoni spektroskopije i Dopplerov efekt. Interaktivni primjeri.">
+  <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/tecaj.css?v=20260928">
+  <script src="data/vidljivost.js"></script>
+  <script>
+    /* Pristupna vrata: sakrij sadržaj prije prvog crtanja ako PIN nije unesen.
+       Otključavanje i sam upit su u js/tecaj.js. */
+    (function () {
+      var ulaz = false, urednik = false;
+      try { ulaz = sessionStorage.getItem('tecaj_ulaz') === '1'; } catch (e) { }
+      try { urednik = !!localStorage.getItem('adip_token'); } catch (e) { }
+      if (!ulaz && !urednik) document.documentElement.className += ' tecaj-zakljucano';
+    })();
+  </script>
+</head>
+
+<body>
+  <main class="page-content">
+    <div class="container container--wide">
+
+      <div class="lesson-head" id="lesson-head"></div>
+
+      <div class="lesson-body">
+
+        <!-- ============ TEORIJA ============ -->
+        <div>
+          <div class="panel">
+            <h2 class="panel__title">O čemu je ova lekcija</h2>
+            <p>
+              Sve što znamo o zvijezdama — osim masa — doznali smo iz njihove svjetlosti.
+              Ovo je predavanje o tome kako: kako iz boje pročitati temperaturu, iz temperature
+              luminozitet, iz linija sastav, a iz njihova pomaka brzinu.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Val i čestica</h3>
+            <div class="formula">
+              <span class="mvar">c</span> = <span class="mvar">λν</span> &nbsp;·&nbsp;
+              <span class="mvar">E</span> = <span class="mvar">hν</span> = <span class="mvar">hc</span>/<span
+                class="mvar">λ</span>
+              <small>h = 6,626 × 10⁻³⁴ J s; korisno: hc = 1240 eV nm</small>
+            </div>
+            <p>
+              Spektar ide od radiovalova (metri) preko infracrvenog, vidljivog (380–750 nm),
+              ultraljubičastog i rendgenskog do gama-zraka (pikometri). Atmosfera propušta samo
+              vidljivo, dio radio-područja i uske infracrvene prozore — <strong>zato UV, X i
+                gama astronomija postoje samo u svemiru</strong>.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Zračenje crnog tijela</h3>
+            <p>
+              Crno tijelo je idealizirani apsorber i emiter. Njegov spektar opisuje
+              <strong>Planckova krivulja</strong> — jedna krivulja za svaku temperaturu,
+              bez ijednog drugog parametra. Zvijezde su joj iznenađujuće blizu. Dvije
+              posljedice koje moramo znati:
+            </p>
+            <div class="formula">
+              <span class="mvar">λ</span><sub>max</sub> <span class="mvar">T</span> = 2,898 × 10⁻³ m K
+              <small>Wienov zakon pomaka — vruće je plavo, hladno je crveno</small>
+            </div>
+            <div class="formula">
+              <span class="mvar">F</span> = <span class="mvar">σT</span>⁴ &nbsp;·&nbsp;
+              <span class="mvar">L</span> = 4π<span class="mvar">R</span>²<span class="mvar">σT</span>⁴
+              <small>σ = 5,670 × 10⁻⁸ W m⁻² K⁻⁴; Stefan-Boltzmannov zakon</small>
+            </div>
+            <div class="formula">
+              <span class="mvar">L</span>/<span class="mvar">L</span><sub>☉</sub> =
+              (<span class="mvar">R</span>/<span class="mvar">R</span><sub>☉</sub>)²
+              (<span class="mvar">T</span>/<span class="mvar">T</span><sub>☉</sub>)⁴
+              <small>oblik bez konstanti — najkorisniji u zadatcima</small>
+            </div>
+            <p>
+              Zapazite eksponente: udvostručenje temperature daje <em>šesnaest</em> puta veći
+              tok. Zato je površinska temperatura najmoćniji jedan podatak o zvijezdi.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Kirchhoffovi zakoni</h3>
+            <ol>
+              <li><strong>Kontinuirani spektar</strong> daje gusto vruće tijelo (unutrašnjost
+                zvijezde).</li>
+              <li><strong>Emisijski spektar</strong> (svijetle linije) daje razrijeđen vrući plin
+                — emisijske maglice, korona.</li>
+              <li><strong>Apsorpcijski spektar</strong> (tamne linije) nastaje kad kontinuirano
+                zračenje prođe kroz hladniji razrijeđen plin — to su spektri zvijezda.</li>
+            </ol>
+            <p>
+              Linije postoje jer su energijske razine atoma diskretne. Za vodik:
+            </p>
+            <div class="formula">
+              <span class="mvar">E</span><sub>n</sub> = −13,6 / <span class="mvar">n</span>² eV
+              <small>prijelazi na n = 2 daju Balmerovu seriju u vidljivom području (Hα 656,3 nm)</small>
+            </div>
+            <p>
+              Iz spektra zvijezde čitamo: temperaturu (iz kontinuuma i iz odnosa jačine linija),
+              kemijski sastav, tlak i gustoću (iz širine linija), magnetsko polje (Zeemanov
+              efekt) i radijalnu brzinu.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Dopplerov efekt</h3>
+            <div class="formula">
+              Δ<span class="mvar">λ</span>/<span class="mvar">λ</span><sub>0</sub> =
+              <span class="mvar">v</span><sub>r</sub>/<span class="mvar">c</span>
+              <small>pomak prema crvenom znači udaljavanje; mjerimo samo radijalnu komponentu</small>
+            </div>
+            <p>
+              <span class="lvl lvl--d">DR</span> Za velike brzine treba relativistički oblik.
+              Osim gibanja cijele zvijezde, Doppler <strong>proširuje</strong> linije: toplinsko
+              gibanje atoma, rotacija zvijezde i turbulencija svi daju svoj doprinos — pa iz
+              širine linije čitamo brzinu vrtnje.
+            </p>
+          </div>
+
+          <div class="panel" style="margin-top:1.5rem">
+            <h2 class="panel__title">Ishodi</h2>
+            <ul>
+              <li>povezuje valnu duljinu, frekvenciju i energiju fotona;</li>
+              <li>iz Wienova zakona određuje temperaturu, a iz Stefan-Boltzmannova luminozitet;</li>
+              <li>tumači nastanak kontinuiranog, emisijskog i apsorpcijskog spektra;</li>
+              <li>računa radijalnu brzinu iz Dopplerova pomaka spektralne linije.</li>
+            </ul>
+
+            <h2 class="panel__title" style="margin-top:1.5rem">Zapamtite</h2>
+            <ul>
+              <li><span class="mvar">c</span> = <span class="mvar">λν</span>,
+                <span class="mvar">E</span> = <span class="mvar">hν</span> = <span class="mvar">hc</span>/<span
+                  class="mvar">λ</span></li>
+              <li><span class="mvar">λ</span><sub>max</sub><span class="mvar">T</span> = 2,898 × 10⁻³ m K</li>
+              <li><span class="mvar">F</span> = <span class="mvar">σT</span>⁴,
+                <span class="mvar">L</span> = 4π<span class="mvar">R</span>²<span class="mvar">σT</span>⁴</li>
+              <li>Kirchhoff: kontinuirani, emisijski, apsorpcijski</li>
+              <li>Δ<span class="mvar">λ</span>/<span class="mvar">λ</span><sub>0</sub> = <span
+                  class="mvar">v</span><sub>r</sub>/<span class="mvar">c</span></li>
+              <li><span class="mvar">hc</span> = 1240 eV nm,
+                <span class="mvar">E</span><sub>n</sub> = −13,6/<span class="mvar">n</span>² eV</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ============ INTERAKTIVNO ============ -->
+        <div>
+
+          <!-- ---------- 1 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 1</div>
+              <h3 class="demo__title">Planckova krivulja, Wien i Stefan-Boltzmann</h3>
+              <p class="demo__hint">
+                Mijenjajte temperaturu i gledajte kako se maksimum pomiče (Wien) i kako se
+                površina pod krivuljom naglo mijenja (Stefan-Boltzmann). Kvadratić desno pokazuje
+                boju koju bismo vidjeli.
+              </p>
+            </div>
+
+            <canvas id="c5a"></canvas>
+
+            <div class="controls controls--2">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Temperatura T</span><span class="ctrl__value" id="pl-t-out"></span></div>
+                <input type="range" id="pl-t" min="1000" max="40000" step="1" value="5778">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Polumjer R</span><span class="ctrl__value" id="pl-r-out"></span></div>
+                <input type="range" id="pl-r" min="-1.2" max="3" step="0.01" value="0">
+              </div>
+            </div>
+
+            <div class="btn-row" id="pl-zvijezde">
+              <button class="chip-btn" data-value="3500,0.44,M – Betelgeuse (hladna)">M</button>
+              <button class="chip-btn" data-value="4800,0.78,K – Arktur">K</button>
+              <button class="chip-btn active" data-value="5778,0,G – Sunce">G (Sunce)</button>
+              <button class="chip-btn" data-value="6600,1.2,F – Procyon">F</button>
+              <button class="chip-btn" data-value="9600,2.4,A – Vega">A</button>
+              <button class="chip-btn" data-value="18000,5.7,B – Rigel">B</button>
+              <button class="chip-btn" data-value="35000,10,O – vrlo vruća">O</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">λ<sub>max</sub></div>
+                <div class="readout__value" id="pl-lmax">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Područje maksimuma</div>
+                <div class="readout__value" id="pl-pod">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Tok F = σT⁴</div>
+                <div class="readout__value" id="pl-f">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Luminozitet</div>
+                <div class="readout__value" id="pl-l">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Energija fotona u λ<sub>max</sub></div>
+                <div class="readout__value" id="pl-e">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Boja</div>
+                <div class="readout__value"><span id="pl-boja"
+                    style="display:inline-block;width:2.2rem;height:1rem;border-radius:3px;border:1px solid rgba(255,255,255,.25);vertical-align:-2px"></span>
+                </div>
+              </div>
+            </div>
+            <div class="verdict" id="pl-info">—</div>
+          </div>
+
+          <!-- ---------- 2 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 2</div>
+              <h3 class="demo__title">Dopplerov pomak spektralnih linija</h3>
+              <p class="demo__hint">
+                Gornja traka je laboratorijski spektar, donja je izmjereni. Pomičite radijalnu
+                brzinu i gledajte kako cijeli uzorak linija putuje — uzorak se ne mijenja,
+                samo pomiče.
+              </p>
+            </div>
+
+            <canvas id="c5b"></canvas>
+
+            <div class="controls controls--2">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Radijalna brzina v<sub>r</sub></span>
+                  <span class="ctrl__value" id="d-v-out"></span>
+                </div>
+                <input type="range" id="d-v" min="-20000" max="20000" step="10" value="3000">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Širenje linija (T, rotacija)</span>
+                  <span class="ctrl__value" id="d-w-out"></span>
+                </div>
+                <input type="range" id="d-w" min="0.5" max="8" step="0.1" value="1.5">
+              </div>
+            </div>
+
+            <div class="btn-row" id="d-preseti">
+              <button class="chip-btn" data-value="-110">Sirius (približava se)</button>
+              <button class="chip-btn active" data-value="3000">tipična galaksija</button>
+              <button class="chip-btn" data-value="-301">Andromeda</button>
+              <button class="chip-btn" data-value="15000">daleka galaksija</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Pomak Hα (656,3 nm)</div>
+                <div class="readout__value" id="d-dl">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Izmjerena λ za Hα</div>
+                <div class="readout__value" id="d-lam">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Crveni pomak z</div>
+                <div class="readout__value" id="d-z">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">v u odnosu na c</div>
+                <div class="readout__value" id="d-bc">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="d-info">—</div>
+          </div>
+
+          <!-- ---------- 3 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 3</div>
+              <h3 class="demo__title">Kirchhoffova tri slučaja i energija fotona</h3>
+              <p class="demo__hint">
+                Odaberite geometriju izvora i gledajte koji spektar iz nje nastaje. Ispod je
+                pretvorba između valne duljine, frekvencije i energije.
+              </p>
+            </div>
+
+            <div class="btn-row" id="ki-mod">
+              <button class="chip-btn active" data-value="kont">Kontinuirani</button>
+              <button class="chip-btn" data-value="emis">Emisijski</button>
+              <button class="chip-btn" data-value="apso">Apsorpcijski</button>
+            </div>
+
+            <canvas id="c5c"></canvas>
+
+            <div class="controls">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Valna duljina λ</span><span class="ctrl__value" id="f-l-out"></span>
+                </div>
+                <input type="range" id="f-l" min="-1" max="7" step="0.01" value="2.8">
+              </div>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Valna duljina</div>
+                <div class="readout__value" id="f-lam">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Frekvencija</div>
+                <div class="readout__value" id="f-nu">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Energija</div>
+                <div class="readout__value" id="f-ev">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Područje spektra</div>
+                <div class="readout__value" id="f-pod">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="ki-info">—</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="lesson-nav" id="lesson-nav"></div>
+    </div>
+  </main>
+
+  <script src="js/tecaj.js?v=20260928"></script>
+  <script>
+    TECAJ.init({ lekcija: 5 });
+
+    var H = 6.62607015e-34, C = 299792458, KB = 1.380649e-23, SIG = 5.670374e-8;
+
+    /* =====================================================
+       PRIMJER 1 — Planckova krivulja
+       ===================================================== */
+    (function () {
+      var T = 5778, logR = 0, opis = 'G – Sunce';
+
+      /* Planckov spektralni tok po valnoj duljini, λ u metrima */
+      function planck(lam, Tt) {
+        var a = 2 * Math.PI * H * C * C / Math.pow(lam, 5);
+        var x = H * C / (lam * KB * Tt);
+        if (x > 700) return 0;
+        return a / (Math.exp(x) - 1);
+      }
+
+      var cv = TECAJ.canvas('c5a', 1.65, function (ctx, W, Ht) {
+        var bx = 58, by = 22, bw = W - 80, bh = Ht - 68;
+        /* raspon λ: 0 do 4 × λmax trenutne temperature, ali najmanje do 800 nm */
+        var lmax = 2.897771955e-3 / T;
+        var L1 = Math.max(lmax * 4.5, 900e-9);
+        var Fmax = planck(lmax, T);
+
+        function X(l) { return bx + bw * l / L1; }
+        function Y(f) { return by + bh * (1 - f / Fmax); }
+
+        /* vidljivo područje kao gradijent */
+        for (var nm = 380; nm <= 750; nm += 3) {
+          var x1 = X(nm * 1e-9), x2 = X((nm + 3) * 1e-9);
+          if (x2 < bx || x1 > bx + bw) continue;
+          ctx.fillStyle = TECAJ.lambdaColor(nm).replace('rgb', 'rgba').replace(')', ',.20)');
+          ctx.fillRect(x1, by, Math.max(1, x2 - x1), bh);
+        }
+
+        var tk = [], stepNm = L1 > 3e-6 ? 1000 : (L1 > 1.2e-6 ? 500 : 200);
+        for (var v = 0; v <= L1 * 1e9; v += stepNm) tk.push({ at: v * 1e-9, label: v });
+        TECAJ.axes(ctx, { l: bx, t: by, w: bw, h: bh }, {
+          x0: 0, x1: L1, y0: 0, y1: Fmax,
+          xTicks: tk,
+          yTicks: [{ at: 0, label: '0' }, { at: Fmax / 2, label: '½' }, { at: Fmax, label: '1' }],
+          xLabel: 'valna duljina (nm)', yLabel: 'relativni tok'
+        });
+
+        /* referentna krivulja Sunca */
+        if (Math.abs(T - 5778) > 200) {
+          ctx.strokeStyle = 'rgba(255,255,255,.22)'; ctx.lineWidth = 1.2;
+          ctx.setLineDash([4, 3]);
+          ctx.beginPath();
+          for (var i = 1; i <= 300; i++) {
+            var l = L1 * i / 300;
+            var y = Y(planck(l, 5778));
+            i === 1 ? ctx.moveTo(X(l), y) : ctx.lineTo(X(l), y);
+          }
+          ctx.stroke(); ctx.setLineDash([]);
+          TECAJ.tag(ctx, bx + bw - 6, by + 12, 'Sunce, 5778 K (ista skala)', 'rgba(255,255,255,.4)', 'right');
+        }
+
+        /* glavna krivulja + punjenje */
+        var boja = TECAJ.bbColor(T);
+        ctx.beginPath();
+        ctx.moveTo(X(0), Y(0));
+        for (var j = 1; j <= 400; j++) {
+          var lj = L1 * j / 400;
+          ctx.lineTo(X(lj), Y(planck(lj, T)));
+        }
+        ctx.lineTo(bx + bw, by + bh);
+        ctx.closePath();
+        ctx.fillStyle = boja.replace('rgb', 'rgba').replace(')', ',.16)');
+        ctx.fill();
+
+        ctx.strokeStyle = boja; ctx.lineWidth = 2.4;
+        ctx.beginPath();
+        for (var k = 1; k <= 400; k++) {
+          var lk = L1 * k / 400;
+          k === 1 ? ctx.moveTo(X(lk), Y(planck(lk, T))) : ctx.lineTo(X(lk), Y(planck(lk, T)));
+        }
+        ctx.stroke();
+
+        /* Wienov maksimum */
+        ctx.strokeStyle = 'rgba(251,191,36,.85)'; ctx.lineWidth = 1.4;
+        ctx.setLineDash([3, 3]);
+        ctx.beginPath(); ctx.moveTo(X(lmax), by + bh); ctx.lineTo(X(lmax), Y(Fmax)); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = '#fbbf24';
+        ctx.beginPath(); ctx.arc(X(lmax), Y(Fmax), 4.5, 0, 6.2832); ctx.fill();
+        TECAJ.tag(ctx, X(lmax) + 8, Y(Fmax) - 2,
+          'λmax = ' + TECAJ.num(lmax * 1e9, 0) + ' nm', 'rgba(251,191,36,.95)');
+
+        ctx.font = '600 11px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,.55)';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+        ctx.fillText('T = ' + TECAJ.num(T, 0) + ' K · ' + opis.toUpperCase(), bx, 6);
+      });
+
+      function podrucje(nm) {
+        if (nm < 10) return ['rendgen', '#f472b6'];
+        if (nm < 380) return ['ultraljubičasto', '#a78bfa'];
+        if (nm < 500) return ['plavo', '#60a5fa'];
+        if (nm < 570) return ['zeleno-žuto', '#a3e635'];
+        if (nm < 620) return ['žuto-narančasto', '#fbbf24'];
+        if (nm < 750) return ['crveno', '#f87171'];
+        if (nm < 1e6) return ['infracrveno', '#fb923c'];
+        return ['radio', '#38bdf8'];
+      }
+
+      function osvjezi() {
+        var lmax = 2.897771955e-3 / T;
+        var nm = lmax * 1e9;
+        var F = SIG * Math.pow(T, 4);
+        var R = Math.pow(10, logR);
+        var Lrel = R * R * Math.pow(T / 5778, 4);
+        var pod = podrucje(nm);
+
+        TECAJ.el('pl-lmax').innerHTML = nm > 1e4
+          ? TECAJ.auto(nm / 1000, 1) + '<span> µm</span>'
+          : TECAJ.num(nm, 0) + '<span> nm</span>';
+        TECAJ.el('pl-pod').innerHTML = '<span style="color:' + pod[1] + '">' + pod[0] + '</span>';
+        TECAJ.el('pl-f').innerHTML = TECAJ.sci(F, 2) + '<span> W/m²</span>';
+        TECAJ.el('pl-l').innerHTML = TECAJ.auto(Lrel, 2) + '<span> L☉</span>';
+        TECAJ.el('pl-e').innerHTML = TECAJ.num(1240 / nm, 3) + '<span> eV</span>';
+        TECAJ.el('pl-boja').style.background = TECAJ.bbColor(T);
+
+        var box = TECAJ.el('pl-info');
+        box.className = 'verdict';
+        box.innerHTML = '<strong>' + opis + '.</strong> Wien: λmax = 2,898·10⁻³/' +
+          TECAJ.num(T, 0) + ' = ' + TECAJ.num(nm, 0) + ' nm, dakle maksimum je u ' + pod[0] +
+          ' području. Stefan-Boltzmann daje tok ' + TECAJ.sci(F, 2) + ' W/m², što je ' +
+          TECAJ.auto(Math.pow(T / 5778, 4), 2) + ' puta više po kvadratnom metru nego u Sunca. ' +
+          'Uz polumjer ' + TECAJ.auto(R, 2) + ' R☉ ukupni luminozitet je ' +
+          TECAJ.auto(Lrel, 2) + ' L☉ — <em>presudno je da T ulazi na četvrtu, a R na drugu potenciju</em>.';
+        cv.draw();
+      }
+
+      TECAJ.slider('pl-t', {
+        format: function (v) { return TECAJ.num(v, 0) + ' K'; },
+        onInput: function (v) { T = v; opis = 'vaš odabir'; osvjezi(); }
+      });
+      TECAJ.slider('pl-r', {
+        format: function (v) { return TECAJ.auto(Math.pow(10, v), 2) + ' R☉'; },
+        onInput: function (v) { logR = v; osvjezi(); }
+      });
+      TECAJ.chips('pl-zvijezde', function (v) {
+        var d = v.split(',');
+        T = parseFloat(d[0]); logR = parseFloat(d[1]); opis = d[2];
+        TECAJ.el('pl-t').value = T; TECAJ.el('pl-t-out').textContent = TECAJ.num(T, 0) + ' K';
+        TECAJ.el('pl-r').value = logR;
+        TECAJ.el('pl-r-out').textContent = TECAJ.auto(Math.pow(10, logR), 2) + ' R☉';
+        osvjezi();
+      });
+
+      osvjezi();
+    })();
+
+
+    /* =====================================================
+       PRIMJER 2 — Dopplerov pomak
+       ===================================================== */
+    (function () {
+      var vr = 3000, sirina = 1.5;
+      /* [λ0 nm, jačina 0-1, oznaka] */
+      var LIN = [
+        [393.4, 0.9, 'Ca K'], [396.8, 0.8, 'Ca H'], [410.2, 0.5, 'Hδ'],
+        [434.0, 0.6, 'Hγ'], [486.1, 0.8, 'Hβ'], [516.7, 0.5, 'Mg b'],
+        [518.4, 0.5, ''], [589.0, 0.7, 'Na D'], [589.6, 0.6, ''],
+        [656.3, 1.0, 'Hα']
+      ];
+
+      var cv = TECAJ.canvas('c5b', 2.3, function (ctx, W, Ht) {
+        var x0 = 20, x1 = W - 20, L0 = 380, L1 = 700;
+        function X(nm) { return x0 + (x1 - x0) * (nm - L0) / (L1 - L0); }
+        var hTraka = Ht * 0.24;
+        var y1 = Ht * 0.10, y2 = Ht * 0.55;
+
+        function traka(yy, pomak, naslov) {
+          /* kontinuum u boji */
+          for (var nm = L0; nm <= L1; nm += 2) {
+            ctx.fillStyle = TECAJ.lambdaColor(nm);
+            ctx.fillRect(X(nm), yy, X(nm + 2) - X(nm) + 1, hTraka);
+          }
+          /* apsorpcijske linije */
+          for (var i = 0; i < LIN.length; i++) {
+            var lam = LIN[i][0] * (1 + pomak);
+            if (lam < L0 || lam > L1) continue;
+            var px = X(lam);
+            var w = sirina * (x1 - x0) / (L1 - L0) * 1.6;
+            var g = ctx.createLinearGradient(px - w, 0, px + w, 0);
+            g.addColorStop(0, 'rgba(0,0,0,0)');
+            g.addColorStop(0.5, 'rgba(0,0,0,' + (0.55 + 0.45 * LIN[i][1]).toFixed(2) + ')');
+            g.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = g;
+            ctx.fillRect(px - w, yy, w * 2, hTraka);
+          }
+          ctx.strokeStyle = 'rgba(255,255,255,.25)';
+          ctx.lineWidth = 1;
+          ctx.strokeRect(x0, yy, x1 - x0, hTraka);
+          ctx.font = '600 10px Inter, sans-serif';
+          ctx.fillStyle = 'rgba(255,255,255,.6)';
+          ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
+          ctx.fillText(naslov, x0, yy - 3);
+        }
+
+        traka(y1, 0, 'LABORATORIJSKI SPEKTAR (mirni izvor)');
+        traka(y2, vr / C * 1000, 'IZMJERENI SPEKTAR');
+
+        /* spojnice za Hα */
+        var la = 656.3, lb = 656.3 * (1 + vr / C * 1000);
+        if (lb > L0 && lb < L1) {
+          ctx.strokeStyle = 'rgba(251,191,36,.9)'; ctx.lineWidth = 1.4;
+          ctx.setLineDash([3, 3]);
+          ctx.beginPath();
+          ctx.moveTo(X(la), y1 + hTraka); ctx.lineTo(X(lb), y2);
+          ctx.stroke(); ctx.setLineDash([]);
+          ctx.fillStyle = 'rgba(251,191,36,.95)';
+          ctx.font = '600 10px Inter, sans-serif';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText('Hα', (X(la) + X(lb)) / 2, (y1 + hTraka + y2) / 2);
+        }
+
+        /* os valne duljine */
+        var ya = y2 + hTraka + 6;
+        ctx.strokeStyle = 'rgba(255,255,255,.25)';
+        ctx.beginPath(); ctx.moveTo(x0, ya); ctx.lineTo(x1, ya); ctx.stroke();
+        ctx.font = '10px Inter, sans-serif';
+        for (var t = 400; t <= 700; t += 50) {
+          ctx.strokeStyle = 'rgba(255,255,255,.2)';
+          ctx.beginPath(); ctx.moveTo(X(t), ya); ctx.lineTo(X(t), ya + 4); ctx.stroke();
+          ctx.fillStyle = 'rgba(255,255,255,.5)';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+          ctx.fillText(t, X(t), ya + 6);
+        }
+        ctx.fillStyle = 'rgba(255,255,255,.5)';
+        ctx.fillText('valna duljina (nm)', (x0 + x1) / 2, ya + 20);
+
+        /* oznake linija */
+        ctx.font = '9px Inter, sans-serif';
+        for (var i2 = 0; i2 < LIN.length; i2++) {
+          if (!LIN[i2][2]) continue;
+          ctx.fillStyle = 'rgba(255,255,255,.55)';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+          ctx.fillText(LIN[i2][2], X(LIN[i2][0]), y1 - 14);
+        }
+      });
+
+      function osvjezi() {
+        var beta = vr * 1000 / C;
+        var dl = 656.3 * beta;
+        TECAJ.el('d-dl').innerHTML = (dl > 0 ? '+' : '') + TECAJ.num(dl, 3) + '<span> nm</span>';
+        TECAJ.el('d-lam').innerHTML = TECAJ.num(656.3 + dl, 3) + '<span> nm</span>';
+        TECAJ.el('d-z').innerHTML = TECAJ.auto(beta, 5);
+        TECAJ.el('d-bc').innerHTML = TECAJ.num(Math.abs(beta) * 100, 2) + '<span> % c</span>';
+
+        var box = TECAJ.el('d-info');
+        if (vr > 0) {
+          box.className = 'verdict verdict--bad';
+          box.innerHTML = '<strong>Pomak prema crvenom.</strong> Izvor se udaljava brzinom ' +
+            TECAJ.num(vr, 0) + ' km/s, pa je svaka linija pomaknuta na veće valne duljine ' +
+            'za isti <em>relativni</em> iznos Δλ/λ = ' + TECAJ.auto(beta, 5) + '. ' +
+            'Hα se pomiče ' + TECAJ.num(dl, 2) + ' nm. ' +
+            (Math.abs(beta) > 0.03
+              ? 'Pri ovoj brzini klasična formula već griješi nekoliko posto — treba relativistički oblik.'
+              : 'Klasična formula je ovdje potpuno dovoljna.');
+        } else if (vr < 0) {
+          box.className = 'verdict verdict--ok';
+          box.innerHTML = '<strong>Pomak prema plavom.</strong> Izvor se približava brzinom ' +
+            TECAJ.num(-vr, 0) + ' km/s. Ključno je da se <em>uzorak</em> linija ne mijenja — ' +
+            'samo se cijeli pomiče. Zato ga uvijek prepoznamo, koliko god bio pomaknut.';
+        } else {
+          box.className = 'verdict';
+          box.innerHTML = 'Bez radijalnog gibanja nema pomaka. Zapamtite: Doppler mjeri ' +
+            '<strong>samo radijalnu komponentu</strong> brzine. Zvijezda koja se kreće poprečno ' +
+            'ne daje nikakav pomak, pa je za nju potrebno vlastito gibanje.';
+        }
+        cv.draw();
+      }
+
+      TECAJ.slider('d-v', {
+        format: function (v) { return (v > 0 ? '+' : '') + TECAJ.num(v, 0) + ' km/s'; },
+        onInput: function (v) { vr = v; osvjezi(); }
+      });
+      TECAJ.slider('d-w', {
+        format: function (v) { return TECAJ.num(v, 1) + ' nm'; },
+        onInput: function (v) { sirina = v; cv.draw(); }
+      });
+      TECAJ.chips('d-preseti', function (v) {
+        vr = parseFloat(v);
+        TECAJ.el('d-v').value = vr;
+        TECAJ.el('d-v-out').textContent = (vr > 0 ? '+' : '') + TECAJ.num(vr, 0) + ' km/s';
+        osvjezi();
+      });
+
+      osvjezi();
+    })();
+
+
+    /* =====================================================
+       PRIMJER 3 — Kirchhoff + foton
+       ===================================================== */
+    (function () {
+      var mod = 'kont', logL = 2.8;   /* log10(λ/nm) */
+
+      var cv = TECAJ.canvas('c5c', 2.0, function (ctx, W, Ht) {
+        var y0 = Ht * 0.08, hSh = Ht * 0.44;
+        /* --- lijevo: shema --- */
+        var sw = W * 0.44;
+        var cy = y0 + hSh * 0.5;
+
+        /* vruće gusto tijelo */
+        ctx.shadowColor = 'rgba(251,191,36,.8)'; ctx.shadowBlur = 20;
+        ctx.fillStyle = '#fbbf24';
+        ctx.beginPath(); ctx.arc(sw * 0.16, cy, 20, 0, 6.2832); ctx.fill();
+        ctx.shadowBlur = 0;
+        TECAJ.tag(ctx, sw * 0.16, cy + 32, 'vruće gusto tijelo', 'rgba(251,191,36,.75)', 'center');
+
+        /* oblak plina */
+        if (mod !== 'kont') {
+          ctx.fillStyle = mod === 'apso' ? 'rgba(120,160,255,.22)' : 'rgba(52,211,153,.22)';
+          ctx.beginPath(); ctx.ellipse(sw * 0.52, cy, 34, 24, 0, 0, 6.2832); ctx.fill();
+          ctx.strokeStyle = mod === 'apso' ? 'rgba(120,160,255,.6)' : 'rgba(52,211,153,.6)';
+          ctx.setLineDash([3, 3]);
+          ctx.beginPath(); ctx.ellipse(sw * 0.52, cy, 34, 24, 0, 0, 6.2832); ctx.stroke();
+          ctx.setLineDash([]);
+          TECAJ.tag(ctx, sw * 0.52, cy + 36, 'razrijeđen hladniji plin',
+            mod === 'apso' ? 'rgba(120,160,255,.8)' : 'rgba(52,211,153,.8)', 'center');
+        }
+
+        /* zrake */
+        ctx.strokeStyle = 'rgba(255,255,255,.35)'; ctx.lineWidth = 1.2;
+        if (mod === 'emis') {
+          /* gledamo plin sa strane */
+          ctx.beginPath();
+          ctx.moveTo(sw * 0.16 + 22, cy); ctx.lineTo(sw * 0.52 - 30, cy);
+          ctx.stroke();
+          ctx.strokeStyle = 'rgba(52,211,153,.7)';
+          ctx.beginPath();
+          ctx.moveTo(sw * 0.52, cy - 26); ctx.lineTo(sw * 0.52, y0 + 4);
+          ctx.lineTo(sw * 0.95, y0 + 4);
+          ctx.stroke();
+          TECAJ.tag(ctx, sw * 0.60, y0 + 16, 'gledamo sa strane', 'rgba(52,211,153,.8)');
+        } else {
+          ctx.beginPath();
+          ctx.moveTo(sw * 0.16 + 22, cy); ctx.lineTo(sw * 0.95, cy);
+          ctx.stroke();
+          /* strelica */
+          ctx.beginPath();
+          ctx.moveTo(sw * 0.95, cy); ctx.lineTo(sw * 0.95 - 7, cy - 4);
+          ctx.lineTo(sw * 0.95 - 7, cy + 4); ctx.closePath();
+          ctx.fillStyle = 'rgba(255,255,255,.5)'; ctx.fill();
+        }
+        TECAJ.tag(ctx, sw * 0.95, cy + (mod === 'emis' ? 0 : 16), 'do nas',
+          'rgba(255,255,255,.55)', 'right');
+
+        ctx.strokeStyle = 'rgba(255,255,255,.1)';
+        ctx.beginPath(); ctx.moveTo(sw, y0); ctx.lineTo(sw, y0 + hSh); ctx.stroke();
+
+        /* --- desno: nastali spektar --- */
+        var px0 = sw + 22, px1 = W - 18;
+        var ty = y0 + hSh * 0.28, th = hSh * 0.42;
+        var LIN = [410.2, 434.0, 486.1, 589.0, 656.3];
+        function XX(nm) { return px0 + (px1 - px0) * (nm - 380) / (700 - 380); }
+
+        if (mod === 'emis') {
+          ctx.fillStyle = '#05060b';
+          ctx.fillRect(px0, ty, px1 - px0, th);
+          for (var i = 0; i < LIN.length; i++) {
+            var g = ctx.createLinearGradient(XX(LIN[i]) - 5, 0, XX(LIN[i]) + 5, 0);
+            var col = TECAJ.lambdaColor(LIN[i]);
+            g.addColorStop(0, col.replace('rgb', 'rgba').replace(')', ',0)'));
+            g.addColorStop(0.5, col);
+            g.addColorStop(1, col.replace('rgb', 'rgba').replace(')', ',0)'));
+            ctx.fillStyle = g;
+            ctx.fillRect(XX(LIN[i]) - 5, ty, 10, th);
+          }
+        } else {
+          for (var nm = 380; nm <= 700; nm += 2) {
+            ctx.fillStyle = TECAJ.lambdaColor(nm);
+            ctx.fillRect(XX(nm), ty, XX(nm + 2) - XX(nm) + 1, th);
+          }
+          if (mod === 'apso') {
+            for (var j = 0; j < LIN.length; j++) {
+              var g2 = ctx.createLinearGradient(XX(LIN[j]) - 5, 0, XX(LIN[j]) + 5, 0);
+              g2.addColorStop(0, 'rgba(0,0,0,0)');
+              g2.addColorStop(0.5, 'rgba(0,0,0,.95)');
+              g2.addColorStop(1, 'rgba(0,0,0,0)');
+              ctx.fillStyle = g2;
+              ctx.fillRect(XX(LIN[j]) - 5, ty, 10, th);
+            }
+          }
+        }
+        ctx.strokeStyle = 'rgba(255,255,255,.25)';
+        ctx.strokeRect(px0, ty, px1 - px0, th);
+        ctx.font = '600 10px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,.6)';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
+        ctx.fillText(mod === 'kont' ? 'KONTINUIRANI SPEKTAR'
+          : mod === 'emis' ? 'EMISIJSKI SPEKTAR' : 'APSORPCIJSKI SPEKTAR', px0, ty - 4);
+
+        /* --- dolje: cijeli EM spektar s pokazivačem --- */
+        var ey = Ht * 0.74, ex0 = 26, ex1 = W - 26;
+        var A0 = -1, A1 = 7;   /* log10 nm */
+        function EX(l) { return ex0 + (ex1 - ex0) * (l - A0) / (A1 - A0); }
+        var POD = [[-1, 0.1, 'gama', '#f472b6'], [0.1, 1, 'X', '#c084fc'],
+        [1, 2.58, 'UV', '#a78bfa'], [2.58, 2.88, 'vid.', '#7dd3fc'],
+        [2.88, 5.5, 'IR', '#fb923c'], [5.5, 7, 'radio', '#38bdf8']];
+        for (var p = 0; p < POD.length; p++) {
+          ctx.fillStyle = POD[p][3].replace('#', 'rgba(') === POD[p][3] ? POD[p][3] : POD[p][3];
+          ctx.globalAlpha = 0.55;
+          ctx.fillRect(EX(POD[p][0]), ey, EX(POD[p][1]) - EX(POD[p][0]), 14);
+          ctx.globalAlpha = 1;
+          ctx.font = '9px Inter, sans-serif';
+          ctx.fillStyle = 'rgba(255,255,255,.75)';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          if (EX(POD[p][1]) - EX(POD[p][0]) > 22) {
+            ctx.fillText(POD[p][2], (EX(POD[p][0]) + EX(POD[p][1])) / 2, ey + 7);
+          }
+        }
+        ctx.font = '9px Inter, sans-serif';
+        for (var a = -1; a <= 7; a++) {
+          ctx.fillStyle = 'rgba(255,255,255,.45)';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+          ctx.fillText('10' + TECAJ.sup(a) + ' nm', EX(a), ey + 18);
+        }
+        /* pokazivač */
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(EX(logL), ey - 8); ctx.lineTo(EX(logL), ey + 16); ctx.stroke();
+        ctx.fillStyle = '#fbbf24';
+        ctx.beginPath();
+        ctx.moveTo(EX(logL), ey - 8); ctx.lineTo(EX(logL) - 5, ey - 15);
+        ctx.lineTo(EX(logL) + 5, ey - 15); ctx.closePath(); ctx.fill();
+      });
+
+      function osvjezi() {
+        var nm = Math.pow(10, logL);
+        var lam = nm * 1e-9;
+        var nu = C / lam;
+        var eV = 1240 / nm;
+        var pod;
+        if (nm < 0.1) pod = ['gama-zračenje', '#f472b6'];
+        else if (nm < 10) pod = ['rendgensko', '#c084fc'];
+        else if (nm < 380) pod = ['ultraljubičasto', '#a78bfa'];
+        else if (nm < 750) pod = ['vidljivo', '#7dd3fc'];
+        else if (nm < 3e5) pod = ['infracrveno', '#fb923c'];
+        else pod = ['radio', '#38bdf8'];
+
+        TECAJ.el('f-lam').innerHTML = nm >= 1e6 ? TECAJ.auto(nm / 1e6, 2) + '<span> mm</span>'
+          : nm >= 1000 ? TECAJ.auto(nm / 1000, 2) + '<span> µm</span>'
+            : TECAJ.auto(nm, 3) + '<span> nm</span>';
+        TECAJ.el('f-nu').innerHTML = TECAJ.sci(nu, 2) + '<span> Hz</span>';
+        TECAJ.el('f-ev').innerHTML = eV >= 1000 ? TECAJ.auto(eV / 1000, 2) + '<span> keV</span>'
+          : TECAJ.auto(eV, 3) + '<span> eV</span>';
+        TECAJ.el('f-pod').innerHTML = '<span style="color:' + pod[1] + '">' + pod[0] + '</span>';
+
+        var box = TECAJ.el('ki-info');
+        box.className = 'verdict';
+        var txt = {
+          kont: '<strong>Prvi Kirchhoffov zakon.</strong> Gusto vruće tijelo daje ' +
+            'neprekinut spektar svih valnih duljina, s oblikom koji određuje samo temperatura. ' +
+            'Takvu svjetlost proizvodi unutrašnjost zvijezde — i zato joj možemo mjeriti temperaturu.',
+          emis: '<strong>Drugi Kirchhoffov zakon.</strong> Razrijeđen vrući plin gledan ' +
+            'sa strane daje samo svijetle linije, na valnim duljinama vlastitih prijelaza. ' +
+            'Tako svijetle emisijske maglice i Sunčeva korona tijekom pomrčine.',
+          apso: '<strong>Treći Kirchhoffov zakon.</strong> Kad kontinuirano zračenje prođe kroz ' +
+            'hladniji razrijeđen plin, na istim tim valnim duljinama nastaju tamne linije. ' +
+            'To je spektar svake zvijezde: kontinuum iz dubine, linije iz hladnije atmosfere.'
+        }[mod];
+        box.innerHTML = txt + ' <br><br>Odabrani foton: λ = ' + TECAJ.auto(nm, 3) + ' nm daje E = ' +
+          'hc/λ = 1240/' + TECAJ.auto(nm, 3) + ' = ' + TECAJ.auto(eV, 3) + ' eV. ' +
+          (eV > 13.6
+            ? 'To je više od 13,6 eV, pa taj foton može <strong>ionizirati vodik</strong>.'
+            : 'To je manje od 13,6 eV, pa taj foton ne može ionizirati vodik iz osnovnog stanja.');
+        cv.draw();
+      }
+
+      TECAJ.chips('ki-mod', function (v) { mod = v; osvjezi(); });
+      TECAJ.slider('f-l', {
+        format: function (v) {
+          var nm = Math.pow(10, v);
+          return nm >= 1000 ? TECAJ.auto(nm / 1000, 2) + ' µm' : TECAJ.auto(nm, 3) + ' nm';
+        },
+        onInput: function (v) { logL = v; osvjezi(); }
+      });
+
+      osvjezi();
+    })();
+  </script>
+</body>
+
+</html>

@@ -87,8 +87,8 @@
           <dl class="facts">${orbRows}</dl>
 
           <div class="links">
-            <a href="${a.jpl_sbdb_url}" target="_blank" rel="noopener">JPL Small-Body DB ↗</a>
-            <a class="secondary" href="${a.wikipedia_url}" target="_blank" rel="noopener">Wikipedia ↗</a>
+            <a href="${a.jpl_sbdb_url}" target="_blank" rel="noopener">JPL Small-Body DB</a>
+            <a class="secondary" href="${a.wikipedia_url}" target="_blank" rel="noopener">Wikipedia</a>
           </div>
         </div>
       </div>`;

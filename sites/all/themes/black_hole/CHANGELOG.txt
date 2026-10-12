@@ -1,0 +1,36 @@
+CHANGELOG - Black Hole for Drupal 7
+
+Black Hole (Oct 22, 2013)
+-------------------------
+  Bug fixes:
+    - CSS fixes;
+
+  New features:
+    o Possibility to change "Submitted by" display on all nodes;
+    o Rebuild theme registry on every page, during theme development;
+
+Black Hole (Jun 27, 2013)
+-------------------------
+  Bug fixes:
+    o #537974: Collection of layout issues
+
+Black Hole (Mar 26, 2013)
+----------------------
+  Security update and bug fixes:
+    o Notice: Undefined variable: themed_regions in _preprocess_block()
+    o hoverIntent r6 update
+
+Black Hole (Feb 24, 2013)
+-------------------------
+  Added a proper RTL header
+
+Black Hole (Feb 21, 2013)
+-------------------------
+  Bug fixes:
+    o #1906514: Polls colors are not contrastant
+    - Page title of internal pages has wrong dimmensions
+
+Black Hole (Jan 22, 2013)
+-------------------------
+Development snapshot from branch: 7.x-1.x
+

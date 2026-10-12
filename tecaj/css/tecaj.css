@@ -1,0 +1,1680 @@
+/* =========================================
+   Tečaj astronomije — Pulska Zvjezdarnica
+   Samostojeći stilovi, usklađeni s css/modern.css
+   glavne stranice (ADIP dark + glassmorphism).
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* === Varijable (identične glavnoj stranici) === */
+:root {
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #12121a;
+    --bg-card: rgba(20, 20, 35, 0.7);
+    --bg-glass: rgba(255, 255, 255, 0.05);
+    --border-glass: rgba(255, 255, 255, 0.1);
+
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0b0;
+    --text-muted: #606075;
+
+    --accent-primary: #00d4ff;
+    --accent-secondary: #7c3aed;
+    --accent-gradient: var(--accent-primary);
+
+    --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 40px rgba(0, 212, 255, 0.15);
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 32px;
+
+    --transition-fast: 0.2s ease;
+    --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* Razine natjecanja */
+    --lvl-skolska: #34d399;
+    --lvl-zupanijska: #fbbf24;
+    --lvl-drzavna: #f472b6;
+}
+
+/* === Osnovni reset === */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Sloj s pozadinskom slikom glavne stranice (uz gradijentnu zamjenu
+   ako slika nije dostupna). */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        url('../../background.jpg') center center / cover no-repeat fixed,
+        #0a0a0f;
+    filter: blur(8px);
+    transform: scale(1.05);
+    z-index: -2;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 15, 0.85);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* === Tipografija === */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+h2 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+h3 {
+    font-size: clamp(1.15rem, 3vw, 1.6rem);
+}
+
+a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+a:hover {
+    color: var(--text-primary);
+}
+
+/* === Header === */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 0.5rem 2rem;
+    background: rgba(10, 10, 15, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-glass);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header__logo img {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.header__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    white-space: nowrap;
+}
+
+.header__subtitle {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+/* === Navigacija (sidebar) === */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border-glass);
+    z-index: 1500;
+    transform: translateX(-100%);
+    transition: var(--transition-smooth);
+    padding: 5rem 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    overflow-y: auto;
+}
+
+.nav.active {
+    transform: translateX(0);
+}
+
+.nav__link {
+    padding: 0.85rem 1.25rem;
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.nav__link:hover,
+.nav__link.active {
+    background: var(--bg-glass);
+    color: var(--text-primary);
+}
+
+.nav__link.active {
+    border-left: 3px solid var(--accent-primary);
+    background: rgba(0, 212, 255, 0.1);
+}
+
+.nav__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    padding: 0.5rem;
+}
+
+.nav__close:hover {
+    color: var(--text-primary);
+}
+
+.nav__spacer {
+    flex: 1;
+}
+
+.nav__heading {
+    margin: 1rem 0 0.25rem;
+    padding: 0 1.25rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1400;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-smooth);
+}
+
+.nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* === Hamburger === */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1100;
+    position: relative;
+    border: none;
+    background: none;
+}
+
+.menu-toggle span {
+    width: 24px;
+    height: 2px;
+    background: var(--accent-primary);
+    border-radius: 2px;
+    transition: var(--transition-fast);
+}
+
+/* === Gumbi === */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    font-size: 0.95rem;
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition-smooth);
+    text-align: center;
+}
+
+.btn--primary {
+    background: var(--accent-primary);
+    color: #000;
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+}
+
+.btn--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+    color: #000;
+}
+
+.btn--secondary {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    color: var(--text-primary);
+}
+
+.btn--secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.btn--small {
+    padding: 0.55rem 1.1rem;
+    font-size: 0.85rem;
+}
+
+/* === Padajuci izbornik (npr. udzbenik po razredima) === */
+.dropdown {
+    position: relative;
+    display: inline-flex;
+}
+
+.dropdown__toggle {
+    /* nasljeduje .btn/.btn--secondary, samo dodaje strelicu */
+    gap: 0.6rem;
+}
+
+.dropdown__strelica {
+    font-size: 0.8em;
+    line-height: 1;
+    color: var(--accent-primary);
+    transition: var(--transition-fast);
+}
+
+.dropdown.otvoren .dropdown__strelica {
+    transform: rotate(180deg);
+}
+
+.dropdown__menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 50%;
+    z-index: 60;
+    min-width: 15rem;
+    padding: 0.5rem;
+    /* gotovo neprozirno: izbornik lebdi preko gumba i kartica lekcija,
+       pa tekst ispod ne smije prosijavati kroz njega */
+    background: rgba(14, 14, 24, 0.985);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    text-align: left;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -0.35rem);
+    transition: opacity var(--transition-fast), transform var(--transition-fast), visibility var(--transition-fast);
+}
+
+.dropdown.otvoren .dropdown__menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+}
+
+.dropdown__naslov {
+    margin: 0.35rem 0.75rem 0.3rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.dropdown__naslov+.dropdown__naslov,
+.dropdown__item+.dropdown__naslov {
+    margin-top: 0.6rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--border-glass);
+}
+
+.dropdown__item {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: var(--transition-fast);
+}
+
+.dropdown__item:hover,
+.dropdown__item:focus-visible {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+    outline: none;
+}
+
+@media (max-width: 480px) {
+    .dropdown {
+        display: flex;
+        width: 100%;
+    }
+
+    .dropdown__toggle {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .dropdown__menu {
+        min-width: 0;
+        width: 100%;
+    }
+}
+
+/* === Layout === */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.container--wide {
+    max-width: 1400px;
+}
+
+.page-content {
+    padding-top: 100px;
+    min-height: 100vh;
+    padding-bottom: 4rem;
+}
+
+.section__header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section__title {
+    margin-bottom: 0.5rem;
+}
+
+.section__subtitle {
+    color: var(--text-secondary);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.text-gradient {
+    color: var(--accent-primary);
+}
+
+.glass-card {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+}
+
+/* === Footer === */
+.footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-glass);
+    padding: 3rem 5%;
+    text-align: center;
+}
+
+.footer__contact {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.footer__contact a {
+    color: var(--accent-primary);
+}
+
+/* === Animacije === */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-in {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.animate-delay-1 {
+    animation-delay: 0.1s;
+}
+
+.animate-delay-2 {
+    animation-delay: 0.2s;
+}
+
+.animate-delay-3 {
+    animation-delay: 0.3s;
+}
+
+/* =========================================
+   Specifično za tečaj
+   ========================================= */
+
+/* --- Naslovna tečaja: hero --- */
+.course-hero {
+    padding: 7rem 5% 3rem;
+    text-align: center;
+}
+
+.course-hero__badge {
+    display: inline-block;
+    padding: 0.45rem 1.1rem;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    color: var(--accent-primary);
+    margin-bottom: 1.25rem;
+}
+
+.course-hero__lead {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 780px;
+    margin: 1.25rem auto 2rem;
+}
+
+.course-hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.meta-chip {
+    padding: 0.4rem 0.9rem;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* --- Legenda razina --- */
+.levels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.level {
+    padding: 1rem 1.15rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--lvl);
+}
+
+.level__name {
+    font-weight: 600;
+    color: var(--lvl);
+    margin-bottom: 0.2rem;
+    font-size: 0.95rem;
+}
+
+.level__desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.level--s {
+    --lvl: var(--lvl-skolska);
+}
+
+.level--z {
+    --lvl: var(--lvl-zupanijska);
+}
+
+.level--d {
+    --lvl: var(--lvl-drzavna);
+}
+
+/* --- Mreža lekcija --- */
+.lesson-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.lesson-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    transition: var(--transition-smooth);
+    color: inherit;
+    height: 100%;
+}
+
+.lesson-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-glow);
+    color: inherit;
+}
+
+.lesson-card--soon {
+    opacity: 0.55;
+    pointer-events: none;
+    border-style: dashed;
+}
+
+.lesson-card__top {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 0.9rem;
+}
+
+.lesson-card__num {
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-sm);
+    background: rgba(0, 212, 255, 0.12);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    color: var(--accent-primary);
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.lesson-card__title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.lesson-card__subtitle {
+    font-size: 0.8rem;
+    color: var(--accent-primary);
+    margin-top: 0.15rem;
+}
+
+.lesson-card__desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    flex: 1;
+}
+
+.lesson-card__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 1.1rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--border-glass);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.lesson-card__cta {
+    color: var(--accent-primary);
+    font-weight: 500;
+}
+
+.tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.85rem;
+}
+
+.tag {
+    font-size: 0.72rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-glass);
+    color: var(--text-secondary);
+}
+
+/* --- Zaglavlje lekcije --- */
+.lesson-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1.5rem;
+    justify-content: space-between;
+    padding: 1.5rem 0 2rem;
+}
+
+.lesson-head__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-primary);
+    margin-bottom: 0.6rem;
+}
+
+.lesson-head__title {
+    font-size: clamp(1.7rem, 4.5vw, 2.8rem);
+    margin-bottom: 0.4rem;
+}
+
+.lesson-head__subtitle {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 65ch;
+}
+
+.lesson-head__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: stretch;
+    min-width: 220px;
+}
+
+/* --- Sadržaj lekcije: dvije kolone --- */
+.lesson-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+}
+
+@media (max-width: 1000px) {
+    .lesson-body {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+}
+
+.panel--sticky {
+    position: sticky;
+    top: 90px;
+}
+
+.panel__title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.panel p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.panel ul,
+.panel ol {
+    color: var(--text-secondary);
+    margin: 0 0 1rem 1.25rem;
+}
+
+.panel li {
+    margin-bottom: 0.4rem;
+}
+
+.panel strong {
+    color: var(--text-primary);
+}
+
+/* --- Tekstualni blokovi --- */
+.callout {
+    padding: 1rem 1.15rem;
+    border-radius: var(--radius-md);
+    background: rgba(0, 212, 255, 0.07);
+    border: 1px solid rgba(0, 212, 255, 0.25);
+    margin: 1.25rem 0;
+}
+
+.callout--warn {
+    background: rgba(244, 114, 182, 0.08);
+    border-color: rgba(244, 114, 182, 0.3);
+}
+
+.callout__title {
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.callout p:last-child {
+    margin-bottom: 0;
+}
+
+/* --- Formule (bez vanjskih biblioteka) --- */
+.formula {
+    display: block;
+    font-family: 'Cambria Math', 'Latin Modern Math', Georgia, 'Times New Roman', serif;
+    font-size: 1.12rem;
+    text-align: center;
+    padding: 0.85rem 1rem;
+    margin: 1rem 0;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    overflow-x: auto;
+}
+
+.formula small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 0.35rem;
+}
+
+.mvar {
+    font-family: 'Cambria Math', Georgia, serif;
+    font-style: italic;
+    color: var(--accent-primary);
+}
+
+/* --- Oznake razina u tekstu --- */
+.lvl {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 0.1rem 0.45rem;
+    border-radius: 4px;
+    vertical-align: 0.1em;
+    margin-right: 0.35rem;
+    color: #08080c;
+}
+
+.lvl--s {
+    background: var(--lvl-skolska);
+}
+
+.lvl--z {
+    background: var(--lvl-zupanijska);
+}
+
+.lvl--d {
+    background: var(--lvl-drzavna);
+}
+
+/* --- Interaktivni modul --- */
+.demo {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.demo__head {
+    margin-bottom: 1rem;
+}
+
+.demo__kicker {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-secondary);
+    font-weight: 600;
+}
+
+.demo__title {
+    font-size: 1.15rem;
+    margin: 0.2rem 0 0.35rem;
+}
+
+.demo__hint {
+    font-size: 0.86rem;
+    color: var(--text-muted);
+}
+
+.demo canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #05060b;
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    touch-action: none;
+}
+
+/* --- Kontrole --- */
+.controls {
+    display: grid;
+    gap: 0.85rem;
+    margin: 1rem 0;
+}
+
+.controls--2 {
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+
+.controls--3 {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.ctrl {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.ctrl__label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+.ctrl__value {
+    font-variant-numeric: tabular-nums;
+    color: var(--accent-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.15);
+    outline: none;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    cursor: pointer;
+}
+
+input[type="number"],
+input[type="text"],
+input[type="date"],
+input[type="time"],
+select {
+    width: 100%;
+    padding: 0.55rem 0.7rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.92rem;
+    transition: var(--transition-fast);
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.12);
+}
+
+select option {
+    background-color: #12121a;
+    color: #ffffff;
+}
+
+.btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.75rem 0;
+}
+
+.chip-btn {
+    padding: 0.4rem 0.85rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    border-radius: 100px;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.chip-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.chip-btn.active {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: #05060b;
+    font-weight: 600;
+}
+
+/* --- Ispis rezultata --- */
+.readout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.readout__item {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    padding: 0.7rem 0.8rem;
+}
+
+/* Bez uppercase transformacije: oznake sadrže fizikalne simbole u kojima
+   je razlika velikog i malog slova bitna (m i M, h i H, r i R, v i V). */
+.readout__label {
+    font-size: 0.73rem;
+    color: var(--text-muted);
+    letter-spacing: 0.03em;
+    margin-bottom: 0.2rem;
+    line-height: 1.35;
+}
+
+.readout__value {
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-primary);
+    line-height: 1.25;
+}
+
+.readout__value span {
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+.verdict {
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.92rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid var(--accent-primary);
+    color: var(--text-secondary);
+}
+
+.verdict strong {
+    color: var(--text-primary);
+}
+
+.verdict--ok {
+    border-left-color: var(--lvl-skolska);
+}
+
+.verdict--warn {
+    border-left-color: var(--lvl-zupanijska);
+}
+
+.verdict--bad {
+    border-left-color: var(--lvl-drzavna);
+}
+
+/* --- Tablice --- */
+.data-table-wrap {
+    overflow-x: auto;
+    margin-top: 1rem;
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.data-table--compact {
+    font-size: 0.78rem;
+}
+
+.data-table--compact th,
+.data-table--compact td {
+    padding: 0.42rem 0.5rem;
+}
+
+.data-table th,
+.data-table td {
+    padding: 0.55rem 0.7rem;
+    text-align: right;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    white-space: nowrap;
+}
+
+.data-table th {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.78rem;
+    cursor: pointer;
+    user-select: none;
+    position: sticky;
+    top: 0;
+}
+
+.data-table th:hover {
+    color: var(--accent-primary);
+}
+
+.data-table th.sorted::after {
+    content: ' ▾';
+    color: var(--accent-primary);
+}
+
+.data-table th.sorted.asc::after {
+    content: ' ▴';
+}
+
+.data-table td:first-child,
+.data-table th:first-child {
+    text-align: left;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.data-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.data-table tr.is-giant td:first-child {
+    color: var(--accent-secondary);
+}
+
+/* --- Prev / next --- */
+.lesson-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-top: 2.5rem;
+}
+
+.lesson-nav__link {
+    flex: 1 1 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 1rem 1.25rem;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    transition: var(--transition-fast);
+    color: var(--text-primary);
+}
+
+.lesson-nav__link:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: var(--accent-primary);
+    color: var(--text-primary);
+}
+
+.lesson-nav__link--next {
+    text-align: right;
+}
+
+.lesson-nav__dir {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.lesson-nav__name {
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.lesson-nav__link--disabled {
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+/* --- Legenda grafa --- */
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.legend__item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.legend__swatch {
+    width: 14px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--sw, var(--accent-primary));
+}
+
+.legend__swatch--dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+
+/* --- Placeholder stranice --- */
+.soon-box {
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+.soon-box__icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* --- Responzivno --- */
+@media (max-width: 640px) {
+    .header {
+        padding: 0.5rem 1rem;
+    }
+
+    .header__subtitle {
+        display: none;
+    }
+
+    .panel,
+    .demo {
+        padding: 1.15rem;
+    }
+
+    .lesson-head__actions {
+        min-width: 100%;
+    }
+
+    .course-hero {
+        padding-top: 6rem;
+    }
+}
+
+@media print {
+
+    .header,
+    .nav,
+    .nav-overlay,
+    .lesson-nav,
+    .footer {
+        display: none;
+    }
+
+    body::before,
+    body::after {
+        display: none;
+    }
+}
+
+/* =========================================
+   Pristup: PIN vrata, urednički način
+   ========================================= */
+
+/* Dok PIN nije unesen, sadržaj se ne prikazuje.
+   Klasu postavlja mali skript u <head> svake stranice, pa nema bljeska. */
+html.tecaj-zakljucano body>main,
+html.tecaj-zakljucano body>.header,
+html.tecaj-zakljucano body>.footer,
+html.tecaj-zakljucano body>.nav-overlay {
+    display: none !important;
+}
+
+.pin-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.25rem;
+    background: rgba(6, 6, 12, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: opacity 0.3s ease;
+}
+
+.pin-gate--off {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.pin-box {
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem 2rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.pin-ikona {
+    font-size: 2.4rem;
+    margin-bottom: 0.75rem;
+}
+
+.pin-naslov {
+    font-size: 1.7rem;
+    margin-bottom: 0.75rem;
+}
+
+.pin-tekst {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.pin-unos {
+    width: 100%;
+    margin-bottom: 0.75rem;
+    text-align: center;
+    font-size: 1.5rem;
+    letter-spacing: 0.35em;
+    padding: 0.8rem 0.6rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.pin-greska {
+    min-height: 1.3em;
+    margin-bottom: 0.75rem;
+    font-size: 0.88rem;
+    color: var(--lvl-drzavna);
+}
+
+.pin-alt {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1.25rem;
+}
+
+.pin-nota {
+    margin-top: 1.25rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+@keyframes pinTrese {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-7px);
+    }
+
+    40% {
+        transform: translateX(7px);
+    }
+
+    60% {
+        transform: translateX(-4px);
+    }
+
+    80% {
+        transform: translateX(4px);
+    }
+}
+
+.pin-trese {
+    animation: pinTrese 0.32s ease;
+}
+
+/* --- Urednička ploča --- */
+.urednik {
+    border-color: rgba(251, 191, 36, 0.35);
+    background: var(--bg-card);
+    box-shadow: inset 0 0 0 100vmax rgba(251, 191, 36, 0.05);
+}
+
+.vid-popis {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.4rem;
+}
+
+.vid-red {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.5rem 0.7rem;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-glass);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.vid-red:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.vid-red--off {
+    opacity: 0.5;
+}
+
+.vid-broj {
+    flex: 0 0 1.6rem;
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+.vid-ime {
+    flex: 1;
+    font-size: 0.85rem;
+    line-height: 1.3;
+}
+
+/* Prekidač */
+.prekidac {
+    flex: 0 0 auto;
+    position: relative;
+    width: 38px;
+    height: 21px;
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.14);
+    transition: var(--transition-fast);
+}
+
+.prekidac--on {
+    background: var(--lvl-skolska);
+}
+
+.prekidac input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.prekidac__kvacica {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #fff;
+    transition: var(--transition-fast);
+    pointer-events: none;
+}
+
+.prekidac--on .prekidac__kvacica {
+    transform: translateX(17px);
+}
+
+/* Oznaka na kartici skrivene lekcije */
+.lesson-card {
+    position: relative;
+}
+
+.lesson-card--skrivena {
+    border-style: dashed;
+    border-color: rgba(251, 191, 36, 0.45);
+}
+
+.card-znak {
+    position: absolute;
+    top: 0.7rem;
+    right: 0.7rem;
+    padding: 0.12rem 0.5rem;
+    border-radius: 100px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    background: var(--lvl-zupanijska);
+    color: #08080c;
+}
+
+/* Diskretna traka koja podsjeća da je urednički način uključen */
+body.urednik-aktivan .header {
+    border-bottom-color: rgba(251, 191, 36, 0.45);
+    box-shadow: inset 0 -2px 0 rgba(251, 191, 36, 0.45);
+}
+
+/* =========================================
+   Modal za prijavu i obrasci
+   (isti izgled kao prijava na glavnoj stranici)
+   ========================================= */
+
+.nav__login {
+    margin-top: 1rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    /* Iznad PIN zaslona (3000), da „Prijava urednika“ s njega bude vidljiva */
+    z-index: 3500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.25rem;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-smooth);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    width: 100%;
+    max-width: 430px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-xl);
+    padding: 2.25rem 2rem;
+    box-shadow: var(--shadow-lg);
+    transform: scale(0.92);
+    transition: var(--transition-smooth);
+}
+
+.modal-overlay.active .modal {
+    transform: scale(1);
+}
+
+.modal__header {
+    text-align: center;
+    margin-bottom: 1.75rem;
+}
+
+.modal__title {
+    font-size: 1.4rem;
+    margin-bottom: 0.4rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition-fast);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.12);
+}
+
+/* Poruka o stanju zapisa u uredničkoj ploči */
+.vid-stanje {
+    margin-top: 1rem;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    min-height: 1.3em;
+}
+
+.vid-stanje--radi {
+    color: var(--text-secondary);
+}
+
+.vid-stanje--ok {
+    color: var(--lvl-skolska);
+}
+
+.vid-stanje--bad {
+    color: var(--lvl-drzavna);
+    padding: 0.6rem 0.8rem;
+    border-radius: var(--radius-sm);
+    background: rgba(244, 114, 182, 0.1);
+    border: 1px solid rgba(244, 114, 182, 0.3);
+}
+
+/* Gumbi u heru naslovne: jedan pored drugog, u sredini, lome se na mobilnom */
+.hero-akcije {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    /* .animate-in ostavlja transform (fill-mode: forwards), pa ovaj red tvori
+       vlastiti stacking context — bez z-index-a padajuci izbornik unutra
+       ostaje ispod kartica lekcija koje dolaze kasnije u dokumentu. */
+    position: relative;
+    z-index: 30;
+}

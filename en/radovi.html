@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Papers | Pula Observatory</title>
     <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
-    <link rel="stylesheet" href="../css/modern.css">
+    <link rel="stylesheet" href="../css/modern.css?v=20260928">
     <style>
         /* Specific styles for upload form */
         .admin-panel {
@@ -60,15 +60,15 @@
 
         <nav class="nav" id="main-nav">
             <button class="nav__close" id="nav-close">✕</button>
-            <a href="index.html" class="nav__link">🏠 Home</a>
-            <a href="aktivnosti.html" class="nav__link">📅 Activities</a>
-            <a href="galerija-slika.html" class="nav__link">🖼️ Gallery</a>
-            <a href="povijest-zvjezdarnice.html" class="nav__link">📜 History</a>
-            <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Visit Us</a>
-            <a href="radovi.html" class="nav__link active">📚 Papers</a>
-            <a href="servisi.html" class="nav__link">⚙️ Services</a>
-            <a href="downloads.html" class="nav__link">⬇️ Downloads</a>
-            <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ About Us</a>
+            <a href="index.html" class="nav__link">Home</a>
+            <a href="aktivnosti.html" class="nav__link">Activities</a>
+            <a href="galerija-slika.html" class="nav__link">Gallery</a>
+            <a href="povijest-zvjezdarnice.html" class="nav__link">History</a>
+            <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">Visit Us</a>
+            <a href="radovi.html" class="nav__link active">Papers</a>
+            <a href="servisi.html" class="nav__link">Services</a>
+            <a href="downloads.html" class="nav__link">Downloads</a>
+            <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">About Us</a>
             <div class="nav__spacer"></div>
             <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Login</button>
         </nav>
@@ -200,10 +200,14 @@
 
                         <!-- Author Filter -->
                         <div class="filter-group">
-                            <label>Authors</label>
+                            <label>Autori</label>
                             <div class="checkbox-group">
                                 <div><input type="checkbox" class="filter-author" value="D. Šegon"> D. Šegon</div>
+                                <div><input type="checkbox" class="filter-author" value="M. Šegon"> M. Šegon</div>
                                 <div><input type="checkbox" class="filter-author" value="J. Palisa"> J. Palisa</div>
+                                <div><input type="checkbox" class="filter-author" value="A. Perkov"> A. Perkov</div>
+                                <div><input type="checkbox" class="filter-author" value="I. Vrsaljko"> I. Vrsaljko</div>
+                                <div><input type="checkbox" class="filter-author" value="S. Baressi Šegota"> S. Baressi Šegota</div>
                             </div>
                         </div>
 
@@ -216,7 +220,7 @@
                         <!-- Search Bar -->
                         <div class="search-container" style="margin-bottom: 1.5rem;">
                             <input type="text" id="radovi-search" class="form-input"
-                                placeholder="🔍 Search papers by title, authors or year..."
+                                placeholder="Search papers by title, authors or year..."
                                 style="width: 100%; padding: 1rem; font-size: 1rem; background: rgba(0,0,0,0.3); border: 1px solid var(--border-glass); border-radius: var(--radius-md); color: var(--text-primary);">
                         </div>
 
@@ -243,7 +247,7 @@
             Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: +385 91 214 1966
         </div>
     </footer>
-    <script src="../js/main.js"></script>
+    <script src="../js/main.js?v=20260928"></script>
     <script>
         // Toggle inputs based on type
         const typeSelect = document.getElementById('upload-type-select');

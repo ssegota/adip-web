@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>8. Sunčev sustav: mala tijela | Tečaj astronomije</title>
+  <meta name="description"
+    content="Asteroidi, Kirkwoodove pukotine, rezonancije, objekti blizu Zemlje, kometi, Kuiperov pojas, Oortov oblak, meteorski rojevi i meteoriti.">
+  <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/tecaj.css?v=20260928">
+  <script src="data/vidljivost.js"></script>
+  <script>
+    /* Pristupna vrata: sakrij sadržaj prije prvog crtanja ako PIN nije unesen.
+       Otključavanje i sam upit su u js/tecaj.js. */
+    (function () {
+      var ulaz = false, urednik = false;
+      try { ulaz = sessionStorage.getItem('tecaj_ulaz') === '1'; } catch (e) { }
+      try { urednik = !!localStorage.getItem('adip_token'); } catch (e) { }
+      if (!ulaz && !urednik) document.documentElement.className += ' tecaj-zakljucano';
+    })();
+  </script>
+</head>
+
+<body>
+  <main class="page-content">
+    <div class="container container--wide">
+
+      <div class="lesson-head" id="lesson-head"></div>
+
+      <div class="lesson-body">
+
+        <!-- ============ TEORIJA ============ -->
+        <div>
+          <div class="panel">
+            <h2 class="panel__title">O čemu je ova lekcija</h2>
+            <p>
+              Mala tijela su <strong>ostatci gradnje</strong> — najbolje sačuvani uzorci
+              materijala od kojeg su nastali planeti. Zato su nesrazmjerno važna: iz njih čitamo
+              uvjete u protoplanetarnom disku, a neka od njih mogu i pogoditi Zemlju.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Glavni pojas</h3>
+            <p>
+              Između Marsa i Jupitera, od 2,1 do 3,3 AJ, kruži više od milijun asteroida većih
+              od kilometra. Ipak, ukupna masa pojasa je samo <strong>oko 4 % mase Mjeseca</strong>
+              — Jupiter je gravitacijskim smetnjama spriječio nastanak planeta i većinu tvari
+              izbacio. Ceres sam nosi trećinu te mase.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Kirkwoodove pukotine</h3>
+            <p>
+              Raspored asteroida po velikoj poluosi nije gladak: postoje uske praznine. Nalaze se
+              točno tamo gdje bi period asteroida bio u <strong>cjelobrojnoj rezonanciji</strong>
+              s Jupiterovim. Tada Jupiter uvijek djeluje u istoj fazi staze, smetnje se
+              nakupljaju i asteroid se izbaci.
+            </p>
+            <div class="formula">
+              <span class="mvar">a</span> = <span class="mvar">a</span><sub>J</sub>
+              (<span class="mvar">n</span>/<span class="mvar">m</span>)<sup>2/3</sup>
+              <small>iz trećeg Keplerova zakona; najizraženije pukotine su na 3:1, 5:2 i 2:1</small>
+            </div>
+            <p>
+              Ista fizika radi i obrnuto: u rezonanciji 1:1 s Jupiterom, u stabilnim točkama
+              L₄ i L₅ (60° prije i poslije planeta), skupljaju se <strong>Trojanci</strong>.
+              Poznato ih je preko 12 000.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Objekti blizu Zemlje</h3>
+            <p>
+              NEO je definiran perihelom <span class="mvar">q</span> &lt; 1,3 AJ. Dijele se na
+              skupine <strong>Atira, Aten, Apolon</strong> i <strong>Amor</strong>, po tome kako
+              im se staza odnosi prema Zemljinoj. Potencijalno opasnima (PHA) smatraju se oni s
+              minimalnom udaljenošću staza pod 0,05 AJ i promjerom nad 140 m.
+            </p>
+            <p>
+              Planetarna obrana: sustavno traženje (Pan-STARRS, Catalina, budući NEO Surveyor),
+              precizno određivanje staza i — od 2022. dokazano na Dimorphosu misijom
+              <strong>DART</strong> — kinetički udar kao način promjene staze.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Kometi</h3>
+            <ul>
+              <li><strong>Jezgra</strong>: „prljava gruda snijega“ od nekoliko kilometara.</li>
+              <li><strong>Koma</strong>: oblak plina i prašine koji se razvija kad se komet
+                približi Suncu (unutar oko 3 AJ).</li>
+              <li><strong>Ionski rep</strong> je ravan i uvijek točno od Sunca (nosi ga sunčev
+                vjetar); <strong>prašinasti rep</strong> je zakrivljen jer teže čestice zaostaju
+                po stazi. Oba pokazuju <em>od</em> Sunca — pa komet koji se udaljava ide repom
+                naprijed.</li>
+            </ul>
+            <p>
+              Dvije obitelji: <strong>kratkoperiodički</strong> (P &lt; 200 god) dolaze iz
+              Kuiperova pojasa i kreću se blizu ekliptike;
+              <strong>dugoperiodički</strong> (P &gt; 200 god) dolaze iz sferičnog
+              <strong>Oortova oblaka</strong> i mogu doći iz bilo kojeg smjera.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Iza Neptuna</h3>
+            <p>
+              <strong>Kuiperov pojas</strong> (30–50 AJ): Pluton, Haumea, Makemake, plutini u
+              rezonanciji 2:3 s Neptunom. Dalje su <strong>rasuti disk</strong> (Eris) i
+              <strong>Oortov oblak</strong> na 2 000 – 100 000 AJ, koji nikad nismo vidjeli
+              nego samo zaključili iz staza dugoperiodičkih kometa.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Tri riječi koje se brkaju</h3>
+            <ul>
+              <li><strong>Meteoroid</strong> — tijelo u međuplanetarnom prostoru.</li>
+              <li><strong>Meteor</strong> — svjetlosna pojava pri ulasku u atmosferu.</li>
+              <li><strong>Meteorit</strong> — ono što padne na tlo.</li>
+            </ul>
+            <p>
+              Rojevi nastaju kad Zemlja prođe kroz trag prašine roditeljskog kometa. Meteori
+              roja prividno izlaze iz jedne točke — <strong>radijanta</strong> — zato što su
+              putanje paralelne.
+            </p>
+            <div class="formula">
+              ZHR = <span class="mvar">N r</span><sup>6,5−<span class="mvar">m</span><sub>gr</sub></sup>
+              / sin <span class="mvar">h</span>
+              <small>ZHR je standardizirani satni broj: pod idealnim nebom, radijant u zenitu, granična
+                magnituda 6,5</small>
+            </div>
+          </div>
+
+          <div class="panel" style="margin-top:1.5rem">
+            <h2 class="panel__title">Ishodi</h2>
+            <ul>
+              <li>objašnjava nastanak Kirkwoodovih pukotina i računa položaje rezonancija;</li>
+              <li>razlikuje skupine objekata blizu Zemlje i opisuje mjere planetarne obrane;</li>
+              <li>tumači građu kometa i porijeklo kratkoperiodičkih i dugoperiodičkih staza;</li>
+              <li>razlikuje meteoroid, meteor i meteorit te računa satni broj roja.</li>
+            </ul>
+
+            <h2 class="panel__title" style="margin-top:1.5rem">Zapamtite</h2>
+            <ul>
+              <li>Glavni pojas: 2,1–3,3 AJ, masa ≈ 4 % Mjeseca</li>
+              <li>Rezonancija: <span class="mvar">a</span> = <span class="mvar">a</span><sub>J</sub>(<span
+                  class="mvar">n</span>/<span class="mvar">m</span>)<sup>2/3</sup></li>
+              <li>Kirkwoodove pukotine na 3:1, 5:2, 2:1</li>
+              <li>Trojanci u L₄ i L₅, 60° od planeta</li>
+              <li>NEO: <span class="mvar">q</span> &lt; 1,3 AJ</li>
+              <li>Ionski rep ravan, prašinasti zakrivljen; oba od Sunca</li>
+              <li>ZHR = <span class="mvar">N r</span><sup>6,5−<span class="mvar">m</span><sub>gr</sub></sup>/sin
+                <span class="mvar">h</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ============ INTERAKTIVNO ============ -->
+        <div>
+
+          <!-- ---------- 1 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 1</div>
+              <h3 class="demo__title">Kirkwoodove pukotine i rezonancije</h3>
+              <p class="demo__hint">
+                Histogram asteroida po velikoj poluosi. Odaberite rezonanciju i vidite gdje
+                bi ona pala — pukotina je upravo tamo.
+              </p>
+            </div>
+
+            <canvas id="c8a"></canvas>
+
+            <div class="btn-row" id="kw-rez">
+              <button class="chip-btn" data-value="4,1">4:1</button>
+              <button class="chip-btn" data-value="7,2">7:2</button>
+              <button class="chip-btn active" data-value="3,1">3:1</button>
+              <button class="chip-btn" data-value="5,2">5:2</button>
+              <button class="chip-btn" data-value="7,3">7:3</button>
+              <button class="chip-btn" data-value="2,1">2:1</button>
+              <button class="chip-btn" data-value="3,2">3:2 (Hilde)</button>
+              <button class="chip-btn" data-value="1,1">1:1 (Trojanci)</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Rezonancija</div>
+                <div class="readout__value" id="kw-r">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Velika poluos a</div>
+                <div class="readout__value" id="kw-a">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Period asteroida</div>
+                <div class="readout__value" id="kw-t">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Jupiterovih ophoda</div>
+                <div class="readout__value" id="kw-j">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="kw-info">—</div>
+          </div>
+
+          <!-- ---------- 2 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 2</div>
+              <h3 class="demo__title">Staza kometa i smjer repova</h3>
+              <p class="demo__hint">
+                Postavite perihel i ekscentricitet. Pratite kako se koma razvija samo blizu
+                Sunca i kako repovi uvijek pokazuju <em>od</em> Sunca — i pri dolasku i pri
+                odlasku.
+              </p>
+            </div>
+
+            <canvas id="c8b"></canvas>
+
+            <div class="controls controls--2">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Perihel q</span><span class="ctrl__value" id="ko-q-out"></span></div>
+                <input type="range" id="ko-q" min="0.1" max="3" step="0.01" value="0.59">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Ekscentricitet e</span><span class="ctrl__value" id="ko-e-out"></span>
+                </div>
+                <input type="range" id="ko-e" min="0.1" max="0.995" step="0.001" value="0.967">
+              </div>
+            </div>
+
+            <div class="btn-row" id="ko-preseti">
+              <button class="chip-btn active" data-value="0.586,0.967,Halley">1P/Halley</button>
+              <button class="chip-btn" data-value="1.29,0.641,Encke">2P/Encke</button>
+              <button class="chip-btn" data-value="1.243,0.641,Churyumov">67P/Čurjumov</button>
+              <button class="chip-btn" data-value="0.295,0.9951,Hale-Bopp">C/1995 O1</button>
+            </div>
+            <div class="btn-row">
+              <button class="chip-btn active" id="ko-play">Zaustavi</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Velika poluos a</div>
+                <div class="readout__value" id="ko-a">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Afel Q</div>
+                <div class="readout__value" id="ko-Q">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Period P</div>
+                <div class="readout__value" id="ko-p">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Obitelj</div>
+                <div class="readout__value" id="ko-ob">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Trenutni r</div>
+                <div class="readout__value" id="ko-r">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Brzina v</div>
+                <div class="readout__value" id="ko-v">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="ko-info">—</div>
+          </div>
+
+          <!-- ---------- 3 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 3</div>
+              <h3 class="demo__title">Planiranje opažanja meteorskog roja</h3>
+              <p class="demo__hint">
+                Za Pulu (φ = 44,87°). Krivulja pokazuje visinu radijanta kroz noć maksimuma.
+                Katalog daje ZHR; stvarni satni broj računamo iz visine radijanta i graničnе
+                magnitude.
+              </p>
+            </div>
+
+            <canvas id="c8c"></canvas>
+
+            <div class="controls controls--2">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Sat (mjesno vrijeme)</span><span class="ctrl__value"
+                    id="me-h-out"></span></div>
+                <input type="range" id="me-h" min="16" max="30" step="0.25" value="26">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Granična magnituda neba</span><span class="ctrl__value"
+                    id="me-m-out"></span></div>
+                <input type="range" id="me-m" min="3" max="6.5" step="0.1" value="5.5">
+              </div>
+            </div>
+
+            <div class="btn-row" id="me-roj">
+              <button class="chip-btn" data-value="0">Kvadrantidi</button>
+              <button class="chip-btn" data-value="1">Lirdi</button>
+              <button class="chip-btn" data-value="2">η Akvaridi</button>
+              <button class="chip-btn active" data-value="4">Perzeidi</button>
+              <button class="chip-btn" data-value="5">Orionidi</button>
+              <button class="chip-btn" data-value="6">Leonidi</button>
+              <button class="chip-btn" data-value="7">Geminidi</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Maksimum</div>
+                <div class="readout__value" id="me-max">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Radijant</div>
+                <div class="readout__value" id="me-rad">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Visina radijanta</div>
+                <div class="readout__value" id="me-vis">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Katalog ZHR</div>
+                <div class="readout__value" id="me-zhr">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Stvarni satni broj</div>
+                <div class="readout__value" id="me-n">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Ulazna brzina</div>
+                <div class="readout__value" id="me-v">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Roditeljsko tijelo</div>
+                <div class="readout__value" id="me-rod">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Najbolje vrijeme</div>
+                <div class="readout__value" id="me-best">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="me-info">—</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="lesson-nav" id="lesson-nav"></div>
+    </div>
+  </main>
+
+  <script src="js/tecaj.js?v=20260928"></script>
+  <script>
+    TECAJ.init({ lekcija: 8 });
+
+    var AJ_KM = 1.495978707e8, VZ = 29.7847, AJUP = 5.2044;
+
+    /* =====================================================
+       PRIMJER 1 — Kirkwoodove pukotine
+       ===================================================== */
+    (function () {
+      var n = 3, m = 1;
+      var REZ = [[4, 1], [7, 2], [3, 1], [5, 2], [7, 3], [2, 1], [3, 2], [1, 1]];
+
+      function aRez(nn, mm) { return AJUP * Math.pow(mm / nn, 2 / 3); }
+
+      /* Sintetički, ali realno oblikovan histogram glavnog pojasa */
+      var BINS = 260, A0 = 1.8, A1 = 5.6;
+      var hist = (function () {
+        var h = new Array(BINS).fill(0);
+        for (var i = 0; i < BINS; i++) {
+          var a = A0 + (A1 - A0) * (i + 0.5) / BINS;
+          var v = 0;
+          /* tri podskupine glavnog pojasa */
+          v += 950 * Math.exp(-Math.pow((a - 2.35) / 0.20, 2));
+          v += 1500 * Math.exp(-Math.pow((a - 2.70) / 0.17, 2));
+          v += 1250 * Math.exp(-Math.pow((a - 3.05) / 0.16, 2));
+          v += 120 * Math.exp(-Math.pow((a - 2.15) / 0.07, 2));
+          /* Hildina skupina (3:2) i Trojanci (1:1) */
+          v += 130 * Math.exp(-Math.pow((a - aRez(3, 2)) / 0.045, 2));
+          v += 260 * Math.exp(-Math.pow((a - aRez(1, 1)) / 0.10, 2));
+          /* pukotine */
+          [[4, 1, 0.92, 0.030], [7, 2, 0.80, 0.022], [3, 1, 0.97, 0.035],
+          [5, 2, 0.90, 0.026], [7, 3, 0.70, 0.020], [2, 1, 0.96, 0.045]]
+            .forEach(function (g) {
+              v *= 1 - g[2] * Math.exp(-Math.pow((a - aRez(g[0], g[1])) / g[3], 2));
+            });
+          /* izvan pojasa gotovo ništa */
+          if (a < 2.05) v *= Math.exp(-Math.pow((2.05 - a) / 0.10, 2));
+          if (a > 3.35 && a < 3.8) v *= Math.exp(-Math.pow((a - 3.35) / 0.13, 2));
+          h[i] = v;
+        }
+        return h;
+      })();
+      var HMAX = Math.max.apply(null, hist);
+
+      var cv = TECAJ.canvas('c8a', 1.95, function (ctx, W, Ht) {
+        var bx = 52, by = 22, bw = W - 72, bh = Ht - 68;
+        function X(a) { return bx + bw * (a - A0) / (A1 - A0); }
+        function Y(v) { return by + bh * (1 - v / (HMAX * 1.08)); }
+
+        TECAJ.axes(ctx, { l: bx, t: by, w: bw, h: bh }, {
+          x0: A0, x1: A1, y0: 0, y1: HMAX * 1.08,
+          xTicks: [2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5].map(function (v) {
+            return { at: v, label: TECAJ.num(v, 1) };
+          }),
+          yTicks: [], xLabel: 'velika poluos a (AJ)', yLabel: 'broj asteroida (relativno)'
+        });
+
+        /* stupci */
+        var bwid = bw / BINS;
+        for (var i = 0; i < BINS; i++) {
+          var a = A0 + (A1 - A0) * (i + 0.5) / BINS;
+          if (hist[i] < 1) continue;
+          ctx.fillStyle = 'rgba(0,212,255,.55)';
+          ctx.fillRect(X(a) - bwid / 2, Y(hist[i]), Math.max(1, bwid), by + bh - Y(hist[i]));
+        }
+
+        /* sve rezonancije kao tanke linije */
+        REZ.forEach(function (r) {
+          var a = aRez(r[0], r[1]);
+          if (a < A0 || a > A1) return;
+          var odabrana = r[0] === n && r[1] === m;
+          ctx.strokeStyle = odabrana ? 'rgba(251,191,36,.95)' : 'rgba(255,255,255,.18)';
+          ctx.lineWidth = odabrana ? 2.2 : 1;
+          ctx.setLineDash(odabrana ? [] : [3, 3]);
+          ctx.beginPath(); ctx.moveTo(X(a), by); ctx.lineTo(X(a), by + bh); ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.font = (odabrana ? '600 ' : '') + '10px Inter, sans-serif';
+          ctx.fillStyle = odabrana ? '#fbbf24' : 'rgba(255,255,255,.45)';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+          ctx.fillText(r[0] + ':' + r[1], X(a), by - 3);
+        });
+
+        /* granice glavnog pojasa */
+        ctx.strokeStyle = 'rgba(52,211,153,.4)'; ctx.setLineDash([2, 4]);
+        [2.1, 3.3].forEach(function (a) {
+          ctx.beginPath(); ctx.moveTo(X(a), by); ctx.lineTo(X(a), by + bh); ctx.stroke();
+        });
+        ctx.setLineDash([]);
+        TECAJ.tag(ctx, X(2.7), by + bh - 12, 'glavni pojas', 'rgba(52,211,153,.6)', 'center');
+        TECAJ.tag(ctx, X(aRez(1, 1)), by + bh - 12, 'Trojanci', 'rgba(255,255,255,.45)', 'center');
+        TECAJ.tag(ctx, X(aRez(3, 2)), by + bh - 26, 'Hilde', 'rgba(255,255,255,.45)', 'center');
+      });
+
+      function osvjezi() {
+        var a = aRez(n, m);
+        var T = Math.pow(a, 1.5);
+        TECAJ.el('kw-r').innerHTML = n + ' : ' + m;
+        TECAJ.el('kw-a').innerHTML = TECAJ.num(a, 3) + '<span> AJ</span>';
+        TECAJ.el('kw-t').innerHTML = TECAJ.num(T, 2) + '<span> god</span>';
+        TECAJ.el('kw-j').innerHTML = m + '<span> na ' + n + ' asteroidova</span>';
+
+        var box = TECAJ.el('kw-info');
+        if (n === 1 && m === 1) {
+          box.className = 'verdict verdict--ok';
+          box.innerHTML = '<strong>Rezonancija 1:1 — Trojanci.</strong> Ovdje rezonancija ne ' +
+            'izbacuje nego <em>zadržava</em>. Tijela u Lagrangeovim točkama L₄ i L₅, 60° prije i ' +
+            'poslije Jupitera, nalaze se u stabilnoj konfiguraciji: svako odstupanje vraća ih natrag. ' +
+            'Zato je tu vidljiv izraženi vrh, a ne pukotina.';
+        } else if (n === 3 && m === 2) {
+          box.className = 'verdict verdict--ok';
+          box.innerHTML = '<strong>Rezonancija 3:2 — Hildina skupina.</strong> Iznenađenje: ' +
+            'i ovdje je nakupina, ne pukotina. Ti asteroidi imaju stazu tako usklađenu s ' +
+            'Jupiterom da mu se približe samo kad je on daleko od njihova afela. Rezonancija ' +
+            'sama po sebi nije ni dobra ni loša — važna je <em>faza</em> u kojoj se susreti odvijaju.';
+        } else {
+          box.className = 'verdict verdict--warn';
+          box.innerHTML = '<strong>Kirkwoodova pukotina na ' + n + ':' + m + '.</strong> ' +
+            'Asteroid s a = a<sub>J</sub>·(' + m + '/' + n + ')<sup>2/3</sup> = ' +
+            TECAJ.num(a, 3) + ' AJ obiđe Sunce ' + n + ' puta u istom vremenu u kojem Jupiter ' +
+            (m === 1 ? 'obiđe jednom' : 'obiđe ' + m + ' puta') + ' (P = ' + TECAJ.num(T, 2) +
+            ' god). Zato ga Jupiter uvijek zatekne u istoj točki staze; smetnje se zbrajaju, ' +
+            'ekscentricitet raste i tijelo se u milijunima godina izbaci — često prema unutra, ' +
+            'gdje postaje NEO. Pukotine nisu prazan prostor nego <em>prazne staze</em>.';
+        }
+        cv.draw();
+      }
+
+      TECAJ.chips('kw-rez', function (v) {
+        var d = v.split(',');
+        n = parseInt(d[0], 10); m = parseInt(d[1], 10);
+        osvjezi();
+      });
+      osvjezi();
+    })();
+
+
+    /* =====================================================
+       PRIMJER 2 — Staza kometa
+       ===================================================== */
+    (function () {
+      var q = 0.586, e = 0.967, ime = 'Halley', M = 0.15;
+
+      function anomalija(Mm, ee) {
+        var E = Mm;
+        for (var i = 0; i < 60; i++) {
+          var f = E - ee * Math.sin(E) - Mm;
+          var d = f / (1 - ee * Math.cos(E));
+          E -= d;
+          if (Math.abs(d) < 1e-12) break;
+        }
+        return E;
+      }
+
+      var cv = TECAJ.canvas('c8b', 1.45, function (ctx, W, Ht) {
+        TECAJ.starfield(ctx, W, Ht, 100, 2828);
+        var a = q / (1 - e), Q = a * (1 + e), b = a * Math.sqrt(1 - e * e);
+        var sc = Math.min(W * 0.44 / a, Ht * 0.44 / Math.max(b, a * 0.25));
+        var ox = W * 0.5 + a * e * sc, oy = Ht * 0.5;
+        function P(x, y) { return { x: ox + x * sc, y: oy - y * sc }; }
+
+        /* staze planeta za mjerilo */
+        [[1, 'Zemlja', 'rgba(0,212,255,.35)'], [1.524, 'Mars', 'rgba(224,122,95,.3)'],
+        [5.204, 'Jupiter', 'rgba(200,170,120,.3)'], [30.07, 'Neptun', 'rgba(120,160,255,.25)']]
+          .forEach(function (pl) {
+            var r = pl[0] * sc;
+            if (r < 6 || r > Math.max(W, Ht)) return;
+            ctx.strokeStyle = pl[2]; ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.arc(ox, oy, r, 0, 6.2832); ctx.stroke();
+            if (r > 22) TECAJ.tag(ctx, ox, oy - r - 7, pl[1], pl[2], 'center');
+          });
+
+        /* staza kometa */
+        ctx.strokeStyle = 'rgba(255,255,255,.35)'; ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.ellipse(ox - a * e * sc, oy, a * sc, b * sc, 0, 0, 6.2832);
+        ctx.stroke();
+
+        /* Sunce */
+        ctx.shadowColor = 'rgba(251,191,36,.9)'; ctx.shadowBlur = 20;
+        ctx.fillStyle = '#fbbf24';
+        ctx.beginPath(); ctx.arc(ox, oy, 7, 0, 6.2832); ctx.fill();
+        ctx.shadowBlur = 0;
+
+        /* komet */
+        var E = anomalija(M, e);
+        var kx = a * (Math.cos(E) - e), ky = b * Math.sin(E);
+        var r = Math.hypot(kx, ky);
+        var pk = P(kx, ky);
+
+        /* aktivnost samo blizu Sunca */
+        var akt = TECAJ.clamp((3.2 - r) / 2.6, 0, 1);
+        if (akt > 0.02) {
+          /* smjer od Sunca */
+          var ux = kx / r, uy = ky / r;
+          /* koma */
+          var kr = 4 + 16 * akt;
+          var g = ctx.createRadialGradient(pk.x, pk.y, 0, pk.x, pk.y, kr);
+          g.addColorStop(0, 'rgba(180,255,230,' + (0.85 * akt + 0.15) + ')');
+          g.addColorStop(1, 'rgba(120,220,200,0)');
+          ctx.fillStyle = g;
+          ctx.beginPath(); ctx.arc(pk.x, pk.y, kr, 0, 6.2832); ctx.fill();
+
+          /* ionski rep: ravno od Sunca */
+          var Li = (40 + 110 * akt);
+          var gi = ctx.createLinearGradient(pk.x, pk.y,
+            pk.x + ux * Li, pk.y - uy * Li);
+          gi.addColorStop(0, 'rgba(140,200,255,' + (0.75 * akt) + ')');
+          gi.addColorStop(1, 'rgba(140,200,255,0)');
+          ctx.strokeStyle = gi; ctx.lineWidth = 3.5;
+          ctx.beginPath();
+          ctx.moveTo(pk.x, pk.y);
+          ctx.lineTo(pk.x + ux * Li, pk.y - uy * Li);
+          ctx.stroke();
+
+          /* prašinasti rep: zakrivljen, zaostaje po stazi */
+          var E2 = anomalija(Math.max(0, M - 0.22), e);
+          var px2 = a * (Math.cos(E2) - e), py2 = b * Math.sin(E2);
+          var vx = kx - px2, vy = ky - py2;
+          var vl = Math.hypot(vx, vy) || 1;
+          ctx.strokeStyle = 'rgba(255,225,170,' + (0.55 * akt) + ')';
+          ctx.lineWidth = 5;
+          ctx.beginPath();
+          ctx.moveTo(pk.x, pk.y);
+          for (var s = 0; s <= 1.001; s += 0.05) {
+            var mix = s * (0.7 + 0.3 * akt);
+            var dxp = ux * (1 - 0.55 * mix) - (vx / vl) * 0.75 * mix;
+            var dyp = uy * (1 - 0.55 * mix) - (vy / vl) * 0.75 * mix;
+            var dl = Math.hypot(dxp, dyp) || 1;
+            var Ld = s * (30 + 90 * akt);
+            ctx.lineTo(pk.x + dxp / dl * Ld, pk.y - dyp / dl * Ld);
+          }
+          ctx.stroke();
+        }
+
+        ctx.fillStyle = '#fff';
+        ctx.beginPath(); ctx.arc(pk.x, pk.y, 3, 0, 6.2832); ctx.fill();
+
+        /* oznake perihela i afela */
+        var pp = P(q, 0), pa = P(-Q, 0);
+        TECAJ.tag(ctx, pp.x, oy + 14, 'perihel ' + TECAJ.num(q, 2) + ' AJ',
+          'rgba(251,191,36,.8)', 'center');
+        if (pa.x > 4) TECAJ.tag(ctx, pa.x, oy + 14, 'afel ' + TECAJ.auto(Q, 1) + ' AJ',
+          'rgba(0,212,255,.8)', 'center');
+
+        ctx.font = '9px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(140,200,255,.8)';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+        ctx.fillText('ionski rep (ravan, od Sunca)', 10, Ht - 30);
+        ctx.fillStyle = 'rgba(255,225,170,.8)';
+        ctx.fillText('prašinasti rep (zakrivljen, zaostaje)', 10, Ht - 17);
+      });
+
+      function osvjezi() {
+        var a = q / (1 - e), Q = a * (1 + e), P = Math.pow(a, 1.5);
+        var E = anomalija(M, e);
+        var r = a * (1 - e * Math.cos(E));
+        var v = VZ * Math.sqrt(2 / r - 1 / a);
+
+        TECAJ.el('ko-a').innerHTML = TECAJ.auto(a, 2) + '<span> AJ</span>';
+        TECAJ.el('ko-Q').innerHTML = TECAJ.auto(Q, 2) + '<span> AJ</span>';
+        TECAJ.el('ko-p').innerHTML = TECAJ.auto(P, 1) + '<span> god</span>';
+        TECAJ.el('ko-ob').innerHTML = P < 20 ? '<span style="font-size:.9rem">Jupiterova obitelj</span>'
+          : P < 200 ? '<span style="font-size:.9rem">kratkoperiodički</span>'
+            : '<span style="font-size:.9rem">dugoperiodički</span>';
+        TECAJ.el('ko-r').innerHTML = TECAJ.num(r, 3) + '<span> AJ</span>';
+        TECAJ.el('ko-v').innerHTML = TECAJ.num(v, 2) + '<span> km/s</span>';
+
+        var box = TECAJ.el('ko-info');
+        box.className = 'verdict';
+        var pripada = P < 200
+          ? 'Period pod 200 godina znači <strong>kratkoperiodički</strong> komet — takvi dolaze ' +
+          'iz Kuiperova pojasa i staze im leže blizu ekliptike.'
+          : 'Period nad 200 godina znači <strong>dugoperiodički</strong> komet — takvi dolaze iz ' +
+          'sferičnog Oortova oblaka i mogu ući iz bilo kojeg smjera, pod bilo kojim nagibom.';
+        box.innerHTML = '<strong>' + ime + '.</strong> Iz q = ' + TECAJ.num(q, 3) +
+          ' AJ i e = ' + TECAJ.num(e, 3) + ' slijedi a = q/(1−e) = ' + TECAJ.auto(a, 2) +
+          ' AJ, afel ' + TECAJ.auto(Q, 2) + ' AJ i period ' + TECAJ.auto(P, 1) + ' godina. ' +
+          pripada + ' Brzina se mijenja od ' + TECAJ.num(VZ * Math.sqrt(2 / q - 1 / a), 1) +
+          ' km/s u perihelu do ' + TECAJ.num(VZ * Math.sqrt(2 / Q - 1 / a), 2) +
+          ' km/s u afelu — zato komet u afelu provede gotovo cijeli period, a kroz ' +
+          'unutrašnji sustav proleti u nekoliko mjeseci.';
+        cv.draw();
+      }
+
+      TECAJ.slider('ko-q', {
+        format: function (v) { return TECAJ.num(v, 2) + ' AJ'; },
+        onInput: function (v) { q = v; ime = 'vaš komet'; osvjezi(); }
+      });
+      TECAJ.slider('ko-e', {
+        format: function (v) { return TECAJ.num(v, 3); },
+        onInput: function (v) { e = v; ime = 'vaš komet'; osvjezi(); }
+      });
+      TECAJ.chips('ko-preseti', function (v) {
+        var d = v.split(',');
+        q = parseFloat(d[0]); e = parseFloat(d[1]); ime = d[2];
+        TECAJ.el('ko-q').value = q; TECAJ.el('ko-q-out').textContent = TECAJ.num(q, 2) + ' AJ';
+        TECAJ.el('ko-e').value = e; TECAJ.el('ko-e-out').textContent = TECAJ.num(e, 3);
+        osvjezi();
+      });
+
+      var anim = TECAJ.loop(function (dt) {
+        M = (M + dt * 0.55) % (2 * Math.PI);
+        osvjezi();
+      });
+      TECAJ.el('ko-play').addEventListener('click', function () {
+        var on = anim.toggle();
+        this.textContent = on ? 'Zaustavi' : 'Pokreni';
+        this.classList.toggle('active', on);
+      });
+
+      osvjezi();
+      anim.start();
+    })();
+
+
+    /* =====================================================
+       PRIMJER 3 — Meteorski rojevi
+       ===================================================== */
+    (function () {
+      var FI = 44.87;
+      /* ime, dan u godini maksimuma, datum, α(h), δ, ZHR, r, v km/s, roditelj */
+      var ROJ = [
+        ['Kvadrantidi', 3, '3. siječnja', 15.33, 49.5, 110, 2.1, 41, '2003 EH₁'],
+        ['Lirdi', 112, '22. travnja', 18.07, 33.3, 18, 2.1, 49, 'C/1861 G1 Thatcher'],
+        ['η Akvaridi', 126, '6. svibnja', 22.53, -1.0, 50, 2.4, 66, '1P/Halley'],
+        ['δ Akvaridi', 211, '30. srpnja', 22.67, -16.4, 25, 3.2, 41, '96P/Machholz'],
+        ['Perzeidi', 224, '12. kolovoza', 3.22, 58.0, 100, 2.2, 59, '109P/Swift-Tuttle'],
+        ['Orionidi', 294, '21. listopada', 6.35, 15.6, 20, 2.5, 66, '1P/Halley'],
+        ['Leonidi', 321, '17. studenoga', 10.28, 21.8, 15, 2.5, 71, '55P/Tempel-Tuttle'],
+        ['Geminidi', 348, '14. prosinca', 7.55, 32.6, 150, 2.6, 35, '3200 Faeton']
+      ];
+      var idx = 4, sat = 26, mgr = 5.5;
+
+      function lst(dan, h) {
+        return (((h % 24) - 12) + 24 * (dan - 79) / 365.25 + 48) % 24;
+      }
+      function visina(dan, h, alfa, dec) {
+        var Hh = TECAJ.rad((lst(dan, h) - alfa) * 15);
+        var d = TECAJ.rad(dec), f = TECAJ.rad(FI);
+        return TECAJ.deg(Math.asin(Math.sin(f) * Math.sin(d) +
+          Math.cos(f) * Math.cos(d) * Math.cos(Hh)));
+      }
+      function N(zhr, h, r, mg) {
+        if (h <= 0) return 0;
+        return zhr * Math.sin(TECAJ.rad(h)) / Math.pow(r, 6.5 - mg);
+      }
+
+      var cv = TECAJ.canvas('c8c', 2.0, function (ctx, W, Ht) {
+        var R = ROJ[idx];
+        var bx = 50, by = 24, bw = W - 70, bh = Ht - 68;
+        var T0 = 16, T1 = 30;
+        function X(h) { return bx + bw * (h - T0) / (T1 - T0); }
+        function Y(v) { return by + bh * (1 - (v + 20) / 110); }
+
+        /* noć / sumrak / dan kao pozadina, iz visine Sunca */
+        var sunAlfa = 24 * (R[1] - 79) / 365.25;
+        var sunDec = TECAJ.deg(Math.asin(Math.sin(TECAJ.rad(23.44)) *
+          Math.sin(2 * Math.PI * (R[1] - 79) / 365.25)));
+        for (var h = T0; h < T1; h += 0.1) {
+          var hs = visina(R[1], h, sunAlfa, sunDec);
+          var col = hs > 0 ? 'rgba(0,212,255,.10)'
+            : hs > -6 ? 'rgba(0,212,255,.06)'
+              : hs > -18 ? 'rgba(255,255,255,.025)' : 'rgba(0,0,0,0)';
+          ctx.fillStyle = col;
+          ctx.fillRect(X(h), by, X(h + 0.1) - X(h) + 1, bh);
+        }
+
+        TECAJ.axes(ctx, { l: bx, t: by, w: bw, h: bh }, {
+          x0: T0, x1: T1, y0: -20, y1: 90,
+          xTicks: [18, 20, 22, 24, 26, 28, 30].map(function (v) {
+            return { at: v, label: TECAJ.pad(v % 24) + 'ʰ' };
+          }),
+          yTicks: [{ at: 0, label: '0°' }, { at: 30, label: '30°' },
+          { at: 60, label: '60°' }, { at: 90, label: '90°' }],
+          xLabel: 'mjesno vrijeme (noć maksimuma)', yLabel: 'visina radijanta'
+        });
+
+        /* horizont */
+        ctx.strokeStyle = 'rgba(255,255,255,.3)'; ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.moveTo(bx, Y(0)); ctx.lineTo(bx + bw, Y(0)); ctx.stroke();
+
+        /* visina radijanta */
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2.4;
+        ctx.beginPath();
+        var prvi = true;
+        for (var t = T0; t <= T1; t += 0.05) {
+          var v = visina(R[1], t, R[3], R[4]);
+          prvi ? (ctx.moveTo(X(t), Y(v)), prvi = false) : ctx.lineTo(X(t), Y(v));
+        }
+        ctx.stroke();
+
+        /* satni broj kao druga krivulja */
+        ctx.strokeStyle = 'rgba(52,211,153,.85)'; ctx.lineWidth = 1.8;
+        ctx.setLineDash([4, 3]);
+        ctx.beginPath();
+        var maxN = N(R[5], 90, R[6], mgr) || 1;
+        prvi = true;
+        for (var t2 = T0; t2 <= T1; t2 += 0.05) {
+          var v2 = visina(R[1], t2, R[3], R[4]);
+          var nn = N(R[5], v2, R[6], mgr);
+          var yy = Y(-20 + 110 * nn / maxN);
+          prvi ? (ctx.moveTo(X(t2), yy), prvi = false) : ctx.lineTo(X(t2), yy);
+        }
+        ctx.stroke(); ctx.setLineDash([]);
+
+        /* trenutni sat */
+        var vNow = visina(R[1], sat, R[3], R[4]);
+        ctx.strokeStyle = 'rgba(255,255,255,.4)'; ctx.setLineDash([3, 3]);
+        ctx.beginPath(); ctx.moveTo(X(sat), by); ctx.lineTo(X(sat), by + bh); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.shadowColor = 'rgba(251,191,36,.9)'; ctx.shadowBlur = 12;
+        ctx.fillStyle = '#fbbf24';
+        ctx.beginPath(); ctx.arc(X(sat), Y(vNow), 5.5, 0, 6.2832); ctx.fill();
+        ctx.shadowBlur = 0;
+
+        ctx.font = '600 11px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,.55)';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+        ctx.fillText(R[0].toUpperCase() + ' · ' + R[2] + ' · PULA', bx, 6);
+        ctx.font = '9px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(251,191,36,.8)';
+        ctx.fillText('visina radijanta', bx + 4, by + 6);
+        ctx.fillStyle = 'rgba(52,211,153,.8)';
+        ctx.fillText('relativni satni broj', bx + 4, by + 19);
+      });
+
+      function osvjezi() {
+        var R = ROJ[idx];
+        var v = visina(R[1], sat, R[3], R[4]);
+        var n = N(R[5], v, R[6], mgr);
+
+        /* najbolji sat */
+        var bestH = 16, bestV = -99;
+        for (var h = 16; h <= 30; h += 0.25) {
+          var vv = visina(R[1], h, R[3], R[4]);
+          if (vv > bestV) { bestV = vv; bestH = h; }
+        }
+
+        TECAJ.el('me-max').innerHTML = '<span style="font-size:.92rem">' + R[2] + '</span>';
+        TECAJ.el('me-rad').innerHTML = '<span style="font-size:.9rem">α ' + TECAJ.hms(R[3]) +
+          ', δ ' + (R[4] >= 0 ? '+' : '') + TECAJ.num(R[4], 1) + '°</span>';
+        TECAJ.el('me-vis').innerHTML = TECAJ.num(v, 1) + '°';
+        TECAJ.el('me-zhr').innerHTML = R[5] + '<span> /h</span>';
+        TECAJ.el('me-n').innerHTML = v > 0 ? TECAJ.num(n, 1) + '<span> /h</span>'
+          : '<span style="color:#f87171">0 — pod horizontom</span>';
+        TECAJ.el('me-v').innerHTML = R[7] + '<span> km/s</span>';
+        TECAJ.el('me-rod').innerHTML = '<span style="font-size:.88rem">' + R[8] + '</span>';
+        TECAJ.el('me-best').innerHTML = TECAJ.pad(Math.floor(bestH) % 24) + ':' +
+          TECAJ.pad(Math.round((bestH % 1) * 60)) + '<span> (' + TECAJ.num(bestV, 0) + '°)</span>';
+
+        var box = TECAJ.el('me-info');
+        if (v <= 0) {
+          box.className = 'verdict verdict--bad';
+          box.innerHTML = '<strong>Radijant je pod horizontom.</strong> U ovom trenutku roj se ' +
+            'ne može opažati iz Pule. Pomaknite sat prema ' +
+            TECAJ.pad(Math.floor(bestH) % 24) + ':00, kada radijant dosegne ' +
+            TECAJ.num(bestV, 0) + '°.';
+        } else {
+          box.className = v > 40 ? 'verdict verdict--ok' : 'verdict verdict--warn';
+          box.innerHTML = '<strong>' + R[0] + '.</strong> Radijant je na ' + TECAJ.num(v, 1) +
+            '°, pa faktor sin h = ' + TECAJ.num(Math.sin(TECAJ.rad(v)), 2) +
+            ' od ZHR-a odbija ' + TECAJ.num((1 - Math.sin(TECAJ.rad(v))) * 100, 0) + ' %. ' +
+            'Uz graničnu magnitudu ' + TECAJ.num(mgr, 1) + ' faktor r<sup>6,5−m</sup> = ' +
+            TECAJ.num(Math.pow(R[6], 6.5 - mgr), 2) + ' dijeli rezultat još toliko. ' +
+            'Očekivani stvarni broj je <strong>' + TECAJ.num(n, 1) + ' meteora na sat</strong>, ' +
+            'umjesto kataloških ' + R[5] + '. ' +
+            (mgr < 5
+              ? 'Svjetlosno onečišćenje je ovdje veći problem od visine radijanta — odlazak pod ' +
+              'tamnije nebo udvostručuje ili utrostručuje broj.'
+              : 'Najbolje je čekati da radijant dođe što više: između ' +
+              TECAJ.pad(Math.floor(bestH) % 24) + ':00 i zore.');
+        }
+        cv.draw();
+      }
+
+      TECAJ.chips('me-roj', function (v) { idx = parseInt(v, 10); osvjezi(); });
+      TECAJ.slider('me-h', {
+        format: function (v) { return TECAJ.pad(Math.floor(v) % 24) + ':' + TECAJ.pad(Math.round((v % 1) * 60)); },
+        onInput: function (v) { sat = v; osvjezi(); }
+      });
+      TECAJ.slider('me-m', {
+        format: function (v) { return TECAJ.num(v, 1) + ' mag'; },
+        onInput: function (v) { mgr = v; osvjezi(); }
+      });
+
+      osvjezi();
+    })();
+  </script>
+</body>
+
+</html>

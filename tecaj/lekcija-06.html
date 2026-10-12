@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6. Teleskopi i opažački instrumenti | Tečaj astronomije</title>
+  <meta name="description"
+    content="Moć razlučivanja, povećanje, izlazna zjenica, tipovi teleskopa, aberacije, montaže, detektori, filtri i radiointerferometrija. Interaktivni primjeri.">
+  <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/tecaj.css?v=20260928">
+  <script src="data/vidljivost.js"></script>
+  <script>
+    /* Pristupna vrata: sakrij sadržaj prije prvog crtanja ako PIN nije unesen.
+       Otključavanje i sam upit su u js/tecaj.js. */
+    (function () {
+      var ulaz = false, urednik = false;
+      try { ulaz = sessionStorage.getItem('tecaj_ulaz') === '1'; } catch (e) { }
+      try { urednik = !!localStorage.getItem('adip_token'); } catch (e) { }
+      if (!ulaz && !urednik) document.documentElement.className += ' tecaj-zakljucano';
+    })();
+  </script>
+</head>
+
+<body>
+  <main class="page-content">
+    <div class="container container--wide">
+
+      <div class="lesson-head" id="lesson-head"></div>
+
+      <div class="lesson-body">
+
+        <!-- ============ TEORIJA ============ -->
+        <div>
+          <div class="panel">
+            <h2 class="panel__title">O čemu je ova lekcija</h2>
+            <p>
+              Najčešća zabluda početnika: teleskop se kupuje po povećanju. Kupuje se po
+              <strong>promjeru</strong>. Povećanje se mijenja okularom za nekoliko eura, a
+              promjer je jedina stvar koju ne možete popraviti.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Tri zadaće teleskopa</h3>
+            <ol>
+              <li><strong>Skuplja svjetlost</strong> — proporcionalno površini, dakle
+                <span class="mvar">D</span>². Teleskop od 200 mm skuplja 1000 puta više
+                svjetlosti od oka.
+              </li>
+              <li><strong>Razlučuje detalje</strong> — sposobnost razdvajanja dviju blizu
+                točaka, također to bolje što je <span class="mvar">D</span> veći.</li>
+              <li><strong>Povećava</strong> — najmanje važno, i jedino što ovisi o okularu.</li>
+            </ol>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Formule koje treba znati</h3>
+            <div class="formula">
+              <span class="mvar">θ</span> = 1,22 <span class="mvar">λ</span>/<span class="mvar">D</span>
+              &nbsp;⟹&nbsp; <span class="mvar">θ</span>[″] ≈ 138 / <span class="mvar">D</span>[mm]
+              <small>Rayleighov kriterij; Dawesov empirijski daje 116/D za dvojne zvijezde</small>
+            </div>
+            <div class="formula">
+              <span class="mvar">M</span> = <span class="mvar">f</span><sub>obj</sub> / <span
+                class="mvar">f</span><sub>ok</sub>
+              &nbsp;·&nbsp;
+              <span class="mvar">N</span> = <span class="mvar">f</span> / <span class="mvar">D</span>
+              <small>M je kutno povećanje, N je otvor („svjetlosna jačina“) koji određuje vrijeme
+                ekspozicije</small>
+            </div>
+            <div class="formula">
+              <span class="mvar">d</span><sub>iz</sub> = <span class="mvar">D</span> / <span class="mvar">M</span>
+              <small>izlazna zjenica; iznad 7 mm gubi se svjetlo izvan zjenice oka, ispod 0,5 mm slika postaje
+                tamna</small>
+            </div>
+            <div class="formula">
+              <span class="mvar">m</span><sub>gran</sub> ≈ 2 + 5 log <span class="mvar">D</span>[mm]
+              &nbsp;·&nbsp;
+              skala slike = 206 265″ / <span class="mvar">f</span>
+            </div>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Tipovi i aberacije</h3>
+            <ul>
+              <li><strong>Refraktor</strong> (leća): kontrastan, bez centralne zapreke, ali
+                pati od <strong>kromatske aberacije</strong> i skupo se pravi u velikim
+                promjerima.</li>
+              <li><strong>Reflektor</strong> (zrcalo): nema kromatske aberacije, jeftiniji po
+                centimetru promjera. Newton ima <strong>komu</strong>, sferno zrcalo
+                <strong>sfernu aberaciju</strong>.</li>
+              <li><strong>Katadioptrični</strong> (Schmidt-Cassegrain, Maksutov): kompaktni,
+                dugačke žarišne duljine u kratkoj cijevi.</li>
+              <li>Ostale aberacije: <strong>astigmatizam</strong>, <strong>zakrivljenost polja</strong>,
+                <strong>distorzija</strong>.</li>
+            </ul>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Montaže i atmosfera</h3>
+            <p>
+              <strong>Azimutalna</strong> montaža je jednostavna, ali za praćenje treba pomicati
+              obje osi i polje se vrti. <strong>Ekvatorijalna</strong> ima jednu os usmjerenu na
+              nebeski pol, pa se prati samo jednom osi — nezamjenjivo za fotografiju.
+            </p>
+            <p>
+              Atmosfera zamućuje sliku; ta se mjera zove <strong>seeing</strong> i tipično je
+              1″–2″ (na najboljim mjestima 0,4″). Zato veliki teleskopi na Zemlji ne dosežu svoju
+              teorijsku moć razlučivanja bez <strong>adaptivne optike</strong>, a najfinija
+              mjerenja idu u svemir.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Detektori, filtri, radio</h3>
+            <ul>
+              <li><strong>CCD/CMOS</strong> ima kvantnu učinkovitost preko 80 % (oko oko 1 %),
+                linearan je odziv i digitalni izlaz — otud revolucija u fotometriji.</li>
+              <li><strong>Fotometrijski sustav UBVRI</strong> (Johnson-Cousins): standardizirani
+                filtri bez kojih se mjerenja s različitih instrumenata ne bi mogla usporediti.</li>
+              <li><strong>Radioteleskopi</strong> imaju loše razlučivanje zbog velike λ, ali
+                <strong>interferometrija</strong> to rješava: <span class="mvar">θ</span> ≈
+                <span class="mvar">λ</span>/<span class="mvar">B</span>, gdje je
+                <span class="mvar">B</span> udaljenost antena. Tako je EHT dao sliku sjene crne rupe.
+              </li>
+            </ul>
+          </div>
+
+          <div class="panel" style="margin-top:1.5rem">
+            <h2 class="panel__title">Ishodi</h2>
+            <ul>
+              <li>računa kutno povećanje, izlaznu zjenicu, vidno polje i moć razlučivanja;</li>
+              <li>objašnjava zašto je promjer objektiva najvažniji podatak o teleskopu;</li>
+              <li>razlikuje tipove teleskopa, montaža i aberacija te bira instrument primjeren
+                zadaći;</li>
+              <li>opisuje načelo radiointerferometrije i razloge za opažanje iz svemira.</li>
+            </ul>
+
+            <h2 class="panel__title" style="margin-top:1.5rem">Zapamtite</h2>
+            <ul>
+              <li>Skupljanje svjetlosti ∝ <span class="mvar">D</span>²</li>
+              <li><span class="mvar">θ</span> = 1,22<span class="mvar">λ</span>/<span class="mvar">D</span>;
+                <span class="mvar">θ</span>[″] ≈ 138/<span class="mvar">D</span>[mm]</li>
+              <li><span class="mvar">M</span> = <span class="mvar">f</span><sub>obj</sub>/<span
+                  class="mvar">f</span><sub>ok</sub>,
+                <span class="mvar">N</span> = <span class="mvar">f</span>/<span class="mvar">D</span></li>
+              <li><span class="mvar">d</span><sub>iz</sub> = <span class="mvar">D</span>/<span class="mvar">M</span>
+              </li>
+              <li><span class="mvar">m</span><sub>gran</sub> ≈ 2 + 5 log <span class="mvar">D</span>[mm]</li>
+              <li>skala slike = 206 265″/<span class="mvar">f</span></li>
+              <li>interferometrija: <span class="mvar">θ</span> ≈ <span class="mvar">λ</span>/<span
+                  class="mvar">B</span></li>
+            </ul>
+
+            <div class="callout callout--warn">
+              <div class="callout__title">Sigurnost</div>
+              <p style="margin-bottom:0">
+                Sunce se nikada ne promatra kroz teleskop ili dalekozor bez certificiranog filtra
+                na <em>objektivu</em> ili bez projekcije. Filtar na okularu nije zaštita.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ INTERAKTIVNO ============ -->
+        <div>
+
+          <!-- ---------- 1 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 1</div>
+              <h3 class="demo__title">Kalkulator teleskopa</h3>
+              <p class="demo__hint">
+                Unesite podatke svojeg instrumenta. Traka pokazuje korisni raspon povećanja —
+                izlazna zjenica ne bi trebala izaći iz zelenog područja.
+              </p>
+            </div>
+
+            <canvas id="c6a"></canvas>
+
+            <div class="controls controls--2">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Promjer objektiva D</span><span class="ctrl__value"
+                    id="t-d-out"></span></div>
+                <input type="range" id="t-d" min="30" max="500" step="5" value="150">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Žarišna duljina f</span><span class="ctrl__value"
+                    id="t-f-out"></span></div>
+                <input type="range" id="t-f" min="200" max="4000" step="10" value="750">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Okular f<sub>ok</sub></span><span class="ctrl__value"
+                    id="t-ok-out"></span></div>
+                <input type="range" id="t-ok" min="3" max="40" step="0.5" value="10">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Prividno vidno polje okulara</span><span class="ctrl__value"
+                    id="t-pv-out"></span></div>
+                <input type="range" id="t-pv" min="40" max="100" step="1" value="52">
+              </div>
+            </div>
+
+            <div class="btn-row" id="t-preseti">
+              <button class="chip-btn" data-value="60,700">refraktor 60/700</button>
+              <button class="chip-btn active" data-value="150,750">Newton 150/750</button>
+              <button class="chip-btn" data-value="200,1200">Dobson 200/1200</button>
+              <button class="chip-btn" data-value="203,2032">SCT 8″ f/10</button>
+              <button class="chip-btn" data-value="50,180">dalekozor 10×50</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Povećanje M</div>
+                <div class="readout__value" id="t-m">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Otvor f/N</div>
+                <div class="readout__value" id="t-n">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Izlazna zjenica</div>
+                <div class="readout__value" id="t-iz">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Pravo vidno polje</div>
+                <div class="readout__value" id="t-vp">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Rayleigh (138/D)</div>
+                <div class="readout__value" id="t-ray">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Dawes (116/D)</div>
+                <div class="readout__value" id="t-daw">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Granična magnituda</div>
+                <div class="readout__value" id="t-mg">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Skala slike</div>
+                <div class="readout__value" id="t-sk">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Skuplja svjetla (vs oko 7 mm)</div>
+                <div class="readout__value" id="t-sv">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Korisno povećanje</div>
+                <div class="readout__value" id="t-kp">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="t-info">—</div>
+          </div>
+
+          <!-- ---------- 2 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 2</div>
+              <h3 class="demo__title">Razlučivanje dvojne zvijezde</h3>
+              <p class="demo__hint">
+                Simulacija difrakcijske slike. Lijevo je idealni instrument, desno isti kroz
+                atmosferu. Pokušajte razdvojiti par manjim i većim teleskopom te vidjeti kada
+                seeing preuzme glavnu riječ.
+              </p>
+            </div>
+
+            <canvas id="c6b"></canvas>
+
+            <div class="controls controls--3">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Promjer D</span><span class="ctrl__value" id="r-d-out"></span></div>
+                <input type="range" id="r-d" min="30" max="800" step="5" value="150">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Kutni razmak</span><span class="ctrl__value" id="r-s-out"></span></div>
+                <input type="range" id="r-s" min="0.1" max="6" step="0.05" value="1.4">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Seeing</span><span class="ctrl__value" id="r-se-out"></span></div>
+                <input type="range" id="r-se" min="0" max="5" step="0.1" value="1.5">
+              </div>
+            </div>
+
+            <div class="btn-row" id="r-preseti">
+              <button class="chip-btn" data-value="0.5">ζ Boo (0,5″)</button>
+              <button class="chip-btn active" data-value="1.4">32 Ori (1,4″)</button>
+              <button class="chip-btn" data-value="2.7">Antares A–B (2,7″)</button>
+              <button class="chip-btn" data-value="3">Porrima (3,0″)</button>
+              <button class="chip-btn" data-value="4.6">Rigel A–B (9,5″ → 4,6″)</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Teorijski limit (Rayleigh)</div>
+                <div class="readout__value" id="r-lim">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Efektivna razlučivost</div>
+                <div class="readout__value" id="r-eff">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Razmak / limit</div>
+                <div class="readout__value" id="r-rat">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Što ograničava</div>
+                <div class="readout__value" id="r-lim2">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="r-info">—</div>
+          </div>
+
+          <!-- ---------- 3 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 3</div>
+              <h3 class="demo__title">Atmosferski prozori i fotometrijski filtri</h3>
+              <p class="demo__hint">
+                Gornja krivulja je propusnost atmosfere. Ispod su UBVRI filtri. Kliknite na
+                područje spektra i vidite odakle se ono uopće može opažati.
+              </p>
+            </div>
+
+            <canvas id="c6c"></canvas>
+
+            <div class="btn-row" id="a-pod">
+              <button class="chip-btn" data-value="gama">Gama</button>
+              <button class="chip-btn" data-value="x">Rendgen</button>
+              <button class="chip-btn" data-value="uv">UV</button>
+              <button class="chip-btn active" data-value="vid">Vidljivo</button>
+              <button class="chip-btn" data-value="ir">Infracrveno</button>
+              <button class="chip-btn" data-value="radio">Radio</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Valne duljine</div>
+                <div class="readout__value" id="a-lam">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Propusnost atmosfere</div>
+                <div class="readout__value" id="a-prop">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Odakle se opaža</div>
+                <div class="readout__value" id="a-gdje">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Razlučivost za D = 1 m</div>
+                <div class="readout__value" id="a-raz">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="a-info">—</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="lesson-nav" id="lesson-nav"></div>
+    </div>
+  </main>
+
+  <script src="js/tecaj.js?v=20260928"></script>
+  <script>
+    TECAJ.init({ lekcija: 6 });
+
+    /* =====================================================
+       PRIMJER 1 — Kalkulator teleskopa
+       ===================================================== */
+    (function () {
+      var D = 150, f = 750, fok = 10, pv = 52;
+
+      var cv = TECAJ.canvas('c6a', 2.3, function (ctx, W, Ht) {
+        var M = f / fok, iz = D / M;
+        var x0 = 34, x1 = W - 34, y = Ht * 0.60;
+        var M0 = 5, M1 = Math.max(400, D * 2.5);
+        function X(m) { return x0 + (x1 - x0) * Math.log(m / M0) / Math.log(M1 / M0); }
+
+        /* zone izlazne zjenice */
+        function zona(iz1, iz2, col, ime) {
+          var m1 = D / iz2, m2 = D / iz1;
+          var a = X(TECAJ.clamp(m1, M0, M1)), b = X(TECAJ.clamp(m2, M0, M1));
+          if (b <= a) return;
+          ctx.fillStyle = col;
+          ctx.fillRect(a, y - 16, b - a, 32);
+          ctx.font = '9px Inter, sans-serif';
+          ctx.fillStyle = 'rgba(255,255,255,.55)';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          if (b - a > 46) ctx.fillText(ime, (a + b) / 2, y - 42);
+        }
+        zona(7, 100, 'rgba(248,113,113,.16)', 'zjenica > 7 mm: gubitak svjetla');
+        zona(2, 7, 'rgba(52,211,153,.18)', 'maglice i skupovi');
+        zona(0.7, 2, 'rgba(0,212,255,.18)', 'planeti i dvojne');
+        zona(0.0001, 0.7, 'rgba(251,191,36,.16)', 'prazno povećanje');
+
+        /* os */
+        ctx.strokeStyle = 'rgba(255,255,255,.3)'; ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.moveTo(x0, y + 16); ctx.lineTo(x1, y + 16); ctx.stroke();
+        ctx.font = '10px Inter, sans-serif';
+        [5, 10, 20, 50, 100, 200, 400, 800].forEach(function (m) {
+          if (m < M0 || m > M1) return;
+          ctx.strokeStyle = 'rgba(255,255,255,.2)';
+          ctx.beginPath(); ctx.moveTo(X(m), y + 16); ctx.lineTo(X(m), y + 21); ctx.stroke();
+          ctx.fillStyle = 'rgba(255,255,255,.5)';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+          ctx.fillText(m + '×', X(m), y + 23);
+        });
+
+        /* granice: minimalno i maksimalno korisno */
+        var Mmin = D / 7, Mmax = 2 * D;
+        [[Mmin, 'najmanje korisno', 'rgba(52,211,153,.8)'],
+        [Mmax, 'najveće korisno (2D)', 'rgba(251,191,36,.8)']].forEach(function (g) {
+          if (g[0] < M0 || g[0] > M1) return;
+          ctx.strokeStyle = g[2]; ctx.lineWidth = 1.4;
+          ctx.setLineDash([4, 3]);
+          ctx.beginPath(); ctx.moveTo(X(g[0]), y - 20); ctx.lineTo(X(g[0]), y + 16); ctx.stroke();
+          ctx.setLineDash([]);
+          TECAJ.tag(ctx, X(g[0]) + 4, y + 40, g[1], g[2]);
+        });
+
+        /* trenutno povećanje */
+        var px = X(TECAJ.clamp(M, M0, M1));
+        ctx.strokeStyle = '#a78bfa'; ctx.lineWidth = 2.4;
+        ctx.shadowColor = 'rgba(167,139,250,.8)'; ctx.shadowBlur = 10;
+        ctx.beginPath(); ctx.moveTo(px, y - 22); ctx.lineTo(px, y + 18); ctx.stroke();
+        ctx.shadowBlur = 0;
+        ctx.font = '600 11px Inter, sans-serif';
+        ctx.fillStyle = '#a78bfa';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+        ctx.fillText(TECAJ.num(M, 0) + '× · zjenica ' + TECAJ.num(iz, 2) + ' mm', px, y - 27);
+
+        ctx.font = '600 11px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,.5)';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+        ctx.fillText('POVEĆANJE I IZLAZNA ZJENICA', x0, 6);
+      });
+
+      function osvjezi() {
+        var M = f / fok;
+        var iz = D / M;
+        var N = f / D;
+        var vp = pv / M;
+        var ray = 138 / D, daw = 116 / D;
+
+        TECAJ.el('t-m').innerHTML = TECAJ.num(M, 0) + '<span> ×</span>';
+        TECAJ.el('t-n').innerHTML = 'f/' + TECAJ.num(N, 1);
+        TECAJ.el('t-iz').innerHTML = TECAJ.num(iz, 2) + '<span> mm</span>';
+        TECAJ.el('t-vp').innerHTML = vp >= 1
+          ? TECAJ.num(vp, 2) + '<span>°</span>'
+          : TECAJ.num(vp * 60, 1) + '<span>′</span>';
+        TECAJ.el('t-ray').innerHTML = TECAJ.num(ray, 2) + '<span>″</span>';
+        TECAJ.el('t-daw').innerHTML = TECAJ.num(daw, 2) + '<span>″</span>';
+        TECAJ.el('t-mg').innerHTML = TECAJ.num(2 + 5 * Math.log10(D), 1) + '<span> mag</span>';
+        TECAJ.el('t-sk').innerHTML = TECAJ.num(206265 / f, 1) + '<span>″/mm</span>';
+        TECAJ.el('t-sv').innerHTML = TECAJ.num(Math.pow(D / 7, 2), 0) + '<span> ×</span>';
+        TECAJ.el('t-kp').innerHTML = TECAJ.num(D / 7, 0) + '–' + TECAJ.num(2 * D, 0) + '<span> ×</span>';
+
+        var box = TECAJ.el('t-info');
+        if (iz > 7) {
+          box.className = 'verdict verdict--warn';
+          box.innerHTML = '<strong>Povećanje je premalo.</strong> Izlazna zjenica ' +
+            TECAJ.num(iz, 2) + ' mm je veća od zjenice oka (do 7 mm noću), pa se dio skupljene ' +
+            'svjetlosti gubi pokraj oka. Uzmite kraći okular — barem ' +
+            TECAJ.num(f / (D / 7), 0) + ' mm ili manje.';
+        } else if (M > 2 * D) {
+          box.className = 'verdict verdict--bad';
+          box.innerHTML = '<strong>Prazno povećanje.</strong> Iznad ≈ 2·D (' +
+            TECAJ.num(2 * D, 0) + '×) slika se samo raste bez novih detalja — difrakcija je već ' +
+            'sve razmazala. Ovo je točno ono na što se odnosi upozorenje o „povećanju od 600×“ ' +
+            'na kutijama jeftinih teleskopa.';
+        } else if (M < D / 7) {
+          box.className = 'verdict verdict--warn';
+          box.innerHTML = '<strong>Ispod korisnog raspona.</strong> Povećanje je manje od D/7 = ' +
+            TECAJ.num(D / 7, 0) + '×, što opet znači zjenicu iznad 7 mm.';
+        } else {
+          box.className = 'verdict verdict--ok';
+          box.innerHTML = '<strong>Dobra kombinacija.</strong> Izlazna zjenica ' + TECAJ.num(iz, 2) +
+            ' mm je u korisnom području. ' +
+            (iz > 2 ? 'Ovo je postavka za maglice i zvjezdane skupove — velika zjenica daje sjajnu, ' +
+              'kontrastnu sliku širokog polja.'
+              : 'Ovo je postavka za planete i dvojne zvijezde — visoko povećanje uz još uvijek ' +
+              'dovoljno svjetla.') +
+            ' Instrument razlučuje do ' + TECAJ.num(daw, 2) + '″ (Dawes) i dosiže zvijezde do ' +
+            TECAJ.num(2 + 5 * Math.log10(D), 1) + ' mag pod dobrim nebom.';
+        }
+        cv.draw();
+      }
+
+      TECAJ.slider('t-d', { format: function (v) { return v + ' mm'; }, onInput: function (v) { D = v; osvjezi(); } });
+      TECAJ.slider('t-f', { format: function (v) { return v + ' mm'; }, onInput: function (v) { f = v; osvjezi(); } });
+      TECAJ.slider('t-ok', {
+        format: function (v) { return TECAJ.num(v, 1) + ' mm'; },
+        onInput: function (v) { fok = v; osvjezi(); }
+      });
+      TECAJ.slider('t-pv', { format: function (v) { return v + '°'; }, onInput: function (v) { pv = v; osvjezi(); } });
+      TECAJ.chips('t-preseti', function (v) {
+        var d = v.split(',');
+        D = parseFloat(d[0]); f = parseFloat(d[1]);
+        TECAJ.el('t-d').value = D; TECAJ.el('t-d-out').textContent = D + ' mm';
+        TECAJ.el('t-f').value = f; TECAJ.el('t-f-out').textContent = f + ' mm';
+        osvjezi();
+      });
+
+      osvjezi();
+    })();
+
+
+    /* =====================================================
+       PRIMJER 2 — Razlučivanje dvojne
+       ===================================================== */
+    (function () {
+      var D = 150, sep = 1.4, seeing = 1.5;
+
+      /* Airyjeva funkcija preko J1; dovoljno je nekoliko članova reda */
+      function j1(x) {
+        if (Math.abs(x) < 1e-8) return x / 2;
+        /* aproksimacija Abramowitz-Stegun 9.4.4 / 9.4.6 */
+        var ax = Math.abs(x), y, p, q;
+        if (ax < 8) {
+          y = x * x;
+          p = x * (72362614232.0 + y * (-7895059235.0 + y * (242396853.1 +
+            y * (-2972611.439 + y * (15704.48260 + y * (-30.16036606))))));
+          q = 144725228442.0 + y * (2300535178.0 + y * (18583304.74 +
+            y * (99447.43394 + y * (376.9991397 + y))));
+          return p / q;
+        }
+        var z = 8 / ax, y2 = z * z;
+        var xx = ax - 2.356194491;
+        p = 1.0 + y2 * (0.183105e-2 + y2 * (-0.3516396496e-4 +
+          y2 * (0.2457520174e-5 + y2 * (-0.240337019e-6))));
+        q = 0.04687499995 + y2 * (-0.2002690873e-3 + y2 * (0.8449199096e-5 +
+          y2 * (-0.88228987e-6 + y2 * 0.105787412e-6)));
+        var ans = Math.sqrt(0.636619772 / ax) * (Math.cos(xx) * p - z * Math.sin(xx) * q);
+        return x < 0 ? -ans : ans;
+      }
+      function airy(theta, lim) {
+        /* theta u ″, lim = Rayleigh 1,22λ/D u ″ -> prvi nul u x = 3,8317 */
+        if (theta === 0) return 1;
+        var x = 3.8317 * theta / lim;
+        var v = 2 * j1(x) / x;
+        return v * v;
+      }
+      function gauss(theta, fwhm) {
+        var s = fwhm / 2.3548;
+        return Math.exp(-theta * theta / (2 * s * s));
+      }
+
+      var cv = TECAJ.canvas('c6b', 2.05, function (ctx, W, Ht) {
+        var lim = 138 / D;
+        var eff = Math.sqrt(lim * lim + seeing * seeing);
+        var polje = Math.max(sep * 3.2, eff * 5, 1.2);   /* ″ preko širine slike */
+
+        var pw = (W - 26) / 2, ph = Ht - 34;
+        var boxes = [
+          { x: 8, y: 26, naslov: 'IDEALNI INSTRUMENT (samo difrakcija)', fw: lim, airyOnly: true },
+          { x: 18 + pw, y: 26, naslov: 'KROZ ATMOSFERU (seeing ' + TECAJ.num(seeing, 1) + '″)', fw: eff, airyOnly: false }
+        ];
+
+        boxes.forEach(function (b) {
+          var side = Math.min(pw, ph);
+          var bx = b.x + (pw - side) / 2, by = b.y + (ph - side) / 2;
+          var sc = side / polje;
+
+          ctx.fillStyle = '#020306';
+          ctx.fillRect(bx, by, side, side);
+
+          /* renderiranje po pikselima (grubo, ali dovoljno) */
+          var step = 2;
+          for (var py = 0; py < side; py += step) {
+            for (var pxx = 0; pxx < side; pxx += step) {
+              var ax2 = (pxx - side / 2) / sc, ay = (py - side / 2) / sc;
+              var d1 = Math.hypot(ax2 - sep / 2, ay);
+              var d2 = Math.hypot(ax2 + sep / 2, ay);
+              var I;
+              if (b.airyOnly) {
+                I = airy(d1, lim) + 0.75 * airy(d2, lim);
+              } else {
+                I = gauss(d1, b.fw) + 0.75 * gauss(d2, b.fw);
+              }
+              I = Math.pow(TECAJ.clamp(I, 0, 1), 0.42);
+              if (I < 0.012) continue;
+              var g = Math.round(255 * I);
+              ctx.fillStyle = 'rgb(' + g + ',' + Math.round(g * 0.97) + ',' + Math.round(g * 0.9) + ')';
+              ctx.fillRect(bx + pxx, by + py, step, step);
+            }
+          }
+
+          ctx.strokeStyle = 'rgba(255,255,255,.18)';
+          ctx.strokeRect(bx, by, side, side);
+          ctx.font = '600 10px Inter, sans-serif';
+          ctx.fillStyle = 'rgba(255,255,255,.6)';
+          ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
+          ctx.fillText(b.naslov, b.x, 20);
+
+          /* mjerilo */
+          var mjer = sc * 1;   /* 1″ */
+          if (mjer > 12 && mjer < side * 0.7) {
+            ctx.strokeStyle = 'rgba(0,212,255,.8)'; ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(bx + 8, by + side - 10); ctx.lineTo(bx + 8 + mjer, by + side - 10);
+            ctx.stroke();
+            TECAJ.tag(ctx, bx + 8 + mjer + 5, by + side - 10, '1″', 'rgba(0,212,255,.85)');
+          }
+        });
+      });
+
+      function osvjezi() {
+        var lim = 138 / D;
+        var eff = Math.sqrt(lim * lim + seeing * seeing);
+        TECAJ.el('r-lim').innerHTML = TECAJ.num(lim, 2) + '<span>″</span>';
+        TECAJ.el('r-eff').innerHTML = TECAJ.num(eff, 2) + '<span>″</span>';
+        TECAJ.el('r-rat').innerHTML = TECAJ.num(sep / eff, 2);
+        var difLim = lim > seeing;
+        TECAJ.el('r-lim2').innerHTML = difLim
+          ? '<span style="color:#7dd3fc">difrakcija</span>'
+          : '<span style="color:#fbbf24">atmosfera</span>';
+
+        var box = TECAJ.el('r-info');
+        if (sep > 1.6 * eff) {
+          box.className = 'verdict verdict--ok';
+          box.innerHTML = '<strong>Par je jasno razdvojen.</strong> Razmak ' + TECAJ.num(sep, 2) +
+            '″ je ' + TECAJ.num(sep / eff, 1) + ' puta veći od efektivne razlučivosti. ' +
+            (difLim
+              ? 'Ovdje ograničava difrakcija: veći promjer stvarno bi pomogao.'
+              : 'Ovdje ograničava atmosfera — veći teleskop ne bi promijenio gotovo ništa, ' +
+              'ali bi pomoglo bolje mjesto ili kraća ekspozicija.');
+        } else if (sep > eff) {
+          box.className = 'verdict verdict--warn';
+          box.innerHTML = '<strong>Na granici.</strong> Razmak je približno jednak razlučivosti ' +
+            '(' + TECAJ.num(eff, 2) + '″), pa se par vidi kao izduženo, „osmičasto“ mrljicu. ' +
+            'Ovo je stanje u kojem iskusan opažač zna reći da je dvojna, ali ne može izmjeriti ' +
+            'pozicijski kut. Trebate ' + TECAJ.num(138 / (sep / 1.6), 0) + ' mm promjera ' +
+            'za sigurno razdvajanje uz ovaj seeing.';
+        } else {
+          box.className = 'verdict verdict--bad';
+          box.innerHTML = '<strong>Par se ne razlučuje.</strong> Razmak ' + TECAJ.num(sep, 2) +
+            '″ je manji od ' + TECAJ.num(eff, 2) + '″. ' +
+            (difLim
+              ? 'Difrakcija je uzrok: za Rayleighov limit ' + TECAJ.num(sep, 2) + '″ trebao bi ' +
+              'promjer od ' + TECAJ.num(138 / sep, 0) + ' mm.'
+              : 'Atmosfera je uzrok: čak i beskonačno velik teleskop ovdje bi dao mrlju ' +
+              'širine ' + TECAJ.num(seeing, 1) + '″. Zato postoje adaptivna optika i ' +
+              'svemirski teleskopi.');
+        }
+        cv.draw();
+      }
+
+      TECAJ.slider('r-d', { format: function (v) { return v + ' mm'; }, onInput: function (v) { D = v; osvjezi(); } });
+      TECAJ.slider('r-s', {
+        format: function (v) { return TECAJ.num(v, 2) + '″'; },
+        onInput: function (v) { sep = v; osvjezi(); }
+      });
+      TECAJ.slider('r-se', {
+        format: function (v) { return v === 0 ? 'iz svemira' : TECAJ.num(v, 1) + '″'; },
+        onInput: function (v) { seeing = v; osvjezi(); }
+      });
+      TECAJ.chips('r-preseti', function (v) {
+        sep = parseFloat(v);
+        TECAJ.el('r-s').value = sep;
+        TECAJ.el('r-s-out').textContent = TECAJ.num(sep, 2) + '″';
+        osvjezi();
+      });
+
+      osvjezi();
+    })();
+
+
+    /* =====================================================
+       PRIMJER 3 — Atmosferski prozori i filtri
+       ===================================================== */
+    (function () {
+      var pod = 'vid';
+      /* [ključ, ime, log10λ od, do, propusnost 0-1, gdje, opis] */
+      var POD = {
+        gama: ['Gama-zračenje', -4, -1, 0, 'samo iz svemira',
+          'Atmosfera potpuno zaustavlja gama-zrake. Opažaju se svemirskim teleskopima ' +
+          '(Fermi, INTEGRAL), a s tla samo posredno — kroz atmosferske pljuskove Čerenkovljevim ' +
+          'teleskopima kao što je CTA.'],
+        x: ['Rendgensko zračenje', -1, 1, 0, 'samo iz svemira',
+          'Također potpuno zaustavljeno. Chandra i XMM-Newton rade u svemiru. Rendgen dolazi ' +
+          'iz najvrućih mjesta: akrecijskih diskova, korona i vrućeg plina u jatima galaksija.'],
+        uv: ['Ultraljubičasto', 1, 2.58, 0.05, 'gotovo isključivo iz svemira',
+          'Ozon zaustavlja gotovo sve. Blizu granice s vidljivim (oko 320 nm) postoji tanak ' +
+          'prozor. Za ostalo je potreban svemirski teleskop, npr. Hubble.'],
+        vid: ['Vidljivo', 2.58, 2.88, 0.85, 'sa tla, uz seeing',
+          'Glavni prozor: propusnost je visoka i ovdje leži gotovo cijela klasična astronomija. ' +
+          'Ograničenje nije apsorpcija nego turbulencija — seeing. Zato se veliki teleskopi ' +
+          'grade na visokim, suhim mjestima i koriste adaptivnu optiku.'],
+        ir: ['Infracrveno', 2.88, 5.5, 0.25, 'djelomično sa tla, ostalo iz svemira',
+          'Vodena para u atmosferi apsorbira većinu, ali ostaju uski prozori (J, H, K pojasevi). ' +
+          'Zato se infracrvena astronomija radi s visokih planina, iz zraka ili iz svemira — ' +
+          'JWST je pothlađen do 40 K upravo zato da sam ne svijetli u infracrvenom.'],
+        radio: ['Radiovalovi', 5.5, 10, 0.9, 'sa tla, po svakom vremenu',
+          'Drugi veliki prozor: propusnost je izvrsna, opaža se i danju i kroz oblake. ' +
+          'Problem je razlučivost, jer θ ≈ λ/D, a λ je velika. Rješenje je interferometrija: ' +
+          'povezivanjem antena na tisućama kilometara dobiva se razlučivost bolja od optičke.']
+      };
+
+      var cv = TECAJ.canvas('c6c', 1.9, function (ctx, W, Ht) {
+        var bx = 44, by = 24, bw = W - 62, bh = Ht * 0.44;
+        var A0 = -4, A1 = 10;      /* log10 nm */
+        function X(l) { return bx + bw * (l - A0) / (A1 - A0); }
+
+        /* propusnost atmosfere kao krivulja */
+        function prop(l) {
+          /* grubi model: vidljivi i radio prozor, uski IR prozori */
+          var p = 0;
+          p = Math.max(p, 0.9 * Math.exp(-Math.pow((l - 2.73) / 0.16, 2)));
+          p = Math.max(p, 0.95 / (1 + Math.exp(-(l - 5.6) * 6)) * (l < 9.6 ? 1 : Math.exp(-(l - 9.6) * 3)));
+          /* IR prozori */
+          [3.10, 3.34, 3.70, 4.05, 4.40].forEach(function (c, i) {
+            p = Math.max(p, (0.45 - i * 0.05) * Math.exp(-Math.pow((l - c) / 0.075, 2)));
+          });
+          p = Math.max(p, 0.12 * Math.exp(-Math.pow((l - 2.52) / 0.05, 2)));
+          return TECAJ.clamp(p, 0, 1);
+        }
+
+        /* pozadinske zone */
+        var Z = [[-4, -1, '#f472b6', 'γ'], [-1, 1, '#c084fc', 'X'], [1, 2.58, '#a78bfa', 'UV'],
+        [2.58, 2.88, '#7dd3fc', 'vid'], [2.88, 5.5, '#fb923c', 'IR'], [5.5, 10, '#38bdf8', 'radio']];
+        Z.forEach(function (z) {
+          ctx.globalAlpha = 0.09;
+          ctx.fillStyle = z[2];
+          ctx.fillRect(X(z[0]), by, X(z[1]) - X(z[0]), bh);
+          ctx.globalAlpha = 1;
+          ctx.strokeStyle = 'rgba(255,255,255,.08)';
+          ctx.beginPath(); ctx.moveTo(X(z[1]), by); ctx.lineTo(X(z[1]), by + bh); ctx.stroke();
+          if (X(z[1]) - X(z[0]) > 26) {
+            ctx.font = '9px Inter, sans-serif';
+            ctx.fillStyle = z[2];
+            ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+            ctx.fillText(z[3], (X(z[0]) + X(z[1])) / 2, by + 3);
+          }
+        });
+
+        /* označi odabrano područje */
+        var sel = POD[pod];
+        ctx.fillStyle = 'rgba(255,255,255,.07)';
+        ctx.fillRect(X(sel[1]), by, X(sel[2]) - X(sel[1]), bh);
+        ctx.strokeStyle = 'rgba(255,255,255,.5)'; ctx.lineWidth = 1.4;
+        ctx.strokeRect(X(sel[1]), by, X(sel[2]) - X(sel[1]), bh);
+
+        /* krivulja propusnosti, punjena */
+        ctx.beginPath();
+        ctx.moveTo(X(A0), by + bh);
+        for (var i = 0; i <= 600; i++) {
+          var l = A0 + (A1 - A0) * i / 600;
+          ctx.lineTo(X(l), by + bh * (1 - prop(l)));
+        }
+        ctx.lineTo(X(A1), by + bh);
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(52,211,153,.22)';
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(52,211,153,.9)'; ctx.lineWidth = 1.8;
+        ctx.beginPath();
+        for (var j = 0; j <= 600; j++) {
+          var lj = A0 + (A1 - A0) * j / 600;
+          var yj = by + bh * (1 - prop(lj));
+          j === 0 ? ctx.moveTo(X(lj), yj) : ctx.lineTo(X(lj), yj);
+        }
+        ctx.stroke();
+
+        ctx.strokeStyle = 'rgba(255,255,255,.25)';
+        ctx.beginPath();
+        ctx.moveTo(bx, by); ctx.lineTo(bx, by + bh); ctx.lineTo(bx + bw, by + bh);
+        ctx.stroke();
+        ctx.font = '10px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,.5)';
+        ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+        ctx.fillText('100 %', bx - 5, by);
+        ctx.fillText('0', bx - 5, by + bh);
+        ctx.save();
+        ctx.translate(14, by + bh / 2); ctx.rotate(-Math.PI / 2);
+        ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+        ctx.fillText('propusnost atmosfere', 0, 0);
+        ctx.restore();
+
+        for (var a = -4; a <= 10; a += 2) {
+          ctx.strokeStyle = 'rgba(255,255,255,.15)';
+          ctx.beginPath(); ctx.moveTo(X(a), by + bh); ctx.lineTo(X(a), by + bh + 4); ctx.stroke();
+          ctx.fillStyle = 'rgba(255,255,255,.45)';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+          ctx.fillText('10' + TECAJ.sup(a) + ' nm', X(a), by + bh + 6);
+        }
+
+        /* --- UBVRI filtri --- */
+        var fy = by + bh + 42, fh = Ht - fy - 22;
+        var F0 = 300, F1 = 900;
+        function FX(nm) { return bx + bw * (nm - F0) / (F1 - F0); }
+        var FIL = [['U', 365, 66, '#a78bfa'], ['B', 445, 94, '#60a5fa'],
+        ['V', 551, 88, '#a3e635'], ['R', 658, 138, '#f87171'], ['I', 806, 149, '#fb7185']];
+        FIL.forEach(function (fl) {
+          ctx.beginPath();
+          ctx.moveTo(FX(fl[1] - fl[2]), fy + fh);
+          for (var k = -1.6; k <= 1.6; k += 0.05) {
+            var nm = fl[1] + k * fl[2] / 2;
+            var t = Math.exp(-Math.pow(k / 0.72, 4));
+            ctx.lineTo(FX(nm), fy + fh * (1 - t * 0.92));
+          }
+          ctx.lineTo(FX(fl[1] + fl[2]), fy + fh);
+          ctx.closePath();
+          ctx.globalAlpha = 0.30; ctx.fillStyle = fl[3]; ctx.fill();
+          ctx.globalAlpha = 1;
+          ctx.strokeStyle = fl[3]; ctx.lineWidth = 1.5; ctx.stroke();
+          ctx.font = '600 11px Inter, sans-serif';
+          ctx.fillStyle = fl[3];
+          ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+          ctx.fillText(fl[0], FX(fl[1]), fy + fh * 0.06);
+        });
+        ctx.strokeStyle = 'rgba(255,255,255,.25)';
+        ctx.beginPath(); ctx.moveTo(bx, fy + fh); ctx.lineTo(bx + bw, fy + fh); ctx.stroke();
+        ctx.font = '10px Inter, sans-serif';
+        for (var nm2 = 400; nm2 <= 900; nm2 += 100) {
+          ctx.fillStyle = 'rgba(255,255,255,.45)';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+          ctx.fillText(nm2, FX(nm2), fy + fh + 4);
+        }
+        ctx.fillStyle = 'rgba(255,255,255,.5)';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
+        ctx.font = '600 10px Inter, sans-serif';
+        ctx.fillText('FOTOMETRIJSKI SUSTAV UBVRI (nm)', bx, fy - 4);
+      });
+
+      function osvjezi() {
+        var s = POD[pod];
+        var lam0 = Math.pow(10, s[1]), lam1 = Math.pow(10, s[2]);
+        function fmt(nm) {
+          if (nm < 0.001) return TECAJ.sci(nm, 1) + ' nm';
+          if (nm < 1000) return TECAJ.auto(nm, 2) + ' nm';
+          if (nm < 1e6) return TECAJ.auto(nm / 1000, 1) + ' µm';
+          if (nm < 1e9) return TECAJ.auto(nm / 1e6, 1) + ' mm';
+          return TECAJ.auto(nm / 1e9, 1) + ' m';
+        }
+        TECAJ.el('a-lam').innerHTML = fmt(lam0) + ' – ' + fmt(lam1);
+        TECAJ.el('a-prop').innerHTML = s[3] === 0 ? '≈ 0 <span>%</span>'
+          : TECAJ.num(s[3] * 100, 0) + '<span> %</span>';
+        TECAJ.el('a-gdje').innerHTML = '<span style="font-size:.9rem">' + s[4] + '</span>';
+        /* razlučivost za 1 m na srednjoj λ */
+        var lamSr = Math.sqrt(lam0 * lam1) * 1e-9;
+        var th = 1.22 * lamSr / 1 * 206265;
+        TECAJ.el('a-raz').innerHTML = th < 1
+          ? TECAJ.auto(th, 3) + '<span>″</span>'
+          : th < 3600 ? TECAJ.auto(th, 1) + '<span>″</span>'
+            : TECAJ.auto(th / 3600, 1) + '<span>°</span>';
+
+        var box = TECAJ.el('a-info');
+        box.className = s[3] === 0 ? 'verdict verdict--bad'
+          : s[3] < 0.3 ? 'verdict verdict--warn' : 'verdict verdict--ok';
+        box.innerHTML = '<strong>' + s[0] + '.</strong> ' + s[5];
+        cv.draw();
+      }
+
+      TECAJ.chips('a-pod', function (v) { pod = v; osvjezi(); });
+      osvjezi();
+    })();
+  </script>
+</body>
+
+</html>

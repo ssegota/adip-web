@@ -1,3 +1,19 @@
+# Kompresija tekstualnih datoteka
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css text/csv application/javascript text/javascript application/json image/svg+xml
+</IfModule>
+
+# Keširanje: slike imaju jedinstvena imena (timestamp) pa se keširaju 30 dana.
+# HTML/CSS/JS/JSON se uvijek provjeravaju (ETag -> 304), da izmjene odmah budu vidljive.
+<IfModule mod_headers.c>
+    <FilesMatch "\.(jpe?g|png|gif|webp|svg|ico)$">
+        Header set Cache-Control "public, max-age=2592000"
+    </FilesMatch>
+    <FilesMatch "\.(html|css|js|json|csv)$">
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
+</IfModule>
+
 RewriteEngine On
 
 # Preserve host header - IMPORTANT for correct URLs

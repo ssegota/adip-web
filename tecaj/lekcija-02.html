@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2. Koordinatni sustavi, gibanje Zemlje i vrijeme | Tečaj astronomije</title>
+  <meta name="description"
+    content="Horizontski i ekvatorski koordinatni sustav, kulminacija, izlazak i zalazak, analema, zvjezdano i pojasno vrijeme. Interaktivni primjeri.">
+  <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/tecaj.css?v=20260928">
+  <script src="data/vidljivost.js"></script>
+  <script>
+    /* Pristupna vrata: sakrij sadržaj prije prvog crtanja ako PIN nije unesen.
+       Otključavanje i sam upit su u js/tecaj.js. */
+    (function () {
+      var ulaz = false, urednik = false;
+      try { ulaz = sessionStorage.getItem('tecaj_ulaz') === '1'; } catch (e) { }
+      try { urednik = !!localStorage.getItem('adip_token'); } catch (e) { }
+      if (!ulaz && !urednik) document.documentElement.className += ' tecaj-zakljucano';
+    })();
+  </script>
+</head>
+
+<body>
+  <main class="page-content">
+    <div class="container container--wide">
+
+      <div class="lesson-head" id="lesson-head"></div>
+
+      <div class="lesson-body">
+
+        <!-- ============ TEORIJA ============ -->
+        <div>
+          <div class="panel">
+            <h2 class="panel__title">O čemu je ova lekcija</h2>
+            <p>
+              Ako je nebeska sfera bila jezik, koordinatni sustavi su njegova gramatika. Postoje
+              dva sustava koja stalno koristimo, a razlika među njima je ključna: jedan je vezan
+              na <strong>promatrača</strong>, drugi na <strong>nebo</strong>.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Horizontski sustav</h3>
+            <p>
+              Osnovna kružnica je horizont, pol je zenit. Položaj određuju
+              <strong>azimut</strong> <span class="mvar">A</span> (od sjevera prema istoku,
+              0°–360°) i <strong>visina</strong> <span class="mvar">h</span> (0°–90°).
+              Umjesto visine često se koristi <strong>zenitna daljina</strong>:
+            </p>
+            <div class="formula"><span class="mvar">z</span> = 90° − <span class="mvar">h</span></div>
+            <p>
+              Sustav je praktičan jer opisuje ono što vidimo, ali ima veliku manu: koordinate
+              se mijenjaju iz minute u minutu <em>i</em> ovise o mjestu promatranja. Zato nije
+              podoban za katalog.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Ekvatorski sustavi</h3>
+            <p>
+              Osnovna kružnica je nebeski ekvator, pol je nebeski pol.
+              <strong>Deklinacija</strong> <span class="mvar">δ</span> (−90° do +90°) je
+              nepromjenjiva i ista za sve promatrače. Druga koordinata dolazi u dvije verzije:
+            </p>
+            <ul>
+              <li><strong>Satni kut</strong> <span class="mvar">H</span> — mjeri se od meridijana
+                prema zapadu, raste s vremenom. Ovisi o mjestu i trenutku.</li>
+              <li><strong>Rektascenzija</strong> <span class="mvar">α</span> — mjeri se od
+                proljetne točke prema istoku, u satima. Ne ovisi ni o čemu, pa ide u katalog.</li>
+            </ul>
+            <p>Njih spaja zvjezdano vrijeme <span class="mvar">θ</span>:</p>
+            <div class="formula">
+              <span class="mvar">θ</span> = <span class="mvar">H</span> + <span class="mvar">α</span>
+              <small>zvjezdano vrijeme je satni kut proljetne točke; u kulminaciji je H = 0, pa je θ = α</small>
+            </div>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Ključne relacije</h3>
+            <div class="formula">
+              sin <span class="mvar">h</span> = sin <span class="mvar">φ</span> sin <span class="mvar">δ</span>
+              + cos <span class="mvar">φ</span> cos <span class="mvar">δ</span> cos <span class="mvar">H</span>
+              <small><span class="lvl lvl--d">DR</span>sferni kosinusni poučak u trokutu pol–zenit–zvijezda</small>
+            </div>
+            <div class="formula">
+              <span class="mvar">h</span><sub>max</sub> = 90° − |<span class="mvar">φ</span> − <span
+                class="mvar">δ</span>| &nbsp;&nbsp;·&nbsp;&nbsp;
+              <span class="mvar">h</span><sub>min</sub> = <span class="mvar">φ</span> + <span class="mvar">δ</span> −
+              90°
+            </div>
+            <div class="formula">
+              cos <span class="mvar">H</span><sub>0</sub> = −tan <span class="mvar">φ</span> tan <span
+                class="mvar">δ</span>
+              <small>satni kut izlaska i zalaska; ako nema rješenja, objekt je cirkumpolaran ili nikad ne izlazi</small>
+            </div>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Gibanje Zemlje i vrijeme</h3>
+            <p>
+              <strong>Rotacija</strong> daje dan, ali dva različita dana. Zvjezdani dan
+              (23<sup>h</sup>56<sup>m</sup>04<sup>s</sup>) je jedan puni okret oko osi;
+              sunčev dan je duži jer se Zemlja u međuvremenu pomaknula po stazi i mora se
+              zavrtjeti još ≈ 1° da Sunce opet bude na meridijanu.
+            </p>
+            <p>
+              <strong>Revolucija</strong> uz nagib osi od 23,4° daje godišnja doba i mijenja
+              deklinaciju Sunca od −23,4° do +23,4°. Pravo Sunce nije dobar sat: zbog
+              ekscentricitera staze i nagiba osi kasni ili prednjači do ±16 minuta. Ta razlika
+              je <strong>jednadžba vremena</strong>, a njezin spoj s deklinacijom kroz godinu
+              daje osmicu koju zovemo <strong>analema</strong>.
+            </p>
+            <div class="formula">
+              1° geografske dužine = 4 minute vremena
+              <small>zato su uvedene vremenske zone širine 15°; Hrvatska je u zoni UTC+1</small>
+            </div>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem"><span class="lvl lvl--d">DR</span>Korekcije i
+              precesija</h3>
+            <ul>
+              <li><strong>Precesija</strong>: os Zemlje opisuje stožac u 25 800 godina, pa se
+                proljetna točka pomiče 50″ godišnje. Zato katalozi navode <strong>epohu</strong>
+                (danas J2000,0).</li>
+              <li><strong>Nutacija</strong>: sitno kolebanje s periodom 18,6 godina.</li>
+              <li><strong>Refrakcija</strong> diže objekte prema zenitu — na horizontu čak 34′,
+                pa je izlazak Sunca vidljiv prije nego geometrijski nastupi.</li>
+              <li><strong>Aberacija</strong> (do 20,5″) i <strong>paralaksa</strong> dodatno mijenjaju
+                izmjereni položaj.</li>
+            </ul>
+          </div>
+
+          <div class="panel" style="margin-top:1.5rem">
+            <h2 class="panel__title">Ishodi</h2>
+            <ul>
+              <li>pretvara položaje između horizontskog i ekvatorskog sustava;</li>
+              <li>računa visinu objekta u kulminaciji te uvjete izlaska, zalaska i cirkumpolarnosti;</li>
+              <li>razlikuje zvjezdano, pravo sunčevo, srednje sunčevo i pojasno vrijeme;</li>
+              <li><span class="lvl lvl--d">DR</span>primjenjuje sferni kosinusni poučak i opisuje
+                ekliptički i galaktički sustav.</li>
+            </ul>
+
+            <h2 class="panel__title" style="margin-top:1.5rem">Zapamtite</h2>
+            <ul>
+              <li><span class="mvar">z</span> = 90° − <span class="mvar">h</span></li>
+              <li><span class="mvar">θ</span> = <span class="mvar">H</span> + <span class="mvar">α</span>;
+                kulminacija je <span class="mvar">H</span> = 0</li>
+              <li>cos <span class="mvar">H</span><sub>0</sub> = −tan <span class="mvar">φ</span> tan <span
+                  class="mvar">δ</span></li>
+              <li>1° dužine = 4 minute vremena</li>
+              <li>zvjezdani dan = 23<sup>h</sup>56<sup>m</sup>04<sup>s</sup></li>
+            </ul>
+
+            <div class="callout">
+              <div class="callout__title">Podsjetnik za zadatke</div>
+              <p style="margin-bottom:0">Pula: <span class="mvar">φ</span> = 44,87° N,
+                <span class="mvar">λ</span> = 13,85° E. Ta dužina znači da je pravo mjesno podne
+                u Puli oko 55 minuta <em>nakon</em> podneva po srednjoeuropskom vremenu.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ INTERAKTIVNO ============ -->
+        <div>
+
+          <!-- ---------- 1 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 1</div>
+              <h3 class="demo__title">Dvije mreže na jednom nebu</h3>
+              <p class="demo__hint">
+                Karta cijelog vidljivog neba: zenit je u središtu, horizont je rub. Uključite
+                obje mreže istodobno i pratite kako se horizontske koordinate zvijezde mijenjaju,
+                a ekvatorske ne.
+              </p>
+            </div>
+
+            <canvas id="c2a"></canvas>
+
+            <div class="legend">
+              <span class="legend__item"><span class="legend__swatch" style="--sw:rgba(0,212,255,.75)"></span>
+                horizontska mreža (visina, azimut)</span>
+              <span class="legend__item"><span class="legend__swatch" style="--sw:rgba(124,58,237,.85)"></span>
+                ekvatorska mreža (deklinacija, satni kut)</span>
+              <span class="legend__item"><span class="legend__swatch" style="--sw:rgba(251,191,36,.9)"></span>
+                dnevna staza zvijezde</span>
+            </div>
+
+            <div class="controls controls--3">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>φ</span><span class="ctrl__value" id="k-fi-out"></span></div>
+                <input type="range" id="k-fi" min="0" max="89" step="1" value="45">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>δ zvijezde</span><span class="ctrl__value" id="k-dec-out"></span></div>
+                <input type="range" id="k-dec" min="-89" max="89" step="1" value="20">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>satni kut H</span><span class="ctrl__value" id="k-h-out"></span></div>
+                <input type="range" id="k-h" min="-12" max="12" step="0.1" value="-2">
+              </div>
+            </div>
+
+            <div class="btn-row">
+              <button class="chip-btn active" id="k-t-hor">Horizontska mreža</button>
+              <button class="chip-btn active" id="k-t-eq">Ekvatorska mreža</button>
+              <button class="chip-btn active" id="k-t-tri">Trokut pol–zenit–zvijezda</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Visina h</div>
+                <div class="readout__value" id="k-h-v">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Azimut A</div>
+                <div class="readout__value" id="k-a-v">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Zenitna daljina z</div>
+                <div class="readout__value" id="k-z-v">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Zračna masa</div>
+                <div class="readout__value" id="k-x-v">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="k-info">—</div>
+          </div>
+
+          <!-- ---------- 2 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 2</div>
+              <h3 class="demo__title">Analema i jednadžba vremena za Pulu</h3>
+              <p class="demo__hint">
+                Lijevo je analema — osmica koju Sunce opisuje ako ga svaki dan fotografirate
+                u isti sat po satu. Desno su deklinacija Sunca i jednadžba vremena kroz godinu.
+                Sva vremena su u srednjoeuropskom (zimskom) vremenu, bez ljetnog pomaka.
+              </p>
+            </div>
+
+            <canvas id="c2b"></canvas>
+
+            <div class="controls">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Datum</span><span class="ctrl__value" id="a-dan-out"></span></div>
+                <input type="range" id="a-dan" min="1" max="365" step="1" value="172">
+              </div>
+            </div>
+
+            <div class="btn-row" id="a-presets">
+              <button class="chip-btn" data-value="80">Proljetni ekvinocij</button>
+              <button class="chip-btn active" data-value="172">Ljetni suncostaj</button>
+              <button class="chip-btn" data-value="266">Jesenski ekvinocij</button>
+              <button class="chip-btn" data-value="355">Zimski suncostaj</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Deklinacija Sunca</div>
+                <div class="readout__value" id="a-dec">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Jednadžba vremena</div>
+                <div class="readout__value" id="a-eot">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Pravo podne (SEV)</div>
+                <div class="readout__value" id="a-podne">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Trajanje dana</div>
+                <div class="readout__value" id="a-trajanje">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Izlazak Sunca</div>
+                <div class="readout__value" id="a-izlaz">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Zalazak Sunca</div>
+                <div class="readout__value" id="a-zalaz">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">h Sunca u podne</div>
+                <div class="readout__value" id="a-hmax">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Azimut izlaska</div>
+                <div class="readout__value" id="a-azi">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="a-info">—</div>
+          </div>
+
+          <!-- ---------- 3 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 3</div>
+              <h3 class="demo__title">Zvjezdano vrijeme i kulminacija</h3>
+              <p class="demo__hint">
+                Unesite datum, sat i geografsku dužinu. Kazaljka pokazuje mjesno zvjezdano
+                vrijeme, a to je upravo rektascenzija koja u tom trenutku kulminira.
+              </p>
+            </div>
+
+            <canvas id="c2c"></canvas>
+
+            <div class="controls controls--3">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Datum</span></div>
+                <input type="date" id="z-datum" value="2026-03-21">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Vrijeme (UTC)</span></div>
+                <input type="time" id="z-vrijeme" value="21:00">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Geo. dužina λ (E+)</span></div>
+                <input type="number" id="z-lam" value="13.85" step="0.01" min="-180" max="180">
+              </div>
+            </div>
+
+            <div class="btn-row" id="z-mjesta">
+              <button class="chip-btn active" data-value="13.85">Pula</button>
+              <button class="chip-btn" data-value="15.98">Zagreb</button>
+              <button class="chip-btn" data-value="0">Greenwich</button>
+              <button class="chip-btn" data-value="-70.73">Paranal (Čile)</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Julijanski datum</div>
+                <div class="readout__value" id="z-jd">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">GMST</div>
+                <div class="readout__value" id="z-gmst">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Mjesno zvj. vrijeme</div>
+                <div class="readout__value" id="z-lst">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Kulminira α =</div>
+                <div class="readout__value" id="z-alfa">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="z-info">—</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="lesson-nav" id="lesson-nav"></div>
+    </div>
+  </main>
+
+  <script src="js/tecaj.js?v=20260928"></script>
+  <script>
+    TECAJ.init({ lekcija: 2 });
+
+    /* =====================================================
+       PRIMJER 1 — Dvije mreže na nebu
+       ===================================================== */
+    (function () {
+      var fi = 45, dec = 20, Hh = -2;
+      var showHor = true, showEq = true, showTri = true;
+
+      /* (H u satima, δ) -> (h, A) */
+      function hor(Hs, d) {
+        var H = TECAJ.rad(Hs * 15), dr = TECAJ.rad(d), f = TECAJ.rad(fi);
+        var sh = Math.sin(f) * Math.sin(dr) + Math.cos(f) * Math.cos(dr) * Math.cos(H);
+        var h = Math.asin(TECAJ.clamp(sh, -1, 1));
+        var y = -Math.cos(dr) * Math.sin(H);
+        var x = Math.sin(dr) * Math.cos(f) - Math.cos(dr) * Math.sin(f) * Math.cos(H);
+        var A = Math.atan2(y, x);
+        return { h: TECAJ.deg(h), A: (TECAJ.deg(A) + 360) % 360 };
+      }
+
+      var cv = TECAJ.canvas('c2a', 1.02, function (ctx, W, Ht) {
+        var cx = W / 2, cy = Ht / 2, R = Math.min(W, Ht) * 0.44;
+        /* azimutalna ekvidistantna: pogled prema gore, N gore, E lijevo */
+        function P(h, A) {
+          var r = R * (90 - h) / 90, a = TECAJ.rad(A);
+          return { x: cx - r * Math.sin(a), y: cy - r * Math.cos(a) };
+        }
+        function Peq(Hs, d) { var q = hor(Hs, d); return P(q.h, q.A); }
+
+        ctx.fillStyle = '#04050a';
+        ctx.beginPath(); ctx.arc(cx, cy, R, 0, 6.2832); ctx.fill();
+        TECAJ.starfield(ctx, W, Ht, 150, 8181);
+
+        ctx.save();
+        ctx.beginPath(); ctx.arc(cx, cy, R, 0, 6.2832); ctx.clip();
+
+        var t, p, prvi;
+
+        /* --- horizontska mreža --- */
+        if (showHor) {
+          ctx.strokeStyle = 'rgba(0,212,255,.28)';
+          ctx.lineWidth = 1;
+          for (var alt = 0; alt < 90; alt += 30) {
+            ctx.beginPath(); ctx.arc(cx, cy, R * (90 - alt) / 90, 0, 6.2832); ctx.stroke();
+          }
+          for (var az = 0; az < 360; az += 30) {
+            var p0 = P(0, az);
+            ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(p0.x, p0.y); ctx.stroke();
+          }
+        }
+
+        /* --- ekvatorska mreža --- */
+        if (showEq) {
+          ctx.strokeStyle = 'rgba(124,58,237,.45)';
+          ctx.lineWidth = 1;
+          for (var dd = -80; dd <= 80; dd += 20) {
+            ctx.beginPath(); prvi = true;
+            for (t = -12; t <= 12; t += 0.15) {
+              var q = hor(t, dd);
+              if (q.h < -1) { prvi = true; continue; }
+              p = P(q.h, q.A);
+              prvi ? (ctx.moveTo(p.x, p.y), prvi = false) : ctx.lineTo(p.x, p.y);
+            }
+            ctx.stroke();
+          }
+          for (var hh = -12; hh < 12; hh += 2) {
+            ctx.beginPath(); prvi = true;
+            for (var d2 = -90; d2 <= 90; d2 += 1.5) {
+              var q2 = hor(hh, d2);
+              if (q2.h < -1) { prvi = true; continue; }
+              p = P(q2.h, q2.A);
+              prvi ? (ctx.moveTo(p.x, p.y), prvi = false) : ctx.lineTo(p.x, p.y);
+            }
+            ctx.stroke();
+          }
+          /* nebeski ekvator, izraženiji */
+          ctx.strokeStyle = 'rgba(124,58,237,.95)'; ctx.lineWidth = 2;
+          ctx.beginPath(); prvi = true;
+          for (t = -12; t <= 12; t += 0.1) {
+            var qe = hor(t, 0);
+            if (qe.h < -1) { prvi = true; continue; }
+            p = P(qe.h, qe.A);
+            prvi ? (ctx.moveTo(p.x, p.y), prvi = false) : ctx.lineTo(p.x, p.y);
+          }
+          ctx.stroke();
+        }
+
+        /* --- dnevna staza zvijezde --- */
+        ctx.strokeStyle = 'rgba(251,191,36,.9)'; ctx.lineWidth = 2;
+        ctx.setLineDash([]);
+        ctx.beginPath(); prvi = true;
+        for (t = -12; t <= 12; t += 0.05) {
+          var qs = hor(t, dec);
+          if (qs.h < 0) { prvi = true; continue; }
+          p = P(qs.h, qs.A);
+          prvi ? (ctx.moveTo(p.x, p.y), prvi = false) : ctx.lineTo(p.x, p.y);
+        }
+        ctx.stroke();
+
+        /* --- trokut pol–zenit–zvijezda --- */
+        var zvj = hor(Hh, dec);
+        var pol = { h: fi, A: 0 };
+        if (showTri && zvj.h > 0) {
+          ctx.strokeStyle = 'rgba(52,211,153,.85)';
+          ctx.lineWidth = 1.6; ctx.setLineDash([4, 3]);
+          /* Z–P: po meridijanu */
+          ctx.beginPath();
+          for (var a1 = 90; a1 >= fi; a1 -= 1) { p = P(a1, 0); a1 === 90 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y); }
+          ctx.stroke();
+          /* Z–S: veliki krug od zenita do zvijezde = radijalna linija */
+          var pz = P(zvj.h, zvj.A);
+          ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(pz.x, pz.y); ctx.stroke();
+          /* P–S: kružnica deklinacije od H do 0 */
+          ctx.beginPath(); prvi = true;
+          var st = Hh < 0 ? 0.05 : -0.05;
+          for (t = Hh; (st > 0 ? t <= 0 : t >= 0); t += st) {
+            var qt = hor(t, dec);
+            if (qt.h < 0) { prvi = true; continue; }
+            p = P(qt.h, qt.A);
+            prvi ? (ctx.moveTo(p.x, p.y), prvi = false) : ctx.lineTo(p.x, p.y);
+          }
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          /* oznake stranica */
+          var pp = P(fi, 0);
+          TECAJ.tag(ctx, (cx + pp.x) / 2 + 6, (cy + pp.y) / 2, '90° − φ', 'rgba(52,211,153,.9)');
+          TECAJ.tag(ctx, (cx + pz.x) / 2 + 6, (cy + pz.y) / 2 - 8, '90° − h', 'rgba(52,211,153,.9)');
+        }
+        ctx.restore();
+
+        /* pol i zenit */
+        var ppol = P(fi, 0);
+        ctx.fillStyle = '#fff';
+        ctx.beginPath(); ctx.arc(ppol.x, ppol.y, 4, 0, 6.2832); ctx.fill();
+        TECAJ.tag(ctx, ppol.x + 8, ppol.y, 'P', 'rgba(255,255,255,.9)');
+        ctx.fillStyle = '#00d4ff';
+        ctx.beginPath(); ctx.arc(cx, cy, 3.5, 0, 6.2832); ctx.fill();
+        TECAJ.tag(ctx, cx + 8, cy - 8, 'Z (zenit)', 'rgba(0,212,255,.9)');
+
+        /* zvijezda */
+        if (zvj.h >= 0) {
+          var ps = P(zvj.h, zvj.A);
+          ctx.shadowColor = 'rgba(251,191,36,.9)'; ctx.shadowBlur = 12;
+          ctx.fillStyle = '#fde68a';
+          ctx.beginPath(); ctx.arc(ps.x, ps.y, 5, 0, 6.2832); ctx.fill();
+          ctx.shadowBlur = 0;
+          TECAJ.tag(ctx, ps.x + 9, ps.y, 'S', 'rgba(253,230,138,.95)');
+        }
+
+        /* rub i strane svijeta */
+        ctx.strokeStyle = 'rgba(0,212,255,.6)'; ctx.lineWidth = 1.4;
+        ctx.beginPath(); ctx.arc(cx, cy, R, 0, 6.2832); ctx.stroke();
+        ctx.font = '600 12px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(0,212,255,.8)';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText('N', cx, cy - R - 11);
+        ctx.fillText('S', cx, cy + R + 11);
+        ctx.fillText('E', cx - R - 11, cy);
+        ctx.fillText('W', cx + R + 11, cy);
+      });
+
+      function osvjezi() {
+        var q = hor(Hh, dec);
+        TECAJ.el('k-h-v').innerHTML = TECAJ.num(q.h, 1) + '°';
+        TECAJ.el('k-a-v').innerHTML = TECAJ.num(q.A, 1) + '°';
+        TECAJ.el('k-z-v').innerHTML = TECAJ.num(90 - q.h, 1) + '°';
+        TECAJ.el('k-x-v').innerHTML = q.h > 3
+          ? TECAJ.num(1 / Math.sin(TECAJ.rad(q.h)), 2)
+          : '<span>vrlo nisko</span>';
+
+        var box = TECAJ.el('k-info');
+        var smjer = q.A < 90 || q.A > 270 ? 'sjevernoj' : 'južnoj';
+        if (q.h < 0) {
+          box.className = 'verdict verdict--bad';
+          box.innerHTML = '<strong>Zvijezda je pod horizontom</strong> (h = ' + TECAJ.num(q.h, 1) +
+            '°). Pomaknite satni kut prema H = 0 ili odaberite veću deklinaciju.';
+        } else if (Math.abs(Hh) < 0.05) {
+          box.className = 'verdict verdict--ok';
+          box.innerHTML = '<strong>Kulminacija.</strong> Satni kut je 0, zvijezda je na meridijanu ' +
+            'i na najvećoj visini: h<sub>max</sub> = 90° − |φ − δ| = ' +
+            TECAJ.num(90 - Math.abs(fi - dec), 1) + '°. U tom trenutku vrijedi θ = α.';
+        } else {
+          box.className = 'verdict';
+          box.innerHTML = 'Zvijezda je na ' + smjer + ' strani neba, ' +
+            (Hh < 0 ? '<strong>istočno</strong> od meridijana i još se diže' :
+              '<strong>zapadno</strong> od meridijana i spušta se') +
+            '. Zračna masa ' + (q.h > 3 ? TECAJ.num(1 / Math.sin(TECAJ.rad(q.h)), 2) : '≫ 10') +
+            ' pokazuje kroz koliko atmosfere gledamo — zato se za fotometriju čeka kulminacija.';
+        }
+        cv.draw();
+      }
+
+      TECAJ.slider('k-fi', { format: function (v) { return v + '°'; }, onInput: function (v) { fi = v; osvjezi(); } });
+      TECAJ.slider('k-dec', {
+        format: function (v) { return (v > 0 ? '+' : '') + v + '°'; },
+        onInput: function (v) { dec = v; osvjezi(); }
+      });
+      TECAJ.slider('k-h', {
+        format: function (v) { return (v > 0 ? '+' : '') + TECAJ.num(v, 1) + 'ʰ'; },
+        onInput: function (v) { Hh = v; osvjezi(); }
+      });
+
+      function tgl(id, get, set) {
+        TECAJ.el(id).addEventListener('click', function () {
+          set(!get()); this.classList.toggle('active', get()); cv.draw();
+        });
+      }
+      tgl('k-t-hor', function () { return showHor; }, function (v) { showHor = v; });
+      tgl('k-t-eq', function () { return showEq; }, function (v) { showEq = v; });
+      tgl('k-t-tri', function () { return showTri; }, function (v) { showTri = v; });
+
+      osvjezi();
+    })();
+
+
+    /* =====================================================
+       PRIMJER 2 — Analema i jednadžba vremena
+       ===================================================== */
+    (function () {
+      var FI = 44.87, LAM = 13.85, ZONA = 1;   /* Pula, SEV = UTC+1 */
+      var dan = 172;
+
+      /* Spencerove aproksimacije */
+      function gama(N) { return 2 * Math.PI * (N - 1) / 365; }
+      function decSunca(N) {
+        var g = gama(N);
+        return TECAJ.deg(0.006918 - 0.399912 * Math.cos(g) + 0.070257 * Math.sin(g)
+          - 0.006758 * Math.cos(2 * g) + 0.000907 * Math.sin(2 * g)
+          - 0.002697 * Math.cos(3 * g) + 0.00148 * Math.sin(3 * g));
+      }
+      function eot(N) {   /* minute */
+        var g = gama(N);
+        return 229.18 * (0.000075 + 0.001868 * Math.cos(g) - 0.032077 * Math.sin(g)
+          - 0.014615 * Math.cos(2 * g) - 0.040849 * Math.sin(2 * g));
+      }
+      function H0(N) {    /* satni kut izlaska u stupnjevima, s refrakcijom */
+        var d = TECAJ.rad(decSunca(N)), f = TECAJ.rad(FI);
+        var c = Math.cos(TECAJ.rad(90.833)) / (Math.cos(f) * Math.cos(d)) - Math.tan(f) * Math.tan(d);
+        if (c >= 1) return 0;
+        if (c <= -1) return 180;
+        return TECAJ.deg(Math.acos(c));
+      }
+      function podne(N) { return 12 + ZONA - LAM / 15 - eot(N) / 60; }
+      function hm(t) {
+        var a = ((t % 24) + 24) % 24, h = Math.floor(a), m = Math.round((a - h) * 60);
+        if (m === 60) { m = 0; h = (h + 1) % 24; }
+        return TECAJ.pad(h) + ':' + TECAJ.pad(m);
+      }
+
+      var cv = TECAJ.canvas('c2b', 1.9, function (ctx, W, Ht) {
+        var lw = W * 0.40;
+
+        /* ---------- analema ---------- */
+        var ax = 52, ay = 26, aw = lw - 70, ah = Ht - 78;
+        TECAJ.axes(ctx, { l: ax, t: ay, w: aw, h: ah }, {
+          x0: -18, x1: 18, y0: -25, y1: 25,
+          xTicks: [{ at: -15, label: '−15' }, { at: 0, label: '0' }, { at: 15, label: '+15' }],
+          yTicks: [{ at: -23.4, label: '−23' }, { at: 0, label: '0°' }, { at: 23.4, label: '+23' }],
+          xLabel: 'jedn. vremena (min)', yLabel: 'deklinacija Sunca'
+        });
+        function AX(e) { return ax + aw * (e + 18) / 36; }
+        function AY(d) { return ay + ah * (25 - d) / 50; }
+
+        ctx.strokeStyle = 'rgba(0,212,255,.8)'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        for (var N = 1; N <= 366; N++) {
+          var x = AX(eot(N)), y = AY(decSunca(N));
+          N === 1 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+
+        /* mjesečne oznake */
+        var mjD = [1, 32, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335];
+        var mjN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
+        ctx.font = '9px Inter, sans-serif';
+        for (var i = 0; i < 12; i++) {
+          var px = AX(eot(mjD[i])), py = AY(decSunca(mjD[i]));
+          ctx.fillStyle = 'rgba(255,255,255,.4)';
+          ctx.beginPath(); ctx.arc(px, py, 2, 0, 6.2832); ctx.fill();
+          ctx.fillStyle = 'rgba(255,255,255,.5)';
+          ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+          ctx.fillText(mjN[i], px + 5, py);
+        }
+        /* trenutna točka */
+        ctx.shadowColor = 'rgba(251,191,36,.9)'; ctx.shadowBlur = 12;
+        ctx.fillStyle = '#fbbf24';
+        ctx.beginPath(); ctx.arc(AX(eot(dan)), AY(decSunca(dan)), 5, 0, 6.2832); ctx.fill();
+        ctx.shadowBlur = 0;
+
+        ctx.font = '600 11px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,.55)';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+        ctx.fillText('ANALEMA', ax, 8);
+
+        /* razdjelnica */
+        ctx.strokeStyle = 'rgba(255,255,255,.12)'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(lw, 8); ctx.lineTo(lw, Ht - 8); ctx.stroke();
+
+        /* ---------- kroz godinu ---------- */
+        var bx = lw + 48, by = 26, bw = W - lw - 66, bh = Ht - 78;
+        TECAJ.axes(ctx, { l: bx, t: by, w: bw, h: bh }, {
+          x0: 1, x1: 365, y0: -25, y1: 25,
+          xTicks: [{ at: 1, label: 'I' }, { at: 60, label: 'III' }, { at: 121, label: 'V' },
+          { at: 182, label: 'VII' }, { at: 244, label: 'IX' }, { at: 305, label: 'XI' }],
+          yTicks: [{ at: -20, label: '−20' }, { at: -10, label: '−10' }, { at: 0, label: '0' },
+          { at: 10, label: '+10' }, { at: 20, label: '+20' }],
+          xLabel: 'mjesec', yLabel: 'δ (°) i JV (min)'
+        });
+        function BX(N) { return bx + bw * (N - 1) / 364; }
+        function BY(v) { return by + bh * (25 - v) / 50; }
+
+        ctx.strokeStyle = 'rgba(251,191,36,.9)'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        for (var n2 = 1; n2 <= 365; n2++) {
+          n2 === 1 ? ctx.moveTo(BX(n2), BY(decSunca(n2))) : ctx.lineTo(BX(n2), BY(decSunca(n2)));
+        }
+        ctx.stroke();
+        ctx.strokeStyle = 'rgba(0,212,255,.9)'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        for (var n3 = 1; n3 <= 365; n3++) {
+          n3 === 1 ? ctx.moveTo(BX(n3), BY(eot(n3))) : ctx.lineTo(BX(n3), BY(eot(n3)));
+        }
+        ctx.stroke();
+
+        ctx.strokeStyle = 'rgba(255,255,255,.35)'; ctx.setLineDash([3, 3]);
+        ctx.beginPath(); ctx.moveTo(BX(dan), by); ctx.lineTo(BX(dan), by + bh); ctx.stroke();
+        ctx.setLineDash([]);
+
+        TECAJ.tag(ctx, bx + 6, by + 14, 'deklinacija Sunca', 'rgba(251,191,36,.85)');
+        TECAJ.tag(ctx, bx + 6, by + 29, 'jednadžba vremena', 'rgba(0,212,255,.85)');
+      });
+
+      function dat(N) {
+        var d = new Date(2026, 0, 1);
+        d.setDate(N);
+        return d.getDate() + '. ' + ['siječnja', 'veljače', 'ožujka', 'travnja', 'svibnja',
+          'lipnja', 'srpnja', 'kolovoza', 'rujna', 'listopada', 'studenoga', 'prosinca'][d.getMonth()];
+      }
+
+      function osvjezi() {
+        var d = decSunca(dan), e = eot(dan), h0 = H0(dan), p = podne(dan);
+        TECAJ.el('a-dec').innerHTML = (d >= 0 ? '+' : '−') + TECAJ.num(Math.abs(d), 1) + '°';
+        TECAJ.el('a-eot').innerHTML = (e >= 0 ? '+' : '−') + TECAJ.num(Math.abs(e), 1) + '<span> min</span>';
+        TECAJ.el('a-podne').innerHTML = hm(p);
+        TECAJ.el('a-trajanje').innerHTML = TECAJ.num(2 * h0 / 15, 2) + '<span> h</span>';
+        TECAJ.el('a-izlaz').innerHTML = hm(p - h0 / 15);
+        TECAJ.el('a-zalaz').innerHTML = hm(p + h0 / 15);
+        TECAJ.el('a-hmax').innerHTML = TECAJ.num(90 - Math.abs(FI - d), 1) + '°';
+        var ca = Math.sin(TECAJ.rad(d)) / Math.cos(TECAJ.rad(FI));
+        TECAJ.el('a-azi').innerHTML = TECAJ.num(TECAJ.deg(Math.acos(TECAJ.clamp(ca, -1, 1))), 0) + '°';
+
+        var box = TECAJ.el('a-info');
+        box.className = 'verdict';
+        box.innerHTML = '<strong>' + dat(dan) + '.</strong> ' +
+          (e > 0
+            ? 'Pravo Sunce <strong>prednjači</strong> srednjem za ' + TECAJ.num(e, 1) + ' minuta, ' +
+            'pa sunčani sat pokazuje više od kazaljki. '
+            : 'Pravo Sunce <strong>kasni</strong> za srednjim ' + TECAJ.num(-e, 1) + ' minuta, ' +
+            'pa sunčani sat pokazuje manje od kazaljki. ') +
+          'Podne u Puli nikad nije u 12:00 jer je grad na 13,85° E, a satna zona vrijedi za 15° E — ' +
+          'to samo po sebi daje pomak od ' + TECAJ.num((15 - LAM) * 4, 0) + ' minuta.';
+        cv.draw();
+      }
+
+      TECAJ.slider('a-dan', { format: function (v) { return dat(v) + '.'; }, onInput: function (v) { dan = v; osvjezi(); } });
+      TECAJ.chips('a-presets', function (v) {
+        dan = parseInt(v, 10);
+        TECAJ.el('a-dan').value = dan;
+        TECAJ.el('a-dan-out').textContent = dat(dan) + '.';
+        osvjezi();
+      });
+
+      osvjezi();
+    })();
+
+
+    /* =====================================================
+       PRIMJER 3 — Zvjezdano vrijeme
+       ===================================================== */
+    (function () {
+      /* Nekoliko sjajnih zvijezda: [ime, α(h), δ] */
+      var ZV = [
+        ['Sirius', 6.752, -16.72], ['Betelgeuse', 5.919, 7.41], ['Rigel', 5.242, -8.20],
+        ['Aldebaran', 4.599, 16.51], ['Capella', 5.278, 45.998], ['Procyon', 7.655, 5.22],
+        ['Regulus', 10.139, 11.97], ['Spica', 13.420, -11.16], ['Arktur', 14.261, 19.18],
+        ['Antares', 16.490, -26.43], ['Vega', 18.615, 38.78], ['Altair', 19.846, 8.87],
+        ['Deneb', 20.690, 45.28], ['Fomalhaut', 22.961, -29.62], ['Alpheratz', 0.140, 29.09],
+        ['Mirfak', 3.405, 49.86], ['Polara', 2.530, 89.26], ['Pollux', 7.755, 28.03]
+      ];
+      var lst = 0, gmst = 0, jd = 0, lam = 13.85;
+
+      function racunaj() {
+        var dEl = TECAJ.el('z-datum').value, tEl = TECAJ.el('z-vrijeme').value;
+        if (!dEl || !tEl) return;
+        var dp = dEl.split('-').map(Number), tp = tEl.split(':').map(Number);
+        var Y = dp[0], M = dp[1], D = dp[2];
+        var ut = tp[0] + tp[1] / 60;
+
+        /* Julijanski datum (gregorijanski kalendar) */
+        if (M <= 2) { Y -= 1; M += 12; }
+        var A = Math.floor(Y / 100), B = 2 - A + Math.floor(A / 4);
+        jd = Math.floor(365.25 * (Y + 4716)) + Math.floor(30.6001 * (M + 1)) + D + B - 1524.5 + ut / 24;
+
+        var T = jd - 2451545.0;
+        gmst = (280.46061837 + 360.98564736629 * T) % 360;
+        if (gmst < 0) gmst += 360;
+        lst = (gmst + lam) % 360;
+        if (lst < 0) lst += 360;
+
+        var lstH = lst / 15;
+        TECAJ.el('z-jd').innerHTML = TECAJ.num(jd, 3);
+        TECAJ.el('z-gmst').innerHTML = TECAJ.hms(gmst / 15);
+        TECAJ.el('z-lst').innerHTML = TECAJ.hms(lstH);
+        TECAJ.el('z-alfa').innerHTML = TECAJ.hms(lstH);
+
+        /* najbliža zvijezda meridijanu */
+        var best = null, bd = 99;
+        ZV.forEach(function (s) {
+          var d = Math.abs(((s[1] - lstH + 36) % 24) - 12);
+          d = 12 - d;
+          if (d < bd) { bd = d; best = s; }
+        });
+        var box = TECAJ.el('z-info');
+        box.className = 'verdict';
+        box.innerHTML = 'Meridijan u tom trenutku siječe rektascenziju <strong>' +
+          TECAJ.hms(lstH) + '</strong>. Najbliža sjajna zvijezda je <strong>' + best[0] +
+          '</strong> (α = ' + TECAJ.hms(best[1]) + ', δ = ' + TECAJ.num(best[2], 1) + '°), ' +
+          'udaljena ' + TECAJ.num(bd, 2) + 'ʰ od meridijana; kulminira na visini ' +
+          TECAJ.num(90 - Math.abs(44.87 - best[2]), 1) + '° iz Pule. ' +
+          'Ista dužina ' + TECAJ.num(lam, 2) + '° pomiče mjesno zvjezdano vrijeme za ' +
+          TECAJ.num(lam * 4, 1) + ' minuta od Greenwicha.';
+        cv.draw();
+      }
+
+      var cv = TECAJ.canvas('c2c', 1.35, function (ctx, W, Ht) {
+        var cx = W / 2, cy = Ht * 0.5, R = Math.min(W, Ht) * 0.37;
+        TECAJ.starfield(ctx, W, Ht, 80, 5150);
+
+        var lstH = lst / 15;
+        function ang(h) { return TECAJ.rad(h * 15 - 90); }   /* 0ʰ desno, raste u smjeru sata */
+
+        /* brojčanik */
+        ctx.strokeStyle = 'rgba(255,255,255,.18)'; ctx.lineWidth = 1.4;
+        ctx.beginPath(); ctx.arc(cx, cy, R, 0, 6.2832); ctx.stroke();
+        ctx.font = '10px Inter, sans-serif';
+        for (var h = 0; h < 24; h++) {
+          var a = ang(h);
+          var r1 = h % 6 === 0 ? R - 12 : R - 6;
+          ctx.strokeStyle = h % 6 === 0 ? 'rgba(0,212,255,.6)' : 'rgba(255,255,255,.2)';
+          ctx.beginPath();
+          ctx.moveTo(cx + Math.cos(a) * r1, cy + Math.sin(a) * r1);
+          ctx.lineTo(cx + Math.cos(a) * R, cy + Math.sin(a) * R);
+          ctx.stroke();
+          if (h % 3 === 0) {
+            ctx.fillStyle = 'rgba(255,255,255,.5)';
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText(h + 'ʰ', cx + Math.cos(a) * (R + 13), cy + Math.sin(a) * (R + 13));
+          }
+        }
+
+        /* zvijezde po rektascenziji */
+        ZV.forEach(function (s) {
+          var a = ang(s[1]);
+          var rr = R * 0.86;
+          var blizu = Math.abs(((s[1] - lstH + 36) % 24) - 12) > 11.4;
+          ctx.fillStyle = blizu ? '#fde68a' : 'rgba(255,255,255,.6)';
+          ctx.beginPath();
+          ctx.arc(cx + Math.cos(a) * rr, cy + Math.sin(a) * rr, blizu ? 4.5 : 2.6, 0, 6.2832);
+          ctx.fill();
+          if (blizu) {
+            ctx.font = '600 11px Inter, sans-serif';
+            ctx.fillStyle = '#fde68a';
+            ctx.textAlign = Math.cos(a) > 0 ? 'left' : 'right';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(s[0], cx + Math.cos(a) * (rr - (Math.cos(a) > 0 ? -8 : 8)),
+              cy + Math.sin(a) * rr - 12);
+          }
+        });
+
+        /* kazaljka mjesnog zvjezdanog vremena */
+        var al = ang(lstH);
+        ctx.strokeStyle = '#00d4ff'; ctx.lineWidth = 2.6;
+        ctx.shadowColor = 'rgba(0,212,255,.7)'; ctx.shadowBlur = 10;
+        ctx.beginPath(); ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + Math.cos(al) * R * 0.94, cy + Math.sin(al) * R * 0.94);
+        ctx.stroke(); ctx.shadowBlur = 0;
+
+        ctx.fillStyle = '#00d4ff';
+        ctx.beginPath(); ctx.arc(cx, cy, 4, 0, 6.2832); ctx.fill();
+
+        ctx.font = '600 12px Inter, sans-serif';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillStyle = 'rgba(0,212,255,.9)';
+        ctx.fillText('θ = ' + TECAJ.hms(lstH), cx, cy + R + 34);
+        ctx.font = '11px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,.45)';
+        ctx.textAlign = 'left';
+        ctx.fillText('kazaljka pokazuje rektascenziju koja kulminira', 10, 14);
+      });
+
+      ['z-datum', 'z-vrijeme'].forEach(function (id) {
+        TECAJ.el(id).addEventListener('input', racunaj);
+      });
+      TECAJ.el('z-lam').addEventListener('input', function () {
+        var v = parseFloat(this.value);
+        if (isFinite(v)) { lam = v; racunaj(); }
+      });
+      TECAJ.chips('z-mjesta', function (v) {
+        lam = parseFloat(v);
+        TECAJ.el('z-lam').value = lam;
+        racunaj();
+      });
+
+      racunaj();
+    })();
+  </script>
+</body>
+
+</html>

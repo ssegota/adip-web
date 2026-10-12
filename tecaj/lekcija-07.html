@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7. Sunčev sustav: planeti | Tečaj astronomije</title>
+  <meta name="description"
+    content="Nastanak Sunčeva sustava, linija leda, terestrički i divovski planeti, atmosfere, prstenovi, sateliti, sinodički period i ravnotežna temperatura.">
+  <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/tecaj.css?v=20260928">
+  <script src="data/vidljivost.js"></script>
+  <script>
+    /* Pristupna vrata: sakrij sadržaj prije prvog crtanja ako PIN nije unesen.
+       Otključavanje i sam upit su u js/tecaj.js. */
+    (function () {
+      var ulaz = false, urednik = false;
+      try { ulaz = sessionStorage.getItem('tecaj_ulaz') === '1'; } catch (e) { }
+      try { urednik = !!localStorage.getItem('adip_token'); } catch (e) { }
+      if (!ulaz && !urednik) document.documentElement.className += ' tecaj-zakljucano';
+    })();
+  </script>
+</head>
+
+<body>
+  <main class="page-content">
+    <div class="container container--wide">
+
+      <div class="lesson-head" id="lesson-head"></div>
+
+      <div class="lesson-body">
+
+        <!-- ============ TEORIJA ============ -->
+        <div>
+          <div class="panel">
+            <h2 class="panel__title">O čemu je ova lekcija</h2>
+            <p>
+              Sunčev sustav nije zbirka nepovezanih tijela nego <strong>ostatak jednog
+                procesa</strong> — i sve se razlike među planetima mogu iz njega izvesti.
+              Ako razumijete taj proces, ne trebate pamtiti tablicu: možete je rekonstruirati.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Od oblaka do planeta</h3>
+            <p>
+              Prije 4,57 milijardi godina gravitacijski se urušio dio molekularnog oblaka.
+              Očuvanje kutne količine gibanja pretvorilo ga je u rotirajući disk s
+              protozvijezdom u sredini. U disku su se čestice prašine sudarale i lijepile:
+              zrnca → planetezimali → protoplaneti → planeti.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Linija leda — ključna granica</h3>
+            <p>
+              Na oko <strong>2,7 AJ</strong> temperatura diska padne dovoljno da voda, metan i
+              amonijak zamrznu. To udvostručuje količinu čvrste tvari dostupne za gradnju:
+            </p>
+            <ul>
+              <li><strong>Unutar</strong> linije leda ostaju samo silikati i metali — malo
+                materijala, pa nastaju mali, gusti <strong>terestrički</strong> planeti bez
+                zadržane primordijalne atmosfere.</li>
+              <li><strong>Izvan</strong> nje jezgre brzo narastu do 10 masa Zemlje i tada
+                gravitacijski privuku ogromne količine vodika i helija — nastaju
+                <strong>divovi</strong>.
+              </li>
+            </ul>
+            <p>
+              Jedna granica objašnjava dvije skupine planeta, njihove gustoće, sastav atmosfera,
+              broj satelita i prstenove.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Dvije skupine</h3>
+            <p>
+              <strong>Terestrički</strong> (Merkur–Mars): mali, gustoća 4–5,5 g/cm³, čvrsta
+              površina, malo ili nimalo satelita, bez prstenova, spora rotacija.
+              <strong>Divovi</strong> (Jupiter–Neptun): veliki, gustoća 0,7–1,6 g/cm³, bez
+              čvrste površine, brza rotacija (10–17 h), prstenovi i deseci satelita.
+              Uran i Neptun često se izdvajaju kao <strong>ledeni divovi</strong> jer im je
+              veći dio mase voda, metan i amonijak, a ne vodik.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Tri ishoda staklenika</h3>
+            <p>
+              Venera, Zemlja i Mars nastali su od iste tvari, a završili posve različito.
+              Odlučili su masa i udaljenost:
+            </p>
+            <ul>
+              <li><strong>Venera</strong>: gusta CO₂ atmosfera, pobjegli staklenik,
+                površina 737 K — vruća od Merkura iako je dalja.</li>
+              <li><strong>Zemlja</strong>: staklenik od +33 K, tekuća voda, ugljikov ciklus
+                drži ravnotežu.</li>
+              <li><strong>Mars</strong>: mala masa, izgubio magnetsko polje i atmosferu,
+                ostalo je 6 mbar i +5 K staklenika.</li>
+            </ul>
+            <div class="formula">
+              <span class="mvar">T</span><sub>eq</sub> = <span class="mvar">T</span><sub>☉</sub>
+              √(<span class="mvar">R</span><sub>☉</sub>/2<span class="mvar">d</span>)
+              (1 − <span class="mvar">A</span>)<sup>1/4</sup>
+              <small>ravnotežna temperatura; za Zemlju daje 255 K, a stvarnih 288 K razlika je staklenik</small>
+            </div>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Tko zadržava atmosferu</h3>
+            <div class="formula">
+              <span class="mvar">v</span><sub>2</sub> = √(2<span class="mvar">GM</span>/<span class="mvar">R</span>)
+              &nbsp;·&nbsp; atmosfera ostaje ako je
+              <span class="mvar">v</span><sub>2</sub> &gt; 6 <span class="mvar">v</span><sub>term</sub>
+              <small>termička brzina raste s temperaturom i pada s masom molekule — zato Zemlja gubi vodik, a
+                zadržava kisik</small>
+            </div>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Sateliti i prstenovi</h3>
+            <ul>
+              <li><strong>Mjesec</strong> je nastao velikim udarom, sinkrono rotira, uzrokuje
+                plime i stabilizira Zemljinu os. Udaljava se 3,8 cm/god.</li>
+              <li><strong>Io</strong> je vulkanski najaktivnije tijelo u sustavu (plimno
+                grijanje), <strong>Europa</strong>, <strong>Ganimed</strong> i
+                <strong>Enkelad</strong> imaju podzemne oceane, <strong>Titan</strong> gustu
+                atmosferu i jezera metana, <strong>Triton</strong> retrogradnu stazu.</li>
+              <li><strong>Prstenovi</strong> su unutar <strong>Rocheove granice</strong>, gdje
+                plimne sile ne dopuštaju da se tvar spoji u satelit:
+                <span class="mvar">d</span> ≈ 2,44 <span class="mvar">R</span>
+                (<span class="mvar">ρ</span><sub>M</sub>/<span class="mvar">ρ</span><sub>m</sub>)<sup>1/3</sup>.
+              </li>
+            </ul>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Konfiguracije i sinodički period</h3>
+            <div class="formula">
+              1/<span class="mvar">S</span> = 1/<span class="mvar">T</span><sub>⊕</sub> − 1/<span
+                class="mvar">T</span><sub>p</sub>
+              <small>za vanjske planete; za unutarnje se članovi zamijene. S je vrijeme između dviju istih
+                konfiguracija</small>
+            </div>
+          </div>
+
+          <div class="panel" style="margin-top:1.5rem">
+            <h2 class="panel__title">Ishodi</h2>
+            <ul>
+              <li>objašnjava nastanak planeta iz protoplanetarnog diska i ulogu linije leda;</li>
+              <li>uspoređuje fizička svojstva planeta i tumači razlike u građi i atmosferama;</li>
+              <li>računa sinodički period, brzinu bijega, gustoću i ravnotežnu temperaturu;</li>
+              <li>opisuje glavne satelite i pojave vezane uz Mjesec.</li>
+            </ul>
+
+            <h2 class="panel__title" style="margin-top:1.5rem">Zapamtite</h2>
+            <ul>
+              <li>Linija leda na ≈ 2,7 AJ dijeli sustav na dvije polovice</li>
+              <li>Terestrički: mali, gusti, malo satelita</li>
+              <li>Divovi: veliki, rijetki, brza rotacija, prstenovi</li>
+              <li>1/<span class="mvar">S</span> = 1/<span class="mvar">T</span><sub>⊕</sub> − 1/<span
+                  class="mvar">T</span><sub>p</sub> (vanjski)</li>
+              <li><span class="mvar">v</span><sub>2</sub> = √(2<span class="mvar">GM</span>/<span
+                  class="mvar">R</span>)</li>
+              <li><span class="mvar">T</span><sub>eq</sub> = <span class="mvar">T</span><sub>☉</sub>√(<span
+                  class="mvar">R</span><sub>☉</sub>/2<span class="mvar">d</span>)(1−<span class="mvar">A</span>)<sup>1/4</sup>
+              </li>
+              <li><span class="mvar">d</span><sub>Roche</sub> ≈ 2,44<span class="mvar">R</span>(<span
+                  class="mvar">ρ</span><sub>M</sub>/<span class="mvar">ρ</span><sub>m</sub>)<sup>1/3</sup></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ============ INTERAKTIVNO ============ -->
+        <div>
+
+          <!-- ---------- 1 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 1</div>
+              <h3 class="demo__title">Tablica planeta: podjela se sama pojavi</h3>
+              <p class="demo__hint">
+                Gustoća, gravitacija, brzina bijega i ravnotežna temperatura su
+                <em>izračunate</em> iz mase i polumjera, ne prepisane. Kliknite na zaglavlje
+                stupca da sortirate — i gledajte kako se dvije skupine razdvoje.
+              </p>
+            </div>
+
+            <div class="data-table-wrap">
+              <table class="data-table data-table--compact" id="pl-tab">
+                <thead>
+                  <tr>
+                    <th data-k="ime">Planet</th>
+                    <th data-k="a">a (AJ)</th>
+                    <th data-k="T">T (god)</th>
+                    <th data-k="M">M (M⊕)</th>
+                    <th data-k="R">R (km)</th>
+                    <th data-k="ro">ρ (g/cm³)</th>
+                    <th data-k="g">g (m/s²)</th>
+                    <th data-k="v2">v₂ (km/s)</th>
+                    <th data-k="Teq">T<sub>eq</sub> (K)</th>
+                    <th data-k="sat">satelita</th>
+                    <th data-k="S">S (dana)</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+
+            <div class="btn-row" id="pl-vrsta" style="margin-top:1rem">
+              <button class="chip-btn active" data-value="sve">Sve</button>
+              <button class="chip-btn" data-value="ter">Samo terestrički</button>
+              <button class="chip-btn" data-value="div">Samo divovi</button>
+            </div>
+
+            <canvas id="c7a"></canvas>
+            <div class="legend">
+              <span class="legend__item"><span class="legend__swatch legend__swatch--dot"
+                  style="--sw:#7dd3fc"></span> terestrički</span>
+              <span class="legend__item"><span class="legend__swatch legend__swatch--dot"
+                  style="--sw:#c084fc"></span> divovi</span>
+              <span class="legend__item"><span class="legend__swatch" style="--sw:rgba(52,211,153,.8)"></span>
+                linija leda (2,7 AJ)</span>
+            </div>
+            <div class="verdict" id="pl-info">
+              Sortirajte po gustoći: dobit ćete gotovo čistu podjelu na dvije skupine, s
+              linijom leda točno između njih.
+            </div>
+          </div>
+
+          <!-- ---------- 2 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 2</div>
+              <h3 class="demo__title">Konfiguracije i sinodički period</h3>
+              <p class="demo__hint">
+                Pratite Zemlju i odabrani planet. Naziv konfiguracije mijenja se sam, a
+                sinodički period je vrijeme između dviju istih konfiguracija.
+              </p>
+            </div>
+
+            <canvas id="c7b"></canvas>
+
+            <div class="btn-row" id="k-planet">
+              <button class="chip-btn" data-value="0">Merkur</button>
+              <button class="chip-btn" data-value="1">Venera</button>
+              <button class="chip-btn active" data-value="3">Mars</button>
+              <button class="chip-btn" data-value="4">Jupiter</button>
+              <button class="chip-btn" data-value="5">Saturn</button>
+            </div>
+
+            <div class="controls">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Vrijeme</span><span class="ctrl__value" id="k-t-out"></span></div>
+                <input type="range" id="k-t" min="0" max="2000" step="1" value="0">
+              </div>
+            </div>
+            <div class="btn-row">
+              <button class="chip-btn" id="k-play">Animiraj</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Sinodički period S</div>
+                <div class="readout__value" id="k-s">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Elongacija</div>
+                <div class="readout__value" id="k-el">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Udaljenost od Zemlje</div>
+                <div class="readout__value" id="k-d">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Konfiguracija</div>
+                <div class="readout__value" id="k-kon">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="k-info">—</div>
+          </div>
+
+          <!-- ---------- 3 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 3</div>
+              <h3 class="demo__title">Ravnotežna temperatura i efekt staklenika</h3>
+              <p class="demo__hint">
+                Tri ishoda od istog polazišta. Postavite udaljenost i albedo, pa dodajte
+                staklenik — i pogledajte gdje pada granica tekuće vode.
+              </p>
+            </div>
+
+            <canvas id="c7c"></canvas>
+
+            <div class="controls controls--3">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Udaljenost d</span><span class="ctrl__value" id="s-d-out"></span></div>
+                <input type="range" id="s-d" min="0.2" max="5" step="0.001" value="1">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Albedo A</span><span class="ctrl__value" id="s-a-out"></span></div>
+                <input type="range" id="s-a" min="0" max="0.95" step="0.001" value="0.306">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Staklenik ΔT</span><span class="ctrl__value" id="s-g-out"></span></div>
+                <input type="range" id="s-g" min="0" max="550" step="1" value="33">
+              </div>
+            </div>
+
+            <div class="btn-row" id="s-preseti">
+              <button class="chip-btn" data-value="0.387,0.088,0,Merkur">Merkur</button>
+              <button class="chip-btn" data-value="0.723,0.76,505,Venera">Venera</button>
+              <button class="chip-btn active" data-value="1,0.306,33,Zemlja">Zemlja</button>
+              <button class="chip-btn" data-value="1.524,0.25,5,Mars">Mars</button>
+              <button class="chip-btn" data-value="5.204,0.503,0,Jupiter">Jupiter</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Sunčeva konstanta na d</div>
+                <div class="readout__value" id="s-sk">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">T<sub>eq</sub> (bez atmosfere)</div>
+                <div class="readout__value" id="s-teq">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">T s staklenikom</div>
+                <div class="readout__value" id="s-ts">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">U °C</div>
+                <div class="readout__value" id="s-c">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="s-info">—</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="lesson-nav" id="lesson-nav"></div>
+    </div>
+  </main>
+
+  <script src="js/tecaj.js?v=20260928"></script>
+  <script>
+    TECAJ.init({ lekcija: 7 });
+
+    var G = 6.674e-11, ME = 5.9722e24, TSUN = 5772, RSUN = 6.957e8, AJ = 1.495978707e11;
+
+    /* ime, a, T(god), M(M⊕), R(km), satelita, albedo, staklenik ΔT, div? */
+    var PLANETI = [
+      ['Merkur', 0.387, 0.2408, 0.0553, 2440, 0, 0.088, 0, false],
+      ['Venera', 0.723, 0.6152, 0.8150, 6052, 0, 0.760, 505, false],
+      ['Zemlja', 1.000, 1.0000, 1.0000, 6371, 1, 0.306, 33, false],
+      ['Mars', 1.524, 1.8810, 0.1074, 3390, 2, 0.250, 5, false],
+      ['Jupiter', 5.204, 11.862, 317.83, 69911, 97, 0.503, 0, true],
+      ['Saturn', 9.583, 29.457, 95.162, 58232, 274, 0.342, 0, true],
+      ['Uran', 19.19, 84.021, 14.536, 25362, 28, 0.300, 0, true],
+      ['Neptun', 30.07, 164.79, 17.147, 24622, 16, 0.290, 0, true]
+    ];
+
+    function svojstva(p) {
+      var M = p[3] * ME, R = p[4] * 1000;
+      var V = 4 / 3 * Math.PI * Math.pow(R, 3);
+      var Teq = TSUN * Math.sqrt(RSUN / (2 * p[1] * AJ)) * Math.pow(1 - p[6], 0.25);
+      var S = 1 / Math.abs(1 / 1 - 1 / p[2]) * 365.256;
+      return {
+        ime: p[0], a: p[1], T: p[2], M: p[3], R: p[4], sat: p[5], div: p[8],
+        ro: M / V / 1000, g: G * M / (R * R), v2: Math.sqrt(2 * G * M / R) / 1000,
+        Teq: Teq, S: S
+      };
+    }
+
+    /* =====================================================
+       PRIMJER 1 — Tablica planeta
+       ===================================================== */
+    (function () {
+      var podaci = PLANETI.map(svojstva);
+      var sortK = 'a', sortAsc = true, filtar = 'sve';
+      var FMT = {
+        ime: function (v) { return v; },
+        a: function (v) { return TECAJ.num(v, 3); },
+        T: function (v) { return TECAJ.num(v, v < 10 ? 3 : 1); },
+        M: function (v) { return TECAJ.num(v, v < 10 ? 4 : 1); },
+        R: function (v) { return TECAJ.num(v, 0); },
+        ro: function (v) { return TECAJ.num(v, 2); },
+        g: function (v) { return TECAJ.num(v, 2); },
+        v2: function (v) { return TECAJ.num(v, 1); },
+        Teq: function (v) { return TECAJ.num(v, 0); },
+        sat: function (v) { return TECAJ.num(v, 0); },
+        S: function (v) { return TECAJ.num(v, 0); }
+      };
+      var KOL = ['ime', 'a', 'T', 'M', 'R', 'ro', 'g', 'v2', 'Teq', 'sat', 'S'];
+
+      function crtaj() {
+        var red = podaci.filter(function (p) {
+          return filtar === 'sve' || (filtar === 'div') === p.div;
+        }).slice().sort(function (x, y) {
+          var A = x[sortK], B = y[sortK];
+          var c = typeof A === 'string' ? A.localeCompare(B, 'hr') : A - B;
+          return sortAsc ? c : -c;
+        });
+        var tb = document.querySelector('#pl-tab tbody');
+        tb.innerHTML = red.map(function (p) {
+          return '<tr' + (p.div ? ' class="is-giant"' : '') + '>' +
+            KOL.map(function (k) { return '<td>' + FMT[k](p[k]) + '</td>'; }).join('') + '</tr>';
+        }).join('');
+        var th = document.querySelectorAll('#pl-tab th');
+        for (var i = 0; i < th.length; i++) {
+          th[i].classList.toggle('sorted', th[i].dataset.k === sortK);
+          th[i].classList.toggle('asc', th[i].dataset.k === sortK && sortAsc);
+        }
+      }
+
+      document.querySelector('#pl-tab thead').addEventListener('click', function (e) {
+        var th = e.target.closest('th');
+        if (!th) return;
+        if (sortK === th.dataset.k) sortAsc = !sortAsc;
+        else { sortK = th.dataset.k; sortAsc = true; }
+        crtaj();
+      });
+      TECAJ.chips('pl-vrsta', function (v) { filtar = v; crtaj(); cv.draw(); });
+
+      /* Grafikon gustoće po udaljenosti */
+      var cv = TECAJ.canvas('c7a', 2.3, function (ctx, W, Ht) {
+        var bx = 52, by = 22, bw = W - 72, bh = Ht - 66;
+        var X0 = Math.log10(0.3), X1 = Math.log10(40);
+        function X(a) { return bx + bw * (Math.log10(a) - X0) / (X1 - X0); }
+        function Y(r) { return by + bh * (1 - r / 6); }
+
+        TECAJ.axes(ctx, { l: bx, t: by, w: bw, h: bh }, {
+          x0: X0, x1: X1, y0: 0, y1: 6,
+          xTicks: [{ at: Math.log10(0.4), label: '0,4' }, { at: 0, label: '1' },
+          { at: Math.log10(3), label: '3' }, { at: 1, label: '10' },
+          { at: Math.log10(30), label: '30' }],
+          yTicks: [0, 1, 2, 3, 4, 5, 6],
+          xLabel: 'velika poluos (AJ, logaritamski)', yLabel: 'gustoća (g/cm³)'
+        });
+
+        /* linija leda */
+        ctx.strokeStyle = 'rgba(52,211,153,.75)'; ctx.lineWidth = 2;
+        ctx.setLineDash([5, 4]);
+        ctx.beginPath(); ctx.moveTo(X(2.7), by); ctx.lineTo(X(2.7), by + bh); ctx.stroke();
+        ctx.setLineDash([]);
+        TECAJ.tag(ctx, X(2.7) + 5, by + 12, 'linija leda', 'rgba(52,211,153,.85)');
+
+        /* voda kao referenca */
+        ctx.strokeStyle = 'rgba(255,255,255,.15)';
+        ctx.beginPath(); ctx.moveTo(bx, Y(1)); ctx.lineTo(bx + bw, Y(1)); ctx.stroke();
+        TECAJ.tag(ctx, bx + bw - 4, Y(1) - 9, 'gustoća vode', 'rgba(255,255,255,.4)', 'right');
+
+        podaci.forEach(function (p) {
+          if (filtar !== 'sve' && (filtar === 'div') !== p.div) return;
+          var px = X(p.a), py = Y(p.ro);
+          var col = p.div ? '#c084fc' : '#7dd3fc';
+          var r = 3 + Math.pow(p.R / 6371, 0.45) * 3.2;
+          ctx.shadowColor = col; ctx.shadowBlur = 9;
+          ctx.fillStyle = col;
+          ctx.beginPath(); ctx.arc(px, py, r, 0, 6.2832); ctx.fill();
+          ctx.shadowBlur = 0;
+          ctx.font = '10px Inter, sans-serif';
+          ctx.fillStyle = 'rgba(255,255,255,.6)';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+          ctx.fillText(p.ime, px, py - r - 3);
+        });
+      });
+
+      crtaj();
+    })();
+
+
+    /* =====================================================
+       PRIMJER 2 — Konfiguracije i sinodički period
+       ===================================================== */
+    (function () {
+      var idx = 3, t = 0;
+      function P() { return PLANETI[idx]; }
+
+      var cv = TECAJ.canvas('c7b', 1.5, function (ctx, W, Ht) {
+        TECAJ.starfield(ctx, W, Ht, 90, 1717);
+        var p = P();
+        var cx = W / 2, cy = Ht / 2;
+        var rmax = Math.max(1, p[1]) * 1.12;
+        var sc = Math.min(W, Ht) * 0.42 / rmax;
+
+        /* Sunce */
+        ctx.shadowColor = 'rgba(251,191,36,.9)'; ctx.shadowBlur = 20;
+        ctx.fillStyle = '#fbbf24';
+        ctx.beginPath(); ctx.arc(cx, cy, 8, 0, 6.2832); ctx.fill();
+        ctx.shadowBlur = 0;
+
+        /* staze */
+        ctx.strokeStyle = 'rgba(0,212,255,.4)'; ctx.lineWidth = 1.3;
+        ctx.beginPath(); ctx.arc(cx, cy, 1 * sc, 0, 6.2832); ctx.stroke();
+        ctx.strokeStyle = 'rgba(244,114,182,.4)';
+        ctx.beginPath(); ctx.arc(cx, cy, p[1] * sc, 0, 6.2832); ctx.stroke();
+
+        var LE = 2 * Math.PI * t / 365.256;
+        var LP = 2 * Math.PI * t / (p[2] * 365.256);
+        var ez = { x: Math.cos(LE), y: Math.sin(LE) };
+        var pz = { x: p[1] * Math.cos(LP), y: p[1] * Math.sin(LP) };
+
+        /* smjer gledanja sa Zemlje, produžen */
+        var dx = pz.x - ez.x, dy = pz.y - ez.y, dl = Math.hypot(dx, dy);
+        ctx.strokeStyle = 'rgba(255,255,255,.25)'; ctx.setLineDash([3, 4]);
+        ctx.beginPath();
+        ctx.moveTo(cx + ez.x * sc, cy - ez.y * sc);
+        ctx.lineTo(cx + (ez.x + dx / dl * rmax * 2.4) * sc, cy - (ez.y + dy / dl * rmax * 2.4) * sc);
+        ctx.stroke();
+        /* smjer Sunca sa Zemlje */
+        ctx.strokeStyle = 'rgba(251,191,36,.3)';
+        ctx.beginPath();
+        ctx.moveTo(cx + ez.x * sc, cy - ez.y * sc);
+        ctx.lineTo(cx - ez.x * sc * rmax * 1.6, cy + ez.y * sc * rmax * 1.6);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.fillStyle = '#00d4ff';
+        ctx.beginPath(); ctx.arc(cx + ez.x * sc, cy - ez.y * sc, 5, 0, 6.2832); ctx.fill();
+        TECAJ.tag(ctx, cx + ez.x * sc + 9, cy - ez.y * sc, 'Zemlja', 'rgba(0,212,255,.9)');
+        ctx.fillStyle = '#f472b6';
+        ctx.beginPath(); ctx.arc(cx + pz.x * sc, cy - pz.y * sc, 5, 0, 6.2832); ctx.fill();
+        TECAJ.tag(ctx, cx + pz.x * sc + 9, cy - pz.y * sc + 14, p[0], 'rgba(244,114,182,.9)');
+
+        ctx.font = '600 11px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,.5)';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+        ctx.fillText('DAN ' + TECAJ.num(t, 0), 10, 10);
+      });
+
+      function osvjezi() {
+        var p = P();
+        var s = svojstva(p);
+        var LE = 2 * Math.PI * t / 365.256;
+        var LP = 2 * Math.PI * t / (p[2] * 365.256);
+        var ez = [Math.cos(LE), Math.sin(LE)];
+        var pz = [p[1] * Math.cos(LP), p[1] * Math.sin(LP)];
+        var toSun = [-ez[0], -ez[1]];
+        var toP = [pz[0] - ez[0], pz[1] - ez[1]];
+        var dist = Math.hypot(toP[0], toP[1]);
+        var el = TECAJ.deg(Math.acos(TECAJ.clamp(
+          (toSun[0] * toP[0] + toSun[1] * toP[1]) / (1 * dist), -1, 1)));
+
+        var unutarnji = p[1] < 1;
+        var kon, txt;
+        if (unutarnji) {
+          /* je li planet ispred ili iza Sunca? */
+          var iza = dist > Math.sqrt(1 - p[1] * p[1] + 1e-9) * 0 + Math.sqrt(1 + p[1] * p[1]);
+          var elMax = TECAJ.deg(Math.asin(p[1]));
+          if (el < 3) {
+            kon = dist > 1 ? 'gornja konjunkcija' : 'donja konjunkcija';
+            txt = kon === 'gornja konjunkcija'
+              ? 'Planet je s druge strane Sunca — najdalji i nevidljiv.'
+              : 'Planet je između nas i Sunca. Ako je poravnanje dovoljno točno, vidi se ' +
+              '<strong>tranzit</strong> planeta preko Sunčeva diska.';
+          } else if (Math.abs(el - elMax) < 1.5) {
+            kon = 'najveća elongacija';
+            txt = 'Ovo je najveća moguća elongacija za ' + p[0] + ': arcsin(' +
+              TECAJ.num(p[1], 3) + ') = ' + TECAJ.num(elMax, 1) + '°. Dalje od Sunca ' +
+              'ovaj planet nikada ne može biti — zato ga uvijek lovimo u sumrak ili zoru.';
+          } else {
+            kon = 'između';
+            txt = 'Unutarnji planet nikad ne izlazi izvan ' + TECAJ.num(elMax, 1) +
+              '° od Sunca. Trenutna elongacija je ' + TECAJ.num(el, 1) + '°.';
+          }
+        } else {
+          if (el > 175) {
+            kon = 'opozicija';
+            txt = 'Planet je nasuprot Suncu: najbliži je, najsjajniji i vidljiv cijelu noć. ' +
+              'Ovo je najbolji trenutak za opažanje.';
+          } else if (el < 5) {
+            kon = 'konjunkcija';
+            txt = 'Planet je iza Sunca, najdalji i nevidljiv.';
+          } else if (Math.abs(el - 90) < 4) {
+            kon = 'kvadratura';
+            txt = 'Elongacija je 90°: planet zalazi oko ponoći (ili izlazi oko ponoći). ' +
+              'Kod Mjeseca ovoj konfiguraciji odgovara prva ili zadnja četvrt.';
+          } else {
+            kon = el > 90 ? 'prema opoziciji' : 'prema konjunkciji';
+            txt = 'Vanjski planet prolazi kroz sve elongacije od 0° do 180°. ' +
+              'Trenutno je na ' + TECAJ.num(el, 1) + '°.';
+          }
+        }
+
+        TECAJ.el('k-s').innerHTML = TECAJ.num(s.S, 1) + '<span> dana</span>';
+        TECAJ.el('k-el').innerHTML = TECAJ.num(el, 1) + '°';
+        TECAJ.el('k-d').innerHTML = TECAJ.num(dist, 3) + '<span> AJ</span>';
+        TECAJ.el('k-kon').innerHTML = '<span style="font-size:.92rem">' + kon + '</span>';
+
+        var box = TECAJ.el('k-info');
+        box.className = el > 175 || Math.abs(el - TECAJ.deg(Math.asin(Math.min(p[1], 1)))) < 1.5
+          ? 'verdict verdict--ok' : (el < 5 ? 'verdict verdict--bad' : 'verdict');
+        box.innerHTML = '<strong>' + p[0] + ' — ' + kon + '.</strong> ' + txt +
+          ' Sinodički period: 1/S = |1/1 − 1/' + TECAJ.num(p[2], 3) + '| ⟹ S = ' +
+          TECAJ.num(s.S, 1) + ' dana (' + TECAJ.num(s.S / 365.256, 2) + ' god). ' +
+          'Toliko treba da se ista konfiguracija ponovi.';
+        cv.draw();
+      }
+
+      TECAJ.chips('k-planet', function (v) { idx = parseInt(v, 10); osvjezi(); });
+      TECAJ.slider('k-t', {
+        format: function (v) { return TECAJ.num(v, 0) + ' dana'; },
+        onInput: function (v) { t = v; osvjezi(); }
+      });
+      var anim = TECAJ.loop(function (dt) {
+        t = (t + dt * 70) % 2000;
+        TECAJ.el('k-t').value = Math.round(t);
+        TECAJ.el('k-t-out').textContent = TECAJ.num(t, 0) + ' dana';
+        osvjezi();
+      });
+      TECAJ.el('k-play').addEventListener('click', function () {
+        var on = anim.toggle();
+        this.textContent = on ? 'Pauza' : 'Animiraj';
+        this.classList.toggle('active', on);
+      });
+
+      osvjezi();
+    })();
+
+
+    /* =====================================================
+       PRIMJER 3 — Ravnotežna temperatura
+       ===================================================== */
+    (function () {
+      var d = 1, A = 0.306, dT = 33, ime = 'Zemlja';
+      var S0 = 1361;
+
+      function Teq(dd, AA) {
+        return TSUN * Math.sqrt(RSUN / (2 * dd * AJ)) * Math.pow(1 - AA, 0.25);
+      }
+
+      var cv = TECAJ.canvas('c7c', 2.15, function (ctx, W, Ht) {
+        var bx = 52, by = 24, bw = W - 72, bh = Ht - 70;
+        var X0 = Math.log10(0.2), X1 = Math.log10(5.5);
+        var Y0 = 0, Y1 = 800;
+        function X(dd) { return bx + bw * (Math.log10(dd) - X0) / (X1 - X0); }
+        function Y(TT) { return by + bh * (1 - (TT - Y0) / (Y1 - Y0)); }
+
+        /* zona tekuće vode */
+        ctx.fillStyle = 'rgba(0,212,255,.10)';
+        ctx.fillRect(bx, Y(373), bw, Y(273) - Y(373));
+
+        TECAJ.axes(ctx, { l: bx, t: by, w: bw, h: bh }, {
+          x0: X0, x1: X1, y0: Y0, y1: Y1,
+          xTicks: [{ at: Math.log10(0.2), label: '0,2' }, { at: Math.log10(0.4), label: '0,4' },
+          { at: 0, label: '1' }, { at: Math.log10(2), label: '2' },
+          { at: Math.log10(5), label: '5' }],
+          yTicks: [0, 200, 273, 400, 600, 800],
+          xLabel: 'udaljenost od Sunca (AJ)', yLabel: 'temperatura (K)'
+        });
+        TECAJ.tag(ctx, bx + 6, Y(323), 'tekuća voda (273–373 K)', 'rgba(0,212,255,.75)');
+
+        /* krivulja Teq za trenutni albedo */
+        ctx.strokeStyle = 'rgba(255,255,255,.75)'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        for (var i = 0; i <= 200; i++) {
+          var dd = Math.pow(10, X0 + (X1 - X0) * i / 200);
+          i === 0 ? ctx.moveTo(X(dd), Y(Teq(dd, A))) : ctx.lineTo(X(dd), Y(Teq(dd, A)));
+        }
+        ctx.stroke();
+        TECAJ.tag(ctx, bx + bw - 4, Y(Teq(Math.pow(10, X1), A)) - 12,
+          'T_eq za A = ' + TECAJ.num(A, 2), 'rgba(255,255,255,.7)', 'right');
+
+        /* pravi planeti (s njihovim albedom i staklenikom) */
+        PLANETI.slice(0, 5).forEach(function (p) {
+          if (p[1] > Math.pow(10, X1)) return;
+          var te = Teq(p[1], p[6]);
+          ctx.fillStyle = 'rgba(160,160,180,.7)';
+          ctx.beginPath(); ctx.arc(X(p[1]), Y(te), 3, 0, 6.2832); ctx.fill();
+          ctx.fillStyle = 'rgba(251,191,36,.85)';
+          if (te + p[7] <= Y1) {
+            ctx.beginPath(); ctx.arc(X(p[1]), Y(te + p[7]), 3.5, 0, 6.2832); ctx.fill();
+            if (p[7] > 0) {
+              ctx.strokeStyle = 'rgba(251,191,36,.5)';
+              ctx.setLineDash([2, 2]);
+              ctx.beginPath();
+              ctx.moveTo(X(p[1]), Y(te)); ctx.lineTo(X(p[1]), Y(te + p[7]));
+              ctx.stroke(); ctx.setLineDash([]);
+            }
+          }
+          ctx.font = '9px Inter, sans-serif';
+          ctx.fillStyle = 'rgba(255,255,255,.5)';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+          ctx.fillText(p[0], X(p[1]), Y(Math.min(te + p[7], Y1)) + 6);
+        });
+
+        /* korisnikov planet */
+        var te0 = Teq(d, A), te1 = te0 + dT;
+        ctx.strokeStyle = '#a78bfa'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(X(d), Y(te0)); ctx.lineTo(X(d), Y(Math.min(te1, Y1)));
+        ctx.stroke();
+        ctx.shadowColor = 'rgba(167,139,250,.9)'; ctx.shadowBlur = 12;
+        ctx.fillStyle = '#a78bfa';
+        ctx.beginPath(); ctx.arc(X(d), Y(Math.min(te1, Y1)), 6, 0, 6.2832); ctx.fill();
+        ctx.shadowBlur = 0;
+
+        ctx.font = '9px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(160,160,180,.7)';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+        ctx.fillText('sivo = bez atmosfere · žuto = sa staklenikom', bx + 4, by + bh - 14);
+      });
+
+      function osvjezi() {
+        var te = Teq(d, A), ts = te + dT;
+        TECAJ.el('s-sk').innerHTML = TECAJ.num(S0 / (d * d), 0) + '<span> W/m²</span>';
+        TECAJ.el('s-teq').innerHTML = TECAJ.num(te, 1) + '<span> K</span>';
+        TECAJ.el('s-ts').innerHTML = TECAJ.num(ts, 1) + '<span> K</span>';
+        TECAJ.el('s-c').innerHTML = TECAJ.num(ts - 273.15, 1) + '<span> °C</span>';
+
+        var box = TECAJ.el('s-info');
+        var stanje;
+        if (ts > 500) { box.className = 'verdict verdict--bad'; stanje = 'Pretoplo za bilo koju poznatu kemiju života. Ovo je režim Venere: pobjegli staklenik, u kojem zagrijavanje isparava još stakleničkog plina i pojačava samo sebe.'; }
+        else if (ts >= 273 && ts <= 373) { box.className = 'verdict verdict--ok'; stanje = 'Temperatura dopušta tekuću vodu na površini (uz dovoljan tlak). Ovo je uski pojas u kojem se nalazi jedina nastanjiva površina koju poznajemo.'; }
+        else if (ts > 373) { box.className = 'verdict verdict--warn'; stanje = 'Voda bi na normalnom tlaku isparila. Uz veći tlak granica se diže, ali smjer je jasan: previše toplo.'; }
+        else { box.className = 'verdict verdict--warn'; stanje = 'Voda je zamrznuta. Ipak, plimno grijanje može održavati podzemni ocean i mnogo dalje — Europa i Enkelad su upravo takvi.'; }
+
+        box.innerHTML = '<strong>' + ime + ': ' + TECAJ.num(te, 0) + ' K bez atmosfere, ' +
+          TECAJ.num(ts, 0) + ' K sa staklenikom.</strong> ' + stanje +
+          ' Zapazite dvije ovisnosti: T<sub>eq</sub> pada kao 1/√d (dvostruko dalje znači ' +
+          '1,41 puta hladnije, ne dvostruko), a albedo ulazi samo na četvrti korijen — ' +
+          'zato Venera s albedom 0,76 ima <em>nižu</em> ravnotežnu temperaturu od Zemlje, ' +
+          'a ipak najvruću površinu u sustavu.';
+        cv.draw();
+      }
+
+      TECAJ.slider('s-d', {
+        format: function (v) { return TECAJ.num(v, 3) + ' AJ'; },
+        onInput: function (v) { d = v; ime = 'vaš planet'; osvjezi(); }
+      });
+      TECAJ.slider('s-a', {
+        format: function (v) { return TECAJ.num(v, 3); },
+        onInput: function (v) { A = v; ime = 'vaš planet'; osvjezi(); }
+      });
+      TECAJ.slider('s-g', {
+        format: function (v) { return '+' + TECAJ.num(v, 0) + ' K'; },
+        onInput: function (v) { dT = v; ime = 'vaš planet'; osvjezi(); }
+      });
+      TECAJ.chips('s-preseti', function (v) {
+        var q = v.split(',');
+        d = parseFloat(q[0]); A = parseFloat(q[1]); dT = parseFloat(q[2]); ime = q[3];
+        TECAJ.el('s-d').value = d; TECAJ.el('s-d-out').textContent = TECAJ.num(d, 3) + ' AJ';
+        TECAJ.el('s-a').value = A; TECAJ.el('s-a-out').textContent = TECAJ.num(A, 3);
+        TECAJ.el('s-g').value = dT; TECAJ.el('s-g-out').textContent = '+' + TECAJ.num(dT, 0) + ' K';
+        osvjezi();
+      });
+
+      osvjezi();
+    })();
+  </script>
+</body>
+
+</html>

@@ -19,10 +19,7 @@ body {
   margin: 0;
   font-family: "EB Garamond", Georgia, serif;
   color: var(--text);
-  background:
-    radial-gradient(1200px 600px at 50% -200px, #1a2347 0%, transparent 70%),
-    linear-gradient(180deg, var(--bg) 0%, #060912 100%);
-  background-attachment: fixed;
+  background: var(--bg);
   min-height: 100vh;
   line-height: 1.55;
 }

@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>9. Sunce i izvori zvjezdane energije | Tečaj astronomije</title>
+  <meta name="description"
+    content="Defekt mase, proton-protonski lanac, CNO-ciklus, građa Sunca, pjege, ciklus aktivnosti, sunčev vjetar i magnetosfera.">
+  <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/tecaj.css?v=20260928">
+  <script src="data/vidljivost.js"></script>
+  <script>
+    /* Pristupna vrata: sakrij sadržaj prije prvog crtanja ako PIN nije unesen.
+       Otključavanje i sam upit su u js/tecaj.js. */
+    (function () {
+      var ulaz = false, urednik = false;
+      try { ulaz = sessionStorage.getItem('tecaj_ulaz') === '1'; } catch (e) { }
+      try { urednik = !!localStorage.getItem('adip_token'); } catch (e) { }
+      if (!ulaz && !urednik) document.documentElement.className += ' tecaj-zakljucano';
+    })();
+  </script>
+</head>
+
+<body>
+  <main class="page-content">
+    <div class="container container--wide">
+
+      <div class="lesson-head" id="lesson-head"></div>
+
+      <div class="lesson-body">
+
+        <!-- ============ TEORIJA ============ -->
+        <div>
+          <div class="panel">
+            <h2 class="panel__title">O čemu je ova lekcija</h2>
+            <p>
+              Sunce je <strong>jedina zvijezda</strong> koju vidimo kao plohu, a ne kao točku.
+              Sve što o zvijezdama znamo počinje ovdje. A počinje jednim naizgled nemogućim
+              pitanjem: odakle toliko energije, i to milijardama godina?
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Dva odbačena odgovora</h3>
+            <p>
+              Iz Sunčeve konstante <span class="mvar">S</span> = 1361 W/m² i udaljenosti
+              dobivamo <span class="mvar">L</span><sub>☉</sub> = 4π<span class="mvar">d</span>²<span
+                class="mvar">S</span> = 3,83 × 10²⁶ W. Za takav izlaz:
+            </p>
+            <ul>
+              <li><strong>Kemijsko gorenje</strong> bi trajalo tek nekoliko tisuća godina.</li>
+              <li><strong>Gravitacijsko stezanje</strong> (Kelvin i Helmholtz) daje
+                <span class="mvar">t</span><sub>KH</sub> = <span class="mvar">GM</span>²/(<span
+                  class="mvar">RL</span>) ≈ 31 milijun godina — impresivno, ali geolozi su već
+                tada znali da je Zemlja mnogo starija.
+              </li>
+            </ul>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Rješenje: defekt mase</h3>
+            <p>
+              Četiri protona teže su od jednog jezgra helija. Ta razlika, <strong>defekt mase</strong>,
+              pretvara se u energiju po <span class="mvar">E</span> = <span class="mvar">mc</span>²:
+            </p>
+            <div class="formula">
+              4 ¹H → ⁴He + 2e⁺ + 2ν &nbsp;·&nbsp; 26,7 MeV
+              <small>učinkovitost je samo 0,7 % mase — ali to je 10 milijuna puta više od kemije</small>
+            </div>
+            <div class="formula">
+              d<span class="mvar">m</span>/d<span class="mvar">t</span> = <span class="mvar">L</span>/<span
+                class="mvar">c</span>² = 4,25 × 10⁹ kg/s
+              <small>Sunce svake sekunde pretvori 4,25 milijuna tona mase u zračenje</small>
+            </div>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Dva puta do helija</h3>
+            <ul>
+              <li><strong>Proton-protonski lanac</strong> dominira u zvijezdama Sunčeve mase i
+                manjim. Osjetljivost:
+                <span class="mvar">ε</span><sub>pp</sub> ∝ <span class="mvar">T</span>⁴.</li>
+              <li><strong>CNO-ciklus</strong> koristi ugljik, dušik i kisik kao katalizatore i
+                preuzima vodstvo iznad ≈ 1,3 <span class="mvar">M</span><sub>☉</sub>.
+                Osjetljivost:
+                <span class="mvar">ε</span><sub>CNO</sub> ∝ <span class="mvar">T</span>¹⁸ — otud
+                konvektivne jezgre masivnih zvijezda.</li>
+            </ul>
+            <p>
+              U jezgri je <span class="mvar">T</span> ≈ 15,7 milijuna K i gustoća 150 g/cm³.
+              Fuzija je moguća samo zahvaljujući <strong>kvantnom tuneliranju</strong>; klasično
+              protoni ne bi mogli prevladati Coulombovu barijeru.
+              <strong>Neutrini</strong> izlaze gotovo neometano i jedini su izravan pogled u
+              jezgru — njihovo mjerenje potvrdilo je cijelu sliku.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Građa Sunca</h3>
+            <ul>
+              <li><strong>Jezgra</strong> (do 0,25 <span class="mvar">R</span>): fuzija.</li>
+              <li><strong>Zona zračenja</strong> (0,25–0,7 <span class="mvar">R</span>): energija
+                se prenosi fotonima, koji lutaju stotinama tisuća godina.</li>
+              <li><strong>Konvektivna zona</strong> (0,7–1,0 <span class="mvar">R</span>):
+                prijenos strujanjem; na površini se vidi kao granulacija.</li>
+              <li><strong>Fotosfera</strong>: 5772 K, „površina“ koju vidimo, debela 500 km.</li>
+              <li><strong>Kromosfera</strong>: do 20 000 K, spikule, vidljiva u Hα.</li>
+              <li><strong>Korona</strong>: 1–3 milijuna K — zagonetka zagrijavanja korone još
+                nije potpuno riješena; vidljiva golim okom samo pri potpunoj pomrčini.</li>
+            </ul>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Aktivnost</h3>
+            <p>
+              <strong>Pjege</strong> su područja jakog magnetskog polja (0,1–0,4 T) gdje je
+              konvekcija potisnuta, pa su hladnije (≈ 4000 K) i zato izgledaju tamno.
+              Broj pjega mijenja se u ciklusu od <strong>11 godina</strong>; magnetski ciklus
+              traje 22 godine jer se polaritet svaki put obrne. Pjege se kroz ciklus pojavljuju
+              sve bliže ekvatoru — <em>leptirasti dijagram</em>.
+            </p>
+            <p>
+              Uz pjege dolaze <strong>prominencije</strong>, <strong>bljeskovi</strong> i
+              <strong>koronalni izbačaji mase</strong>. Sunčev vjetar i CME-ovi udaraju u
+              Zemljinu <strong>magnetosferu</strong>: rezultat su polarna svjetlost, geomagnetske
+              oluje, smetnje u komunikacijama i opasnost za satelite.
+            </p>
+          </div>
+
+          <div class="panel" style="margin-top:1.5rem">
+            <h2 class="panel__title">Ishodi</h2>
+            <ul>
+              <li>pokazuje zašto kemijski i gravitacijski izvori ne mogu objasniti dob Sunca;</li>
+              <li>opisuje proton-protonski lanac i CNO-ciklus te računa oslobođenu energiju;</li>
+              <li>imenuje slojeve Sunca i objašnjava način prijenosa energije u svakome;</li>
+              <li>povezuje Sunčevu aktivnost s pojavama u Zemljinoj magnetosferi.</li>
+            </ul>
+
+            <h2 class="panel__title" style="margin-top:1.5rem">Zapamtite</h2>
+            <ul>
+              <li><span class="mvar">L</span><sub>☉</sub> = 4π<span class="mvar">d</span>²<span class="mvar">S</span>,
+                <span class="mvar">S</span> = 1361 W/m²</li>
+              <li><span class="mvar">t</span><sub>KH</sub> = <span class="mvar">GM</span>²/(<span
+                  class="mvar">RL</span>) ≈ 31 mil. god</li>
+              <li>4 ¹H → ⁴He, 26,7 MeV, učinkovitost 0,7 %</li>
+              <li>d<span class="mvar">m</span>/d<span class="mvar">t</span> = <span class="mvar">L</span>/<span
+                  class="mvar">c</span>² = 4,25 × 10⁹ kg/s</li>
+              <li><span class="mvar">ε</span><sub>pp</sub> ∝ <span class="mvar">T</span>⁴,
+                <span class="mvar">ε</span><sub>CNO</sub> ∝ <span class="mvar">T</span>¹⁸</li>
+              <li>Ciklus pjega 11 god, magnetski 22 god</li>
+            </ul>
+
+            <div class="callout callout--warn">
+              <div class="callout__title">Sigurnost</div>
+              <p style="margin-bottom:0">
+                Sunce se nikada ne promatra izravno kroz teleskop ili dalekozor. Isključivo
+                projekcijom ili certificiranim filtrom <em>na objektivu</em>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ INTERAKTIVNO ============ -->
+        <div>
+
+          <!-- ---------- 1 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 1</div>
+              <h3 class="demo__title">Odakle Suncu energija: tri kandidata</h3>
+              <p class="demo__hint">
+                Isti luminozitet, tri izvora energije. Usporedite koliko bi svaki od njih
+                trajao — razlika je toliko velika da je grafikon logaritamski.
+              </p>
+            </div>
+
+            <canvas id="c9a"></canvas>
+
+            <div class="controls controls--2">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Masa zvijezde</span><span class="ctrl__value" id="e-m-out"></span></div>
+                <input type="range" id="e-m" min="-1" max="1.7" step="0.01" value="0">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Udio vodika koji izgori</span><span class="ctrl__value"
+                    id="e-x-out"></span></div>
+                <input type="range" id="e-x" min="0.02" max="0.3" step="0.001" value="0.1">
+              </div>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Luminozitet</div>
+                <div class="readout__value" id="e-l">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Kemijsko gorenje</div>
+                <div class="readout__value" id="e-kem">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Gravitacijsko (Kelvin-Helmholtz)</div>
+                <div class="readout__value" id="e-kh">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Nuklearna fuzija</div>
+                <div class="readout__value" id="e-nuk">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Gubitak mase</div>
+                <div class="readout__value" id="e-dm">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Reakcija u jezgri</div>
+                <div class="readout__value" id="e-rej">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">He jezgara u sekundi</div>
+                <div class="readout__value" id="e-he">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Dominantni proces</div>
+                <div class="readout__value" id="e-proc">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="e-info">—</div>
+          </div>
+
+          <!-- ---------- 2 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 2</div>
+              <h3 class="demo__title">Presjek Sunca — kliknite na sloj</h3>
+              <p class="demo__hint">
+                Svaki sloj ima svoju temperaturu, gustoću i način prijenosa energije. Kliknite
+                na presjek ili na gumb ispod.
+              </p>
+            </div>
+
+            <canvas id="c9b"></canvas>
+
+            <div class="btn-row" id="sl-sloj">
+              <button class="chip-btn active" data-value="0">Jezgra</button>
+              <button class="chip-btn" data-value="1">Zona zračenja</button>
+              <button class="chip-btn" data-value="2">Konvektivna zona</button>
+              <button class="chip-btn" data-value="3">Fotosfera</button>
+              <button class="chip-btn" data-value="4">Kromosfera</button>
+              <button class="chip-btn" data-value="5">Korona</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Raspon (R<sub>☉</sub>)</div>
+                <div class="readout__value" id="sl-r">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Temperatura</div>
+                <div class="readout__value" id="sl-t">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Gustoća</div>
+                <div class="readout__value" id="sl-ro">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Prijenos energije</div>
+                <div class="readout__value" id="sl-pr">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="sl-info">—</div>
+          </div>
+
+          <!-- ---------- 3 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 3</div>
+              <h3 class="demo__title">Ciklus Sunčeve aktivnosti</h3>
+              <p class="demo__hint">
+                Gore je broj pjega kroz vrijeme, dolje leptirasti dijagram — geografska širina
+                na kojoj se pjege pojavljuju. Pomičite godinu i gledajte kako se pojas seli
+                prema ekvatoru.
+              </p>
+            </div>
+
+            <canvas id="c9c"></canvas>
+
+            <div class="controls">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Godina</span><span class="ctrl__value" id="ci-g-out"></span></div>
+                <input type="range" id="ci-g" min="1996" max="2030" step="0.05" value="2026">
+              </div>
+            </div>
+
+            <div class="btn-row" id="ci-preseti">
+              <button class="chip-btn" data-value="2008.9">minimum 2008.</button>
+              <button class="chip-btn" data-value="2014.3">maksimum 2014.</button>
+              <button class="chip-btn" data-value="2019.9">minimum 2019.</button>
+              <button class="chip-btn active" data-value="2026">danas</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Ciklus</div>
+                <div class="readout__value" id="ci-br">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Faza ciklusa</div>
+                <div class="readout__value" id="ci-faza">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Relativni broj pjega</div>
+                <div class="readout__value" id="ci-sn">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Tipična širina pjega</div>
+                <div class="readout__value" id="ci-lat">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="ci-info">—</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="lesson-nav" id="lesson-nav"></div>
+    </div>
+  </main>
+
+  <script src="js/tecaj.js?v=20260928"></script>
+  <script>
+    TECAJ.init({ lekcija: 9 });
+
+    var G = 6.674e-11, C = 299792458;
+    var MSUN = 1.98892e30, RSUN = 6.957e8, LSUN = 3.828e26;
+    var GOD = 3.15576e7;
+
+    /* =====================================================
+       PRIMJER 1 — Tri izvora energije
+       ===================================================== */
+    (function () {
+      var logM = 0, x = 0.10;
+
+      function podaci() {
+        var M = Math.pow(10, logM);               /* M☉ */
+        var L = Math.pow(M, 3.5);                 /* L☉, glavni niz */
+        var R = Math.pow(M, M < 1 ? 0.8 : 0.57);  /* R☉, gruba aproksimacija */
+        var Lw = L * LSUN, Mkg = M * MSUN, Rm = R * RSUN;
+        /* kemijsko: specifična energija izgaranja, reda 3 × 10⁷ J/kg (kao ugljen) */
+        var Ekem = Mkg * 3e7;
+        var Ekh = G * Mkg * Mkg / Rm;
+        var Enuk = 0.007 * x * Mkg * C * C;
+        return {
+          M: M, L: L, R: R, Lw: Lw, Mkg: Mkg,
+          tkem: Ekem / Lw / GOD, tkh: Ekh / Lw / GOD, tnuk: Enuk / Lw / GOD,
+          dm: Lw / (C * C)
+        };
+      }
+
+      var cv = TECAJ.canvas('c9a', 2.35, function (ctx, W, Ht) {
+        var d = podaci();
+        var bx = 128, by = 26, bw = W - 152, bh = Ht - 62;
+        var L0 = 2, L1 = 12;    /* log10 godina */
+        function X(l) { return bx + bw * (TECAJ.clamp(l, L0, L1) - L0) / (L1 - L0); }
+
+        var trake = [
+          ['Kemijsko gorenje', Math.log10(d.tkem), 'rgba(248,113,113,.8)'],
+          ['Gravitacijsko stezanje', Math.log10(d.tkh), 'rgba(251,191,36,.8)'],
+          ['Nuklearna fuzija', Math.log10(d.tnuk), 'rgba(52,211,153,.85)']
+        ];
+        var th = bh / 4.4;
+        trake.forEach(function (t, i) {
+          var y = by + i * (th * 1.35);
+          ctx.fillStyle = 'rgba(255,255,255,.04)';
+          ctx.fillRect(bx, y, bw, th);
+          ctx.fillStyle = t[2];
+          ctx.fillRect(bx, y, X(t[1]) - bx, th);
+          ctx.font = '11px Inter, sans-serif';
+          ctx.fillStyle = 'rgba(255,255,255,.7)';
+          ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+          ctx.fillText(t[0], bx - 8, y + th / 2);
+          ctx.textAlign = 'left';
+          ctx.fillStyle = t[2];
+          ctx.font = '600 11px Inter, sans-serif';
+          var v = Math.pow(10, t[1]);
+          var txt = v >= 1e9 ? TECAJ.num(v / 1e9, 2) + ' mlrd god'
+            : v >= 1e6 ? TECAJ.num(v / 1e6, 1) + ' mil. god'
+              : v >= 1e3 ? TECAJ.num(v / 1e3, 1) + ' tis. god'
+                : TECAJ.num(v, 0) + ' god';
+          ctx.fillText(txt, X(t[1]) + 6, y + th / 2);
+        });
+
+        /* os */
+        var ay = by + 3 * (th * 1.35) + 6;
+        ctx.strokeStyle = 'rgba(255,255,255,.25)';
+        ctx.beginPath(); ctx.moveTo(bx, ay); ctx.lineTo(bx + bw, ay); ctx.stroke();
+        ctx.font = '10px Inter, sans-serif';
+        for (var l = L0; l <= L1; l++) {
+          ctx.strokeStyle = 'rgba(255,255,255,.15)';
+          ctx.beginPath(); ctx.moveTo(X(l), ay); ctx.lineTo(X(l), ay + 4); ctx.stroke();
+          ctx.fillStyle = 'rgba(255,255,255,.45)';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+          ctx.fillText('10' + TECAJ.sup(l), X(l), ay + 6);
+        }
+        ctx.fillStyle = 'rgba(255,255,255,.5)';
+        ctx.fillText('trajanje (godina, logaritamski)', (bx + bx + bw) / 2, ay + 21);
+
+        /* dob Zemlje i Sunca kao referenca */
+        [[Math.log10(4.54e9), 'dob Zemlje', 'rgba(0,212,255,.7)'],
+        [Math.log10(1e4), 'ljudska civilizacija', 'rgba(255,255,255,.3)']]
+          .forEach(function (r) {
+            ctx.strokeStyle = r[2]; ctx.lineWidth = 1.4; ctx.setLineDash([4, 3]);
+            ctx.beginPath(); ctx.moveTo(X(r[0]), by - 6); ctx.lineTo(X(r[0]), ay); ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.save();
+            ctx.translate(X(r[0]) - 4, by - 8);
+            ctx.rotate(-Math.PI / 2);
+            ctx.font = '9px Inter, sans-serif';
+            ctx.fillStyle = r[2];
+            ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+            ctx.fillText(r[1], 0, 0);
+            ctx.restore();
+          });
+      });
+
+      function osvjezi() {
+        var d = podaci();
+        function god(v) {
+          return v >= 1e9 ? TECAJ.num(v / 1e9, 2) + '<span> mlrd god</span>'
+            : v >= 1e6 ? TECAJ.num(v / 1e6, 1) + '<span> mil. god</span>'
+              : v >= 1e3 ? TECAJ.num(v / 1e3, 1) + '<span> tis. god</span>'
+                : TECAJ.num(v, 0) + '<span> god</span>';
+        }
+        TECAJ.el('e-l').innerHTML = TECAJ.auto(d.L, 3) + '<span> L☉</span>';
+        TECAJ.el('e-kem').innerHTML = god(d.tkem);
+        TECAJ.el('e-kh').innerHTML = god(d.tkh);
+        TECAJ.el('e-nuk').innerHTML = god(d.tnuk);
+        TECAJ.el('e-dm').innerHTML = TECAJ.sci(d.dm, 2) + '<span> kg/s</span>';
+        var cno = d.M > 1.3;
+        TECAJ.el('e-rej').innerHTML = '<span style="font-size:.9rem">' +
+          (cno ? 'CNO-ciklus' : 'p-p lanac') + '</span>';
+        /* 26,7 MeV po He jezgru */
+        TECAJ.el('e-he').innerHTML = TECAJ.sci(d.Lw / (26.7e6 * 1.602e-19), 2);
+        TECAJ.el('e-proc').innerHTML = cno
+          ? '<span style="color:#f472b6">ε ∝ T¹⁸</span>'
+          : '<span style="color:#34d399">ε ∝ T⁴</span>';
+
+        var box = TECAJ.el('e-info');
+        box.className = 'verdict';
+        box.innerHTML = '<strong>Zvijezda od ' + TECAJ.auto(d.M, 2) + ' M☉.</strong> ' +
+          'Kemijsko gorenje bi trajalo ' + TECAJ.auto(d.tkem, 0) + ' godina — kraće od pisane ' +
+          'povijesti. Gravitacijsko stezanje daje ' + TECAJ.auto(d.tkh / 1e6, 1) +
+          ' milijuna godina, što je bio Kelvinov odgovor i razlog njegova spora s geolozima. ' +
+          'Fuzija ' + TECAJ.num(x * 100, 1) + ' % mase daje <strong>' +
+          TECAJ.auto(d.tnuk / 1e9, 2) + ' milijardi godina</strong> — i to je jedini odgovor ' +
+          'koji prolazi. ' +
+          (cno
+            ? 'U ovoj masi jezgru grije CNO-ciklus; njegova ovisnost T¹⁸ znači da je proizvodnja ' +
+            'energije toliko koncentrirana u središtu da jezgra postaje konvektivna.'
+            : 'U ovoj masi radi p-p lanac s blagom ovisnošću T⁴, pa je jezgra mirna i ' +
+            'zračenjem prenosi energiju.') +
+          ' Zapazite i da veće mase troše gorivo <em>nesrazmjerno</em> brže: L ∝ M³·⁵, a ' +
+          'goriva ima samo ∝ M.';
+        cv.draw();
+      }
+
+      TECAJ.slider('e-m', {
+        format: function (v) { return TECAJ.auto(Math.pow(10, v), 2) + ' M☉'; },
+        onInput: function (v) { logM = v; osvjezi(); }
+      });
+      TECAJ.slider('e-x', {
+        format: function (v) { return TECAJ.num(v * 100, 1) + ' %'; },
+        onInput: function (v) { x = v; osvjezi(); }
+      });
+      osvjezi();
+    })();
+
+
+    /* =====================================================
+       PRIMJER 2 — Presjek Sunca
+       ===================================================== */
+    (function () {
+      /* ime, r_od, r_do (R☉), T, gustoća, prijenos, opis */
+      var SLOJ = [
+        ['Jezgra', 0, 0.25, '15,7 mil. K', '150 g/cm³', 'nastaje ovdje',
+          'Ovdje se odvija sva fuzija: 99 % energije Sunca proizvede se u unutrašnjih 24 % ' +
+          'polumjera. Tlak je 2,5 × 10¹⁶ Pa, a gustoća 13 puta veća od olova — ali tvar je ' +
+          'plazma, ne krutina. Fuzija je moguća samo kvantnim tuneliranjem kroz Coulombovu barijeru.',
+          '#fde68a'],
+        ['Zona zračenja', 0.25, 0.7, '7 → 2 mil. K', '20 → 0,2 g/cm³', 'zračenje',
+          'Energija putuje fotonima, ali ne slobodno: foton se apsorbira i ponovno emitira ' +
+          'nebrojeno puta, u slučajnom smjeru. Zato mu treba stotinama tisuća godina da izađe, ' +
+          'iako bi ravnom linijom prešao Sunce u dvije sekunde. Svjetlost koju danas vidimo ' +
+          'nastala je u doba ledenih doba.',
+          '#fbbf24'],
+        ['Konvektivna zona', 0.7, 1.0, '2 mil. → 5772 K', '0,2 → 10⁻⁷ g/cm³', 'konvekcija',
+          'Plin postaje neproziran, pa je zračenje neučinkovito i preuzima strujanje: vruća ' +
+          'tvar se diže, ohlađena spušta. Na površini se to vidi kao <strong>granulacija</strong> ' +
+          '— ćelije od oko 1000 km koje traju svega nekoliko minuta. Ovdje se, u rotirajućem ' +
+          'vodljivom plinu, generira i Sunčevo magnetsko polje (dinamo).',
+          '#fb923c'],
+        ['Fotosfera', 1.0, 1.0007, '5772 K', '10⁻⁷ g/cm³', 'zračenje u prostor',
+          '„Površina“ koju vidimo, debela samo oko 500 km. Nije to nikakva granica nego sloj u ' +
+          'kojem plin prestaje biti neproziran. Odavde dolazi gotovo sva vidljiva svjetlost i ' +
+          'odavde mjerimo efektivnu temperaturu. Ovdje se vide pjege i granulacija.',
+          '#fef3c7'],
+        ['Kromosfera', 1.0007, 1.03, '4500 → 20 000 K', '10⁻⁹ g/cm³', 'zračenje i valovi',
+          'Sloj u kojem temperatura, protivno intuiciji, počinje <em>rasti</em> prema van. ' +
+          'Vidljiva je u svjetlu Hα kao crvenkasti prsten pri pomrčini, sa spikulama — ' +
+          'mlazovima plina visokim do 10 000 km. Tu se vide prominencije i bljeskovi.',
+          '#f472b6'],
+        ['Korona', 1.03, 3.0, '1–3 mil. K', '10⁻¹⁵ g/cm³', 'magnetsko zagrijavanje',
+          'Vanjska atmosfera vruća milijun stupnjeva iznad površine od 5772 K — ' +
+          '<strong>problem zagrijavanja korone</strong>, jedno od otvorenih pitanja fizike ' +
+          'Sunca (kandidati su nanobljeskovi i Alfvénovi valovi). Golim okom vidljiva samo pri ' +
+          'potpunoj pomrčini. Iz nje neprekidno otječe sunčev vjetar.',
+          '#a5b4fc']
+      ];
+      var idx = 0;
+
+      var cv = TECAJ.canvas('c9b', 1.7, function (ctx, W, Ht) {
+        var cx = W * 0.34, cy = Ht * 0.52;
+        var R = Math.min(W * 0.30, Ht * 0.40);
+
+        /* korona kao izvana */
+        var kg = ctx.createRadialGradient(cx, cy, R, cx, cy, R * 2.4);
+        kg.addColorStop(0, 'rgba(165,180,252,.28)');
+        kg.addColorStop(1, 'rgba(165,180,252,0)');
+        ctx.fillStyle = kg;
+        ctx.beginPath(); ctx.arc(cx, cy, R * 2.4, 0, 6.2832); ctx.fill();
+
+        /* slojevi od vanjskog prema unutra */
+        for (var i = SLOJ.length - 1; i >= 0; i--) {
+          var s = SLOJ[i];
+          var r = Math.min(s[2], 1.06) * R;
+          if (i === 5) continue;                 /* korona je već nacrtana */
+          ctx.beginPath(); ctx.arc(cx, cy, r, 0, 6.2832);
+          ctx.fillStyle = s[7];
+          ctx.globalAlpha = idx === i ? 0.95 : 0.5;
+          ctx.fill();
+          ctx.globalAlpha = 1;
+          ctx.strokeStyle = idx === i ? '#fff' : 'rgba(255,255,255,.25)';
+          ctx.lineWidth = idx === i ? 2 : 1;
+          ctx.stroke();
+        }
+
+        /* oznake u stupcu desno, s vodilicama do sloja */
+        var labX = W - 12, kolX = cx + R * 1.42;
+        SLOJ.forEach(function (s, i) {
+          var rr = (i === 5 ? 1.35 : (s[1] + Math.min(s[2], 1.04)) / 2) * R;
+          /* hvatište na desnoj polovici kugle, raspoređeno od -75° do +75° */
+          var ang = -Math.PI / 2 + Math.PI * (i + 0.5) / 6;
+          var x1 = cx + Math.cos(ang) * rr, y1 = cy + Math.sin(ang) * rr;
+          var y2 = 22 + i * ((Ht - 44) / 5);
+          ctx.strokeStyle = idx === i ? s[7] : 'rgba(255,255,255,.20)';
+          ctx.lineWidth = idx === i ? 1.8 : 1;
+          ctx.beginPath();
+          ctx.moveTo(x1, y1); ctx.lineTo(kolX, y2); ctx.lineTo(labX - 4, y2);
+          ctx.stroke();
+          ctx.fillStyle = idx === i ? s[7] : 'rgba(255,255,255,.35)';
+          ctx.beginPath(); ctx.arc(x1, y1, idx === i ? 3 : 2, 0, 6.2832); ctx.fill();
+          ctx.font = (idx === i ? '600 ' : '') + '11px Inter, sans-serif';
+          ctx.fillStyle = idx === i ? s[7] : 'rgba(255,255,255,.55)';
+          ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+          ctx.fillText(s[0], labX, y2);
+        });
+
+        /* granulacija na fotosferi */
+        var sd = 909;
+        function rnd() { sd = (sd * 1103515245 + 12345) & 0x7fffffff; return sd / 0x7fffffff; }
+        ctx.save();
+        ctx.beginPath(); ctx.arc(cx, cy, R, 0, 6.2832); ctx.clip();
+        for (var k = 0; k < 140; k++) {
+          var a = rnd() * 6.2832, rr2 = (0.72 + rnd() * 0.27) * R;
+          ctx.fillStyle = 'rgba(255,255,255,' + (0.03 + rnd() * 0.07).toFixed(3) + ')';
+          ctx.beginPath();
+          ctx.arc(cx + Math.cos(a) * rr2, cy + Math.sin(a) * rr2, 2 + rnd() * 3.5, 0, 6.2832);
+          ctx.fill();
+        }
+        ctx.restore();
+
+        /* mjerilo */
+        ctx.strokeStyle = 'rgba(255,255,255,.4)'; ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy); ctx.lineTo(cx + R, cy);
+        ctx.stroke();
+        TECAJ.tag(ctx, cx + R / 2, cy - 10, '1 R☉ = 696 000 km', 'rgba(255,255,255,.55)', 'center');
+      });
+
+      function osvjezi() {
+        var s = SLOJ[idx];
+        function rfmt(v) {
+          var t = TECAJ.num(v, 4);
+          t = t.replace(/,?0+$/, '');
+          return t === '' ? '0' : t;
+        }
+        TECAJ.el('sl-r').innerHTML = rfmt(s[1]) + ' – ' + rfmt(s[2]);
+        TECAJ.el('sl-t').innerHTML = '<span style="font-size:.9rem">' + s[3] + '</span>';
+        TECAJ.el('sl-ro').innerHTML = '<span style="font-size:.9rem">' + s[4] + '</span>';
+        TECAJ.el('sl-pr').innerHTML = '<span style="font-size:.9rem">' + s[5] + '</span>';
+        var box = TECAJ.el('sl-info');
+        box.className = 'verdict';
+        box.innerHTML = '<strong>' + s[0] + '.</strong> ' + s[6];
+        cv.draw();
+      }
+
+      TECAJ.chips('sl-sloj', function (v) { idx = parseInt(v, 10); osvjezi(); });
+      cv.cv.addEventListener('click', function (e) {
+        var p = cv.pos(e);
+        var cx = cv.W * 0.34, cy = cv.H * 0.52;
+        var R = Math.min(cv.W * 0.30, cv.H * 0.40);
+        var r = Math.hypot(p.x - cx, p.y - cy) / R;
+        var nov = 5;
+        for (var i = 0; i < SLOJ.length; i++) {
+          if (r >= SLOJ[i][1] && r < Math.min(SLOJ[i][2], 1.06)) { nov = i; break; }
+        }
+        idx = nov;
+        var svi = document.querySelectorAll('#sl-sloj .chip-btn');
+        for (var j = 0; j < svi.length; j++) svi[j].classList.toggle('active', j === idx);
+        osvjezi();
+      });
+      cv.cv.style.cursor = 'pointer';
+
+      osvjezi();
+    })();
+
+
+    /* =====================================================
+       PRIMJER 3 — Ciklus aktivnosti
+       ===================================================== */
+    (function () {
+      var god = 2026;
+      /* Minimumi ciklusa 23-26 (približno) */
+      var MIN = [1996.7, 2008.9, 2019.9, 2031.0];
+      var MAX = [2000.3, 2014.3, 2025.0];
+      var AMP = [180, 116, 155];    /* vršni izglađeni broj pjega */
+
+      function ciklus(t) {
+        for (var i = 0; i < MIN.length - 1; i++) {
+          if (t >= MIN[i] && t < MIN[i + 1]) {
+            return { n: 23 + i, t0: MIN[i], t1: MIN[i + 1], tmax: MAX[i], amp: AMP[i] };
+          }
+        }
+        return { n: 23, t0: MIN[0], t1: MIN[1], tmax: MAX[0], amp: AMP[0] };
+      }
+      function pjege(t) {
+        var c = ciklus(t);
+        var faza = (t - c.t0) / (c.t1 - c.t0);
+        var fmax = (c.tmax - c.t0) / (c.t1 - c.t0);
+        /* asimetrična krivulja: brzi uspon, sporiji pad */
+        var k = faza < fmax ? faza / fmax * 0.5 : 0.5 + (faza - fmax) / (1 - fmax) * 0.5;
+        return c.amp * Math.pow(Math.sin(Math.PI * k), faza < fmax ? 1.6 : 1.1) * 0.98 + 3;
+      }
+      function sirina(t) {
+        var c = ciklus(t);
+        var faza = TECAJ.clamp((t - c.t0) / (c.t1 - c.t0), 0, 1);
+        return 30 - 25 * faza;      /* od ~30° prema ~5° */
+      }
+
+      var cv = TECAJ.canvas('c9c', 1.75, function (ctx, W, Ht) {
+        var bx = 46, bw = W - 66;
+        var G0 = 1996, G1 = 2030;
+        function X(t) { return bx + bw * (t - G0) / (G1 - G0); }
+
+        /* --- gornji graf: broj pjega --- */
+        var by = 22, bh = Ht * 0.40;
+        function Y(v) { return by + bh * (1 - v / 200); }
+        TECAJ.axes(ctx, { l: bx, t: by, w: bw, h: bh }, {
+          x0: G0, x1: G1, y0: 0, y1: 200,
+          xTicks: [2000, 2005, 2010, 2015, 2020, 2025, 2030].map(function (v) {
+            return { at: v, label: v };
+          }),
+          yTicks: [0, 50, 100, 150, 200],
+          yLabel: 'broj pjega'
+        });
+        ctx.beginPath();
+        ctx.moveTo(X(G0), Y(0));
+        for (var t = G0; t <= G1; t += 0.05) ctx.lineTo(X(t), Y(pjege(t)));
+        ctx.lineTo(X(G1), Y(0));
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(251,191,36,.20)'; ctx.fill();
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        for (var t2 = G0; t2 <= G1; t2 += 0.05) {
+          t2 === G0 ? ctx.moveTo(X(t2), Y(pjege(t2))) : ctx.lineTo(X(t2), Y(pjege(t2)));
+        }
+        ctx.stroke();
+
+        /* oznake ciklusa */
+        MAX.forEach(function (m, i) {
+          if (m < G0 || m > G1) return;
+          TECAJ.tag(ctx, X(m), by + 10, 'ciklus ' + (23 + i), 'rgba(255,255,255,.45)', 'center');
+        });
+
+        /* --- donji graf: leptirasti dijagram --- */
+        var cy2 = by + bh + 46, bh2 = Ht - cy2 - 34;
+        function Y2(lat) { return cy2 + bh2 * (1 - (lat + 40) / 80); }
+        ctx.strokeStyle = 'rgba(255,255,255,.25)';
+        ctx.beginPath();
+        ctx.moveTo(bx, cy2); ctx.lineTo(bx, cy2 + bh2);
+        ctx.moveTo(bx, Y2(0)); ctx.lineTo(bx + bw, Y2(0));
+        ctx.stroke();
+        ctx.font = '10px Inter, sans-serif';
+        [-30, 0, 30].forEach(function (lat) {
+          ctx.fillStyle = 'rgba(255,255,255,.45)';
+          ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+          ctx.fillText((lat > 0 ? '+' : '') + lat + '°', bx - 5, Y2(lat));
+        });
+        ctx.save();
+        ctx.translate(14, cy2 + bh2 / 2); ctx.rotate(-Math.PI / 2);
+        ctx.fillStyle = 'rgba(255,255,255,.5)';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+        ctx.fillText('heliografska širina', 0, 0);
+        ctx.restore();
+
+        /* točke pjega */
+        var sd = 4242;
+        function rnd() { sd = (sd * 1103515245 + 12345) & 0x7fffffff; return sd / 0x7fffffff; }
+        for (var t3 = G0; t3 <= G1; t3 += 0.02) {
+          var n = pjege(t3) / 200 * 7;
+          var lat0 = sirina(t3);
+          for (var k = 0; k < n; k++) {
+            var lat = lat0 + (rnd() - 0.5) * 12;
+            var znak = rnd() < 0.5 ? 1 : -1;
+            ctx.fillStyle = 'rgba(0,212,255,' + (0.15 + rnd() * 0.35).toFixed(2) + ')';
+            ctx.beginPath();
+            ctx.arc(X(t3), Y2(znak * lat), 1.1 + rnd(), 0, 6.2832);
+            ctx.fill();
+          }
+        }
+
+        /* trenutna godina */
+        ctx.strokeStyle = 'rgba(255,255,255,.55)'; ctx.lineWidth = 1.6;
+        ctx.setLineDash([4, 3]);
+        ctx.beginPath(); ctx.moveTo(X(god), by); ctx.lineTo(X(god), cy2 + bh2); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.shadowColor = 'rgba(251,191,36,.9)'; ctx.shadowBlur = 12;
+        ctx.fillStyle = '#fbbf24';
+        ctx.beginPath(); ctx.arc(X(god), Y(pjege(god)), 5.5, 0, 6.2832); ctx.fill();
+        ctx.shadowBlur = 0;
+
+        ctx.font = '9px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(0,212,255,.7)';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+        ctx.fillText('leptirasti dijagram: pjege se kroz ciklus sele prema ekvatoru',
+          bx + 4, cy2 + 2);
+      });
+
+      function osvjezi() {
+        var c = ciklus(god), sn = pjege(god), lat = sirina(god);
+        var faza = (god - c.t0) / (c.t1 - c.t0);
+        var opis = faza < 0.12 ? 'minimum' : faza < 0.42 ? 'uspon'
+          : faza < 0.58 ? 'maksimum' : faza < 0.9 ? 'pad' : 'prema minimumu';
+
+        TECAJ.el('ci-br').innerHTML = c.n;
+        TECAJ.el('ci-faza').innerHTML = '<span style="font-size:.92rem">' + opis + '</span>';
+        TECAJ.el('ci-sn').innerHTML = TECAJ.num(sn, 0);
+        TECAJ.el('ci-lat').innerHTML = '±' + TECAJ.num(lat, 0) + '°';
+
+        var box = TECAJ.el('ci-info');
+        box.className = sn > 100 ? 'verdict verdict--warn' : 'verdict';
+        box.innerHTML = '<strong>Godina ' + god.toFixed(1).replace('.', ',') + ', ciklus ' + c.n + ' (' + opis +
+          ').</strong> Relativni broj pjega je oko ' + TECAJ.num(sn, 0) + ', a pojavljuju se ' +
+          'oko heliografske širine ±' + TECAJ.num(lat, 0) + '°. ' +
+          (sn > 100
+            ? 'Blizu maksimuma bljeskovi i koronalni izbačaji su česti: veća je vjerojatnost ' +
+            'polarne svjetlosti i u srednjim širinama, ali i smetnji u komunikacijama te ' +
+            'opasnosti za satelite.'
+            : sn < 25
+              ? 'Blizu minimuma disk može biti danima bez ijedne pjege. Tada je sunčev vjetar ' +
+              'mirniji, a kozmičko zračenje iz Galaktike dolazi jače jer ga slabija ' +
+              'heliosfera manje zaustavlja.'
+              : 'Aktivnost je srednja i mijenja se iz mjeseca u mjesec.') +
+          ' Podsjetnik: ciklus pjega traje 11 godina, ali <em>magnetski</em> ciklus traje 22 — ' +
+          'jer se polaritet vodećih pjega svaki put obrne.';
+        cv.draw();
+      }
+
+      function godFmt(v) { return v.toFixed(1).replace('.', ',') + '.'; }
+      TECAJ.slider('ci-g', {
+        format: function (v) { return godFmt(v); },
+        onInput: function (v) { god = v; osvjezi(); }
+      });
+      TECAJ.chips('ci-preseti', function (v) {
+        god = parseFloat(v);
+        TECAJ.el('ci-g').value = god;
+        TECAJ.el('ci-g-out').textContent = godFmt(god);
+        osvjezi();
+      });
+      osvjezi();
+    })();
+  </script>
+</body>
+
+</html>

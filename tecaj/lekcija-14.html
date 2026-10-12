@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14. Egzoplaneti i astrobiologija | Tečaj astronomije</title>
+  <meta name="description"
+    content="Metode detekcije egzoplaneta, tranzitna metoda, radijalne brzine, dijagram masa-polumjer, nastanjiva zona, atmosfere i Drakeova jednadžba.">
+  <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/tecaj.css?v=20260928">
+  <script src="data/vidljivost.js"></script>
+  <script>
+    /* Pristupna vrata: sakrij sadržaj prije prvog crtanja ako PIN nije unesen.
+       Otključavanje i sam upit su u js/tecaj.js. */
+    (function () {
+      var ulaz = false, urednik = false;
+      try { ulaz = sessionStorage.getItem('tecaj_ulaz') === '1'; } catch (e) { }
+      try { urednik = !!localStorage.getItem('adip_token'); } catch (e) { }
+      if (!ulaz && !urednik) document.documentElement.className += ' tecaj-zakljucano';
+    })();
+  </script>
+</head>
+
+<body>
+  <main class="page-content">
+    <div class="container container--wide">
+
+      <div class="lesson-head" id="lesson-head"></div>
+
+      <div class="lesson-body">
+
+        <!-- ============ TEORIJA ============ -->
+        <div>
+          <div class="panel">
+            <h2 class="panel__title">O čemu je ova lekcija</h2>
+            <p>
+              Godine 1995. znali smo za <strong>nula</strong> planeta oko drugih zvijezda. Danas
+              ih je potvrđeno gotovo šest tisuća — i broj i dalje brzo raste. Ovo je najmlađe
+              poglavlje astronomije i jedino u kojem se katalog mijenja iz mjeseca u mjesec.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Pet načina da se vidi nevidljivo</h3>
+            <ul>
+              <li><strong>Tranzit</strong> — planet prolazi ispred zvijezde i malo je zatamni.
+                Daje <em>polumjer</em>. Najuspješnija metoda (Kepler, TESS).</li>
+              <li><strong>Radijalne brzine</strong> — zvijezda se kolebati oko zajedničkog
+                središta mase, pa joj se linije Dopplerovo pomiču. Daje <em>masu</em>
+                (točnije <span class="mvar">M</span> sin <span class="mvar">i</span>).</li>
+              <li><strong>Mikrolećenje</strong> — planet leće svjetlost daleke zvijezde. Osjetljivo
+                na planete daleko od zvijezde, ali događaj se ne ponavlja.</li>
+              <li><strong>Izravno snimanje</strong> — moguće samo za velike, mlade i vruće planete
+                daleko od zvijezde.</li>
+              <li><strong>Astrometrija</strong> — mjerenje kolebanja položaja zvijezde; Gaia
+                otvara ovo područje.</li>
+            </ul>
+            <p>
+              Svaka metoda ima svoju <strong>pristranost</strong>: tranziti nalaze velike planete
+              blizu zvijezde, radijalne brzine masivne planete blizu zvijezde, izravno snimanje
+              velike planete daleko. Zato statistika otkrića nije statistika planeta — i to je
+              najčešća zamka u interpretaciji.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Tranzit: od dubine do polumjera</h3>
+            <div class="formula">
+              Δ<span class="mvar">F</span>/<span class="mvar">F</span> =
+              (<span class="mvar">R</span><sub>p</sub>/<span class="mvar">R</span><sub>★</sub>)²
+              <small>Jupiter pred Suncem daje 1 %, Zemlja pred Suncem samo 0,008 %</small>
+            </div>
+            <div class="formula">
+              <span class="mvar">p</span> = <span class="mvar">R</span><sub>★</sub>/<span class="mvar">a</span>
+              <small>vjerojatnost da je staza dovoljno „s ruba“ da vidimo tranzit — za Zemlju oko 0,5 %</small>
+            </div>
+            <p>
+              Trajanje tranzita nosi dodatnu informaciju o
+              <span class="mvar">a</span> i nagibu; oblik ulaza i izlaza o gustoći zvijezde.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Radijalne brzine: od amplitude do mase</h3>
+            <div class="formula">
+              <span class="mvar">K</span> ≈ 28,4 m/s ·
+              (<span class="mvar">M</span><sub>p</sub>/<span class="mvar">M</span><sub>J</sub>)
+              (<span class="mvar">M</span><sub>★</sub>/<span class="mvar">M</span><sub>☉</sub>)<sup>−2/3</sup>
+              (<span class="mvar">P</span>/god)<sup>−1/3</sup>
+              <small>Jupiter na Jupiterovoj stazi daje Suncu 12,5 m/s; Zemlja samo 9 cm/s</small>
+            </div>
+            <p>
+              Zato je prvi otkriveni planet oko zvijezde slične Suncu bio „vrući Jupiter“
+              (51 Pegasi b, P = 4,2 dana): masivan i blizu, dakle najlakši za otkriti.
+              To je bilo veliko iznenađenje i natjeralo nas na pojam <strong>migracije</strong>
+              planeta.
+            </p>
+            <p>
+              Kad se obje metode primijene na isti sustav, dobivamo
+              <strong>i masu i polumjer</strong>, a onda i gustoću — dakle sastav:
+            </p>
+            <div class="formula">
+              tranzit → <span class="mvar">R</span> &nbsp;·&nbsp;
+              radijalne brzine → <span class="mvar">M</span> &nbsp;·&nbsp;
+              zajedno → <span class="mvar">ρ</span>
+            </div>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Vrste planeta</h3>
+            <p>
+              Uz poznate razrede pojavili su se i novi: <strong>super-Zemlje</strong>
+              (1–2 <span class="mvar">R</span><sub>⊕</sub>, stjenovite),
+              <strong>mini-Neptuni</strong> (2–4 <span class="mvar">R</span><sub>⊕</sub>, s
+              debelom atmosferom) i <strong>vrući Jupiteri</strong>. Između 1,5 i 2
+              <span class="mvar">R</span><sub>⊕</sub> nalazi se
+              <strong>radijusna dolina</strong> — manjak planeta, vjerojatno jer im je zračenje
+              zvijezde otpuhalo atmosferu.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Nastanjiva zona</h3>
+            <div class="formula">
+              <span class="mvar">d</span> ≈ (0,95 – 1,37) √(<span class="mvar">L</span>/<span
+                class="mvar">L</span><sub>☉</sub>) AJ
+              <small>područje u kojem na površini planeta može postojati tekuća voda</small>
+            </div>
+            <div class="formula">
+              <span class="mvar">T</span><sub>eq</sub> = <span class="mvar">T</span><sub>★</sub>
+              √(<span class="mvar">R</span><sub>★</sub>/2<span class="mvar">d</span>)
+              (1 − <span class="mvar">A</span>)<sup>1/4</sup>
+            </div>
+            <p>
+              <strong>Crveni patuljci</strong> su i prilika i problem. Prilika: čine 75 %
+              zvijezda, nastanjiva zona im je blizu pa su tranziti češći i dublji, a signal
+              radijalnih brzina veći. Problem: planeti u zoni su plimno zaključani, a mladi
+              crveni patuljci daju silovite bljeskove koji mogu odnijeti atmosferu.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Astrobiologija</h3>
+            <p>
+              Uvjeti za život kakav poznajemo: tekuća voda, izvor energije, ugljik i ostali
+              biogeni elementi te dovoljno vremena. <strong>Biosignature</strong> u atmosferi
+              (O₂ + CH₄ zajedno, N₂O, DMS) traže se transmisijskom spektroskopijom tijekom
+              tranzita — to je danas glavni posao JWST-a.
+            </p>
+            <div class="formula">
+              <span class="mvar">N</span> = <span class="mvar">R</span><sub>★</sub>
+              <span class="mvar">f</span><sub>p</sub> <span class="mvar">n</span><sub>e</sub>
+              <span class="mvar">f</span><sub>l</sub> <span class="mvar">f</span><sub>i</sub>
+              <span class="mvar">f</span><sub>c</sub> <span class="mvar">L</span>
+              <small>Drakeova jednadžba — nije predviđanje nego popis onoga što ne znamo</small>
+            </div>
+            <p>
+              Prva tri faktora danas znamo prilično dobro; zadnja četiri gotovo nikako.
+              <strong>Fermijev paradoks</strong> pita: ako je Galaktika stara i velika, gdje su
+              svi? Predložena rješenja idu od „veliki filtar“ do „ne tražimo dobro“ — ali
+              nijedno nije provjerljivo, i to je poanta.
+            </p>
+          </div>
+
+          <div class="panel" style="margin-top:1.5rem">
+            <h2 class="panel__title">Ishodi</h2>
+            <ul>
+              <li>računa dubinu tranzita, vjerojatnost tranzita i amplitudu radijalnih brzina;</li>
+              <li>objašnjava pristranost svake metode i njezin trag u statistici otkrića;</li>
+              <li>određuje granice nastanjive zone iz luminoziteta zvijezde;</li>
+              <li>kritički raspravlja o Drakeovoj jednadžbi i Fermijevu paradoksu.</li>
+            </ul>
+
+            <h2 class="panel__title" style="margin-top:1.5rem">Zapamtite</h2>
+            <ul>
+              <li>Δ<span class="mvar">F</span>/<span class="mvar">F</span> = (<span
+                  class="mvar">R</span><sub>p</sub>/<span class="mvar">R</span><sub>★</sub>)²</li>
+              <li>vjerojatnost tranzita <span class="mvar">p</span> = <span
+                  class="mvar">R</span><sub>★</sub>/<span class="mvar">a</span></li>
+              <li><span class="mvar">K</span> ≈ 28,4 m/s · (<span class="mvar">M</span><sub>p</sub>/<span
+                  class="mvar">M</span><sub>J</sub>)(<span class="mvar">M</span><sub>★</sub>/<span
+                  class="mvar">M</span><sub>☉</sub>)<sup>−2/3</sup>(<span class="mvar">P</span>/god)<sup>−1/3</sup>
+              </li>
+              <li>tranzit → <span class="mvar">R</span>, radijalne brzine → <span class="mvar">M</span>,
+                zajedno → <span class="mvar">ρ</span></li>
+              <li>nastanjiva zona: <span class="mvar">d</span> ≈ (0,95–1,37)√(<span class="mvar">L</span>/<span
+                  class="mvar">L</span><sub>☉</sub>) AJ</li>
+              <li><span class="mvar">T</span><sub>eq</sub> = <span class="mvar">T</span><sub>★</sub>√(<span
+                  class="mvar">R</span><sub>★</sub>/2<span class="mvar">d</span>)(1−<span
+                  class="mvar">A</span>)<sup>1/4</sup></li>
+              <li>Drake: <span class="mvar">N</span> = <span class="mvar">R</span><sub>★</sub><span
+                  class="mvar">f</span><sub>p</sub><span class="mvar">n</span><sub>e</sub><span
+                  class="mvar">f</span><sub>l</sub><span class="mvar">f</span><sub>i</sub><span
+                  class="mvar">f</span><sub>c</sub><span class="mvar">L</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ============ INTERAKTIVNO ============ -->
+        <div>
+
+          <!-- ---------- 1 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 1</div>
+              <h3 class="demo__title">Tranzitna metoda</h3>
+              <p class="demo__hint">
+                Gore je prolaz planeta preko diska zvijezde, dolje krivulja sjaja koja iz njega
+                nastaje. Pokušajte namjestiti Zemlju pred Suncem i vidjeti koliko je taj signal
+                malen.
+              </p>
+            </div>
+
+            <canvas id="c14a"></canvas>
+
+            <div class="controls controls--2">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Polumjer planeta</span><span class="ctrl__value"
+                    id="tz-rp-out"></span></div>
+                <input type="range" id="tz-rp" min="0.3" max="15" step="0.01" value="11.21">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Polumjer zvijezde</span><span class="ctrl__value"
+                    id="tz-rs-out"></span></div>
+                <input type="range" id="tz-rs" min="0.1" max="3" step="0.01" value="1">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Velika poluos a</span><span class="ctrl__value" id="tz-a-out"></span>
+                </div>
+                <input type="range" id="tz-a" min="-2.3" max="1" step="0.005" value="0">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Nagib i</span><span class="ctrl__value" id="tz-i-out"></span></div>
+                <input type="range" id="tz-i" min="80" max="90" step="0.01" value="90">
+              </div>
+            </div>
+
+            <div class="btn-row" id="tz-preseti">
+              <button class="chip-btn" data-value="1,1,1,90,Zemlja pred Suncem">Zemlja</button>
+              <button class="chip-btn active" data-value="11.21,1,1,90,Jupiter na 1 AJ">Jupiter</button>
+              <button class="chip-btn" data-value="14.9,1.24,0.052,85.7,HD 209458 b">HD 209458 b</button>
+              <button class="chip-btn" data-value="1.12,0.117,0.0292,89.7,TRAPPIST-1 e">TRAPPIST-1 e</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Dubina ΔF/F</div>
+                <div class="readout__value" id="tz-dub">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">U magnitudama</div>
+                <div class="readout__value" id="tz-mag">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Vjerojatnost tranzita</div>
+                <div class="readout__value" id="tz-p">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Trajanje tranzita</div>
+                <div class="readout__value" id="tz-tr">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Period</div>
+                <div class="readout__value" id="tz-per">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Udarni parametar b</div>
+                <div class="readout__value" id="tz-b">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="tz-info">—</div>
+          </div>
+
+          <!-- ---------- 2 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 2</div>
+              <h3 class="demo__title">Radijalne brzine i gustoća planeta</h3>
+              <p class="demo__hint">
+                Amplituda kolebanja zvijezde daje masu planeta. Uz polumjer iz tranzita dobivamo
+                gustoću — a gustoća je jedina stvar koja razlikuje kamen od plina.
+              </p>
+            </div>
+
+            <canvas id="c14b"></canvas>
+
+            <div class="controls controls--2">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Masa planeta</span><span class="ctrl__value" id="rv-mp-out"></span>
+                </div>
+                <input type="range" id="rv-mp" min="-2.6" max="1.2" step="0.005" value="0">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Masa zvijezde</span><span class="ctrl__value" id="rv-ms-out"></span>
+                </div>
+                <input type="range" id="rv-ms" min="0.1" max="3" step="0.01" value="1">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Period P</span><span class="ctrl__value" id="rv-p-out"></span></div>
+                <input type="range" id="rv-p" min="-2.7" max="1.5" step="0.005" value="1.075">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Polumjer planeta (iz tranzita)</span>
+                  <span class="ctrl__value" id="rv-rp-out"></span>
+                </div>
+                <input type="range" id="rv-rp" min="0.3" max="15" step="0.01" value="11.21">
+              </div>
+            </div>
+
+            <div class="btn-row" id="rv-preseti">
+              <button class="chip-btn active" data-value="1,1,11.862,11.21,Jupiter">Jupiter</button>
+              <button class="chip-btn" data-value="0.00315,1,1,1,Zemlja">Zemlja</button>
+              <button class="chip-btn" data-value="0.472,1.11,0.01151,15.4,51 Pegasi b">51 Peg b</button>
+              <button class="chip-btn" data-value="0.0037,0.0898,0.0167,1.12,TRAPPIST-1 e">TRAPPIST-1 e</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Amplituda K</div>
+                <div class="readout__value" id="rv-k">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Velika poluos a</div>
+                <div class="readout__value" id="rv-a">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Gustoća planeta</div>
+                <div class="readout__value" id="rv-ro">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Vjerojatni sastav</div>
+                <div class="readout__value" id="rv-sas">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Gravitacija na površini</div>
+                <div class="readout__value" id="rv-g">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Je li mjerljivo</div>
+                <div class="readout__value" id="rv-mj">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="rv-info">—</div>
+          </div>
+
+          <!-- ---------- 3 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 3</div>
+              <h3 class="demo__title">Nastanjiva zona</h3>
+              <p class="demo__hint">
+                Odaberite zvijezdu i pogledajte gdje je zeleni pojas. Kod crvenih patuljaka on
+                je vrlo blizu — što ima svoje prednosti i svoju cijenu.
+              </p>
+            </div>
+
+            <canvas id="c14c"></canvas>
+
+            <div class="controls controls--2">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Masa zvijezde</span><span class="ctrl__value" id="hz-m-out"></span>
+                </div>
+                <input type="range" id="hz-m" min="-1" max="0.5" step="0.001" value="0">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Staza planeta</span><span class="ctrl__value" id="hz-a-out"></span>
+                </div>
+                <input type="range" id="hz-a" min="-2.3" max="0.8" step="0.005" value="0">
+              </div>
+            </div>
+
+            <div class="btn-row" id="hz-preseti">
+              <button class="chip-btn" data-value="0.0898,0.02925,TRAPPIST-1 e">TRAPPIST-1</button>
+              <button class="chip-btn" data-value="0.122,0.0485,Proksima b">Proksima</button>
+              <button class="chip-btn" data-value="0.79,0.7048,Kepler-186 f">K patuljak</button>
+              <button class="chip-btn active" data-value="1,1,Zemlja">Sunce</button>
+              <button class="chip-btn" data-value="1.4,2.1,F zvijezda">F zvijezda</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Luminozitet zvijezde</div>
+                <div class="readout__value" id="hz-l">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Spektralna klasa</div>
+                <div class="readout__value" id="hz-k">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Nastanjiva zona</div>
+                <div class="readout__value" id="hz-zona">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Staza planeta</div>
+                <div class="readout__value" id="hz-a2">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">T<sub>eq</sub> (A = 0,3)</div>
+                <div class="readout__value" id="hz-t">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Period planeta</div>
+                <div class="readout__value" id="hz-p">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Vjerojatnost tranzita</div>
+                <div class="readout__value" id="hz-pt">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Vijek zvijezde</div>
+                <div class="readout__value" id="hz-vij">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="hz-info">—</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="lesson-nav" id="lesson-nav"></div>
+    </div>
+  </main>
+
+  <script src="js/tecaj.js?v=20260928"></script>
+  <script>
+    TECAJ.init({ lekcija: 14 });
+
+    var RE = 6371e3, RJ = 69911e3, RSUN = 6.957e8, AJ = 1.495978707e11;
+    var ME = 5.9722e24, MJ = 1.89813e27, MSUN = 1.98892e30;
+    var TSUN = 5772, G = 6.674e-11;
+
+    function klasa(T) {
+      if (T >= 30000) return ['O', '#9bb0ff'];
+      if (T >= 10000) return ['B', '#aabfff'];
+      if (T >= 7500) return ['A', '#cad7ff'];
+      if (T >= 6000) return ['F', '#f8f7ff'];
+      if (T >= 5200) return ['G', '#fff4ea'];
+      if (T >= 3700) return ['K', '#ffd2a1'];
+      return ['M', '#ffb56c'];
+    }
+    /* Glavni niz: masa -> L, R, T */
+    function zvj(M) {
+      var L = M >= 0.43 ? Math.pow(M, 3.5) : 0.23 * Math.pow(M, 2.3);
+      if (M > 20) L = Math.pow(20, 3.5) * Math.pow(M / 20, 2.5);
+      var R = M < 1 ? Math.pow(M, 0.8) : Math.pow(M, 0.57);
+      var T = TSUN * Math.pow(L, 0.25) / Math.sqrt(R);
+      return { L: L, R: R, T: T, t: 1e10 * Math.pow(M, -2.5) };
+    }
+
+    /* =====================================================
+       PRIMJER 1 — Tranzit
+       ===================================================== */
+    (function () {
+      var Rp = 11.21, Rs = 1, loga = 0, inc = 90;   /* Rp u R⊕, Rs u R☉ */
+
+      function stanje() {
+        var a = Math.pow(10, loga);                      /* AJ */
+        var k = Rp * RE / (Rs * RSUN);                   /* Rp/R★ */
+        var dub = k * k;
+        /* udarni parametar u jedinicama R★ */
+        var b = (a * AJ) * Math.cos(TECAJ.rad(inc)) / (Rs * RSUN);
+        var P = Math.sqrt(Math.pow(a, 3));               /* god, za M★ = 1 */
+        /* trajanje: (P/π) asin( sqrt((1+k)² − b²) · R★/a ) */
+        var arg = Math.sqrt(Math.max(0, (1 + k) * (1 + k) - b * b)) * (Rs * RSUN) / (a * AJ);
+        var tr = arg >= 1 ? P / 2 : P / Math.PI * Math.asin(arg);
+        return { a: a, k: k, dub: dub, b: b, P: P, tr: tr * 365.25 * 24 };
+      }
+
+      var cv = TECAJ.canvas('c14a', 1.5, function (ctx, W, Ht) {
+        var st = stanje();
+        TECAJ.starfield(ctx, W, Ht, 60, 4545);
+
+        /* --- gore: disk zvijezde i planet --- */
+        var cx = W / 2, cy = Ht * 0.26;
+        var Rpx = Math.min(W * 0.16, Ht * 0.19);
+        /* zvijezda s potamnjenjem ruba */
+        var g = ctx.createRadialGradient(cx, cy, 0, cx, cy, Rpx);
+        g.addColorStop(0, '#fff9e8');
+        g.addColorStop(0.7, '#ffe9a8');
+        g.addColorStop(1, 'rgba(240,180,70,.75)');
+        ctx.fillStyle = g;
+        ctx.beginPath(); ctx.arc(cx, cy, Rpx, 0, 6.2832); ctx.fill();
+
+        /* putanja planeta */
+        var yOff = st.b * Rpx;
+        ctx.strokeStyle = 'rgba(255,255,255,.25)'; ctx.setLineDash([3, 4]);
+        ctx.beginPath();
+        ctx.moveTo(cx - Rpx * 1.9, cy - yOff); ctx.lineTo(cx + Rpx * 1.9, cy - yOff);
+        ctx.stroke(); ctx.setLineDash([]);
+
+        /* tri položaja planeta */
+        [-1.35, 0, 1.35].forEach(function (f, i) {
+          var px = cx + f * Rpx * 1.25;
+          var pr = Math.max(1.2, st.k * Rpx);
+          ctx.globalAlpha = i === 1 ? 1 : 0.42;
+          ctx.fillStyle = '#12121a';
+          ctx.beginPath(); ctx.arc(px, cy - yOff, pr, 0, 6.2832); ctx.fill();
+          ctx.strokeStyle = 'rgba(255,255,255,.4)'; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.arc(px, cy - yOff, pr, 0, 6.2832); ctx.stroke();
+          ctx.globalAlpha = 1;
+        });
+
+        ctx.font = '9px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,.45)';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+        ctx.fillText('R(p)/R(★) = ' + TECAJ.num(st.k, 4) + '  ·  b = ' + TECAJ.num(st.b, 2) +
+          ' R(★)', 10, 10);
+
+        /* --- dolje: krivulja sjaja --- */
+        var bx = 62, by = Ht * 0.54, bw = W - 82, bh = Ht - by - 34;
+        var lo = 1 - Math.max(st.dub * 1.5, 1e-5), hi = 1 + Math.max(st.dub * 0.35, 3e-6);
+        function X(f) { return bx + bw * (f + 1.6) / 3.2; }
+        function Y(v) { return by + bh * (hi - v) / (hi - lo); }
+
+        ctx.strokeStyle = 'rgba(255,255,255,.22)';
+        ctx.beginPath();
+        ctx.moveTo(bx, by); ctx.lineTo(bx, by + bh); ctx.lineTo(bx + bw, by + bh);
+        ctx.stroke();
+
+        /* preklop diskova: planet (k) preko zvijezde (1), razmak d */
+        function tok(f) {
+          var d = Math.hypot(f, st.b);
+          var r1 = 1, r2 = st.k;
+          if (d >= r1 + r2) return 1;
+          var A;
+          if (d <= r1 - r2) A = Math.PI * r2 * r2;
+          else if (d <= r2 - r1) A = Math.PI * r1 * r1;
+          else {
+            var a1 = Math.acos(TECAJ.clamp((d * d + r1 * r1 - r2 * r2) / (2 * d * r1), -1, 1));
+            var a2 = Math.acos(TECAJ.clamp((d * d + r2 * r2 - r1 * r1) / (2 * d * r2), -1, 1));
+            A = r1 * r1 * (a1 - Math.sin(2 * a1) / 2) + r2 * r2 * (a2 - Math.sin(2 * a2) / 2);
+          }
+          return 1 - A / Math.PI;
+        }
+
+        ctx.strokeStyle = '#00d4ff'; ctx.lineWidth = 2.4;
+        ctx.beginPath();
+        for (var i = 0; i <= 400; i++) {
+          var f = -1.6 + 3.2 * i / 400;
+          i === 0 ? ctx.moveTo(X(f), Y(tok(f))) : ctx.lineTo(X(f), Y(tok(f)));
+        }
+        ctx.stroke();
+
+        /* mjerilo dubine */
+        var minT = tok(0);
+        ctx.font = '10px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,.5)';
+        ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+        ctx.fillText('1,000000', bx - 5, Y(1));
+        if (minT < 0.999999) ctx.fillText(minT.toFixed(6).replace('.', ','), bx - 5, Y(minT));
+        ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+        ctx.fillText('položaj planeta (u polumjerima zvijezde)', bx + bw / 2, by + bh + 6);
+
+        /* šum tipičnih mjerenja za usporedbu */
+        [[1e-4, 'zemaljska fotometrija ~10⁻⁴', 'rgba(248,113,113,.55)'],
+        [2e-5, 'Kepler / TESS ~2·10⁻⁵', 'rgba(52,211,153,.6)']].forEach(function (n) {
+          var yy = Y(1 - n[0]);
+          if (yy < by || yy > by + bh) return;
+          ctx.strokeStyle = n[2]; ctx.lineWidth = 1.2; ctx.setLineDash([4, 3]);
+          ctx.beginPath(); ctx.moveTo(bx, yy); ctx.lineTo(bx + bw, yy); ctx.stroke();
+          ctx.setLineDash([]);
+          TECAJ.tag(ctx, bx + bw - 4, yy - 8, n[1], n[2], 'right');
+        });
+      });
+
+      function osvjezi() {
+        var st = stanje();
+        TECAJ.el('tz-dub').innerHTML = st.dub < 1e-4
+          ? TECAJ.sci(st.dub * 100, 2) + '<span> %</span>'
+          : TECAJ.num(st.dub * 100, 3) + '<span> %</span>';
+        TECAJ.el('tz-mag').innerHTML = TECAJ.auto(-2.5 * Math.log10(1 - st.dub), 5) +
+          '<span> mag</span>';
+        var p = (Rs * RSUN) / (st.a * AJ);
+        TECAJ.el('tz-p').innerHTML = TECAJ.num(p * 100, 2) + '<span> %</span>';
+        TECAJ.el('tz-tr').innerHTML = st.tr > 0
+          ? TECAJ.num(st.tr, 2) + '<span> h</span>'
+          : '<span style="color:#f87171">nema tranzita</span>';
+        TECAJ.el('tz-per').innerHTML = st.P * 365.25 < 100
+          ? TECAJ.num(st.P * 365.25, 2) + '<span> dana</span>'
+          : TECAJ.num(st.P, 2) + '<span> god</span>';
+        TECAJ.el('tz-b').innerHTML = TECAJ.num(st.b, 3) + '<span> R★</span>';
+
+        var box = TECAJ.el('tz-info');
+        if (st.b > 1 + st.k) {
+          box.className = 'verdict verdict--bad';
+          box.innerHTML = '<strong>Nema tranzita.</strong> Udarni parametar b = ' +
+            TECAJ.num(st.b, 2) + ' R★ veći je od 1 + R(p)/R(★) = ' +
+            TECAJ.num(1 + st.k, 2) + ', pa planet promašuje disk zvijezde. Zato je nagib toliko ' +
+            'važan: tranzit vidimo samo iz uskog kuta. Vjerojatnost je p = R★/a = ' +
+            TECAJ.num(p * 100, 2) + ' %.';
+        } else {
+          box.className = st.dub > 2e-5 ? 'verdict verdict--ok' : 'verdict verdict--warn';
+          box.innerHTML = '<strong>Dubina ' + (st.dub < 1e-4
+            ? TECAJ.sci(st.dub * 100, 2) : TECAJ.num(st.dub * 100, 3)) + ' %.</strong> ' +
+            'Iz (R(p)/R(★))² = ' + TECAJ.num(st.k, 4) + '² dobiva se upravo taj broj — ' +
+            'zapazite da tranzit ne mjeri veličinu planeta nego <em>odnos</em> polumjera. ' +
+            'Bez neovisno poznatog R★ nema ni R(p). ' +
+            (st.dub > 1e-4
+              ? 'Ovakav signal mjeri se i sa zemaljskim teleskopima amaterske klase.'
+              : st.dub > 2e-5
+                ? 'Ovakav signal treba svemirski teleskop (Kepler, TESS); iz zemaljske ' +
+                'fotometrije nestaje u atmosferskom šumu.'
+                : 'Ovo je na samoj granici i najboljih svemirskih mjerenja — ovako izgleda ' +
+                'problem otkrivanja Zemlje oko zvijezde poput Sunca.') +
+            ' Vjerojatnost da nam je staza dovoljno „s ruba“ je samo ' +
+            TECAJ.num(p * 100, 2) + ' %, pa se za jedno otkriće mora pregledati stotine zvijezda.';
+        }
+        cv.draw();
+      }
+
+      TECAJ.slider('tz-rp', {
+        format: function (v) { return TECAJ.num(v, 2) + ' R⊕'; },
+        onInput: function (v) { Rp = v; osvjezi(); }
+      });
+      TECAJ.slider('tz-rs', {
+        format: function (v) { return TECAJ.num(v, 2) + ' R☉'; },
+        onInput: function (v) { Rs = v; osvjezi(); }
+      });
+      TECAJ.slider('tz-a', {
+        format: function (v) { return TECAJ.auto(Math.pow(10, v), 4) + ' AJ'; },
+        onInput: function (v) { loga = v; osvjezi(); }
+      });
+      TECAJ.slider('tz-i', {
+        format: function (v) { return TECAJ.num(v, 2) + '°'; },
+        onInput: function (v) { inc = v; osvjezi(); }
+      });
+      TECAJ.chips('tz-preseti', function (v) {
+        var d = v.split(',');
+        Rp = parseFloat(d[0]); Rs = parseFloat(d[1]);
+        loga = Math.log10(parseFloat(d[2])); inc = parseFloat(d[3]);
+        TECAJ.el('tz-rp').value = Rp; TECAJ.el('tz-rp-out').textContent = TECAJ.num(Rp, 2) + ' R⊕';
+        TECAJ.el('tz-rs').value = Rs; TECAJ.el('tz-rs-out').textContent = TECAJ.num(Rs, 2) + ' R☉';
+        TECAJ.el('tz-a').value = loga;
+        TECAJ.el('tz-a-out').textContent = TECAJ.auto(parseFloat(d[2]), 4) + ' AJ';
+        TECAJ.el('tz-i').value = inc; TECAJ.el('tz-i-out').textContent = TECAJ.num(inc, 2) + '°';
+        osvjezi();
+      });
+      osvjezi();
+    })();
+
+
+    /* =====================================================
+       PRIMJER 2 — Radijalne brzine
+       ===================================================== */
+    (function () {
+      var logMp = 0, Ms = 1, logP = Math.log10(11.862), Rp = 11.21;
+
+      function stanje() {
+        var Mp = Math.pow(10, logMp);                 /* M_J */
+        var P = Math.pow(10, logP);                   /* god */
+        var K = 28.4329 * Mp * Math.pow(Ms, -2 / 3) * Math.pow(P, -1 / 3);   /* m/s */
+        var a = Math.pow(Ms * P * P, 1 / 3);          /* AJ */
+        var V = 4 / 3 * Math.PI * Math.pow(Rp * RE, 3);
+        var ro = Mp * MJ / V / 1000;                  /* g/cm³ */
+        var g = G * Mp * MJ / Math.pow(Rp * RE, 2);
+        return { Mp: Mp, P: P, K: K, a: a, ro: ro, g: g };
+      }
+
+      var cv = TECAJ.canvas('c14b', 2.0, function (ctx, W, Ht) {
+        var st = stanje();
+
+        /* --- lijevo: krivulja radijalnih brzina --- */
+        var lw = W * 0.52;
+        var bx = 58, by = 24, bw = lw - 76, bh = Ht - 66;
+        var Kmax = Math.max(st.K * 1.35, 0.5);
+        function X(f) { return bx + bw * f; }
+        function Y(v) { return by + bh * (Kmax - v) / (2 * Kmax); }
+
+        ctx.strokeStyle = 'rgba(255,255,255,.22)';
+        ctx.beginPath();
+        ctx.moveTo(bx, by); ctx.lineTo(bx, by + bh); ctx.lineTo(bx + bw, by + bh);
+        ctx.stroke();
+        ctx.strokeStyle = 'rgba(255,255,255,.14)';
+        ctx.beginPath(); ctx.moveTo(bx, Y(0)); ctx.lineTo(bx + bw, Y(0)); ctx.stroke();
+
+        ctx.strokeStyle = '#00d4ff'; ctx.lineWidth = 2.4;
+        ctx.beginPath();
+        for (var i = 0; i <= 200; i++) {
+          var f = i / 200;
+          var v = st.K * Math.sin(2 * Math.PI * f);
+          i === 0 ? ctx.moveTo(X(f), Y(v)) : ctx.lineTo(X(f), Y(v));
+        }
+        ctx.stroke();
+
+        /* amplituda */
+        ctx.strokeStyle = 'rgba(251,191,36,.8)'; ctx.lineWidth = 1.4;
+        ctx.beginPath();
+        ctx.moveTo(X(0.25) + 10, Y(0)); ctx.lineTo(X(0.25) + 10, Y(st.K));
+        ctx.stroke();
+        TECAJ.tag(ctx, X(0.25) + 15, (Y(0) + Y(st.K)) / 2,
+          'K = ' + (st.K >= 1 ? TECAJ.num(st.K, 1) + ' m/s' : TECAJ.num(st.K * 100, 1) + ' cm/s'),
+          'rgba(251,191,36,.95)');
+
+        /* granice mjerljivosti */
+        [[1, 'HARPS / ESPRESSO ≈ 0,3 m/s', 'rgba(52,211,153,.55)'],
+        [10, 'starije spektrografije ≈ 10 m/s', 'rgba(248,113,113,.5)']].forEach(function (n) {
+          var yy = Y(n[0] === 1 ? 0.3 : 10);
+          if (yy < by || yy > by + bh) return;
+          ctx.strokeStyle = n[2]; ctx.setLineDash([4, 3]); ctx.lineWidth = 1.1;
+          ctx.beginPath(); ctx.moveTo(bx, yy); ctx.lineTo(bx + bw, yy); ctx.stroke();
+          ctx.setLineDash([]);
+          TECAJ.tag(ctx, bx + 4, yy - 8, n[1], n[2]);
+        });
+
+        ctx.font = '10px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,.5)';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+        ctx.fillText('faza (P = ' + (st.P * 365.25 < 100
+          ? TECAJ.num(st.P * 365.25, 2) + ' d' : TECAJ.num(st.P, 2) + ' god') + ')',
+          bx + bw / 2, by + bh + 6);
+        ctx.save();
+        ctx.translate(16, by + bh / 2); ctx.rotate(-Math.PI / 2);
+        ctx.fillText('radijalna brzina zvijezde', 0, 0);
+        ctx.restore();
+
+        ctx.strokeStyle = 'rgba(255,255,255,.1)';
+        ctx.beginPath(); ctx.moveTo(lw, 8); ctx.lineTo(lw, Ht - 8); ctx.stroke();
+
+        /* --- desno: dijagram masa-polumjer --- */
+        var cx2 = lw + 46, cw = W - lw - 64, cy2 = 24, ch = Ht - 66;
+        var M0 = -1, M1 = 3.6;    /* log M⊕ */
+        var R0 = -0.3, R1 = 1.35;  /* log R⊕ */
+        function CX(lm) { return cx2 + cw * (lm - M0) / (M1 - M0); }
+        function CY(lr) { return cy2 + ch * (R1 - lr) / (R1 - R0); }
+
+        ctx.strokeStyle = 'rgba(255,255,255,.22)';
+        ctx.beginPath();
+        ctx.moveTo(cx2, cy2); ctx.lineTo(cx2, cy2 + ch); ctx.lineTo(cx2 + cw, cy2 + ch);
+        ctx.stroke();
+
+        /* linije stalne gustoće */
+        [[0.5, '0,5'], [1, '1'], [3, '3'], [8, '8']].forEach(function (d) {
+          /* R = (3M/(4πρ))^(1/3) */
+          ctx.strokeStyle = 'rgba(255,255,255,.12)'; ctx.setLineDash([3, 3]);
+          ctx.beginPath();
+          for (var lm = M0; lm <= M1; lm += 0.1) {
+            var Mk = Math.pow(10, lm) * ME;
+            var Rm = Math.pow(3 * Mk / (4 * Math.PI * d[0] * 1000), 1 / 3) / RE;
+            var lr = Math.log10(Rm);
+            lm === M0 ? ctx.moveTo(CX(lm), CY(lr)) : ctx.lineTo(CX(lm), CY(lr));
+          }
+          ctx.stroke(); ctx.setLineDash([]);
+        });
+        TECAJ.tag(ctx, cx2 + 4, cy2 + 12, 'crte = stalna gustoća (g/cm³)', 'rgba(255,255,255,.35)');
+
+        /* poznati planeti */
+        [[1, 1, 'Zemlja'], [0.107, 0.532, 'Mars'], [0.0553, 0.383, 'Merkur'],
+        [0.815, 0.949, 'Venera'], [317.8, 11.21, 'Jupiter'], [95.2, 9.45, 'Saturn'],
+        [14.5, 4.01, 'Uran'], [17.1, 3.88, 'Neptun'], [1.38, 1.116, 'K-452b'],
+        [8.6, 2.68, 'GJ 1214b'], [220, 15.4, '51 Peg b']].forEach(function (p) {
+          var px = CX(Math.log10(p[0])), py = CY(Math.log10(p[1]));
+          ctx.fillStyle = 'rgba(255,255,255,.45)';
+          ctx.beginPath(); ctx.arc(px, py, 2.6, 0, 6.2832); ctx.fill();
+          ctx.font = '8.5px Inter, sans-serif';
+          ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+          ctx.fillText(p[2], px + 4, py - 5);
+        });
+
+        /* naš planet */
+        var lmOur = Math.log10(st.Mp * MJ / ME), lrOur = Math.log10(Rp);
+        ctx.shadowColor = 'rgba(251,191,36,.9)'; ctx.shadowBlur = 12;
+        ctx.fillStyle = '#fbbf24';
+        ctx.beginPath();
+        ctx.arc(CX(TECAJ.clamp(lmOur, M0, M1)), CY(TECAJ.clamp(lrOur, R0, R1)), 6, 0, 6.2832);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+
+        ctx.font = '10px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,.5)';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+        ctx.fillText('masa (M⊕, logaritamski)', cx2 + cw / 2, cy2 + ch + 6);
+        ctx.save();
+        ctx.translate(lw + 16, cy2 + ch / 2); ctx.rotate(-Math.PI / 2);
+        ctx.fillText('polumjer (R⊕)', 0, 0);
+        ctx.restore();
+      });
+
+      function osvjezi() {
+        var st = stanje();
+        TECAJ.el('rv-k').innerHTML = st.K >= 1
+          ? TECAJ.num(st.K, 2) + '<span> m/s</span>'
+          : TECAJ.num(st.K * 100, 2) + '<span> cm/s</span>';
+        TECAJ.el('rv-a').innerHTML = TECAJ.auto(st.a, 4) + '<span> AJ</span>';
+        TECAJ.el('rv-ro').innerHTML = TECAJ.num(st.ro, 2) + '<span> g/cm³</span>';
+        /* Razred se određuje prvenstveno polumjerom (kao u literaturi), a
+           unutar malih planeta gustoćom. */
+        var sastav;
+        if (Rp > 6) sastav = ['plinoviti div', '#c084fc'];
+        else if (Rp > 3.5) sastav = ['ledeni div (Neptunov tip)', '#7dd3fc'];
+        else if (Rp > 2) sastav = ['mini-Neptun (debela atmosfera)', '#38bdf8'];
+        else if (st.ro > 7) sastav = ['pretežno željezo', '#f87171'];
+        else if (st.ro > 3.5) sastav = ['stjenovit', '#fbbf24'];
+        else if (st.ro > 1.5) sastav = ['stjenovit s vodom ili ledom', '#34d399'];
+        else sastav = ['napuhnut, s atmosferom', '#a78bfa'];
+        TECAJ.el('rv-sas').innerHTML = '<span style="color:' + sastav[1] +
+          ';font-size:.88rem">' + sastav[0] + '</span>';
+        TECAJ.el('rv-g').innerHTML = TECAJ.num(st.g, 2) + '<span> m/s²</span>';
+        TECAJ.el('rv-mj').innerHTML = st.K > 1 ? '<span style="color:#34d399">lako</span>'
+          : st.K > 0.3 ? '<span style="color:#fbbf24">na granici</span>'
+            : '<span style="color:#f87171">još ne</span>';
+
+        var box = TECAJ.el('rv-info');
+        box.className = st.K > 0.3 ? 'verdict verdict--ok' : 'verdict verdict--warn';
+        box.innerHTML = '<strong>K = ' + (st.K >= 1 ? TECAJ.num(st.K, 2) + ' m/s'
+          : TECAJ.num(st.K * 100, 2) + ' cm/s') + '.</strong> ' +
+          'Amplituda raste s masom planeta, a pada s masom zvijezde i s periodom — ' +
+          'zato su prvi otkriveni planeti bili masivni i blizu. ' +
+          (st.K < 0.3
+            ? 'Ovaj signal je manji od 0,3 m/s, što je granica najboljih današnjih spektrografa ' +
+            '(ESPRESSO). Zemlja daje Suncu samo 9 cm/s — i to je razlog zašto Zemljin blizanac ' +
+            'oko zvijezde poput Sunca još nije otkriven radijalnim brzinama.'
+            : 'Ovakav signal je mjerljiv. ') +
+          '<br><br><strong>Gustoća.</strong> Uz polumjer ' + TECAJ.num(Rp, 2) +
+          ' R⊕ iz tranzita, masa daje ρ = ' + TECAJ.num(st.ro, 2) + ' g/cm³, dakle <em>' +
+          sastav[0] + '</em>. Upravo tu je snaga kombiniranja metoda: ni tranzit ni radijalne ' +
+          'brzine same ne kažu ništa o sastavu, a zajedno kažu gotovo sve.';
+        cv.draw();
+      }
+
+      TECAJ.slider('rv-mp', {
+        format: function (v) {
+          var m = Math.pow(10, v);
+          return m >= 0.05 ? TECAJ.num(m, 3) + ' M(J)'
+            : TECAJ.num(m * MJ / ME, 2) + ' M⊕';
+        },
+        onInput: function (v) { logMp = v; osvjezi(); }
+      });
+      TECAJ.slider('rv-ms', {
+        format: function (v) { return TECAJ.num(v, 2) + ' M☉'; },
+        onInput: function (v) { Ms = v; osvjezi(); }
+      });
+      TECAJ.slider('rv-p', {
+        format: function (v) {
+          var P = Math.pow(10, v);
+          return P * 365.25 < 100 ? TECAJ.num(P * 365.25, 2) + ' d' : TECAJ.num(P, 2) + ' god';
+        },
+        onInput: function (v) { logP = v; osvjezi(); }
+      });
+      TECAJ.slider('rv-rp', {
+        format: function (v) { return TECAJ.num(v, 2) + ' R⊕'; },
+        onInput: function (v) { Rp = v; osvjezi(); }
+      });
+      TECAJ.chips('rv-preseti', function (v) {
+        var d = v.split(',');
+        logMp = Math.log10(parseFloat(d[0])); Ms = parseFloat(d[1]);
+        logP = Math.log10(parseFloat(d[2])); Rp = parseFloat(d[3]);
+        TECAJ.el('rv-mp').value = logMp;
+        var m = parseFloat(d[0]);
+        TECAJ.el('rv-mp-out').textContent = m >= 0.05
+          ? TECAJ.num(m, 3) + ' M(J)' : TECAJ.num(m * MJ / ME, 2) + ' M⊕';
+        TECAJ.el('rv-ms').value = Ms; TECAJ.el('rv-ms-out').textContent = TECAJ.num(Ms, 2) + ' M☉';
+        TECAJ.el('rv-p').value = logP;
+        var P = parseFloat(d[2]);
+        TECAJ.el('rv-p-out').textContent = P * 365.25 < 100
+          ? TECAJ.num(P * 365.25, 2) + ' d' : TECAJ.num(P, 2) + ' god';
+        TECAJ.el('rv-rp').value = Rp; TECAJ.el('rv-rp-out').textContent = TECAJ.num(Rp, 2) + ' R⊕';
+        osvjezi();
+      });
+      osvjezi();
+    })();
+
+
+    /* =====================================================
+       PRIMJER 3 — Nastanjiva zona
+       ===================================================== */
+    (function () {
+      var logM = 0, loga = 0;
+
+      var cv = TECAJ.canvas('c14c', 1.85, function (ctx, W, Ht) {
+        var bx = 52, by = 26, bw = W - 72, bh = Ht - 70;
+        var LM0 = -1, LM1 = 0.5;               /* log M★ */
+        var LA0 = -2.3, LA1 = 0.8;             /* log a */
+        function X(la) { return bx + bw * (la - LA0) / (LA1 - LA0); }
+        function Y(lm) { return by + bh * (LM1 - lm) / (LM1 - LM0); }
+
+        /* nastanjiva zona kao pojas */
+        ctx.beginPath();
+        var i;
+        for (i = 0; i <= 80; i++) {
+          var lm = LM0 + (LM1 - LM0) * i / 80;
+          var L = zvj(Math.pow(10, lm)).L;
+          ctx.lineTo(X(Math.log10(0.95 * Math.sqrt(L))), Y(lm));
+        }
+        for (i = 80; i >= 0; i--) {
+          var lm2 = LM0 + (LM1 - LM0) * i / 80;
+          var L2 = zvj(Math.pow(10, lm2)).L;
+          ctx.lineTo(X(Math.log10(1.37 * Math.sqrt(L2))), Y(lm2));
+        }
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(52,211,153,.22)';
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(52,211,153,.7)'; ctx.lineWidth = 1.4;
+        ctx.stroke();
+
+        /* plimno zaključavanje: približno a < 0,4 (M/M☉)^(1/3) AJ */
+        ctx.beginPath();
+        for (i = 0; i <= 80; i++) {
+          var lm3 = LM0 + (LM1 - LM0) * i / 80;
+          ctx.lineTo(X(Math.log10(0.4 * Math.pow(Math.pow(10, lm3), 1 / 3))), Y(lm3));
+        }
+        ctx.lineTo(X(LA0), Y(LM1)); ctx.lineTo(X(LA0), Y(LM0));
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(248,113,113,.10)';
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(248,113,113,.5)'; ctx.setLineDash([4, 3]); ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        for (i = 0; i <= 80; i++) {
+          var lm4 = LM0 + (LM1 - LM0) * i / 80;
+          var xx = X(Math.log10(0.4 * Math.pow(Math.pow(10, lm4), 1 / 3)));
+          i === 0 ? ctx.moveTo(xx, Y(lm4)) : ctx.lineTo(xx, Y(lm4));
+        }
+        ctx.stroke(); ctx.setLineDash([]);
+
+        /* osi */
+        ctx.strokeStyle = 'rgba(255,255,255,.22)';
+        ctx.beginPath();
+        ctx.moveTo(bx, by); ctx.lineTo(bx, by + bh); ctx.lineTo(bx + bw, by + bh);
+        ctx.stroke();
+        ctx.font = '10px Inter, sans-serif';
+        [0.01, 0.03, 0.1, 0.3, 1, 3].forEach(function (v) {
+          var xx = X(Math.log10(v));
+          if (xx < bx || xx > bx + bw) return;
+          ctx.strokeStyle = 'rgba(255,255,255,.07)';
+          ctx.beginPath(); ctx.moveTo(xx, by); ctx.lineTo(xx, by + bh); ctx.stroke();
+          ctx.fillStyle = 'rgba(255,255,255,.45)';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+          ctx.fillText(TECAJ.auto(v, 2), xx, by + bh + 5);
+        });
+        [0.1, 0.2, 0.5, 1, 2, 3].forEach(function (v) {
+          var yy = Y(Math.log10(v));
+          if (yy < by || yy > by + bh) return;
+          ctx.strokeStyle = 'rgba(255,255,255,.07)';
+          ctx.beginPath(); ctx.moveTo(bx, yy); ctx.lineTo(bx + bw, yy); ctx.stroke();
+          ctx.fillStyle = 'rgba(255,255,255,.45)';
+          ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+          ctx.fillText(TECAJ.auto(v, 2), bx - 5, yy);
+          /* spektralna klasa uz os */
+          var k = klasa(zvj(v).T);
+          ctx.fillStyle = k[1];
+          ctx.font = '600 9px Inter, sans-serif';
+          ctx.fillText(k[0], bx - 26, yy);
+          ctx.font = '10px Inter, sans-serif';
+        });
+        ctx.fillStyle = 'rgba(255,255,255,.55)';
+        ctx.font = '11px Inter, sans-serif';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+        ctx.fillText('velika poluos planeta (AJ, logaritamski)', bx + bw / 2, by + bh + 20);
+        ctx.save();
+        ctx.translate(14, by + bh / 2); ctx.rotate(-Math.PI / 2);
+        ctx.fillText('masa zvijezde (M☉)', 0, 0);
+        ctx.restore();
+
+        TECAJ.tag(ctx, X(Math.log10(1.1)), by + 14, 'nastanjiva zona', 'rgba(52,211,153,.85)', 'center');
+        TECAJ.tag(ctx, X(LA0) + 6, by + bh - 14, 'plimno zaključano', 'rgba(248,113,113,.75)');
+
+        /* poznati sustavi */
+        [[1, 1, 'Zemlja'], [1, 1.524, 'Mars'], [1, 0.723, 'Venera'],
+        [0.0898, 0.02925, 'TRAPPIST-1 e'], [0.122, 0.0485, 'Proksima b'],
+        [0.79, 0.7048, 'Kepler-186 f'], [1.11, 0.0527, '51 Peg b']].forEach(function (p) {
+          var px = X(Math.log10(p[1])), py = Y(Math.log10(p[0]));
+          if (px < bx || px > bx + bw || py < by || py > by + bh) return;
+          ctx.fillStyle = 'rgba(255,255,255,.5)';
+          ctx.beginPath(); ctx.arc(px, py, 2.6, 0, 6.2832); ctx.fill();
+          ctx.font = '8.5px Inter, sans-serif';
+          ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+          ctx.fillText(p[2], px + 4, py - 6);
+        });
+
+        /* naš planet */
+        var px2 = X(TECAJ.clamp(loga, LA0, LA1)), py2 = Y(TECAJ.clamp(logM, LM0, LM1));
+        ctx.shadowColor = 'rgba(251,191,36,.9)'; ctx.shadowBlur = 14;
+        ctx.fillStyle = '#fbbf24';
+        ctx.beginPath(); ctx.arc(px2, py2, 6.5, 0, 6.2832); ctx.fill();
+        ctx.shadowBlur = 0;
+      });
+
+      function osvjezi() {
+        var M = Math.pow(10, logM), a = Math.pow(10, loga);
+        var z = zvj(M);
+        var hz0 = 0.95 * Math.sqrt(z.L), hz1 = 1.37 * Math.sqrt(z.L);
+        var Teq = z.T * Math.sqrt(z.R * RSUN / (2 * a * AJ)) * Math.pow(1 - 0.3, 0.25);
+        var P = Math.sqrt(a * a * a / M);
+        var pt = (z.R * RSUN) / (a * AJ);
+        var k = klasa(z.T);
+        var zaklj = a < 0.4 * Math.pow(M, 1 / 3);
+
+        TECAJ.el('hz-l').innerHTML = TECAJ.auto(z.L, 4) + '<span> L☉</span>';
+        TECAJ.el('hz-k').innerHTML = '<span style="color:' + k[1] + '">' + k[0] + 'V, ' +
+          TECAJ.num(z.T, 0) + ' K</span>';
+        TECAJ.el('hz-zona').innerHTML = TECAJ.auto(hz0, 3) + ' – ' + TECAJ.auto(hz1, 3) +
+          '<span> AJ</span>';
+        TECAJ.el('hz-a2').innerHTML = TECAJ.auto(a, 4) + '<span> AJ</span>';
+        TECAJ.el('hz-t').innerHTML = TECAJ.num(Teq, 0) + '<span> K (' +
+          TECAJ.num(Teq - 273.15, 0) + ' °C)</span>';
+        TECAJ.el('hz-p').innerHTML = P * 365.25 < 100
+          ? TECAJ.num(P * 365.25, 2) + '<span> dana</span>'
+          : TECAJ.num(P, 2) + '<span> god</span>';
+        TECAJ.el('hz-pt').innerHTML = TECAJ.num(pt * 100, 2) + '<span> %</span>';
+        TECAJ.el('hz-vij').innerHTML = z.t >= 1e9
+          ? TECAJ.auto(z.t / 1e9, 1) + '<span> mlrd god</span>'
+          : TECAJ.auto(z.t / 1e6, 0) + '<span> mil. god</span>';
+
+        var box = TECAJ.el('hz-info');
+        var uZoni = a >= hz0 && a <= hz1;
+        if (uZoni) {
+          box.className = 'verdict verdict--ok';
+          box.innerHTML = '<strong>Planet je u nastanjivoj zoni.</strong> Za zvijezdu od ' +
+            TECAJ.auto(M, 2) + ' M☉ (klasa ' + k[0] + ', L = ' + TECAJ.auto(z.L, 4) +
+            ' L☉) zona je od ' + TECAJ.auto(hz0, 3) + ' do ' + TECAJ.auto(hz1, 3) +
+            ' AJ, a planet je na ' + TECAJ.auto(a, 4) + ' AJ. Ravnotežna temperatura je ' +
+            TECAJ.num(Teq, 0) + ' K. ' +
+            (zaklj
+              ? '<br><br><strong>Ali:</strong> ovako blizu zvijezde planet je gotovo sigurno ' +
+              '<em>plimno zaključan</em> — jedna strana uvijek gleda zvijezdu. To ne mora ' +
+              'onemogućiti život, ali mijenja svu klimu. Uz to su mladi crveni patuljci ' +
+              'silovito bljeskoviti i mogu odnijeti atmosferu.'
+              : ' Ovo je konfiguracija najsličnija Zemljinoj.') +
+            ' Vjerojatnost tranzita je ' + TECAJ.num(pt * 100, 2) + ' %.';
+        } else {
+          box.className = 'verdict verdict--warn';
+          box.innerHTML = '<strong>Planet je ' + (a < hz0 ? 'preblizu' : 'predaleko') +
+            '.</strong> Zona je ' + TECAJ.auto(hz0, 3) + ' – ' + TECAJ.auto(hz1, 3) +
+            ' AJ, a planet je na ' + TECAJ.auto(a, 4) + ' AJ; ravnotežna temperatura ' +
+            TECAJ.num(Teq, 0) + ' K. ' +
+            (a < hz0
+              ? 'Voda bi isparila i vodena para pojačala staklenik — pobjegli staklenik, kao na Veneri.'
+              : 'Voda je zamrznuta; potreban bi bio jak staklenik ili plimno grijanje.') +
+            '<br><br>Zapazite kako zona ovisi o luminozitetu: d ∝ √L. Zvijezda deset puta ' +
+            'slabija ima zonu 3,2 puta bližu. Zato su crveni patuljci privlačni za traženje ' +
+            '(tranziti su češći i dublji, period kratak), ali njihovi planeti u zoni ' +
+            'nisu Zemljini blizanci.';
+        }
+        cv.draw();
+      }
+
+      TECAJ.slider('hz-m', {
+        format: function (v) { return TECAJ.num(Math.pow(10, v), 3) + ' M☉'; },
+        onInput: function (v) { logM = v; osvjezi(); }
+      });
+      TECAJ.slider('hz-a', {
+        format: function (v) { return TECAJ.auto(Math.pow(10, v), 4) + ' AJ'; },
+        onInput: function (v) { loga = v; osvjezi(); }
+      });
+      TECAJ.chips('hz-preseti', function (v) {
+        var d = v.split(',');
+        logM = Math.log10(parseFloat(d[0])); loga = Math.log10(parseFloat(d[1]));
+        TECAJ.el('hz-m').value = logM;
+        TECAJ.el('hz-m-out').textContent = TECAJ.num(parseFloat(d[0]), 3) + ' M☉';
+        TECAJ.el('hz-a').value = loga;
+        TECAJ.el('hz-a-out').textContent = TECAJ.auto(parseFloat(d[1]), 4) + ' AJ';
+        osvjezi();
+      });
+      osvjezi();
+    })();
+  </script>
+</body>
+
+</html>

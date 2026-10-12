@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services | Pula Observatory</title>
   <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
-  <link rel="stylesheet" href="../css/modern.css">
+  <link rel="stylesheet" href="../css/modern.css?v=20260928">
 
   <!-- External Libraries for Widgets -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/suncalc/1.9.0/suncalc.min.js"></script>
@@ -114,15 +114,15 @@
 
     <nav class="nav" id="main-nav">
       <button class="nav__close" id="nav-close">✕</button>
-      <a href="index.html" class="nav__link">🏠 Home</a>
-      <a href="aktivnosti.html" class="nav__link">📅 Activities</a>
-      <a href="galerija-slika.html" class="nav__link">🖼️ Gallery</a>
-      <a href="povijest-zvjezdarnice.html" class="nav__link">📜 History</a>
-      <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Visit Us</a>
-      <a href="radovi.html" class="nav__link">📚 Papers</a>
-      <a href="servisi.html" class="nav__link active">⚙️ Services</a>
-      <a href="downloads.html" class="nav__link">⬇️ Downloads</a>
-      <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ About Us</a>
+      <a href="index.html" class="nav__link">Home</a>
+      <a href="aktivnosti.html" class="nav__link">Activities</a>
+      <a href="galerija-slika.html" class="nav__link">Gallery</a>
+      <a href="povijest-zvjezdarnice.html" class="nav__link">History</a>
+      <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">Visit Us</a>
+      <a href="radovi.html" class="nav__link">Papers</a>
+      <a href="servisi.html" class="nav__link active">Services</a>
+      <a href="downloads.html" class="nav__link">Downloads</a>
+      <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">About Us</a>
       <div class="nav__spacer"></div>
       <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Login</button>
     </nav>
@@ -140,7 +140,7 @@
 
         <!-- Admin Panel -->
         <div class="admin-panel hidden glass-card" id="admin-service-panel" style="margin-bottom: 2rem;">
-          <h3>➕ Add new service</h3>
+          <h3>Add new service</h3>
           <form id="service-form"
             style="display: grid; grid-template-columns: 1fr 2fr 1fr auto; gap: 1rem; align-items: end;">
             <div class="form-group">
@@ -167,7 +167,6 @@
           <!-- 1. Meteo -->
           <div class="service-card glass-card"
             onclick="openModal('Meteo Pula (Pljusak.com)', 'https://pljusak.com/meteo.php?stanica=pulacentar', 'iframe')">
-            <div class="service-icon">🌦️</div>
             <h3 class="service-title">Meteo Pula</h3>
             <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Pljusak.com</p>
           </div>
@@ -209,14 +208,12 @@
 
           <!-- 5. Library Catalog -->
           <div class="service-card glass-card" onclick="openLibraryModal()" style="cursor: pointer;">
-            <div class="service-icon">📖</div>
             <h3 class="service-title">Books</h3>
             <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Search library materials</p>
           </div>
 
           <!-- 6. Spot the Asteroid -->
           <div class="service-card glass-card" onclick="openAsteroidGame()" style="cursor: pointer;">
-            <div class="service-icon">☄️</div>
             <h3 class="service-title">Spot the Asteroid</h3>
             <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Find the asteroid in the image
             </p>
@@ -245,7 +242,6 @@
           <!-- 8. What can we see on the sky -->
           <div class="service-card glass-card"
             onclick="openModal('What can we see on the sky?', '../servisi/visible.html', 'iframe')">
-            <div class="service-icon">🔭</div>
             <h3 class="service-title">What can we see on the sky?</h3>
             <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Objects visible tonight</p>
           </div>
@@ -253,7 +249,6 @@
           <!-- 9. Calendar -->
           <div class="service-card glass-card"
             onclick="openModal('Calendar', 'https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FBelgrade&showCalendars=0&showTz=0&src=YWRpcHB1bGFAZ21haWwuY29t&color=%23039be5', 'iframe')">
-            <div class="service-icon">📅</div>
             <h3 class="service-title">Calendar</h3>
             <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Events and activities</p>
           </div>
@@ -319,8 +314,8 @@
     </div>
   </footer>
 
-  <script src="../js/main.js"></script>
-  <script src="../js/services.js?v=11"></script>
+  <script src="../js/main.js?v=20260928"></script>
+  <script src="../js/services.js?v=20260928"></script>
 
   <script>
     // Handle Login Modal Close from Main.js trigger

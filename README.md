@@ -2,7 +2,7 @@
 
 Službena web stranica Astronomskog društva "Istra" Pula. Projekt obuhvaća informativne stranice o povijesti zvjezdarnice, društvenim aktivnostima, radovima, te interaktivne sadržaje poput kataloga knjiga i astronomskih igara.
 
-## 🌟 Ključne Značajke (Key Features)
+## Ključne Značajke (Key Features)
 
 - **Višejezičnost**: Potpuna podrška za hrvatski, engleski (`en/`) i talijanski (`it/`) jezik.
 - **Galerije Slika**: Dinamičke galerije za astrofotografiju, povijest i aktivnosti.
@@ -11,14 +11,14 @@ Službena web stranica Astronomskog društva "Istra" Pula. Projekt obuhvaća inf
 - **Interaktivni Sadržaj**: Astronomske igre i usluge (npr. "Spot the Asteroid").
 - **Admin Panel**: Sučelje za upravljanje sadržajem i upload slika.
 
-## 🛠️ Tehnologije (Tech Stack)
+## Tehnologije (Tech Stack)
 
 - **Frontend**: HTML5, CSS3 (Vanilla), JavaScript (Vanilla).
 - **Backend**: Node.js s Express okvirom.
 - **Baza podataka**: Lokalni JSON i CSV datoteke za jednostavnije upravljanje.
 - **Server**: Konfiguriran za rad na cPanel-u putem `.htaccess` proxyja.
 
-## 📁 Struktura Projekta (Project Structure)
+## Struktura Projekta (Project Structure)
 
 - `/en/`, `/it/` - Prijevodi stranica na engleski i talijanski.
 - `/js/`, `/css/` - JavaScript logika i stilovi.
@@ -28,7 +28,7 @@ Službena web stranica Astronomskog društva "Istra" Pula. Projekt obuhvaća inf
 - `server.js` - Node.js server konfiguracija.
 - `galerija-slika/` - Direktorij za pohranu uploadanih slika.
 
-## 🚀 Početak Rada (Getting Started)
+## Početak Rada (Getting Started)
 
 ### Lokalno Pokretanje
 
@@ -44,7 +44,7 @@ Službena web stranica Astronomskog društva "Istra" Pula. Projekt obuhvaća inf
 
 3. Otvorite `http://localhost:3000` u pregledniku.
 
-## 📝 Održavanje (Maintenance)
+## Održavanje (Maintenance)
 
 - **Katalog knjiga**: Ažurirajte `books.csv` u korijenskom direktoriju. Sustav automatski parsira nove unose.
 - **Dodavanje slika**: Koristite admin sučelje za siguran upload slika u odgovarajuće kategorije.

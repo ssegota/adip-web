@@ -105,11 +105,7 @@ function renderDownloads(files) {
             iconContent = `<img class="file-thumbnail" src="${thumbPath}" alt="${file.title}">`;
         } else {
             // Use emoji icons for non-image files
-            let icon = '📄';
-            if (ext === 'pdf') icon = '📕';
-            else if (['zip', 'rar', '7z'].includes(ext)) icon = '📦';
-            else if (['doc', 'docx'].includes(ext)) icon = '📝';
-            else if (['xls', 'xlsx'].includes(ext)) icon = '📊';
+            const icon = (ext || 'file').replace(/[^a-z0-9]/gi, '').toUpperCase();
             iconContent = `<div class="file-icon">${icon}</div>`;
         }
 
@@ -264,10 +260,7 @@ function openPreview(file) {
         iconDiv.style.fontSize = '5rem';
         iconDiv.style.marginBottom = '1rem';
 
-        if (['zip', 'rar', '7z'].includes(ext)) iconDiv.textContent = '📦';
-        else if (['doc', 'docx'].includes(ext)) iconDiv.textContent = '📝';
-        else if (['xls', 'xlsx'].includes(ext)) iconDiv.textContent = '📊';
-        else iconDiv.textContent = '📄';
+        iconDiv.textContent = (ext || 'file').toUpperCase();
 
         container.appendChild(iconDiv);
     }

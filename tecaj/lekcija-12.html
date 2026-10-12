@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12. Skupovi, galaksije i kozmologija | Tečaj astronomije</title>
+  <meta name="description"
+    content="Zvjezdani skupovi, točka skretanja, Mliječna staza, rotacijska krivulja i tamna tvar, Hubbleov zakon, Veliki prasak i sudbina svemira.">
+  <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/tecaj.css?v=20260928">
+  <script src="data/vidljivost.js"></script>
+  <script>
+    /* Pristupna vrata: sakrij sadržaj prije prvog crtanja ako PIN nije unesen.
+       Otključavanje i sam upit su u js/tecaj.js. */
+    (function () {
+      var ulaz = false, urednik = false;
+      try { ulaz = sessionStorage.getItem('tecaj_ulaz') === '1'; } catch (e) { }
+      try { urednik = !!localStorage.getItem('adip_token'); } catch (e) { }
+      if (!ulaz && !urednik) document.documentElement.className += ' tecaj-zakljucano';
+    })();
+  </script>
+</head>
+
+<body>
+  <main class="page-content">
+    <div class="container container--wide">
+
+      <div class="lesson-head" id="lesson-head"></div>
+
+      <div class="lesson-body">
+
+        <!-- ============ TEORIJA ============ -->
+        <div>
+          <div class="panel">
+            <h2 class="panel__title">O čemu je ova lekcija</h2>
+            <p>
+              Zadnje predavanje ciklusa. Sve dosad naučeno — od paralakse do supernova — ovdje
+              se slaže u <strong>jednu ljestvicu</strong> koja seže do ruba vidljivog svemira.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Zvjezdani skupovi</h3>
+            <p>
+              <strong>Otvoreni skupovi</strong> (Plejade, Hijade): desetine do tisuće zvijezda,
+              mladi, u disku Galaktike, bogati metalima, gravitacijski labavi pa se s vremenom
+              raspadaju. <strong>Kuglasti skupovi</strong> (M13, ω Centauri): stotine tisuća
+              zvijezda, stari 11–13 milijardi godina, u halou, siromašni metalima, gusti i
+              stabilni.
+            </p>
+            <p>
+              Skup je prirodni laboratorij: sve su zvijezde nastale <em>istodobno</em> i na
+              <em>istoj udaljenosti</em>. Zato se dob čita iz <strong>točke skretanja</strong> —
+              mjesta gdje zvijezde napuštaju glavni niz:
+            </p>
+            <div class="formula">
+              <span class="mvar">t</span> ≈ 10¹⁰ <span class="mvar">M</span><sup>−2,5</sup> god
+              <small>masa u točki skretanja daje dob skupa; što je skup stariji, to je točka niže</small>
+            </div>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Međuzvjezdana tvar i Mliječna staza</h3>
+            <p>
+              Prostor između zvijezda nije prazan: plin (99 % mase) i prašina (1 %). Prašina
+              <strong>gasi</strong> i <strong>crveni</strong> svjetlost — otud potreba za
+              korekcijom ekstinkcije:
+            </p>
+            <div class="formula">
+              <span class="mvar">A</span><sub>V</sub> ≈ 3,1 <span class="mvar">E</span>(<span class="mvar">B</span>−<span
+                class="mvar">V</span>)
+              <small>iz crvenila (razlike izmjerene i prave boje) dobiva se apsorpcija u magnitudama</small>
+            </div>
+            <p>
+              Mliječna staza je spiralna galaksija s prečkom: disk promjera oko 100 000 ly,
+              središnja izduženost, halo s kuglastim skupovima i supermasivna crna rupa
+              <strong>Sgr A*</strong> (4,3 milijuna <span class="mvar">M</span><sub>☉</sub>) u
+              središtu. Sunce je 8,2 kpc od središta i obiđe ga u oko 230 milijuna godina.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Tamna tvar</h3>
+            <p>
+              Kad bi sva masa bila u vidljivim zvijezdama, brzine bi izvan diska padale kao
+              1/√<span class="mvar">r</span> (keplerski). Umjesto toga rotacijska krivulja je
+              <strong>ravna</strong>. Iz toga slijedi masa koja se ne vidi:
+            </p>
+            <div class="formula">
+              <span class="mvar">M</span>(<span class="mvar">r</span>) = <span class="mvar">v</span>²<span
+                class="mvar">r</span>/<span class="mvar">G</span>
+              <small>ravna krivulja znači M ∝ r — masa i dalje raste tamo gdje zvijezda više nema</small>
+            </div>
+            <p>
+              Tamna tvar potvrđena je i gravitacijskim lećenjem, dinamikom jata i strukturom
+              kozmičkog mikrovalnog pozadinskog zračenja.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Galaksije i njihova mreža</h3>
+            <p>
+              <strong>Hubbleova klasifikacija</strong>: eliptične (E0–E7), spiralne (Sa, Sb, Sc)
+              i spiralne s prečkom (SBa–SBc), lentikularne (S0) te nepravilne (Irr). Niz nije
+              evolucijski — to je klasična zamka.
+            </p>
+            <p>
+              Neke galaksije imaju <strong>aktivno jezgro</strong> (Seyfertove, radiogalaksije,
+              kvazari, blazari) — sve pogonjene akrecijom na supermasivnu crnu rupu. Galaksije
+              se skupljaju u grupe i jata, a jata u superjata i <strong>kozmičku mrežu</strong>
+              vlakana i praznina.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Ljestvica i Hubbleov zakon</h3>
+            <p>
+              Paralaksa → spektroskopska paralaksa → kefeide → SN Ia → crveni pomak. Svaka
+              stepenica kalibrira sljedeću; pogreška u prvoj širi se do zadnje.
+            </p>
+            <div class="formula">
+              <span class="mvar">v</span> = <span class="mvar">H</span><sub>0</sub><span class="mvar">d</span>
+              <small>H₀ ≈ 70 km/s/Mpc; 1/H₀ ≈ 14 milijardi godina — Hubbleovo vrijeme</small>
+            </div>
+            <p>
+              Važno: to nije razlijetanje galaksija <em>kroz</em> prostor nego širenje samog
+              prostora. Nema središta ni ruba; svaki promatrač vidi isto.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Postanak i sudbina</h3>
+            <ul>
+              <li><strong>Inflacija</strong> (10⁻³⁶ – 10⁻³² s): objašnjava ravnost, homogenost i
+                nedostatak magnetskih monopola.</li>
+              <li><strong>Nukleosinteza</strong> (prve 3 minute): nastaju vodik, helij (25 % mase)
+                i tragovi litija — predviđanje potvrđeno mjerenjima.</li>
+              <li><strong>Rekombinacija</strong> (380 000 god, <span class="mvar">z</span> ≈ 1100):
+                svemir postaje proziran, oslobađa se pozadinsko zračenje koje danas ima
+                <strong>2,725 K</strong>.</li>
+              <li><strong>Sastav danas</strong>: 5 % obična tvar, 27 % tamna tvar,
+                68 % tamna energija — širenje se <em>ubrzava</em>.</li>
+            </ul>
+            <p style="color:var(--text-muted);font-style:italic;margin-top:1.25rem">
+              „Sastavljeni smo od zvjezdane tvari. Mi smo način na koji svemir spoznaje sam sebe.“
+            </p>
+          </div>
+
+          <div class="panel" style="margin-top:1.5rem">
+            <h2 class="panel__title">Ishodi</h2>
+            <ul>
+              <li>razlikuje otvorene i kuglaste skupove te određuje dob iz točke skretanja;</li>
+              <li>opisuje građu Mliječne staze i dokaze za tamnu tvar;</li>
+              <li>klasificira galaksije i primjenjuje Hubbleov zakon;</li>
+              <li>navodi glavne dokaze za Veliki prasak i objašnjava ulogu inflacije.</li>
+            </ul>
+
+            <h2 class="panel__title" style="margin-top:1.5rem">Zapamtite</h2>
+            <ul>
+              <li>Otvoreni skupovi mladi, u disku; kuglasti stari, u halou</li>
+              <li>Dob iz točke skretanja: <span class="mvar">t</span> ≈ 10¹⁰<span
+                  class="mvar">M</span><sup>−2,5</sup></li>
+              <li><span class="mvar">A</span><sub>V</sub> ≈ 3,1 <span class="mvar">E</span>(<span
+                  class="mvar">B</span>−<span class="mvar">V</span>)</li>
+              <li>Ravna rotacijska krivulja ⟹ tamna tvar; <span class="mvar">M</span> = <span
+                  class="mvar">v</span>²<span class="mvar">r</span>/<span class="mvar">G</span></li>
+              <li><span class="mvar">v</span> = <span class="mvar">H</span><sub>0</sub><span class="mvar">d</span>,
+                <span class="mvar">H</span><sub>0</sub> ≈ 70 km/s/Mpc, 1/<span class="mvar">H</span><sub>0</sub> ≈ 14
+                mlrd god</li>
+              <li>CMB: 2,725 K, <span class="mvar">z</span> ≈ 1100, 380 000 god</li>
+              <li>Sastav: 5 % tvar, 27 % tamna tvar, 68 % tamna energija</li>
+            </ul>
+
+            <div class="callout">
+              <div class="callout__title">Kraj ciklusa</div>
+              <p style="margin-bottom:0">
+                Prešli smo put od prepoznavanja zviježđa golim okom do dobi svemira — i svaka je
+                stepenica bila potrebna za sljedeću. Za natjecanje ostaje sustavno rješavanje
+                zadataka s prošlih natjecanja, probni testovi u punom trajanju te nastavak
+                opažanja i vođenje dnevnika.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ INTERAKTIVNO ============ -->
+        <div>
+
+          <!-- ---------- 1 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 1</div>
+              <h3 class="demo__title">Hubbleov zakon i dob svemira</h3>
+              <p class="demo__hint">
+                Točke su galaksije s izmjerenim udaljenostima i brzinama. Namjestite
+                <span class="mvar">H</span><sub>0</sub> tako da pravac prođe kroz njih —
+                i pogledajte što to znači za dob svemira.
+              </p>
+            </div>
+
+            <canvas id="c12a"></canvas>
+
+            <div class="controls controls--2">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>H₀</span><span class="ctrl__value" id="hu-h-out"></span></div>
+                <input type="range" id="hu-h" min="40" max="110" step="0.1" value="70">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Izmjereni crveni pomak z</span>
+                  <span class="ctrl__value" id="hu-z-out"></span>
+                </div>
+                <input type="range" id="hu-z" min="-4" max="-0.3" step="0.001" value="-2">
+              </div>
+            </div>
+
+            <div class="btn-row" id="hu-preseti">
+              <button class="chip-btn" data-value="67.4">Planck (67,4)</button>
+              <button class="chip-btn active" data-value="70">srednja (70)</button>
+              <button class="chip-btn" data-value="73">SH0ES (73)</button>
+              <button class="chip-btn" data-value="500">Hubble 1929. (500!)</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Radijalna brzina</div>
+                <div class="readout__value" id="hu-v">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Udaljenost</div>
+                <div class="readout__value" id="hu-d">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Hubbleovo vrijeme 1/H₀</div>
+                <div class="readout__value" id="hu-t">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Hubbleov polumjer</div>
+                <div class="readout__value" id="hu-r">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Pomak Hα</div>
+                <div class="readout__value" id="hu-lam">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Vrijeme putovanja svjetlosti</div>
+                <div class="readout__value" id="hu-lt">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="hu-info">—</div>
+          </div>
+
+          <!-- ---------- 2 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 2</div>
+              <h3 class="demo__title">Rotacijska krivulja i tamna tvar</h3>
+              <p class="demo__hint">
+                Isključite tamnu tvar i gledajte kako krivulja padne — a onda usporedite s
+                izmjerenim točkama. Upravo taj razmak je dokaz.
+              </p>
+            </div>
+
+            <canvas id="c12b"></canvas>
+
+            <div class="controls controls--2">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Masa tamnog haloa (unutar 60 kpc)</span><span class="ctrl__value"
+                    id="rt-h-out"></span></div>
+                <input type="range" id="rt-h" min="0" max="2" step="0.005" value="0.7">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Polumjer za mjerenje</span><span class="ctrl__value"
+                    id="rt-r-out"></span></div>
+                <input type="range" id="rt-r" min="1" max="60" step="0.1" value="8.2">
+              </div>
+            </div>
+
+            <div class="legend">
+              <span class="legend__item"><span class="legend__swatch" style="--sw:rgba(125,211,252,.9)"></span>
+                samo vidljiva tvar (keplerski pad)</span>
+              <span class="legend__item"><span class="legend__swatch" style="--sw:rgba(251,191,36,.9)"></span>
+                s tamnim haloom</span>
+              <span class="legend__item"><span class="legend__swatch legend__swatch--dot"
+                  style="--sw:#f472b6"></span> izmjereno</span>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">v samo od vidljive tvari</div>
+                <div class="readout__value" id="rt-vv">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">v s tamnim haloom</div>
+                <div class="readout__value" id="rt-vt">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Ukupna masa unutar r</div>
+                <div class="readout__value" id="rt-m">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Udio tamne tvari</div>
+                <div class="readout__value" id="rt-u">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Period obilaska</div>
+                <div class="readout__value" id="rt-p">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Iz M = v²r/G</div>
+                <div class="readout__value" id="rt-mf">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="rt-info">—</div>
+          </div>
+
+          <!-- ---------- 3 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 3</div>
+              <h3 class="demo__title">Kronologija svemira</h3>
+              <p class="demo__hint">
+                Logaritamska vremenska crta od Planckova doba do danas. Kliknite na razdoblje
+                ili pomičite klizač — svaki korak mijenja temperaturu za redove veličine.
+              </p>
+            </div>
+
+            <canvas id="c12c"></canvas>
+
+            <div class="controls">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Vrijeme od Velikog praska</span>
+                  <span class="ctrl__value" id="kr-t-out"></span>
+                </div>
+                <input type="range" id="kr-t" min="-43" max="17.64" step="0.01" value="13.08">
+              </div>
+            </div>
+
+            <div class="btn-row" id="kr-preseti">
+              <button class="chip-btn" data-value="-43">Planckovo doba</button>
+              <button class="chip-btn" data-value="-34">inflacija</button>
+              <button class="chip-btn" data-value="2.2">nukleosinteza</button>
+              <button class="chip-btn" data-value="13.08">rekombinacija (CMB)</button>
+              <button class="chip-btn" data-value="15.9">prve galaksije</button>
+              <button class="chip-btn active" data-value="17.64">danas</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Vrijeme</div>
+                <div class="readout__value" id="kr-t2">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Temperatura</div>
+                <div class="readout__value" id="kr-temp">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Crveni pomak z</div>
+                <div class="readout__value" id="kr-z">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Razdoblje</div>
+                <div class="readout__value" id="kr-raz">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="kr-info">—</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="lesson-nav" id="lesson-nav"></div>
+    </div>
+  </main>
+
+  <script src="js/tecaj.js?v=20260928"></script>
+  <script>
+    TECAJ.init({ lekcija: 12 });
+
+    var C = 299792.458;      /* km/s */
+    var G = 6.674e-11, MSUN = 1.98892e30, KPC = 3.0857e19;   /* m */
+
+    /* =====================================================
+       PRIMJER 1 — Hubbleov zakon
+       ===================================================== */
+    (function () {
+      var H0 = 70, logz = -2;
+
+      /* Galaksije: [ime, d u Mpc] — brzine se generiraju iz H₀ = 70 s malim rasapom */
+      var GAL = [
+        ['M81', 3.6], ['M101', 6.9], ['NGC 4258', 7.6], ['Djevica', 16.5],
+        ['NGC 1365', 18.3], ['NGC 4038', 22.0], ['Fornax', 19.0], ['NGC 5866', 15.3],
+        ['Abell 1367', 92], ['Coma', 99], ['NGC 7331', 14.7], ['Hydra', 58],
+        ['Perseus', 74], ['Centaurus', 45], ['NGC 6946', 7.7], ['A2029', 315],
+        ['Shapley 8', 200], ['NGC 253', 3.9], ['NGC 5128', 3.8], ['A1656', 103]
+      ];
+      var sd = 20250824;
+      function rnd() { sd = (sd * 1103515245 + 12345) & 0x7fffffff; return sd / 0x7fffffff; }
+      var TOCKE = GAL.map(function (g) {
+        return { ime: g[0], d: g[1], v: 70 * g[1] * (1 + (rnd() - 0.5) * 0.16) + (rnd() - 0.5) * 180 };
+      });
+
+      var cv = TECAJ.canvas('c12a', 1.75, function (ctx, W, Ht) {
+        var bx = 62, by = 24, bw = W - 82, bh = Ht - 68;
+        var D1 = 340, V1 = 26000;
+        function X(d) { return bx + bw * d / D1; }
+        function Y(v) { return by + bh * (1 - v / V1); }
+
+        TECAJ.axes(ctx, { l: bx, t: by, w: bw, h: bh }, {
+          x0: 0, x1: D1, y0: 0, y1: V1,
+          xTicks: [0, 100, 200, 300].map(function (v) { return { at: v, label: v }; }),
+          yTicks: [0, 5000, 10000, 15000, 20000, 25000].map(function (v) {
+            return { at: v, label: v / 1000 + 'k' };
+          }),
+          xLabel: 'udaljenost (Mpc)', yLabel: 'radijalna brzina (km/s)'
+        });
+
+        /* pravac v = H₀ d */
+        var vEdge = H0 * D1;
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2.4;
+        ctx.beginPath();
+        ctx.moveTo(X(0), Y(0));
+        if (vEdge <= V1) ctx.lineTo(X(D1), Y(vEdge));
+        else ctx.lineTo(X(V1 / H0), Y(V1));
+        ctx.stroke();
+        TECAJ.tag(ctx, X(Math.min(D1, V1 / H0)) - 6,
+          Y(Math.min(vEdge, V1)) + (vEdge > V1 ? 14 : -12),
+          'v = H₀ d  (H₀ = ' + TECAJ.num(H0, 1) + ')', '#fbbf24', 'right');
+
+        /* galaksije */
+        TOCKE.forEach(function (t) {
+          if (t.d > D1 || t.v > V1) return;
+          ctx.fillStyle = 'rgba(244,114,182,.85)';
+          ctx.beginPath(); ctx.arc(X(t.d), Y(t.v), 3.6, 0, 6.2832); ctx.fill();
+          if (t.d > 30) {
+            ctx.font = '9px Inter, sans-serif';
+            ctx.fillStyle = 'rgba(255,255,255,.45)';
+            ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+            ctx.fillText(t.ime, X(t.d) + 5, Y(t.v));
+          }
+        });
+
+        /* naš objekt iz crvenog pomaka */
+        var z = Math.pow(10, logz);
+        var v = z * C;
+        var d = v / H0;
+        if (v <= V1) {
+          ctx.strokeStyle = 'rgba(0,212,255,.7)'; ctx.setLineDash([3, 3]);
+          ctx.beginPath();
+          ctx.moveTo(bx, Y(v)); ctx.lineTo(X(Math.min(d, D1)), Y(v));
+          if (d <= D1) ctx.lineTo(X(d), by + bh);
+          ctx.stroke(); ctx.setLineDash([]);
+          ctx.shadowColor = 'rgba(0,212,255,.9)'; ctx.shadowBlur = 12;
+          ctx.fillStyle = '#00d4ff';
+          ctx.beginPath(); ctx.arc(X(Math.min(d, D1)), Y(v), 5.5, 0, 6.2832); ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+
+        ctx.font = '600 10px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(244,114,182,.8)';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+        ctx.fillText('ROZO = GALAKSIJE S IZMJERENIM d I v', bx + 4, by + 4);
+      });
+
+      function osvjezi() {
+        var z = Math.pow(10, logz);
+        var v = z * C;
+        var d = v / H0;
+        var tH = 977.8 / H0;                     /* Gyr, iz 1/H₀ */
+        var rH = C / H0;                         /* Mpc */
+
+        TECAJ.el('hu-v').innerHTML = TECAJ.auto(v, 0) + '<span> km/s</span>';
+        TECAJ.el('hu-d').innerHTML = d >= 1000 ? TECAJ.auto(d / 1000, 2) + '<span> Gpc</span>'
+          : TECAJ.auto(d, 1) + '<span> Mpc</span>';
+        TECAJ.el('hu-t').innerHTML = TECAJ.num(tH, 2) + '<span> mlrd god</span>';
+        TECAJ.el('hu-r').innerHTML = TECAJ.auto(rH, 0) + '<span> Mpc</span>';
+        TECAJ.el('hu-lam').innerHTML = '+' + TECAJ.num(656.3 * z, 2) + '<span> nm</span>';
+        TECAJ.el('hu-lt').innerHTML = TECAJ.auto(d * 3.2616, 2) + '<span> mil. ly</span>';
+
+        var box = TECAJ.el('hu-info');
+        if (H0 > 200) {
+          box.className = 'verdict verdict--bad';
+          box.innerHTML = '<strong>Ovo je Hubbleova izvorna vrijednost iz 1929.</strong> ' +
+            'Dobio je oko 500 km/s/Mpc jer su mu udaljenosti bile grubo podcijenjene — ' +
+            'nije znao da postoje dvije vrste kefeida s različitim odnosom period–luminozitet. ' +
+            'Posljedica: 1/H₀ = ' + TECAJ.num(tH, 2) + ' milijardi godina, <em>manje od dobi ' +
+            'Zemlje</em>. Ta je nesuglasica desetljećima bila glavni argument protiv Velikog praska.';
+        } else if (H0 < 55 || H0 > 90) {
+          box.className = 'verdict verdict--warn';
+          box.innerHTML = '<strong>H₀ = ' + TECAJ.num(H0, 1) + ' ne slaže se s podacima.</strong> ' +
+            'Pravac vidno promašuje izmjerene galaksije. Hubbleovo vrijeme bilo bi ' +
+            TECAJ.num(tH, 2) + ' milijardi godina, što je nespojivo s dobi najstarijih ' +
+            'kuglastih skupova (oko 13 milijardi godina).';
+        } else {
+          box.className = 'verdict verdict--ok';
+          box.innerHTML = '<strong>H₀ = ' + TECAJ.num(H0, 1) + ' km/s/Mpc.</strong> ' +
+            'Pravac prolazi kroz podatke. Hubbleovo vrijeme 1/H₀ = ' + TECAJ.num(tH, 2) +
+            ' milijardi godina gruba je procjena dobi svemira (prava vrijednost uz ' +
+            'ubrzano širenje je 13,8 mlrd). Za z = ' + TECAJ.auto(z, 4) +
+            ' izlazi v = ' + TECAJ.auto(v, 0) + ' km/s i d = ' + TECAJ.auto(d, 1) + ' Mpc. ' +
+            'Napomena: mjerenja iz CMB-a daju 67,4, a iz kefeida i SN Ia 73 — ta razlika, ' +
+            '<em>Hubbleova napetost</em>, još nije objašnjena i jedan je od najzanimljivijih ' +
+            'otvorenih problema kozmologije.';
+        }
+        cv.draw();
+      }
+
+      TECAJ.slider('hu-h', {
+        format: function (v) { return TECAJ.num(v, 1) + ' km/s/Mpc'; },
+        onInput: function (v) { H0 = v; osvjezi(); }
+      });
+      TECAJ.slider('hu-z', {
+        format: function (v) { return TECAJ.auto(Math.pow(10, v), 4); },
+        onInput: function (v) { logz = v; osvjezi(); }
+      });
+      TECAJ.chips('hu-preseti', function (v) {
+        H0 = parseFloat(v);
+        TECAJ.el('hu-h').value = H0;
+        TECAJ.el('hu-h-out').textContent = TECAJ.num(H0, 1) + ' km/s/Mpc';
+        osvjezi();
+      });
+
+      osvjezi();
+    })();
+
+
+    /* =====================================================
+       PRIMJER 2 — Rotacijska krivulja
+       ===================================================== */
+    (function () {
+      /* A = gustoća haloa u 10¹⁰ M☉/kpc; izotermalni profil M ∝ r za velike r */
+      var Ahalo = 0.70, rMj = 8.2;
+
+      /* Vidljiva tvar: disk + izduženost, ukupno ~6 × 10¹⁰ M☉ s ljestvicom 3 kpc */
+      function Mvid(r) {
+        var Mb = 1.5e10 * (r * r) / ((r + 0.6) * (r + 0.6));           /* izduženost */
+        var Md = 5.5e10 * (1 - Math.exp(-r / 3) * (1 + r / 3));        /* eksponencijalni disk */
+        return Mb + Md;
+      }
+      /* Izotermalni halo: M(r) = A r²/(r + rc) → za r ≫ rc ide u A·r, dakle
+         M ∝ r, što daje ravnu rotacijsku krivulju. */
+      function Mhal(r) {
+        var rc = 3;
+        return Ahalo * 1e10 * r * r / (r + rc);
+      }
+      function haloUkupno() { return Mhal(60); }
+      function v(Mm, r) {   /* Mm u M☉, r u kpc -> km/s */
+        return Math.sqrt(G * Mm * MSUN / (r * KPC)) / 1000;
+      }
+
+      /* Izmjerene točke: ravna krivulja oko 220 km/s s rasapom */
+      var sd = 777;
+      function rnd() { sd = (sd * 1103515245 + 12345) & 0x7fffffff; return sd / 0x7fffffff; }
+      var MJER = [];
+      for (var r = 1.5; r <= 55; r += 2.4) {
+        var vv = r < 4 ? 120 + 30 * r : 225 + (rnd() - 0.5) * 26;
+        MJER.push({ r: r, v: vv });
+      }
+
+      var cv = TECAJ.canvas('c12b', 1.8, function (ctx, W, Ht) {
+        var bx = 56, by = 24, bw = W - 76, bh = Ht - 68;
+        var R1 = 60, V1 = 330;
+        function X(r) { return bx + bw * r / R1; }
+        function Y(vv) { return by + bh * (1 - vv / V1); }
+
+        TECAJ.axes(ctx, { l: bx, t: by, w: bw, h: bh }, {
+          x0: 0, x1: R1, y0: 0, y1: V1,
+          xTicks: [0, 10, 20, 30, 40, 50, 60].map(function (q) { return { at: q, label: q }; }),
+          yTicks: [0, 100, 200, 300],
+          xLabel: 'udaljenost od središta (kpc)', yLabel: 'brzina rotacije (km/s)'
+        });
+
+        /* položaj Sunca */
+        ctx.strokeStyle = 'rgba(251,191,36,.35)'; ctx.setLineDash([3, 4]);
+        ctx.beginPath(); ctx.moveTo(X(8.2), by); ctx.lineTo(X(8.2), by + bh); ctx.stroke();
+        ctx.setLineDash([]);
+        TECAJ.tag(ctx, X(8.2) + 4, by + 12, 'Sunce', 'rgba(251,191,36,.7)');
+
+        /* samo vidljiva tvar */
+        ctx.strokeStyle = 'rgba(125,211,252,.9)'; ctx.lineWidth = 2.2;
+        ctx.beginPath();
+        for (var q = 0.3; q <= R1; q += 0.3) {
+          var y = Y(v(Mvid(q), q));
+          q <= 0.31 ? ctx.moveTo(X(q), y) : ctx.lineTo(X(q), y);
+        }
+        ctx.stroke();
+
+        /* s haloom */
+        ctx.strokeStyle = 'rgba(251,191,36,.95)'; ctx.lineWidth = 2.6;
+        ctx.beginPath();
+        for (var q2 = 0.3; q2 <= R1; q2 += 0.3) {
+          var y2 = Y(v(Mvid(q2) + Mhal(q2), q2));
+          q2 <= 0.31 ? ctx.moveTo(X(q2), y2) : ctx.lineTo(X(q2), y2);
+        }
+        ctx.stroke();
+
+        /* izmjereno */
+        MJER.forEach(function (p) {
+          ctx.strokeStyle = 'rgba(244,114,182,.7)'; ctx.lineWidth = 1.2;
+          ctx.beginPath();
+          ctx.moveTo(X(p.r), Y(p.v - 14)); ctx.lineTo(X(p.r), Y(p.v + 14));
+          ctx.stroke();
+          ctx.fillStyle = '#f472b6';
+          ctx.beginPath(); ctx.arc(X(p.r), Y(p.v), 3, 0, 6.2832); ctx.fill();
+        });
+
+        /* označeni polumjer */
+        var vv1 = v(Mvid(rMj), rMj), vv2 = v(Mvid(rMj) + Mhal(rMj), rMj);
+        ctx.strokeStyle = 'rgba(255,255,255,.4)'; ctx.setLineDash([2, 3]);
+        ctx.beginPath(); ctx.moveTo(X(rMj), by); ctx.lineTo(X(rMj), by + bh); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = 'rgba(125,211,252,1)';
+        ctx.beginPath(); ctx.arc(X(rMj), Y(vv1), 5, 0, 6.2832); ctx.fill();
+        ctx.fillStyle = 'rgba(251,191,36,1)';
+        ctx.beginPath(); ctx.arc(X(rMj), Y(vv2), 5, 0, 6.2832); ctx.fill();
+        /* razlika */
+        if (Math.abs(vv2 - vv1) > 8) {
+          ctx.strokeStyle = 'rgba(255,255,255,.5)'; ctx.lineWidth = 1.4;
+          ctx.beginPath();
+          ctx.moveTo(X(rMj) + 10, Y(vv1)); ctx.lineTo(X(rMj) + 10, Y(vv2));
+          ctx.stroke();
+          TECAJ.tag(ctx, X(rMj) + 15, (Y(vv1) + Y(vv2)) / 2,
+            'Δv = ' + TECAJ.num(vv2 - vv1, 0) + ' km/s', 'rgba(255,255,255,.7)');
+        }
+      });
+
+      function osvjezi() {
+        var Mv1 = Mvid(rMj), Mh = Mhal(rMj);
+        var vv1 = v(Mv1, rMj), vv2 = v(Mv1 + Mh, rMj);
+        var Mtot = Mv1 + Mh;
+        /* iz izmjerene brzine (ravna krivulja, 225 km/s) */
+        var vObs = rMj < 4 ? 120 + 30 * rMj : 225;
+        var Mfrom = Math.pow(vObs * 1000, 2) * (rMj * KPC) / G / MSUN;
+
+        TECAJ.el('rt-vv').innerHTML = TECAJ.num(vv1, 0) + '<span> km/s</span>';
+        TECAJ.el('rt-vt').innerHTML = TECAJ.num(vv2, 0) + '<span> km/s</span>';
+        TECAJ.el('rt-m').innerHTML = TECAJ.sci(Mtot, 2) + '<span> M☉</span>';
+        TECAJ.el('rt-u').innerHTML = TECAJ.num(Mh / Mtot * 100, 0) + '<span> %</span>';
+        var P = 2 * Math.PI * (rMj * KPC) / (vv2 * 1000) / 3.156e7 / 1e6;
+        TECAJ.el('rt-p').innerHTML = TECAJ.num(P, 0) + '<span> mil. god</span>';
+        TECAJ.el('rt-mf').innerHTML = TECAJ.sci(Mfrom, 2) + '<span> M☉</span>';
+
+        var box = TECAJ.el('rt-info');
+        if (Ahalo < 0.06) {
+          box.className = 'verdict verdict--bad';
+          box.innerHTML = '<strong>Bez tamne tvari krivulja pada.</strong> Ako je sva masa u ' +
+            'zvijezdama i plinu, izvan diska nema više ničega, pa brzina mora padati kao ' +
+            '1/√r — keplerski, kao planeti oko Sunca. Na ' + TECAJ.num(rMj, 1) + ' kpc dobili ' +
+            'bismo ' + TECAJ.num(vv1, 0) + ' km/s. Izmjereno je oko ' + TECAJ.num(vObs, 0) +
+            ' km/s. <em>Ta razlika je otkriće.</em>';
+        } else if (Math.abs(vv2 - vObs) < 20) {
+          box.className = 'verdict verdict--ok';
+          box.innerHTML = '<strong>Krivulja se slaže s mjerenjima.</strong> Uz halo od ' +
+            TECAJ.num(haloUkupno() / 1e11, 2) + ' × 10¹¹ M☉ (unutar 60 kpc) model daje ' + TECAJ.num(vv2, 0) +
+            ' km/s na ' + TECAJ.num(rMj, 1) + ' kpc, a izmjereno je ' + TECAJ.num(vObs, 0) +
+            ' km/s. Iz M = v²r/G izlazi ukupna masa ' + TECAJ.sci(Mfrom, 2) + ' M☉, od čega ' +
+            'je vidljivo samo ' + TECAJ.num(Mv1 / Mfrom * 100, 0) + ' %. ' +
+            'Ravna krivulja znači M ∝ r — masa raste i tamo gdje zvijezda više nema.';
+        } else {
+          box.className = 'verdict verdict--warn';
+          box.innerHTML = '<strong>Model ne odgovara mjerenjima.</strong> Uz halo od ' +
+            TECAJ.num(haloUkupno() / 1e11, 2) + ' × 10¹¹ M☉ dobiva se ' + TECAJ.num(vv2, 0) +
+            ' km/s, a izmjereno je ' + TECAJ.num(vObs, 0) + ' km/s. ' +
+            (vv2 > vObs ? 'Halo je pretežak.' : 'Halo je prelagan.') +
+            ' Namještanjem klizača tražite masu koja objašnjava opažanja — točno to rade ' +
+            'astronomi, samo s mnogo više podataka.';
+        }
+        cv.draw();
+      }
+
+      TECAJ.slider('rt-h', {
+        format: function (v2) { return TECAJ.num(v2 * 3600 / 63 / 10, 2) + ' × 10¹¹ M☉'; },
+        onInput: function (v2) { Ahalo = v2; osvjezi(); }
+      });
+      TECAJ.slider('rt-r', {
+        format: function (v2) { return TECAJ.num(v2, 1) + ' kpc'; },
+        onInput: function (v2) { rMj = v2; osvjezi(); }
+      });
+      osvjezi();
+    })();
+
+
+    /* =====================================================
+       PRIMJER 3 — Kronologija svemira
+       ===================================================== */
+    (function () {
+      var logt = 17.64;    /* log10 sekundi; danas 4,35 × 10¹⁷ s */
+
+      /* [log10 t, ime, T (K), z, opis] */
+      var DOBA = [
+        [-43, 'Planckovo doba', 1e32, 1e32,
+          'Vrijeme kraće od Planckova (10⁻⁴³ s). Ovdje kvantna mehanika i opća relativnost ' +
+          'moraju biti dio iste teorije, a nje još nemamo. Sve ranije je izvan fizike koju ' +
+          'poznajemo.'],
+        [-36, 'velika unifikacija', 1e28, 1e28,
+          'Jaka sila se odvaja od elektroslabe. Prema teorijama velike unifikacije, upravo tu ' +
+          'nastaju uvjeti za inflaciju.'],
+        [-34, 'inflacija', 1e27, 1e27,
+          'U razdoblju od oko 10⁻³⁶ do 10⁻³² s svemir se raširi za faktor od najmanje 10²⁶. ' +
+          'Time se rješavaju tri zagonetke: zašto je svemir <strong>ravan</strong>, zašto je ' +
+          '<strong>homogen</strong> i na dijelovima koji nikad nisu bili u kontaktu, i zašto ne ' +
+          'vidimo <strong>magnetske monopole</strong>. Kvantne fluktuacije razvučene inflacijom ' +
+          'postaju sjeme svih budućih galaksija.'],
+        [-10, 'elektroslabi prijelaz', 1e15, 1e15,
+          'Elektromagnetska i slaba sila razdvajaju se. Nastaju kvarkovi, leptoni i njihove ' +
+          'antičestice u gotovo jednakom broju — gotovo, a ta sitna razlika (barionska ' +
+          'asimetrija) razlog je zašto uopće postoji tvar.'],
+        [-5, 'hadronizacija', 1e13, 1e13,
+          'Kvarkovi se vezuju u protone i neutrone. Malo kasnije anihiliraju se s ' +
+          'antičesticama, i preživi samo mala razlika u korist tvari.'],
+        [0, 'prva sekunda', 1e10, 1e10,
+          'Neutrini se odvajaju od ostatka tvari i od tada slobodno putuju — to je pozadinsko ' +
+          'neutrinsko zračenje koje još nismo izravno izmjerili.'],
+        [2.2, 'nukleosinteza', 1e9, 4e8,
+          'Prve tri minute. Iz protona i neutrona nastaju deuterij, helij-4 (oko 25 % mase) i ' +
+          'tragovi litija. Teži elementi ne mogu nastati jer svemir prebrzo hladi. ' +
+          'Izmjereni omjeri točno se poklapaju s predviđanjem — <strong>jedan od tri glavna ' +
+          'dokaza</strong> za Veliki prasak.'],
+        [13.08, 'rekombinacija', 3000, 1100,
+          'Nakon 380 000 godina svemir se ohladi dovoljno da elektroni ostanu vezani u atome. ' +
+          'Fotoni se prestaju rasijavati i svemir postaje <strong>proziran</strong>. To ' +
+          'zračenje putuje do danas i vidimo ga kao <strong>kozmičko mikrovalno pozadinsko ' +
+          'zračenje</strong> od 2,725 K — savršeno crno tijelo s fluktuacijama od 10⁻⁵ koje ' +
+          'su karta svih budućih struktura.'],
+        [15.5, 'mračno doba', 60, 20,
+          'Nema zvijezda: samo neutralni vodik i helij te sve slabije pozadinsko zračenje. ' +
+          'Tamna tvar u međuvremenu skuplja tvar u prve halose.'],
+        [15.9, 'prve zvijezde i galaksije', 30, 10,
+          'Prve zvijezde su bile masivne, bez metala i vrlo kratkoga vijeka. Njihovo ' +
+          'ultraljubičasto zračenje ponovno ionizira svemir. JWST danas gleda upravo u ovo doba ' +
+          'i nalazi galaksije zrelije nego što se očekivalo.'],
+        [17.2, 'nastanak Sunčeva sustava', 3.3, 0.4,
+          'Prije 4,57 milijardi godina, u već obogaćenom oblaku, nastaje Sunce — zvijezda treće ' +
+          'generacije. Elementi u vašem tijelu prošli su kroz najmanje jednu prethodnu zvijezdu.'],
+        [17.64, 'danas', 2.725, 0,
+          'Svemir je star 13,8 milijardi godina, pozadinsko zračenje ohladilo se na 2,725 K, a ' +
+          'širenje se <strong>ubrzava</strong> pod djelovanjem tamne energije (68 % sastava). ' +
+          'Ako se to nastavi, u dalekoj budućnosti galaksije će nam izmaknuti iz vidokruga.']
+      ];
+
+      function najblize(lt) {
+        var b = DOBA[0];
+        DOBA.forEach(function (d) { if (Math.abs(d[0] - lt) < Math.abs(b[0] - lt)) b = d; });
+        return b;
+      }
+
+      var cv = TECAJ.canvas('c12c', 1.85, function (ctx, W, Ht) {
+        var bx = 34, bw = W - 54;
+        var T0 = -44, T1 = 18.6;
+        function X(lt) { return bx + bw * (lt - T0) / (T1 - T0); }
+        var y = Ht * 0.60;
+
+        /* gradijentna os */
+        var grad = ctx.createLinearGradient(bx, 0, bx + bw, 0);
+        grad.addColorStop(0, 'rgba(244,114,182,.95)');
+        grad.addColorStop(0.35, 'rgba(251,191,36,.9)');
+        grad.addColorStop(0.7, 'rgba(124,58,237,.9)');
+        grad.addColorStop(1, 'rgba(0,212,255,.9)');
+        ctx.strokeStyle = grad; ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.moveTo(bx, y); ctx.lineTo(bx + bw, y); ctx.stroke();
+
+        /* skala */
+        ctx.font = '9px Inter, sans-serif';
+        for (var lt = -40; lt <= 15; lt += 5) {
+          ctx.strokeStyle = 'rgba(255,255,255,.2)';
+          ctx.beginPath(); ctx.moveTo(X(lt), y); ctx.lineTo(X(lt), y + 6); ctx.stroke();
+          ctx.fillStyle = 'rgba(255,255,255,.42)';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+          ctx.fillText('10' + TECAJ.sup(lt) + ' s', X(lt), y + 8);
+        }
+        ctx.fillStyle = 'rgba(255,255,255,.5)';
+        ctx.font = '10px Inter, sans-serif';
+        ctx.fillText('vrijeme od Velikog praska (logaritamski)', bx + bw / 2, y + 26);
+
+        /* Razdoblja: samo točke na crti; naziv se ispisuje vodoravno za ono
+           koje je odabrano — tako ostaje čitko i pri dvanaest unosa. */
+        var akt = najblize(logt);
+        DOBA.forEach(function (d, i) {
+          var px = X(d[0]);
+          var aktivan = d === akt;
+          var h = (i % 2 === 0 ? -1 : 1) * 13;
+          ctx.strokeStyle = aktivan ? 'rgba(251,191,36,.8)' : 'rgba(255,255,255,.18)';
+          ctx.lineWidth = aktivan ? 1.8 : 1;
+          ctx.beginPath();
+          ctx.moveTo(px, y + (h < 0 ? -3 : 3)); ctx.lineTo(px, y + h);
+          ctx.stroke();
+          ctx.fillStyle = aktivan ? '#fbbf24' : 'rgba(255,255,255,.4)';
+          ctx.beginPath(); ctx.arc(px, y + h, aktivan ? 4.5 : 2.4, 0, 6.2832); ctx.fill();
+        });
+
+        /* naziv odabranog razdoblja, vodoravno i unutar okvira */
+        var apx = X(akt[0]);
+        ctx.font = '600 13px Inter, sans-serif';
+        var tw = ctx.measureText(akt[1]).width;
+        var tx = TECAJ.clamp(apx, bx + tw / 2 + 4, bx + bw - tw / 2 - 4);
+        ctx.fillStyle = '#fbbf24';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+        ctx.fillText(akt[1], tx, y - 34);
+        ctx.font = '11px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,.55)';
+        ctx.textBaseline = 'top';
+        ctx.fillText('T ≈ ' + (akt[2] > 1e5 ? TECAJ.sci(akt[2], 1) : TECAJ.auto(akt[2], 2)) +
+          ' K  ·  ' + vrijemeTxt(akt[0]), tx, y + 44);
+        ctx.strokeStyle = 'rgba(251,191,36,.35)';
+        ctx.setLineDash([2, 3]);
+        ctx.beginPath(); ctx.moveTo(apx, y - 30); ctx.lineTo(tx, y - 30); ctx.stroke();
+        ctx.setLineDash([]);
+
+        /* pokazivač */
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2;
+        ctx.shadowColor = 'rgba(251,191,36,.9)'; ctx.shadowBlur = 12;
+        ctx.beginPath(); ctx.moveTo(X(logt), y - 9); ctx.lineTo(X(logt), y + 9); ctx.stroke();
+        ctx.shadowBlur = 0;
+      });
+
+      function vrijemeTxt(lt) {
+        var t = Math.pow(10, lt);
+        if (t < 1e-9) return TECAJ.sci(t, 1) + ' s';
+        if (t < 1) return TECAJ.sci(t, 2) + ' s';
+        if (t < 60) return TECAJ.num(t, 1) + ' s';
+        if (t < 3600) return TECAJ.num(t / 60, 1) + ' min';
+        if (t < 3.156e7) return TECAJ.num(t / 86400, 1) + ' dana';
+        var g = t / 3.156e7;
+        if (g < 1e6) return TECAJ.auto(g, 0) + ' god';
+        if (g < 1e9) return TECAJ.auto(g / 1e6, 1) + ' mil. god';
+        return TECAJ.num(g / 1e9, 2) + ' mlrd god';
+      }
+
+      function osvjezi() {
+        var d = najblize(logt);
+        TECAJ.el('kr-t2').innerHTML = '<span style="font-size:.92rem">' + vrijemeTxt(logt) + '</span>';
+        TECAJ.el('kr-temp').innerHTML = d[2] > 1e5 ? TECAJ.sci(d[2], 1) + '<span> K</span>'
+          : TECAJ.auto(d[2], 2) + '<span> K</span>';
+        TECAJ.el('kr-z').innerHTML = d[3] === 0 ? '0'
+          : d[3] > 1e5 ? TECAJ.sci(d[3], 1) : TECAJ.auto(d[3], 1);
+        TECAJ.el('kr-raz').innerHTML = '<span style="font-size:.9rem">' + d[1] + '</span>';
+
+        var box = TECAJ.el('kr-info');
+        box.className = 'verdict';
+        box.innerHTML = '<strong>' + d[1].charAt(0).toUpperCase() + d[1].slice(1) + '</strong> ' +
+          '(' + vrijemeTxt(d[0]) + ' nakon Velikog praska, T ≈ ' +
+          (d[2] > 1e5 ? TECAJ.sci(d[2], 1) : TECAJ.auto(d[2], 2)) + ' K). ' + d[4];
+        cv.draw();
+      }
+
+      TECAJ.slider('kr-t', {
+        format: function (v) { return vrijemeTxt(v); },
+        onInput: function (v) { logt = v; osvjezi(); }
+      });
+      TECAJ.chips('kr-preseti', function (v) {
+        logt = parseFloat(v);
+        TECAJ.el('kr-t').value = logt;
+        TECAJ.el('kr-t-out').textContent = vrijemeTxt(logt);
+        osvjezi();
+      });
+      cv.cv.addEventListener('click', function (e) {
+        var p = cv.pos(e);
+        var bx = 34, bw = cv.W - 54, T0 = -44, T1 = 18.6;
+        var lt = T0 + (p.x - bx) / bw * (T1 - T0);
+        var b = najblize(lt);
+        logt = b[0];
+        TECAJ.el('kr-t').value = logt;
+        TECAJ.el('kr-t-out').textContent = vrijemeTxt(logt);
+        var svi = document.querySelectorAll('#kr-preseti .chip-btn');
+        for (var i = 0; i < svi.length; i++) {
+          svi[i].classList.toggle('active', parseFloat(svi[i].dataset.value) === logt);
+        }
+        osvjezi();
+      });
+      cv.cv.style.cursor = 'pointer';
+
+      osvjezi();
+    })();
+  </script>
+</body>
+
+</html>

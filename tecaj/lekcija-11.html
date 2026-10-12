@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11. Dvojne i promjenjive zvijezde, evolucija | Tečaj astronomije</title>
+  <meta name="description"
+    content="Vizualno, spektroskopski i pomrčinski dvojne zvijezde, mjerenje masa, kefeide i odnos period-luminozitet, evolucija zvijezda i supernove.">
+  <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/tecaj.css?v=20260928">
+  <script src="data/vidljivost.js"></script>
+  <script>
+    /* Pristupna vrata: sakrij sadržaj prije prvog crtanja ako PIN nije unesen.
+       Otključavanje i sam upit su u js/tecaj.js. */
+    (function () {
+      var ulaz = false, urednik = false;
+      try { ulaz = sessionStorage.getItem('tecaj_ulaz') === '1'; } catch (e) { }
+      try { urednik = !!localStorage.getItem('adip_token'); } catch (e) { }
+      if (!ulaz && !urednik) document.documentElement.className += ' tecaj-zakljucano';
+    })();
+  </script>
+</head>
+
+<body>
+  <main class="page-content">
+    <div class="container container--wide">
+
+      <div class="lesson-head" id="lesson-head"></div>
+
+      <div class="lesson-body">
+
+        <!-- ============ TEORIJA ============ -->
+        <div>
+          <div class="panel">
+            <h2 class="panel__title">O čemu je ova lekcija</h2>
+            <p>
+              Dvojne zvijezde su <strong>jedini izravan način</strong> mjerenja mase zvijezde —
+              a masa određuje sve ostalo. Zato su, iako izgledaju kao posebnost, temelj cijele
+              zvjezdane astrofizike: bez njih ne bismo znali ni odnos mase i sjaja, ni koliko
+              zvijezda živi.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Tri vrste dvojnih</h3>
+            <ul>
+              <li><strong>Vizualno dvojne</strong> — komponente se razlučuju teleskopom.
+                Iz staze i udaljenosti dobiva se zbroj masa, a iz položaja zajedničkog
+                središta mase njihov odnos.</li>
+              <li><strong>Spektroskopski dvojne</strong> — vide se kao jedna zvijezda, ali se
+                linije u spektru periodično pomiču (Doppler). Iz krivulje radijalnih brzina
+                dobivamo odnos masa i, uz poznati nagib, same mase.</li>
+              <li><strong>Pomrčinski dvojne</strong> — staza je gotovo u našoj liniji gledanja,
+                pa se komponente međusobno zaklanjaju. Iz krivulje sjaja čitamo polumjere,
+                temperature i nagib. Prototip je <strong>Algol</strong>.</li>
+            </ul>
+            <div class="formula">
+              <span class="mvar">M</span><sub>1</sub> + <span class="mvar">M</span><sub>2</sub> =
+              <span class="mvar">a</span>³ / <span class="mvar">P</span>²
+              &nbsp;·&nbsp;
+              <span class="mvar">M</span><sub>1</sub>/<span class="mvar">M</span><sub>2</sub> =
+              <span class="mvar">a</span><sub>2</sub>/<span class="mvar">a</span><sub>1</sub> =
+              <span class="mvar">K</span><sub>2</sub>/<span class="mvar">K</span><sub>1</sub>
+              <small>zbroj iz trećeg Keplerova zakona, odnos iz amplituda brzina — zajedno daju obje mase</small>
+            </div>
+            <div class="formula">
+              <span class="mvar">a</span>[AJ] = <span class="mvar">a</span>[″] · <span class="mvar">d</span>[pc]
+              <small>kutna poluos puta udaljenost daje pravu poluos — otud i potreba za paralaksom</small>
+            </div>
+            <p>
+              Kod pomrčinskih dvojnih dubine dvaju minimuma nisu jednake, i to nam odaje
+              temperature:
+            </p>
+            <div class="formula">
+              Δ<span class="mvar">F</span><sub>1</sub>/Δ<span class="mvar">F</span><sub>2</sub> =
+              (<span class="mvar">T</span><sub>1</sub>/<span class="mvar">T</span><sub>2</sub>)⁴
+            </div>
+            <p>
+              U <strong>tijesnim dvojnim</strong> zvijezda može prerasti svoj Rocheov režanj i
+              prelijevati masu na pratioca. Tako nastaju Algolov paradoks (manje masivna
+              komponenta je evolucijski naprednija), nove, patuljaste nove i supernove tipa Ia.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Promjenjive zvijezde</h3>
+            <ul>
+              <li><strong>Pulsirajuće</strong>: kefeide, RR Lyrae, Mire — mijenjaju polumjer i
+                temperaturu.</li>
+              <li><strong>Eruptivne</strong>: nove, patuljaste nove, bljeskovite zvijezde.</li>
+              <li><strong>Kataklizmičke</strong>: supernove.</li>
+              <li><strong>Prividne</strong> (geometrijske): pomrčinski dvojne i rotirajuće s
+                pjegama — sjaj se ne mijenja, mijenja se ono što vidimo.</li>
+            </ul>
+            <p>
+              Kefeide su ključne jer im period pulsiranja izravno odaje luminozitet
+              (Leavittin zakon, 1912.):
+            </p>
+            <div class="formula">
+              <span class="mvar">M</span><sub>V</sub> = −2,81 log <span class="mvar">P</span> − 1,43
+              <small>P u danima; izmjeriš period, dobiješ M, izmjeriš m — i imaš udaljenost</small>
+            </div>
+            <p>
+              Time se ljestvica udaljenosti proširila daleko izvan Galaktike; upravo je tako
+              Hubble 1923. pokazao da je Andromeda druga galaksija.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Evolucija zvijezda</h3>
+            <p>
+              <strong>Rođenje</strong>: gravitacijski kolaps u molekularnom oblaku,
+              protozvijezda, T Tauri faza, ulazak na glavni niz kad počne fuzija vodika.
+            </p>
+            <p><strong>Male i srednje mase</strong> (do ≈ 8 <span class="mvar">M</span><sub>☉</sub>):</p>
+            <p style="padding-left:1rem;color:var(--text-secondary)">
+              glavni niz → crveni div (fuzija He u jezgri, helijev blijesak) → asimptotska
+              grana → planetarna maglica → <strong>bijeli patuljak</strong>, stabiliziran
+              degeneriranim elektronima do <strong>Chandrasekharove granice 1,44
+                <span class="mvar">M</span><sub>☉</sub></strong>.
+            </p>
+            <p><strong>Velike mase</strong> (nad ≈ 8 <span class="mvar">M</span><sub>☉</sub>):</p>
+            <p style="padding-left:1rem;color:var(--text-secondary)">
+              fuzija ide dalje — C, Ne, O, Si — do <strong>željeza</strong>, gdje se energija
+              više ne može dobiti. Jezgra kolabira u sekundi, vanjski slojevi odbiju se od nje:
+              <strong>supernova tipa II</strong>. Ostaje neutronska zvijezda (do ≈ 2,2
+              <span class="mvar">M</span><sub>☉</sub>) ili <strong>crna rupa</strong>.
+            </p>
+            <div class="formula">
+              <span class="mvar">r</span><sub>s</sub> = 2<span class="mvar">GM</span>/<span class="mvar">c</span>²
+              <small>Schwarzschildov polumjer; za Sunce 2,95 km</small>
+            </div>
+            <p>
+              <strong>Supernove tipa Ia</strong> nastaju drukčije: bijeli patuljak u dvojnom
+              sustavu skuplja masu do Chandrasekharove granice i termonuklearno eksplodira.
+              Zato im je vršni sjaj uvijek gotovo isti
+              (<span class="mvar">M</span> ≈ −19,3) — <strong>standardna svijeća</strong>
+              kojom mjerimo kozmološke udaljenosti.
+            </p>
+          </div>
+
+          <div class="panel" style="margin-top:1.5rem">
+            <h2 class="panel__title">Ishodi</h2>
+            <ul>
+              <li>razlikuje vizualno, spektroskopski i pomrčinski dvojne te iz njih određuje mase;</li>
+              <li>čita krivulju radijalnih brzina i krivulju sjaja;</li>
+              <li>objašnjava odnos period-luminozitet kod kefeida i njegovu ulogu u mjerenju
+                udaljenosti;</li>
+              <li>opisuje evolucijski put zvijezda male i velike mase te njihove završne oblike.</li>
+            </ul>
+
+            <h2 class="panel__title" style="margin-top:1.5rem">Zapamtite</h2>
+            <ul>
+              <li><span class="mvar">M</span><sub>1</sub>+<span class="mvar">M</span><sub>2</sub> = <span
+                  class="mvar">a</span>³/<span class="mvar">P</span>²</li>
+              <li><span class="mvar">M</span><sub>1</sub>/<span class="mvar">M</span><sub>2</sub> = <span
+                  class="mvar">a</span><sub>2</sub>/<span class="mvar">a</span><sub>1</sub> = <span
+                  class="mvar">K</span><sub>2</sub>/<span class="mvar">K</span><sub>1</sub></li>
+              <li><span class="mvar">a</span>[AJ] = <span class="mvar">a</span>[″]·<span class="mvar">d</span>[pc]</li>
+              <li>Δ<span class="mvar">F</span><sub>1</sub>/Δ<span class="mvar">F</span><sub>2</sub> = (<span
+                  class="mvar">T</span><sub>1</sub>/<span class="mvar">T</span><sub>2</sub>)⁴</li>
+              <li>Kefeide: <span class="mvar">M</span><sub>V</sub> = −2,81 log <span class="mvar">P</span> − 1,43</li>
+              <li>Chandrasekharova granica 1,44 <span class="mvar">M</span><sub>☉</sub></li>
+              <li><span class="mvar">r</span><sub>s</sub> = 2<span class="mvar">GM</span>/<span
+                  class="mvar">c</span>²; za Sunce 2,95 km</li>
+              <li>SN Ia: standardna svijeća, <span class="mvar">M</span> ≈ −19,3</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ============ INTERAKTIVNO ============ -->
+        <div>
+
+          <!-- ---------- 1 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 1</div>
+              <h3 class="demo__title">Pomrčinski dvojna: od geometrije do krivulje sjaja</h3>
+              <p class="demo__hint">
+                Gore je sustav kako ga vidimo, dolje krivulja sjaja koja iz njega nastaje.
+                Mijenjajte polumjere, temperature i nagib — i pratite kada pomrčine uopće
+                prestanu biti vidljive.
+              </p>
+            </div>
+
+            <canvas id="c11a"></canvas>
+
+            <div class="controls controls--2">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>R₁ (veća)</span><span class="ctrl__value" id="pd-r1-out"></span></div>
+                <input type="range" id="pd-r1" min="0.05" max="0.30" step="0.001" value="0.15">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>R₂ (manja)</span><span class="ctrl__value" id="pd-r2-out"></span></div>
+                <input type="range" id="pd-r2" min="0.02" max="0.25" step="0.001" value="0.09">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>T₁</span><span class="ctrl__value" id="pd-t1-out"></span></div>
+                <input type="range" id="pd-t1" min="3000" max="30000" step="10" value="12000">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>T₂</span><span class="ctrl__value" id="pd-t2-out"></span></div>
+                <input type="range" id="pd-t2" min="3000" max="30000" step="10" value="4500">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Nagib i</span><span class="ctrl__value" id="pd-i-out"></span></div>
+                <input type="range" id="pd-i" min="55" max="90" step="0.1" value="82">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Faza</span><span class="ctrl__value" id="pd-f-out"></span></div>
+                <input type="range" id="pd-f" min="0" max="1" step="0.001" value="0">
+              </div>
+            </div>
+
+            <div class="btn-row">
+              <button class="chip-btn active" id="pd-play">Zaustavi</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Dubina glavnog minimuma</div>
+                <div class="readout__value" id="pd-d1">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Dubina sekundarnog</div>
+                <div class="readout__value" id="pd-d2">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Odnos dubina</div>
+                <div class="readout__value" id="pd-od">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">(T₁/T₂)⁴</div>
+                <div class="readout__value" id="pd-t4">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="pd-info">—</div>
+          </div>
+
+          <!-- ---------- 2 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 2</div>
+              <h3 class="demo__title">Kefeide: period kao mjerna šipka</h3>
+              <p class="demo__hint">
+                Izmjerite period, pročitajte apsolutnu magnitudu, dodajte prividnu — i dobili
+                ste udaljenost. Ovo je stepenica kojom smo izašli iz Mliječne staze.
+              </p>
+            </div>
+
+            <canvas id="c11b"></canvas>
+
+            <div class="controls controls--2">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Period P</span><span class="ctrl__value" id="ke-p-out"></span></div>
+                <input type="range" id="ke-p" min="0.3" max="2" step="0.001" value="0.729">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Izmjerena prividna magnituda m</span>
+                  <span class="ctrl__value" id="ke-m-out"></span>
+                </div>
+                <input type="range" id="ke-m" min="-2" max="28" step="0.01" value="3.95">
+              </div>
+            </div>
+
+            <div class="btn-row" id="ke-preseti">
+              <button class="chip-btn active" data-value="5.366,3.95,δ Cephei">δ Cephei</button>
+              <button class="chip-btn" data-value="10.15,3.75,η Aquilae">η Aquilae</button>
+              <button class="chip-btn" data-value="31.4,19.4,kefeida u M31">u M31</button>
+              <button class="chip-btn" data-value="27.0,24.9,kefeida u NGC 4258">u NGC 4258</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Period</div>
+                <div class="readout__value" id="ke-p2">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">M<sub>V</sub> iz zakona</div>
+                <div class="readout__value" id="ke-mv">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Luminozitet</div>
+                <div class="readout__value" id="ke-l">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Udaljenost</div>
+                <div class="readout__value" id="ke-d">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">U svjetlosnim god.</div>
+                <div class="readout__value" id="ke-ly">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Modul udaljenosti</div>
+                <div class="readout__value" id="ke-mu">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="ke-info">—</div>
+          </div>
+
+          <!-- ---------- 3 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 3</div>
+              <h3 class="demo__title">Evolucijski put u HR-dijagramu</h3>
+              <p class="demo__hint">
+                Odaberite početnu masu i pratite put zvijezde kroz dijagram. Ista fizika,
+                a tri posve različita kraja — sve odlučuje jedan broj.
+              </p>
+            </div>
+
+            <canvas id="c11c"></canvas>
+
+            <div class="controls controls--2">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Početna masa</span><span class="ctrl__value" id="ev-m-out"></span></div>
+                <input type="range" id="ev-m" min="-0.7" max="1.7" step="0.001" value="0">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Faza života</span><span class="ctrl__value" id="ev-f-out"></span></div>
+                <input type="range" id="ev-f" min="0" max="1" step="0.001" value="0.25">
+              </div>
+            </div>
+
+            <div class="btn-row" id="ev-preseti">
+              <button class="chip-btn" data-value="0.3">0,3 M☉</button>
+              <button class="chip-btn active" data-value="1">1 M☉ (Sunce)</button>
+              <button class="chip-btn" data-value="5">5 M☉</button>
+              <button class="chip-btn" data-value="15">15 M☉</button>
+              <button class="chip-btn" data-value="40">40 M☉</button>
+            </div>
+            <div class="btn-row">
+              <button class="chip-btn" id="ev-play">Prati put</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Trenutna faza</div>
+                <div class="readout__value" id="ev-faza">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Trajanje faze</div>
+                <div class="readout__value" id="ev-traj">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">L</div>
+                <div class="readout__value" id="ev-l">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">R</div>
+                <div class="readout__value" id="ev-r">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">T<sub>eff</sub></div>
+                <div class="readout__value" id="ev-t">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Završni oblik</div>
+                <div class="readout__value" id="ev-kraj">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="ev-info">—</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="lesson-nav" id="lesson-nav"></div>
+    </div>
+  </main>
+
+  <script src="js/tecaj.js?v=20260928"></script>
+  <script>
+    TECAJ.init({ lekcija: 11 });
+
+    var TSUN = 5772;
+
+    /* =====================================================
+       PRIMJER 1 — Pomrčinski dvojna
+       ===================================================== */
+    (function () {
+      /* R u jedinicama velike poluosi staze */
+      var R1 = 0.15, R2 = 0.09, T1 = 12000, T2 = 4500, inc = 82, faza = 0;
+
+      /* Preklapanje dvaju diskova polumjera r1, r2 na razmaku d */
+      function preklop(r1, r2, d) {
+        if (d >= r1 + r2) return 0;
+        if (d <= Math.abs(r1 - r2)) return Math.PI * Math.min(r1, r2) * Math.min(r1, r2);
+        var a1 = Math.acos((d * d + r1 * r1 - r2 * r2) / (2 * d * r1));
+        var a2 = Math.acos((d * d + r2 * r2 - r1 * r1) / (2 * d * r2));
+        return r1 * r1 * (a1 - Math.sin(2 * a1) / 2) + r2 * r2 * (a2 - Math.sin(2 * a2) / 2);
+      }
+
+      /* Projicirani razmak središta u jedinicama poluosi, za fazu f (0 = glavni minimum) */
+      function razmak(f) {
+        var th = 2 * Math.PI * f;
+        var x = Math.sin(th);
+        var z = Math.cos(th) * Math.cos(TECAJ.rad(inc));
+        return { d: Math.hypot(x, z), ispred2: Math.cos(th) > 0 };
+      }
+
+      function sjaj(f) {
+        /* površinske svjetline ∝ T⁴ */
+        var s1 = Math.pow(T1, 4), s2 = Math.pow(T2, 4);
+        var F0 = Math.PI * R1 * R1 * s1 + Math.PI * R2 * R2 * s2;
+        var q = razmak(f);
+        var ov = preklop(R1, R2, q.d);
+        /* pomrčina zaklanja svjetliju ili tamniju komponentu */
+        var izgubljeno = q.ispred2 ? ov * s1 : ov * s2;
+        return (F0 - izgubljeno) / F0;
+      }
+
+      var cv = TECAJ.canvas('c11a', 1.45, function (ctx, W, Ht) {
+        TECAJ.starfield(ctx, W, Ht, 60, 3737);
+
+        /* --- gore: sustav --- */
+        var gy = Ht * 0.22, gh = Ht * 0.40;
+        var sc = Math.min(W * 0.36, gh * 0.9);      /* piksela po poluosi */
+        var cx = W / 2, cy = gy;
+
+        /* staza kao elipsa (projekcija kružnice pod nagibom) */
+        ctx.strokeStyle = 'rgba(255,255,255,.14)'; ctx.lineWidth = 1;
+        ctx.setLineDash([3, 4]);
+        ctx.beginPath();
+        ctx.ellipse(cx, cy, sc, sc * Math.cos(TECAJ.rad(inc)), 0, 0, 6.2832);
+        ctx.stroke(); ctx.setLineDash([]);
+
+        var th = 2 * Math.PI * faza;
+        var x2 = Math.sin(th), z2 = Math.cos(th) * Math.cos(TECAJ.rad(inc));
+        var ispred2 = Math.cos(th) > 0;
+
+        function zvj(px, py, r, T, prednja) {
+          var col = TECAJ.bbColor(T);
+          ctx.shadowColor = col; ctx.shadowBlur = prednja ? 20 : 12;
+          ctx.fillStyle = col;
+          ctx.beginPath(); ctx.arc(px, py, Math.max(2, r * sc), 0, 6.2832); ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+        /* R1 u središtu (pojednostavljeno), R2 kruži oko nje */
+        var p2x = cx + x2 * sc, p2y = cy - z2 * sc;
+        if (ispred2) {
+          zvj(cx, cy, R1, T1, false);
+          zvj(p2x, p2y, R2, T2, true);
+        } else {
+          zvj(p2x, p2y, R2, T2, false);
+          zvj(cx, cy, R1, T1, true);
+        }
+        TECAJ.tag(ctx, cx, cy + R1 * sc + 14, 'T₁ = ' + TECAJ.num(T1, 0) + ' K',
+          TECAJ.bbColor(T1), 'center');
+        TECAJ.tag(ctx, p2x, p2y - R2 * sc - 10, 'T₂ = ' + TECAJ.num(T2, 0) + ' K',
+          TECAJ.bbColor(T2), 'center');
+        ctx.font = '9px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,.35)';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+        ctx.fillText('pogled iz naše linije gledanja · i = ' + TECAJ.num(inc, 1) + '°', 8, 8);
+
+        /* --- dolje: krivulja sjaja --- */
+        var bx = 50, by = Ht * 0.62, bw = W - 70, bh = Ht - by - 34;
+        /* minimum krivulje za skalu */
+        var minS = 1;
+        for (var f = 0; f < 1; f += 0.002) minS = Math.min(minS, sjaj(f));
+        var lo = Math.max(0, minS - (1 - minS) * 0.25 - 0.005), hi = 1 + (1 - minS) * 0.12 + 0.004;
+        function X(f) { return bx + bw * f; }
+        function Y(s) { return by + bh * (hi - s) / (hi - lo); }
+
+        ctx.strokeStyle = 'rgba(255,255,255,.22)';
+        ctx.beginPath();
+        ctx.moveTo(bx, by); ctx.lineTo(bx, by + bh); ctx.lineTo(bx + bw, by + bh);
+        ctx.stroke();
+        ctx.font = '10px Inter, sans-serif';
+        [0, 0.25, 0.5, 0.75, 1].forEach(function (f) {
+          ctx.strokeStyle = 'rgba(255,255,255,.08)';
+          ctx.beginPath(); ctx.moveTo(X(f), by); ctx.lineTo(X(f), by + bh); ctx.stroke();
+          ctx.fillStyle = 'rgba(255,255,255,.45)';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+          ctx.fillText(TECAJ.num(f, 2), X(f), by + bh + 4);
+        });
+        ctx.fillStyle = 'rgba(255,255,255,.5)';
+        ctx.fillText('faza', bx + bw / 2, by + bh + 18);
+        ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+        ctx.fillText('1,00', bx - 5, Y(1));
+        ctx.fillText(TECAJ.num(minS, 2), bx - 5, Y(minS));
+        ctx.save();
+        ctx.translate(14, by + bh / 2); ctx.rotate(-Math.PI / 2);
+        ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+        ctx.fillText('relativni tok', 0, 0);
+        ctx.restore();
+
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2.2;
+        ctx.beginPath();
+        for (var f2 = 0; f2 <= 1.0001; f2 += 0.002) {
+          var y = Y(sjaj(f2));
+          f2 === 0 ? ctx.moveTo(X(f2), y) : ctx.lineTo(X(f2), y);
+        }
+        ctx.stroke();
+
+        /* trenutna faza */
+        ctx.strokeStyle = 'rgba(255,255,255,.35)'; ctx.setLineDash([3, 3]);
+        ctx.beginPath(); ctx.moveTo(X(faza), by); ctx.lineTo(X(faza), by + bh); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.shadowColor = 'rgba(251,191,36,.9)'; ctx.shadowBlur = 12;
+        ctx.fillStyle = '#fbbf24';
+        ctx.beginPath(); ctx.arc(X(faza), Y(sjaj(faza)), 5, 0, 6.2832); ctx.fill();
+        ctx.shadowBlur = 0;
+
+        TECAJ.tag(ctx, X(0) + 4, Y(minS) + 14, 'glavni minimum', 'rgba(255,255,255,.45)');
+        TECAJ.tag(ctx, X(0.5), Y(sjaj(0.5)) + 16, 'sekundarni', 'rgba(255,255,255,.45)', 'center');
+      });
+
+      function osvjezi() {
+        var d1 = 1 - sjaj(0), d2 = 1 - sjaj(0.5);
+        TECAJ.el('pd-d1').innerHTML = TECAJ.num(d1 * 100, 2) + '<span> %</span>';
+        TECAJ.el('pd-d2').innerHTML = TECAJ.num(d2 * 100, 2) + '<span> %</span>';
+        TECAJ.el('pd-od').innerHTML = d2 > 1e-6 ? TECAJ.num(d1 / d2, 2) : '<span>nema pomrčine</span>';
+        TECAJ.el('pd-t4').innerHTML = TECAJ.num(Math.pow(T1 / T2, 4), 2);
+
+        var box = TECAJ.el('pd-info');
+        var qmin = razmak(0);
+        if (qmin.d > R1 + R2) {
+          box.className = 'verdict verdict--bad';
+          box.innerHTML = '<strong>Nema pomrčine.</strong> Pri nagibu ' + TECAJ.num(inc, 1) +
+            '° projicirani razmak u konjunkciji je ' + TECAJ.num(qmin.d, 3) +
+            ' poluosi, a to je više od R₁ + R₂ = ' + TECAJ.num(R1 + R2, 3) +
+            '. Diskovi se ne preklapaju, pa je ovo <em>spektroskopski</em> dvojna, ali ne i ' +
+            'pomrčinska. Pomrčine se vide samo kad je staza dovoljno „s ruba“ — zato je ' +
+            'većina dvojnih na nebu nikad ne pokazuje.';
+        } else {
+          box.className = 'verdict verdict--ok';
+          box.innerHTML = '<strong>Pomrčine su vidljive.</strong> Dubine minimuma su ' +
+            TECAJ.num(d1 * 100, 2) + ' % i ' + TECAJ.num(d2 * 100, 2) +
+            ' %, a njihov odnos ' + TECAJ.num(d1 / d2, 2) + '. Teorija predviđa ' +
+            'ΔF₁/ΔF₂ = (T₁/T₂)⁴ = ' + TECAJ.num(Math.pow(T1 / T2, 4), 2) +
+            ' — <em>otud iz krivulje sjaja izlazi odnos temperatura</em>. ' +
+            (Math.abs(d1 / d2 - Math.pow(T1 / T2, 4)) / (d1 / d2) < 0.12
+              ? 'Ovdje se dobro slaže jer je manja zvijezda potpuno unutar veće (totalna pomrčina).'
+              : 'Odstupanje dolazi od toga što pomrčina nije potpuna — dio diska ostaje ' +
+              'nezaklonjen, pa geometrija ulazi u igru zajedno s temperaturama.') +
+            ' Trajanje pomrčine odaje polumjere, a njihov odnos i nagib.';
+        }
+        cv.draw();
+      }
+
+      TECAJ.slider('pd-r1', {
+        format: function (v) { return TECAJ.num(v, 3) + ' a'; },
+        onInput: function (v) { R1 = v; osvjezi(); }
+      });
+      TECAJ.slider('pd-r2', {
+        format: function (v) { return TECAJ.num(v, 3) + ' a'; },
+        onInput: function (v) { R2 = v; osvjezi(); }
+      });
+      TECAJ.slider('pd-t1', {
+        format: function (v) { return TECAJ.num(v, 0) + ' K'; },
+        onInput: function (v) { T1 = v; osvjezi(); }
+      });
+      TECAJ.slider('pd-t2', {
+        format: function (v) { return TECAJ.num(v, 0) + ' K'; },
+        onInput: function (v) { T2 = v; osvjezi(); }
+      });
+      TECAJ.slider('pd-i', {
+        format: function (v) { return TECAJ.num(v, 1) + '°'; },
+        onInput: function (v) { inc = v; osvjezi(); }
+      });
+      TECAJ.slider('pd-f', {
+        format: function (v) { return TECAJ.num(v, 3); },
+        onInput: function (v) { faza = v; cv.draw(); }
+      });
+
+      var anim = TECAJ.loop(function (dt) {
+        faza = (faza + dt * 0.13) % 1;
+        TECAJ.el('pd-f').value = faza;
+        TECAJ.el('pd-f-out').textContent = TECAJ.num(faza, 3);
+        cv.draw();
+      });
+      TECAJ.el('pd-play').addEventListener('click', function () {
+        var on = anim.toggle();
+        this.textContent = on ? 'Zaustavi' : 'Pokreni';
+        this.classList.toggle('active', on);
+      });
+
+      osvjezi();
+      anim.start();
+    })();
+
+
+    /* =====================================================
+       PRIMJER 2 — Kefeide
+       ===================================================== */
+    (function () {
+      var logP = Math.log10(5.366), m = 3.95, ime = 'δ Cephei';
+
+      function Mv(P) { return -2.81 * Math.log10(P) - 1.43; }
+
+      var cv = TECAJ.canvas('c11b', 2.0, function (ctx, W, Ht) {
+        var P = Math.pow(10, logP);
+
+        /* --- lijevo: krivulja sjaja kefeide --- */
+        var lw = W * 0.42;
+        var bx = 44, by = 24, bw = lw - 62, bh = Ht - 66;
+        var amp = 0.35 + 0.25 * Math.log10(P);
+        function X(f) { return bx + bw * f; }
+        function Y(dm) { return by + bh * (dm + amp) / (2 * amp); }
+
+        ctx.strokeStyle = 'rgba(255,255,255,.22)';
+        ctx.beginPath();
+        ctx.moveTo(bx, by); ctx.lineTo(bx, by + bh); ctx.lineTo(bx + bw, by + bh);
+        ctx.stroke();
+        /* Asimetrična krivulja: brz uspon do maksimuma na f = 0,18, zatim
+           sporiji pad. Glatka je jer se svaki dio modelira polovicom kosinusa. */
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2.2;
+        ctx.beginPath();
+        for (var i = 0; i <= 240; i++) {
+          var f = i / 240;
+          var g = f < 0.18
+            ? -Math.cos(Math.PI * f / 0.18)                       /* −1 → +1 */
+            : Math.cos(Math.PI * (f - 0.18) / 0.82);              /* +1 → −1 */
+          var dm = -g * amp * 0.5;
+          i === 0 ? ctx.moveTo(X(f), Y(dm)) : ctx.lineTo(X(f), Y(dm));
+        }
+        ctx.stroke();
+        TECAJ.tag(ctx, X(0.18) + 4, Y(-amp * 0.5) + 12, 'brz uspon, spor pad',
+          'rgba(255,255,255,.4)');
+        ctx.font = '10px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,.5)';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+        ctx.fillText('faza (P = ' + TECAJ.num(P, 2) + ' d)', bx + bw / 2, by + bh + 6);
+        ctx.save();
+        ctx.translate(12, by + bh / 2); ctx.rotate(-Math.PI / 2);
+        ctx.fillText('magnituda', 0, 0);
+        ctx.restore();
+        ctx.font = '600 10px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,.5)';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+        ctx.fillText('KRIVULJA SJAJA', bx, 6);
+
+        ctx.strokeStyle = 'rgba(255,255,255,.1)';
+        ctx.beginPath(); ctx.moveTo(lw, 8); ctx.lineTo(lw, Ht - 8); ctx.stroke();
+
+        /* --- desno: odnos period-luminozitet --- */
+        var cx2 = lw + 46, cw = W - lw - 64;
+        var cy2 = 24, ch = Ht - 66;
+        var P0 = -0.7, P1 = 2.1, M0 = 1, M1 = -8;
+        function CX(lp) { return cx2 + cw * (lp - P0) / (P1 - P0); }
+        function CY(mv) { return cy2 + ch * (mv - M0) / (M1 - M0); }
+
+        ctx.strokeStyle = 'rgba(255,255,255,.22)';
+        ctx.beginPath();
+        ctx.moveTo(cx2, cy2); ctx.lineTo(cx2, cy2 + ch); ctx.lineTo(cx2 + cw, cy2 + ch);
+        ctx.stroke();
+        ctx.font = '10px Inter, sans-serif';
+        [-0.5, 0, 0.5, 1, 1.5, 2].forEach(function (lp) {
+          ctx.strokeStyle = 'rgba(255,255,255,.07)';
+          ctx.beginPath(); ctx.moveTo(CX(lp), cy2); ctx.lineTo(CX(lp), cy2 + ch); ctx.stroke();
+          ctx.fillStyle = 'rgba(255,255,255,.45)';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+          ctx.fillText(TECAJ.auto(Math.pow(10, lp), 1), CX(lp), cy2 + ch + 5);
+        });
+        [0, -2, -4, -6, -8].forEach(function (mv) {
+          ctx.strokeStyle = 'rgba(255,255,255,.07)';
+          ctx.beginPath(); ctx.moveTo(cx2, CY(mv)); ctx.lineTo(cx2 + cw, CY(mv)); ctx.stroke();
+          ctx.fillStyle = 'rgba(255,255,255,.45)';
+          ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+          ctx.fillText(mv, cx2 - 5, CY(mv));
+        });
+        ctx.fillStyle = 'rgba(255,255,255,.5)';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+        ctx.fillText('period (dana)', cx2 + cw / 2, cy2 + ch + 20);
+        ctx.save();
+        ctx.translate(lw + 14, cy2 + ch / 2); ctx.rotate(-Math.PI / 2);
+        ctx.fillText('M(V)', 0, 0);
+        ctx.restore();
+
+        /* Leavittin pravac */
+        ctx.strokeStyle = 'rgba(0,212,255,.9)'; ctx.lineWidth = 2.2;
+        ctx.beginPath();
+        ctx.moveTo(CX(P0), CY(Mv(Math.pow(10, P0))));
+        ctx.lineTo(CX(P1), CY(Mv(Math.pow(10, P1))));
+        ctx.stroke();
+
+        /* RR Lyrae kao usporedba */
+        ctx.fillStyle = 'rgba(244,114,182,.5)';
+        ctx.fillRect(CX(Math.log10(0.3)), CY(0.75), CX(Math.log10(1)) - CX(Math.log10(0.3)), 4);
+        TECAJ.tag(ctx, CX(Math.log10(0.55)), CY(0.75) + 14, 'RR Lyrae', 'rgba(244,114,182,.8)', 'center');
+
+        /* naša kefeida */
+        ctx.strokeStyle = 'rgba(251,191,36,.6)'; ctx.setLineDash([3, 3]);
+        ctx.beginPath();
+        ctx.moveTo(cx2, CY(Mv(P))); ctx.lineTo(CX(logP), CY(Mv(P))); ctx.lineTo(CX(logP), cy2 + ch);
+        ctx.stroke(); ctx.setLineDash([]);
+        ctx.shadowColor = 'rgba(251,191,36,.9)'; ctx.shadowBlur = 12;
+        ctx.fillStyle = '#fbbf24';
+        ctx.beginPath(); ctx.arc(CX(logP), CY(Mv(P)), 5.5, 0, 6.2832); ctx.fill();
+        ctx.shadowBlur = 0;
+
+        ctx.font = '600 10px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,.5)';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+        ctx.fillText('ODNOS PERIOD–LUMINOZITET', cx2, 6);
+      });
+
+      function osvjezi() {
+        var P = Math.pow(10, logP);
+        var M = Mv(P);
+        var d = Math.pow(10, (m - M + 5) / 5);
+        var L = Math.pow(10, (4.83 - M) / 2.5);
+
+        TECAJ.el('ke-p2').innerHTML = TECAJ.num(P, 2) + '<span> dana</span>';
+        TECAJ.el('ke-mv').innerHTML = TECAJ.num(M, 2) + '<span> mag</span>';
+        TECAJ.el('ke-l').innerHTML = TECAJ.auto(L, 0) + '<span> L☉</span>';
+        TECAJ.el('ke-d').innerHTML = d >= 1e6 ? TECAJ.auto(d / 1e6, 2) + '<span> Mpc</span>'
+          : d >= 1e3 ? TECAJ.auto(d / 1e3, 2) + '<span> kpc</span>'
+            : TECAJ.auto(d, 1) + '<span> pc</span>';
+        TECAJ.el('ke-ly').innerHTML = TECAJ.auto(d * 3.2616, 2) + '<span> ly</span>';
+        TECAJ.el('ke-mu').innerHTML = TECAJ.num(m - M, 2) + '<span> mag</span>';
+
+        var box = TECAJ.el('ke-info');
+        box.className = 'verdict';
+        box.innerHTML = '<strong>' + ime + '.</strong> Period ' + TECAJ.num(P, 2) +
+          ' dana daje M(V) = −2,81·log(' + TECAJ.num(P, 2) + ') − 1,43 = ' + TECAJ.num(M, 2) +
+          '. Uz izmjerenu m = ' + TECAJ.num(m, 2) + ' modul je ' + TECAJ.num(m - M, 2) +
+          ', pa je udaljenost <strong>' +
+          (d >= 1e6 ? TECAJ.auto(d / 1e6, 2) + ' Mpc' : d >= 1e3 ? TECAJ.auto(d / 1e3, 2) + ' kpc'
+            : TECAJ.auto(d, 0) + ' pc') + '</strong> (' + TECAJ.auto(d * 3.2616, 2) +
+          ' svjetlosnih godina). ' +
+          (d > 5e5
+            ? 'Ovo je izvan Mliječne staze — upravo takvim mjerenjem Hubble je 1923. pokazao ' +
+            'da je Andromeda samostalna galaksija, a ne maglica u našoj.'
+            : d > 1e4
+              ? 'Kefeide su dovoljno sjajne da ih vidimo kroz cijelu Galaktiku, pa se njima ' +
+              'mjeri i njezina struktura.'
+              : 'Ovo je blizu, u našem susjedstvu — tu se kefeide mogu kalibrirati ' +
+              'neovisno, paralaksom, čime cijela metoda dobiva čvrsto polazište.') +
+          ' Zapazite koliko su kefeide sjajne: ' + TECAJ.auto(L, 0) +
+          ' L☉ znači da ih vidimo i na milijunima parseka.';
+        cv.draw();
+      }
+
+      TECAJ.slider('ke-p', {
+        format: function (v) { return TECAJ.num(Math.pow(10, v), 2) + ' d'; },
+        onInput: function (v) { logP = v; ime = 'vaš unos'; osvjezi(); }
+      });
+      TECAJ.slider('ke-m', {
+        format: function (v) { return TECAJ.num(v, 2) + ' mag'; },
+        onInput: function (v) { m = v; ime = 'vaš unos'; osvjezi(); }
+      });
+      TECAJ.chips('ke-preseti', function (v) {
+        var q = v.split(',');
+        logP = Math.log10(parseFloat(q[0])); m = parseFloat(q[1]); ime = q[2];
+        TECAJ.el('ke-p').value = logP;
+        TECAJ.el('ke-p-out').textContent = TECAJ.num(parseFloat(q[0]), 2) + ' d';
+        TECAJ.el('ke-m').value = m;
+        TECAJ.el('ke-m-out').textContent = TECAJ.num(m, 2) + ' mag';
+        osvjezi();
+      });
+
+      osvjezi();
+    })();
+
+
+    /* =====================================================
+       PRIMJER 3 — Evolucijski put
+       ===================================================== */
+    (function () {
+      var logM = 0, faza = 0.25;
+
+      /* Put kroz HR: niz čvorova [ime, T, L, relativno trajanje] za danu masu */
+      function put(M) {
+        var Lms = M >= 0.43 ? Math.pow(M, 3.5) : 0.23 * Math.pow(M, 2.3);
+        if (M > 20) Lms = Math.pow(20, 3.5) * Math.pow(M / 20, 2.5);
+        var Rms = M < 1 ? Math.pow(M, 0.8) : Math.pow(M, 0.57);
+        var Tms = TSUN * Math.pow(Lms, 0.25) / Math.sqrt(Rms);
+        var t = 1e10 * Math.pow(M, -2.5);
+
+        var faze = [
+          ['protozvijezda', Tms * 0.55, Lms * 4.5, t * 0.002],
+          ['glavni niz', Tms, Lms, t]
+        ];
+        if (M < 0.5) {
+          faze.push(['dugi glavni niz', Tms * 1.02, Lms * 1.2, t * 0.4]);
+          faze.push(['helijev bijeli patuljak', 12000, Lms * 0.004, t * 5]);
+        } else if (M < 8) {
+          faze.push(['podiv', Tms * 0.86, Lms * 1.6, t * 0.06]);
+          faze.push(['crveni div', 4200, Lms * 60, t * 0.10]);
+          faze.push(['helijev blijesak', 4600, Lms * 30, t * 0.001]);
+          faze.push(['horizontalna grana', 5000, Lms * 25, t * 0.02]);
+          faze.push(['asimptotska grana', 3400, Lms * 300, t * 0.005]);
+          faze.push(['planetarna maglica', 30000, Lms * 100, 2e4]);
+          faze.push(['bijeli patuljak', 18000, Lms * 0.002, 1e10]);
+        } else if (M < 25) {
+          faze.push(['plavi superdiv', Tms * 0.7, Lms * 1.4, t * 0.05]);
+          faze.push(['crveni superdiv', 3600, Lms * 2.2, t * 0.10]);
+          faze.push(['gorenje do željeza', 3500, Lms * 2.6, 1e3]);
+          faze.push(['supernova II', 20000, Lms * 1e5, 0.3]);
+          faze.push(['neutronska zvijezda', 1e6, Lms * 1e-6, 1e10]);
+        } else {
+          faze.push(['Wolf-Rayet', Tms * 1.25, Lms * 1.1, t * 0.08]);
+          faze.push(['crveni superdiv', 3800, Lms * 1.6, t * 0.05]);
+          faze.push(['kolaps jezgre', 4000, Lms * 1.8, 1e2]);
+          faze.push(['supernova / GRB', 25000, Lms * 3e5, 0.1]);
+          faze.push(['crna rupa', 1e4, 1e-9, 1e10]);
+        }
+        return faze;
+      }
+
+      var cv = TECAJ.canvas('c11c', 1.35, function (ctx, W, Ht) {
+        var M = Math.pow(10, logM);
+        var F = put(M);
+        var bx = 56, by = 30, bw = W - 76, bh = Ht - 76;
+        var T1 = 60000, T0 = 2000, L0 = -4.5, L1 = 7;
+        function X(T) {
+          return bx + bw * (Math.log10(T1) - Math.log10(TECAJ.clamp(T, T0, T1))) /
+            (Math.log10(T1) - Math.log10(T0));
+        }
+        function Y(L) {
+          return by + bh * (L1 - TECAJ.clamp(Math.log10(L), L0, L1)) / (L1 - L0);
+        }
+
+        /* okvir i osi */
+        ctx.strokeStyle = 'rgba(255,255,255,.22)';
+        ctx.beginPath();
+        ctx.moveTo(bx, by); ctx.lineTo(bx, by + bh); ctx.lineTo(bx + bw, by + bh);
+        ctx.stroke();
+        ctx.font = '10px Inter, sans-serif';
+        [40000, 20000, 10000, 6000, 4000, 2500].forEach(function (T) {
+          ctx.strokeStyle = 'rgba(255,255,255,.06)';
+          ctx.beginPath(); ctx.moveTo(X(T), by); ctx.lineTo(X(T), by + bh); ctx.stroke();
+          ctx.fillStyle = 'rgba(255,255,255,.45)';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+          ctx.fillText(T >= 10000 ? (T / 1000) + 'k' : T, X(T), by + bh + 5);
+        });
+        for (var l = -4; l <= 7; l += 2) {
+          ctx.strokeStyle = 'rgba(255,255,255,.06)';
+          ctx.beginPath();
+          ctx.moveTo(bx, Y(Math.pow(10, l))); ctx.lineTo(bx + bw, Y(Math.pow(10, l)));
+          ctx.stroke();
+          ctx.fillStyle = 'rgba(255,255,255,.45)';
+          ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+          ctx.fillText('10' + TECAJ.sup(l), bx - 5, Y(Math.pow(10, l)));
+        }
+        ctx.fillStyle = 'rgba(255,255,255,.55)';
+        ctx.font = '11px Inter, sans-serif';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+        ctx.fillText('efektivna temperatura (K)', bx + bw / 2, by + bh + 20);
+        ctx.save();
+        ctx.translate(16, by + bh / 2); ctx.rotate(-Math.PI / 2);
+        ctx.fillText('luminozitet (L☉)', 0, 0);
+        ctx.restore();
+
+        /* glavni niz za orijentaciju */
+        ctx.strokeStyle = 'rgba(125,211,252,.35)'; ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        for (var i = 0; i <= 100; i++) {
+          var mm = Math.pow(10, -1 + 2.8 * i / 100);
+          var Lm = mm >= 0.43 ? Math.pow(mm, 3.5) : 0.23 * Math.pow(mm, 2.3);
+          if (mm > 20) Lm = Math.pow(20, 3.5) * Math.pow(mm / 20, 2.5);
+          var Rm = mm < 1 ? Math.pow(mm, 0.8) : Math.pow(mm, 0.57);
+          var Tm = TSUN * Math.pow(Lm, 0.25) / Math.sqrt(Rm);
+          i === 0 ? ctx.moveTo(X(Tm), Y(Lm)) : ctx.lineTo(X(Tm), Y(Lm));
+        }
+        ctx.stroke();
+        TECAJ.tag(ctx, bx + 6, by + bh - 16, 'glavni niz', 'rgba(125,211,252,.6)');
+
+        /* evolucijski put */
+        ctx.strokeStyle = 'rgba(251,191,36,.85)'; ctx.lineWidth = 2.2;
+        ctx.beginPath();
+        F.forEach(function (f, i) {
+          i === 0 ? ctx.moveTo(X(f[1]), Y(f[2])) : ctx.lineTo(X(f[1]), Y(f[2]));
+        });
+        ctx.stroke();
+
+        /* čvorovi */
+        var akt = Math.min(F.length - 1, Math.floor(faza * F.length));
+        F.forEach(function (f, i) {
+          var aktivan = i === akt;
+          ctx.shadowColor = aktivan ? '#fbbf24' : 'transparent';
+          ctx.shadowBlur = aktivan ? 16 : 0;
+          ctx.fillStyle = aktivan ? '#fbbf24' : 'rgba(255,255,255,.4)';
+          ctx.beginPath(); ctx.arc(X(f[1]), Y(f[2]), aktivan ? 6.5 : 3, 0, 6.2832); ctx.fill();
+          ctx.shadowBlur = 0;
+          if (aktivan || F.length <= 8) {
+            ctx.font = (aktivan ? '600 ' : '') + '9.5px Inter, sans-serif';
+            ctx.fillStyle = aktivan ? '#fff' : 'rgba(255,255,255,.5)';
+            ctx.textAlign = X(f[1]) > bx + bw * 0.7 ? 'right' : 'left';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(f[0], X(f[1]) + (X(f[1]) > bx + bw * 0.7 ? -8 : 8), Y(f[2]));
+          }
+        });
+
+        ctx.font = '600 11px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,.55)';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+        ctx.fillText('POČETNA MASA ' + TECAJ.auto(M, 2) + ' M☉', bx, 8);
+      });
+
+      function osvjezi() {
+        var M = Math.pow(10, logM);
+        var F = put(M);
+        var akt = Math.min(F.length - 1, Math.floor(faza * F.length));
+        var f = F[akt];
+        var R = Math.pow(TSUN / f[1], 2) * Math.sqrt(f[2]);
+
+        TECAJ.el('ev-faza').innerHTML = '<span style="font-size:.9rem">' + f[0] + '</span>';
+        TECAJ.el('ev-traj').innerHTML = f[3] >= 1e9 ? TECAJ.auto(f[3] / 1e9, 2) + '<span> mlrd god</span>'
+          : f[3] >= 1e6 ? TECAJ.auto(f[3] / 1e6, 2) + '<span> mil. god</span>'
+            : f[3] >= 1 ? TECAJ.auto(f[3], 0) + '<span> god</span>'
+              : '<span>&lt; 1 god</span>';
+        TECAJ.el('ev-l').innerHTML = TECAJ.auto(f[2], 2) + '<span> L☉</span>';
+        TECAJ.el('ev-r').innerHTML = TECAJ.auto(R, 2) + '<span> R☉</span>';
+        TECAJ.el('ev-t').innerHTML = TECAJ.auto(f[1], 0) + '<span> K</span>';
+        TECAJ.el('ev-kraj').innerHTML = '<span style="font-size:.88rem">' +
+          F[F.length - 1][0] + '</span>';
+
+        var box = TECAJ.el('ev-info');
+        var opis;
+        if (M < 0.5) {
+          opis = 'Crveni patuljak. Konvekcija ga miješa cijelog, pa može potrošiti gotovo sav ' +
+            'vodik — ali tako polako da mu je vijek dulji od dosadašnje dobi svemira. ' +
+            'Nijedan još nije umro.';
+        } else if (M < 8) {
+          opis = 'Put Sunca. Nakon glavnog niza jezgra se steže, ovojnica širi — crveni div — ' +
+            'zatim helijev blijesak, asimptotska grana i odbacivanje ovojnice u planetarnu ' +
+            'maglicu. Ostaje bijeli patuljak veličine Zemlje, stabiliziran degeneriranim ' +
+            'elektronima do Chandrasekharove granice od 1,44 M☉.';
+        } else if (M < 25) {
+          opis = 'Masivna zvijezda. Fuzija ide dalje: ugljik, neon, kisik, silicij — do željeza, ' +
+            'iz kojeg se energija više ne može dobiti. Jezgra kolabira u sekundi, ovojnica se ' +
+            'odbije: supernova tipa II. Ostaje neutronska zvijezda gustoće atomske jezgre.';
+        } else {
+          opis = 'Najmasivnije zvijezde. Golem dio mase izgube vjetrom (Wolf-Rayet faza), a ' +
+            'jezgra na kraju kolabira izravno u crnu rupu, ponekad uz bljesak gama-zračenja. ' +
+            'Vijek je toliko kratak da takve zvijezde nikad ne stignu napustiti područje u ' +
+            'kojem su nastale.';
+        }
+        box.className = 'verdict';
+        box.innerHTML = '<strong>' + TECAJ.auto(M, 2) + ' M☉ — ' + f[0] + '.</strong> ' + opis +
+          ' Trenutna faza traje ' +
+          (f[3] >= 1e6 ? TECAJ.auto(f[3] / 1e6, 2) + ' milijuna godina'
+            : f[3] >= 1 ? TECAJ.auto(f[3], 0) + ' godina' : 'manje od godine') +
+          ', a završni oblik je <strong>' + F[F.length - 1][0] + '</strong>.';
+        cv.draw();
+      }
+
+      TECAJ.slider('ev-m', {
+        format: function (v) { return TECAJ.auto(Math.pow(10, v), 2) + ' M☉'; },
+        onInput: function (v) { logM = v; osvjezi(); }
+      });
+      TECAJ.slider('ev-f', {
+        format: function (v) {
+          var F = put(Math.pow(10, logM));
+          return (Math.min(F.length, Math.floor(v * F.length) + 1)) + '/' + F.length;
+        },
+        onInput: function (v) { faza = v; osvjezi(); }
+      });
+      TECAJ.chips('ev-preseti', function (v) {
+        logM = Math.log10(parseFloat(v));
+        TECAJ.el('ev-m').value = logM;
+        TECAJ.el('ev-m-out').textContent = TECAJ.auto(parseFloat(v), 2) + ' M☉';
+        osvjezi();
+      });
+      var anim = TECAJ.loop(function (dt) {
+        faza = (faza + dt * 0.14) % 1;
+        TECAJ.el('ev-f').value = faza;
+        var F = put(Math.pow(10, logM));
+        TECAJ.el('ev-f-out').textContent =
+          (Math.min(F.length, Math.floor(faza * F.length) + 1)) + '/' + F.length;
+        osvjezi();
+      });
+      TECAJ.el('ev-play').addEventListener('click', function () {
+        var on = anim.toggle();
+        this.textContent = on ? 'Zaustavi' : 'Prati put';
+        this.classList.toggle('active', on);
+      });
+
+      osvjezi();
+    })();
+  </script>
+</body>
+
+</html>

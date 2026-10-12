@@ -7,7 +7,7 @@
   <title>Astrophotography | ADIP</title>
   <meta name="description" content="Astrophotos by members of Astronomical Society Istra Pula">
   <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
-  <link rel="stylesheet" href="../css/modern.css">
+  <link rel="stylesheet" href="../css/modern.css?v=20260928">
   <style>
     .astro-categories {
       display: grid;
@@ -58,15 +58,15 @@
 
     <nav class="nav" id="main-nav">
       <button class="nav__close" id="nav-close">✕</button>
-      <a href="index.html" class="nav__link">🏠 Home</a>
-      <a href="aktivnosti.html" class="nav__link">📅 Activities</a>
-      <a href="galerija-slika.html" class="nav__link active">🖼️ Gallery</a>
-      <a href="povijest-zvjezdarnice.html" class="nav__link">📜 History</a>
-      <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Visit Us</a>
-      <a href="radovi.html" class="nav__link">📚 Papers</a>
-      <a href="servisi.html" class="nav__link">⚙️ Services</a>
-      <a href="downloads.html" class="nav__link">⬇️ Downloads</a>
-      <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ About Us</a>
+      <a href="index.html" class="nav__link">Home</a>
+      <a href="aktivnosti.html" class="nav__link">Activities</a>
+      <a href="galerija-slika.html" class="nav__link active">Gallery</a>
+      <a href="povijest-zvjezdarnice.html" class="nav__link">History</a>
+      <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">Visit Us</a>
+      <a href="radovi.html" class="nav__link">Papers</a>
+      <a href="servisi.html" class="nav__link">Services</a>
+      <a href="downloads.html" class="nav__link">Downloads</a>
+      <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">About Us</a>
       <div class="nav__spacer"></div>
       <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Login</button>
     </nav>
@@ -95,43 +95,33 @@
 
       <div class="astro-categories">
         <div class="astro-category active" data-category="all">
-          <div class="astro-category-icon">🌌</div>
           <div>All</div>
         </div>
         <div class="astro-category" data-category="mjesec">
-          <div class="astro-category-icon">🌙</div>
           <div>Moon</div>
         </div>
         <div class="astro-category" data-category="sunce">
-          <div class="astro-category-icon">☀️</div>
           <div>Sun</div>
         </div>
         <div class="astro-category" data-category="venera">
-          <div class="astro-category-icon">🌟</div>
           <div>Venus</div>
         </div>
         <div class="astro-category" data-category="mars">
-          <div class="astro-category-icon">🔴</div>
           <div>Mars</div>
         </div>
         <div class="astro-category" data-category="jupiter">
-          <div class="astro-category-icon">🟠</div>
           <div>Jupiter</div>
         </div>
         <div class="astro-category" data-category="saturn">
-          <div class="astro-category-icon">🪐</div>
           <div>Saturn</div>
         </div>
         <div class="astro-category" data-category="kometi">
-          <div class="astro-category-icon">☄️</div>
           <div>Comets</div>
         </div>
         <div class="astro-category" data-category="meteori">
-          <div class="astro-category-icon">💫</div>
           <div>Meteors</div>
         </div>
         <div class="astro-category" data-category="duboki-svemir">
-          <div class="astro-category-icon">✨</div>
           <div>Deep Space</div>
         </div>
       </div>
@@ -188,7 +178,7 @@
     </div>
   </div>
 
-  <script src="../js/main.js"></script>
+  <script src="../js/main.js?v=20260928"></script>
   <script>
     let currentCategory = 'all';
     let astroData = {};
@@ -197,9 +187,15 @@
       initLightbox();
 
       // Load all astro data
-      const response = await fetch('/api/galerija');
-      const data = await response.json();
+      const data = await fetchGalleryData();
       astroData = data.astrofotografija || {};
+
+      // Obrisana slika mora nestati i iz lokalne kopije (inače se vrati pri promjeni kategorije)
+      document.addEventListener('gallery:deleted', (e) => {
+        Object.keys(astroData).forEach(cat => {
+          astroData[cat] = (astroData[cat] || []).filter(img => img.src.replace(/^\/+/, '') !== e.detail.src);
+        });
+      });
 
       // Initial load - show all
       loadAllAstroCategories();
