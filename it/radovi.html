@@ -267,6 +267,30 @@
             <span style="color: var(--text-muted);">(Osservatorio, Park Monte Zaro 2, Pola)</span>
         </div>
     </footer>
+
+    <!-- Login Modal -->
+  <div class="modal-overlay" id="login-modal">
+    <div class="modal">
+      <div class="modal__header">
+        <h3 class="modal__title">Accedi</h3>
+        <p style="color: var(--text-secondary);">Inserisci le tue credenziali</p>
+      </div>
+      <form id="login-form">
+        <div class="form-group">
+          <label class="form-label">Nome utente</label>
+          <input type="text" class="form-input" id="login-username" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-input" id="login-password" required>
+        </div>
+        <div id="login-message" style="margin-bottom: 1rem; font-size: 0.9rem;"></div>
+        <button type="submit" class="btn btn--primary" style="width: 100%;">Accedi</button>
+      </form>
+      <button class="btn btn--secondary" style="width: 100%; margin-top: 0.5rem;" id="close-modal">Annulla</button>
+    </div>
+  </div>
+
     <script src="../js/main.js?v=20260928"></script>
     <script>
         // Toggle inputs based on type
