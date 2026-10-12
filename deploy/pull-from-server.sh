@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 # Povlači sadržaj koji je admin panel dodao na serveru (slike, PDF-ovi, data/*.json)
 # u lokalni repo, da ga možeš commitati. Ne briše ništa lokalno.
-# Treba SSH pristup: ključ ~/Documents/ADIP/adip_deploy (vidi README_DEPLOY.md).
+# Upotreba:  ADIP_FTP_PASS='...' deploy/pull-from-server.sh
 set -euo pipefail
 cd "$(dirname "$0")/.."
-KEY="${ADIP_KEY:-$HOME/Documents/ADIP/adip_deploy}"
+: "${ADIP_FTP_PASS:?Postavi ADIP_FTP_PASS (cPanel lozinka)}"
 for d in data galerija galerija-slika aktivnosti-slike radovi-files downloads-files; do
-  rsync -rlptz --itemize-changes -e "ssh -i $KEY -o IdentitiesOnly=yes" \
-    "adip@adip.hr:/home/adip/repositories/adip-web/$d/" "./$d/"
+  wget -q -r -N -nH --cut-dirs=2 --secure-protocol=auto \
+    --user=adip --password="$ADIP_FTP_PASS" \
+    "ftps://lin173.mojsite.com/repositories/adip-web/$d/"
 done
 git status --short
