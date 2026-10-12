@@ -27,6 +27,108 @@
 (function () {
   'use strict';
 
+  /* ---------------------------------------------------------------
+   *  Jezik (hr / en / it) — getCurrentLang() dolazi iz main.js.
+   * --------------------------------------------------------------- */
+
+  const LANG = (typeof getCurrentLang === 'function') ? getCurrentLang() : 'hr';
+  const LOCALE = { hr: 'hr-HR', en: 'en-GB', it: 'it-IT' }[LANG] || 'hr-HR';
+
+  const STR = {
+    hr: {
+      smjerovi: ['S', 'SSI', 'SI', 'ISI', 'I', 'IJI', 'JI', 'JJI',
+        'J', 'JJZ', 'JZ', 'ZJZ', 'Z', 'ZSZ', 'SZ', 'SSZ'],
+      iss: 'ISS (Međunarodna svemirska postaja)',
+      tiangong: 'Tiangong (kineska postaja)',
+      errLib: 'Ne mogu učitati satellite.js',
+      errCelestrak: 'Celestrak nije vratio podatke',
+      errIssTle: 'Nema TLE za ISS',
+      naslovKartice: 'Prolazi satelita',
+      racunam: 'Računam prolaze…',
+      nemaIss: 'Nema vidljivih prolaza ISS-a u sljedećih 5 dana.',
+      otvoriOstale: 'Otvori za ostale satelite →',
+      sljedeciIss: 'Sljedeći prolaz ISS-a',
+      maxPrema: (el, sm) => `max ${el}° prema ${sm}`,
+      ukupno: n => `ukupno ${n} prolaza →`,
+      nedostupnoKartica: 'Podaci trenutno nedostupni.<br>Otvori za detalje →',
+      nemaProlaza: 'Nema vidljivih prolaza.',
+      thSatelit: 'Satelit', thDatum: 'Datum', thPocetak: 'Početak', thIzlazi: 'Izlazi',
+      thMax: 'Max', thSmjerMax: 'Smjer max', thNestaje: 'Nestaje', thTrajanje: 'Trajanje',
+      naslovModala: 'Prolazi satelita nad Pulom',
+      sgp4: '(SGP4 propagacija u pregledniku, potraje koju sekundu)',
+      ostali: (od, doK) => `Ostali svijetli sateliti (noćas, ${od}–${doK})`,
+      ostaliNedostupni: 'Popis ostalih satelita trenutno nije dostupan.',
+      uvod: min => `Prikazani su samo prolazi vidljivi golim okom: satelit mora biti obasjan Suncem
+            dok je kod nas već mrak, i dizati se barem ${min}° iznad obzora.`,
+      smjeroviLegenda: `Smjerovi: S = sjever, I = istok, J = jug, Z = zapad. Vremena su po lokalnom
+            vremenu Pule. Podaci: Celestrak (TLE), proračun SGP4.`,
+      nedostupnoModal: 'Podaci o satelitima trenutno nisu dostupni.'
+    },
+    en: {
+      smjerovi: ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE',
+        'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'],
+      iss: 'ISS (International Space Station)',
+      tiangong: 'Tiangong (Chinese space station)',
+      errLib: 'Unable to load satellite.js',
+      errCelestrak: 'Celestrak returned no data',
+      errIssTle: 'No TLE available for the ISS',
+      naslovKartice: 'Satellite Passes',
+      racunam: 'Calculating passes…',
+      nemaIss: 'No visible ISS passes in the next 5 days.',
+      otvoriOstale: 'Open for other satellites →',
+      sljedeciIss: 'Next ISS pass',
+      maxPrema: (el, sm) => `max ${el}° towards ${sm}`,
+      ukupno: n => `${n} passes in total →`,
+      nedostupnoKartica: 'Data currently unavailable.<br>Open for details →',
+      nemaProlaza: 'No visible passes.',
+      thSatelit: 'Satellite', thDatum: 'Date', thPocetak: 'Start', thIzlazi: 'Appears',
+      thMax: 'Max', thSmjerMax: 'Max direction', thNestaje: 'Disappears', thTrajanje: 'Duration',
+      naslovModala: 'Satellite Passes over Pula',
+      sgp4: '(SGP4 propagation in the browser, takes a few seconds)',
+      ostali: (od, doK) => `Other bright satellites (tonight, ${od}–${doK})`,
+      ostaliNedostupni: 'The list of other satellites is currently unavailable.',
+      uvod: min => `Only passes visible to the naked eye are shown: the satellite must be lit by the Sun
+            while it is already dark here, and rise at least ${min}° above the horizon.`,
+      smjeroviLegenda: `Directions: N = north, E = east, S = south, W = west. Times are in Pula local
+            time. Data: Celestrak (TLE), SGP4 calculation.`,
+      nedostupnoModal: 'Satellite data is currently unavailable.'
+    },
+    it: {
+      smjerovi: ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE',
+        'S', 'SSO', 'SO', 'OSO', 'O', 'ONO', 'NO', 'NNO'],
+      iss: 'ISS (Stazione Spaziale Internazionale)',
+      tiangong: 'Tiangong (stazione spaziale cinese)',
+      errLib: 'Impossibile caricare satellite.js',
+      errCelestrak: 'Celestrak non ha restituito dati',
+      errIssTle: 'Nessun TLE disponibile per la ISS',
+      naslovKartice: 'Passaggi di satelliti',
+      racunam: 'Calcolo dei passaggi…',
+      nemaIss: 'Nessun passaggio visibile della ISS nei prossimi 5 giorni.',
+      otvoriOstale: 'Apri per gli altri satelliti →',
+      sljedeciIss: 'Prossimo passaggio della ISS',
+      maxPrema: (el, sm) => `max ${el}° verso ${sm}`,
+      ukupno: n => `${n} passaggi in totale →`,
+      nedostupnoKartica: 'Dati al momento non disponibili.<br>Apri per i dettagli →',
+      nemaProlaza: 'Nessun passaggio visibile.',
+      thSatelit: 'Satellite', thDatum: 'Data', thPocetak: 'Inizio', thIzlazi: 'Appare',
+      thMax: 'Max', thSmjerMax: 'Direzione max', thNestaje: 'Scompare', thTrajanje: 'Durata',
+      naslovModala: 'Passaggi di satelliti sopra Pola',
+      sgp4: '(propagazione SGP4 nel browser, richiede qualche secondo)',
+      ostali: (od, doK) => `Altri satelliti luminosi (stanotte, ${od}–${doK})`,
+      ostaliNedostupni: 'L\'elenco degli altri satelliti non è al momento disponibile.',
+      uvod: min => `Sono mostrati solo i passaggi visibili a occhio nudo: il satellite deve essere illuminato
+            dal Sole mentre da noi è già buio, e salire almeno ${min}° sopra l'orizzonte.`,
+      smjeroviLegenda: `Direzioni: N = nord, E = est, S = sud, O = ovest. Gli orari sono nell'ora locale
+            di Pola. Dati: Celestrak (TLE), calcolo SGP4.`,
+      nedostupnoModal: 'I dati sui satelliti non sono al momento disponibili.'
+    }
+  };
+
+  function T(kljuc, ...arg) {
+    const v = (STR[LANG] && STR[LANG][kljuc] !== undefined) ? STR[LANG][kljuc] : STR.hr[kljuc];
+    return typeof v === 'function' ? v(...arg) : v;
+  }
+
   const SAT_LIB = 'https://cdn.jsdelivr.net/npm/satellite.js@5.0.0/dist/satellite.min.js';
   const TLE_BASE = 'https://celestrak.org/NORAD/elements/gp.php';
 
@@ -43,13 +145,12 @@
   const DEG = Math.PI / 180;
   const RAD = 180 / Math.PI;
 
-  const SMJEROVI = ['S', 'SSI', 'SI', 'ISI', 'I', 'IJI', 'JI', 'JJI',
-    'J', 'JJZ', 'JZ', 'ZJZ', 'Z', 'ZSZ', 'SZ', 'SSZ'];
+  const SMJEROVI = T('smjerovi');
 
   /* Sateliti koje uvijek računamo pojedinačno (NORAD katalog broj) */
   const GLAVNI = [
-    { id: 25544, ime: 'ISS (Međunarodna svemirska postaja)', kratko: 'ISS' },
-    { id: 48274, ime: 'Tiangong (kineska postaja)', kratko: 'Tiangong' }
+    { id: 25544, ime: T('iss'), kratko: 'ISS' },
+    { id: 48274, ime: T('tiangong'), kratko: 'Tiangong' }
   ];
 
   let satLibPromise = null;
@@ -67,21 +168,21 @@
       const s = document.createElement('script');
       s.src = SAT_LIB;
       s.onload = resolve;
-      s.onerror = () => reject(new Error('Ne mogu učitati satellite.js'));
+      s.onerror = () => reject(new Error(T('errLib')));
       document.head.appendChild(s);
     });
     return satLibPromise;
   }
 
   function vrijeme(date) {
-    return date.toLocaleTimeString('hr-HR', {
+    return date.toLocaleTimeString(LOCALE, {
       hour: '2-digit', minute: '2-digit', second: '2-digit',
       hour12: false, timeZone: TZ
     });
   }
 
   function datum(date) {
-    return date.toLocaleDateString('hr-HR', {
+    return date.toLocaleDateString(LOCALE, {
       weekday: 'short', day: 'numeric', month: 'numeric', timeZone: TZ
     });
   }
@@ -149,7 +250,7 @@
 
     const tekst = (await res.text()).trim();
     if (!tekst || tekst.toLowerCase().includes('no gp data')) {
-      throw new Error('Celestrak nije vratio podatke');
+      throw new Error(T('errCelestrak'));
     }
 
     const linije = tekst.split(/\r?\n/).map(l => l.trimEnd());
@@ -275,9 +376,9 @@
     card.innerHTML = `
       <div class="widget-content">
         <h3 class="service-title" style="margin-bottom: 1rem; text-align: center;
-            color: var(--accent-primary);">Prolazi satelita</h3>
+            color: var(--accent-primary);">${T('naslovKartice')}</h3>
         <div id="sat-card-body" style="text-align: center; color: var(--text-muted);
-             font-size: 0.9rem; padding: 0.5rem 0;">Računam prolaze…</div>
+             font-size: 0.9rem; padding: 0.5rem 0;">${T('racunam')}</div>
       </div>`;
 
     card.addEventListener('click', () => window.openSatelitiModal());
@@ -293,7 +394,7 @@
       await ucitajSatelliteJs();
 
       const tle = await dohvatiTle('CATNR=25544', 'iss');
-      if (!tle.length) throw new Error('Nema TLE za ISS');
+      if (!tle.length) throw new Error(T('errIssTle'));
 
       const sad = new Date();
       const doKada = new Date(sad.getTime() + 5 * 86400 * 1000);
@@ -301,24 +402,24 @@
 
       if (!prolazi.length) {
         body.innerHTML = `<span style="color: var(--text-muted);">
-          Nema vidljivih prolaza ISS-a u sljedećih 5 dana.</span>
-          <div style="margin-top: 0.75rem; font-size: 0.8rem;">Otvori za ostale satelite →</div>`;
+          ${T('nemaIss')}</span>
+          <div style="margin-top: 0.75rem; font-size: 0.8rem;">${T('otvoriOstale')}</div>`;
         return;
       }
 
       const p = prolazi[0];
       body.innerHTML = `
-        <div style="font-size: 0.8rem; color: var(--text-muted);">Sljedeći prolaz ISS-a</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">${T('sljedeciIss')}</div>
         <div style="font-size: 1.4rem; font-weight: 600; color: var(--text-primary);
              margin: 0.25rem 0;">${vrijeme(p.pocetak).slice(0, 5)}</div>
         <div style="font-size: 0.85rem;">${datum(p.pocetak)} ·
-             max ${Math.round(p.maxEl)}° prema ${smjer(p.maxAz)}</div>
+             ${T('maxPrema', Math.round(p.maxEl), smjer(p.maxAz))}</div>
         <div style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--accent-primary);">
-             ukupno ${prolazi.length} prolaza →</div>`;
+             ${T('ukupno', prolazi.length)}</div>`;
     } catch (err) {
       console.warn('[ADIP sateliti]', err);
       body.innerHTML = `<span style="color: var(--text-muted); font-size: 0.85rem;">
-        Podaci trenutno nedostupni.<br>Otvori za detalje →</span>`;
+        ${T('nedostupnoKartica')}</span>`;
     }
   }
 
@@ -336,7 +437,7 @@
 
   function tablicaProlaza(prolazi, prikaziIme) {
     if (!prolazi.length) {
-      return `<p style="color: var(--text-muted); padding: 1rem;">Nema vidljivih prolaza.</p>`;
+      return `<p style="color: var(--text-muted); padding: 1rem;">${T('nemaProlaza')}</p>`;
     }
 
     const redovi = prolazi.map(p => `
@@ -358,14 +459,14 @@
         <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 560px;">
           <thead>
             <tr style="border-bottom: 2px solid var(--accent-primary); text-align: left;">
-              ${prikaziIme ? '<th style="padding: 0.5rem;">Satelit</th>' : ''}
-              <th style="padding: 0.5rem;">Datum</th>
-              <th style="padding: 0.5rem;">Početak</th>
-              <th style="padding: 0.5rem;">Izlazi</th>
-              <th style="padding: 0.5rem;">Max</th>
-              <th style="padding: 0.5rem;">Smjer max</th>
-              <th style="padding: 0.5rem;">Nestaje</th>
-              <th style="padding: 0.5rem;">Trajanje</th>
+              ${prikaziIme ? `<th style="padding: 0.5rem;">${T('thSatelit')}</th>` : ''}
+              <th style="padding: 0.5rem;">${T('thDatum')}</th>
+              <th style="padding: 0.5rem;">${T('thPocetak')}</th>
+              <th style="padding: 0.5rem;">${T('thIzlazi')}</th>
+              <th style="padding: 0.5rem;">${T('thMax')}</th>
+              <th style="padding: 0.5rem;">${T('thSmjerMax')}</th>
+              <th style="padding: 0.5rem;">${T('thNestaje')}</th>
+              <th style="padding: 0.5rem;">${T('thTrajanje')}</th>
             </tr>
           </thead>
           <tbody>${redovi}</tbody>
@@ -374,10 +475,10 @@
   }
 
   window.openSatelitiModal = async function () {
-    otvoriModal('Prolazi satelita nad Pulom', `
+    otvoriModal(T('naslovModala'), `
       <div style="padding: 2rem; text-align: center; color: var(--text-secondary);">
-        Računam prolaze… <span style="color: var(--text-muted); font-size: 0.85rem;">
-        (SGP4 propagacija u pregledniku, potraje koju sekundu)</span>
+        ${T('racunam')} <span style="color: var(--text-muted); font-size: 0.85rem;">
+        ${T('sgp4')}</span>
       </div>`);
 
     try {
@@ -419,33 +520,31 @@
 
         ostaliHtml = `
           <h4 style="color: var(--accent-primary); margin: 2rem 0 0.5rem;">
-            Ostali svijetli sateliti (noćas, ${vrijeme(pocetak).slice(0, 5)}–${vrijeme(kraj).slice(0, 5)})
+            ${T('ostali', vrijeme(pocetak).slice(0, 5), vrijeme(kraj).slice(0, 5))}
           </h4>
           ${tablicaProlaza(svi.slice(0, 40), true)}`;
       } catch (e) {
         console.warn('[ADIP sateliti] visual grupa:', e);
         ostaliHtml = `<p style="color: var(--text-muted); padding: 1rem;">
-          Popis ostalih satelita trenutno nije dostupan.</p>`;
+          ${T('ostaliNedostupni')}</p>`;
       }
 
-      otvoriModal('Prolazi satelita nad Pulom', `
+      otvoriModal(T('naslovModala'), `
         <div style="padding: 1rem;">
           <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">
-            Prikazani su samo prolazi vidljivi golim okom: satelit mora biti obasjan Suncem
-            dok je kod nas već mrak, i dizati se barem ${MIN_ELEVATION}° iznad obzora.
+            ${T('uvod', MIN_ELEVATION)}
           </p>
           <p style="color: var(--text-muted); font-size: 0.8rem;">
-            Smjerovi: S = sjever, I = istok, J = jug, Z = zapad. Vremena su po lokalnom
-            vremenu Pule. Podaci: Celestrak (TLE), proračun SGP4.
+            ${T('smjeroviLegenda')}
           </p>
           ${glavniHtml}
           ${ostaliHtml}
         </div>`);
     } catch (err) {
       console.error('[ADIP sateliti]', err);
-      otvoriModal('Prolazi satelita nad Pulom', `
+      otvoriModal(T('naslovModala'), `
         <div style="padding: 2rem; color: var(--text-muted);">
-          <p>Podaci o satelitima trenutno nisu dostupni.</p>
+          <p>${T('nedostupnoModal')}</p>
           <p style="font-size: 0.85rem; margin-top: 0.5rem;">${err.message}</p>
         </div>`);
     }

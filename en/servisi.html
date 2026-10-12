@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services | Pula Observatory</title>
+  <title>Services - Astronomical Society "Istra" Pula</title>
   <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
   <link rel="stylesheet" href="../css/modern.css?v=20260928">
 
   <!-- External Libraries for Widgets -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/suncalc/1.9.0/suncalc.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
   <style>
     .services-grid {
@@ -91,6 +91,32 @@
       border-bottom: none;
     }
 
+    /* =========================================================
+       Redoslijed kartica u mreži.
+       Neovisan je o redoslijedu u HTML-u i o tome kojim redom
+       skripte (uvjeti/sateliti/sunce/oprema) ubace svoje kartice.
+       Za promjenu redoslijeda dovoljno je promijeniti brojeve.
+       ========================================================= */
+    #main-services-grid > * { order: 99; }
+
+    #meteo-card    { order: 1; }
+    #sunmoon-card  { order: 2; }
+    #tide-card     { order: 3; }
+
+    #vidljivo-card { order: 4; }
+    #uvjeti-card   { order: 5; }
+    #sunce-card    { order: 6; }
+
+    #gmn-card      { order: 7; }
+    #sat-card      { order: 8; }
+    #oprema-card   { order: 9; }
+
+    #igra-card     { order: 10; }
+    #palisa-card   { order: 11; }
+    #knjige-card   { order: 12; }
+
+    #kalendar-card { order: 13; }
+
     .astro-value {
       font-weight: bold;
       color: var(--accent-secondary);
@@ -122,12 +148,22 @@
       <a href="radovi.html" class="nav__link">Papers</a>
       <a href="servisi.html" class="nav__link active">Services</a>
       <a href="downloads.html" class="nav__link">Downloads</a>
+      <a href="../tecaj/index.html" class="nav__link">Astronomy Course</a>
       <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">About Us</a>
       <div class="nav__spacer"></div>
       <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Login</button>
     </nav>
     <div class="nav-overlay" id="nav-overlay"></div>
-    <div class="user-controls"><button class="lang-toggle" id="lang-toggle">HR</button></div>
+    <div class="user-controls">
+      <div class="lang-selector">
+        <button class="lang-current">EN ▼</button>
+        <div class="lang-dropdown">
+          <a href="/servisi.html" class="lang-option" data-lang="hr">HR</a>
+          <a href="/en/servisi.html" class="lang-option active" data-lang="en">EN</a>
+          <a href="/it/servisi.html" class="lang-option" data-lang="it">IT</a>
+        </div>
+      </div>
+    </div>
   </header>
 
   <div class="content" style="padding-top: 100px;">
@@ -140,11 +176,11 @@
 
         <!-- Admin Panel -->
         <div class="admin-panel hidden glass-card" id="admin-service-panel" style="margin-bottom: 2rem;">
-          <h3>Add new service</h3>
+          <h3>Add a new service</h3>
           <form id="service-form"
             style="display: grid; grid-template-columns: 1fr 2fr 1fr auto; gap: 1rem; align-items: end;">
             <div class="form-group">
-              <label class="form-label">Title</label>
+              <label class="form-label">Name</label>
               <input type="text" class="form-input" id="service-title" required>
             </div>
             <div class="form-group">
@@ -154,7 +190,7 @@
             <div class="form-group">
               <label class="form-label">Type</label>
               <select class="form-input" id="service-type">
-                <option value="iframe">Webpage (Iframe)</option>
+                <option value="iframe">Web page (Iframe)</option>
                 <option value="image">Image</option>
               </select>
             </div>
@@ -165,16 +201,14 @@
         <div class="services-grid" id="main-services-grid">
 
           <!-- 1. Meteo -->
-          <div class="service-card glass-card"
+          <div class="service-card glass-card" id="meteo-card"
             onclick="openModal('Meteo Pula (Pljusak.com)', 'https://pljusak.com/meteo.php?stanica=pulacentar', 'iframe')">
             <h3 class="service-title">Meteo Pula</h3>
             <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Pljusak.com</p>
           </div>
 
-
-
           <!-- 3. Astronomy (Dynamic) -->
-          <div class="service-card glass-card" onclick="openAstronomyModal()" style="cursor: pointer;">
+          <div class="service-card glass-card" id="sunmoon-card" onclick="openAstronomyModal()" style="cursor: pointer;">
             <div class="widget-content">
               <h3 class="service-title" style="margin-bottom: 1rem; text-align: center; color: var(--accent-primary);">
                 Sun and Moon (Pula)</h3>
@@ -187,7 +221,7 @@
                 <span class="astro-value" id="astro-sunset">--:--</span>
               </div>
               <div class="astro-stat">
-                <span>Moon Phase:</span>
+                <span>Moon phase:</span>
                 <span class="astro-value" id="astro-moon-phase">--</span>
               </div>
               <div class="astro-stat">
@@ -198,29 +232,35 @@
           </div>
 
           <!-- 4. Tides (Dynamic Graph) -->
-          <div class="service-card glass-card" onclick="openTideModal()" style="cursor: pointer;">
+          <div class="service-card glass-card" id="tide-card" onclick="openTideModal()" style="cursor: pointer;">
             <div class="widget-content">
               <h3 class="service-title" style="margin-bottom: 1rem; text-align: center; color: var(--accent-primary);">
                 Tides (24h)</h3>
-              <canvas id="tideChart" style="width: 100%; height: 150px;"></canvas>
+              <!-- Omotač je obavezan: Chart.js prepisuje CSS dimenzije samog
+                   canvasa, a fallback poruka zamjenjuje sadržaj roditelja. -->
+              <div style="position: relative; width: 100%; height: 150px;">
+                <canvas id="tideChart"></canvas>
+              </div>
+              <p id="tide-credit" style="margin: 0.5rem 0 0; font-size: 0.7rem;
+                 color: var(--text-muted); text-align: center;"></p>
             </div>
           </div>
 
           <!-- 5. Library Catalog -->
-          <div class="service-card glass-card" onclick="openLibraryModal()" style="cursor: pointer;">
+          <div class="service-card glass-card" id="knjige-card" onclick="openLibraryModal()" style="cursor: pointer;">
             <h3 class="service-title">Books</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Search library materials</p>
-          </div>
-
-          <!-- 6. Spot the Asteroid -->
-          <div class="service-card glass-card" onclick="openAsteroidGame()" style="cursor: pointer;">
-            <h3 class="service-title">Spot the Asteroid</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Find the asteroid in the image
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Search the library collection
             </p>
           </div>
 
-          <!-- 6b. Palisa's Asteroids -->
-          <div class="service-card glass-card"
+          <!-- 6. Spot the Asteroid -->
+          <div class="service-card glass-card" id="igra-card" onclick="openAsteroidGame()" style="cursor: pointer;">
+            <h3 class="service-title">Spot the Asteroid</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Find the asteroid in the image</p>
+          </div>
+
+          <!-- 6b. Palisini asteroidi -->
+          <div class="service-card glass-card" id="palisa-card"
             onclick="openModal('Palisa&#39;s Asteroids', '/games/palisa-asteroids/index.html', 'iframe')"
             style="cursor: pointer;">
             <img src="/games/palisa-asteroids/assets/palisa.jpg" alt="Johann Palisa"
@@ -231,7 +271,7 @@
           </div>
 
           <!-- 7. GMN Camera Status -->
-          <div class="service-card glass-card"
+          <div class="service-card glass-card" id="gmn-card"
             onclick="openModal('GMN Camera Status', 'https://globalmeteornetwork.org/weblog/HR/HR0001/HR0001_20260206_164955_898750_detected/', 'iframe')">
             <img src="../sites/default/files/images/gmn_logo.png" alt="GMN Logo"
               style="height: 60px; margin-bottom: 1rem; object-fit: contain;">
@@ -240,18 +280,24 @@
           </div>
 
           <!-- 8. What can we see on the sky -->
-          <div class="service-card glass-card"
-            onclick="openModal('What can we see on the sky?', '../servisi/visible.html', 'iframe')">
-            <h3 class="service-title">What can we see on the sky?</h3>
+          <div class="service-card glass-card" id="vidljivo-card"
+            onclick="openModal('What can we see in the sky?', 'servisi/visible.html', 'iframe')">
+            <h3 class="service-title">What can we see in the sky?</h3>
             <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Objects visible tonight</p>
           </div>
 
           <!-- 9. Calendar -->
-          <div class="service-card glass-card"
+          <div class="service-card glass-card" id="kalendar-card"
             onclick="openModal('Calendar', 'https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FBelgrade&showCalendars=0&showTz=0&src=YWRpcHB1bGFAZ21haWwuY29t&color=%23039be5', 'iframe')">
             <h3 class="service-title">Calendar</h3>
             <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Events and activities</p>
           </div>
+
+          <!--
+            Kartice koje slijede ubacuju se automatski iz vlastitih skripti
+            (uvjeti.js, sateliti.js, sunce.js, oprema.js) na dnu stranice.
+            Redoslijed <script> tagova određuje njihov redoslijed u mreži.
+          -->
 
         </div>
 
@@ -260,9 +306,9 @@
           <!-- Populated via JS -->
         </div>
 
-      </div>
+      </div><!-- /.container -->
     </section>
-  </div>
+  </div><!-- /.content -->
 
   <!-- Service Modal -->
   <div class="modal-overlay" id="service-modal" style="z-index: 2000;">
@@ -296,9 +342,10 @@
           <input type="password" class="form-input" id="login-password" required>
         </div>
         <div id="login-message" style="margin-bottom: 1rem; font-size: 0.9rem;"></div>
-        <button type="submit" class="btn btn--primary" style="width: 100%;">Login</button>
+        <button type="submit" class="btn btn--primary" style="width: 100%;">Log in</button>
       </form>
-      <button class="btn btn--secondary" style="width: 100%; margin-top: 0.5rem;" id="close-modal-login">Cancel</button>
+      <button class="btn btn--secondary" style="width: 100%; margin-top: 0.5rem;"
+        id="close-modal-login">Cancel</button>
     </div>
   </div>
 
@@ -310,12 +357,19 @@
         style="color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.5);">Association of
         Technical Culture Pula</a><br>
       Glavinićev uspon 1, 52100 Pula - HR<br>
-      Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: +385 91 214 1966
+      Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: +385 91 214 1966<br>
+      <span style="color: var(--text-muted);">(Observatory, Monte Zaro Park 2, Pula)</span>
     </div>
   </footer>
 
   <script src="../js/main.js?v=20260928"></script>
   <script src="../js/services.js?v=20260928"></script>
+
+  <!-- Dodatni servisi - svaki sam ubacuje svoju karticu u #main-services-grid -->
+  <script src="../js/uvjeti.js?v=20260928"></script>
+  <script src="../js/sateliti.js?v=1"></script>
+  <script src="../js/sunce.js?v=1"></script>
+  <script src="../js/oprema.js?v=1"></script>
 
   <script>
     // Handle Login Modal Close from Main.js trigger

@@ -4,6 +4,30 @@
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    /* ---------- Jezik ---------- */
+    const LANG = ['en', 'it'].includes(document.documentElement.lang) ? document.documentElement.lang : 'hr';
+    // Hrvatski piše godine s točkom ("1874."), engleski i talijanski bez nje
+    const yr = y => (LANG === 'hr' ? `${String(y).replace(/\.$/, '')}.` : String(y).replace(/\.$/, ''));
+    const pct = v => (LANG === 'hr' ? `${v} %` : `${v}%`);
+
+    const UI = {
+        hr: {
+            all: 'Sve', comet: 'Komet', palisa: 'Palisa', world: 'Ostatak svijeta', share: 'Udio Palise',
+            total: 'Ukupno', showTable: 'Prikaži tablicu', hideTable: 'Sakrij tablicu',
+            chartAria: 'Stupčasti grafikon: broj otkrivenih asteroida po godinama 1874.–1880., Palisa i ostatak svijeta'
+        },
+        en: {
+            all: 'All', comet: 'Comet', palisa: 'Palisa', world: 'Rest of the world', share: 'Palisa’s share',
+            total: 'Total', showTable: 'Show table', hideTable: 'Hide table',
+            chartAria: 'Bar chart: number of asteroids discovered per year 1874–1880, Palisa and the rest of the world'
+        },
+        it: {
+            all: 'Tutti', comet: 'Cometa', palisa: 'Palisa', world: 'Resto del mondo', share: 'Quota di Palisa',
+            total: 'Totale', showTable: 'Mostra tabella', hideTable: 'Nascondi tabella',
+            chartAria: 'Grafico a barre: numero di asteroidi scoperti per anno 1874–1880, Palisa e resto del mondo'
+        }
+    }[LANG];
+
     /* ---------- Podaci ---------- */
 
     // era: au = Austro-Ugarska, rat = 1918.-1972., adip = od 1973.
@@ -45,6 +69,50 @@
         { y: '2021.', era: 'adip', t: '150 godina Zvjezdarnice; GMN premašuje 500 kamera', to: 'danas' }
     ];
 
+    // Tekstovi vremenske crte na EN/IT, istim redoslijedom kao EVENTS
+    const EVENTS_I18N = {
+        en: [
+            'Navy Library founded in Venice', 'Naval observatory in Venice – the forerunner of Pula',
+            'Naval Academy and Observatory in Trieste', 'Pula becomes the main naval port; Fort Zaro is built',
+            'Tegetthoff wins the Battle of Lissa (Vis)', 'Hydrographic Office and Observatory founded',
+            'New building on Monte Zaro; Johann Palisa arrives', 'Palisa discovers (136) Austria',
+            'Emperor Franz Joseph I names Polana and Adria', 'Tegetthoff monument unveiled in front of the Observatory',
+            'Asteroid (183) Istria discovered', 'Palisa moves to Vienna',
+            'The “Brachyt” reflector, the largest of its kind', 'Ivo Benko becomes director of the Observatory',
+            'Benko: the Earth has no second, dark moon', 'Geomagnetic map of the Adriatic',
+            'Italian occupation; instruments taken away', 'Tegetthoff monument removed',
+            'Allied bombing destroys the building', 'Wing rebuilt; meteorological station',
+            'Hydrometeorological service takes over the station', 'Astronomical Society “Istra” Pula founded',
+            '“Celestron 8” telescope; Navy Library returns to Pula', '100 years of asteroid “Istria”',
+            'Observatory handed over to ADIP', 'Declared a cultural monument (category C)',
+            'E. Puh’s book “Zvjezdarnica u Puli”', 'Galileo: regions Palisa, Vienna and Pola on Ida',
+            'Dome working again; solar eclipse', 'Renovation begins; the meteor network is born',
+            'Renovated Observatory reopens', 'Charter of the Croatian Community of Technical Culture',
+            '“Križevci” meteorite at the Science Festival', 'Global Meteor Network',
+            '150 years of the Observatory; GMN passes 500 cameras'
+        ],
+        it: [
+            'Fondata a Venezia la Biblioteca della Marina', 'Osservatorio della Marina a Venezia – il precursore di Pola',
+            'Accademia di Marina e Osservatorio a Trieste', 'Pola principale porto militare; costruzione del forte Zaro',
+            'Tegetthoff vince la battaglia di Lissa', 'Fondazione dell’Ufficio Idrografico e dell’Osservatorio',
+            'Nuovo edificio sul Monte Zaro; arriva Johann Palisa', 'Palisa scopre (136) Austria',
+            'L’imperatore Francesco Giuseppe I battezza Polana e Adria', 'Monumento a Tegetthoff davanti all’Osservatorio',
+            'Scoperto l’asteroide (183) Istria', 'Palisa si trasferisce a Vienna',
+            'Il riflettore «Brachyt», il più grande del suo tipo', 'Ivo Benko assume la direzione dell’Osservatorio',
+            'Benko: la Terra non ha un secondo satellite oscuro', 'Carta geomagnetica dell’Adriatico',
+            'Occupazione italiana; strumenti portati via', 'Rimosso il monumento a Tegetthoff',
+            'I bombardamenti alleati distruggono l’edificio', 'Ricostruita un’ala; stazione meteorologica',
+            'Il servizio idrometeorologico rileva la stazione', 'Fondata la Società Astronomica «Istra» Pola',
+            'Telescopio «Celestron 8»; la biblioteca torna a Pola', '100 anni dell’asteroide «Istria»',
+            'L’Osservatorio affidato all’ADIP', 'Monumento culturale di categoria C',
+            'Il libro di E. Puh «Zvjezdarnica u Puli»', 'Galileo: regioni Palisa, Vienna e Pola su Ida',
+            'La cupola torna in funzione; eclissi di Sole', 'Inizio del restauro; nasce la rete meteorica',
+            'Riapertura dell’Osservatorio restaurato', 'Carta della Comunità croata della cultura tecnica',
+            'Il meteorite «Križevci» al Festival della scienza', 'Global Meteor Network',
+            '150 anni dell’Osservatorio; la GMN supera le 500 camere'
+        ]
+    };
+
     // Popis s izvorne stranice o Palisi (redoslijed otkrića)
     const DISCOVERIES = [
         ['(136)', 'Austria', 1874], ['(137)', 'Meliboea', 1874], ['(140)', 'Siwa', 1874],
@@ -59,7 +127,26 @@
         ['(218)', 'Bianca', 1880], ['(219)', 'Thusnelda', 1880]
     ];
 
-    const NOTES = {
+    const NOTES_I18N = {
+        en: {
+            Austria: 'Palisa’s first minor planet, discovered on 18 March 1874. As the first asteroid discovered from Austria, it was named Austria.',
+            Polana: 'Named personally by Emperor Franz Joseph I during his visit to Pula on 8 April 1875. Polana means “a woman of Pula”.',
+            Adria: 'Named, together with Polana, by Emperor Franz Joseph I himself on 8 April 1875. Adria is the Adriatic.',
+            Istria: 'An asteroid named after Istria. ADIP marked the centenary of its discovery in 1978 with a lecture, an exhibition and a commemorative envelope.',
+            komet: 'The only comet Palisa discovered from Pula (1879).',
+            Lacrimosa: 'ADIP member Denis Štimac imaged this asteroid – look for the animation in the astrophotography gallery (Comets category).'
+        },
+        it: {
+            Austria: 'Il primo pianetino di Palisa, scoperto il 18 marzo 1874. Essendo il primo asteroide scoperto dall’Austria, fu chiamato Austria.',
+            Polana: 'Battezzato personalmente dall’imperatore Francesco Giuseppe I durante la visita a Pola l’8 aprile 1875. Polana significa “donna di Pola”.',
+            Adria: 'Battezzato, insieme a Polana, dallo stesso imperatore Francesco Giuseppe I l’8 aprile 1875. Adria è l’Adriatico.',
+            Istria: 'Asteroide dedicato all’Istria. Nel 1978 l’ADIP ne ha celebrato il centenario della scoperta con una conferenza, una mostra e una busta commemorativa.',
+            komet: 'L’unica cometa scoperta da Palisa a Pola (1879).',
+            Lacrimosa: 'Il socio dell’ADIP Denis Štimac ha ripreso questo asteroide – cerca l’animazione nella galleria di astrofotografia (categoria Comete).'
+        }
+    };
+
+    const NOTES_HR = {
         Austria: 'Prvi Palisin mali planet, otkriven 18. ožujka 1874. Kao prvi asteroid otkriven iz Austrije dobio je ime Austria.',
         Polana: 'Ime mu je osobno dao car Franjo Josip I. prilikom posjeta Puli 8. travnja 1875. Polana znači Puležanka.',
         Adria: 'Ime mu je, zajedno s Polanom, osobno dao car Franjo Josip I. 8. travnja 1875. Adria je Jadran.',
@@ -67,14 +154,20 @@
         komet: 'Jedini komet koji je Palisa otkrio iz Pule (1879.).',
         Lacrimosa: 'Član ADIP-a Denis Štimac snimio je ovaj asteroid – animaciju potražite u galeriji astrofotografija (kategorija Kometi).'
     };
+    const NOTES = LANG === 'hr' ? NOTES_HR : NOTES_I18N[LANG];
 
     const YEARS = [1874, 1875, 1876, 1877, 1878, 1879, 1880];
     const PALISA = [3, 6, 0, 1, 3, 10, 5];
     const WORLD = [3, 11, 12, 9, 9, 10, 3]; // ostatak svijeta (bez Palise)
 
+    const CITY = {
+        hr: { paris: 'Pariz', vienna: 'Beč', pola: 'Pola (Pula)' },
+        en: { paris: 'Paris', vienna: 'Vienna', pola: 'Pola (Pula)' },
+        it: { paris: 'Parigi', vienna: 'Vienna', pola: 'Pola' }
+    }[LANG];
     const OBSERVATORIES = [
-        ['Pola (Pula)', 28], ['Clinton', 22], ['Pariz', 10], ['Marseille', 10], ['Ann Arbor', 6],
-        ['Toulouse', 5], ['Berlin', 2], ['Peking', 1], ['Beč', 1]
+        [CITY.pola, 28], ['Clinton', 22], [CITY.paris, 10], ['Marseille', 10], ['Ann Arbor', 6],
+        ['Toulouse', 5], ['Berlin', 2], ['Peking', 1], [CITY.vienna, 1]
     ];
     const DISCOVERERS = [
         ['Palisa, J.', 28], ['Peters, C. H. F.', 22], ['Watson, J. C.', 7], ['Borrelly, A.', 6],
@@ -93,10 +186,10 @@
     function initTimeline() {
         const track = $('#ph-timeline');
         if (!track) return;
-        track.innerHTML = EVENTS.map(e => `
+        track.innerHTML = EVENTS.map((e, i) => `
             <button type="button" class="ph-event" data-era="${e.era}" data-to="${e.to}">
-                <span class="ph-event__year">${esc(e.y)}</span>
-                <span class="ph-event__text">${esc(e.t)}</span>
+                <span class="ph-event__year">${esc(yr(e.y))}</span>
+                <span class="ph-event__text">${esc(LANG === 'hr' ? e.t : EVENTS_I18N[LANG][i])}</span>
             </button>`).join('');
 
         track.addEventListener('click', e => {
@@ -177,7 +270,7 @@
         if (reduceMotion || !('IntersectionObserver' in window)) return;
         const fmt = (el, v) => {
             const target = Number(el.dataset.count);
-            el.textContent = target >= 1000 ? `${v}.` : String(v);
+            el.textContent = target >= 1000 ? yr(v) : String(v);
         };
         const io = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -226,17 +319,17 @@
         if (!list || !filters) return;
 
         const years = [...new Set(DISCOVERIES.map(d => d[2]))];
-        filters.innerHTML = `<button type="button" class="ph-chip is-active" data-year="all">Sve (${DISCOVERIES.length})</button>` +
-            years.map(y => `<button type="button" class="ph-chip" data-year="${y}">${y}. (${DISCOVERIES.filter(d => d[2] === y).length})</button>`).join('');
+        filters.innerHTML = `<button type="button" class="ph-chip is-active" data-year="all">${UI.all} (${DISCOVERIES.length})</button>` +
+            years.map(y => `<button type="button" class="ph-chip" data-year="${y}">${yr(y)} (${DISCOVERIES.filter(d => d[2] === y).length})</button>`).join('');
 
         list.innerHTML = DISCOVERIES.map(([num, name, year], i) => {
-            const label = name === 'komet' ? 'Komet' : name;
+            const label = name === 'komet' ? UI.comet : name;
             const noteAttr = NOTES[name] ? ` data-note="${esc(name)}"` : '';
             return `<li data-year="${year}">
                 <button type="button" class="ph-disc__item"${noteAttr}${noteAttr ? '' : ' tabindex="-1"'}>
                     <span class="ph-disc__num">${String(i + 1).padStart(2, '0')}. ${esc(num)}</span>
                     <span class="ph-disc__name">${esc(label)}</span>
-                    <span class="ph-disc__year">${year}.</span>
+                    <span class="ph-disc__year">${yr(year)}</span>
                 </button>
             </li>`;
         }).join('');
@@ -292,7 +385,7 @@
                 `<text class="axis-label" x="${m.l - 8}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
         }
 
-        const cols = YEARS.map((yr, i) => {
+        const cols = YEARS.map((year, i) => {
             const cx = m.l + band * i + band / 2;
             const x = cx - bw / 2;
             const p = PALISA[i], w = WORLD[i];
@@ -307,12 +400,12 @@
             return `<g class="col" data-i="${i}">
                 ${palisaPath}${worldPath}
                 <text class="val-label" x="${cx}" y="${wTop - 6}" text-anchor="middle">${totals[i]}</text>
-                <text class="axis-label" x="${cx}" y="${H - 6}" text-anchor="middle">${narrow ? `'${String(yr).slice(2)}.` : `${yr}.`}</text>
+                <text class="axis-label" x="${cx}" y="${H - 6}" text-anchor="middle">${narrow ? `'${String(year).slice(2)}${LANG === 'hr' ? '.' : ''}` : yr(year)}</text>
                 <rect class="hit" x="${m.l + band * i}" y="${m.t}" width="${band}" height="${ih + m.b}"/>
             </g>`;
         }).join('');
 
-        host.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Stupčasti grafikon: broj otkrivenih asteroida po godinama 1874.–1880., Palisa i ostatak svijeta">${grid}<line x1="${m.l}" x2="${W - m.r}" y1="${y(0)}" y2="${y(0)}" stroke="rgba(255,255,255,0.25)"/>${cols}</svg>`;
+        host.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(UI.chartAria)}">${grid}<line x1="${m.l}" x2="${W - m.r}" y1="${y(0)}" y2="${y(0)}" stroke="rgba(255,255,255,0.25)"/>${cols}</svg>`;
 
         // Tooltip
         const tip = document.createElement('div');
@@ -322,11 +415,11 @@
 
         const show = (i, evt) => {
             const total = totals[i];
-            const pct = total ? Math.round((PALISA[i] / total) * 100) : 0;
-            tip.innerHTML = `<div style="font-weight:600;margin-bottom:0.3rem;">${YEARS[i]}.</div>
-                <div class="ph-tooltip__row"><span><i style="background:${cPalisa}"></i>Palisa</span><b>${PALISA[i]}</b></div>
-                <div class="ph-tooltip__row"><span><i style="background:${cWorld}"></i>Ostatak svijeta</span><b>${WORLD[i]}</b></div>
-                <div class="ph-tooltip__row" style="margin-top:0.25rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:0.25rem;"><span>Udio Palise</span><b>${pct} %</b></div>`;
+            const share = total ? Math.round((PALISA[i] / total) * 100) : 0;
+            tip.innerHTML = `<div style="font-weight:600;margin-bottom:0.3rem;">${yr(YEARS[i])}</div>
+                <div class="ph-tooltip__row"><span><i style="background:${cPalisa}"></i>${UI.palisa}</span><b>${PALISA[i]}</b></div>
+                <div class="ph-tooltip__row"><span><i style="background:${cWorld}"></i>${UI.world}</span><b>${WORLD[i]}</b></div>
+                <div class="ph-tooltip__row" style="margin-top:0.25rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:0.25rem;"><span>${UI.share}</span><b>${pct(share)}</b></div>`;
             tip.classList.add('is-visible');
             const px = evt.clientX, py = evt.clientY;
             const r = tip.getBoundingClientRect();
@@ -354,13 +447,13 @@
         // Tablični prikaz
         const table = $('#ph-chart-table');
         const toggle = $('.ph-table-toggle');
-        $('tbody', table).innerHTML = YEARS.map((yr, i) => `<tr><td>${yr}.</td><td>${PALISA[i]}</td><td>${WORLD[i]}</td><td>${totals[i]}</td><td>${Math.round((PALISA[i] / totals[i]) * 100)} %</td></tr>`).join('') +
-            `<tr><td><strong>Ukupno</strong></td><td><strong>${PALISA.reduce((a, b) => a + b)}</strong></td><td><strong>${WORLD.reduce((a, b) => a + b)}</strong></td><td><strong>${totals.reduce((a, b) => a + b)}</strong></td><td></td></tr>`;
+        $('tbody', table).innerHTML = YEARS.map((year, i) => `<tr><td>${yr(year)}</td><td>${PALISA[i]}</td><td>${WORLD[i]}</td><td>${totals[i]}</td><td>${pct(Math.round((PALISA[i] / totals[i]) * 100))}</td></tr>`).join('') +
+            `<tr><td><strong>${UI.total}</strong></td><td><strong>${PALISA.reduce((a, b) => a + b)}</strong></td><td><strong>${WORLD.reduce((a, b) => a + b)}</strong></td><td><strong>${totals.reduce((a, b) => a + b)}</strong></td><td></td></tr>`;
         toggle.addEventListener('click', () => {
             const open = table.hidden;
             table.hidden = !open;
             toggle.setAttribute('aria-expanded', String(open));
-            toggle.textContent = open ? 'Sakrij tablicu' : 'Prikaži tablicu';
+            toggle.textContent = open ? UI.hideTable : UI.showTable;
         });
     }
 
@@ -450,7 +543,7 @@
         initReveal();
         initDiscoveries();
         initChart();
-        renderRank($('#ph-rank-obs'), OBSERVATORIES, 'Pola (Pula)');
+        renderRank($('#ph-rank-obs'), OBSERVATORIES, CITY.pola);
         renderRank($('#ph-rank-people'), DISCOVERERS, 'Palisa, J.');
         initInstruments();
         initPlan();

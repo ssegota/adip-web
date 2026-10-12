@@ -13,16 +13,25 @@
 (function () {
   'use strict';
 
+  /* Jezik (hr / en / it) — getCurrentLang() dolazi iz main.js.
+   * L(hr, en, it) vraća tekst za trenutni jezik; hrvatski je izvorni. */
+  const LANG = (typeof getCurrentLang === 'function') ? getCurrentLang() : 'hr';
+  function L(hr, en, it) {
+    if (LANG === 'en') return en;
+    if (LANG === 'it') return it;
+    return hr;
+  }
+
   const SPREMNIK = 'adip_oprema';
 
   /* Tipične vrijednosti za brzi početak */
   const PRESET_TELESKOPI = [
-    { ime: 'Zeiss Coudé 200/3000 (Zvjezdarnica)', d: 200, f: 3000 },
+    { ime: L('Zeiss Coudé 200/3000 (Zvjezdarnica)', 'Zeiss Coudé 200/3000 (Observatory)', 'Zeiss Coudé 200/3000 (Osservatorio)'), d: 200, f: 3000 },
     { ime: 'Newton 150/750', d: 150, f: 750 },
     { ime: 'Newton 200/1000', d: 200, f: 1000 },
     { ime: 'SC 203/2032 (C8)', d: 203, f: 2032 },
-    { ime: 'Refraktor 80/600 (ED)', d: 80, f: 600 },
-    { ime: 'Refraktor 102/1000', d: 102, f: 1000 },
+    { ime: L('Refraktor 80/600 (ED)', 'Refractor 80/600 (ED)', 'Rifrattore 80/600 (ED)'), d: 80, f: 600 },
+    { ime: L('Refraktor 102/1000', 'Refractor 102/1000', 'Rifrattore 102/1000'), d: 102, f: 1000 },
     { ime: 'Maksutov 127/1500', d: 127, f: 1500 },
     { ime: 'Dobson 250/1200', d: 250, f: 1200 }
   ];
@@ -94,24 +103,25 @@
   /* Ocjena uzorkovanja: pravilo je ~2 piksela po FWHM zvijezde.
    * Uz tipično seeing 2–3" kod nas, ciljamo 0,7–1,5 "/px. */
   function ocjenaUzorkovanja(skala) {
-    if (skala < 0.4) return { tekst: 'jako preuzorkovano — slika je "prazna", razmisli o reduktoru', boja: '#ffb020' };
-    if (skala < 0.7) return { tekst: 'preuzorkovano za naše seeing uvjete', boja: '#ffb020' };
-    if (skala <= 2.0) return { tekst: 'dobro uzorkovanje za planetarnu i deep-sky snimku', boja: '#00ff88' };
-    if (skala <= 4.0) return { tekst: 'poduzorkovano — široko polje, zvijezde kvadratične', boja: '#ffb020' };
-    return { tekst: 'jako poduzorkovano — samo za vrlo široko polje', boja: '#ff6b6b' };
+    if (skala < 0.4) return { tekst: L('jako preuzorkovano — slika je "prazna", razmisli o reduktoru', 'heavily oversampled — the image is "empty", consider a focal reducer', 'fortemente sovracampionato — l\'immagine è "vuota", valuta un riduttore di focale'), boja: '#ffb020' };
+    if (skala < 0.7) return { tekst: L('preuzorkovano za naše seeing uvjete', 'oversampled for our seeing conditions', 'sovracampionato per il nostro seeing'), boja: '#ffb020' };
+    if (skala <= 2.0) return { tekst: L('dobro uzorkovanje za planetarnu i deep-sky snimku', 'good sampling for planetary and deep-sky imaging', 'buon campionamento per riprese planetarie e deep-sky'), boja: '#00ff88' };
+    if (skala <= 4.0) return { tekst: L('poduzorkovano — široko polje, zvijezde kvadratične', 'undersampled — wide field, square-looking stars', 'sottocampionato — campo largo, stelle squadrate'), boja: '#ffb020' };
+    return { tekst: L('jako poduzorkovano — samo za vrlo široko polje', 'heavily undersampled — only for very wide fields', 'fortemente sottocampionato — solo per campi molto larghi'), boja: '#ff6b6b' };
   }
 
   function ocjenaZjenice(z) {
-    if (z > 7) return { tekst: 'šire od zjenice oka — dio svjetla se gubi', boja: '#ffb020' };
-    if (z > 5) return { tekst: 'najsvjetlije, idealno za maglice pod tamnim nebom', boja: '#00ff88' };
-    if (z >= 2) return { tekst: 'svestrano, dobra ravnoteža', boja: '#00ff88' };
-    if (z >= 0.7) return { tekst: 'veliko povećanje, za planete i dvojne zvijezde', boja: '#00ff88' };
-    return { tekst: 'prazno povećanje — slika je tamna i mutna', boja: '#ff6b6b' };
+    if (z > 7) return { tekst: L('šire od zjenice oka — dio svjetla se gubi', 'wider than the eye\'s pupil — some light is lost', 'più larga della pupilla dell\'occhio — parte della luce va persa'), boja: '#ffb020' };
+    if (z > 5) return { tekst: L('najsvjetlije, idealno za maglice pod tamnim nebom', 'brightest view, ideal for nebulae under dark skies', 'immagine più luminosa, ideale per nebulose sotto cieli bui'), boja: '#00ff88' };
+    if (z >= 2) return { tekst: L('svestrano, dobra ravnoteža', 'versatile, a good balance', 'versatile, un buon compromesso'), boja: '#00ff88' };
+    if (z >= 0.7) return { tekst: L('veliko povećanje, za planete i dvojne zvijezde', 'high magnification, for planets and double stars', 'alto ingrandimento, per pianeti e stelle doppie'), boja: '#00ff88' };
+    return { tekst: L('prazno povećanje — slika je tamna i mutna', 'empty magnification — the image is dark and blurry', 'ingrandimento vuoto — l\'immagine è scura e sfocata'), boja: '#ff6b6b' };
   }
 
   function fmt(x, dec) {
     if (x === null || x === undefined || !Number.isFinite(x)) return '–';
-    return x.toFixed(dec === undefined ? 1 : dec).replace('.', ',');
+    const s = x.toFixed(dec === undefined ? 1 : dec);
+    return LANG === 'en' ? s : s.replace('.', ',');
   }
 
   function stupnjevi(deg) {
@@ -184,22 +194,22 @@
 
     if (!d || !f) {
       izlaz.innerHTML = `<p style="color: var(--text-muted); padding: 1rem;">
-        Upiši barem otvor i žarišnu duljinu teleskopa.</p>`;
+        ${L('Upiši barem otvor i žarišnu duljinu teleskopa.', 'Enter at least the telescope aperture and focal length.', 'Inserisci almeno l\'apertura e la lunghezza focale del telescopio.')}</p>`;
       return;
     }
 
     let html = '';
 
     /* --- Teleskop --- */
-    html += `<h4 style="color: var(--accent-primary); margin: 1rem 0 0.5rem;">Teleskop</h4>`;
-    html += red('Svjetlosni omjer', `f/${fmt((f * barlow) / d, 1)}`,
-      barlow !== 1 ? `s Barlowom ×${fmt(barlow, 1)}` : '');
-    html += red('Granična magnituda', `${fmt(2.7 + 5 * Math.log10(d), 1)} mag`,
-      'vizualno, pod tamnim nebom');
-    html += red('Razlučivanje', `${fmt(116 / d, 2)}″`,
+    html += `<h4 style="color: var(--accent-primary); margin: 1rem 0 0.5rem;">${L('Teleskop', 'Telescope', 'Telescopio')}</h4>`;
+    html += red(L('Svjetlosni omjer', 'Focal ratio', 'Rapporto focale'), `f/${fmt((f * barlow) / d, 1)}`,
+      barlow !== 1 ? `${L('s Barlowom', 'with Barlow', 'con Barlow')} ×${fmt(barlow, 1)}` : '');
+    html += red(L('Granična magnituda', 'Limiting magnitude', 'Magnitudine limite'), `${fmt(2.7 + 5 * Math.log10(d), 1)} mag`,
+      L('vizualno, pod tamnim nebom', 'visual, under dark skies', 'visuale, sotto cielo buio'));
+    html += red(L('Razlučivanje', 'Resolution', 'Risoluzione'), `${fmt(116 / d, 2)}″`,
       `Dawes · Rayleigh ${fmt(138 / d, 2)}″`);
-    html += red('Korisno povećanje', `${fmt(d / 7, 0)}× – ${fmt(2 * d, 0)}×`,
-      'iznad gornje granice slika više ne dobiva detalje');
+    html += red(L('Korisno povećanje', 'Useful magnification', 'Ingrandimento utile'), `${fmt(d / 7, 0)}× – ${fmt(2 * d, 0)}×`,
+      L('iznad gornje granice slika više ne dobiva detalje', 'above the upper limit the image gains no further detail', 'oltre il limite superiore l\'immagine non guadagna più dettagli'));
 
     /* --- Okular --- */
     const viz = izracunajVizualno(d, f, fOk, afov, barlow);
@@ -207,14 +217,14 @@
       const oz = ocjenaZjenice(viz.izlaznaZjenica);
       const preveliko = viz.povecanje > viz.maxKorisno;
 
-      html += `<h4 style="color: var(--accent-primary); margin: 1.5rem 0 0.5rem;">S okularom</h4>`;
-      html += red('Povećanje', `${fmt(viz.povecanje, 0)}×`,
-        preveliko ? 'iznad korisne granice za ovaj otvor' : '',
+      html += `<h4 style="color: var(--accent-primary); margin: 1.5rem 0 0.5rem;">${L('S okularom', 'With eyepiece', 'Con oculare')}</h4>`;
+      html += red(L('Povećanje', 'Magnification', 'Ingrandimento'), `${fmt(viz.povecanje, 0)}×`,
+        preveliko ? L('iznad korisne granice za ovaj otvor', 'above the useful limit for this aperture', 'oltre il limite utile per questa apertura') : '',
         preveliko ? '#ffb020' : null);
-      html += red('Izlazna zjenica', `${fmt(viz.izlaznaZjenica, 2)} mm`, oz.tekst, oz.boja);
+      html += red(L('Izlazna zjenica', 'Exit pupil', 'Pupilla d\'uscita'), `${fmt(viz.izlaznaZjenica, 2)} mm`, oz.tekst, oz.boja);
       if (viz.tfovDeg) {
-        html += red('Stvarno vidno polje', stupnjevi(viz.tfovDeg),
-          `Mjesec je ~31′ — stane ${fmt(viz.tfovMin / 31, 1)}×`);
+        html += red(L('Stvarno vidno polje', 'True field of view', 'Campo reale'), stupnjevi(viz.tfovDeg),
+          `${L('Mjesec je ~31′ — stane', 'The Moon is ~31′ — fits', 'La Luna è ~31′ — ci sta')} ${fmt(viz.tfovMin / 31, 1)}×`);
       }
     }
 
@@ -223,21 +233,23 @@
     if (foto) {
       const ou = ocjenaUzorkovanja(foto.skala);
 
-      html += `<h4 style="color: var(--accent-primary); margin: 1.5rem 0 0.5rem;">S kamerom</h4>`;
-      html += red('Skala slike', `${fmt(foto.skala, 2)} ″/px`, ou.tekst, ou.boja);
+      html += `<h4 style="color: var(--accent-primary); margin: 1.5rem 0 0.5rem;">${L('S kamerom', 'With camera', 'Con fotocamera')}</h4>`;
+      html += red(L('Skala slike', 'Image scale', 'Scala dell\'immagine'), `${fmt(foto.skala, 2)} ″/px`, ou.tekst, ou.boja);
 
       if (foto.fovSirinaMin) {
-        html += red('Vidno polje',
+        html += red(L('Vidno polje', 'Field of view', 'Campo inquadrato'),
           `${fmt(foto.fovSirinaMin, 1)}′ × ${fmt(foto.fovVisinaMin, 1)}′`,
-          `senzor ${fmt(foto.senzorSirinaMm, 1)} × ${fmt(foto.senzorVisinaMm, 1)} mm · ` +
-          `Mjesec zauzima ${fmt(31 / foto.fovSirinaMin * 100, 0)}% širine`);
+          `${L('senzor', 'sensor', 'sensore')} ${fmt(foto.senzorSirinaMm, 1)} × ${fmt(foto.senzorVisinaMm, 1)} mm · ` +
+          L(`Mjesec zauzima ${fmt(31 / foto.fovSirinaMin * 100, 0)}% širine`,
+            `the Moon spans ${fmt(31 / foto.fovSirinaMin * 100, 0)}% of the width`,
+            `la Luna occupa il ${fmt(31 / foto.fovSirinaMin * 100, 0)}% della larghezza`));
       }
 
       // NPF-ish granica ekspozicije bez praćenja (samo za kratke žarišne)
       if (f <= 300) {
         const sek = 500 / (f * barlow);
-        html += red('Najdulja ekspozicija bez praćenja', `≈ ${fmt(sek, 1)} s`,
-          'pravilo 500/f — dulje od toga zvijezde se izvlače u crtice');
+        html += red(L('Najdulja ekspozicija bez praćenja', 'Longest exposure without tracking', 'Posa massima senza inseguimento'), `≈ ${fmt(sek, 1)} s`,
+          L('pravilo 500/f — dulje od toga zvijezde se izvlače u crtice', '500/f rule — any longer and stars trail into streaks', 'regola del 500/f — oltre, le stelle diventano strisciate'));
       }
     }
 
@@ -257,9 +269,9 @@
     card.id = 'oprema-card';
     card.style.cursor = 'pointer';
     card.innerHTML = `
-      <h3 class="service-title">Kalkulator opreme</h3>
+      <h3 class="service-title">${L('Kalkulator opreme', 'Equipment Calculator', 'Calcolatore di strumentazione')}</h3>
       <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">
-        Povećanje, vidno polje, skala slike</p>`;
+        ${L('Povećanje, vidno polje, skala slike', 'Magnification, field of view, image scale', 'Ingrandimento, campo visivo, scala dell\'immagine')}</p>`;
 
     card.addEventListener('click', () => window.openOpremaModal());
     grid.appendChild(card);
@@ -291,7 +303,7 @@
     const modal = document.getElementById('service-modal');
     if (!modal) return;
 
-    document.getElementById('modal-title').textContent = 'Kalkulator opreme';
+    document.getElementById('modal-title').textContent = L('Kalkulator opreme', 'Equipment Calculator', 'Calcolatore di strumentazione');
 
     const polje = (id, oznaka, placeholder, korak) => `
       <div class="form-group" style="margin-bottom: 0.75rem;">
@@ -305,42 +317,48 @@
                   gap: 2rem; align-items: start;">
 
         <div>
-          <h4 style="color: var(--accent-primary); margin-bottom: 0.75rem;">Teleskop</h4>
+          <h4 style="color: var(--accent-primary); margin-bottom: 0.75rem;">${L('Teleskop', 'Telescope', 'Telescopio')}</h4>
           <div class="form-group" style="margin-bottom: 0.75rem;">
-            <label class="form-label">Brzi odabir</label>
+            <label class="form-label">${L('Brzi odabir', 'Quick select', 'Selezione rapida')}</label>
             <select class="form-input" onchange="oprema_presetTeleskop(this.value)">
-              <option value="">— odaberi ili upiši ručno —</option>
+              <option value="">${L('— odaberi ili upiši ručno —', '— choose or enter manually —', '— scegli o inserisci a mano —')}</option>
               ${opcije(PRESET_TELESKOPI)}
             </select>
           </div>
-          ${polje('tel-d', 'Otvor objektiva (mm)', 'npr. 200')}
-          ${polje('tel-f', 'Žarišna duljina (mm)', 'npr. 1000')}
-          ${polje('barlow', 'Barlow / reduktor (×)', '1 = bez, 2 = Barlow ×2, 0.63 = reduktor', '0.01')}
+          ${polje('tel-d', L('Otvor objektiva (mm)', 'Aperture (mm)', 'Apertura (mm)'), L('npr. 200', 'e.g. 200', 'es. 200'))}
+          ${polje('tel-f', L('Žarišna duljina (mm)', 'Focal length (mm)', 'Lunghezza focale (mm)'), L('npr. 1000', 'e.g. 1000', 'es. 1000'))}
+          ${polje('barlow', L('Barlow / reduktor (×)', 'Barlow / reducer (×)', 'Barlow / riduttore (×)'), L('1 = bez, 2 = Barlow ×2, 0.63 = reduktor', '1 = none, 2 = Barlow ×2, 0.63 = reducer', '1 = nessuno, 2 = Barlow ×2, 0.63 = riduttore'), '0.01')}
 
-          <h4 style="color: var(--accent-primary); margin: 1.5rem 0 0.75rem;">Okular</h4>
-          ${polje('ok-f', 'Žarišna duljina okulara (mm)', 'npr. 10')}
-          ${polje('ok-afov', 'Prividno vidno polje (°)', 'npr. 52 · Plössl 50, širokokutni 68–82')}
+          <h4 style="color: var(--accent-primary); margin: 1.5rem 0 0.75rem;">${L('Okular', 'Eyepiece', 'Oculare')}</h4>
+          ${polje('ok-f', L('Žarišna duljina okulara (mm)', 'Eyepiece focal length (mm)', 'Lunghezza focale dell\'oculare (mm)'), L('npr. 10', 'e.g. 10', 'es. 10'))}
+          ${polje('ok-afov', L('Prividno vidno polje (°)', 'Apparent field of view (°)', 'Campo apparente (°)'), L('npr. 52 · Plössl 50, širokokutni 68–82', 'e.g. 52 · Plössl 50, wide-angle 68–82', 'es. 52 · Plössl 50, grandangolare 68–82'))}
 
-          <h4 style="color: var(--accent-primary); margin: 1.5rem 0 0.75rem;">Kamera</h4>
+          <h4 style="color: var(--accent-primary); margin: 1.5rem 0 0.75rem;">${L('Kamera', 'Camera', 'Fotocamera')}</h4>
           <div class="form-group" style="margin-bottom: 0.75rem;">
-            <label class="form-label">Brzi odabir</label>
+            <label class="form-label">${L('Brzi odabir', 'Quick select', 'Selezione rapida')}</label>
             <select class="form-input" onchange="oprema_presetKamera(this.value)">
-              <option value="">— odaberi ili upiši ručno —</option>
+              <option value="">${L('— odaberi ili upiši ručno —', '— choose or enter manually —', '— scegli o inserisci a mano —')}</option>
               ${opcije(PRESET_KAMERE)}
             </select>
           </div>
-          ${polje('cam-px', 'Veličina piksela (µm)', 'npr. 3.76', '0.01')}
-          ${polje('cam-w', 'Širina senzora (px)', 'npr. 3008', '1')}
-          ${polje('cam-h', 'Visina senzora (px)', 'npr. 3008', '1')}
+          ${polje('cam-px', L('Veličina piksela (µm)', 'Pixel size (µm)', 'Dimensione del pixel (µm)'), L('npr. 3.76', 'e.g. 3.76', 'es. 3.76'), '0.01')}
+          ${polje('cam-w', L('Širina senzora (px)', 'Sensor width (px)', 'Larghezza del sensore (px)'), L('npr. 3008', 'e.g. 3008', 'es. 3008'), '1')}
+          ${polje('cam-h', L('Visina senzora (px)', 'Sensor height (px)', 'Altezza del sensore (px)'), L('npr. 3008', 'e.g. 3008', 'es. 3008'), '1')}
         </div>
 
         <div>
-          <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">Rezultat</h3>
+          <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">${L('Rezultat', 'Result', 'Risultato')}</h3>
           <div id="oprema-rezultat" style="font-size: 0.95rem;"></div>
           <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 1.5rem; line-height: 1.6;">
-            Granica korisnog povećanja (2× otvor u mm) vrijedi za dobre uvjete;
+            ${L(`Granica korisnog povećanja (2× otvor u mm) vrijedi za dobre uvjete;
             po lošijem seeingu praktična granica je bliža 1,5×. Skala slike računa se
-            za binning 1×1. Vrijednosti se pamte u ovom pregledniku.
+            za binning 1×1. Vrijednosti se pamte u ovom pregledniku.`,
+            `The useful magnification limit (2× the aperture in mm) applies in good conditions;
+            in poorer seeing the practical limit is closer to 1.5×. The image scale is calculated
+            for 1×1 binning. Values are remembered in this browser.`,
+            `Il limite di ingrandimento utile (2× l'apertura in mm) vale in buone condizioni;
+            con seeing peggiore il limite pratico è più vicino a 1,5×. La scala dell'immagine è calcolata
+            per il binning 1×1. I valori vengono memorizzati in questo browser.`)}
           </p>
         </div>
       </div>

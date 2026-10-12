@@ -579,14 +579,20 @@ app.delete('/api/radovi/:id', (req, res) => {
 
 // Update Gallery Image description
 // Kao i kod brisanja, slika se traži po normaliziranoj putanji u svim kategorijama.
-// Ako je opis višejezični objekt ({hr, en, it}), mijenja se samo hrvatski tekst.
+// Ako se pošalje samo tekst, mijenja se hrvatski opis, a postojeći prijevodi ostaju.
 app.post('/api/galerija/update', (req, res) => {
     const normalize = p => String(p || '').replace(/^\/+/, '');
     const target = normalize(req.body && req.body.src);
-    const description = String((req.body && req.body.description) || '').trim();
+    const raw = req.body && req.body.description;
     if (!target) {
         return res.status(400).json({ success: false, message: 'Missing src' });
     }
+
+    // Opis je ili običan tekst (samo hrvatski) ili objekt {hr, en, it}
+    const clean = v => String(v || '').trim();
+    const incoming = raw && typeof raw === 'object'
+        ? { hr: clean(raw.hr), en: clean(raw.en), it: clean(raw.it) }
+        : { hr: clean(raw) };
 
     fs.readFile(GALLERY_FILE, 'utf8', (err, data) => {
         if (err) {
@@ -605,11 +611,12 @@ app.post('/api/galerija/update', (req, res) => {
             if (!Array.isArray(list)) return;
             list.forEach(img => {
                 if (normalize(img.src) !== target) return;
-                if (img.description && typeof img.description === 'object') {
-                    img.description.hr = description;
-                } else {
-                    img.description = description;
-                }
+                const current = img.description && typeof img.description === 'object'
+                    ? img.description
+                    : { hr: String(img.description || '') };
+                const merged = Object.assign({}, current, incoming);
+                // Bez prijevoda ostaje običan tekst, kao kod uploada
+                img.description = (merged.en || merged.it) ? merged : merged.hr;
                 updated = img.description;
             });
         };

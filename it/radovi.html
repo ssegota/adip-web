@@ -45,8 +45,21 @@
 </head>
 
 <body>
+    <!-- Header injected by main.js/desktop nav or manually here if needed. 
+       Since this is a new modern page, we can use the same structure as aktivnosti.html 
+       OR use inject-header strategy. Since index.html has hardcoded header, 
+       we'll copy the header structure for consistency implicitly via main.js? 
+       No, main.js does NOT inject header. inject-header.js does. 
+       Let's stick to the convention: hardcode header for modern pages or include inject-header.js. 
+       Legacy pages use inject-header.js. Modern pages (aktivnosti.html) have it hardcoded.
+       I will hardcode it here for stability.
+  -->
+
     <header class="header">
-        <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span><span></span><span></span>
+        </div>
+
         <a href="index.html" class="header__logo">
             <img src="../sites/all/themes/black_hole/logo.png" alt="ADIP Logo">
             <div>
@@ -54,6 +67,7 @@
                 <div class="header__subtitle">Società Astronomica "Istra" Pola</div>
             </div>
         </a>
+
         <nav class="nav" id="main-nav">
             <button class="nav__close" id="nav-close">✕</button>
             <a href="index.html" class="nav__link">Home</a>
@@ -64,6 +78,7 @@
             <a href="radovi.html" class="nav__link active">Pubblicazioni</a>
             <a href="servisi.html" class="nav__link">Servizi</a>
             <a href="downloads.html" class="nav__link">Download</a>
+            <a href="../tecaj/index.html" class="nav__link">Corso di astronomia</a>
             <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">Chi siamo</a>
             <div class="nav__spacer"></div>
             <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Accedi</button>
@@ -85,7 +100,7 @@
         <section class="section">
             <div class="container">
                 <div class="section__header">
-                    <h1 class="section__title">Pubblicazioni <span class="text-gradient">scientifiche</span></h1>
+                    <h1 class="section__title">Pubblicazioni <span class="text-gradient">scientifiche</span> e professionali</h1>
                     <p class="section__subtitle">Pubblicazioni, articoli e ricerche dei nostri membri</p>
                 </div>
 
@@ -110,9 +125,9 @@
                                 <input type="number" name="year" value="2024" required>
                             </div>
                             <div class="form-group">
-                                <label>Tipo</label>
+                                <label>Tipo di voce</label>
                                 <select name="type" id="upload-type-select">
-                                    <option value="link">Link Web</option>
+                                    <option value="link">Link web</option>
                                     <option value="pdf">File PDF</option>
                                 </select>
                             </div>
@@ -130,7 +145,7 @@
 
 
 
-                        <button type="submit" class="btn btn--primary">Aggiungi Pubblicazione</button>
+                        <button type="submit" class="btn btn--primary">Aggiungi pubblicazione</button>
                         <p id="radovi-message" style="margin-top: 0.5rem; font-weight: bold;"></p>
                     </form>
                 </div>
@@ -216,7 +231,7 @@
                         </div>
 
                         <button id="reset-filters" class="btn btn--secondary"
-                            style="width: 100%; font-size: 0.9rem;">Reimposta Filtri</button>
+                            style="width: 100%; font-size: 0.9rem;">Reimposta filtri</button>
                     </aside>
 
                     <!-- Main Content -->
@@ -246,36 +261,12 @@
             <strong>Società Astronomica "Istra" Pola</strong><br>
             <a href="https://www.ztkpula.hr/hr/" target="_blank"
                 style="color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.5);">Associazione
-                della Cultura Tecnica Pola</a><br>
+                della Cultura Tecnica di Pola</a><br>
             Glavinićev uspon 1, 52100 Pola - HR<br>
-            Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: +385 91 214 1966
+            Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: 091/214-1966<br>
+            <span style="color: var(--text-muted);">(Osservatorio, Park Monte Zaro 2, Pola)</span>
         </div>
     </footer>
-
-    <!-- Login Modal -->
-    <div class="modal-overlay" id="login-modal">
-        <div class="modal">
-            <div class="modal__header">
-                <h3 class="modal__title">Accedi</h3>
-                <p style="color: var(--text-secondary);">Inserisci le tue credenziali</p>
-            </div>
-            <form id="login-form">
-                <div class="form-group">
-                    <label class="form-label">Nome utente</label>
-                    <input type="text" class="form-input" id="login-username" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Password</label>
-                    <input type="password" class="form-input" id="login-password" required>
-                </div>
-                <div id="login-message" style="margin-bottom: 1rem; font-size: 0.9rem;"></div>
-                <button type="submit" class="btn btn--primary" style="width: 100%;">Accedi</button>
-            </form>
-            <button class="btn btn--secondary" style="width: 100%; margin-top: 0.5rem;"
-                id="close-modal">Annulla</button>
-        </div>
-    </div>
-
     <script src="../js/main.js?v=20260928"></script>
     <script>
         // Toggle inputs based on type

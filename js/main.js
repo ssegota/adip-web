@@ -258,6 +258,26 @@ function t(key) {
     return translations[lang][key] || key;
 }
 
+// Jezik knjige u katalogu (books.csv) je na hrvatskom
+const BOOK_LANGUAGES = {
+    'Njemački': { en: 'German', it: 'Tedesco' },
+    'Talijanski': { en: 'Italian', it: 'Italiano' },
+    'Engleski': { en: 'English', it: 'Inglese' },
+    'Hrvatski': { en: 'Croatian', it: 'Croato' },
+    'Francuski': { en: 'French', it: 'Francese' },
+    'Latinski': { en: 'Latin', it: 'Latino' }
+};
+
+function translateBookLanguage(value) {
+    const known = BOOK_LANGUAGES[value];
+    return known ? tr({ hr: value, en: known.en, it: known.it }) : value;
+}
+
+// Kratki tekstovi izvan rječnika: tr({ hr, en, it })
+function tr(texts) {
+    return texts[getCurrentLang()] || texts.hr;
+}
+
 let allActivitiesData = [];
 
 /* ==================== Helpers ==================== */
@@ -1057,15 +1077,17 @@ function initPasswordToggles() {
         btn.type = 'button';
         btn.className = 'password-toggle';
         btn.innerHTML = eyeOpen;
-        btn.setAttribute('aria-label', 'Prikaži lozinku');
-        btn.title = 'Prikaži lozinku';
+        const showLabel = tr({ hr: 'Prikaži lozinku', en: 'Show password', it: 'Mostra password' });
+        const hideLabel = tr({ hr: 'Sakrij lozinku', en: 'Hide password', it: 'Nascondi password' });
+        btn.setAttribute('aria-label', showLabel);
+        btn.title = showLabel;
 
         btn.addEventListener('click', () => {
             const show = input.type === 'password';
             input.type = show ? 'text' : 'password';
             btn.innerHTML = show ? eyeClosed : eyeOpen;
-            btn.setAttribute('aria-label', show ? 'Sakrij lozinku' : 'Prikaži lozinku');
-            btn.title = show ? 'Sakrij lozinku' : 'Prikaži lozinku';
+            btn.setAttribute('aria-label', show ? hideLabel : showLabel);
+            btn.title = show ? hideLabel : showLabel;
             input.focus();
         });
 
@@ -1397,7 +1419,7 @@ function ensureEditForm() {
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
             <div class="form-group">
                 <label class="form-label" for="edit-date">${t('editDate')}</label>
-                <input type="text" class="form-input" id="edit-date" placeholder="npr. 15. 03. 2026.">
+                <input type="text" class="form-input" id="edit-date" placeholder="${tr({ hr: 'npr. 15. 03. 2026.', en: 'e.g. 15. 03. 2026.', it: 'es. 15. 03. 2026.' })}">
             </div>
             <div class="form-group">
                 <label class="form-label" for="edit-year">${t('editYear')}</label>
@@ -1830,10 +1852,10 @@ function ensureLightbox() {
         lightbox.id = 'lightbox';
         lightbox.innerHTML = `
             <div class="lightbox__content">
-                <button class="lightbox__close" aria-label="Zatvori">&times;</button>
-                <button class="lightbox__nav lightbox__nav--prev" aria-label="Prethodna">&#10094;</button>
+                <button class="lightbox__close" aria-label="${tr({ hr: 'Zatvori', en: 'Close', it: 'Chiudi' })}">&times;</button>
+                <button class="lightbox__nav lightbox__nav--prev" aria-label="${tr({ hr: 'Prethodna', en: 'Previous', it: 'Precedente' })}">&#10094;</button>
                 <img class="lightbox__image" id="lightbox-image" src="" alt="">
-                <button class="lightbox__nav lightbox__nav--next" aria-label="Sljedeća">&#10095;</button>
+                <button class="lightbox__nav lightbox__nav--next" aria-label="${tr({ hr: 'Sljedeća', en: 'Next', it: 'Successiva' })}">&#10095;</button>
                 <div class="lightbox__caption" id="lightbox-caption"></div>
                 <div class="lightbox__counter" id="lightbox-counter"></div>
             </div>
@@ -2049,8 +2071,8 @@ window.deleteGalleryImage = async function (src, category, containerId) {
     }
 };
 
-// Uređivanje opisa slike (samo prijavljeni). Mijenja se hrvatski opis;
-// prijevodi u višejezičnim opisima ostaju netaknuti.
+// Uređivanje opisa slike (samo prijavljeni), na hrvatskom, engleskom i talijanskom.
+// Prazan prijevod znači da se na tom jeziku prikazuje hrvatski opis.
 function editGalleryDescription(img, containerId) {
     if (!img) return;
 
@@ -2061,14 +2083,16 @@ function editGalleryDescription(img, containerId) {
         overlay.className = 'modal-overlay';
         overlay.innerHTML = `
             <div class="modal" style="max-width: 600px;">
-                <button type="button" class="modal__close" data-close aria-label="Zatvori">&times;</button>
+                <button type="button" class="modal__close" data-close aria-label="${escapeHtml(tr({ hr: 'Zatvori', en: 'Close', it: 'Chiudi' }))}">&times;</button>
                 <div class="modal__header">
                     <h3 class="modal__title">${escapeHtml(t('editDescription'))}</h3>
                 </div>
                 <img class="gallery-edit__preview" alt="" style="width: 100%; max-height: 220px; object-fit: contain; border-radius: 8px; margin-bottom: 1rem;">
+                ${['hr', 'en', 'it'].map(l => `
                 <div class="form-group">
-                    <textarea class="form-textarea gallery-edit__text" rows="5"></textarea>
-                </div>
+                    <label class="form-label" for="gallery-edit-${l}">${{ hr: 'Hrvatski', en: 'English', it: 'Italiano' }[l]}</label>
+                    <textarea class="form-textarea gallery-edit__text" id="gallery-edit-${l}" data-lang="${l}" rows="3"></textarea>
+                </div>`).join('')}
                 <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
                     <button type="button" class="btn btn--secondary" data-close>${escapeHtml(t('cancel'))}</button>
                     <button type="button" class="btn btn--primary gallery-edit__save">${escapeHtml(t('save'))}</button>
@@ -2088,18 +2112,18 @@ function editGalleryDescription(img, containerId) {
         overlay.close = close;
     }
 
-    const textarea = overlay.querySelector('.gallery-edit__text');
+    const fields = Array.from(overlay.querySelectorAll('.gallery-edit__text'));
     const saveBtn = overlay.querySelector('.gallery-edit__save');
     const preview = overlay.querySelector('.gallery-edit__preview');
     const current = img.description && typeof img.description === 'object'
-        ? (img.description.hr || '')
-        : (img.description || '');
+        ? img.description
+        : { hr: img.description || '' };
 
     setThumbSrc(preview, img.src.startsWith('/') ? img.src : '/' + img.src);
-    textarea.value = current;
+    fields.forEach(f => { f.value = current[f.dataset.lang] || ''; });
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
-    textarea.focus();
+    (fields.find(f => f.dataset.lang === getCurrentLang()) || fields[0]).focus();
 
     saveBtn.onclick = async () => {
         saveBtn.disabled = true;
@@ -2107,7 +2131,10 @@ function editGalleryDescription(img, containerId) {
             const res = await fetch('/api/galerija/update', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ src: img.src, description: textarea.value })
+                body: JSON.stringify({
+                    src: img.src,
+                    description: Object.fromEntries(fields.map(f => [f.dataset.lang, f.value]))
+                })
             });
             const data = await res.json().catch(() => ({}));
             if (res.ok && data.success) {
@@ -2242,7 +2269,9 @@ function renderActivityGallery(filterYear = 'all') {
     });
 
     if (countEl) {
-        countEl.textContent = `${activityGalleryShown.length} ${activityGalleryShown.length === 1 ? 'slika' : 'slika'}`;
+        countEl.textContent = `${activityGalleryShown.length} ${activityGalleryShown.length === 1
+            ? tr({ hr: 'slika', en: 'photo', it: 'foto' })
+            : tr({ hr: 'slika', en: 'photos', it: 'foto' })}`;
     }
 }
 
@@ -2252,7 +2281,6 @@ async function loadLibraryCatalog(containerId) {
     if (!container) return;
 
     const isSubdir = window.location.pathname.includes('/en/') || window.location.pathname.includes('/it/');
-    const isEnglish = window.location.pathname.includes('/en/');
     const csvPath = isSubdir ? '../books.csv' : 'books.csv';
 
     try {
@@ -2268,9 +2296,11 @@ async function loadLibraryCatalog(containerId) {
         renderLibraryCatalog(books, container);
     } catch (err) {
         console.error('Error loading library catalog:', err);
-        const errorMsg = isEnglish
-            ? 'Error loading data. If using local files, please use a local server (node server.js).'
-            : 'Greška pri učitavanju. Ako koristite lokalne datoteke, molimo pokrenite lokalni server (node server.js).';
+        const errorMsg = tr({
+            hr: 'Greška pri učitavanju. Ako koristite lokalne datoteke, molimo pokrenite lokalni server (node server.js).',
+            en: 'Error loading data. If using local files, please use a local server (node server.js).',
+            it: 'Errore nel caricamento dei dati. Se usi file locali, avvia un server locale (node server.js).'
+        });
 
         container.innerHTML = `
             <div class="text-center" style="color: var(--text-muted); padding: 1rem;">
@@ -2304,7 +2334,7 @@ function parseCSV(text) {
             place: clean(row[4]),
             isbn: clean(row[5]),
             adip_id: clean(row[6]),
-            language: clean(row[7]),
+            language: translateBookLanguage(clean(row[7])),
             condition: clean(row[8])
         });
     }
@@ -2312,7 +2342,6 @@ function parseCSV(text) {
 }
 
 function renderLibraryCatalog(books, container) {
-    const isEnglish = window.location.pathname.includes('/en/');
     container.innerHTML = '';
 
     let state = {
@@ -2344,14 +2373,14 @@ function renderLibraryCatalog(books, container) {
     };
 
     const headers = [
-        { key: 'title', label: isEnglish ? 'Title' : 'Naslov' },
-        { key: 'author', label: isEnglish ? 'Author' : 'Autor' },
-        { key: 'year', label: isEnglish ? 'Year' : 'Godina' },
-        { key: 'publisher', label: isEnglish ? 'Publisher' : 'Naklada' },
-        { key: 'place', label: isEnglish ? 'Place' : 'Mjesto' },
+        { key: 'title', label: tr({ hr: 'Naslov', en: 'Title', it: 'Titolo' }) },
+        { key: 'author', label: tr({ hr: 'Autor', en: 'Author', it: 'Autore' }) },
+        { key: 'year', label: tr({ hr: 'Godina', en: 'Year', it: 'Anno' }) },
+        { key: 'publisher', label: tr({ hr: 'Naklada', en: 'Publisher', it: 'Editore' }) },
+        { key: 'place', label: tr({ hr: 'Mjesto', en: 'Place', it: 'Luogo' }) },
         { key: 'isbn', label: 'ISBN' },
         { key: 'adip_id', label: 'ID' },
-        { key: 'language', label: isEnglish ? 'Lang' : 'Jezik' }
+        { key: 'language', label: tr({ hr: 'Jezik', en: 'Lang', it: 'Lingua' }) }
     ];
 
     container.innerHTML = `
@@ -2385,7 +2414,7 @@ function renderLibraryCatalog(books, container) {
         if (!tbody) return;
 
         if (processed.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="${headers.length}" style="padding: 1rem; text-align: center;">${isEnglish ? 'No books found.' : 'Nema pronađenih knjiga.'}</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="${headers.length}" style="padding: 1rem; text-align: center;">${tr({ hr: 'Nema pronađenih knjiga.', en: 'No books found.', it: 'Nessun libro trovato.' })}</td></tr>`;
         } else {
             tbody.innerHTML = processed.map(book => `
                 <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
@@ -2401,7 +2430,7 @@ function renderLibraryCatalog(books, container) {
             `).join('');
         }
 
-        if (count) count.textContent = `${processed.length} ${isEnglish ? 'books' : 'knjiga'}`;
+        if (count) count.textContent = `${processed.length} ${tr({ hr: 'knjiga', en: 'books', it: 'libri' })}`;
 
         container.querySelectorAll('.sort-icon').forEach(span => span.textContent = '');
         if (state.sortField) {
@@ -2435,8 +2464,7 @@ function renderLibraryCatalog(books, container) {
 }
 
 function openLibraryModal() {
-    const isEnglish = window.location.pathname.includes('/en/');
-    const title = isEnglish ? 'Pula Observatory Book Catalog' : 'Katalog knjiga Pulske Zvjezdarnice';
+    const title = tr({ hr: 'Katalog knjiga Pulske Zvjezdarnice', en: 'Pula Observatory Book Catalog', it: 'Catalogo dei libri dell’Osservatorio di Pola' });
 
     const modal = document.getElementById('service-modal');
     const modalTitle = document.getElementById('modal-title');
@@ -2446,7 +2474,7 @@ function openLibraryModal() {
     if (!modal || !modalBody) return;
 
     modalTitle.textContent = title;
-    modalBody.innerHTML = '<div id="library-catalog-container" style="padding: 1rem;">Loading...</div>';
+    modalBody.innerHTML = '<div id="library-catalog-container" style="padding: 1rem;">' + tr({ hr: 'Učitavanje…', en: 'Loading…', it: 'Caricamento…' }) + '</div>';
 
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';

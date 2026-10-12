@@ -5,63 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>History of the Observatory | Pula Observatory</title>
-  <meta name="description" content="History of Pula Observatory, its instruments and historical figures.">
+  <meta name="description" content="History of the Pula Observatory from 1869 to today: the Hydrographic Office, Johann Palisa and his asteroids, historic instruments, the 1944 destruction, restoration and the Astronomical Society “Istra” Pula.">
   <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
   <link rel="stylesheet" href="../css/modern.css?v=20260928">
-  <style>
-    /* Specific styles for this page */
-    .history-categories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .category-card {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      text-align: center;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-decoration: none;
-      color: var(--text-primary);
-    }
-
-    .category-card:hover {
-      transform: translateY(-5px);
-      background: rgba(255, 255, 255, 0.1);
-      border-color: var(--accent-primary);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .category-card img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-      border: 3px solid var(--accent-secondary);
-      transition: border-color 0.3s ease;
-    }
-
-    .category-card:hover img {
-      border-color: var(--accent-primary);
-    }
-
-    .category-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-top: 0.5rem;
-    }
-  </style>
+  <link rel="stylesheet" href="../css/povijest.css?v=20261012">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 
 <body class="page-blur">
-  <!-- Header -->
   <header class="header">
     <div class="menu-toggle" id="menu-toggle">
       <span></span>
@@ -87,6 +38,7 @@
       <a href="radovi.html" class="nav__link">Papers</a>
       <a href="servisi.html" class="nav__link">Services</a>
       <a href="downloads.html" class="nav__link">Downloads</a>
+      <a href="../tecaj/index.html" class="nav__link">Astronomy Course</a>
       <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">About Us</a>
       <div class="nav__spacer"></div>
       <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Login</button>
@@ -94,63 +46,943 @@
     <div class="nav-overlay" id="nav-overlay"></div>
 
     <div class="user-controls">
-      <button class="lang-toggle" id="lang-toggle">HR</button>
+      <div class="lang-selector">
+        <button class="lang-current">EN ▼</button>
+        <div class="lang-dropdown">
+          <a href="/povijest-zvjezdarnice.html" class="lang-option" data-lang="hr">HR</a>
+          <a href="/en/povijest-zvjezdarnice.html" class="lang-option active" data-lang="en">EN</a>
+          <a href="/it/povijest-zvjezdarnice.html" class="lang-option" data-lang="it">IT</a>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- Page Content -->
-  <main class="page-content">
+  <main class="page-content ph">
     <div class="container">
-      <div class="section__header" style="padding-top: 2rem;">
-        <h1 class="section__title">History of the <span class="text-gradient">Observatory</span></h1>
-        <p class="section__subtitle">Explore the rich history and heritage of Pula Observatory</p>
-      </div>
 
-      <div class="history-categories">
-        <a href="povijest-zvjezdarnice/zvjezdarnica-nekada.html" class="category-card">
-          <img src="../sites/default/files/images/povijest_Zvmioni.jpg" alt="Pula Observatory in the past"
-            loading="lazy" />
-          <div class="category-title">Pula Observatory in the Past</div>
-        </a>
+      <!-- ===================== HERO ===================== -->
+      <section class="ph-hero" id="vrh">
+        <span class="ph-hero__eyebrow">Monte Zaro · Pula · since 1869</span>
+        <h1>History of the <span class="text-gradient">Observatory</span></h1>
+        <p class="ph-hero__lead">The Imperial and Royal Naval Observatory in Pula (K.u.K. Marine-Sternwarte)
+          is the oldest astronomical institution in what is today the Republic of Croatia. This is its story — from
+          a fortress on Zaro hill, through the discoveries of Johann Palisa and the destruction of the Second World
+          War, to its restoration and the work of the Astronomical Society "Istra" Pula (ADIP) today.</p>
 
-        <a href="povijest-zvjezdarnice/mornaricka-knjiznica.html" class="category-card">
-          <img src="../sites/default/files/images/povijest__Biblio.jpg" alt="Naval Library" loading="lazy" />
-          <div class="category-title">Naval Library</div>
-        </a>
+        <div class="ph-stats">
+          <div class="ph-stat"><div class="ph-stat__num" data-count="1869">1869</div><div class="ph-stat__label">Observatory founded</div></div>
+          <div class="ph-stat"><div class="ph-stat__num" data-count="28">28</div><div class="ph-stat__label">asteroids discovered from Pula</div></div>
+          <div class="ph-stat"><div class="ph-stat__num" data-count="123">123</div><div class="ph-stat__label">Palisa's discoveries in total</div></div>
+          <div class="ph-stat"><div class="ph-stat__num" data-count="1982">1982</div><div class="ph-stat__label">ADIP takes over the Observatory</div></div>
+          <div class="ph-stat"><div class="ph-stat__num" data-count="8">8</div><div class="ph-stat__label">new meteor showers (HMM)</div></div>
+        </div>
 
-        <a href="povijest-zvjezdarnice/stari-instrumenti.html" class="category-card">
-          <img src="../sites/default/files/images/povijest_bracom.jpg" alt="Old Instruments" loading="lazy" />
-          <div class="category-title">Old Instruments</div>
-        </a>
-      </div>
+        <div class="ph-hero__actions">
+          <a href="#pocetci" class="btn btn--primary">Journey through history ↓</a>
+          <a href="downloads.html" class="btn btn--secondary">Booklet "150 Years of the Observatory in Pula"</a>
+        </div>
+      </section>
 
-      <div class="section__header" style="padding-top: 4rem;">
-        <h2 class="section__title">Historical <span class="text-gradient">Figures</span></h2>
-      </div>
+      <!-- ===================== NAVIGACIJA ===================== -->
+      <nav class="ph-nav" aria-label="Chapters">
+        <ul class="ph-nav__list">
+          <li><a class="ph-nav__link" href="#pocetci">Beginnings</a></li>
+          <li><a class="ph-nav__link" href="#zlatno-doba">Golden age</a></li>
+          <li><a class="ph-nav__link" href="#palisa">Johann Palisa</a></li>
+          <li><a class="ph-nav__link" href="#benko">Ivo Benko</a></li>
+          <li><a class="ph-nav__link" href="#instrumenti">Instruments</a></li>
+          <li><a class="ph-nav__link" href="#knjiznica">Navy Library</a></li>
+          <li><a class="ph-nav__link" href="#tegetthoff">Tegetthoff</a></li>
+          <li><a class="ph-nav__link" href="#rat">War and destruction</a></li>
+          <li><a class="ph-nav__link" href="#meteoroloska-postaja">Weather station</a></li>
+          <li><a class="ph-nav__link" href="#adip">ADIP</a></li>
+          <li><a class="ph-nav__link" href="#obnova">Restoration 2006–2009</a></li>
+          <li><a class="ph-nav__link" href="#danas">The Observatory today</a></li>
+          <li><a class="ph-nav__link" href="#izvori">Sources</a></li>
+        </ul>
+        <div class="ph-progress" aria-hidden="true"></div>
+      </nav>
 
-      <div class="history-categories">
-        <a href="povijest-zvjezdarnice/povijesne-licnosti/johann-palisa.html" class="category-card">
-          <img src="../sites/default/files/images/povijest_Palisam.jpg" alt="Johann Palisa" loading="lazy" />
-          <div class="category-title">Astronomer Johann Palisa</div>
-        </a>
+      <!-- ===================== VREMENSKA CRTA ===================== -->
+      <section class="ph-timeline" aria-label="Timeline">
+        <div class="ph-timeline__eras" role="group" aria-label="Periods">
+          <button type="button" class="ph-chip is-active" data-era="all">All</button>
+          <button type="button" class="ph-chip" data-era="au">Austria-Hungary (to 1918)</button>
+          <button type="button" class="ph-chip" data-era="rat">1918–1972</button>
+          <button type="button" class="ph-chip" data-era="adip">ADIP (since 1973)</button>
+        </div>
+        <div class="ph-timeline__track" id="ph-timeline"></div>
+      </section>
 
-        <a href="povijest-zvjezdarnice/povijesne-licnosti/barun-ivo-benko-von-boinik.html" class="category-card">
-          <img src="../sites/default/files/images/povijest_Benko.jpg" alt="Ivo Benko von Boinik" loading="lazy" />
-          <div class="category-title">Astronomer Ivo Benko von Boinik</div>
-        </a>
+      <!-- ===================== 1. POČECI ===================== -->
+      <section class="ph-chapter" id="pocetci">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1802 – 1871</span>
+          <h2>Beginnings: from Venice to Monte Zaro</h2>
+        </header>
 
-        <a href="povijest-zvjezdarnice/povijesne-licnosti/viceadmiral-wilhelm-von-tegetthoff.html"
-          class="category-card">
-          <img src="../sites/default/files/images/povijest_Tegetthoff.jpg" alt="Wilhelm von Tegetthoff"
-            loading="lazy" />
-          <div class="category-title">Vice Admiral Wilhelm von Tegetthoff</div>
-        </a>
-      </div>
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>The origins of the Pula Observatory can be traced back as far as <strong>1840</strong>, to the
+              Naval Observatory in Venice, which operated as part of the Austrian Naval Academy. After the upheavals
+              of 1848, Austria closed the Naval Academy in Venice and in <strong>1850</strong> founded a new Naval
+              Academy in Trieste, which included the Observatory as one of its departments.</p>
+            <p>Once Pula had become the main base of the Austrian Navy (K.K. Kriegsmarine) in
+              <strong>1853</strong>, systematic construction of fortifications began. That same year, work started on
+              a fort on the town's <strong>Zaro hill (Monte Zaro)</strong>, whose guns could reach almost the entire
+              bay of Pula.</p>
+            <p>As defensive engineering and weapons technology advanced — above all the range and accuracy of
+              artillery — and new forts were built farther from the town centre, Fort Zaro lost its original
+              purpose. Meanwhile, the growth of the naval port created the need for an institution that would
+              provide the Navy with scientific services, first and foremost for ever more precise navigation.</p>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="pocetci"><img src="../povijest-zvjezdarnice/img/pula-luka-19st.jpg" width="482" height="288" alt="Pula in the second half of the 19th century" loading="lazy" decoding="async"><figcaption>Pula in the second half of the 19th century – the naval port at the foot of the town's hills.</figcaption></figure>
+            <figure class="ph-fig ph-fig--small" data-group="pocetci" style="--mw: 298px"><img src="../povijest-zvjezdarnice/img/utvrda-zaro.jpg" width="229" height="155" alt="Fort Zaro, built from 1853 onwards. In 1869 construction of the Hydrographic Office began on its site" loading="lazy" decoding="async"><figcaption>Fort Zaro, built from 1853 onwards. In 1869 construction of the Hydrographic Office began on its site.</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="ph-split ph-split--rev ph-reveal">
+          <div>
+            <p>It was decided to demolish Fort Zaro and to erect in its place a modern building for the
+              <strong>Hydrographic Office</strong> with all the necessary facilities; work began in
+              <strong>1869</strong>. The location was no accident: the building could be seen from almost anywhere in
+              the harbour, giving ships an unobstructed view of the time-signal apparatus on its roof.</p>
+            <p>The Austro-Hungarian Naval Observatory in Pula was founded in 1869 as one of the departments of the
+              Navy's <strong>Imperial and Royal Hydrographic Office</strong>
+              (K. und K. Hydrographisches Amt). Its construction was included in the 1870 budget by Vice-Admiral
+              Wilhelm von Tegetthoff and approved by Emperor Franz Joseph I on <strong>10 September 1869</strong>.
+              With the founding of the Office, part of the equipment of the Trieste observatory was moved to the
+              Observatory in Pula.</p>
+            <p>By <strong>1871</strong> the new Hydrographic Office building stood on the site of the former fort,
+              designed also as an observatory charged with maintaining an accurate time service by astronomical
+              methods. The Office had four departments:</p>
+            <ul class="ph-facts">
+              <li><strong>Observatory</strong>astronomical observations and the time service</li>
+              <li><strong>Depot of nautical and physical instruments</strong>ship's instruments and chronometers</li>
+              <li><strong>Depot of nautical charts</strong>charts for navigation in the Adriatic and worldwide</li>
+              <li><strong>Navy Library</strong>the Navy's scientific and technical library</li>
+            </ul>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="pocetci"><img src="../povijest-zvjezdarnice/img/zgrada-1871.jpg" width="483" height="326" alt="The new Hydrographic Office building on Monte Zaro, erected in 1871 on the site of the fort" loading="lazy" decoding="async"><figcaption>The new Hydrographic Office building on Monte Zaro, erected in 1871 on the site of the fort.</figcaption></figure>
+            <figure class="ph-fig" data-group="pocetci"><img src="../povijest-zvjezdarnice/img/procelje-nacrt.jpg" width="422" height="268" alt="Façade drawing: &quot;K. und K. Hydrographisches Amt in Pola&quot;" loading="lazy" decoding="async"><figcaption>Façade drawing: "K. und K. Hydrographisches Amt in Pola".</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="ph-figs ph-figs--2 ph-reveal">
+          <figure class="ph-fig ph-fig--small" data-group="pocetci" style="--mw: 380px"><img src="../povijest-zvjezdarnice/img/panorama-1870.jpg" width="482" height="563" alt="Panorama of Pula from 1870" loading="lazy" decoding="async"><figcaption>Panorama of Pula from 1870–1880, in all likelihood taken from Monte Ghiro hill. The Observatory dominates the view not only over the harbour but far beyond.</figcaption></figure>
+          <figure class="ph-fig ph-fig--small" data-group="pocetci" style="--mw: 380px"><img src="../povijest-zvjezdarnice/img/luka-1900.jpg" width="482" height="561" alt="Panorama of the port of Pula around 1900. A park, one of the most beautiful in Pula, was laid out next to the new building" loading="lazy" decoding="async"><figcaption>Panorama of the port of Pula around 1900. A park, one of the most beautiful in Pula, was laid out next to the new building – naval ships returning from scientific missions all over the world brought back the varied plants used to landscape it.</figcaption></figure>
+        </div>
+      </section>
+
+      <!-- ===================== 2. ZLATNO DOBA ===================== -->
+      <section class="ph-chapter" id="zlatno-doba">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1871 – 1918</span>
+          <h2>The golden age of the Naval Observatory</h2>
+        </header>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>The Imperial and Royal Naval Observatory in Pula (K.u.K. Marine-Sternwarte)
+              <strong>is the oldest astronomical institution in what is today the Republic of Croatia</strong>. To
+              support precise navigation, four services were organised there, using instruments that were very
+              modern for their time:</p>
+            <ul class="ph-facts">
+              <li><strong>Time service</strong>timing the meridian transits of stars and giving the time signal to ships in the harbour</li>
+              <li><strong>Chronometer service</strong>care of the ship's chronometers of the Austrian Navy</li>
+              <li><strong>Geomagnetic service</strong>among other things, a geomagnetic map of the Adriatic published in 1913</li>
+              <li><strong>Meteorological service</strong>measurements with instruments that were then state of the art</li>
+            </ul>
+            <p>Besides its core duties, each service also made a scientific contribution. The staff of the
+              Observatory department, who were military personnel, went beyond the tasks prescribed by the Statute
+              and largely on their own initiative carried out other astronomical observations as well. Thanks to the
+              exceptional dedication of the astronomer <a class="ph-link" href="#palisa">Johann
+              Palisa</a>, within about ten years (1871–1880) the Naval Observatory in Pula earned a permanent place
+              among the world's eminent astronomical observatories.</p>
+            <p>That some of the instruments of the time are still standard equipment at weather stations is shown
+              by the <strong>heliograph</strong> (sunshine recorder) — a simple instrument that measures the number
+              of hours of sunshine in a day. Such an instrument still exists at the Observatory and is used for
+              daily measurements.</p>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="zlatno"><img src="../povijest-zvjezdarnice/img/geomagnetska-karta-1913.jpg" width="482" height="374" alt="Geomagnetic map of the Adriatic, published in 1913" loading="lazy" decoding="async"><figcaption>Geomagnetic map of the Adriatic, published in 1913 – one of the Observatory's scientific contributions.</figcaption></figure>
+            <div class="ph-figs ph-figs--2" style="margin: 0;">
+              <figure class="ph-fig ph-fig--small" data-group="zlatno" style="--mw: 303px"><img src="../povijest-zvjezdarnice/img/heliograf-crtez.jpg" width="233" height="197" alt="Heliograph – drawing of the instrument" loading="lazy" decoding="async"><figcaption>Heliograph – drawing of the instrument.</figcaption></figure>
+              <figure class="ph-fig ph-fig--small" data-group="zlatno" style="--mw: 317px"><img src="../povijest-zvjezdarnice/img/heliograf-danas.jpg" width="244" height="208" alt="The heliograph at the Observatory today, still in daily use" loading="lazy" decoding="async"><figcaption>The heliograph at the Observatory today, still in daily use.</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="ph-reveal">The Tegetthoff monument and the park</h3>
+        <p class="ph-reveal">In <strong>1877</strong> a monument was erected in front of the Hydrographic Office
+          to Vice-Admiral <a class="ph-link" href="#tegetthoff">Wilhelm von Tegetthoff</a>, who had become famous
+          in 1866 when, as commander of the Austrian fleet, he defeated the Italian fleet at the Battle of Lissa
+          (Vis). Photographs from the late 19th and early 20th centuries rarely show the building in its entirety;
+          some still show all the domes and the proportions of the large meridian dome, from which the transit
+          times of stars across the meridian were measured.</p>
+
+        <div class="ph-figs ph-reveal">
+          <figure class="ph-fig" data-group="zlatno"><img src="../povijest-zvjezdarnice/img/spomenik-tegetthoff.jpg" width="482" height="383" alt="The monument to Vice-Admiral Tegetthoff in front of the Observatory, erected in 1877" loading="lazy" decoding="async"><figcaption>The monument to Vice-Admiral Tegetthoff in front of the Observatory, erected in 1877.</figcaption></figure>
+          <figure class="ph-fig" data-group="zlatno"><img src="../povijest-zvjezdarnice/img/razglednica-spomenik.jpg" width="481" height="327" alt="The Observatory and the Tegetthoff monument on a postcard from the Austro-Hungarian era" loading="lazy" decoding="async"><figcaption>The Observatory and the Tegetthoff monument on a postcard from the Austro-Hungarian era.</figcaption></figure>
+          <figure class="ph-fig" data-group="zlatno"><img src="../povijest-zvjezdarnice/img/park-fontana.jpg" width="481" height="337" alt="The park on Monte Zaro with the fountain and the stairway up to the Observatory" loading="lazy" decoding="async"><figcaption>The park on Monte Zaro with the fountain and the stairway up to the Observatory.</figcaption></figure>
+          <figure class="ph-fig" data-group="zlatno"><img src="../povijest-zvjezdarnice/img/razglednica-specola.jpg" width="482" height="304" alt="&quot;Pola – Specola&quot;: the Observatory on a postcard" loading="lazy" decoding="async"><figcaption>"Pola – Specola": the Observatory on a postcard.</figcaption></figure>
+          <figure class="ph-fig ph-fig--small" data-group="zlatno" style="--mw: 380px"><img src="../povijest-zvjezdarnice/img/straznja-strana.jpg" width="348" height="255" alt="View of the central part of the Observatory from the rear, with meteorological instruments for measuring wind speed and direction" loading="lazy" decoding="async"><figcaption>View of the central part of the Observatory from the rear, with meteorological instruments for measuring wind speed and direction.</figcaption></figure>
+          <figure class="ph-fig" data-group="zlatno"><img src="../povijest-zvjezdarnice/img/sjeverna-kupola.jpg" width="482" height="344" alt="The northern dome – the only one to survive the Allied bombing of 1944" loading="lazy" decoding="async"><figcaption>The northern dome – the only one to survive the Allied bombing of 1944.</figcaption></figure>
+          <figure class="ph-fig" data-group="zlatno"><img src="../povijest-zvjezdarnice/img/sredisnji-dio.jpg" width="482" height="327" alt="The central part of the Hydrographic Office building" loading="lazy" decoding="async"><figcaption>The central part of the Hydrographic Office building.</figcaption></figure>
+        </div>
+      </section>
+
+      <!-- ===================== 3. PALISA ===================== -->
+      <section class="ph-chapter" id="palisa">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1848 – 1925</span>
+          <h2>Johann Palisa – asteroid hunter</h2>
+        </header>
+
+        <div class="ph-clear ph-reveal">
+          <figure class="ph-fig ph-portrait" data-group="palisa">
+            <img src="../povijest-zvjezdarnice/img/palisa-portret.jpg" width="411" height="584" alt="Johann Palisa" loading="lazy" decoding="async">
+            <figcaption>Johann Palisa (1848–1925)</figcaption>
+          </figure>
+          <p>The most celebrated astronomer through whom the Pula Observatory secured its place in history is
+            <strong>Johann Palisa</strong>. He was born on <strong>6 December 1848</strong> in Troppau, then in
+            Austria (today Opava, Czech Republic), the eldest son of the local merchant Franz Palisa and his wife
+            Katharina. He completed primary school and grammar school in his native Opava, and in 1866 enrolled in
+            mathematics at the University of Vienna, where his teachers included Carl von Littrow, Edmund Weiss and
+            Theodor von Oppolzer.</p>
+          <p>He put his studies of mathematics and astronomy into practice as an assistant at the Vienna
+            Observatory in 1870, where he worked on determining the positions of stars and planets and on drawing
+            sunspots. Early in 1871 he was transferred to the Geneva Observatory, and only a few months later to the
+            Naval Observatory in Pula, where at just <strong>24 years of age</strong> he became head of the
+            Astronomical Department. His main duty was the care of the ship's chronometers of the Austrian Navy, and
+            since his regular work left him enough free time, he began searching for minor planets.</p>
+          <p>While observing known minor planets, he also looked for new ones. His efforts were rewarded on
+            <strong>18 March 1874</strong>, when he discovered his first minor planet — as the first asteroid
+            discovered from Austria, he named it <strong>(136) Austria</strong>. From Pula he discovered a total of
+            <strong>28 asteroids and one comet (C/1879 Q1)</strong>, one of the asteroids being named "Istria".</p>
+          <p>During his visit to Pula on <strong>8 April 1875</strong>, Emperor Franz Joseph I personally named
+            two newly discovered minor planets: <strong>(142) Polana</strong> and <strong>(143) Adria</strong>.
+            Adding <strong>(183) Istria</strong>, there are three celestial bodies in space that bear the names of
+            our local places: Polana (a woman of Pula), Adria (the Adriatic) and Istria (Istra).</p>
+        </div>
+
+        <h3 class="ph-reveal">Minor planets (asteroids) discovered by Palisa from Pula</h3>
+        <p class="ph-reveal">Choose a year or click a highlighted body for more information.</p>
+        <div class="ph-reveal">
+          <div class="ph-disc__filters" role="group" aria-label="Year of discovery" id="ph-disc-filters"></div>
+          <ol class="ph-disc__list" id="ph-disc-list"></ol>
+          <div class="ph-disc__note" id="ph-disc-note" aria-live="polite">Click a highlighted asteroid (blue outline) for the story behind its name.</div>
+        </div>
+
+        <h3 class="ph-reveal">Pula on the world stage</h3>
+        <p class="ph-reveal">The statistics from his years in Pula show just how much Palisa's discoveries meant
+          on a world scale. In 1879 Palisa discovered half of all new asteroids found worldwide, and in 1880 — the
+          year he was promoted to the Vienna Observatory — as many as 63%.</p>
+
+        <div class="ph-chart ph-reveal" id="ph-chart">
+          <div class="ph-chart__title">Asteroids discovered per year, 1874–1880</div>
+          <div class="ph-chart__sub">Number of new asteroids: Palisa in Pula and the rest of the world</div>
+          <div class="ph-legend">
+            <span style="--swatch: var(--ph-palisa)">Palisa (Pula)</span>
+            <span style="--swatch: var(--ph-world)">Rest of the world</span>
+          </div>
+          <div id="ph-chart-svg"></div>
+          <button type="button" class="ph-table-toggle" aria-expanded="false" aria-controls="ph-chart-table">Show table</button>
+          <table class="ph-table" id="ph-chart-table" hidden>
+            <thead><tr><th>Year</th><th>Palisa</th><th>Rest of the world</th><th>Total</th><th>Palisa's share</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div class="ph-ranks ph-reveal">
+          <div>
+            <div class="ph-chart__title">Discoveries by observatory, 1874–1880</div>
+            <div class="ph-chart__sub">Number of newly discovered asteroids</div>
+            <ol class="ph-rank" id="ph-rank-obs"></ol>
+          </div>
+          <div>
+            <div class="ph-chart__title">Discoveries by discoverer, 1874–1880</div>
+            <div class="ph-chart__sub">Number of newly discovered asteroids</div>
+            <ol class="ph-rank" id="ph-rank-people"></ol>
+          </div>
+        </div>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <h3>After Pula</h3>
+            <p>In 1880 Palisa was promoted to the Vienna Observatory, from where he discovered another 94 minor
+              planets — <strong>123</strong> in total. As far as is known, he discovered all of them visually,
+              observing through the telescope with the "naked" eye, and he still holds the record for the most
+              visual discoveries. Together with Max Wolf of the Heidelberg Observatory he also produced a
+              photographic star atlas.</p>
+            <p>In recognition by the International Astronomical Union, besides a crater on the Moon, two asteroids
+              bear Palisa's name: <strong>(914) Palisana</strong>, named after him, and <strong>(1152) Pawona</strong>,
+              named in honour of Johann Palisa and Max Wolf.</p>
+            <p>In his 71st year (1919) Palisa's eyesight began to fail. He died on <strong>2 May
+              1925</strong>. On <strong>15 October 2000</strong> a memorial plaque was placed on the site of the
+              house where he was born, bearing Palisa's favourite saying:</p>
+            <blockquote class="ph-quote">"Sic itur ad astra" — Thus one goes to the stars.</blockquote>
+          </div>
+          <div>
+            <h3>Palisa in space: 243 Ida</h3>
+            <figure class="ph-fig ph-fig--small" data-group="palisa" style="--mw: 341px"><img src="../povijest-zvjezdarnice/img/asteroid-ida.jpg" width="262" height="333" alt="Asteroid 243 Ida with its moon Dactyl, imaged by the Galileo probe in 1993. Three regions on Ida are named Palisa, Vienna and Pola" loading="lazy" decoding="async"><figcaption>Asteroid 243 Ida with its moon Dactyl, imaged by the Galileo probe in 1993. Three regions on Ida are named Palisa, Vienna and Pola.</figcaption></figure>
+            <p>Space probes on their way to the outer planets of the Solar System had to pass close to some of the
+              asteroids. Since Palisa mostly discovered large asteroids, some of them have been imaged by probes —
+              namely the asteroids <strong>243 Ida</strong> and <strong>253 Mathilde</strong>.</p>
+            <p>To general surprise, images taken by the Galileo probe in 1993 showed that Ida has a natural
+              satellite, named <strong>Dactyl</strong>. Because Ida was imaged in great detail, it became the first
+              asteroid whose geological features were given names: three regions were named
+              <strong>Palisa</strong> (after its discoverer) and <strong>Vienna</strong> and <strong>Pola</strong>
+              (after the observatories from which Palisa hunted for asteroids).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 4. BENKO I DRUGI ===================== -->
+      <section class="ph-chapter" id="benko">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1851 – 1903</span>
+          <h2>Baron Ivo Benko von Boinik and other astronomers</h2>
+        </header>
+
+        <div class="ph-clear ph-reveal">
+          <figure class="ph-fig ph-portrait" style="width: 150px;" data-group="benko">
+            <img src="../sites/default/files/images/benko_grb.jpg" width="214" height="288" alt="Coat of arms of Baron Benko von Boinik" loading="lazy" decoding="async">
+            <figcaption>Coat of arms of Baron Benko von Boinik. Ivo Benko was an Imperial and Royal ship-of-the-line captain.</figcaption>
+          </figure>
+          <p>Of the astronomers who served at the Naval Observatory in Pula after Johann Palisa, the most
+            important was <strong>Ivo Benko</strong>. He was born on <strong>26 September 1851</strong> in Karlovac.
+            He was admitted to the Austrian Navy on 27 July 1868 as a cadet of the Naval Academy in Rijeka, and
+            entered active service on 28 April 1872 with the rank of ensign (Linienschiffsfähnrich). He served on the
+            ships "Helgoland", "Adria" and "Kerka".</p>
+          <p>In 1884/1885 he was acting director of the Naval Observatory in Pula. Inspired by scientific work and
+            proving himself an excellent observer, he enrolled as an external student of astronomy in Graz. Until
+            1893 he served on the ships "Lissa", "Minerva", "Custoza", "Zriny", "Don Juan", "Laudon", "Radetzky" and
+            "Taurus", when, after the death of director Franz Laschober, he took over the management of the
+            Observatory.</p>
+          <p>Realising that the scientific programme could not continue with discoveries like Palisa's, Benko
+            developed a programme of systematic observations and for this purpose had the meridian circle and other
+            instruments refurbished. He published the results of his ten years as director in the leading journal of
+            the day, "Astronomische Nachrichten", as well as in "Astronomische Rundschau", published by the
+            astronomer Leo Brenner of the "Manora" observatory in Mali Lošinj. He stepped down as director in 1901
+            for health reasons.</p>
+          <p>His place in the history of astronomy was earned by a single observation, made on <strong>4 February
+            1898</strong>, with which he showed that <strong>the Earth has no second, dark, natural
+            satellite</strong>. An asteroid discovered from Višnjan Observatory was named
+            <strong>(9814) Ivobenko</strong> in his honour. The first Croatian professional astronomer died on
+            21 December 1903 in Gorizia.</p>
+        </div>
+
+        <blockquote class="ph-quote ph-reveal">"To his Croatian people he remained a faithful and devoted son until
+          his death, one who through his work brought honour to its name in the world. He followed events in his
+          homeland with lively interest. Allow me to relate one small episode. When in February 1901 he learned that
+          a Croatian secondary-school pupil, Dolanski, had independently discovered a new star in Perseus, the news
+          delighted him greatly, and he urged me in a letter to be sure to publish it in ‘Astronomische
+          Nachrichten’, which I did (Astr. Nachr. no. 3699, 1901). ‘It will do no harm,’ he wrote, ‘if the
+          astronomical world learns that in our homeland, too, eyes are sometimes turned to the vault of the heavens,
+          and that education there stands at such a high level.’"
+          <cite>— Oton Kučera, Croatian astronomer at whose initiative an observatory was built in Zagreb in 1903 (translated from Croatian)</cite>
+        </blockquote>
+
+        <div class="ph-card ph-reveal">
+          <p>Besides Palisa and Benko, other notable names associated with the Pula Observatory include
+            <strong>Bernhard Walter</strong>, <strong>Spiridion Gopčević</strong> (Leo Brenner),
+            <strong>Oton Kučera</strong> and <strong>Niko
+            Miličević</strong>.</p>
+        </div>
+      </section>
+
+      <!-- ===================== 5. INSTRUMENTI ===================== -->
+      <section class="ph-chapter" id="instrumenti">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1842 – 1898</span>
+          <h2>Historic instruments</h2>
+        </header>
+        <p class="ph-reveal">More extensive research into the history of the Pula Observatory has revealed the
+          existence of the following astronomical instruments at the Imperial and Royal Naval Observatory in Pula.
+          Filter them by where they are today.</p>
+
+        <div class="ph-disc__filters ph-reveal" role="group" aria-label="Fate of the instrument">
+          <button type="button" class="ph-chip is-active" data-fate="all">All (6)</button>
+          <button type="button" class="ph-chip" data-fate="trst">Now in Trieste</button>
+          <button type="button" class="ph-chip" data-fate="nepoznato">Fate unknown</button>
+        </div>
+
+        <div class="ph-instr ph-reveal">
+          <article class="ph-instr__card" data-fate="nepoznato">
+            <div class="ph-instr__body">
+              <h4>"Brunner" transit instrument</h4>
+              <div class="ph-instr__meta">made in 1842 · meridian hall</div>
+              <p>Made in the mechanical workshop of the Polytechnic Institute in Vienna. It was used at the
+                Observatory while it was still in Trieste, and was brought to Pula in 1866, together with the
+                Observatory itself. It was installed in the meridian hall, where it served the time service and the
+                determination of geographic longitude and latitude. It was removed in 1874.</p>
+              <div class="ph-instr__fate"><strong>Today:</strong> whereabouts unknown.</div>
+            </div>
+          </article>
+
+          <article class="ph-instr__card" data-fate="nepoznato">
+            <div class="ph-instr__body">
+              <h4>"Schaffler" refractor</h4>
+              <div class="ph-instr__meta">installed in 1871 · south-west dome</div>
+              <ul class="ph-instr__specs"><li>170 mm objective</li><li>2500 mm focal length</li><li>German equatorial mount</li><li>240 mm setting circles</li></ul>
+              <p>Made by the Viennese instrument maker Otto Schaffler.</p>
+              <div class="ph-instr__fate"><strong>Today:</strong> whereabouts unknown.</div>
+            </div>
+          </article>
+
+          <article class="ph-instr__card" data-fate="trst">
+            <figure class="ph-fig ph-fig--small" data-group="instrumenti" style="--mw: 269px"><img src="../povijest-zvjezdarnice/img/troughton-simms.jpg" width="207" height="234" alt="The &quot;Troughton &amp; Simms&quot; meridian circle" loading="lazy" decoding="async"><figcaption>The "Troughton &amp; Simms" meridian circle.</figcaption></figure>
+            <div class="ph-instr__body">
+              <h4>"Troughton &amp; Simms" meridian circle</h4>
+              <div class="ph-instr__meta">in Pula from August 1874</div>
+              <ul class="ph-instr__specs"><li>160 mm objective</li><li>2105 mm focal length</li><li>900 mm graduated circles</li><li>4 reading microscopes on each side</li></ul>
+              <p>Made by the English firm "Troughton &amp; Simms". It was used for the time service and for
+                determining the positions of stars needed to compile star catalogues.</p>
+              <div class="ph-instr__fate"><strong>Today:</strong> after the First World War it was taken over by the Astronomical Observatory of Trieste, which still owns it.</div>
+            </div>
+          </article>
+
+          <article class="ph-instr__card" data-fate="nepoznato">
+            <figure class="ph-fig ph-fig--small" data-group="instrumenti" style="--mw: 257px"><img src="../povijest-zvjezdarnice/img/reflektor-brachyt.jpg" width="198" height="240" alt="A &quot;Brachyt&quot;-type reflector" loading="lazy" decoding="async"><figcaption>A "Brachyt"-type reflector.</figcaption></figure>
+            <div class="ph-instr__body">
+              <h4>"Brachyt" reflector</h4>
+              <div class="ph-instr__meta">installed on 1 June 1881</div>
+              <ul class="ph-instr__specs"><li>300 mm mirror</li><li>the largest reflector of its kind in the world</li></ul>
+              <p>Made by the Viennese firm Fritsch. Salt particles carried by the wind from the sea all too often
+                ruined the silver coating of the mirrors, so the telescope was removed as early as 1886.</p>
+              <div class="ph-instr__fate"><strong>Today:</strong> whereabouts unknown.</div>
+            </div>
+          </article>
+
+          <article class="ph-instr__card" data-fate="trst">
+            <figure class="ph-fig ph-fig--small" data-group="instrumenti" style="--mw: 361px"><img src="../povijest-zvjezdarnice/img/refraktor-steinheil.jpg" width="278" height="368" alt="The &quot;Steinheil&quot; refractor in the Observatory dome" loading="lazy" decoding="async"><figcaption>The "Steinheil" refractor in the Observatory dome.</figcaption></figure>
+            <div class="ph-instr__body">
+              <h4>"Steinheil" refractor</h4>
+              <div class="ph-instr__meta">installed in 1886 · north-east dome</div>
+              <ul class="ph-instr__specs"><li>160 mm objective*</li><li>2100 mm focal length</li></ul>
+              <p>The objective was made by the firm Reinfelder und Hertel. It was used for observing comets and
+                drawing sunspots.</p>
+              <p style="font-size: 0.78rem; color: var(--text-muted);">* According to the booklet "150 Years of the
+                Observatory in Pula"; earlier texts give an aperture of 60 mm.</p>
+              <div class="ph-instr__fate"><strong>Today:</strong> after the First World War it was taken over by the Astronomical Observatory of Trieste.</div>
+            </div>
+          </article>
+
+          <article class="ph-instr__card" data-fate="nepoznato">
+            <div class="ph-instr__body">
+              <h4>"Repsold" transit instrument</h4>
+              <div class="ph-instr__meta">installed in 1898 · north-east dome</div>
+              <p>It was used by the Time Service whenever the meridian circle was occupied with determining star
+                positions. Its optical characteristics are not known.</p>
+              <div class="ph-instr__fate"><strong>Today:</strong> whereabouts unknown.</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===================== 6. KNJIŽNICA ===================== -->
+      <section class="ph-chapter" id="knjiznica">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1802 – today</span>
+          <h2>The Navy Library (K. u. k. Marine-Bibliothek)</h2>
+        </header>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>The <strong>Navy Library</strong> (Marine-Bibliothek), later called the Imperial and Royal Navy
+              Library (K. u. k. Marine-Bibliothek), was founded at the high command of the Austrian Navy in Venice in
+              <strong>1802</strong>, at the initiative of the Minister of the Navy and of War, Archduke Charles. From
+              the very beginning it was a scientific and technical library serving the needs of the Navy.</p>
+            <p>At the request of the naval commander, Archduke Ferdinand Maximilian, Pula was developed in the 1860s
+              into the main naval base of the Austrian Navy. In line with Vice-Admiral Wilhelm von Tegetthoff's plan
+              for reorganising the Navy, the Hydrographic Office (Hydrographisches Amt) was established in Pula in
+              1869, and the Navy Library was incorporated into it as a separate department.</p>
+            <p>More information on the website of the
+              <a class="ph-link" href="https://www.skpu.hr/" target="_blank" rel="noopener">University Library in Pula</a>.</p>
+          </div>
+          <div>
+            <ul class="ph-facts" style="grid-template-columns: 1fr; margin-top: 0;">
+              <li><strong>1802 – Venice</strong>founded at the high command of the Navy</li>
+              <li><strong>1850 – Trieste</strong>the entire collection moved from Venice to Trieste</li>
+              <li><strong>1869 – Pula</strong>the library becomes a department of the Hydrographic Office</li>
+              <li><strong>1918</strong>with the collapse of Austria-Hungary, the library is taken over by the Italian army</li>
+              <li><strong>1944</strong>after Italy's capitulation (1943), the German army takes the entire collection by train to Bohemia</li>
+              <li><strong>1950 – Vienna</strong>the collection is returned to Vienna and housed in the War Archives</li>
+              <li><strong>1975 – back to Pula</strong>some 20,000 volumes are given "as a gesture of goodwill" by the Republic of Austria to the Scientific Library (today the University Library)</li>
+              <li><strong>1996/1997</strong>move to the Croatian Defenders' Hall (the former Marine-Kasino) and reopening to the public</li>
+            </ul>
+            <figure class="ph-fig" data-group="knjiznica"><img src="../povijest-zvjezdarnice/img/puh-knjiga.jpg" width="412" height="265" alt="Cover of the book &quot;Zvjezdarnica u Puli&quot; (The Observatory in Pula) and the stamp of the K.u.K. Kriegsmarine library (Hydrographisches Amt, Bibliothek)" loading="lazy" decoding="async"><figcaption>Cover of the book "Zvjezdarnica u Puli" (The Observatory in Pula) and the stamp of the K.u.K. Kriegsmarine library (Hydrographisches Amt, Bibliothek).</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 7. TEGETTHOFF ===================== -->
+      <section class="ph-chapter" id="tegetthoff">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1827 – 1871</span>
+          <h2>Vice-Admiral Wilhelm von Tegetthoff</h2>
+        </header>
+
+        <div class="ph-clear ph-reveal">
+          <figure class="ph-fig ph-portrait" style="width: 170px;" data-group="tegetthoff">
+            <img src="../sites/default/files/images/220px-Tegetthoff-lithographie.jpg" width="220" height="264" alt="Wilhelm von Tegetthoff, lithograph" loading="lazy" decoding="async">
+            <figcaption>Wilhelm von Tegetthoff (Maribor 1827 – Vienna 1871), lithograph</figcaption>
+          </figure>
+          <p>Wilhelm von Tegetthoff was born in Maribor (German: Marburg), Slovenia, on <strong>23 December
+            1827</strong>, the second child of Karl and Leopoldine Tegetthoff. The house where he was born stands at
+            Slovenska ulica 12, today the site of a Ljubljanska banka building. After the Naval Academy in Venice,
+            which he attended from 1840 to 1845, he rose steadily through the ranks of the Navy.</p>
+          <p>A native of Maribor, German on his father's side (from Westphalia) and Czech on his mother's, he first
+            drew attention in the Crimean War, where he commanded the steamer "Taurus". He reached the very top of
+            the naval command after distinguishing himself in 1864 as commander of the Austrian squadron at the
+            naval Battle of Heligoland in the war against Denmark, when he was promoted to rear admiral.</p>
+        </div>
+
+        <h3 class="ph-reveal">The Battle of Lissa (Vis), 1866</h3>
+        <p class="ph-reveal">On <strong>19 July 1866</strong>, having received a telegram from the island of Vis
+          reporting that it was under siege and attack by the Italian fleet, he sailed out of the Fažana Channel at
+          the head of the Austrian Navy and, after only 15 hours at sea, arrived off Vis on 20 July. He knew he was
+          facing an enemy three times stronger, with heavier artillery and five more ironclads, but also that the
+          outcome of a battle is decided not only by numbers but by preparation and courage. In a naval battle
+          unprecedented in the Adriatic until then, the Austrian Navy defeated the Italian fleet commanded by
+          Admiral Carlo Pellion di Persano. The flagship "Ferdinand Max" rammed the side of the Italian ironclad
+          "Re d'Italia" with tremendous force, and she sank within two and a half minutes. The Austrian fleet lost
+          not a single ship; 35 sailors and three officers were killed. This victory secured Vienna half a century
+          of dominance over the Adriatic Sea.</p>
+        <blockquote class="ph-quote ph-reveal">«Busali smo se jedan u drugega kako da smo prazi. Jedan dobar tir i
+          brod gre u konobu.»
+          <cite>— Mate Jurašin – Matesina, one of the three men from Premantura who fought at Lissa ("We butted
+            into each other like rams. One good hit and the ship goes down to the cellar – to the bottom of the sea.")</cite>
+        </blockquote>
+
+        <h3 class="ph-reveal">Founder of the Observatory</h3>
+        <p class="ph-reveal">In 1868 Tegetthoff launched a reorganisation of the Navy that also covered its
+          scientific activities. Recognising that the existing situation would leave Austria lagging behind other
+          navies, he proposed that the construction of a Hydrographic Office (observatory) in Pula be included in the
+          1870 budget, which Emperor Franz Joseph I approved on 10 September 1869. The inscription on the monument
+          read:</p>
+        <blockquote class="ph-quote ph-reveal">«Viceadmiralu Wilhelmu Tegetthoffu, car Franjo Josip I, 1877.,
+          hrabrom borcu kod Helgolanda, slavno pobijednio kod Visa i stekao vječnu slavu za sebe i za austrijsku
+          flotu». ("To Vice-Admiral Wilhelm Tegetthoff, Emperor Franz Joseph I, 1877 – to the valiant fighter at
+          Heligoland, who won a glorious victory at Lissa and earned eternal glory for himself and for the Austrian
+          fleet.")</blockquote>
+        <p class="ph-reveal">After the Italian army occupied Pula in 1918, the monument erected in front of the
+          Observatory in 1877 was removed on <strong>14 April 1920</strong>. Only on the eve of the Second World War
+          did Italy hand it over to Austria, and it was set up in Elisabethplatz (Elizabeth Square) in Graz, the city
+          where the famous vice-admiral is buried, and where it still stands today. In 1998 a replica of the
+          monument to the Battle of Lissa was re-erected on Vis.</p>
+      </section>
+
+      <!-- ===================== 8. RAT ===================== -->
+      <section class="ph-chapter" id="rat">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1918 – 1946</span>
+          <h2>Between the wars, bombing and destruction</h2>
+        </header>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>After the collapse of Austria-Hungary and the Italian military occupation of Pula on <strong>5 November
+              1918</strong>, the Observatory ceased its activities. The instruments and the library were largely
+              moved to Trieste and other Italian cities, and the monument to Admiral Tegetthoff, at whose initiative
+              the Hydrographic Office had been founded, was removed.</p>
+            <p>The fate of the Observatory mirrored the general stagnation of the town of Pula. The Hydrographic
+              Office was renamed the Italian <strong>Royal Hydrographic Institute</strong>, with the status of a
+              branch of the central Italian hydrographic institution. Meteorological and geomagnetic observations
+              continued, while astronomical work died out completely.</p>
+            <p>After the withdrawal of the Italian forces, Anglo-American aircraft bombed Pula on several occasions
+              during <strong>1944</strong>. Because the Hydrographic Office and the Observatory were still marked on
+              maps as military installations, Allied bombs razed the building to the ground. Photographs taken during
+              the bombing raids show the Observatory still intact, and then hit directly and destroyed.</p>
+          </div>
+          <div class="ph-figs ph-figs--2" style="margin-top: 0;">
+            <figure class="ph-fig" data-group="rat"><img src="../povijest-zvjezdarnice/img/bombardiranje-1.jpg" width="482" height="271" alt="Photograph from an Allied bombing raid in 1944 – the Observatory still intact" loading="lazy" decoding="async"><figcaption>Photograph from an Allied bombing raid in 1944 – the Observatory still intact.</figcaption></figure>
+            <figure class="ph-fig" data-group="rat"><img src="../povijest-zvjezdarnice/img/bombardiranje-2.jpg" width="482" height="375" alt="Photograph from a bombing raid – the area of Monte Zaro hit" loading="lazy" decoding="async"><figcaption>Photograph from a bombing raid – the area of Monte Zaro hit.</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="ph-split ph-split--rev ph-reveal">
+          <div>
+            <h3 style="margin-top: 0;">What survived?</h3>
+            <p>Only part of the <strong>north-east wing</strong> was partially preserved, while the rest was
+              destroyed down to the foundations. From the original floor plans it can be estimated that only one
+              smaller section of the building and <strong>just one dome</strong> remained. Switch the view on the
+              floor plan:</p>
+            <div class="ph-segmented" role="group" aria-label="Floor plan view">
+              <button type="button" aria-pressed="true" data-plan="before">Building in 1871</button>
+              <button type="button" aria-pressed="false" data-plan="after">After 1944</button>
+            </div>
+            <div class="ph-plan" id="ph-plan">
+              <img src="../povijest-zvjezdarnice/img/tlocrt.jpg" width="452" height="318" alt="Floor plan of the ground floor and first floor of the K. und K. Hydrographisches Amt in Pola" loading="lazy" decoding="async">
+              <svg viewBox="0 0 452 318" aria-hidden="true">
+                <path class="shade" fill-rule="evenodd" d="M0 0H452V318H0Z M15 50 L50 12 L93 55 L103 82 L103 150 L60 150 L60 95 Z"/>
+                <path class="outline" d="M15 50 L50 12 L93 55 L103 82 L103 150 L60 150 L60 95 Z"/>
+              </svg>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.5rem;">Floor plan of the ground
+              floor (top) and first floor (bottom). Red: the part of the building that survived the bombing (according
+              to the booklet "150 Years of the Observatory in Pula").</p>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="rat"><img src="../povijest-zvjezdarnice/img/rusevine.jpg" width="482" height="314" alt="The remains of the Observatory after the Allied bombing. Only part of the north" loading="lazy" decoding="async"><figcaption>The remains of the Observatory after the Allied bombing. Only part of the north-east wing with its dome survived.</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 9. METEOROLOŠKA POSTAJA ===================== -->
+      <section class="ph-chapter" id="meteoroloska-postaja">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1947 – 1982</span>
+          <h2>The weather station and the surviving domes</h2>
+        </header>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>The partially preserved section of the north-east wing was restored in <strong>1947/1948</strong> and
+              housed a weather station of the Yugoslav Navy. In <strong>1949</strong> the station was taken over by the
+              newly founded Administration of the Hydrometeorological Service of the Government of the People's
+              Republic of Croatia, today's <strong>Croatian Meteorological and Hydrological Service (DHMZ)</strong>.</p>
+            <p>The restoration of the Observatory's remains was not entirely successful, mostly for technical
+              reasons. Air temperature, pressure and humidity were measured in an instrument shelter within a fenced
+              enclosure in front of the building, while the heliograph and anemometer were mounted on an auxiliary
+              scaffold on the south side of the dome. Two meteorologists' families moved into the building and
+              continued the observations from Monte Zaro. Meteorological observations are still carried out from the
+              same location today — the DHMZ station on Monte Zaro now has the status of a
+              <strong>climatological station</strong>.</p>
+          </div>
+          <div class="ph-figs ph-figs--2" style="margin-top: 0;">
+            <figure class="ph-fig" data-group="meteo"><img src="../povijest-zvjezdarnice/img/meteo-postaja.jpg" width="482" height="333" alt="The restored part of the building as a weather station" loading="lazy" decoding="async"><figcaption>The restored part of the building as a weather station.</figcaption></figure>
+            <figure class="ph-fig" data-group="meteo"><img src="../povijest-zvjezdarnice/img/kupola-skela.jpg" width="482" height="320" alt="The dome and the auxiliary scaffold with the heliograph and anemometer" loading="lazy" decoding="async"><figcaption>The dome and the auxiliary scaffold with the heliograph and anemometer.</figcaption></figure>
+          </div>
+        </div>
+
+        <h3 class="ph-reveal">Two domes</h3>
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>During the repairs two domes were reconstructed — the classic dome and the meridian dome. The frame
+              of the classic dome that survived the bombing was used to restore its original shape, clad with timber
+              on the inside and galvanised sheet metal on the outside. The mechanism for rotating the hemispherical
+              dome remained usable, as did part of the opening mechanism. The slit, however, was repaired in such a
+              way that observations were possible only up to 30° above the horizon, leaving the largest and best part
+              of the sky out of reach. The blasts during the bombing also distorted the dome itself, so the force
+              needed to turn it depends on the position of the slit. Since the dome was not in use at the time, there
+              was not even any access to it — the stairs led only as far as the terrace.</p>
+            <p>The interior of the main dome and its original opening and rotating functions have been fully
+              preserved to this day. The <strong>axial ball bearing</strong> on which the dome rests was cast, at the
+              time the Observatory was built, in the Pula Arsenal, where such bearings were made for the gun turrets
+              of Austro-Hungarian warships. To the best of our knowledge, it is <strong>the largest bearing of its
+              kind still in operation</strong>.</p>
+            <p>The <strong>meridian dome</strong> suffered more severe damage: its mechanism survives in its original
+              form but cannot be used. Only the outer covering was reconstructed to protect the dome from further
+              decay; the gear shafts were bent by the force of the blasts and the chain drives are incomplete, so its
+              restoration is still waiting for better days.</p>
+          </div>
+          <div class="ph-figs ph-figs--2" style="margin-top: 0;">
+            <figure class="ph-fig ph-fig--small" data-group="meteo" style="--mw: 244px"><img src="../povijest-zvjezdarnice/img/kupola-unutrasnjost.jpg" width="188" height="320" alt="Interior of the main dome – the original opening and rotating mechanism still works today" loading="lazy" decoding="async"><figcaption>Interior of the main dome – the original opening and rotating mechanism still works today.</figcaption></figure>
+            <figure class="ph-fig ph-fig--small" data-group="meteo" style="--mw: 380px"><img src="../povijest-zvjezdarnice/img/kupola-mehanizam.jpg" width="299" height="320" alt="The main dome mechanism with the wheel for opening the slit" loading="lazy" decoding="async"><figcaption>The main dome mechanism with the wheel for opening the slit.</figcaption></figure>
+            <figure class="ph-fig" data-group="meteo"><img src="../povijest-zvjezdarnice/img/meridijanska-kupola.jpg" width="482" height="320" alt="The meridian dome today" loading="lazy" decoding="async"><figcaption>The meridian dome today – parts of the sliding-shutter mechanism still withstand the ravages of time.</figcaption></figure>
+            <figure class="ph-fig ph-fig--small" data-group="meteo" style="--mw: 347px"><img src="../povijest-zvjezdarnice/img/meridijanska-unutrasnjost.jpg" width="267" height="333" alt="Interior of the meridian dome, with clear signs of decay" loading="lazy" decoding="async"><figcaption>Interior of the meridian dome, with clear signs of decay.</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 10. ADIP ===================== -->
+      <section class="ph-chapter" id="adip">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1973 – 1999</span>
+          <h2>Astronomical Society "Istra" Pula</h2>
+        </header>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>The Astronomical Society "Istra" Pula (ADIP) was founded on <strong>27 December 1973</strong>, at a time
+              of great exploratory ventures in astronomy and astronautics, when the thirst for knowledge was hard to
+              quench owing to a lack of literature, resources and organisation. The society's primary mission was
+              to popularise astronomy and the other natural sciences through lectures and observations of celestial
+              phenomena for people of all ages.</p>
+            <p>Close ties with schools led to a large number of pupils taking astronomy as an elective subject, and
+              in the late 1970s excellent results were achieved in the competitions of the "Nauka mladima" (Science
+              for Youth) movement, organised by the then Narodna tehnika (People's Technology), the forerunner of
+              today's Community of Technical Culture.</p>
+            <p>Telescopes were not as readily available as they are today — besides high prices, state import
+              restrictions were also a problem. Nevertheless, in <strong>1975</strong> the society raised the funds to
+              buy a <strong>"Celestron 8"</strong> telescope, which is still in use today. For several months it was
+              displayed in the shop window of "Narodna tehnika", catching the eye of passers-by. In those days
+              observations were held on the rooftop terraces of buildings in the town centre or just outside town —
+              light pollution was far lower than it is today.</p>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="adip"><img src="../povijest-zvjezdarnice/img/bazovica-1975.jpg" width="482" height="433" alt="ADIP members visiting the Basovizza (Bazovica) observatory in 1975" loading="lazy" decoding="async"><figcaption>ADIP members visiting the Basovizza (Bazovica) observatory in 1975 – the dream of a society observatory was beginning to take shape.</figcaption></figure>
+            <figure class="ph-fig ph-fig--small" data-group="adip" style="--mw: 380px"><img src="../povijest-zvjezdarnice/img/celestron-8.jpg" width="482" height="596" alt="The &quot;Celestron 8&quot; telescope, bought in 1975 and still in use today" loading="lazy" decoding="async"><figcaption>The "Celestron 8" telescope, bought in 1975 and still in use today.</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="ph-split ph-split--rev ph-reveal">
+          <div>
+            <p>Although in its early days the society had no direct link with the Observatory, it cherished its
+              heritage. For the <strong>centenary of the discovery of the asteroid "Istria"</strong> (1978) a special
+              lecture was held along with an exhibition of works and telescopes made by the members themselves, and
+              several hundred people attended the celebration. Together with the "Arena" philatelic society, a
+              philatelic exhibition on astronomy and astronautics was organised, and a commemorative envelope and a
+              special badge were issued.</p>
+            <p>A request to use the building was sent as early as <strong>1974</strong> to the then Republic
+              Hydrometeorological Institute, the owner of the building, which agreed in principle. Since two
+              meteorologists' families were living in the building, it was necessary to wait until they were
+              rehoused, so in <strong>1979</strong> the society was at first given the use of just two auxiliary rooms
+              on the east side of the building.</p>
+          </div>
+          <div class="ph-figs ph-figs--2" style="margin-top: 0;">
+            <figure class="ph-fig" data-group="adip"><img src="../povijest-zvjezdarnice/img/izlozba-1978.jpg" width="482" height="349" alt="Exhibition marking the 100th anniversary of the discovery of the asteroid &quot;Istria&quot;" loading="lazy" decoding="async"><figcaption>Exhibition marking the 100th anniversary of the discovery of the asteroid "Istria".</figcaption></figure>
+            <figure class="ph-fig ph-fig--small" data-group="adip" style="--mw: 380px"><img src="../povijest-zvjezdarnice/img/kuverta-istria.jpg" width="337" height="237" alt="Commemorative envelope &quot;100th anniversary of the discovery of the asteroid Istra 1878" loading="lazy" decoding="async"><figcaption>Commemorative envelope "100th anniversary of the discovery of the asteroid Istra 1878–1978".</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <h3>1982: the Observatory becomes ADIP's home</h3>
+            <p>In <strong>1982</strong> the Observatory was handed over for use to the Astronomical Society "Istra"
+              Pula, which revived astronomical observations there. The building was in a very dilapidated state, so
+              the members immediately set about refurbishing it — room by room, with the help of local enterprises and
+              a great deal of volunteer work. Because the dome was inaccessible at the time, observations were made
+              from the meadows on Monte Zaro, by the fountain, and partly from the terrace and the meteorological
+              scaffold.</p>
+            <p>At the society's proposal, on <strong>30 May 1983</strong>, by decision no. 435 of the Regional
+              Institute for the Protection of Monuments in Rijeka, the Observatory was declared a <strong>cultural
+              monument of category C</strong>.</p>
+            <p>The Observatory brought new momentum: members took up astrophotography, primarily of the Sun, and
+              regular visual observations were made of the Moon, the planets and the major meteor showers (mostly the
+              Perseids and Orionids, as the weather usually prevented observation of the Geminids and Quadrantids).
+              The Observatory also hosted the "Nauka mladima" school competitions, at which each pupil presented, in
+              addition to a written part, a practical project — from observations of meteors, planets or variable
+              stars to studies of the efficiency of solar energy use. The most successful were rewarded with an
+              astronomy camp on the island of Prvić.</p>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="adip"><img src="../povijest-zvjezdarnice/img/zvjezdarnica-1979.jpg" width="483" height="411" alt="The Observatory in the late 1970s, when the society was given its first rooms" loading="lazy" decoding="async"><figcaption>The Observatory in the late 1970s, when the society was given its first rooms.</figcaption></figure>
+            <div class="ph-figs ph-figs--2" style="margin: 0;">
+              <figure class="ph-fig" data-group="adip"><img src="../povijest-zvjezdarnice/img/opazanja-skela.jpg" width="482" height="374" alt="Observing from the meteorological scaffold next to the dome" loading="lazy" decoding="async"><figcaption>Observing from the meteorological scaffold next to the dome.</figcaption></figure>
+              <figure class="ph-fig" data-group="adip"><img src="../povijest-zvjezdarnice/img/natjecanje.jpg" width="482" height="342" alt="Pupils at an astronomy competition" loading="lazy" decoding="async"><figcaption>Pupils at an astronomy competition.</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="ph-split ph-split--rev ph-reveal">
+          <div>
+            <p>In <strong>1985</strong> society member <strong>Zdenko Kovač</strong>, as his architecture degree
+              thesis, drew up a project for the restoration of the Observatory and its extension with a planetarium.
+              The project was accepted, but amid the political turmoil and the war it fell into oblivion.</p>
+            <p>In <strong>1991</strong> Edi Puh (then a member, later secretary) published the book
+              <strong>"Zvjezdarnica u Puli: 1871–1991. (građa za povijest Istre)"</strong> [The Observatory in Pula:
+              1871–1991 (materials for the history of Istria)], which presents the history of the Observatory in a
+              simple, accessible way and is the reference point for anyone wishing to go into the details.</p>
+            <p>The Croatian War of Independence brought the society's work largely to a halt. Thanks to the
+              exceptional efforts of individuals — above all the then secretary <strong>Edi Puh</strong> and president
+              <strong>Lorenzo
+              Putigna</strong> — the Observatory was saved from further decay.</p>
+            <p>With the help of the <strong>"Uljanik"</strong> shipyard, access to the main dome was finally sorted out
+              in 1999 and the dome was made usable again for astronomical observations, so that the Observatory could
+              once again receive visitors. That same year, during the <strong>partial solar eclipse of 11 August
+              1999</strong>, almost all active members were on hand to help and explain the phenomenon — it is
+              estimated that several thousand people watched the eclipse together with us on Monte Zaro that day.</p>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="adip"><img src="../povijest-zvjezdarnice/img/kovac-planetarij.jpg" width="482" height="311" alt="Zdenko Kovač&#x27;s project (1985) – the Observatory façade with a planetarium" loading="lazy" decoding="async"><figcaption>Zdenko Kovač's project (1985) – the Observatory façade with a planetarium.</figcaption></figure>
+            <div class="ph-figs ph-figs--2" style="margin: 0;">
+              <figure class="ph-fig" data-group="adip"><img src="../povijest-zvjezdarnice/img/kupola-1999.jpg" width="482" height="316" alt="The main dome back in operation (1999)" loading="lazy" decoding="async"><figcaption>The main dome back in operation (1999).</figcaption></figure>
+              <figure class="ph-fig" data-group="adip"><img src="../povijest-zvjezdarnice/img/pomrcina-1999.jpg" width="482" height="333" alt="The solar eclipse of 11 August 1999 – thousands of visitors on Monte Zaro" loading="lazy" decoding="async"><figcaption>The solar eclipse of 11 August 1999 – thousands of visitors on Monte Zaro.</figcaption></figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 11. OBNOVA ===================== -->
+      <section class="ph-chapter" id="obnova">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">2006 – 2009</span>
+          <h2>Comprehensive restoration in four phases</h2>
+        </header>
+        <p class="ph-reveal">Although the society's members continuously maintained the Observatory as far as their
+          means and the funds they received from the City of Pula allowed, this was not enough. In early
+          <strong>2006</strong>, therefore, the City of Pula launched a comprehensive restoration of the building in
+          four phases.</p>
+
+        <div class="ph-steps ph-reveal" id="ph-steps">
+          <div class="ph-steps__tabs" role="tablist" aria-label="Restoration phases">
+            <button type="button" class="ph-steps__tab" role="tab" aria-selected="true" aria-controls="faza-1" id="tab-faza-1"><b>2006</b>Phase 1 · roof</button>
+            <button type="button" class="ph-steps__tab" role="tab" aria-selected="false" aria-controls="faza-2" id="tab-faza-2"><b>2007</b>Phase 2 · terrace</button>
+            <button type="button" class="ph-steps__tab" role="tab" aria-selected="false" aria-controls="faza-3" id="tab-faza-3"><b>2008</b>Phase 3 · roofs around the dome</button>
+            <button type="button" class="ph-steps__tab" role="tab" aria-selected="false" aria-controls="faza-4" id="tab-faza-4"><b>2009</b>Phase 4 · façades</button>
+          </div>
+
+          <div class="ph-steps__panel ph-split" role="tabpanel" id="faza-1" aria-labelledby="tab-faza-1">
+            <div><p>In the first phase the <strong>roof over the central part</strong> of the Observatory building
+              was repaired.</p></div>
+            <div><figure class="ph-fig" data-group="obnova"><img src="../povijest-zvjezdarnice/img/sanacija-2006.jpg" width="482" height="333" alt="First phase of the restoration (2006)" loading="lazy" decoding="async"><figcaption>First phase of the restoration (2006).</figcaption></figure></div>
+          </div>
+          <div class="ph-steps__panel ph-split" role="tabpanel" id="faza-2" aria-labelledby="tab-faza-2" hidden>
+            <div>
+              <p>The second phase, carried out in 2007, completed the <strong>eastern part of the terrace</strong>,
+                which until then could not be used. This gave the Observatory a very valuable space for open-air
+                lectures and for some of its public observing sessions.</p>
+              <p>Thanks to a donation from a telecommunications company, the society bought a
+                <strong>Celestron 11</strong> telescope and installed it in the main dome.</p>
+            </div>
+            <div>
+              <figure class="ph-fig" data-group="obnova"><img src="../povijest-zvjezdarnice/img/sanacija-2007.jpg" width="482" height="343" alt="Second phase of the restoration (2007) – the east terrace" loading="lazy" decoding="async"><figcaption>Second phase of the restoration (2007) – the east terrace.</figcaption></figure>
+              <figure class="ph-fig" data-group="obnova"><img src="../povijest-zvjezdarnice/img/celestron-11.jpg" width="482" height="290" alt="The Celestron 11 telescope in the main dome" loading="lazy" decoding="async"><figcaption>The Celestron 11 telescope in the main dome.</figcaption></figure>
+            </div>
+          </div>
+          <div class="ph-steps__panel ph-split" role="tabpanel" id="faza-3" aria-labelledby="tab-faza-3" hidden>
+            <div>
+              <p>The third phase, in 2008, covered the <strong>roofs around the dome</strong>, finally solving the
+                long-standing problem of leaks after many years.</p>
+              <p>Work also began on the south façade, which had once been a partition wall — its entrance had
+                connected the central building with the wings carrying the domes.</p>
+            </div>
+            <div><figure class="ph-fig" data-group="obnova"><img src="../povijest-zvjezdarnice/img/sanacija-2008.jpg" width="482" height="320" alt="Third phase of the restoration (2008)" loading="lazy" decoding="async"><figcaption>Third phase of the restoration (2008).</figcaption></figure></div>
+          </div>
+          <div class="ph-steps__panel ph-split" role="tabpanel" id="faza-4" aria-labelledby="tab-faza-4" hidden>
+            <div>
+              <p>The final phase, in 2009, covered the <strong>façades</strong>, which were demanding in many
+                respects. To preserve the original appearance of the building as far as possible, all surviving
+                details were reconstructed. The meridian dome was not included in the restoration.</p>
+              <p>The Observatory took on its final form in <strong>early May 2009</strong>, and its reopening was
+                marked with a special event. The terrace, the façade and the surroundings were fully restored.</p>
+            </div>
+            <div><figure class="ph-fig" data-group="obnova"><img src="../povijest-zvjezdarnice/img/sanacija-2009.jpg" width="482" height="320" alt="Fourth phase of the restoration (2009) – renovation of the façades" loading="lazy" decoding="async"><figcaption>Fourth phase of the restoration (2009) – renovation of the façades.</figcaption></figure></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 12. DANAS ===================== -->
+      <section class="ph-chapter" id="danas">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">2009 – today</span>
+          <h2>The Observatory today</h2>
+        </header>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>Once the restoration was completed, work with young people resumed and the popularisation of
+              astronomy continued through public observing sessions and lectures. The Observatory is visited by many
+              groups of school and university students — sometimes more than a hundred participants at once — who
+              learn about its history and its importance for the development of astronomy worldwide. Alongside the
+              history, younger children also learn the basics of how the bodies of the Solar System move through an
+              interactive presentation.</p>
+            <p>In <strong>2010</strong> the society received the <strong>Charter of the Croatian Community of Technical
+              Culture (HZTK)</strong> for its many years of outstanding contribution to the development and promotion
+              of technical culture and astronomy and to the preservation of a cultural monument — the Observatory in
+              Pula.</p>
+            <p>Young members at the Observatory prepare projects for the astronomy competitions run under the
+              Education and Teacher Training Agency and present them at a joint lecture, with their parents in the
+              audience. Since 2009 the number of pupils taking part in the competitions has risen sharply; every year
+              at least a few of them reach the national competition, where some have even won first place. Members
+              also go out into the field, observing the Sun with the necessary safety precautions and warning of the
+              danger of looking directly at the Sun.</p>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="danas"><img src="../povijest-zvjezdarnice/img/posjet-terasa.jpg" width="482" height="333" alt="Visitors on the terrace of the restored Observatory" loading="lazy" decoding="async"><figcaption>Visitors on the terrace of the restored Observatory.</figcaption></figure>
+            <div class="ph-figs ph-figs--2" style="margin: 0;">
+              <figure class="ph-fig ph-fig--small" data-group="danas" style="--mw: 322px"><img src="../povijest-zvjezdarnice/img/povelja-2010.jpg" width="248" height="320" alt="Charter of the Croatian Community of Technical Culture (2010)" loading="lazy" decoding="async"><figcaption>Charter of the Croatian Community of Technical Culture (2010).</figcaption></figure>
+              <figure class="ph-fig" data-group="danas"><img src="../povijest-zvjezdarnice/img/predavanje.jpg" width="482" height="304" alt="A lecture given by young members at the Observatory" loading="lazy" decoding="async"><figcaption>A lecture given by young members at the Observatory.</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="ph-reveal">From a single camera to a global meteor network</h3>
+        <div class="ph-split ph-split--rev ph-reveal">
+          <div>
+            <p>While the restoration was still under way, during the maximum of the Perseids in <strong>2006</strong>,
+              CCTV cameras were tested at the Observatory for observing meteors. The experiment was highly successful
+              and gave rise to the <strong>Croatian Meteor Network (HMM)</strong> project, in which more than 40
+              organisations and individuals across Croatia took part, with several cameras also in neighbouring
+              countries.</p>
+            <p>Besides meteors, the cameras recorded lightning strikes and also rarely observed transient phenomena
+              in the Earth's atmosphere — so-called <strong>"sprites"</strong> (Croatian «vatrenjak»).</p>
+            <p>The project succeeded beyond all expectations. In cooperation with the Višnjan Science and Education
+              Centre, it produced a large number of young astronomers whose own solutions improved on what had until
+              then been the standard methods of meteor observation. As a result, since <strong>2018</strong> there has
+              been the <strong>Global Meteor Network (GMN)</strong>, which in 2021 passed <strong>500 cameras</strong>
+              worldwide. HMM has so far been credited with the discovery of <strong>8 new meteor showers</strong>, and
+              society members have presented their results at several editions of the International Meteor
+              Conference.</p>
+            <p>Alongside the all-sky camera, a camera for <strong>telescopic
+              meteors</strong> — too faint to be seen with the naked eye — has also been installed at the Observatory;
+              because of its much smaller field of view it records fewer of them. Meteor observations — including those
+              from the Observatory in Pula — are used by leading astronomical organisations around the world, among them
+              <strong>NASA</strong>.</p>
+          </div>
+          <div class="ph-figs ph-figs--2" style="margin-top: 0;">
+            <figure class="ph-fig ph-fig--small" data-group="danas" style="--mw: 380px"><img src="../povijest-zvjezdarnice/img/geminidi-2020.jpg" width="482" height="591" alt="All" loading="lazy" decoding="async"><figcaption>All-sky image of the night of the Geminids in 2020. Besides meteors, aircraft and satellites are visible – the cameras record almost everything the human eye can see and are also sensitive in the infrared.</figcaption></figure>
+            <figure class="ph-fig" data-group="danas"><img src="../povijest-zvjezdarnice/img/sprite.jpg" width="482" height="335" alt="Lightning and a &quot;sprite&quot; captured by the meteor network cameras" loading="lazy" decoding="async"><figcaption>Lightning and a "sprite" captured by the meteor network cameras.</figcaption></figure>
+            <figure class="ph-fig" data-group="danas"><img src="../povijest-zvjezdarnice/img/meteorske-orbite.jpg" width="482" height="328" alt="Meteoroid orbits calculated from meteor network observations" loading="lazy" decoding="async"><figcaption>Meteoroid orbits calculated from meteor network observations.</figcaption></figure>
+            <figure class="ph-fig" data-group="danas"><img src="../povijest-zvjezdarnice/img/meteorit-krizevci.jpg" width="482" height="377" alt="The &quot;Križevci&quot; meteorite under the electron microscope" loading="lazy" decoding="async"><figcaption>The "Križevci" meteorite under the electron microscope – an analysis presented at the 2016 Science Festival.</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>Every year society members take an active part in the <strong>Science Festival</strong>. In 2016,
+              together with Pula's "Metris", they presented an
+              analysis of the <strong>"Križevci"</strong> meteorite, in whose recovery the society played a very
+              important role. The society also takes part in joint projects of the Croatian Astronomical Union, such
+              as "Women in Astronomy", and members give talks at amateur astronomers' meetings and related events,
+              always striving to spread knowledge about the history of the Observatory.</p>
+            <p>The COVID-19 pandemic halted public activities, but meteor observing continued without interruption,
+              and alongside the observations, scientific papers based on our own data are being published. We are
+              especially pleased that a growing number of former young members — today engineers, holders of
+              master's degrees and PhDs — stay in touch with the society and are happy to join in its activities.</p>
+            <div class="ph-card">
+              <p><strong>The Croatian Community of Technical Culture (HZTK)</strong> — the umbrella organisation to
+                which ADIP also belongs — is the historical successor of the Republic Commission "Technology and
+                Sport", founded on <strong>23 June
+                1946</strong> in Zagreb, whose first president was the academician Andrija Mohorovičić. Istria
+                established its branch in 1947. Today the Community brings together 18 national associations and 19
+                county and 35 city communities of technical culture.</p>
+            </div>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="danas"><img src="../povijest-zvjezdarnice/img/clanovi.jpg" width="482" height="309" alt="Members of the Astronomical Society &quot;Istra&quot; Pula on the Observatory terrace" loading="lazy" decoding="async"><figcaption>Members of the Astronomical Society "Istra" Pula on the Observatory terrace.</figcaption></figure>
+            <figure class="ph-fig ph-fig--small" data-group="danas" style="--mw: 380px"><img src="../povijest-zvjezdarnice/img/zracna-zvjezdarnica.jpg" width="623" height="879" alt="The Observatory on Monte Zaro from the air" loading="lazy" decoding="async"><figcaption>The Observatory on Monte Zaro from the air.</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="ph-card ph-reveal" style="text-align: center; margin-top: 2rem;">
+          <p style="margin-bottom: 0.9rem;">Visit the Observatory and see more photographs from its history.</p>
+          <div class="ph-hero__actions">
+            <a href="posjet-pulskoj-zvjezdarnici.html" class="btn btn--primary">Visit the Observatory</a>
+            <a href="galerija-povijest.html" class="btn btn--secondary">Gallery: history</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== IZVORI ===================== -->
+      <section class="ph-chapter" id="izvori" style="padding-bottom: 4rem;">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">literature</span>
+          <h2>Sources and acknowledgements</h2>
+        </header>
+        <ul class="ph-sources ph-reveal">
+          <li>D. Šegon (ed.): <em>150 godina Zvjezdarnice u Puli</em> [150 Years of the Observatory in Pula],
+            Community of Technical Culture Pula and Astronomical Society "Istra" Pula, 2021 — available on the
+            <a href="downloads.html">Downloads</a> page.</li>
+          <li>E. Puh: <em>Zvjezdarnica u Puli: 1871–1991. (građa za povijest Istre)</em> [The Observatory in Pula:
+            1871–1991 (materials for the history of Istria)], Histria Historica, special edition, 1991.</li>
+          <li>Data on the discoveries of Johann Palisa and his contemporaries: Minor Planet Center.</li>
+          <li>Historical photographs from the Austro-Hungarian era: Historical and Maritime Museum of Istria. Other
+            photographs: archive of the Astronomical Society "Istra" Pula and the collections of Edi Puh and Luciano
+            Gržinić; aerial photographs courtesy of Igor Karasi.</li>
+          <li>Photograph of the Hydrographic Office building: Erminio Mioni.</li>
+        </ul>
+      </section>
 
     </div>
   </main>
 
-  <!-- Footer -->
+
   <footer class="footer">
     <div class="footer__contact">
       <strong>Astronomical Society "Istra" Pula</strong><br>
@@ -158,7 +990,8 @@
         style="color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.5);">Association of
         Technical Culture Pula</a><br>
       Glavinićev uspon 1, 52100 Pula - HR<br>
-      Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: +385 91 214 1966
+      Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: +385 91 214 1966<br>
+      <span style="color: var(--text-muted);">(Observatory, Monte Zaro Park 2, Pula)</span>
     </div>
   </footer>
 
@@ -186,6 +1019,7 @@
   </div>
 
   <script src="../js/main.js?v=20260928"></script>
+  <script src="../js/povijest.js?v=20261012"></script>
 </body>
 
 </html>

@@ -38,6 +38,7 @@
       <a href="radovi.html" class="nav__link">Papers</a>
       <a href="servisi.html" class="nav__link">Services</a>
       <a href="downloads.html" class="nav__link">Downloads</a>
+      <a href="../tecaj/index.html" class="nav__link">Astronomy Course</a>
       <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">About Us</a>
       <div class="nav__spacer"></div>
       <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Login</button>
@@ -88,6 +89,14 @@
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="https://www.twitch.tv/adip1973" target="_blank" class="hero__social-link" aria-label="Twitch">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 2H3v16h5v4l4-4h4l5-5V2z"></path>
+            <line x1="11" y1="7" x2="11" y2="12"></line>
+            <line x1="16" y1="7" x2="16" y2="12"></line>
           </svg>
         </a>
         <a href="mailto:adip.pula@gmail.com" class="hero__social-link" aria-label="Email">
@@ -164,6 +173,26 @@
       </div>
     </div>
   </section>
+
+  <!-- Activity Detail Modal -->
+  <div class="modal-overlay" id="activity-modal">
+    <div class="modal" style="max-width: 700px;">
+      <button class="modal__close" id="close-activity-modal">&times;</button>
+      <div class="modal__header">
+        <span id="activity-modal-date" style="color: var(--accent-primary); font-size: 0.9rem;"></span>
+        <h3 class="modal__title" id="activity-modal-title"></h3>
+      </div>
+      <div id="activity-modal-images" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+        <!-- Images will be inserted here -->
+      </div>
+      <div id="activity-modal-content" style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+      </div>
+      <div style="display: flex; gap: 1rem;">
+        <button class="btn btn--secondary" id="close-activity-btn" style="flex: 1;">Close</button>
+        <button class="btn btn--danger hidden" id="delete-activity-btn">Delete</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="footer">
