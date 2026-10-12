@@ -11,8 +11,14 @@
 </head>
 
 <body class="page-blur">
+    <!-- Header -->
     <header class="header">
-        <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
         <a href="index.html" class="header__logo">
             <img src="../sites/all/themes/black_hole/logo.png" alt="ADIP Logo">
             <div>
@@ -20,6 +26,7 @@
                 <div class="header__subtitle">Società Astronomica "Istra" Pola</div>
             </div>
         </a>
+
         <nav class="nav" id="main-nav">
             <button class="nav__close" id="nav-close">✕</button>
             <a href="index.html" class="nav__link">Home</a>
@@ -30,11 +37,13 @@
             <a href="radovi.html" class="nav__link">Pubblicazioni</a>
             <a href="servisi.html" class="nav__link">Servizi</a>
             <a href="downloads.html" class="nav__link">Download</a>
+            <a href="../tecaj/index.html" class="nav__link">Corso di astronomia</a>
             <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">Chi siamo</a>
             <div class="nav__spacer"></div>
             <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Accedi</button>
         </nav>
         <div class="nav-overlay" id="nav-overlay"></div>
+
         <div class="user-controls">
             <div class="lang-selector">
                 <button class="lang-current">IT ▼</button>
@@ -47,14 +56,16 @@
         </div>
     </header>
 
+    <!-- Page Content -->
     <main class="page-content">
         <div class="container">
             <div class="section__header" style="padding-top: 2rem;">
-                <a href="galerija-slika.html" class="btn btn--secondary" style="margin-bottom: 1rem;">← Torna alla
-                    galleria</a>
+                <a href="galerija-slika.html" class="btn btn--secondary" style="margin-bottom: 1rem;">← Torna alla galleria</a>
                 <h1 class="section__title">Altre <span class="text-gradient">immagini</span></h1>
                 <p class="section__subtitle">Varie foto dalle attività della Società Astronomica</p>
             </div>
+
+            <!-- Gallery Grid -->
             <div class="gallery-grid" id="gallery-container">
                 <p style="color: var(--text-muted);">Caricamento immagini...</p>
             </div>
@@ -72,14 +83,19 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer__contact">
             <strong>Società Astronomica "Istra" Pola</strong><br>
+            <a href="https://www.ztkpula.hr/hr/" target="_blank"
+                style="color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.5);">Associazione della Cultura Tecnica Pola</a><br>
             Glavinićev uspon 1, 52100 Pola - HR<br>
-            Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: +385 91 214 1966
+            Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: +385 91 214 1966<br>
+            <span style="color: var(--text-muted);">(Osservatorio, Parco Monte Zaro 2, Pola)</span>
         </div>
     </footer>
 
+    <!-- Login Modal -->
     <div class="modal-overlay" id="login-modal">
         <div class="modal">
             <div class="modal__header">
@@ -87,11 +103,15 @@
                 <p style="color: var(--text-secondary);">Inserisci le tue credenziali</p>
             </div>
             <form id="login-form">
-                <div class="form-group"><label class="form-label">Nome utente</label><input type="text"
-                        class="form-input" id="login-username" required></div>
-                <div class="form-group"><label class="form-label">Password</label><input type="password"
-                        class="form-input" id="login-password" required></div>
-                <div id="login-message" style="margin-bottom: 1rem;"></div>
+                <div class="form-group">
+                    <label class="form-label">Nome utente</label>
+                    <input type="text" class="form-input" id="login-username" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" id="login-password" required>
+                </div>
+                <div id="login-message" style="margin-bottom: 1rem; font-size: 0.9rem;"></div>
                 <button type="submit" class="btn btn--primary" style="width: 100%;">Accedi</button>
             </form>
             <button class="btn btn--secondary" style="width: 100%; margin-top: 0.5rem;"

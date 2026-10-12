@@ -2,60 +2,24 @@
 <html lang="it">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Storia dell'osservatorio | Osservatorio di Pola</title>
-    <meta name="description" content="Storia dell'Osservatorio di Pola, i suoi strumenti e le figure storiche.">
-    <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
-    <link rel="stylesheet" href="../css/modern.css?v=20260928">
-    <style>
-        .history-categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .category-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--radius-lg);
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            color: var(--text-primary);
-        }
-
-        .category-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--accent-primary);
-        }
-
-        .category-card img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-            border: 3px solid var(--accent-secondary);
-        }
-
-        .category-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-top: 0.5rem;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Storia dell’Osservatorio | Osservatorio di Pola</title>
+  <meta name="description" content="Storia dell’Osservatorio di Pola dal 1869 a oggi: l’Ufficio Idrografico, Johann Palisa e i suoi asteroidi, gli strumenti storici, la distruzione del 1944, il restauro e la Società Astronomica «Istra» Pola.">
+  <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
+  <link rel="stylesheet" href="../css/modern.css?v=20260928">
+  <link rel="stylesheet" href="../css/povijest.css?v=20261012">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 
 <body class="page-blur">
-    <header class="header">
-        <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+  <header class="header">
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
         <a href="index.html" class="header__logo">
             <img src="../sites/all/themes/black_hole/logo.png" alt="ADIP Logo">
             <div>
@@ -63,6 +27,7 @@
                 <div class="header__subtitle">Società Astronomica "Istra" Pola</div>
             </div>
         </a>
+
         <nav class="nav" id="main-nav">
             <button class="nav__close" id="nav-close">✕</button>
             <a href="index.html" class="nav__link">Home</a>
@@ -73,11 +38,13 @@
             <a href="radovi.html" class="nav__link">Pubblicazioni</a>
             <a href="servisi.html" class="nav__link">Servizi</a>
             <a href="downloads.html" class="nav__link">Download</a>
+            <a href="../tecaj/index.html" class="nav__link">Corso di astronomia</a>
             <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">Chi siamo</a>
             <div class="nav__spacer"></div>
             <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Accedi</button>
         </nav>
         <div class="nav-overlay" id="nav-overlay"></div>
+
         <div class="user-controls">
             <div class="lang-selector">
                 <button class="lang-current">IT ▼</button>
@@ -90,71 +57,934 @@
         </div>
     </header>
 
-    <main class="page-content">
-        <div class="container">
-            <div class="section__header" style="padding-top: 2rem;">
-                <h1 class="section__title">Storia <span class="text-gradient">dell'Osservatorio</span></h1>
-                <p class="section__subtitle">Esplora la ricca storia e il patrimonio dell'Osservatorio di Pola</p>
-            </div>
-            <div class="history-categories">
-                <a href="povijest-zvjezdarnice/zvjezdarnica-nekada.html" class="category-card">
-                    <img src="../sites/default/files/images/povijest_Zvmioni.jpg"
-                        alt="L'osservatorio di Pola nel passato" loading="lazy" />
-                    <div class="category-title">L'osservatorio nel passato</div>
-                </a>
-                <a href="povijest-zvjezdarnice/mornaricka-knjiznica.html" class="category-card">
-                    <img src="../sites/default/files/images/povijest__Biblio.jpg" alt="Biblioteca della Marina"
-                        loading="lazy" />
-                    <div class="category-title">Biblioteca della Marina</div>
-                </a>
-                <a href="povijest-zvjezdarnice/stari-instrumenti.html" class="category-card">
-                    <img src="../sites/default/files/images/povijest_bracom.jpg" alt="Strumenti storici"
-                        loading="lazy" />
-                    <div class="category-title">Strumenti storici</div>
-                </a>
-            </div>
-            <div class="section__header" style="padding-top: 4rem;">
-                <h2 class="section__title">Figure <span class="text-gradient">storiche</span></h2>
-            </div>
-            <div class="history-categories">
-                <a href="povijest-zvjezdarnice/povijesne-licnosti/johann-palisa.html" class="category-card">
-                    <img src="../sites/default/files/images/povijest_Palisam.jpg" alt="Johann Palisa" loading="lazy" />
-                    <div class="category-title">Astronomo Johann Palisa</div>
-                </a>
-                <a href="povijest-zvjezdarnice/povijesne-licnosti/barun-ivo-benko-von-boinik.html"
-                    class="category-card">
-                    <img src="../sites/default/files/images/povijest_Benko.jpg" alt="Ivo Benko von Boinik"
-                        loading="lazy" />
-                    <div class="category-title">Astronomo Ivo Benko von Boinik</div>
-                </a>
-                <a href="povijest-zvjezdarnice/povijesne-licnosti/viceadmiral-wilhelm-von-tegetthoff.html"
-                    class="category-card">
-                    <img src="../sites/default/files/images/povijest_Tegetthoff.jpg" alt="Wilhelm von Tegetthoff"
-                        loading="lazy" />
-                    <div class="category-title">Viceammiraglio Wilhelm von Tegetthoff</div>
-                </a>
-            </div>
+  <main class="page-content ph">
+    <div class="container">
+
+      <!-- ===================== HERO ===================== -->
+      <section class="ph-hero" id="vrh">
+        <span class="ph-hero__eyebrow">Monte Zaro · Pola · dal 1869</span>
+        <h1>Storia dell'<span class="text-gradient">Osservatorio</span></h1>
+        <p class="ph-hero__lead">L'Imperiale e Regio Osservatorio della Marina di Pola (Pula) (K.u.K. Marine-Sternwarte)
+          è la più antica istituzione astronomica sul territorio della Repubblica di Croazia. Questa è la sua storia: dalla fortezza sul
+          colle Zaro, passando per le scoperte di Johann Palisa e la distruzione nella seconda guerra mondiale, fino al restauro e all'attività
+          della Società Astronomica «Istra» Pola (ADIP) oggi.</p>
+
+        <div class="ph-stats">
+          <div class="ph-stat"><div class="ph-stat__num" data-count="1869">1869</div><div class="ph-stat__label">fondazione dell'Osservatorio</div></div>
+          <div class="ph-stat"><div class="ph-stat__num" data-count="28">28</div><div class="ph-stat__label">asteroidi scoperti da Pola</div></div>
+          <div class="ph-stat"><div class="ph-stat__num" data-count="123">123</div><div class="ph-stat__label">scoperte di Palisa in totale</div></div>
+          <div class="ph-stat"><div class="ph-stat__num" data-count="1982">1982</div><div class="ph-stat__label">l'ADIP prende in gestione l'Osservatorio</div></div>
+          <div class="ph-stat"><div class="ph-stat__num" data-count="8">8</div><div class="ph-stat__label">nuovi sciami meteorici (HMM)</div></div>
         </div>
-    </main>
+
+        <div class="ph-hero__actions">
+          <a href="#pocetci" class="btn btn--primary">Un viaggio nella storia ↓</a>
+          <a href="downloads.html" class="btn btn--secondary">Opuscolo «150 anni dell'Osservatorio di Pola»</a>
+        </div>
+      </section>
+
+      <!-- ===================== NAVIGACIJA ===================== -->
+      <nav class="ph-nav" aria-label="Capitoli">
+        <ul class="ph-nav__list">
+          <li><a class="ph-nav__link" href="#pocetci">Le origini</a></li>
+          <li><a class="ph-nav__link" href="#zlatno-doba">L'età d'oro</a></li>
+          <li><a class="ph-nav__link" href="#palisa">Johann Palisa</a></li>
+          <li><a class="ph-nav__link" href="#benko">Ivo Benko</a></li>
+          <li><a class="ph-nav__link" href="#instrumenti">Strumenti</a></li>
+          <li><a class="ph-nav__link" href="#knjiznica">Biblioteca della Marina</a></li>
+          <li><a class="ph-nav__link" href="#tegetthoff">Tegetthoff</a></li>
+          <li><a class="ph-nav__link" href="#rat">Guerra e distruzione</a></li>
+          <li><a class="ph-nav__link" href="#meteoroloska-postaja">Stazione meteorologica</a></li>
+          <li><a class="ph-nav__link" href="#adip">ADIP</a></li>
+          <li><a class="ph-nav__link" href="#obnova">Restauro 2006–2009</a></li>
+          <li><a class="ph-nav__link" href="#danas">L'Osservatorio oggi</a></li>
+          <li><a class="ph-nav__link" href="#izvori">Fonti</a></li>
+        </ul>
+        <div class="ph-progress" aria-hidden="true"></div>
+      </nav>
+
+      <!-- ===================== VREMENSKA CRTA ===================== -->
+      <section class="ph-timeline" aria-label="Cronologia">
+        <div class="ph-timeline__eras" role="group" aria-label="Periodi">
+          <button type="button" class="ph-chip is-active" data-era="all">Tutti</button>
+          <button type="button" class="ph-chip" data-era="au">Austria-Ungheria (fino al 1918)</button>
+          <button type="button" class="ph-chip" data-era="rat">1918–1972</button>
+          <button type="button" class="ph-chip" data-era="adip">ADIP (dal 1973)</button>
+        </div>
+        <div class="ph-timeline__track" id="ph-timeline"></div>
+      </section>
+
+      <!-- ===================== 1. POČECI ===================== -->
+      <section class="ph-chapter" id="pocetci">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1802 – 1871</span>
+          <h2>Le origini: da Venezia a Monte Zaro</h2>
+        </header>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>Le radici dell'Osservatorio di Pola risalgono già al <strong>1840</strong>, all'Osservatorio di Marina di
+              Venezia, che operava nell'ambito dell'Accademia di Marina austriaca. Dopo gli eventi bellici
+              del 1848 l'Austria soppresse l'Accademia di Venezia e nel <strong>1850</strong> fondò a Trieste
+              una nuova Accademia di Marina, della quale l'Osservatorio faceva parte come reparto.</p>
+            <p>Dopo che nel <strong>1853</strong> Pola divenne il porto principale della Marina da guerra austriaca
+              (K.K. Kriegsmarine), si avviò la costruzione pianificata delle fortificazioni. Nello stesso anno, sul
+              colle cittadino di <strong>Zaro (Monte Zaro)</strong>, iniziò la costruzione di un forte i cui cannoni
+              potevano raggiungere quasi l'intera baia di Pola.</p>
+            <p>Con il perfezionamento delle tecniche e delle tecnologie difensive — soprattutto con l'aumento della gittata e della
+              precisione dei proiettili d'artiglieria — e con la costruzione di nuovi forti più lontani dal centro, il forte Zaro perse
+              la sua funzione originaria. Con la crescita del porto militare di Pola nacque l'esigenza di un'istituzione che fornisse un servizio
+              scientifico alla Marina da guerra, anzitutto per una navigazione il più possibile precisa.</p>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="pocetci"><img src="../povijest-zvjezdarnice/img/pula-luka-19st.jpg" width="482" height="288" alt="Pola nella seconda metà dell&#x27;Ottocento: il porto militare ai piedi dei colli cittadini" loading="lazy" decoding="async"><figcaption>Pola nella seconda metà dell'Ottocento: il porto militare ai piedi dei colli cittadini.</figcaption></figure>
+            <figure class="ph-fig ph-fig--small" data-group="pocetci" style="--mw: 298px"><img src="../povijest-zvjezdarnice/img/utvrda-zaro.jpg" width="229" height="155" alt="Il forte Zaro, costruito a partire dal 1853. Al suo posto nel 1869 iniziò la costruzione dell&#x27;Ufficio Idrografico" loading="lazy" decoding="async"><figcaption>Il forte Zaro, costruito a partire dal 1853. Al suo posto nel 1869 iniziò la costruzione dell'Ufficio Idrografico.</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="ph-split ph-split--rev ph-reveal">
+          <div>
+            <p>Si decise di demolire il forte Zaro e di costruire al suo posto un moderno edificio
+              per l'<strong>Ufficio Idrografico</strong>, dotato di tutto il necessario; i lavori iniziarono
+              nel <strong>1869</strong>. La posizione non era casuale: l'edificio era visibile da quasi tutto il porto, e
+              le navi avevano così una vista libera sul dispositivo per il segnale dell'ora esatta posto sul tetto.</p>
+            <p>L'Osservatorio della Marina austro-ungarica di Pola fu fondato nel 1869 come uno dei reparti
+              dell'<strong>Imperiale e Regio Ufficio Idrografico</strong> della Marina da guerra
+              (K. und K. Hydrographisches Amt). La sua costruzione fu inserita nel bilancio del 1870 dal viceammiraglio Wilhelm von
+              Tegetthoff e approvata dall'imperatore Francesco Giuseppe I il <strong>10 settembre 1869</strong>. Con la fondazione dell'istituto,
+              anche parte della dotazione dell'osservatorio di Trieste fu trasferita a Pola.</p>
+            <p>Già nel <strong>1871</strong>, al posto dell'antico forte, sorgeva il nuovo edificio dell'Ufficio Idrografico,
+              concepito anche come osservatorio con il compito di mantenere il servizio dell'ora esatta con metodi astronomici.
+              L'istituto era articolato in quattro reparti:</p>
+            <ul class="ph-facts">
+              <li><strong>Osservatorio</strong>osservazioni astronomiche e servizio dell'ora esatta</li>
+              <li><strong>Deposito degli strumenti nautico-fisici</strong>strumenti di bordo e cronometri</li>
+              <li><strong>Deposito delle carte nautiche</strong>carte per la navigazione in Adriatico e nel mondo</li>
+              <li><strong>Biblioteca della Marina</strong>biblioteca scientifica e tecnica della Marina</li>
+            </ul>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="pocetci"><img src="../povijest-zvjezdarnice/img/zgrada-1871.jpg" width="483" height="326" alt="Il nuovo edificio dell&#x27;Ufficio Idrografico su Monte Zaro, eretto nel 1871 al posto del forte" loading="lazy" decoding="async"><figcaption>Il nuovo edificio dell'Ufficio Idrografico su Monte Zaro, eretto nel 1871 al posto del forte.</figcaption></figure>
+            <figure class="ph-fig" data-group="pocetci"><img src="../povijest-zvjezdarnice/img/procelje-nacrt.jpg" width="422" height="268" alt="Progetto della facciata: «K. und K. Hydrographisches Amt in Pola»" loading="lazy" decoding="async"><figcaption>Progetto della facciata: «K. und K. Hydrographisches Amt in Pola».</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="ph-figs ph-figs--2 ph-reveal">
+          <figure class="ph-fig ph-fig--small" data-group="pocetci" style="--mw: 380px"><img src="../povijest-zvjezdarnice/img/panorama-1870.jpg" width="482" height="563" alt="Panorama di Pola del periodo 1870" loading="lazy" decoding="async"><figcaption>Panorama di Pola del periodo 1870–1880, con ogni probabilità ripreso dal colle di Monte Ghiro. L'Osservatorio domina la vista non solo sul porto, ma su un orizzonte molto più ampio.</figcaption></figure>
+          <figure class="ph-fig ph-fig--small" data-group="pocetci" style="--mw: 380px"><img src="../povijest-zvjezdarnice/img/luka-1900.jpg" width="482" height="561" alt="Panorama del porto di Pola intorno al 1900. Accanto al nuovo edificio fu creato un parco, uno dei più belli di Pola, arricchito con la flora più varia che le navi della Marina riportavano dalle missioni scientifiche in tutto il mondo" loading="lazy" decoding="async"><figcaption>Panorama del porto di Pola intorno al 1900. Accanto al nuovo edificio fu creato un parco, uno dei più belli di Pola, arricchito con la flora più varia che le navi della Marina riportavano dalle missioni scientifiche in tutto il mondo.</figcaption></figure>
+        </div>
+      </section>
+
+      <!-- ===================== 2. ZLATNO DOBA ===================== -->
+      <section class="ph-chapter" id="zlatno-doba">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1871 – 1918</span>
+          <h2>L'età d'oro dell'Osservatorio della Marina</h2>
+        </header>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>L'Imperiale e Regio Osservatorio della Marina di Pola (K.u.K. Marine-Sternwarte)
+              <strong>è la più antica istituzione astronomica sul territorio della Repubblica di Croazia</strong>. Ai fini di una
+              navigazione precisa vi erano organizzati quattro servizi, che si avvalevano di strumenti modernissimi per
+              l'epoca:</p>
+            <ul class="ph-facts">
+              <li><strong>Servizio dell'ora esatta</strong>misura dei passaggi delle stelle al meridiano e segnale orario per le navi in porto</li>
+              <li><strong>Servizio cronometrico</strong>cura dei cronometri di bordo della Marina da guerra austriaca</li>
+              <li><strong>Servizio geomagnetico</strong>tra l'altro, la carta geomagnetica dell'Adriatico pubblicata nel 1913</li>
+              <li><strong>Servizio meteorologico</strong>misurazioni con strumenti allora all'avanguardia della tecnica</li>
+            </ul>
+            <p>Oltre ai compiti istituzionali, ogni servizio diede anche un contributo scientifico. Il personale del reparto Osservatorio,
+              in quanto militare, oltre alle mansioni previste dallo Statuto si dedicava per lo più di propria iniziativa ad altre osservazioni
+              astronomiche. Grazie all'eccezionale impegno dell'astronomo <a class="ph-link" href="#palisa">Johann
+              Palisa</a>, in una decina d'anni (1871–1880) l'Osservatorio della Marina di Pola entrò stabilmente nel novero
+              dei più eminenti osservatori astronomici del mondo.</p>
+            <p>Che alcuni degli strumenti di allora siano ancora oggi dotazione standard delle stazioni meteorologiche lo testimonia
+              l'<strong>eliofanografo</strong>, un semplice strumento che misura il numero di ore di sole nella giornata. Uno strumento
+              di questo tipo si trova tuttora all'Osservatorio e viene usato quotidianamente per le misurazioni.</p>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="zlatno"><img src="../povijest-zvjezdarnice/img/geomagnetska-karta-1913.jpg" width="482" height="374" alt="Carta geomagnetica dell&#x27;Adriatico, pubblicata nel 1913: uno dei contributi scientifici dell&#x27;Osservatorio" loading="lazy" decoding="async"><figcaption>Carta geomagnetica dell'Adriatico, pubblicata nel 1913: uno dei contributi scientifici dell'Osservatorio.</figcaption></figure>
+            <div class="ph-figs ph-figs--2" style="margin: 0;">
+              <figure class="ph-fig ph-fig--small" data-group="zlatno" style="--mw: 303px"><img src="../povijest-zvjezdarnice/img/heliograf-crtez.jpg" width="233" height="197" alt="Eliofanografo: disegno dello strumento" loading="lazy" decoding="async"><figcaption>Eliofanografo: disegno dello strumento.</figcaption></figure>
+              <figure class="ph-fig ph-fig--small" data-group="zlatno" style="--mw: 317px"><img src="../povijest-zvjezdarnice/img/heliograf-danas.jpg" width="244" height="208" alt="L&#x27;eliofanografo all&#x27;Osservatorio oggi, ancora in uso quotidiano" loading="lazy" decoding="async"><figcaption>L'eliofanografo all'Osservatorio oggi, ancora in uso quotidiano.</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="ph-reveal">Il monumento a Tegetthoff e il parco</h3>
+        <p class="ph-reveal">Nel <strong>1877</strong> davanti all'Ufficio Idrografico fu eretto il monumento al
+          viceammiraglio <a class="ph-link" href="#tegetthoff">Wilhelm von Tegetthoff</a>, divenuto celebre
+          quando nel 1866, al comando della flotta austriaca, sconfisse quella italiana nella battaglia di Lissa. Le fotografie della fine
+          dell'Ottocento e dell'inizio del Novecento raramente mostrano l'edificio per intero; in alcune si vedono ancora tutte le cupole e
+          le proporzioni della grande cupola meridiana, da cui si misuravano i tempi di passaggio delle stelle al meridiano.</p>
+
+        <div class="ph-figs ph-reveal">
+          <figure class="ph-fig" data-group="zlatno"><img src="../povijest-zvjezdarnice/img/spomenik-tegetthoff.jpg" width="482" height="383" alt="Il monumento al viceammiraglio Tegetthoff davanti all&#x27;Osservatorio, eretto nel 1877" loading="lazy" decoding="async"><figcaption>Il monumento al viceammiraglio Tegetthoff davanti all'Osservatorio, eretto nel 1877.</figcaption></figure>
+          <figure class="ph-fig" data-group="zlatno"><img src="../povijest-zvjezdarnice/img/razglednica-spomenik.jpg" width="481" height="327" alt="L&#x27;Osservatorio e il monumento a Tegetthoff in una cartolina dell&#x27;epoca austro-ungarica" loading="lazy" decoding="async"><figcaption>L'Osservatorio e il monumento a Tegetthoff in una cartolina dell'epoca austro-ungarica.</figcaption></figure>
+          <figure class="ph-fig" data-group="zlatno"><img src="../povijest-zvjezdarnice/img/park-fontana.jpg" width="481" height="337" alt="Il parco di Monte Zaro con la fontana e la scalinata verso l&#x27;Osservatorio" loading="lazy" decoding="async"><figcaption>Il parco di Monte Zaro con la fontana e la scalinata verso l'Osservatorio.</figcaption></figure>
+          <figure class="ph-fig" data-group="zlatno"><img src="../povijest-zvjezdarnice/img/razglednica-specola.jpg" width="482" height="304" alt="«Pola – Specola»: l&#x27;Osservatorio in una cartolina" loading="lazy" decoding="async"><figcaption>«Pola – Specola»: l'Osservatorio in una cartolina.</figcaption></figure>
+          <figure class="ph-fig ph-fig--small" data-group="zlatno" style="--mw: 380px"><img src="../povijest-zvjezdarnice/img/straznja-strana.jpg" width="348" height="255" alt="Veduta della parte centrale dell&#x27;Osservatorio dal retro, con gli strumenti meteorologici per la misura della velocità e della direzione del vento" loading="lazy" decoding="async"><figcaption>Veduta della parte centrale dell'Osservatorio dal retro, con gli strumenti meteorologici per la misura della velocità e della direzione del vento.</figcaption></figure>
+          <figure class="ph-fig" data-group="zlatno"><img src="../povijest-zvjezdarnice/img/sjeverna-kupola.jpg" width="482" height="344" alt="La cupola nord, l&#x27;unica sopravvissuta al bombardamento alleato del 1944" loading="lazy" decoding="async"><figcaption>La cupola nord, l'unica sopravvissuta al bombardamento alleato del 1944.</figcaption></figure>
+          <figure class="ph-fig" data-group="zlatno"><img src="../povijest-zvjezdarnice/img/sredisnji-dio.jpg" width="482" height="327" alt="La parte centrale dell&#x27;edificio dell&#x27;Ufficio Idrografico" loading="lazy" decoding="async"><figcaption>La parte centrale dell'edificio dell'Ufficio Idrografico.</figcaption></figure>
+        </div>
+      </section>
+
+      <!-- ===================== 3. PALISA ===================== -->
+      <section class="ph-chapter" id="palisa">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1848 – 1925</span>
+          <h2>Johann Palisa, cacciatore di asteroidi</h2>
+        </header>
+
+        <div class="ph-clear ph-reveal">
+          <figure class="ph-fig ph-portrait" data-group="palisa">
+            <img src="../povijest-zvjezdarnice/img/palisa-portret.jpg" width="411" height="584" alt="Johann Palisa" loading="lazy" decoding="async">
+            <figcaption>Johann Palisa (1848–1925)</figcaption>
+          </figure>
+          <p>L'astronomo più illustre, grazie al quale l'Osservatorio di Pola è entrato per sempre nella storia, è
+            <strong>Johann Palisa</strong>. Nacque il <strong>6 dicembre 1848</strong> a Troppau, allora in Austria
+            (oggi Opava, Repubblica Ceca), primogenito del commerciante locale Franz Palisa e di
+            Katharina. Frequentò le scuole elementari e il ginnasio nella natia Opava e nel 1866 si iscrisse a matematica
+            all'Università di Vienna, dove ebbe come docenti Carl von Littrow, Edmund Weiss e Theodor von Oppolzer.</p>
+          <p>Proseguì gli studi di matematica e astronomia sul campo come assistente all'Osservatorio di Vienna nel 1870, dove
+            lavorò alla determinazione delle posizioni di stelle e pianeti e al disegno delle macchie solari. All'inizio del 1871
+            fu trasferito all'osservatorio di Ginevra e, pochi mesi dopo, all'Osservatorio della Marina di
+            Pola, dove a soli <strong>24 anni</strong> divenne capo del Reparto astronomico. Il suo compito principale
+            era la cura dei cronometri di bordo della Marina da guerra austriaca e, poiché le mansioni ordinarie
+            gli lasciavano abbastanza tempo libero, intraprese la ricerca di pianetini.</p>
+          <p>Osservando i pianetini già noti, ne cercava anche di nuovi. Il suo impegno fu premiato il
+            <strong>18 marzo 1874</strong>, quando scoprì il suo primo pianetino: essendo il primo asteroide
+            scoperto dall'Austria, lo chiamò <strong>(136) Austria</strong>. Da Pola scoprì in tutto
+            <strong>28 asteroidi e una cometa (C/1879 Q1)</strong>; uno degli asteroidi ricevette il nome «Istria».</p>
+          <p>In occasione della sua visita a Pola, l'<strong>8 aprile 1875</strong>, l'imperatore Francesco Giuseppe I diede personalmente
+            il nome a due pianetini appena scoperti: <strong>(142) Polana</strong> e <strong>(143) Adria</strong>.
+            Aggiungendo <strong>(183) Istria</strong>, nello spazio esistono tre corpi celesti che portano i nomi
+            dei nostri luoghi: Polana (la polesana), Adria (l'Adriatico) e Istria.</p>
+        </div>
+
+        <h3 class="ph-reveal">I pianetini (asteroidi) scoperti da Palisa a Pola</h3>
+        <p class="ph-reveal">Scegliete un anno o cliccate su un corpo evidenziato per maggiori informazioni.</p>
+        <div class="ph-reveal">
+          <div class="ph-disc__filters" role="group" aria-label="Anno della scoperta" id="ph-disc-filters"></div>
+          <ol class="ph-disc__list" id="ph-disc-list"></ol>
+          <div class="ph-disc__note" id="ph-disc-note" aria-live="polite">Clicca su un asteroide evidenziato (bordo blu) per scoprire la storia del suo nome.</div>
+        </div>
+
+        <h3 class="ph-reveal">Pola su scala mondiale</h3>
+        <p class="ph-reveal">Quanto contassero le scoperte di Palisa su scala mondiale lo mostrano le statistiche del
+          periodo in cui lavorò a Pola. Nel 1879 Palisa scoprì la metà di tutti i nuovi asteroidi del mondo e
+          nel 1880, quando fu promosso all'Osservatorio di Vienna, addirittura il 63%.</p>
+
+        <div class="ph-chart ph-reveal" id="ph-chart">
+          <div class="ph-chart__title">Asteroidi scoperti per anno, 1874–1880</div>
+          <div class="ph-chart__sub">Numero di nuovi asteroidi: Palisa a Pola e resto del mondo</div>
+          <div class="ph-legend">
+            <span style="--swatch: var(--ph-palisa)">Palisa (Pola)</span>
+            <span style="--swatch: var(--ph-world)">Resto del mondo</span>
+          </div>
+          <div id="ph-chart-svg"></div>
+          <button type="button" class="ph-table-toggle" aria-expanded="false" aria-controls="ph-chart-table">Mostra tabella</button>
+          <table class="ph-table" id="ph-chart-table" hidden>
+            <thead><tr><th>Anno</th><th>Palisa</th><th>Resto del mondo</th><th>Totale</th><th>Quota di Palisa</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div class="ph-ranks ph-reveal">
+          <div>
+            <div class="ph-chart__title">Scoperte per osservatorio, 1874–1880</div>
+            <div class="ph-chart__sub">Numero di asteroidi scoperti</div>
+            <ol class="ph-rank" id="ph-rank-obs"></ol>
+          </div>
+          <div>
+            <div class="ph-chart__title">Scoperte per scopritore, 1874–1880</div>
+            <div class="ph-chart__sub">Numero di asteroidi scoperti</div>
+            <ol class="ph-rank" id="ph-rank-people"></ol>
+          </div>
+        </div>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <h3>Dopo Pola</h3>
+            <p>Nel 1880 Palisa fu promosso all'Osservatorio di Vienna, da dove scoprì altri 94 pianetini, per un
+              totale di <strong>123</strong>. Per quanto se ne sa, li scoprì tutti visualmente, osservando
+              «a occhio nudo» al telescopio, e ancora oggi detiene il record di scoperte visuali. Con Max Wolf
+              dell'osservatorio di Heidelberg realizzò anche un atlante fotografico del cielo.</p>
+            <p>In segno di riconoscimento da parte dell'Unione Astronomica Internazionale, oltre a un cratere lunare, portano il nome di Palisa anche due
+              asteroidi: <strong>(914) Palisana</strong>, a lui dedicato, e <strong>(1152) Pawona</strong>,
+              chiamato così in onore di Johann Palisa e Max Wolf.</p>
+            <p>A 71 anni (1919) la vista di Palisa cominciò a indebolirsi. Morì il <strong>2 maggio
+              1925</strong>. Sul luogo della sua casa natale, il <strong>15 ottobre 2000</strong>, fu posta una
+              targa commemorativa con il suo motto preferito:</p>
+            <blockquote class="ph-quote">«Sic itur ad astra» — Così si va alle stelle.</blockquote>
+          </div>
+          <div>
+            <h3>Palisa nello spazio: 243 Ida</h3>
+            <figure class="ph-fig ph-fig--small" data-group="palisa" style="--mw: 341px"><img src="../povijest-zvjezdarnice/img/asteroid-ida.jpg" width="262" height="333" alt="L&#x27;asteroide 243 Ida con il satellite Dactyl, ripreso dalla sonda Galileo nel 1993. Tre regioni di Ida sono state chiamate Palisa, Vienna e Pola" loading="lazy" decoding="async"><figcaption>L'asteroide 243 Ida con il satellite Dactyl, ripreso dalla sonda Galileo nel 1993. Tre regioni di Ida sono state chiamate Palisa, Vienna e Pola.</figcaption></figure>
+            <p>Le sonde spaziali dirette verso i pianeti esterni del Sistema solare dovevano passare vicino ad alcuni
+              asteroidi. Poiché Palisa scopriva per lo più asteroidi di grandi dimensioni, alcuni sono stati ripresi anche dalle sonde: si tratta
+              degli asteroidi <strong>243 Ida</strong> e <strong>253 Mathilde</strong>.</p>
+            <p>Con sorpresa generale, le immagini della sonda Galileo del 1993 mostrarono che Ida ha un satellite naturale,
+              chiamato <strong>Dactyl</strong>. Poiché Ida fu ripresa in grande dettaglio, divenne il primo asteroide di cui
+              furono denominate anche le strutture geologiche: tre regioni furono chiamate <strong>Palisa</strong> (dallo scopritore) e
+              <strong>Vienna</strong> e <strong>Pola</strong> (dagli osservatori da cui Palisa cercava gli
+              asteroidi).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 4. BENKO I DRUGI ===================== -->
+      <section class="ph-chapter" id="benko">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1851 – 1903</span>
+          <h2>Il barone Ivo Benko von Boinik e altri astronomi</h2>
+        </header>
+
+        <div class="ph-clear ph-reveal">
+          <figure class="ph-fig ph-portrait" style="width: 150px;" data-group="benko">
+            <img src="../sites/default/files/images/benko_grb.jpg" width="214" height="288" alt="Stemma del barone Benko von Boinik" loading="lazy" decoding="async">
+            <figcaption>Stemma del barone Benko von Boinik. Ivo Benko fu capitano di vascello dell'I. e R. Marina.</figcaption>
+          </figure>
+          <p>Tra gli astronomi che dopo Johann Palisa prestarono servizio all'Osservatorio della Marina di Pola,
+            il più importante è <strong>Ivo Benko</strong>. Nacque il <strong>26 settembre 1851</strong> a Karlovac. Fu
+            ammesso nella Marina da guerra austriaca il 27 luglio 1868 come allievo dell'Accademia di Marina di Fiume (Rijeka) ed
+            entrò in servizio il 28 aprile 1872 con il grado di guardiamarina. Prestò servizio sulle navi
+            «Helgoland», «Adria» e «Kerka».</p>
+          <p>Nel 1884/1885 diresse temporaneamente l'Osservatorio della Marina di Pola.
+            Appassionatosi al lavoro scientifico e distintosi come ottimo osservatore, si iscrisse come studente straordinario
+            di astronomia a Graz. Fino al 1893 prestò servizio sulle navi «Lissa», «Minerva», «Custoza», «Zriny», «Don
+            Juan», «Laudon», «Radetzky» e «Taurus», quando, dopo la morte del direttore Franz Laschober, assunse
+            la direzione dell'Osservatorio.</p>
+          <p>Resosi conto che il programma scientifico non avrebbe potuto proseguire con scoperte come quelle di Palisa, Benko sviluppò
+            un programma di osservazioni sistematiche e a questo scopo fece restaurare il circolo meridiano e altri strumenti.
+            Pubblicò i lavori del suo decennio di direzione sulla rivista allora più autorevole, «Astronomische
+            Nachrichten», e su «Astronomische Rundschau», edita dall'astronomo Leo Brenner dell'osservatorio
+            «Manora» di Lussinpiccolo (Lussino). Lasciò la direzione nel 1901 per motivi di salute.</p>
+          <p>Un posto nella storia dell'astronomia gli fu assicurato da un'unica osservazione, il <strong>4 febbraio 1898</strong>,
+            con cui dimostrò che <strong>la Terra non ha un secondo satellite naturale oscuro</strong>. In suo onore
+            l'asteroide scoperto dall'Osservatorio di Višnjan è stato chiamato <strong>(9814) Ivobenko</strong>. Il primo
+            astronomo professionista croato morì il 21 dicembre 1903 a Gorizia.</p>
+        </div>
+
+        <blockquote class="ph-quote ph-reveal">«Rimase fino alla morte un figlio fedele e devoto del suo popolo croato,
+          al cui nome diede lustro nel mondo con il proprio lavoro. Seguiva con vivo interesse le vicende della sua patria. Mi
+          sia consentito riportare questo aneddoto. Quando nel febbraio del 1901 venne a sapere che lo studente di scuola media croato
+          Dolanski aveva scoperto da solo una nuova stella in Perseo, la notizia lo rallegrò moltissimo, e in una
+          lettera mi esortò a pubblicarla senz'altro su ‹Astronomische Nachrichten›, cosa che feci (Astr.
+          Nach. n. 3699 del 1901). ‹Non nuocerà›, scrive, ‹se il mondo astronomico verrà a sapere che anche nella nostra
+          patria talvolta si volgono gli occhi alla volta celeste e che l'istruzione vi è di così alto livello›.»
+          <cite>— Oton Kučera, astronomo croato su iniziativa del quale nel 1903 fu eretto l'osservatorio di Zagabria (tradotto dal croato)</cite>
+        </blockquote>
+
+        <div class="ph-card ph-reveal">
+          <p>Oltre a Palisa e Benko, tra i nomi importanti dell'Osservatorio di Pola figurano anche <strong>Bernhard Walter</strong>,
+            <strong>Spiridion Gopčević</strong> (Leo Brenner), <strong>Oton Kučera</strong> e <strong>Niko
+            Miličević</strong>.</p>
+        </div>
+      </section>
+
+      <!-- ===================== 5. INSTRUMENTI ===================== -->
+      <section class="ph-chapter" id="instrumenti">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1842 – 1898</span>
+          <h2>Gli strumenti storici</h2>
+        </header>
+        <p class="ph-reveal">Uno studio approfondito della storia dell'Osservatorio di Pola ha permesso di accertare
+          l'esistenza dei seguenti strumenti astronomici dell'I. e R. Osservatorio della Marina di Pola. Filtrateli
+          in base al luogo in cui si trovano oggi.</p>
+
+        <div class="ph-disc__filters ph-reveal" role="group" aria-label="Destino dello strumento">
+          <button type="button" class="ph-chip is-active" data-fate="all">Tutti (6)</button>
+          <button type="button" class="ph-chip" data-fate="trst">Oggi a Trieste</button>
+          <button type="button" class="ph-chip" data-fate="nepoznato">Destino ignoto</button>
+        </div>
+
+        <div class="ph-instr ph-reveal">
+          <article class="ph-instr__card" data-fate="nepoznato">
+            <div class="ph-instr__body">
+              <h4>Strumento dei passaggi «Brunner»</h4>
+              <div class="ph-instr__meta">costruito nel 1842 · sala meridiana</div>
+              <p>Costruito nell'officina meccanica dell'Istituto Politecnico di Vienna. Fu usato all'Osservatorio quando
+                questo si trovava ancora a Trieste e fu trasferito a Pola nel 1866, insieme all'Osservatorio stesso. Collocato nella
+                sala meridiana, serviva al servizio dell'ora esatta e alla determinazione delle longitudini e delle
+                latitudini geografiche. Fu rimosso nel 1874.</p>
+              <div class="ph-instr__fate"><strong>Oggi:</strong> non si sa dove si trovi.</div>
+            </div>
+          </article>
+
+          <article class="ph-instr__card" data-fate="nepoznato">
+            <div class="ph-instr__body">
+              <h4>Rifrattore «Schaffler»</h4>
+              <div class="ph-instr__meta">installato nel 1871 · cupola sud-ovest</div>
+              <ul class="ph-instr__specs"><li>obiettivo 170 mm</li><li>focale 2500 mm</li><li>montatura equatoriale alla tedesca</li><li>cerchi graduati 240 mm</li></ul>
+              <p>Costruito dal meccanico viennese Otto Schaffler.</p>
+              <div class="ph-instr__fate"><strong>Oggi:</strong> non si sa dove si trovi.</div>
+            </div>
+          </article>
+
+          <article class="ph-instr__card" data-fate="trst">
+            <figure class="ph-fig ph-fig--small" data-group="instrumenti" style="--mw: 269px"><img src="../povijest-zvjezdarnice/img/troughton-simms.jpg" width="207" height="234" alt="Circolo meridiano «Troughton &amp; Simms»" loading="lazy" decoding="async"><figcaption>Circolo meridiano «Troughton &amp; Simms».</figcaption></figure>
+            <div class="ph-instr__body">
+              <h4>Circolo meridiano «Troughton &amp; Simms»</h4>
+              <div class="ph-instr__meta">a Pola dall'agosto 1874</div>
+              <ul class="ph-instr__specs"><li>obiettivo 160 mm</li><li>focale 2105 mm</li><li>cerchi graduati 900 mm</li><li>4 microscopi per lato</li></ul>
+              <p>Costruito dalla ditta inglese «Troughton &amp; Simms». Era usato per il servizio dell'ora esatta e per
+                la determinazione delle posizioni stellari necessarie alla compilazione dei cataloghi stellari.</p>
+              <div class="ph-instr__fate"><strong>Oggi:</strong> dopo la prima guerra mondiale fu preso in carico dall'Osservatorio astronomico di Trieste, che lo possiede tuttora.</div>
+            </div>
+          </article>
+
+          <article class="ph-instr__card" data-fate="nepoznato">
+            <figure class="ph-fig ph-fig--small" data-group="instrumenti" style="--mw: 257px"><img src="../povijest-zvjezdarnice/img/reflektor-brachyt.jpg" width="198" height="240" alt="Riflettore di tipo «Brachyt»" loading="lazy" decoding="async"><figcaption>Riflettore di tipo «Brachyt».</figcaption></figure>
+            <div class="ph-instr__body">
+              <h4>Riflettore «Brachyt»</h4>
+              <div class="ph-instr__meta">installato il 1 giugno 1881</div>
+              <ul class="ph-instr__specs"><li>specchio 300 mm</li><li>il più grande riflettore del suo tipo al mondo</li></ul>
+              <p>Costruito dalla ditta viennese Fritsch. Le particelle di sale portate dal vento dal mare
+                danneggiavano troppo spesso l'argentatura degli specchi, e il telescopio fu rimosso già nel 1886.</p>
+              <div class="ph-instr__fate"><strong>Oggi:</strong> non si sa dove si trovi.</div>
+            </div>
+          </article>
+
+          <article class="ph-instr__card" data-fate="trst">
+            <figure class="ph-fig ph-fig--small" data-group="instrumenti" style="--mw: 361px"><img src="../povijest-zvjezdarnice/img/refraktor-steinheil.jpg" width="278" height="368" alt="Il rifrattore «Steinheil» nella cupola dell&#x27;Osservatorio" loading="lazy" decoding="async"><figcaption>Il rifrattore «Steinheil» nella cupola dell'Osservatorio.</figcaption></figure>
+            <div class="ph-instr__body">
+              <h4>Rifrattore «Steinheil»</h4>
+              <div class="ph-instr__meta">installato nel 1886 · cupola nord-est</div>
+              <ul class="ph-instr__specs"><li>obiettivo 160 mm*</li><li>focale 2100 mm</li></ul>
+              <p>L'obiettivo fu realizzato dalla ditta Reinfelder und Hertel. Era usato per l'osservazione delle comete e per il disegno
+                delle macchie solari.</p>
+              <p style="font-size: 0.78rem; color: var(--text-muted);">* Secondo l'opuscolo «150 anni dell'Osservatorio di
+                Pola»; nei testi precedenti è indicato un diametro di 60 mm.</p>
+              <div class="ph-instr__fate"><strong>Oggi:</strong> dopo la prima guerra mondiale fu preso in carico dall'Osservatorio astronomico di Trieste.</div>
+            </div>
+          </article>
+
+          <article class="ph-instr__card" data-fate="nepoznato">
+            <div class="ph-instr__body">
+              <h4>Strumento dei passaggi «Repsold»</h4>
+              <div class="ph-instr__meta">installato nel 1898 · cupola nord-est</div>
+              <p>Era usato dal Servizio dell'ora esatta quando il circolo meridiano era impegnato nella determinazione delle posizioni
+                stellari. Le sue caratteristiche ottiche non sono note.</p>
+              <div class="ph-instr__fate"><strong>Oggi:</strong> non si sa dove si trovi.</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===================== 6. KNJIŽNICA ===================== -->
+      <section class="ph-chapter" id="knjiznica">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1802 – oggi</span>
+          <h2>La Biblioteca della Marina (K. u. k. Marine-Bibliothek)</h2>
+        </header>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>La <strong>Biblioteca della Marina</strong> (Marine-Bibliothek), in seguito denominata Imperiale e Regia
+              Biblioteca della Marina (K. u. k. Marine-Bibliothek), fu fondata presso il comando supremo
+              della Marina da guerra austriaca a Venezia nel <strong>1802</strong>, per iniziativa del ministro della Marina e della Guerra,
+              l'arciduca Carlo. Fin dalla fondazione fu una biblioteca scientifica e tecnica destinata alle esigenze della
+              Marina.</p>
+            <p>Su richiesta del comandante della Marina, l'arciduca Ferdinando Massimiliano, negli anni Sessanta
+              dell'Ottocento Pola venne sviluppata come principale porto militare della Marina da guerra austriaca. In linea con il piano
+              del viceammiraglio Wilhelm von Tegetthoff per la riorganizzazione della Marina, nel 1869 fu fondato a Pola
+              l'Ufficio Idrografico (Hydrographisches Amt), di cui la Biblioteca della Marina divenne un reparto
+              autonomo.</p>
+            <p>Maggiori informazioni sul sito della
+              <a class="ph-link" href="https://www.skpu.hr/" target="_blank" rel="noopener">Biblioteca universitaria di Pola</a>.</p>
+          </div>
+          <div>
+            <ul class="ph-facts" style="grid-template-columns: 1fr; margin-top: 0;">
+              <li><strong>1802 – Venezia</strong>fondazione presso il comando supremo della Marina da guerra</li>
+              <li><strong>1850 – Trieste</strong>l'intero patrimonio trasferito da Venezia a Trieste</li>
+              <li><strong>1869 – Pola</strong>la biblioteca diventa un reparto dell'Ufficio Idrografico</li>
+              <li><strong>1918</strong>con il crollo dell'Austria-Ungheria la biblioteca passa all'esercito italiano</li>
+              <li><strong>1944</strong>dopo la capitolazione dell'Italia (1943) l'esercito tedesco trasferisce in treno l'intero patrimonio in Boemia</li>
+              <li><strong>1950 – Vienna</strong>il patrimonio torna a Vienna e viene collocato nell'Archivio di guerra</li>
+              <li><strong>1975 – ritorno a Pola</strong>circa 20.000 volumi assegnati «in segno di buona volontà» dalla Repubblica d'Austria alla Biblioteca scientifica (oggi Biblioteca universitaria)</li>
+              <li><strong>1996/1997</strong>trasferimento nella Casa dei difensori croati (l'ex Marine-Kasino) e riapertura al pubblico</li>
+            </ul>
+            <figure class="ph-fig" data-group="knjiznica"><img src="../povijest-zvjezdarnice/img/puh-knjiga.jpg" width="412" height="265" alt="Copertina del libro «Zvjezdarnica u Puli» (L&#x27;Osservatorio di Pola) e timbro della biblioteca della K.u.K. Kriegsmarine (Hydrographisches Amt, Bibliothek)" loading="lazy" decoding="async"><figcaption>Copertina del libro «Zvjezdarnica u Puli» (L'Osservatorio di Pola) e timbro della biblioteca della K.u.K. Kriegsmarine (Hydrographisches Amt, Bibliothek).</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 7. TEGETTHOFF ===================== -->
+      <section class="ph-chapter" id="tegetthoff">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1827 – 1871</span>
+          <h2>Il viceammiraglio Wilhelm von Tegetthoff</h2>
+        </header>
+
+        <div class="ph-clear ph-reveal">
+          <figure class="ph-fig ph-portrait" style="width: 170px;" data-group="tegetthoff">
+            <img src="../sites/default/files/images/220px-Tegetthoff-lithographie.jpg" width="220" height="264" alt="Wilhelm von Tegetthoff, litografia" loading="lazy" decoding="async">
+            <figcaption>Wilhelm von Tegetthoff (Maribor 1827 – Vienna 1871), litografia</figcaption>
+          </figure>
+          <p>Wilhelm von Tegetthoff nacque a Maribor (ted. Marburg), in Slovenia, il <strong>23 dicembre
+            1827</strong>, secondogenito di Karl e Leopoldine Tegetthoff. La sua casa natale si trova
+            in via Slovenska 12, dove oggi ha sede la Ljubljanska banka. Dopo l'Accademia di Marina di
+            Venezia, frequentata tra il 1840 e il 1845, percorse tutti i gradi della Marina da guerra.</p>
+          <p>Nativo di Maribor, tedesco per parte di padre (originario della Vestfalia) e ceco per parte di madre, si distinse già nella guerra di Crimea,
+            dove comandò il piroscafo «Taurus». Giunse ai vertici del comando dopo essersi distinto nel 1864 come
+            comandante della squadra navale austriaca nella battaglia di Helgoland durante la guerra contro la Danimarca, quando fu
+            promosso contrammiraglio.</p>
+        </div>
+
+        <h3 class="ph-reveal">La battaglia di Lissa, 1866</h3>
+        <p class="ph-reveal">Il <strong>19 luglio 1866</strong>, ricevuto il telegramma dall'isola di Lissa (Vis) secondo cui
+          la flotta italiana la stava assediando e attaccando, salpò alla testa della Marina da guerra austriaca dal
+          canale di Fasana e, dopo appena 15 ore di navigazione, il 20 luglio giunse davanti a Lissa. Sapeva di affrontare un
+          nemico tre volte più forte, con un'artiglieria più potente e cinque corazzate in più, ma sapeva anche che l'esito di una battaglia non dipende sempre
+          dal numero, bensì anche dalla preparazione e dal coraggio. In uno scontro navale mai visto prima in Adriatico, la
+          Marina austriaca sconfisse quella italiana, comandata dall'ammiraglio Carlo Pellion di Persano. La nave
+          ammiraglia «Ferdinand Max» speronò con violenza il fianco della corazzata italiana «Re d'Italia», che
+          affondò in due minuti e mezzo. La flotta austriaca non perse alcuna nave; caddero 35 marinai e
+          tre ufficiali. Con quella vittoria Vienna si assicurò per mezzo secolo il dominio sull'Adriatico.</p>
+        <blockquote class="ph-quote ph-reveal">«Busali smo se jedan u drugega kako da smo prazi. Jedan dobar tir i
+          brod gre u konobu.»
+          <cite>— Mate Jurašin – Matesina, uno dei tre premanturesi che combatterono a Lissa («Ci scontravamo come
+            montoni. Un buon colpo e la nave va in cantina, in fondo al mare.»)</cite>
+        </blockquote>
+
+        <h3 class="ph-reveal">Il fondatore dell'Osservatorio</h3>
+        <p class="ph-reveal">Nel 1868 Tegetthoff avviò la riorganizzazione della Marina da guerra, che comprese anche le sue
+          attività scientifiche. Rendendosi conto che la situazione esistente avrebbe fatto restare indietro rispetto alle altre marine,
+          propose di inserire nel bilancio del 1870 la costruzione dell'Ufficio Idrografico (osservatorio) a Pola, cosa
+          che l'imperatore Francesco Giuseppe I approvò il 10 settembre 1869. L'iscrizione sul monumento recitava:</p>
+        <blockquote class="ph-quote ph-reveal">«Viceadmiralu Wilhelmu Tegetthoffu, car Franjo Josip I, 1877.,
+          hrabrom borcu kod Helgolanda, slavno pobijednio kod Visa i stekao vječnu slavu za sebe i za austrijsku
+          flotu». (traduzione: «Al viceammiraglio Wilhelm Tegetthoff, l'imperatore Francesco Giuseppe I, 1877; al valoroso
+          combattente di Helgoland, che vinse gloriosamente a Lissa e conquistò gloria eterna per sé e per la flotta austriaca».)</blockquote>
+        <p class="ph-reveal">Dopo l'occupazione di Pola da parte dell'esercito italiano nel 1918, il monumento eretto nel 1877 davanti
+          all'Osservatorio fu rimosso il <strong>14 aprile 1920</strong>. Solo alla vigilia della seconda guerra mondiale l'Italia lo
+          consegnò all'Austria, e fu collocato in piazza Elisabetta (Elisabethplatz) a Graz, la città in cui il celebre viceammiraglio è
+          sepolto e dove si trova tuttora. Nel 1998 a Lissa (Vis) è stata ricollocata una replica del monumento alla
+          battaglia di Lissa.</p>
+      </section>
+
+      <!-- ===================== 8. RAT ===================== -->
+      <section class="ph-chapter" id="rat">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1918 – 1946</span>
+          <h2>Tra le due guerre, bombardamento e distruzione</h2>
+        </header>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>Con il crollo dell'Austria-Ungheria e l'occupazione militare italiana di Pola, il <strong>5 novembre
+              1918</strong>, l'attività dell'Osservatorio cessò. Gli strumenti e la biblioteca furono in gran parte
+              trasferiti a Trieste e in altre città italiane, e fu rimosso anche il monumento all'ammiraglio Tegetthoff, su
+              iniziativa del quale l'Ufficio Idrografico era stato fondato.</p>
+            <p>Il destino dell'Osservatorio rispecchia la stagnazione generale della città di Pola. L'Ufficio Idrografico fu ribattezzato
+              <strong>Regio Istituto Idrografico</strong> italiano, con lo status di sezione dell'istituto idrografico centrale
+              italiano. Proseguirono le osservazioni meteorologiche e geomagnetiche, mentre quelle
+              astronomiche cessarono del tutto.</p>
+            <p>Dopo il ritiro delle forze italiane, nel corso del <strong>1944</strong> l'aviazione anglo-americana
+              bombardò Pola a più riprese. Poiché sulle carte l'Ufficio Idrografico e l'Osservatorio risultavano ancora
+              obiettivi militari, le bombe alleate rasero al suolo l'edificio. Nelle immagini riprese durante le incursioni
+              l'Osservatorio appare prima ancora intatto, poi colpito in pieno e distrutto.</p>
+          </div>
+          <div class="ph-figs ph-figs--2" style="margin-top: 0;">
+            <figure class="ph-fig" data-group="rat"><img src="../povijest-zvjezdarnice/img/bombardiranje-1.jpg" width="482" height="271" alt="Immagine ripresa durante un&#x27;incursione dei bombardieri alleati nel 1944: l&#x27;Osservatorio è ancora intatto" loading="lazy" decoding="async"><figcaption>Immagine ripresa durante un'incursione dei bombardieri alleati nel 1944: l'Osservatorio è ancora intatto.</figcaption></figure>
+            <figure class="ph-fig" data-group="rat"><img src="../povijest-zvjezdarnice/img/bombardiranje-2.jpg" width="482" height="375" alt="Immagine ripresa durante un&#x27;incursione: l&#x27;area colpita di Monte Zaro" loading="lazy" decoding="async"><figcaption>Immagine ripresa durante un'incursione: l'area colpita di Monte Zaro.</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="ph-split ph-split--rev ph-reveal">
+          <div>
+            <h3 style="margin-top: 0;">Che cosa è sopravvissuto?</h3>
+            <p>Si è conservata solo in parte una porzione dell'<strong>ala nord-est</strong>, mentre il resto fu raso
+              al suolo. Dalle piante originali si può stimare che dell'edificio sia rimasta solo una piccola parte e
+              <strong>una sola cupola</strong>. Cambiate la visualizzazione sulla pianta:</p>
+            <div class="ph-segmented" role="group" aria-label="Visualizzazione della pianta">
+              <button type="button" aria-pressed="true" data-plan="before">Edificio del 1871</button>
+              <button type="button" aria-pressed="false" data-plan="after">Dopo il 1944</button>
+            </div>
+            <div class="ph-plan" id="ph-plan">
+              <img src="../povijest-zvjezdarnice/img/tlocrt.jpg" width="452" height="318" alt="Pianta del pianterreno e del primo piano del K. und K. Hydrographisches Amt in Pola" loading="lazy" decoding="async">
+              <svg viewBox="0 0 452 318" aria-hidden="true">
+                <path class="shade" fill-rule="evenodd" d="M0 0H452V318H0Z M15 50 L50 12 L93 55 L103 82 L103 150 L60 150 L60 95 Z"/>
+                <path class="outline" d="M15 50 L50 12 L93 55 L103 82 L103 150 L60 150 L60 95 Z"/>
+              </svg>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.5rem;">Pianta del pianterreno (in alto) e
+              del primo piano (in basso). In rosso: la parte dell'edificio sopravvissuta al bombardamento (secondo l'opuscolo «150 anni
+              dell'Osservatorio di Pola»).</p>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="rat"><img src="../povijest-zvjezdarnice/img/rusevine.jpg" width="482" height="314" alt="Le rovine dell&#x27;Osservatorio dopo il bombardamento alleato. Si è conservata solo una parte dell&#x27;ala nord" loading="lazy" decoding="async"><figcaption>Le rovine dell'Osservatorio dopo il bombardamento alleato. Si è conservata solo una parte dell'ala nord-est con la cupola.</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 9. METEOROLOŠKA POSTAJA ===================== -->
+      <section class="ph-chapter" id="meteoroloska-postaja">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1947 – 1982</span>
+          <h2>La stazione meteorologica e le cupole sopravvissute</h2>
+        </header>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>La parte parzialmente conservata dell'ala nord-est fu ricostruita nel <strong>1947/1948</strong> e vi
+              fu collocata la stazione meteorologica della Marina militare jugoslava. Nel <strong>1949</strong> la stazione
+              passò alla neocostituita Amministrazione del servizio idrometeorologico presso il Governo della RP di Croazia, l'odierno
+              <strong>Servizio meteorologico e idrologico croato (DHMZ)</strong>.</p>
+            <p>Il recupero dei resti dell'Osservatorio non fu del tutto riuscito, soprattutto per ragioni tecniche.
+              Temperatura, pressione e umidità dell'aria venivano misurate in una capannina meteorologica nell'area recintata davanti
+              all'edificio, mentre l'eliofanografo e l'anemometro furono sistemati su un'impalcatura ausiliaria sul lato sud della cupola. Nell'edificio
+              si stabilirono due famiglie di meteorologi, che proseguirono le osservazioni da Monte Zaro. Le osservazioni
+              meteorologiche si svolgono ancora oggi dallo stesso luogo: la stazione del DHMZ su Monte Zaro ha oggi lo status di
+              <strong>stazione climatologica</strong>.</p>
+          </div>
+          <div class="ph-figs ph-figs--2" style="margin-top: 0;">
+            <figure class="ph-fig" data-group="meteo"><img src="../povijest-zvjezdarnice/img/meteo-postaja.jpg" width="482" height="333" alt="La parte ricostruita dell&#x27;edificio adibita a stazione meteorologica" loading="lazy" decoding="async"><figcaption>La parte ricostruita dell'edificio adibita a stazione meteorologica.</figcaption></figure>
+            <figure class="ph-fig" data-group="meteo"><img src="../povijest-zvjezdarnice/img/kupola-skela.jpg" width="482" height="320" alt="La cupola e l&#x27;impalcatura ausiliaria con l&#x27;eliofanografo e l&#x27;anemometro" loading="lazy" decoding="async"><figcaption>La cupola e l'impalcatura ausiliaria con l'eliofanografo e l'anemometro.</figcaption></figure>
+          </div>
+        </div>
+
+        <h3 class="ph-reveal">Due cupole</h3>
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>Durante il risanamento furono ricostruite due cupole: quella classica e quella meridiana. Lo scheletro della cupola classica
+              rimasto dopo il bombardamento fu utilizzato per ripristinarne la forma originaria, rivestita all'interno di legno
+              e all'esterno di lamiera zincata. Il meccanismo di rotazione della cupola emisferica rimase
+              utilizzabile, così come in parte il meccanismo di apertura. L'apertura, tuttavia, fu sistemata in modo da consentire
+              osservazioni solo fino a 30° sopra l'orizzonte, rendendo inaccessibile la parte di cielo più ampia e migliore. Le esplosioni
+              del bombardamento deformarono anche la cupola stessa, sicché la forza necessaria per ruotarla dipende dalla posizione
+              dell'apertura. Poiché allora la cupola non veniva utilizzata, non vi era nemmeno un accesso: le scale portavano
+              soltanto alla terrazza.</p>
+            <p>L'interno della cupola principale e la sua funzionalità originaria di apertura e rotazione si sono conservati
+              integralmente fino a oggi. Il <strong>cuscinetto assiale a sfere</strong> su cui poggia la cupola fu fuso all'epoca della
+              costruzione dell'Osservatorio nell'Arsenale di Pola, dove si producevano cuscinetti di questo tipo per le torri d'artiglieria
+              delle navi da guerra austro-ungariche. Per quanto ci risulta, si tratta del <strong>più grande cuscinetto del suo genere
+              ancora in funzione</strong>.</p>
+            <p>La <strong>cupola meridiana</strong> subì danni più gravi: il meccanismo esiste nella forma originaria, ma è
+              inservibile. Fu ricostruita solo la copertura per proteggere la cupola da un ulteriore degrado;
+              gli assi degli ingranaggi sono deformati dalla violenza delle esplosioni e le trasmissioni a catena sono incomplete, sicché il suo
+              restauro attende ancora tempi migliori.</p>
+          </div>
+          <div class="ph-figs ph-figs--2" style="margin-top: 0;">
+            <figure class="ph-fig ph-fig--small" data-group="meteo" style="--mw: 244px"><img src="../povijest-zvjezdarnice/img/kupola-unutrasnjost.jpg" width="188" height="320" alt="L&#x27;interno della cupola principale: il meccanismo originale di apertura e rotazione funziona ancora oggi" loading="lazy" decoding="async"><figcaption>L'interno della cupola principale: il meccanismo originale di apertura e rotazione funziona ancora oggi.</figcaption></figure>
+            <figure class="ph-fig ph-fig--small" data-group="meteo" style="--mw: 380px"><img src="../povijest-zvjezdarnice/img/kupola-mehanizam.jpg" width="299" height="320" alt="Il meccanismo della cupola principale con la ruota di apertura" loading="lazy" decoding="async"><figcaption>Il meccanismo della cupola principale con la ruota di apertura.</figcaption></figure>
+            <figure class="ph-fig" data-group="meteo"><img src="../povijest-zvjezdarnice/img/meridijanska-kupola.jpg" width="482" height="320" alt="La cupola meridiana oggi: gli elementi del meccanismo delle porte scorrevoli resistono ancora all&#x27;usura del tempo" loading="lazy" decoding="async"><figcaption>La cupola meridiana oggi: gli elementi del meccanismo delle porte scorrevoli resistono ancora all'usura del tempo.</figcaption></figure>
+            <figure class="ph-fig ph-fig--small" data-group="meteo" style="--mw: 347px"><img src="../povijest-zvjezdarnice/img/meridijanska-unutrasnjost.jpg" width="267" height="333" alt="L&#x27;interno della cupola meridiana, con evidenti segni di degrado" loading="lazy" decoding="async"><figcaption>L'interno della cupola meridiana, con evidenti segni di degrado.</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 10. ADIP ===================== -->
+      <section class="ph-chapter" id="adip">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">1973 – 1999</span>
+          <h2>Società Astronomica «Istra» Pola</h2>
+        </header>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>La Società Astronomica «Istra» Pola (ADIP) fu fondata il <strong>27 dicembre 1973</strong>, all'epoca delle grandi
+              imprese di esplorazione nell'astronomia e nell'astronautica, quando la sete di conoscenza era difficile da appagare per la
+              mancanza di letteratura, mezzi e organizzazione. Il compito principale della società era la divulgazione
+              dell'astronomia e delle altre scienze naturali, attraverso conferenze e osservazioni dei fenomeni celesti per tutte
+              le età.</p>
+            <p>Il buon legame con le scuole portò a un'adesione massiccia degli studenti alla materia facoltativa di astronomia,
+              e alla fine degli anni Settanta si registrarono ottimi risultati nelle gare del movimento «Nauka mladima» (La scienza ai giovani),
+              organizzate dall'allora Narodna tehnika, precursore dell'odierna Comunità della cultura tecnica.</p>
+            <p>Un telescopio non era accessibile come oggi: oltre ai prezzi elevati, c'erano le restrizioni statali
+              all'importazione. Ciononostante, nel <strong>1975</strong> la società raccolse i fondi e acquistò un telescopio
+              <strong>«Celestron 8»</strong>, ancora oggi in uso. Per alcuni mesi rimase esposto nella vetrina
+              della «Narodna tehnika», attirando gli sguardi dei passanti. Le osservazioni si tenevano allora sulle terrazze
+              degli edifici del centro o poco fuori città: l'inquinamento luminoso era molto minore di
+              oggi.</p>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="adip"><img src="../povijest-zvjezdarnice/img/bazovica-1975.jpg" width="482" height="433" alt="Alcuni soci dell&#x27;ADIP in visita all&#x27;osservatorio di Basovizza nel 1975: il sogno di un osservatorio della società cominciava a prendere forma" loading="lazy" decoding="async"><figcaption>Alcuni soci dell'ADIP in visita all'osservatorio di Basovizza nel 1975: il sogno di un osservatorio della società cominciava a prendere forma.</figcaption></figure>
+            <figure class="ph-fig ph-fig--small" data-group="adip" style="--mw: 380px"><img src="../povijest-zvjezdarnice/img/celestron-8.jpg" width="482" height="596" alt="Il telescopio «Celestron 8», acquistato nel 1975 e ancora oggi in uso" loading="lazy" decoding="async"><figcaption>Il telescopio «Celestron 8», acquistato nel 1975 e ancora oggi in uso.</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="ph-split ph-split--rev ph-reveal">
+          <div>
+            <p>Pur non avendo inizialmente legami diretti con l'Osservatorio, la società ne coltivava l'eredità.
+              In occasione del <strong>centenario della scoperta dell'asteroide «Istria»</strong> (1978) si tennero una conferenza
+              celebrativa e una mostra di lavori e di telescopi costruiti dagli stessi soci, alla quale parteciparono
+              diverse centinaia di persone. Con la società filatelica «Arena» fu allestita una mostra filatelica a
+              tema astronomico e astronautico e furono emessi una busta commemorativa e un distintivo celebrativo.</p>
+            <p>La richiesta di utilizzo dell'edificio fu inoltrata già nel <strong>1974</strong> all'allora Istituto idrometeorologico
+              della Repubblica, proprietario dell'edificio, che diede il suo assenso di massima. Poiché nell'edificio
+              vivevano due famiglie di meteorologi, bisognò attendere la loro sistemazione abitativa, e così nel
+              <strong>1979</strong> la società ottenne in uso dapprima solo due locali ausiliari sul lato est
+              dell'edificio.</p>
+          </div>
+          <div class="ph-figs ph-figs--2" style="margin-top: 0;">
+            <figure class="ph-fig" data-group="adip"><img src="../povijest-zvjezdarnice/img/izlozba-1978.jpg" width="482" height="349" alt="Mostra per il centenario della scoperta dell&#x27;asteroide «Istria»" loading="lazy" decoding="async"><figcaption>Mostra per il centenario della scoperta dell'asteroide «Istria».</figcaption></figure>
+            <figure class="ph-fig ph-fig--small" data-group="adip" style="--mw: 380px"><img src="../povijest-zvjezdarnice/img/kuverta-istria.jpg" width="337" height="237" alt="Busta commemorativa «100" loading="lazy" decoding="async"><figcaption>Busta commemorativa «100-godišnjica otkrića asteroida Istra 1878.–1978.» (Centenario della scoperta dell'asteroide Istria 1878–1978).</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <h3>1982: l'Osservatorio diventa la casa dell'ADIP</h3>
+            <p>Nel <strong>1982</strong> l'Osservatorio fu affidato in uso alla Società Astronomica «Istra» Pola, che
+              riprese le osservazioni astronomiche. L'edificio era in pessime condizioni, e i soci si misero subito
+              al lavoro per sistemarlo, stanza dopo stanza, con l'aiuto delle imprese locali e con un grande impegno volontario.
+              Poiché allora la cupola era inaccessibile, si osservava dai prati di Monte Zaro, vicino alla fontana, e
+              in parte dalla terrazza e dall'impalcatura meteorologica.</p>
+            <p>Su proposta della società, il <strong>30 maggio 1983</strong>, con decisione dell'Istituto regionale
+              per la tutela dei monumenti di Fiume (Rijeka) (n. 435), l'Osservatorio fu dichiarato <strong>monumento culturale di categoria
+              C</strong>.</p>
+            <p>L'Osservatorio portò un nuovo slancio: i soci si dedicarono all'astrofotografia, soprattutto del Sole, e
+              si svolgevano regolarmente osservazioni visuali della Luna, dei pianeti e dei grandi sciami meteorici (soprattutto
+              Perseidi e Orionidi, poiché le condizioni meteorologiche di solito impedivano l'osservazione delle Geminidi e delle Quadrantidi).
+              All'Osservatorio si tenevano anche le gare scolastiche «Nauku mladima», nelle quali ogni studente, oltre alla
+              prova scritta, presentava un lavoro pratico: dall'osservazione di meteore, pianeti o stelle variabili fino allo
+              studio dell'efficienza nello sfruttamento dell'energia solare. I migliori venivano premiati con un campo astronomico sull'isola
+              di Prvić.</p>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="adip"><img src="../povijest-zvjezdarnice/img/zvjezdarnica-1979.jpg" width="483" height="411" alt="L&#x27;Osservatorio alla fine degli anni Settanta, quando la società ottenne i primi locali" loading="lazy" decoding="async"><figcaption>L'Osservatorio alla fine degli anni Settanta, quando la società ottenne i primi locali.</figcaption></figure>
+            <div class="ph-figs ph-figs--2" style="margin: 0;">
+              <figure class="ph-fig" data-group="adip"><img src="../povijest-zvjezdarnice/img/opazanja-skela.jpg" width="482" height="374" alt="Osservazioni dall&#x27;impalcatura meteorologica accanto alla cupola" loading="lazy" decoding="async"><figcaption>Osservazioni dall'impalcatura meteorologica accanto alla cupola.</figcaption></figure>
+              <figure class="ph-fig" data-group="adip"><img src="../povijest-zvjezdarnice/img/natjecanje.jpg" width="482" height="342" alt="Studenti a una gara di astronomia" loading="lazy" decoding="async"><figcaption>Studenti a una gara di astronomia.</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="ph-split ph-split--rev ph-reveal">
+          <div>
+            <p>Nel <strong>1985</strong> il socio <strong>Zdenko Kovač</strong> elaborò, come tesi di laurea in
+              architettura, un progetto di risanamento e ampliamento dell'Osservatorio con un planetario. Il progetto fu
+              approvato, ma a causa dei rivolgimenti politici e della guerra cadde nell'oblio.</p>
+            <p>Nel <strong>1991</strong> Edi Puh (allora socio, in seguito segretario) pubblicò il libro
+              <strong>«Zvjezdarnica u Puli: 1871–1991. (građa za povijest Istre)»</strong> [L'Osservatorio di Pola: 1871–1991 (materiali per la storia dell'Istria)], che presenta
+              in modo semplice e comprensibile la storia dell'Osservatorio ed è un punto di riferimento per chiunque voglia approfondirla.</p>
+            <p>La guerra d'indipendenza croata fermò in gran parte l'attività della società. Grazie agli sforzi eccezionali di alcune persone
+              — soprattutto dell'allora segretario <strong>Edi Puh</strong> e del presidente <strong>Lorenzo
+              Putigna</strong> — l'Osservatorio fu salvato da un ulteriore degrado.</p>
+            <p>Con l'aiuto del cantiere navale <strong>«Uljanik»</strong>, nel 1999 fu finalmente sistemato l'accesso alla cupola principale e
+              ne fu ripristinata la funzionalità per le osservazioni astronomiche, così l'Osservatorio poté di nuovo accogliere
+              visitatori. Nello stesso anno, in occasione dell'<strong>eclissi parziale di Sole dell'11 agosto 1999</strong>, quasi tutti
+              i soci attivi aiutarono e spiegarono il fenomeno: si stima che quel giorno su Monte Zaro
+              diverse migliaia di persone abbiano osservato l'eclissi insieme a noi.</p>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="adip"><img src="../povijest-zvjezdarnice/img/kovac-planetarij.jpg" width="482" height="311" alt="Progetto di Zdenko Kovač (1985): la facciata dell&#x27;Osservatorio con il planetario" loading="lazy" decoding="async"><figcaption>Progetto di Zdenko Kovač (1985): la facciata dell'Osservatorio con il planetario.</figcaption></figure>
+            <div class="ph-figs ph-figs--2" style="margin: 0;">
+              <figure class="ph-fig" data-group="adip"><img src="../povijest-zvjezdarnice/img/kupola-1999.jpg" width="482" height="316" alt="La cupola principale di nuovo in funzione (1999)" loading="lazy" decoding="async"><figcaption>La cupola principale di nuovo in funzione (1999).</figcaption></figure>
+              <figure class="ph-fig" data-group="adip"><img src="../povijest-zvjezdarnice/img/pomrcina-1999.jpg" width="482" height="333" alt="L&#x27;eclissi di Sole dell&#x27;11 agosto 1999: migliaia di visitatori su Monte Zaro" loading="lazy" decoding="async"><figcaption>L'eclissi di Sole dell'11 agosto 1999: migliaia di visitatori su Monte Zaro.</figcaption></figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 11. OBNOVA ===================== -->
+      <section class="ph-chapter" id="obnova">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">2006 – 2009</span>
+          <h2>Il risanamento generale in quattro fasi</h2>
+        </header>
+        <p class="ph-reveal">Sebbene i soci curassero costantemente la manutenzione dell'Osservatorio secondo le possibilità e
+          i fondi ricevuti dalla Città di Pola, ciò non bastava. All'inizio del
+          <strong>2006</strong> la Città di Pola avviò quindi il risanamento generale dell'edificio in quattro fasi.</p>
+
+        <div class="ph-steps ph-reveal" id="ph-steps">
+          <div class="ph-steps__tabs" role="tablist" aria-label="Fasi del risanamento">
+            <button type="button" class="ph-steps__tab" role="tab" aria-selected="true" aria-controls="faza-1" id="tab-faza-1"><b>2006</b>1ª fase · tetto</button>
+            <button type="button" class="ph-steps__tab" role="tab" aria-selected="false" aria-controls="faza-2" id="tab-faza-2"><b>2007</b>2ª fase · terrazza</button>
+            <button type="button" class="ph-steps__tab" role="tab" aria-selected="false" aria-controls="faza-3" id="tab-faza-3"><b>2008</b>3ª fase · tetti intorno alla cupola</button>
+            <button type="button" class="ph-steps__tab" role="tab" aria-selected="false" aria-controls="faza-4" id="tab-faza-4"><b>2009</b>4ª fase · facciate</button>
+          </div>
+
+          <div class="ph-steps__panel ph-split" role="tabpanel" id="faza-1" aria-labelledby="tab-faza-1">
+            <div><p>Nella prima fase fu risanato il <strong>tetto sopra la parte centrale</strong> dell'edificio
+              dell'Osservatorio.</p></div>
+            <div><figure class="ph-fig" data-group="obnova"><img src="../povijest-zvjezdarnice/img/sanacija-2006.jpg" width="482" height="333" alt="Prima fase del risanamento (2006)" loading="lazy" decoding="async"><figcaption>Prima fase del risanamento (2006).</figcaption></figure></div>
+          </div>
+          <div class="ph-steps__panel ph-split" role="tabpanel" id="faza-2" aria-labelledby="tab-faza-2" hidden>
+            <div>
+              <p>Con la seconda fase, realizzata nel 2007, fu completata la <strong>parte est della terrazza</strong>, fino ad allora
+                inutilizzabile. L'Osservatorio ottenne così uno spazio molto prezioso per conferenze all'aperto
+                e per parte delle osservazioni pubbliche.</p>
+              <p>Grazie alla donazione di una società di telecomunicazioni, la società acquistò un telescopio
+                <strong>Celestron 11</strong> e lo installò nella cupola principale.</p>
+            </div>
+            <div>
+              <figure class="ph-fig" data-group="obnova"><img src="../povijest-zvjezdarnice/img/sanacija-2007.jpg" width="482" height="343" alt="Seconda fase del risanamento (2007): la terrazza est" loading="lazy" decoding="async"><figcaption>Seconda fase del risanamento (2007): la terrazza est.</figcaption></figure>
+              <figure class="ph-fig" data-group="obnova"><img src="../povijest-zvjezdarnice/img/celestron-11.jpg" width="482" height="290" alt="Il telescopio Celestron 11 nella cupola principale" loading="lazy" decoding="async"><figcaption>Il telescopio Celestron 11 nella cupola principale.</figcaption></figure>
+            </div>
+          </div>
+          <div class="ph-steps__panel ph-split" role="tabpanel" id="faza-3" aria-labelledby="tab-faza-3" hidden>
+            <div>
+              <p>La terza fase, nel 2008, riguardò i <strong>tetti intorno alla cupola</strong>, risolvendo definitivamente
+                dopo molti anni il problema delle infiltrazioni d'acqua.</p>
+              <p>Iniziarono anche i lavori sulla facciata sud, un tempo muro divisorio: l'ingresso costituiva il
+                collegamento tra l'edificio centrale e l'ala con le cupole.</p>
+            </div>
+            <div><figure class="ph-fig" data-group="obnova"><img src="../povijest-zvjezdarnice/img/sanacija-2008.jpg" width="482" height="320" alt="Terza fase del risanamento (2008)" loading="lazy" decoding="async"><figcaption>Terza fase del risanamento (2008).</figcaption></figure></div>
+          </div>
+          <div class="ph-steps__panel ph-split" role="tabpanel" id="faza-4" aria-labelledby="tab-faza-4" hidden>
+            <div>
+              <p>La fase finale, nel 2009, riguardò le <strong>facciate</strong>, impegnative sotto molti aspetti. Per conservare
+                il più possibile la forma originaria dell'edificio, furono ricostruiti tutti i dettagli documentati.
+                La cupola meridiana non fu inclusa nel risanamento.</p>
+              <p>L'Osservatorio assunse il suo aspetto definitivo <strong>all'inizio di maggio 2009</strong>, e l'inaugurazione fu
+                celebrata con una manifestazione. La terrazza, la facciata e l'area circostante furono interamente rinnovate.</p>
+            </div>
+            <div><figure class="ph-fig" data-group="obnova"><img src="../povijest-zvjezdarnice/img/sanacija-2009.jpg" width="482" height="320" alt="Quarta fase del risanamento (2009): il restauro delle facciate" loading="lazy" decoding="async"><figcaption>Quarta fase del risanamento (2009): il restauro delle facciate.</figcaption></figure></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 12. DANAS ===================== -->
+      <section class="ph-chapter" id="danas">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">2009 – oggi</span>
+          <h2>L'Osservatorio oggi</h2>
+        </header>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>Concluso il risanamento, riprende il lavoro con i giovani e prosegue la divulgazione dell'astronomia attraverso
+              osservazioni e conferenze aperte al pubblico. L'Osservatorio è visitato da numerosi gruppi di alunni e
+              studenti, talvolta più di cento partecipanti alla volta, che ne scoprono la storia e
+              l'importanza per lo sviluppo dell'astronomia nel mondo. I più piccoli, oltre alla storia, imparano anche le basi del moto dei corpi
+              del Sistema solare attraverso una presentazione interattiva.</p>
+            <p>Nel <strong>2010</strong> la società ha ricevuto il <strong>Riconoscimento della Comunità croata della cultura
+              tecnica</strong> per lo straordinario contributo pluriennale allo sviluppo e alla promozione della cultura tecnica e
+              dell'astronomia e alla tutela di un monumento culturale: l'Osservatorio di Pola.</p>
+            <p>I giovani soci preparano all'Osservatorio i lavori per le gare di astronomia organizzate dall'Agenzia
+              per l'educazione e l'istruzione e li presentano in una conferenza comune, alla presenza dei genitori. Dopo il
+              2009 il numero di studenti in gara è cresciuto rapidamente e ogni anno almeno alcuni di loro arrivano alla
+              gara nazionale, dove qualcuno ha conquistato anche il primo posto. I soci escono anche all'aperto, svolgendo
+              osservazioni del Sole con le necessarie misure di sicurezza e avvertendo del pericolo di guardare direttamente il Sole.</p>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="danas"><img src="../povijest-zvjezdarnice/img/posjet-terasa.jpg" width="482" height="333" alt="Visitatori sulla terrazza dell&#x27;Osservatorio restaurato" loading="lazy" decoding="async"><figcaption>Visitatori sulla terrazza dell'Osservatorio restaurato.</figcaption></figure>
+            <div class="ph-figs ph-figs--2" style="margin: 0;">
+              <figure class="ph-fig ph-fig--small" data-group="danas" style="--mw: 322px"><img src="../povijest-zvjezdarnice/img/povelja-2010.jpg" width="248" height="320" alt="Riconoscimento della Comunità croata della cultura tecnica (2010)" loading="lazy" decoding="async"><figcaption>Riconoscimento della Comunità croata della cultura tecnica (2010).</figcaption></figure>
+              <figure class="ph-fig" data-group="danas"><img src="../povijest-zvjezdarnice/img/predavanje.jpg" width="482" height="304" alt="Conferenza dei giovani soci all&#x27;Osservatorio" loading="lazy" decoding="async"><figcaption>Conferenza dei giovani soci all'Osservatorio.</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="ph-reveal">Da una sola telecamera a una rete meteorica globale</h3>
+        <div class="ph-split ph-split--rev ph-reveal">
+          <div>
+            <p>Mentre il risanamento era ancora in corso, durante il massimo delle Perseidi del <strong>2006</strong>, all'Osservatorio
+              furono sperimentate telecamere di videosorveglianza per l'osservazione delle meteore. L'esperimento ebbe grande successo e
+              da esso nacque il progetto della <strong>Rete Meteorica Croata (HMM)</strong>, a cui hanno partecipato
+              più di 40 associazioni e privati in tutta la Croazia, con alcune telecamere anche nei paesi vicini.</p>
+            <p>Oltre alle meteore, le telecamere hanno registrato fulmini e anche rari fenomeni luminosi transitori nell'atmosfera
+              terrestre, i cosiddetti <strong>«sprite»</strong> (in croato «vatrenjak»).</p>
+            <p>Il progetto ha avuto successo oltre ogni aspettativa. In collaborazione con il Centro scientifico-educativo di
+              Višnjan ne è scaturito un gran numero di giovani astronomi che con soluzioni proprie hanno migliorato
+              i metodi di osservazione delle meteore fino ad allora standard. Di conseguenza, dal <strong>2018</strong> esiste la
+              <strong>Global Meteor Network (GMN)</strong>, che nel 2021 ha superato le <strong>500 telecamere</strong>
+              in tutto il mondo. Alla HMM è stata finora riconosciuta la scoperta di <strong>8 nuovi sciami meteorici</strong>, e
+              i soci della società hanno presentato i risultati in diverse edizioni della International Meteor Conference.</p>
+            <p>Oltre alla telecamera a tutto cielo, all'Osservatorio è installata anche una telecamera per le <strong>meteore
+              telescopiche</strong>, troppo deboli per essere viste a occhio nudo; per via del campo visivo molto più ristretto ne registra
+              meno. Le osservazioni di meteore — anche dall'Osservatorio di Pola — sono utilizzate dalle principali organizzazioni
+              astronomiche del mondo, tra cui la <strong>NASA</strong>.</p>
+          </div>
+          <div class="ph-figs ph-figs--2" style="margin-top: 0;">
+            <figure class="ph-fig ph-fig--small" data-group="danas" style="--mw: 380px"><img src="../povijest-zvjezdarnice/img/geminidi-2020.jpg" width="482" height="591" alt="Ripresa a tutto cielo della notte delle Geminidi 2020. Oltre alle meteore si vedono aerei e satelliti: le telecamere registrano quasi tutto ciò che vede l&#x27;occhio umano e sono sensibili anche nell&#x27;infrarosso" loading="lazy" decoding="async"><figcaption>Ripresa a tutto cielo della notte delle Geminidi 2020. Oltre alle meteore si vedono aerei e satelliti: le telecamere registrano quasi tutto ciò che vede l'occhio umano e sono sensibili anche nell'infrarosso.</figcaption></figure>
+            <figure class="ph-fig" data-group="danas"><img src="../povijest-zvjezdarnice/img/sprite.jpg" width="482" height="335" alt="Fulmini e «sprite» registrati dalle telecamere della rete meteorica" loading="lazy" decoding="async"><figcaption>Fulmini e «sprite» registrati dalle telecamere della rete meteorica.</figcaption></figure>
+            <figure class="ph-fig" data-group="danas"><img src="../povijest-zvjezdarnice/img/meteorske-orbite.jpg" width="482" height="328" alt="Orbite di meteoroidi calcolate dalle osservazioni della rete meteorica" loading="lazy" decoding="async"><figcaption>Orbite di meteoroidi calcolate dalle osservazioni della rete meteorica.</figcaption></figure>
+            <figure class="ph-fig" data-group="danas"><img src="../povijest-zvjezdarnice/img/meteorit-krizevci.jpg" width="482" height="377" alt="Il meteorite «Križevci» al microscopio elettronico: l&#x27;analisi presentata al Festival della scienza 2016" loading="lazy" decoding="async"><figcaption>Il meteorite «Križevci» al microscopio elettronico: l'analisi presentata al Festival della scienza 2016.</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="ph-split ph-reveal">
+          <div>
+            <p>Ogni anno i soci partecipano attivamente al <strong>Festival della scienza</strong>. Nel 2016,
+              in collaborazione con il «Metris» di Pola, hanno presentato l'analisi del meteorite <strong>«Križevci»</strong>, al cui
+              ritrovamento la società ha dato un contributo molto importante. La società partecipa anche a progetti comuni dell'Unione
+              astronomica croata, come il tema «Donne nell'astronomia», e i soci tengono conferenze agli incontri
+              di astrofili e ad altri convegni, cercando sempre di diffondere la conoscenza della storia dell'Osservatorio.</p>
+            <p>La pandemia di COVID-19 ha fermato le attività aperte al pubblico, ma il lavoro di osservazione delle meteore
+              è proseguito senza interruzioni, e accanto alle osservazioni vengono pubblicati lavori scientifici basati sulle nostre
+              osservazioni. Ci rallegra in particolare che un numero crescente di giovani soci — oggi ingegneri, laureati magistrali e
+              dottori di ricerca — resti in contatto con la società e partecipi volentieri alle sue iniziative.</p>
+            <div class="ph-card">
+              <p><strong>La Comunità croata della cultura tecnica</strong> — l'organizzazione ombrello a cui appartiene anche l'ADIP —
+                è l'erede storica della Commissione repubblicana «Tecnica e sport», fondata il <strong>23 giugno
+                1946</strong> a Zagabria, il cui primo presidente fu l'accademico Andrija Mohorovičić. L'Istria fondò la propria
+                sezione nel 1947. Oggi la Comunità riunisce 18 federazioni nazionali, 19 comunità regionali e 35
+                comunità cittadine della cultura tecnica.</p>
+            </div>
+          </div>
+          <div>
+            <figure class="ph-fig" data-group="danas"><img src="../povijest-zvjezdarnice/img/clanovi.jpg" width="482" height="309" alt="Soci della Società Astronomica «Istra» Pola sulla terrazza dell&#x27;Osservatorio" loading="lazy" decoding="async"><figcaption>Soci della Società Astronomica «Istra» Pola sulla terrazza dell'Osservatorio.</figcaption></figure>
+            <figure class="ph-fig ph-fig--small" data-group="danas" style="--mw: 380px"><img src="../povijest-zvjezdarnice/img/zracna-zvjezdarnica.jpg" width="623" height="879" alt="L&#x27;Osservatorio su Monte Zaro visto dall&#x27;alto" loading="lazy" decoding="async"><figcaption>L'Osservatorio su Monte Zaro visto dall'alto.</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="ph-card ph-reveal" style="text-align: center; margin-top: 2rem;">
+          <p style="margin-bottom: 0.9rem;">Visitate l'Osservatorio e guardate altre fotografie della sua storia.</p>
+          <div class="ph-hero__actions">
+            <a href="posjet-pulskoj-zvjezdarnici.html" class="btn btn--primary">Visita all'Osservatorio</a>
+            <a href="galerija-povijest.html" class="btn btn--secondary">Galleria: storia</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== IZVORI ===================== -->
+      <section class="ph-chapter" id="izvori" style="padding-bottom: 4rem;">
+        <header class="ph-chapter__head ph-reveal">
+          <span class="ph-chapter__years">bibliografia</span>
+          <h2>Fonti e ringraziamenti</h2>
+        </header>
+        <ul class="ph-sources ph-reveal">
+          <li>D. Šegon (a cura di): <em>150 godina Zvjezdarnice u Puli</em> [150 anni dell'Osservatorio di Pola], Zajednica tehničke kulture Pula e
+            Società Astronomica «Istra» Pola, 2021 — disponibile nella pagina <a href="downloads.html">Download</a>.</li>
+          <li>E. Puh: <em>Zvjezdarnica u Puli: 1871–1991. (građa za povijest Istre)</em> [L'Osservatorio di Pola: 1871–1991 (materiali per la storia dell'Istria)], Histria Historica,
+            edizione speciale, 1991.</li>
+          <li>Dati sulle scoperte di Johann Palisa e dei suoi contemporanei: Minor Planet Center.</li>
+          <li>Fotografie storiche dell'epoca austro-ungarica: Museo storico e navale dell'Istria. Altre fotografie:
+            archivio della Società Astronomica «Istra» Pola e collezioni di Edi Puh e Luciano Gržinić; le fotografie aeree
+            sono state concesse da Igor Karasi.</li>
+          <li>Fotografia dell'edificio dell'Ufficio Idrografico: Erminio Mioni.</li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+
 
     <footer class="footer">
         <div class="footer__contact">
             <strong>Società Astronomica "Istra" Pola</strong><br>
+            <a href="https://www.ztkpula.hr/hr/" target="_blank"
+                style="color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.5);">Associazione
+                della
+                Cultura Tecnica Pola</a><br>
             Glavinićev uspon 1, 52100 Pola - HR<br>
-            Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: +385 91 214 1966
+            Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: +385 91 214 1966<br>
+            <span style="color: var(--text-muted);">(Osservatorio, Parco Monte Zaro 2, Pola)</span>
         </div>
     </footer>
 
+    <!-- Login Modal -->
     <div class="modal-overlay" id="login-modal">
         <div class="modal">
             <div class="modal__header">
                 <h3 class="modal__title">Accedi</h3>
+                <p style="color: var(--text-secondary);">Inserisci le tue credenziali</p>
             </div>
             <form id="login-form">
-                <div class="form-group"><label class="form-label">Nome utente</label><input type="text"
-                        class="form-input" id="login-username" required></div>
-                <div class="form-group"><label class="form-label">Password</label><input type="password"
-                        class="form-input" id="login-password" required></div>
+                <div class="form-group">
+                    <label class="form-label">Nome utente</label>
+                    <input type="text" class="form-input" id="login-username" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" id="login-password" required>
+                </div>
+                <div id="login-message" style="margin-bottom: 1rem; font-size: 0.9rem;"></div>
                 <button type="submit" class="btn btn--primary" style="width: 100%;">Accedi</button>
             </form>
             <button class="btn btn--secondary" style="width: 100%; margin-top: 0.5rem;"
@@ -163,6 +993,7 @@
     </div>
 
     <script src="../js/main.js?v=20260928"></script>
+  <script src="../js/povijest.js?v=20261012"></script>
 </body>
 
 </html>

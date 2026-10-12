@@ -49,6 +49,7 @@
       <a href="radovi.html" class="nav__link">Papers</a>
       <a href="servisi.html" class="nav__link">Services</a>
       <a href="downloads.html" class="nav__link">Downloads</a>
+      <a href="../tecaj/index.html" class="nav__link">Astronomy Course</a>
       <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">About Us</a>
       <div class="nav__spacer"></div>
       <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Login</button>
@@ -110,6 +111,9 @@
           <button type="submit" class="btn btn--primary">Upload</button>
         </form>
         <div id="upload-message" style="margin-top: 1rem;"></div>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem;">
+          Note: activity photos are added through the <a href="aktivnosti.html">Activities</a> page and automatically appear in the "Activity Photos" gallery.
+        </p>
       </div>
 
       <!-- Gallery Categories -->
@@ -121,14 +125,21 @@
         </a>
 
         <a href="astrofotografija.html" class="glass-card" style="text-decoration: none;">
-          <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Astrofotography</h3>
+          <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Astrophotography</h3>
           <p style="color: var(--text-secondary);">Astrophotographs taken by society members.</p>
           <span style="color: var(--accent-secondary); font-size: 0.9rem;">Moon, Mars, Jupiter, Saturn and more →</span>
         </a>
 
+        <a href="galerija-aktivnosti.html" class="glass-card" style="text-decoration: none;">
+          <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Activity Photos</h3>
+          <p style="color: var(--text-secondary);">Photos published with lectures, observations and workshops.</p>
+          <span style="color: var(--accent-secondary); font-size: 0.9rem;" id="activity-gallery-teaser">View gallery →</span>
+        </a>
+
         <a href="galerija-posjete.html" class="glass-card" style="text-decoration: none;">
           <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Visits, Observations and Lectures</h3>
-          <p style="color: var(--text-secondary);">Photos from observatory visits, public observations and lectures.</p>
+          <p style="color: var(--text-secondary);">Photos from observatory visits, public observations and lectures.
+          </p>
           <span style="color: var(--accent-secondary); font-size: 0.9rem;">View gallery →</span>
         </a>
 
@@ -146,10 +157,10 @@
     <div class="footer__contact">
       <strong>Astronomical Society "Istra" Pula</strong><br>
       <a href="https://www.ztkpula.hr/hr/" target="_blank"
-        style="color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.5);">Association of
-        Technical Culture Pula</a><br>
+        style="color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.5);">Association of Technical Culture Pula</a><br>
       Glavinićev uspon 1, 52100 Pula - HR<br>
-      Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: +385 91 214 1966
+      Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: +385 91 214 1966<br>
+      <span style="color: var(--text-muted);">(Observatory, Monte Zaro Park 2, Pula)</span>
     </div>
   </footer>
 
@@ -178,6 +189,22 @@
 
   <script src="../js/main.js?v=20260928"></script>
   <script>
+    // Number of activity photos shown on the gallery card
+    (async () => {
+      const teaser = document.getElementById('activity-gallery-teaser');
+      if (!teaser) return;
+      try {
+        const isSubdir = window.location.pathname.includes('/en/') || window.location.pathname.includes('/it/');
+        const res = await fetch((isSubdir ? '../' : '') + 'data/aktivnosti.json');
+        if (!res.ok) return;
+        const data = await res.json();
+        const count = (data || []).reduce((sum, a) => sum + ((a.images || []).length), 0);
+        if (count > 0) teaser.textContent = count + ' photos →';
+      } catch (err) {
+        // Silently ignore - the default text stays
+      }
+    })();
+
     // Upload form for admin
     document.getElementById('upload-form')?.addEventListener('submit', async (e) => {
       e.preventDefault();

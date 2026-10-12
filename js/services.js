@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function getLocale() {
   const p = window.location.pathname;
-  if (p.includes('/en/')) return 'en-US';
+  if (p.includes('/en/')) return 'en-GB';
   if (p.includes('/it/')) return 'it-IT';    // prije je talijanski dobivao hr-HR
   return 'hr-HR';
 }
@@ -45,8 +45,34 @@ function isSubdirLocale() {
   return p.includes('/en/') || p.includes('/it/');
 }
 
+/**
+ * Tekstovi kojih nema u rječniku iz main.js (hr / en / it).
+ * Hrvatski je izvorni; ključ se bira prema getCurrentLang().
+ */
+const SERVICES_STR = {
+  tideUnavailable: {
+    hr: 'Otvorite za mjesečnu tablicu',
+    en: 'Open for the monthly table',
+    it: 'Apri per la tabella mensile'
+  },
+  tideCreditTitle: {
+    hr: 'Razina iznad globalne srednje razine mora. '
+      + 'Model ~8 km rezolucije — nije za navigaciju.',
+    en: 'Level above global mean sea level. '
+      + 'Model with ~8 km resolution — not for navigation.',
+    it: 'Livello rispetto al livello medio globale del mare. '
+      + 'Modello con risoluzione di ~8 km — non adatto alla navigazione.'
+  }
+};
+
+function svcStr(key) {
+  const lang = (typeof getCurrentLang === 'function') ? getCurrentLang() : 'hr';
+  const e = SERVICES_STR[key];
+  return (e && e[lang] !== undefined) ? e[lang] : e.hr;
+}
+
 /** t() s pouzdanim fallbackom — original je zvao t() bez zaštite. */
-function tr(key, fallback) {
+function svcTr(key, fallback) {
   try {
     const v = typeof t === 'function' ? t(key) : null;
     return (v && v !== key) ? v : fallback;
@@ -105,15 +131,15 @@ function initAdminPanel() {
       });
       const result = await response.json();
       if (result.success) {
-        alert(tr('serviceAdded', 'Servis dodan.'));
+        alert(svcTr('serviceAdded', 'Servis dodan.'));
         loadServices();
         e.target.reset();
       } else {
-        alert(tr('serviceAddError', 'Greška pri dodavanju servisa.'));
+        alert(svcTr('serviceAddError', 'Greška pri dodavanju servisa.'));
       }
     } catch (err) {
       console.error('[ADIP]', err);
-      alert(tr('serviceAddError', 'Greška pri dodavanju servisa.'));
+      alert(svcTr('serviceAddError', 'Greška pri dodavanju servisa.'));
     }
   });
 }
@@ -265,7 +291,7 @@ function renderAstronomyWidget() {
   set('astro-sunset',  formatObsTime(sun.sunset));
 
   const info = getMoonPhaseInfo(moon.phase);
-  set('astro-moon-phase', tr(info.key, info.hr), true);
+  set('astro-moon-phase', svcTr(info.key, info.hr), true);
 
   // fraction = osvijetljeni dio diska (0–1). NE phase — to je pozicija u ciklusu.
   set('astro-moon-illum', `${formatIllumination(moon.fraction, info.key)}%`);
@@ -302,7 +328,7 @@ async function renderTideWidget() {
 
   if (typeof Chart === 'undefined') {
     console.warn('[ADIP] Chart.js nije učitan');
-    return showTideMessage(tr('tideUnavailable', 'Otvorite za mjesečnu tablicu'));
+    return showTideMessage(svcTr('tideUnavailable', svcStr('tideUnavailable')));
   }
 
   const url = `${TIDE_API}?latitude=${PULA_COORDS.lat}&longitude=${PULA_COORDS.lng}`
@@ -339,7 +365,7 @@ async function renderTideWidget() {
   } catch (err) {
     console.warn('[ADIP] Podaci o plimi nedostupni:', err.message);
     // Namjerno NE crtamo izmišljenu krivulju.
-    return showTideMessage(tr('tideUnavailable', 'Otvorite za mjesečnu tablicu'));
+    return showTideMessage(svcTr('tideUnavailable', svcStr('tideUnavailable')));
   }
 
   showTideExtremes(labels, values);
@@ -351,7 +377,7 @@ async function renderTideWidget() {
     data: {
       labels,
       datasets: [{
-        label: tr('tideLevel', 'Razina mora'),
+        label: svcTr('tideLevel', 'Razina mora'),
         data: values,
         borderColor: '#3498db',
         backgroundColor: 'rgba(52, 152, 219, 0.2)',
@@ -398,8 +424,7 @@ function showTideExtremes(labels, values) {
   });
 
   el.textContent = `▲ ${labels[hi]}  ▼ ${labels[lo]}  ·  Open-Meteo / Copernicus`;
-  el.title = 'Razina iznad globalne srednje razine mora. '
-           + 'Model ~8 km rezolucije — nije za navigaciju.';
+  el.title = svcStr('tideCreditTitle');
 }
 
 function showTideMessage(text) {
@@ -464,21 +489,21 @@ function buildImageBrowser(prefix, initialUrl, onShowFn) {
     years.push(`<option value="${y}"${y === year ? ' selected' : ''}>${y}</option>`);
   }
 
-  const notFound = tr('imageNotFound', 'Slika nije dostupna za odabrani mjesec');
+  const notFound = svcTr('imageNotFound', 'Slika nije dostupna za odabrani mjesec');
 
   return `
     <div style="padding: 1rem;">
       <div style="display: flex; gap: 1rem; margin-bottom: 1rem; align-items: center;
                   flex-wrap: wrap; justify-content: center;">
-        <label style="color: var(--text-secondary);">${tr('selectMonth', 'Mjesec')}:</label>
+        <label style="color: var(--text-secondary);">${svcTr('selectMonth', 'Mjesec')}:</label>
         <select id="${prefix}-month-select" class="form-input" style="width: auto; min-width: 120px;">
           ${months}
         </select>
-        <label style="color: var(--text-secondary);">${tr('selectYear', 'Godina')}:</label>
+        <label style="color: var(--text-secondary);">${svcTr('selectYear', 'Godina')}:</label>
         <select id="${prefix}-year-select" class="form-input" style="width: auto; min-width: 100px;">
           ${years.join('')}
         </select>
-        <button class="btn btn--primary" onclick="${onShowFn}()">${tr('show', 'Prikaži')}</button>
+        <button class="btn btn--primary" onclick="${onShowFn}()">${svcTr('show', 'Prikaži')}</button>
       </div>
       <div style="text-align: center;">
         <img id="${prefix}-image" src="${initialUrl}" alt=""
@@ -505,7 +530,7 @@ window.openAstronomyModal = function () {
 
   const now = observatoryToday();
   document.getElementById('modal-title').textContent =
-    tr('sunriseSunsetTitle', 'Izlazak i zalazak Sunca');
+    svcTr('sunriseSunsetTitle', 'Izlazak i zalazak Sunca');
   document.getElementById('modal-body').innerHTML = buildImageBrowser(
     'sunrise',
     getSunriseImageUrl(now.getUTCFullYear(), now.getUTCMonth() + 1, getSunriseBasePath()),
@@ -520,7 +545,7 @@ window.openTideModal = function () {
   if (!modal) return;
 
   const now = observatoryToday();
-  document.getElementById('modal-title').textContent = tr('tideTitle', 'Plima i oseka');
+  document.getElementById('modal-title').textContent = svcTr('tideTitle', 'Plima i oseka');
   document.getElementById('modal-body').innerHTML = buildImageBrowser(
     'tide',
     getTideImageUrl(now.getUTCFullYear(), now.getUTCMonth() + 1, getTideBasePath()),
