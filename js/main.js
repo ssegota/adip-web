@@ -37,6 +37,8 @@ const translations = {
         edit: 'Uredi',
         save: 'Spremi',
         cancel: 'Odustani',
+        editDescription: 'Uredi opis',
+        saveError: 'Spremanje nije uspjelo.',
         editTitle: 'Naslov',
         editDate: 'Datum',
         editYear: 'Godina',
@@ -115,6 +117,8 @@ const translations = {
         edit: 'Edit',
         save: 'Save',
         cancel: 'Cancel',
+        editDescription: 'Edit description',
+        saveError: 'Saving failed.',
         editTitle: 'Title',
         editDate: 'Date',
         editYear: 'Year',
@@ -193,6 +197,8 @@ const translations = {
         edit: 'Modifica',
         save: 'Salva',
         cancel: 'Annulla',
+        editDescription: 'Modifica descrizione',
+        saveError: 'Salvataggio non riuscito.',
         editTitle: 'Titolo',
         editDate: 'Data',
         editYear: 'Anno',
@@ -1979,7 +1985,8 @@ function renderGallery(images, containerId, category) {
         const imgSrc = img.src.startsWith('/') ? img.src : '/' + img.src;
 
         const deleteBtn = loggedIn ?
-            `<button type="button" class="btn btn--danger btn--sm gallery-item__delete" data-src="${escapeHtml(img.src)}" title="${escapeHtml(t('delete'))}" style="position: absolute; top: 5px; right: 5px; z-index: 10; padding: 2px 6px; font-size: 12px; opacity: 0.8;">✕</button>`
+            `<button type="button" class="btn btn--danger btn--sm gallery-item__delete" data-src="${escapeHtml(img.src)}" title="${escapeHtml(t('delete'))}" style="position: absolute; top: 5px; right: 5px; z-index: 10; padding: 2px 6px; font-size: 12px; opacity: 0.8;">✕</button>
+            <button type="button" class="btn btn--primary btn--sm gallery-item__edit" data-index="${index}" title="${escapeHtml(t('editDescription'))}" style="position: absolute; top: 5px; right: 36px; z-index: 10; padding: 2px 6px; font-size: 12px; opacity: 0.8;">✎</button>`
             : '';
 
         return `
@@ -2001,6 +2008,12 @@ function renderGallery(images, containerId, category) {
             if (del) {
                 e.stopPropagation();
                 deleteGalleryImage(del.dataset.src, container.dataset.category, container.id);
+                return;
+            }
+            const edit = e.target.closest('.gallery-item__edit');
+            if (edit) {
+                e.stopPropagation();
+                editGalleryDescription(window.galleryImages[parseInt(edit.dataset.index, 10)], container.id);
                 return;
             }
             const item = e.target.closest('.gallery-item');
@@ -2035,6 +2048,85 @@ window.deleteGalleryImage = async function (src, category, containerId) {
         alert(t('serverError'));
     }
 };
+
+// Uređivanje opisa slike (samo prijavljeni). Mijenja se hrvatski opis;
+// prijevodi u višejezičnim opisima ostaju netaknuti.
+function editGalleryDescription(img, containerId) {
+    if (!img) return;
+
+    let overlay = document.getElementById('gallery-edit-modal');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'gallery-edit-modal';
+        overlay.className = 'modal-overlay';
+        overlay.innerHTML = `
+            <div class="modal" style="max-width: 600px;">
+                <button type="button" class="modal__close" data-close aria-label="Zatvori">&times;</button>
+                <div class="modal__header">
+                    <h3 class="modal__title">${escapeHtml(t('editDescription'))}</h3>
+                </div>
+                <img class="gallery-edit__preview" alt="" style="width: 100%; max-height: 220px; object-fit: contain; border-radius: 8px; margin-bottom: 1rem;">
+                <div class="form-group">
+                    <textarea class="form-textarea gallery-edit__text" rows="5"></textarea>
+                </div>
+                <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+                    <button type="button" class="btn btn--secondary" data-close>${escapeHtml(t('cancel'))}</button>
+                    <button type="button" class="btn btn--primary gallery-edit__save">${escapeHtml(t('save'))}</button>
+                </div>
+            </div>`;
+        document.body.appendChild(overlay);
+        const close = () => {
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+        overlay.addEventListener('click', e => {
+            if (e.target === overlay || e.target.closest('[data-close]')) close();
+        });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && overlay.classList.contains('active')) close();
+        });
+        overlay.close = close;
+    }
+
+    const textarea = overlay.querySelector('.gallery-edit__text');
+    const saveBtn = overlay.querySelector('.gallery-edit__save');
+    const preview = overlay.querySelector('.gallery-edit__preview');
+    const current = img.description && typeof img.description === 'object'
+        ? (img.description.hr || '')
+        : (img.description || '');
+
+    setThumbSrc(preview, img.src.startsWith('/') ? img.src : '/' + img.src);
+    textarea.value = current;
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    textarea.focus();
+
+    saveBtn.onclick = async () => {
+        saveBtn.disabled = true;
+        try {
+            const res = await fetch('/api/galerija/update', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ src: img.src, description: textarea.value })
+            });
+            const data = await res.json().catch(() => ({}));
+            if (res.ok && data.success) {
+                // Isti objekt dijele prikaz i lightbox (i cache stranice astrofotografije)
+                img.description = data.description;
+                renderGallery((window.galleryImages || []).slice().reverse(), containerId,
+                    document.getElementById(containerId).dataset.category);
+                overlay.close();
+            } else {
+                alert(data.message || t('saveError'));
+            }
+        } catch (err) {
+            console.error(err);
+            alert(t('serverError'));
+        } finally {
+            saveBtn.disabled = false;
+        }
+    };
+}
 
 function getLocalizedDescription(desc) {
     if (!desc) return '';

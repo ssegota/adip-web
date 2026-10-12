@@ -577,6 +577,59 @@ app.delete('/api/radovi/:id', (req, res) => {
     });
 });
 
+// Update Gallery Image description
+// Kao i kod brisanja, slika se traži po normaliziranoj putanji u svim kategorijama.
+// Ako je opis višejezični objekt ({hr, en, it}), mijenja se samo hrvatski tekst.
+app.post('/api/galerija/update', (req, res) => {
+    const normalize = p => String(p || '').replace(/^\/+/, '');
+    const target = normalize(req.body && req.body.src);
+    const description = String((req.body && req.body.description) || '').trim();
+    if (!target) {
+        return res.status(400).json({ success: false, message: 'Missing src' });
+    }
+
+    fs.readFile(GALLERY_FILE, 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).json({ success: false });
+        }
+
+        let gallery;
+        try {
+            gallery = JSON.parse(data);
+        } catch (e) {
+            return res.status(500).json({ success: false });
+        }
+
+        let updated = null;
+        const updateList = list => {
+            if (!Array.isArray(list)) return;
+            list.forEach(img => {
+                if (normalize(img.src) !== target) return;
+                if (img.description && typeof img.description === 'object') {
+                    img.description.hr = description;
+                } else {
+                    img.description = description;
+                }
+                updated = img.description;
+            });
+        };
+
+        topLevelCategories.forEach(cat => updateList(gallery[cat]));
+        Object.keys(gallery.astrofotografija || {}).forEach(cat => updateList(gallery.astrofotografija[cat]));
+
+        if (updated === null) {
+            return res.status(404).json({ success: false, message: 'Image not found' });
+        }
+
+        fs.writeFile(GALLERY_FILE, JSON.stringify(gallery, null, 2), (err) => {
+            if (err) {
+                return res.status(500).json({ success: false });
+            }
+            res.json({ success: true, description: updated });
+        });
+    });
+});
+
 // Delete Gallery Image
 // U galerija.json starije slike imaju putanju bez vodeće kose crte ("galerija/..."),
 // a nove s njom ("/galerija/...") - uspoređuje se normalizirano. Kategorija se ne
