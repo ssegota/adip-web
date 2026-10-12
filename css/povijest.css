@@ -1,0 +1,954 @@
+/* Povijest Zvjezdarnice - interaktivni single pager */
+
+.ph {
+    --ph-palisa: #1a9fc7;
+    --ph-world: #8b5cf6;
+    --ph-card: rgba(255, 255, 255, 0.04);
+    --ph-line: rgba(255, 255, 255, 0.12);
+    --ph-nav-top: 70px;
+}
+
+.ph p {
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 1rem;
+}
+
+.ph strong {
+    color: var(--text-primary);
+}
+
+/* ---------- Hero ---------- */
+.ph-hero {
+    position: relative;
+    padding: 3rem 0 2.5rem;
+    text-align: center;
+}
+
+.ph-hero__eyebrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-primary);
+    border: 1px solid rgba(0, 212, 255, 0.35);
+    border-radius: 999px;
+    padding: 0.35rem 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.ph-hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+.ph-hero__lead {
+    max-width: 760px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+}
+
+.ph-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    max-width: 960px;
+    margin: 0 auto 2rem;
+}
+
+.ph-stat {
+    background: var(--ph-card);
+    border: 1px solid var(--ph-line);
+    border-radius: var(--radius-md);
+    padding: 1.1rem 0.75rem;
+}
+
+.ph-stat__num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.ph-stat__label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+}
+
+.ph-hero__actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ---------- Sticky navigacija poglavlja ---------- */
+.ph-nav {
+    position: sticky;
+    top: var(--ph-nav-top);
+    z-index: 900;
+    margin: 0 -5%;
+    padding: 0.6rem 5%;
+    background: rgba(10, 10, 15, 0.88);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--ph-line);
+}
+
+.ph-nav__list {
+    display: flex;
+    gap: 0.4rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ph-nav__list::-webkit-scrollbar {
+    display: none;
+}
+
+.ph-nav__link {
+    display: block;
+    white-space: nowrap;
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: var(--transition-fast);
+}
+
+.ph-nav__link:hover {
+    color: var(--text-primary);
+    border-color: var(--ph-line);
+}
+
+.ph-nav__link.is-active {
+    color: #000;
+    background: var(--accent-primary);
+}
+
+.ph-progress {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 2px;
+    width: 0;
+    background: var(--accent-primary);
+}
+
+/* ---------- Vremenska crta ---------- */
+.ph-timeline {
+    margin: 2.5rem 0 1rem;
+}
+
+.ph-timeline__eras {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.ph-chip {
+    font: inherit;
+    font-size: 0.82rem;
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid var(--ph-line);
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.ph-chip:hover {
+    color: var(--text-primary);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.ph-chip.is-active {
+    background: rgba(0, 212, 255, 0.12);
+    border-color: var(--accent-primary);
+    color: var(--text-primary);
+}
+
+.ph-timeline__track {
+    position: relative;
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding: 1.5rem 0.25rem 1rem;
+    scroll-snap-type: x proximity;
+}
+
+.ph-timeline__track::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 2.15rem;
+    height: 2px;
+    background: var(--ph-line);
+    min-width: 100%;
+}
+
+.ph-event {
+    position: relative;
+    flex: 0 0 210px;
+    scroll-snap-align: start;
+    text-align: left;
+    font: inherit;
+    background: none;
+    border: none;
+    padding: 1.6rem 0 0;
+    cursor: pointer;
+    color: inherit;
+}
+
+.ph-event::before {
+    content: '';
+    position: absolute;
+    top: 0.3rem;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    border: 2px solid var(--accent-primary);
+    transition: var(--transition-fast);
+}
+
+.ph-event:hover::before,
+.ph-event:focus-visible::before {
+    background: var(--accent-primary);
+    transform: scale(1.3);
+}
+
+.ph-event__year {
+    display: block;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--text-primary);
+}
+
+.ph-event__text {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+    margin-top: 0.2rem;
+}
+
+.ph-event.is-hidden {
+    display: none;
+}
+
+/* ---------- Poglavlja ---------- */
+.ph-chapter {
+    padding: 4.5rem 0 1rem;
+    scroll-margin-top: calc(var(--ph-nav-top) + 60px);
+}
+
+.ph-chapter__head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.75rem;
+    border-bottom: 1px solid var(--ph-line);
+    padding-bottom: 1rem;
+}
+
+.ph-chapter__years {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    letter-spacing: 0.06em;
+}
+
+.ph-chapter__head h2 {
+    font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+    margin: 0;
+}
+
+.ph h3 {
+    font-size: 1.25rem;
+    margin: 2rem 0 0.75rem;
+    color: var(--text-primary);
+}
+
+.ph-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.ph-split--rev {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+}
+
+.ph-split--rev > :first-child {
+    order: 2;
+}
+
+@media (max-width: 860px) {
+
+    .ph-split,
+    .ph-split--rev {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .ph-split--rev > :first-child {
+        order: 0;
+    }
+}
+
+/* ---------- Slike ---------- */
+.ph-fig {
+    margin: 0 0 1rem;
+    cursor: zoom-in;
+}
+
+.ph-fig img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--ph-line);
+    background: #111;
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.ph-fig:hover img {
+    border-color: rgba(0, 212, 255, 0.5);
+}
+
+.ph-fig figcaption {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+    margin-top: 0.45rem;
+}
+
+.ph-figs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.ph-figs--2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ph-figs .ph-fig img {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+@media (max-width: 560px) {
+    .ph-figs--2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- Kartice i istaknuti blokovi ---------- */
+.ph-card {
+    background: var(--ph-card);
+    border: 1px solid var(--ph-line);
+    border-radius: var(--radius-md);
+    padding: 1.4rem 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.ph-card p:last-child {
+    margin-bottom: 0;
+}
+
+.ph-quote {
+    border-left: 3px solid var(--accent-primary);
+    padding: 0.5rem 0 0.5rem 1.25rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--text-primary);
+    line-height: 1.7;
+}
+
+.ph-quote cite {
+    display: block;
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+}
+
+.ph-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+    list-style: none;
+    padding: 0;
+}
+
+.ph-facts li {
+    background: var(--ph-card);
+    border: 1px solid var(--ph-line);
+    border-radius: var(--radius-sm);
+    padding: 0.9rem 1rem;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.ph-facts li strong {
+    display: block;
+    color: var(--text-primary);
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.ph-portrait {
+    float: right;
+    width: 180px;
+    margin: 0 0 1rem 1.5rem;
+}
+
+.ph-portrait img {
+    aspect-ratio: auto;
+}
+
+@media (max-width: 560px) {
+    .ph-portrait {
+        float: none;
+        width: 60%;
+        margin: 0 auto 1rem;
+    }
+}
+
+/* ---------- Palisa: otkrića ---------- */
+.ph-disc__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 1rem 0;
+}
+
+.ph-disc__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ph-disc__item {
+    font: inherit;
+    width: 100%;
+    text-align: left;
+    background: var(--ph-card);
+    border: 1px solid var(--ph-line);
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 0.75rem;
+    color: var(--text-primary);
+    cursor: default;
+}
+
+.ph-disc__item[data-note] {
+    cursor: pointer;
+    border-color: rgba(0, 212, 255, 0.4);
+}
+
+.ph-disc__item[data-note]:hover,
+.ph-disc__item.is-open {
+    background: rgba(0, 212, 255, 0.1);
+}
+
+.ph-disc__num {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.ph-disc__name {
+    display: block;
+    font-weight: 600;
+}
+
+.ph-disc__year {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.ph-disc__note {
+    min-height: 3.2rem;
+    margin-top: 1rem;
+    padding: 0.9rem 1.1rem;
+    border-radius: var(--radius-sm);
+    border: 1px dashed var(--ph-line);
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+
+/* ---------- Grafikon (stupci po godinama) ---------- */
+.ph-chart {
+    margin: 1.5rem 0;
+}
+
+.ph-chart__title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.ph-chart__sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.9rem;
+}
+
+.ph-legend {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.ph-legend span::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    margin-right: 0.4rem;
+    vertical-align: -1px;
+    background: var(--swatch);
+}
+
+.ph-chart svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.ph-chart .grid {
+    stroke: rgba(255, 255, 255, 0.08);
+    stroke-width: 1;
+}
+
+.ph-chart .axis-label {
+    fill: var(--text-muted);
+    font-size: 11px;
+}
+
+.ph-chart .val-label {
+    fill: var(--text-secondary);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.ph-chart .hit {
+    fill: transparent;
+    cursor: pointer;
+}
+
+.ph-chart .col.is-hover .bar {
+    filter: brightness(1.2);
+}
+
+.ph-tooltip {
+    position: fixed;
+    z-index: 2500;
+    pointer-events: none;
+    background: #1c1c28;
+    border: 1px solid var(--ph-line);
+    border-radius: var(--radius-sm);
+    padding: 0.55rem 0.75rem;
+    font-size: 0.82rem;
+    color: var(--text-primary);
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    transition: opacity 0.12s ease;
+    min-width: 170px;
+}
+
+.ph-tooltip.is-visible {
+    opacity: 1;
+}
+
+.ph-tooltip__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--text-secondary);
+}
+
+.ph-tooltip__row b {
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.ph-tooltip__row i {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    margin-right: 0.35rem;
+}
+
+.ph-table-toggle {
+    font: inherit;
+    font-size: 0.82rem;
+    background: none;
+    border: none;
+    color: var(--accent-primary);
+    cursor: pointer;
+    padding: 0;
+    margin-top: 0.5rem;
+}
+
+.ph-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    margin-top: 0.75rem;
+}
+
+.ph-table th,
+.ph-table td {
+    padding: 0.4rem 0.6rem;
+    border-bottom: 1px solid var(--ph-line);
+    text-align: right;
+    color: var(--text-secondary);
+    font-variant-numeric: tabular-nums;
+}
+
+.ph-table th:first-child,
+.ph-table td:first-child {
+    text-align: left;
+}
+
+.ph-table th {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Rang-liste (jedna serija, Pula istaknuta) */
+.ph-ranks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.ph-rank {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ph-rank li {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr 2rem;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+    padding: 0.18rem 0;
+}
+
+.ph-rank__bar {
+    height: 10px;
+    border-radius: 0 4px 4px 0;
+    background: rgba(255, 255, 255, 0.22);
+    width: var(--w);
+}
+
+.ph-rank li.is-hl {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.ph-rank li.is-hl .ph-rank__bar {
+    background: var(--ph-palisa);
+}
+
+.ph-rank__val {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-primary);
+}
+
+/* ---------- Instrumenti ---------- */
+.ph-instr {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.ph-instr__card {
+    background: var(--ph-card);
+    border: 1px solid var(--ph-line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.ph-instr__card.is-hidden {
+    display: none;
+}
+
+.ph-instr__card .ph-fig {
+    margin: 0;
+}
+
+.ph-instr__card .ph-fig img {
+    border: none;
+    border-radius: 0;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.ph-instr__body {
+    padding: 1rem 1.15rem 1.2rem;
+}
+
+.ph-instr__body h4 {
+    margin: 0 0 0.2rem;
+    font-size: 1.05rem;
+}
+
+.ph-instr__meta {
+    font-size: 0.8rem;
+    color: var(--accent-primary);
+    margin-bottom: 0.6rem;
+}
+
+.ph-instr__body p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 0.6rem;
+}
+
+.ph-instr__specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.6rem;
+}
+
+.ph-instr__specs li {
+    font-size: 0.78rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-secondary);
+}
+
+.ph-instr__fate {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.ph-instr__fate strong {
+    display: inline;
+    color: var(--text-secondary);
+}
+
+/* ---------- Tlocrt: prije / poslije bombardiranja ---------- */
+.ph-plan {
+    position: relative;
+    background: #f4f2ec;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.ph-plan img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.ph-plan svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.ph-plan .shade {
+    fill: rgba(10, 10, 15, 0.78);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.ph-plan .outline {
+    fill: none;
+    stroke: #e5484d;
+    stroke-width: 2.5;
+    stroke-dasharray: 6 4;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.ph-plan.is-after .shade,
+.ph-plan.is-after .outline {
+    opacity: 1;
+}
+
+.ph-segmented {
+    display: inline-flex;
+    border: 1px solid var(--ph-line);
+    border-radius: 999px;
+    padding: 3px;
+    margin: 0 0 0.9rem;
+}
+
+.ph-segmented button {
+    font: inherit;
+    font-size: 0.85rem;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    border: none;
+    background: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.ph-segmented button[aria-pressed="true"] {
+    background: var(--accent-primary);
+    color: #000;
+}
+
+/* ---------- Obnova: koraci ---------- */
+.ph-steps__tabs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    margin: 1.25rem 0 1rem;
+}
+
+@media (max-width: 560px) {
+    .ph-steps__tabs {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.ph-steps__tab {
+    font: inherit;
+    text-align: left;
+    padding: 0.75rem 0.9rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--ph-line);
+    background: var(--ph-card);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.ph-steps__tab b {
+    display: block;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
+.ph-steps__tab[aria-selected="true"] {
+    border-color: var(--accent-primary);
+    background: rgba(0, 212, 255, 0.1);
+}
+
+.ph-steps__panel[hidden] {
+    display: none;
+}
+
+/* ---------- Izvori ---------- */
+.ph-sources {
+    font-size: 0.9rem;
+}
+
+.ph-sources li {
+    color: var(--text-secondary);
+    margin-bottom: 0.45rem;
+    line-height: 1.55;
+}
+
+.ph-sources a,
+.ph a.ph-link {
+    color: var(--accent-primary);
+}
+
+.ph-archive {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+/* ---------- Animacija pojavljivanja ---------- */
+.js .ph-reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.js .ph-reveal.is-in {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .js .ph-reveal,
+    .ph-plan .shade,
+    .ph-plan .outline {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .ph-plan:not(.is-after) .shade,
+    .ph-plan:not(.is-after) .outline {
+        opacity: 0;
+    }
+}
+
+.ph-clear::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* Male i uspravne slike ne rastežu se preko cijelog stupca */
+.ph-fig--small {
+    max-width: var(--mw, 100%);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ph-figs .ph-fig--small,
+.ph-instr__card .ph-fig--small {
+    max-width: none;
+}
+
+/* Vremenska crta na vlastitoj podlozi (pozadina stranice je fotografija) */
+.ph-timeline {
+    background: rgba(12, 12, 18, 0.92);
+    border: 1px solid var(--ph-line);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem 0.5rem;
+}
