@@ -37,7 +37,7 @@ while IFS=$'\t' read -r st path; do
 done < <(git -c core.quotePath=false diff --no-renames --name-status "$prev" "$head")
 
 { printf '%s\n' "${!dirs[@]}" | awk '{print length "\t" $0}' | sort -n | cut -f2- | while IFS= read -r d; do
-    [ -n "$d" ] && echo "-mkdir $(q "$APP/$d")"; done; cat "$batch"; } > "$work/full"
+    if [ -n "$d" ]; then echo "-mkdir $(q "$APP/$d")"; fi; done; cat "$batch"; } > "$work/full"
 date > "$work/restart.txt"; echo "$head" > "$work/sha"
 cat >> "$work/full" <<B
 -mkdir $APP/tmp
