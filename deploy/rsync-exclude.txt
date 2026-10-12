@@ -1,0 +1,15 @@
+# Putanje koje se NE šalju na server pri deployu.
+# Admin panel u njih upisuje sadržaj na serveru, pa ih deploy ne smije prebrisati.
+/data/
+/galerija/
+/galerija-slika/
+/aktivnosti-slike/
+/radovi-files/
+/downloads-files/
+# Ostalo što ne pripada na server
+/.git/
+/.github/
+/deploy/
+/node_modules/
+/deploy.zip
+/tmp/

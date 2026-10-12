@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>15. Relativistička i visokoenergetska astrofizika | Tečaj astronomije</title>
+  <meta name="description"
+    content="Provjere opće teorije relativnosti, gravitacijsko lećenje, crne rupe, akrecija, Eddingtonov limit, pulsari, bljeskovi gama-zračenja i gravitacijski valovi.">
+  <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/tecaj.css?v=20260928">
+  <script src="data/vidljivost.js"></script>
+  <script>
+    /* Pristupna vrata: sakrij sadržaj prije prvog crtanja ako PIN nije unesen.
+       Otključavanje i sam upit su u js/tecaj.js. */
+    (function () {
+      var ulaz = false, urednik = false;
+      try { ulaz = sessionStorage.getItem('tecaj_ulaz') === '1'; } catch (e) { }
+      try { urednik = !!localStorage.getItem('adip_token'); } catch (e) { }
+      if (!ulaz && !urednik) document.documentElement.className += ' tecaj-zakljucano';
+    })();
+  </script>
+</head>
+
+<body>
+  <main class="page-content">
+    <div class="container container--wide">
+
+      <div class="lesson-head" id="lesson-head"></div>
+
+      <div class="lesson-body">
+
+        <!-- ============ TEORIJA ============ -->
+        <div>
+          <div class="panel">
+            <h2 class="panel__title">O čemu je ova lekcija</h2>
+            <p>
+              Ovdje dobivaju pozadinu pojmovi koje smo dosad koristili bez objašnjenja —
+              crna rupa, horizont, akrecija. I pokazuje se da najsnažniji izvori energije u
+              svemiru nisu nuklearni nego <strong>gravitacijski</strong>.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Od načela ekvivalencije do zakrivljenosti</h3>
+            <p>
+              Einsteinovo <strong>načelo ekvivalencije</strong>: promatrač u slobodnom padu ne
+              može lokalnim mjerenjem razlikovati gravitaciju od ubrzanja. Ako gravitacija nije
+              sila nego svojstvo geometrije, tada masa <em>zakrivljuje prostor-vrijeme</em>,
+              a tijela slijede najravnije moguće putanje u toj zakrivljenoj geometriji.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Klasične provjere</h3>
+            <ul>
+              <li><strong>Pomak Merkurova perihela</strong>: 43″ po stoljeću iznad newtonovskog —
+                jedina već poznata anomalija koju je teorija objasnila unaprijed.</li>
+              <li><strong>Otklon svjetlosti</strong> uz rub Sunca: <strong>1,75″</strong>,
+                dvostruko više od newtonovske procjene. Izmjereno pri pomrčini 1919. — mjerenje
+                koje je Einsteina učinilo slavnim.</li>
+              <li><strong>Gravitacijski crveni pomak</strong> i <strong>dilatacija vremena</strong>:
+                satovi u jačem polju idu polakše. Bez te korekcije GPS bi griješio 10 km na dan.</li>
+              <li><strong>Shapirovo kašnjenje</strong> signala i, od 2015.,
+                <strong>gravitacijski valovi</strong>.</li>
+            </ul>
+            <div class="formula">
+              Δ<span class="mvar">λ</span>/<span class="mvar">λ</span> =
+              <span class="mvar">GM</span>/(<span class="mvar">Rc</span>²) =
+              <span class="mvar">r</span><sub>s</sub>/2<span class="mvar">R</span>
+              <small>gravitacijski crveni pomak; za Sunce 2 × 10⁻⁶, za bijeli patuljak 10⁻⁴</small>
+            </div>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Gravitacijsko lećenje</h3>
+            <p>
+              Masa između nas i dalekog izvora ponaša se kao leća: nastaju <strong>višestruke
+                slike</strong>, <strong>lukovi</strong> i, pri savršenom poravnanju,
+              <strong>Einsteinov prsten</strong>. Lećenje mjeri <em>ukupnu</em> masu — i vidljivu
+              i tamnu — pa je jedan od glavnih dokaza za tamnu tvar. <strong>Mikrolećenje</strong>
+              (privremeno pojačanje sjaja) služi za traženje planeta i kompaktnih objekata.
+            </p>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Anatomija crne rupe</h3>
+            <div class="formula">
+              <span class="mvar">r</span><sub>s</sub> = 2<span class="mvar">GM</span>/<span class="mvar">c</span>²
+              <small>za Sunce 2,95 km; polumjer je proporcionalan masi, a ne njezinu korijenu</small>
+            </div>
+            <ul>
+              <li><strong>Horizont događaja</strong> na <span class="mvar">r</span><sub>s</sub> —
+                granica bez povratka; nije ploha nego jednosmjerna karta.</li>
+              <li><strong>Fotonska sfera</strong> na 1,5 <span class="mvar">r</span><sub>s</sub> —
+                svjetlost tu može kružiti.</li>
+              <li><strong>ISCO</strong> (najunutarnjija stabilna kružna staza) na
+                3 <span class="mvar">r</span><sub>s</sub> — unutar nje nema stabilnih orbita.</li>
+              <li><strong>Sjena</strong> koju vidimo ima polumjer ≈ 2,6
+                <span class="mvar">r</span><sub>s</sub>, veći od horizonta, jer se svjetlost oko
+                rupe savija. Snimili su je EHT: M87* (2019.) i Sgr A* (2022.).</li>
+              <li>Crnu rupu opisuju samo <strong>tri broja</strong>: masa, kutna količina gibanja
+                i naboj („teorem bez kose“).</li>
+            </ul>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Akrecija kao izvor energije</h3>
+            <div class="formula">
+              <span class="mvar">L</span> = <span class="mvar">η</span> <span class="mvar">Ṁ</span>
+              <span class="mvar">c</span>²
+              <small>η ≈ 0,06 za nerotirajuću, do 0,42 za maksimalno rotirajuću crnu rupu</small>
+            </div>
+            <p>
+              Usporedite: fuzija vodika ima učinkovitost 0,7 %, a akrecija 6–42 %. Zato su
+              kvazari najsjajniji trajni objekti u svemiru — jedna galaktička jezgra može
+              nadsjati stotine milijardi zvijezda oko sebe.
+            </p>
+            <div class="formula">
+              <span class="mvar">L</span><sub>Edd</sub> = 1,26 × 10³¹ (<span class="mvar">M</span>/<span
+                class="mvar">M</span><sub>☉</sub>) W
+              <small>iznad te granice tlak zračenja odbija dolazeću tvar i akrecija se sama guši</small>
+            </div>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Kompaktni objekti i visoke energije</h3>
+            <ul>
+              <li><strong>Pulsari</strong>: neutronske zvijezde promjera 20 km, magnetsko polje do
+                10⁸ T, rotacija od milisekunde do sekundi. Zrače usmjereno pa ih vidimo kao
+                „svjetionik“. Prvi je otkrila Jocelyn Bell 1967.</li>
+              <li><strong>Magnetari</strong>: polja do 10¹¹ T — najjača u svemiru.</li>
+              <li><strong>Bljeskovi gama-zračenja</strong>: <em>dugi</em> (&gt; 2 s) iz kolapsa
+                masivnih zvijezda, <em>kratki</em> (&lt; 2 s) iz spajanja neutronskih zvijezda.
+                U nekoliko sekundi oslobode energiju koju Sunce daje u cijelom vijeku.</li>
+            </ul>
+
+            <h3 style="font-size:1.05rem;margin:1.5rem 0 .6rem">Astronomija s više glasnika</h3>
+            <p>
+              <strong>GW150914</strong> (2015.): prvi izmjereni gravitacijski val, spajanje
+              dviju crnih rupa od 36 i 29 <span class="mvar">M</span><sub>☉</sub>.
+              <strong>GW170817</strong> (2017.): spajanje neutronskih zvijezda izmjereno
+              <em>i</em> gravitacijskim valovima <em>i</em> gama-bljeskom <em>i</em> optički —
+              dan kad se sve poklopilo. Potvrdilo je da se gravitacijski valovi šire brzinom
+              svjetlosti i pokazalo gdje nastaje zlato: u spajanju neutronskih zvijezda.
+            </p>
+          </div>
+
+          <div class="panel" style="margin-top:1.5rem">
+            <h2 class="panel__title">Ishodi</h2>
+            <ul>
+              <li>navodi klasične provjere opće teorije relativnosti i njihove iznose;</li>
+              <li>računa Schwarzschildov polumjer, gravitacijski crveni pomak i Eddingtonov
+                luminozitet;</li>
+              <li>objašnjava akreciju kao izvor energije i njezinu učinkovitost;</li>
+              <li>opisuje pulsare, magnetare, bljeskove gama-zračenja i gravitacijske valove.</li>
+            </ul>
+
+            <h2 class="panel__title" style="margin-top:1.5rem">Zapamtite</h2>
+            <ul>
+              <li><span class="mvar">r</span><sub>s</sub> = 2<span class="mvar">GM</span>/<span
+                  class="mvar">c</span>²; za Sunce 2,95 km</li>
+              <li>fotonska sfera 1,5 <span class="mvar">r</span><sub>s</sub>, ISCO 3 <span
+                  class="mvar">r</span><sub>s</sub>, sjena ≈ 2,6 <span class="mvar">r</span><sub>s</sub></li>
+              <li>otklon uz Sunce 1,75″; Merkur 43″/stoljeću</li>
+              <li>Δ<span class="mvar">λ</span>/<span class="mvar">λ</span> = <span class="mvar">GM</span>/(<span
+                  class="mvar">Rc</span>²) = <span class="mvar">r</span><sub>s</sub>/2<span class="mvar">R</span></li>
+              <li><span class="mvar">L</span> = <span class="mvar">η</span><span class="mvar">Ṁ</span><span
+                  class="mvar">c</span>²; <span class="mvar">η</span> ≈ 0,06–0,42</li>
+              <li><span class="mvar">L</span><sub>Edd</sub> = 1,26 × 10³¹ (<span class="mvar">M</span>/<span
+                  class="mvar">M</span><sub>☉</sub>) W</li>
+              <li>dugi bljeskovi → kolapsari, kratki → spajanja</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ============ INTERAKTIVNO ============ -->
+        <div>
+
+          <!-- ---------- 1 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 1</div>
+              <h3 class="demo__title">Anatomija crne rupe</h3>
+              <p class="demo__hint">
+                Sve karakteristične udaljenosti razmjerne su masi. Pomičite masu od zvjezdanih
+                do supermasivnih crnih rupa i usporedite s poznatim veličinama.
+              </p>
+            </div>
+
+            <canvas id="c15a"></canvas>
+
+            <div class="controls">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Masa crne rupe</span><span class="ctrl__value" id="cr-m-out"></span>
+                </div>
+                <input type="range" id="cr-m" min="0" max="10.5" step="0.01" value="1.33">
+              </div>
+            </div>
+
+            <div class="btn-row" id="cr-preseti">
+              <button class="chip-btn" data-value="1">1 M☉ (Sunce)</button>
+              <button class="chip-btn active" data-value="21.2">Cygnus X-1</button>
+              <button class="chip-btn" data-value="62.5">GW150914</button>
+              <button class="chip-btn" data-value="4.3e6">Sgr A*</button>
+              <button class="chip-btn" data-value="6.5e9">M87*</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Schwarzschildov polumjer r<sub>s</sub></div>
+                <div class="readout__value" id="cr-rs">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Fotonska sfera (1,5 r<sub>s</sub>)</div>
+                <div class="readout__value" id="cr-fs">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">ISCO (3 r<sub>s</sub>)</div>
+                <div class="readout__value" id="cr-isco">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Polumjer sjene (2,6 r<sub>s</sub>)</div>
+                <div class="readout__value" id="cr-sj">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Srednja gustoća unutar r<sub>s</sub></div>
+                <div class="readout__value" id="cr-ro">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Plimno razvlačenje na r<sub>s</sub></div>
+                <div class="readout__value" id="cr-pl">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Eddingtonov luminozitet</div>
+                <div class="readout__value" id="cr-edd">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Kutni promjer sjene s 8 kpc</div>
+                <div class="readout__value" id="cr-kut">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="cr-info">—</div>
+          </div>
+
+          <!-- ---------- 2 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 2</div>
+              <h3 class="demo__title">Crveni pomak, dilatacija vremena i lećenje</h3>
+              <p class="demo__hint">
+                Dvije posljedice iste geometrije. Prebacite između načina: koliko satovi
+                zaostaju u polju, i koliko se svjetlost savija oko mase.
+              </p>
+            </div>
+
+            <div class="btn-row" id="gr-mod">
+              <button class="chip-btn active" data-value="pomak">Crveni pomak i vrijeme</button>
+              <button class="chip-btn" data-value="lece">Gravitacijsko lećenje</button>
+            </div>
+
+            <canvas id="c15b"></canvas>
+
+            <div id="gr-panel-pomak">
+              <div class="controls">
+                <div class="ctrl">
+                  <div class="ctrl__label"><span>Udaljenost od središta, u r<sub>s</sub> (logaritamski)</span>
+                    <span class="ctrl__value" id="gr-r-out"></span>
+                  </div>
+                  <input type="range" id="gr-r" min="0.05" max="9.5" step="0.01" value="5.37">
+                </div>
+              </div>
+              <div class="btn-row" id="gr-preseti">
+                <button class="chip-btn" data-value="7.18e8">površina Zemlje</button>
+                <button class="chip-btn active" data-value="2.356e5">površina Sunca</button>
+                <button class="chip-btn" data-value="3950">bijeli patuljak</button>
+                <button class="chip-btn" data-value="2.9">neutronska zvijezda</button>
+                <button class="chip-btn" data-value="1.5">fotonska sfera</button>
+              </div>
+              <div class="readout">
+                <div class="readout__item">
+                  <div class="readout__label">Crveni pomak z</div>
+                  <div class="readout__value" id="gr-z">—</div>
+                </div>
+                <div class="readout__item">
+                  <div class="readout__label">Sat ide brzinom</div>
+                  <div class="readout__value" id="gr-sat">—</div>
+                </div>
+                <div class="readout__item">
+                  <div class="readout__label">Zaostatak po godini</div>
+                  <div class="readout__value" id="gr-zao">—</div>
+                </div>
+                <div class="readout__item">
+                  <div class="readout__label">Pomak Hα</div>
+                  <div class="readout__value" id="gr-lam">—</div>
+                </div>
+                <div class="readout__item">
+                  <div class="readout__label">Brzina bijega</div>
+                  <div class="readout__value" id="gr-v2">—</div>
+                </div>
+                <div class="readout__item">
+                  <div class="readout__label">Kao udio brzine svjetlosti</div>
+                  <div class="readout__value" id="gr-bc">—</div>
+                </div>
+              </div>
+            </div>
+
+            <div id="gr-panel-lece" class="hidden">
+              <div class="controls controls--3">
+                <div class="ctrl">
+                  <div class="ctrl__label"><span>Masa leće</span><span class="ctrl__value" id="le-m-out"></span></div>
+                  <input type="range" id="le-m" min="-1" max="15" step="0.01" value="12">
+                </div>
+                <div class="ctrl">
+                  <div class="ctrl__label"><span>Udaljenost leće</span><span class="ctrl__value"
+                      id="le-dl-out"></span></div>
+                  <input type="range" id="le-dl" min="1" max="2000" step="1" value="500">
+                </div>
+                <div class="ctrl">
+                  <div class="ctrl__label"><span>Udaljenost izvora</span><span class="ctrl__value"
+                      id="le-ds-out"></span></div>
+                  <input type="range" id="le-ds" min="10" max="4000" step="1" value="1500">
+                </div>
+              </div>
+              <div class="readout">
+                <div class="readout__item">
+                  <div class="readout__label">Einsteinov polumjer θ<sub>E</sub></div>
+                  <div class="readout__value" id="le-te">—</div>
+                </div>
+                <div class="readout__item">
+                  <div class="readout__label">Otklon zrake α na θ<sub>E</sub></div>
+                  <div class="readout__value" id="le-ot">—</div>
+                </div>
+                <div class="readout__item">
+                  <div class="readout__label">Fizička veličina prstena</div>
+                  <div class="readout__value" id="le-fiz">—</div>
+                </div>
+                <div class="readout__item">
+                  <div class="readout__label">Razlučuje li se</div>
+                  <div class="readout__value" id="le-raz">—</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="verdict" id="gr-info">—</div>
+          </div>
+
+          <!-- ---------- 3 ---------- -->
+          <div class="demo">
+            <div class="demo__head">
+              <div class="demo__kicker">Interaktivni primjer 3</div>
+              <h3 class="demo__title">Akrecija i Eddingtonov limit</h3>
+              <p class="demo__hint">
+                Najučinkovitiji izvor energije koji poznajemo. Usporedite ga s fuzijom i
+                pogledajte gdje se sam guši.
+              </p>
+            </div>
+
+            <canvas id="c15c"></canvas>
+
+            <div class="controls controls--3">
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Masa crne rupe</span><span class="ctrl__value" id="ak-m-out"></span>
+                </div>
+                <input type="range" id="ak-m" min="0" max="10" step="0.01" value="8">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Dotok mase Ṁ</span><span class="ctrl__value" id="ak-md-out"></span>
+                </div>
+                <input type="range" id="ak-md" min="-6" max="2" step="0.01" value="0">
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__label"><span>Učinkovitost η</span><span class="ctrl__value" id="ak-eta-out"></span>
+                </div>
+                <input type="range" id="ak-eta" min="0.01" max="0.42" step="0.001" value="0.1">
+              </div>
+            </div>
+
+            <div class="btn-row" id="ak-preseti">
+              <button class="chip-btn" data-value="0.007,fuzija vodika">η fuzije (0,007)</button>
+              <button class="chip-btn" data-value="0.057,Schwarzschild">nerotirajuća (0,057)</button>
+              <button class="chip-btn active" data-value="0.1,tipična">tipična (0,1)</button>
+              <button class="chip-btn" data-value="0.42,Kerr, maksimalna">maksimalna (0,42)</button>
+            </div>
+
+            <div class="readout">
+              <div class="readout__item">
+                <div class="readout__label">Luminozitet L</div>
+                <div class="readout__value" id="ak-l">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">U sunčevim luminozitetima</div>
+                <div class="readout__value" id="ak-ls">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Eddingtonov limit</div>
+                <div class="readout__value" id="ak-edd">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Udio Eddingtona</div>
+                <div class="readout__value" id="ak-udio">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Vrijeme udvostručenja mase</div>
+                <div class="readout__value" id="ak-t">—</div>
+              </div>
+              <div class="readout__item">
+                <div class="readout__label">Koliko puta bolje od fuzije</div>
+                <div class="readout__value" id="ak-vs">—</div>
+              </div>
+            </div>
+            <div class="verdict" id="ak-info">—</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="lesson-nav" id="lesson-nav"></div>
+    </div>
+  </main>
+
+  <script src="js/tecaj.js?v=20260928"></script>
+  <script>
+    TECAJ.init({ lekcija: 15 });
+
+    var G = 6.674e-11, C = 299792458, MSUN = 1.98892e30, LSUN = 3.828e26;
+    var RSUN = 6.957e8, AJ = 1.495978707e11, PC = 3.0857e16, GOD = 3.15576e7;
+
+    function rs(Msun) { return 2 * G * Msun * MSUN / (C * C); }
+
+    /* =====================================================
+       PRIMJER 1 — Anatomija crne rupe
+       ===================================================== */
+    (function () {
+      var logM = 1.33;   /* Cygnus X-1, ≈ 21 M☉ */
+
+      var POREDBA = [
+        [10, 'Pula (10 km)'], [6371e3, 'polumjer Zemlje'], [3.844e8, 'staza Mjeseca'],
+        [RSUN, 'polumjer Sunca'], [AJ, '1 AJ'], [5.204 * AJ, 'staza Jupitera'],
+        [30.07 * AJ, 'staza Neptuna'], [1000 * AJ, '1000 AJ'], [PC, '1 parsek']
+      ];
+
+      var cv = TECAJ.canvas('c15a', 1.55, function (ctx, W, Ht) {
+        var M = Math.pow(10, logM);
+        var R = rs(M);
+        TECAJ.starfield(ctx, W, Ht, 90, 1515);
+
+        /* --- lijevo: struktura --- */
+        var lw = W * 0.48;
+        var cx = lw * 0.5, cy = Ht * 0.5;
+        var sc = Math.min(lw, Ht) * 0.40 / 3.2;   /* piksela po r_s, prostora do 3,2 r_s */
+
+        /* akrecijski disk kao elipsa */
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.scale(1, 0.30);
+        var dg = ctx.createRadialGradient(0, 0, 3 * sc, 0, 0, 12 * sc);
+        dg.addColorStop(0, 'rgba(255,220,150,.55)');
+        dg.addColorStop(0.35, 'rgba(255,140,60,.30)');
+        dg.addColorStop(1, 'rgba(180,60,30,0)');
+        ctx.fillStyle = dg;
+        ctx.beginPath(); ctx.arc(0, 0, 12 * sc, 0, 6.2832); ctx.fill();
+        ctx.restore();
+
+        function krug(r, col, dash, ime) {
+          ctx.strokeStyle = col; ctx.lineWidth = 1.5;
+          ctx.setLineDash(dash || []);
+          ctx.beginPath(); ctx.arc(cx, cy, r * sc, 0, 6.2832); ctx.stroke();
+          ctx.setLineDash([]);
+          if (ime) TECAJ.tag(ctx, cx, cy - r * sc - 7, ime, col, 'center');
+        }
+        krug(3, 'rgba(0,212,255,.75)', [4, 3], 'ISCO 3 r(s)');
+        krug(2.6, 'rgba(251,191,36,.8)', [2, 3], 'sjena 2,6 r(s)');
+        krug(1.5, 'rgba(244,114,182,.8)', [3, 3], 'fotonska sfera 1,5 r(s)');
+
+        /* horizont */
+        ctx.fillStyle = '#000';
+        ctx.beginPath(); ctx.arc(cx, cy, 1 * sc, 0, 6.2832); ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,.85)'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(cx, cy, 1 * sc, 0, 6.2832); ctx.stroke();
+        TECAJ.tag(ctx, cx, cy + sc + 14, 'horizont r(s)', 'rgba(255,255,255,.9)', 'center');
+
+        ctx.font = '600 11px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,.55)';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+        ctx.fillText('M = ' + TECAJ.sci(M, 2) + ' M☉', 10, 10);
+
+        ctx.strokeStyle = 'rgba(255,255,255,.1)';
+        ctx.beginPath(); ctx.moveTo(lw, 8); ctx.lineTo(lw, Ht - 8); ctx.stroke();
+
+        /* --- desno: ljestvica veličina --- */
+        var bx = lw + 20, bw = W - lw - 40, by = 26;
+        var L0 = 0, L1 = 18;    /* log10 metara */
+        function X(l) { return bx + bw * (TECAJ.clamp(l, L0, L1) - L0) / (L1 - L0); }
+        var ly = Ht * 0.62;
+
+        var grad = ctx.createLinearGradient(bx, 0, bx + bw, 0);
+        grad.addColorStop(0, 'rgba(0,212,255,.9)');
+        grad.addColorStop(1, 'rgba(244,114,182,.9)');
+        ctx.strokeStyle = grad; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(bx, ly); ctx.lineTo(bx + bw, ly); ctx.stroke();
+
+        ctx.font = '9px Inter, sans-serif';
+        for (var l = 0; l <= 18; l += 3) {
+          ctx.strokeStyle = 'rgba(255,255,255,.2)';
+          ctx.beginPath(); ctx.moveTo(X(l), ly); ctx.lineTo(X(l), ly + 5); ctx.stroke();
+          ctx.fillStyle = 'rgba(255,255,255,.45)';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+          ctx.fillText('10' + TECAJ.sup(l) + ' m', X(l), ly + 7);
+        }
+
+        POREDBA.forEach(function (p, i) {
+          var px = X(Math.log10(p[0]));
+          var h = 12 + (i % 4) * 18;
+          ctx.strokeStyle = 'rgba(255,255,255,.14)';
+          ctx.beginPath(); ctx.moveTo(px, ly - 3); ctx.lineTo(px, ly - h); ctx.stroke();
+          ctx.fillStyle = 'rgba(255,255,255,.3)';
+          ctx.beginPath(); ctx.arc(px, ly - h, 2, 0, 6.2832); ctx.fill();
+          ctx.save();
+          ctx.translate(px, ly - h - 4);
+          ctx.rotate(-Math.PI / 3.2);
+          ctx.font = '8.5px Inter, sans-serif';
+          ctx.fillStyle = 'rgba(255,255,255,.45)';
+          ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+          ctx.fillText(p[1], 0, 0);
+          ctx.restore();
+        });
+
+        /* naš r_s */
+        var mx = X(Math.log10(R));
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2.4;
+        ctx.shadowColor = 'rgba(251,191,36,.9)'; ctx.shadowBlur = 12;
+        ctx.beginPath(); ctx.moveTo(mx, ly - 10); ctx.lineTo(mx, ly + 12); ctx.stroke();
+        ctx.shadowBlur = 0;
+        ctx.font = '600 10px Inter, sans-serif';
+        ctx.fillStyle = '#fbbf24';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+        ctx.fillText('r(s)', mx, ly + 22);
+        ctx.font = '600 10px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,.5)';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+        ctx.fillText('LJESTVICA VELIČINA', bx, 8);
+      });
+
+      function duz(m) {
+        if (m < 1e-3) return TECAJ.sci(m, 2) + ' m';
+        if (m < 1e3) return TECAJ.num(m, 2) + ' m';
+        if (m < AJ) return TECAJ.auto(m / 1000, 2) + ' km';
+        if (m < PC) return TECAJ.auto(m / AJ, 2) + ' AJ';
+        return TECAJ.auto(m / PC, 2) + ' pc';
+      }
+
+      function osvjezi() {
+        var M = Math.pow(10, logM);
+        var R = rs(M);
+        var V = 4 / 3 * Math.PI * Math.pow(R, 3);
+        var ro = M * MSUN / V;
+        /* plimni gradijent po metru na horizontu: 2GM/r³ */
+        var plim = 2 * G * M * MSUN / Math.pow(R, 3);
+        var Ledd = 1.26e31 * M;
+        var kut = 2.6 * R / (8000 * PC) * 206265 * 1e6;   /* µas */
+
+        TECAJ.el('cr-rs').innerHTML = duz(R);
+        TECAJ.el('cr-fs').innerHTML = duz(1.5 * R);
+        TECAJ.el('cr-isco').innerHTML = duz(3 * R);
+        TECAJ.el('cr-sj').innerHTML = duz(2.6 * R);
+        TECAJ.el('cr-ro').innerHTML = TECAJ.sci(ro, 2) + '<span> kg/m³</span>';
+        TECAJ.el('cr-pl').innerHTML = TECAJ.sci(plim, 2) + '<span> s⁻²</span>';
+        TECAJ.el('cr-edd').innerHTML = TECAJ.sci(Ledd, 2) + '<span> W = ' +
+          TECAJ.sci(Ledd / LSUN, 1) + ' L☉</span>';
+        TECAJ.el('cr-kut').innerHTML = kut > 1e3
+          ? TECAJ.auto(kut / 1e3, 2) + '<span> mas</span>'
+          : TECAJ.auto(kut, 2) + '<span> µas</span>';
+
+        var box = TECAJ.el('cr-info');
+        box.className = 'verdict';
+        var razred, opis;
+        if (M < 3) {
+          razred = 'granica postojanja';
+          opis = 'Crne rupe ove mase ne nastaju iz zvijezda: ispod oko 2,2 M☉ tvar ostaje ' +
+            'neutronska zvijezda. Ipak, formula vrijedi — Sunce bi imalo horizont od samo 2,95 km.';
+        } else if (M < 200) {
+          razred = 'zvjezdana crna rupa';
+          opis = 'Nastaje kolapsom jezgre masivne zvijezde. Plimni gradijent na horizontu je ' +
+            'ogroman (' + TECAJ.sci(plim, 1) + ' s⁻²) — tijelo bi bilo razvučeno prije ulaska. ' +
+            'Zato se ovakve rupe ne mogu „preskočiti“.';
+        } else if (M < 1e5) {
+          razred = 'srednje mase';
+          opis = 'Razred koji je dugo bio spor: previše masivne za zvjezdani kolaps, previše ' +
+            'lagane za galaktičku jezgru. Spajanja koja mjeri LIGO upravo tu popunjavaju prazninu.';
+        } else {
+          razred = 'supermasivna crna rupa';
+          opis = 'Nalazi se u središtu velikih galaksija. Zapazite obrat: plimni gradijent na ' +
+            'horizontu je <em>malen</em> (' + TECAJ.sci(plim, 1) + ' s⁻²) jer r³ raste brže od ' +
+            'M — promatrač bi horizont prešao neozlijeđen. Sjena ove rupe bila bi ' +
+            (kut > 1 ? TECAJ.auto(kut, 1) + ' µas' : 'znatno manja od 1 µas') +
+            ' velika s 8 kpc; EHT razlučuje oko 20 µas.';
+        }
+        box.innerHTML = '<strong>' + TECAJ.sci(M, 2) + ' M☉ — ' + razred + '.</strong> ' +
+          'r(s) = 2GM/c² = ' + duz(R) + '. Ključno svojstvo: r(s) ∝ M, dakle <em>linearno</em>. ' +
+          'Zato srednja gustoća unutar horizonta pada kao 1/M² — supermasivna crna rupa ima ' +
+          'gustoću ' + TECAJ.sci(ro, 1) + ' kg/m³, ' +
+          (ro < 1000 ? 'manju od vode.' : 'i dalje golemu.') + ' ' + opis;
+        cv.draw();
+      }
+
+      TECAJ.slider('cr-m', {
+        format: function (v) { return TECAJ.sci(Math.pow(10, v), 2) + ' M☉'; },
+        onInput: function (v) { logM = v; osvjezi(); }
+      });
+      TECAJ.chips('cr-preseti', function (v) {
+        logM = Math.log10(parseFloat(v));
+        TECAJ.el('cr-m').value = logM;
+        TECAJ.el('cr-m-out').textContent = TECAJ.sci(parseFloat(v), 2) + ' M☉';
+        osvjezi();
+      });
+      osvjezi();
+    })();
+
+
+    /* =====================================================
+       PRIMJER 2 — Crveni pomak / lećenje
+       ===================================================== */
+    (function () {
+      var mod = 'pomak';
+      var logRrs = 5.37;                    /* log10 od R/r_s (površina Sunca) */
+      var logMl = 12, dL = 500, dS = 1500;  /* leća: masa u M☉, udaljenosti u Mpc */
+
+      var cv = TECAJ.canvas('c15b', 2.0, function (ctx, W, Ht) {
+        TECAJ.starfield(ctx, W, Ht, 70, 2626);
+
+        if (mod === 'pomak') {
+          var rrs = Math.pow(10, logRrs);
+          var z = 1 / Math.sqrt(1 - 1 / TECAJ.clamp(rrs, 1.0001, 1e12)) - 1;
+          if (rrs <= 1) z = 1e9;
+          var tempo = 1 / (1 + z);
+
+          /* --- lijevo: spektralna traka s pomakom --- */
+          var lw = W * 0.55;
+          var x0 = 24, x1 = lw - 24;
+          var L0 = 380, L1 = 900;
+          function X(nm) { return x0 + (x1 - x0) * (nm - L0) / (L1 - L0); }
+          var th = Ht * 0.16;
+
+          function traka(yy, pom, naslov) {
+            for (var nm = L0; nm <= L1; nm += 2) {
+              ctx.fillStyle = TECAJ.lambdaColor(nm);
+              ctx.fillRect(X(nm), yy, X(nm + 2) - X(nm) + 1, th);
+            }
+            [410.2, 434.0, 486.1, 656.3].forEach(function (l0) {
+              var lam = l0 * (1 + pom);
+              if (lam < L0 || lam > L1) return;
+              var g = ctx.createLinearGradient(X(lam) - 4, 0, X(lam) + 4, 0);
+              g.addColorStop(0, 'rgba(0,0,0,0)');
+              g.addColorStop(0.5, 'rgba(0,0,0,.95)');
+              g.addColorStop(1, 'rgba(0,0,0,0)');
+              ctx.fillStyle = g;
+              ctx.fillRect(X(lam) - 4, yy, 8, th);
+            });
+            ctx.strokeStyle = 'rgba(255,255,255,.25)';
+            ctx.strokeRect(x0, yy, x1 - x0, th);
+            ctx.font = '600 10px Inter, sans-serif';
+            ctx.fillStyle = 'rgba(255,255,255,.6)';
+            ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
+            ctx.fillText(naslov, x0, yy - 3);
+          }
+          traka(Ht * 0.18, 0, 'U LABORATORIJU (bez polja)');
+          traka(Ht * 0.52, Math.min(z, 1.2), 'IZ POLJA (crveni pomak)');
+          ctx.font = '10px Inter, sans-serif';
+          ctx.fillStyle = 'rgba(255,255,255,.45)';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+          ctx.fillText('valna duljina (nm)', (x0 + x1) / 2, Ht * 0.52 + th + 8);
+
+          ctx.strokeStyle = 'rgba(255,255,255,.1)';
+          ctx.beginPath(); ctx.moveTo(lw, 8); ctx.lineTo(lw, Ht - 8); ctx.stroke();
+
+          /* --- desno: dva sata --- */
+          var cx = lw + (W - lw) / 2, cy = Ht * 0.46;
+          var Rr = Math.min((W - lw) * 0.19, Ht * 0.26);
+          function sat(px, tempo2, ime, col) {
+            ctx.strokeStyle = 'rgba(255,255,255,.25)'; ctx.lineWidth = 1.6;
+            ctx.beginPath(); ctx.arc(px, cy, Rr, 0, 6.2832); ctx.stroke();
+            for (var h = 0; h < 12; h++) {
+              var a = TECAJ.rad(h * 30 - 90);
+              ctx.strokeStyle = 'rgba(255,255,255,.2)';
+              ctx.beginPath();
+              ctx.moveTo(px + Math.cos(a) * Rr * 0.86, cy + Math.sin(a) * Rr * 0.86);
+              ctx.lineTo(px + Math.cos(a) * Rr * 0.96, cy + Math.sin(a) * Rr * 0.96);
+              ctx.stroke();
+            }
+            /* kazaljka na proporcionalnom položaju */
+            var ang = TECAJ.rad(tempo2 * 300 - 90);
+            ctx.strokeStyle = col; ctx.lineWidth = 2.6;
+            ctx.beginPath();
+            ctx.moveTo(px, cy);
+            ctx.lineTo(px + Math.cos(ang) * Rr * 0.8, cy + Math.sin(ang) * Rr * 0.8);
+            ctx.stroke();
+            ctx.fillStyle = col;
+            ctx.beginPath(); ctx.arc(px, cy, 3.5, 0, 6.2832); ctx.fill();
+            ctx.font = '10px Inter, sans-serif';
+            ctx.fillStyle = 'rgba(255,255,255,.55)';
+            ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+            ctx.fillText(ime, px, cy + Rr + 8);
+          }
+          sat(cx - Rr * 1.35, 1, 'daleko od mase', 'rgba(0,212,255,.95)');
+          sat(cx + Rr * 1.35, TECAJ.clamp(tempo, 0, 1), 'u polju', 'rgba(251,191,36,.95)');
+          ctx.font = '600 10px Inter, sans-serif';
+          ctx.fillStyle = 'rgba(255,255,255,.5)';
+          ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+          ctx.fillText('SATOVI NAKON ISTOG VREMENA', lw + 14, 12);
+          ctx.font = '11px Inter, sans-serif';
+          ctx.fillStyle = 'rgba(251,191,36,.9)';
+          ctx.textAlign = 'center';
+          ctx.fillText('ide ' + TECAJ.num(tempo * 100, 4) + ' % brzine',
+            cx, cy + Rr + 26);
+        } else {
+          /* --- lećenje: geometrija --- */
+          var yc = Ht * 0.5;
+          var xO = 40, xL = W * 0.52, xS = W - 40;
+          /* Einsteinov kut, u lučnim sekundama */
+          var M = Math.pow(10, logMl);
+          var Dl = dL * 1e6 * PC, Ds = dS * 1e6 * PC;
+          var Dls = Math.max(Ds - Dl, 1e-6 * PC);
+          var thE = Math.sqrt(4 * G * M * MSUN / (C * C) * Dls / (Dl * Ds)) * 206265;
+          var vis = Math.min(Ht * 0.30, 20 + thE * 22);
+
+          /* leća */
+          ctx.shadowColor = 'rgba(167,139,250,.8)'; ctx.shadowBlur = 18;
+          ctx.fillStyle = '#a78bfa';
+          ctx.beginPath(); ctx.arc(xL, yc, 9, 0, 6.2832); ctx.fill();
+          ctx.shadowBlur = 0;
+          TECAJ.tag(ctx, xL, yc + 22, 'leća (masa)', 'rgba(167,139,250,.9)', 'center');
+
+          /* izvor */
+          ctx.shadowColor = 'rgba(251,191,36,.8)'; ctx.shadowBlur = 14;
+          ctx.fillStyle = '#fbbf24';
+          ctx.beginPath(); ctx.arc(xS, yc, 6, 0, 6.2832); ctx.fill();
+          ctx.shadowBlur = 0;
+          TECAJ.tag(ctx, xS, yc + 20, 'izvor', 'rgba(251,191,36,.9)', 'center');
+
+          /* promatrač */
+          ctx.fillStyle = '#00d4ff';
+          ctx.beginPath(); ctx.arc(xO, yc, 6, 0, 6.2832); ctx.fill();
+          TECAJ.tag(ctx, xO, yc + 20, 'mi', 'rgba(0,212,255,.9)', 'center');
+
+          /* dva savijena puta */
+          [1, -1].forEach(function (sgn) {
+            ctx.strokeStyle = 'rgba(255,255,255,.6)'; ctx.lineWidth = 1.6;
+            ctx.beginPath();
+            ctx.moveTo(xO, yc);
+            ctx.quadraticCurveTo((xO + xL) / 2, yc - sgn * vis * 0.75, xL, yc - sgn * vis);
+            ctx.quadraticCurveTo((xL + xS) / 2, yc - sgn * vis * 0.75, xS, yc);
+            ctx.stroke();
+            /* slika na nebu */
+            ctx.fillStyle = 'rgba(255,255,255,.85)';
+            ctx.beginPath(); ctx.arc(xO + 46, yc - sgn * vis * 0.42, 3.6, 0, 6.2832); ctx.fill();
+          });
+          TECAJ.tag(ctx, xO + 54, yc - vis * 0.42, 'slika 1', 'rgba(255,255,255,.7)');
+          TECAJ.tag(ctx, xO + 54, yc + vis * 0.42, 'slika 2', 'rgba(255,255,255,.7)');
+
+          /* ravna linija bez leće */
+          ctx.strokeStyle = 'rgba(255,255,255,.15)'; ctx.setLineDash([3, 4]);
+          ctx.beginPath(); ctx.moveTo(xO, yc); ctx.lineTo(xS, yc); ctx.stroke();
+          ctx.setLineDash([]);
+
+          /* Einsteinov prsten kao umetak */
+          var px = W * 0.14, py = Ht * 0.20, pr = Math.min(Ht * 0.13, 34);
+          ctx.strokeStyle = 'rgba(251,191,36,.85)'; ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.arc(px, py, pr, 0, 6.2832); ctx.stroke();
+          ctx.fillStyle = '#a78bfa';
+          ctx.beginPath(); ctx.arc(px, py, 3, 0, 6.2832); ctx.fill();
+          ctx.font = '9px Inter, sans-serif';
+          ctx.fillStyle = 'rgba(251,191,36,.85)';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+          ctx.fillText('Einsteinov prsten', px, py + pr + 5);
+          ctx.fillText('θ(E) = ' + TECAJ.auto(thE, 3) + '″', px, py + pr + 17);
+
+          ctx.font = '600 10px Inter, sans-serif';
+          ctx.fillStyle = 'rgba(255,255,255,.5)';
+          ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+          ctx.fillText('PUT SVJETLOSTI OKO MASE (shematski)', 14, 10);
+        }
+      });
+
+      function osvjeziPomak() {
+        var rrs = Math.pow(10, logRrs);
+        var x = TECAJ.clamp(rrs, 1.000001, 1e12);
+        var z = rrs <= 1 ? Infinity : 1 / Math.sqrt(1 - 1 / x) - 1;
+        var tempo = 1 / (1 + z);
+        var v2 = C * Math.sqrt(1 / x);
+
+        TECAJ.el('gr-z').innerHTML = !isFinite(z) ? '∞' : TECAJ.auto(z, 6);
+        TECAJ.el('gr-sat').innerHTML = TECAJ.num(tempo * 100, 6) + '<span> %</span>';
+        var zao = (1 - tempo) * GOD;
+        TECAJ.el('gr-zao').innerHTML = zao < 1e-3 ? TECAJ.sci(zao, 2) + '<span> s</span>'
+          : zao < 60 ? TECAJ.num(zao, 4) + '<span> s</span>'
+            : zao < 3600 ? TECAJ.num(zao / 60, 2) + '<span> min</span>'
+              : zao < 86400 ? TECAJ.num(zao / 3600, 2) + '<span> h</span>'
+                : zao < GOD ? TECAJ.auto(zao / 86400, 2) + '<span> dana</span>'
+                  : TECAJ.auto(zao / GOD, 2) + '<span> god</span>';
+        TECAJ.el('gr-lam').innerHTML = isFinite(z)
+          ? '+' + TECAJ.auto(656.3 * z, 4) + '<span> nm</span>' : '∞';
+        TECAJ.el('gr-v2').innerHTML = TECAJ.sci(v2, 3) + '<span> m/s</span>';
+        TECAJ.el('gr-bc').innerHTML = TECAJ.num(v2 / C * 100, 3) + '<span> %</span>';
+
+        var box = TECAJ.el('gr-info');
+        if (rrs <= 1.02) {
+          box.className = 'verdict verdict--bad';
+          box.innerHTML = '<strong>Na samom horizontu.</strong> Kad R → r(s), crveni pomak ide ' +
+            'u beskonačnost, a sat s vanjske točke gledišta staje. To nije singularnost ' +
+            'prostor-vremena nego <em>koordinatni</em> efekt: promatrač koji pada preko ' +
+            'horizonta ne osjeti ništa posebno u tom trenutku.';
+        } else if (rrs < 1) {
+          box.className = 'verdict verdict--bad';
+          box.innerHTML = '<strong>Unutar horizonta.</strong> Statična točka tu ne postoji, pa ' +
+            'formula ne daje smisla — nema promatrača koji miruje.';
+        } else {
+          box.className = rrs < 10 ? 'verdict verdict--warn' : 'verdict verdict--ok';
+          box.innerHTML = '<strong>R = ' + rrsTxt(rrs) + '.</strong> ' +
+            'Gravitacijski crveni pomak je z = ' + TECAJ.auto(z, 6) + ', pa sat u polju ide ' +
+            TECAJ.num(tempo * 100, 6) + ' % brzine dalekog sata. ' +
+            (rrs > 1e5
+              ? 'Efekt je sitan, ali stvaran i mjerljiv: bez korekcije za gravitacijsku i ' +
+              'kinematičku dilataciju GPS bi griješio oko 10 kilometara na dan.'
+              : rrs > 1
+                ? 'Na ovim razmjerima efekt je velik i vidi se izravno u spektru: linije bijelog ' +
+                'patuljka pomaknute su za oko 10⁻⁴, što je bila jedna od ranih potvrda teorije.'
+                : '') +
+            ' Slaba granica: za R ≫ r(s) vrijedi z ≈ r(s)/2R.';
+        }
+        cv.draw();
+      }
+
+      function osvjeziLece() {
+        var M = Math.pow(10, logMl);
+        var Dl = dL * 1e6 * PC, Ds = dS * 1e6 * PC;
+        var Dls = Ds - Dl;
+        var box = TECAJ.el('gr-info');
+        if (Dls <= 0) {
+          TECAJ.el('le-te').innerHTML = '<span>—</span>';
+          TECAJ.el('le-ot').innerHTML = '<span>—</span>';
+          TECAJ.el('le-fiz').innerHTML = '<span>—</span>';
+          TECAJ.el('le-raz').innerHTML = '<span style="color:#f87171">nemoguće</span>';
+          box.className = 'verdict verdict--bad';
+          box.innerHTML = '<strong>Izvor mora biti dalje od leće.</strong> Postavite udaljenost ' +
+            'izvora veću od udaljenosti leće.';
+          cv.draw();
+          return;
+        }
+        var thE = Math.sqrt(4 * G * M * MSUN / (C * C) * Dls / (Dl * Ds));   /* rad */
+        var thEas = thE * 206265;
+        /* α = 4GM/(c²b) uz b = θ_E·D_l; svodi se na θ_E·D_s/D_ls */
+        var otklon = thE * Ds / Dls * 206265;                                /* ″ */
+        var fiz = thE * Dl / PC;
+
+        TECAJ.el('le-te').innerHTML = thEas < 0.001
+          ? TECAJ.auto(thEas * 1e6, 2) + '<span> µas</span>'
+          : thEas < 1 ? TECAJ.auto(thEas * 1000, 2) + '<span> mas</span>'
+            : TECAJ.auto(thEas, 3) + '<span>″</span>';
+        TECAJ.el('le-ot').innerHTML = otklon < 1
+          ? TECAJ.auto(otklon * 1000, 2) + '<span> mas</span>'
+          : TECAJ.auto(otklon, 3) + '<span>″</span>';
+        TECAJ.el('le-fiz').innerHTML = fiz > 1000
+          ? TECAJ.auto(fiz / 1000, 2) + '<span> kpc</span>'
+          : TECAJ.auto(fiz, 2) + '<span> pc</span>';
+        TECAJ.el('le-raz').innerHTML = thEas > 0.05
+          ? '<span style="color:#34d399">da, Hubble / JWST</span>'
+          : thEas > 0.001
+            ? '<span style="color:#fbbf24">samo interferometrijom</span>'
+            : '<span style="color:#f87171">ne (mikrolećenje)</span>';
+
+        box.className = thEas > 0.05 ? 'verdict verdict--ok' : 'verdict verdict--warn';
+        box.innerHTML = '<strong>θ(E) = ' + (thEas < 1
+          ? TECAJ.auto(thEas * 1000, 2) + ' mas' : TECAJ.auto(thEas, 3) + '″') + '.</strong> ' +
+          'Einsteinov polumjer raste s √M, pa je za jata galaksija (10¹⁴–10¹⁵ M☉) reda ' +
+          'lučnih sekundi i lukovi se lako vide, a za zvijezdu (1 M☉) reda milisekunde — ' +
+          'tada slike ne razlučujemo, ali vidimo <strong>mikrolećenje</strong>: privremeno ' +
+          'pojačanje sjaja izvora. ' +
+          (thEas > 0.05
+            ? 'Ovdje je prsten dovoljno velik da se snimi. Iz njegova polumjera izlazi ukupna ' +
+            'masa leće — i vidljiva i tamna, bez ikakve pretpostavke o dinamici. Zato je ' +
+            'lećenje jedan od najčvršćih dokaza za tamnu tvar.'
+            : 'Ovdje se prsten ne razlučuje. Zato se traži vremenski profil pojačanja: iz njega ' +
+            'se čita masa objekta, a ponekad i planet oko njega.');
+        cv.draw();
+      }
+
+      function osvjezi() { mod === 'pomak' ? osvjeziPomak() : osvjeziLece(); }
+
+      TECAJ.chips('gr-mod', function (v) {
+        mod = v;
+        TECAJ.el('gr-panel-pomak').classList.toggle('hidden', v !== 'pomak');
+        TECAJ.el('gr-panel-lece').classList.toggle('hidden', v !== 'lece');
+        osvjezi();
+      });
+      function rrsTxt(r) {
+        return (r >= 1e4 ? TECAJ.sci(r, 2) : TECAJ.auto(r, 3)) + ' r(s)';
+      }
+      TECAJ.slider('gr-r', {
+        format: function (v) { return rrsTxt(Math.pow(10, v)); },
+        onInput: function (v) { logRrs = v; osvjeziPomak(); }
+      });
+      TECAJ.chips('gr-preseti', function (v) {
+        logRrs = Math.log10(parseFloat(v));
+        TECAJ.el('gr-r').value = logRrs;
+        TECAJ.el('gr-r-out').textContent = rrsTxt(parseFloat(v));
+        osvjeziPomak();
+      });
+      TECAJ.slider('le-m', {
+        format: function (v) { return TECAJ.sci(Math.pow(10, v), 1) + ' M☉'; },
+        onInput: function (v) { logMl = v; osvjeziLece(); }
+      });
+      TECAJ.slider('le-dl', {
+        format: function (v) { return TECAJ.num(v, 0) + ' Mpc'; },
+        onInput: function (v) { dL = v; osvjeziLece(); }
+      });
+      TECAJ.slider('le-ds', {
+        format: function (v) { return TECAJ.num(v, 0) + ' Mpc'; },
+        onInput: function (v) { dS = v; osvjeziLece(); }
+      });
+      osvjezi();
+    })();
+
+
+    /* =====================================================
+       PRIMJER 3 — Akrecija i Eddington
+       ===================================================== */
+    (function () {
+      var logM = 8, logMd = 0, eta = 0.1, imeEta = 'tipična';
+
+      var cv = TECAJ.canvas('c15c', 2.2, function (ctx, W, Ht) {
+        var M = Math.pow(10, logM);
+        var Md = Math.pow(10, logMd);                    /* M☉/god */
+        var L = eta * Md * MSUN / GOD * C * C;           /* W */
+        var Ledd = 1.26e31 * M;
+
+        var bx = 116, by = 26, bw = W - 140, bh = Ht - 66;
+        var L0 = 24, L1 = 42;    /* log10 W */
+        function X(l) { return bx + bw * (TECAJ.clamp(l, L0, L1) - L0) / (L1 - L0); }
+
+        var trake = [
+          ['Sunce', Math.log10(LSUN), 'rgba(251,191,36,.7)'],
+          ['Mliječna staza', Math.log10(LSUN * 3e10), 'rgba(125,211,252,.7)'],
+          ['Eddingtonov limit', Math.log10(Ledd), 'rgba(244,114,182,.85)'],
+          ['naša akrecija', Math.log10(L), 'rgba(52,211,153,.9)']
+        ];
+        var th = bh / 5.2;
+        trake.forEach(function (t, i) {
+          var y = by + i * (th * 1.28);
+          ctx.fillStyle = 'rgba(255,255,255,.04)';
+          ctx.fillRect(bx, y, bw, th);
+          ctx.fillStyle = t[2];
+          ctx.fillRect(bx, y, Math.max(0, X(t[1]) - bx), th);
+          ctx.font = '11px Inter, sans-serif';
+          ctx.fillStyle = 'rgba(255,255,255,.7)';
+          ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+          ctx.fillText(t[0], bx - 8, y + th / 2);
+          ctx.textAlign = 'left';
+          ctx.font = '600 10px Inter, sans-serif';
+          ctx.fillStyle = t[2];
+          ctx.fillText(TECAJ.sci(Math.pow(10, t[1]), 2) + ' W', X(t[1]) + 6, y + th / 2);
+        });
+
+        var ay = by + 4 * (th * 1.28) + 6;
+        ctx.strokeStyle = 'rgba(255,255,255,.25)';
+        ctx.beginPath(); ctx.moveTo(bx, ay); ctx.lineTo(bx + bw, ay); ctx.stroke();
+        ctx.font = '10px Inter, sans-serif';
+        for (var l = L0; l <= L1; l += 3) {
+          ctx.strokeStyle = 'rgba(255,255,255,.15)';
+          ctx.beginPath(); ctx.moveTo(X(l), ay); ctx.lineTo(X(l), ay + 4); ctx.stroke();
+          ctx.fillStyle = 'rgba(255,255,255,.45)';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+          ctx.fillText('10' + TECAJ.sup(l), X(l), ay + 6);
+        }
+        ctx.fillStyle = 'rgba(255,255,255,.5)';
+        ctx.fillText('luminozitet (W, logaritamski)', bx + bw / 2, ay + 20);
+      });
+
+      function osvjezi() {
+        var M = Math.pow(10, logM);
+        var Md = Math.pow(10, logMd);
+        var L = eta * Md * MSUN / GOD * C * C;
+        var Ledd = 1.26e31 * M;
+        var udio = L / Ledd;
+        /* Salpeterovo vrijeme: t = eta σT c /(4πG mp) × (1−eta)/eta ≈ 45 mil. god pri eta=0.1 */
+        var tSal = 4.5e8 * (eta / (1 - eta)) / Math.max(udio, 1e-12);
+
+        TECAJ.el('ak-l').innerHTML = TECAJ.sci(L, 2) + '<span> W</span>';
+        TECAJ.el('ak-ls').innerHTML = TECAJ.sci(L / LSUN, 2) + '<span> L☉</span>';
+        TECAJ.el('ak-edd').innerHTML = TECAJ.sci(Ledd, 2) + '<span> W</span>';
+        TECAJ.el('ak-udio').innerHTML = TECAJ.auto(udio * 100, 2) + '<span> %</span>';
+        TECAJ.el('ak-t').innerHTML = tSal > 1e10
+          ? '<span>&gt; 10 mlrd god</span>'
+          : TECAJ.auto(tSal / 1e6, 1) + '<span> mil. god</span>';
+        TECAJ.el('ak-vs').innerHTML = TECAJ.num(eta / 0.007, 1) + '<span> ×</span>';
+
+        var box = TECAJ.el('ak-info');
+        if (udio > 1) {
+          box.className = 'verdict verdict--bad';
+          box.innerHTML = '<strong>Iznad Eddingtonova limita.</strong> Luminozitet je ' +
+            TECAJ.auto(udio, 2) + ' puta veći od L(Edd) = ' + TECAJ.sci(Ledd, 2) + ' W. ' +
+            'Tlak zračenja tada nadjača gravitaciju na dolazeću tvar i akrecija se sama guši — ' +
+            'sustav se ne može trajno održati u ovom stanju. Zato Eddingtonov limit ograničava ' +
+            'i brzinu rasta supermasivnih crnih rupa, što je jedan od otvorenih problema: kako ' +
+            'su kvazari na z ≈ 7 već imali milijarde sunčevih masa.';
+        } else {
+          box.className = 'verdict verdict--ok';
+          box.innerHTML = '<strong>L = ηṀc² = ' + TECAJ.sci(L, 2) + ' W</strong> = ' +
+            TECAJ.sci(L / LSUN, 2) + ' L☉, što je ' + TECAJ.auto(udio * 100, 2) +
+            ' % Eddingtonova limita. ' +
+            'Uz η = ' + TECAJ.num(eta, 3) + ' (' + imeEta + ') akrecija je ' +
+            TECAJ.num(eta / 0.007, 1) + ' puta učinkovitija od fuzije vodika, koja ima svega ' +
+            '0,7 %. ' +
+            (L / LSUN > 1e11
+              ? 'Ovaj izlaz nadmašuje cijelu galaksiju — upravo tako rade kvazari, iz područja ' +
+              'veličine Sunčeva sustava.'
+              : L / LSUN > 1e4
+                ? 'Ovo je razred rendgenskih dvojnih sustava: crna rupa ili neutronska zvijezda ' +
+                'koja siše tvar s pratioca.'
+                : 'Pri ovako malom dotoku sustav je slab i mirniji — takvo je danas Sgr A*, ' +
+                'koje akretira izuzetno slabo.') +
+            ' Pri ovoj stopi masa se udvostruči u ' +
+            (tSal > 1e10 ? 'više od 10 milijardi' : TECAJ.auto(tSal / 1e6, 1) + ' milijuna') +
+            ' godina.';
+        }
+        cv.draw();
+      }
+
+      TECAJ.slider('ak-m', {
+        format: function (v) { return TECAJ.sci(Math.pow(10, v), 1) + ' M☉'; },
+        onInput: function (v) { logM = v; osvjezi(); }
+      });
+      TECAJ.slider('ak-md', {
+        format: function (v) {
+          var m = Math.pow(10, v);
+          return m >= 0.01 ? TECAJ.num(m, 3) + ' M☉/god' : TECAJ.sci(m, 2) + ' M☉/god';
+        },
+        onInput: function (v) { logMd = v; osvjezi(); }
+      });
+      TECAJ.slider('ak-eta', {
+        format: function (v) { return TECAJ.num(v, 3); },
+        onInput: function (v) { eta = v; imeEta = 'vaš odabir'; osvjezi(); }
+      });
+      TECAJ.chips('ak-preseti', function (v) {
+        var d = v.split(',');
+        eta = parseFloat(d[0]); imeEta = d[1];
+        TECAJ.el('ak-eta').value = eta;
+        TECAJ.el('ak-eta-out').textContent = TECAJ.num(eta, 3);
+        osvjezi();
+      });
+      osvjezi();
+    })();
+  </script>
+</body>
+
+</html>

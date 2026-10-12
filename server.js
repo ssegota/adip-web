@@ -11,7 +11,26 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(__dirname)); // Serve static files from root
+// Statika: slike se nikad ne mijenjaju (imena imaju timestamp) pa se smiju dugo keširati;
+// JSON podaci se uvijek provjeravaju da se promjene (npr. brisanje) odmah vide.
+app.use(express.static(__dirname, {
+    setHeaders: (res, filePath) => {
+        if (/\.(jpe?g|png|gif|webp|svg|ico)$/i.test(filePath)) {
+            res.setHeader('Cache-Control', 'public, max-age=2592000');
+        } else if (/\.json$/i.test(filePath)) {
+            res.setHeader('Cache-Control', 'no-cache');
+        }
+    }
+}));
+
+// Kontrolna ruta - otvori /api/version u pregledniku da provjeriš vrti li se novi kod
+app.get('/api/version', (req, res) => {
+    res.json({
+        version: 'update-routes-v1',
+        file: __filename,
+        started: new Date().toISOString()
+    });
+});
 
 // Storage configuration for Multer (Gallery Uploads)
 const storage = multer.diskStorage({
@@ -24,6 +43,44 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
+
+// Thumbnailovi: preglednik ih generira pri uploadu (canvas, JPEG) i šalje uz original.
+// Sprema se kao <mapa-slike>/thumbs/<ime-bez-ekstenzije>.jpg - frontend putanju izvodi iz src-a.
+const THUMB_MAX_BYTES = 1024 * 1024;
+
+function thumbPathFor(imagePath) {
+    const dir = path.join(path.dirname(imagePath), 'thumbs');
+    const name = path.basename(imagePath).replace(/\.[^.]+$/, '') + '.jpg';
+    return path.join(dir, name);
+}
+
+function storeThumb(imageFile, thumbFile) {
+    if (!thumbFile) return;
+    try {
+        if (!imageFile || thumbFile.size > THUMB_MAX_BYTES || thumbFile.mimetype !== 'image/jpeg') {
+            fs.unlinkSync(thumbFile.path);
+            return;
+        }
+        const target = thumbPathFor(imageFile.path);
+        fs.mkdirSync(path.dirname(target), { recursive: true });
+        fs.renameSync(thumbFile.path, target);
+    } catch (e) {
+        console.error('Ne mogu spremiti thumbnail:', e.message);
+    }
+}
+
+// Obriši sliku i njezin thumbnail, ali samo unutar dopuštene mape
+function deleteImageFile(src, allowedDir) {
+    const filePath = path.join(__dirname, String(src).replace(/^\/+/, ''));
+    if (!filePath.startsWith(allowedDir + path.sep)) return;
+    [filePath, thumbPathFor(filePath)].forEach(f => {
+        try {
+            if (fs.existsSync(f)) fs.unlinkSync(f);
+        } catch (e) {
+            console.error('Ne mogu obrisati datoteku:', e.message);
+        }
+    });
+}
 
 // Login Route (Simple/Hardcoded)
 app.post('/api/login', (req, res) => {
@@ -82,6 +139,19 @@ const activityImageStorage = multer.diskStorage({
 });
 
 const activityUpload = multer({ storage: activityImageStorage });
+const activityFields = activityUpload.fields([
+    { name: 'images', maxCount: 3 },
+    { name: 'thumbs', maxCount: 3 }
+]);
+
+// Spremi thumbnailove (i-ti thumb pripada i-toj slici) i vrati web putanje slika
+function collectActivityImages(req) {
+    const files = (req.files && req.files.images) || [];
+    const thumbs = (req.files && req.files.thumbs) || [];
+    files.forEach((f, i) => storeThumb(f, thumbs[i]));
+    thumbs.slice(files.length).forEach(t => storeThumb(null, t));
+    return files.map(f => '/aktivnosti-slike/' + f.filename);
+}
 
 app.get('/api/aktivnosti', (req, res) => {
     fs.readFile(ACTIVITIES_FILE, 'utf8', (err, data) => {
@@ -94,9 +164,9 @@ app.get('/api/aktivnosti', (req, res) => {
 });
 
 // Activity with images (up to 3)
-app.post('/api/aktivnosti', activityUpload.array('images', 3), (req, res) => {
+app.post('/api/aktivnosti', activityFields, (req, res) => {
     const { title, content, date, year } = req.body;
-    const images = req.files ? req.files.map(f => '/aktivnosti-slike/' + f.filename) : [];
+    const images = collectActivityImages(req);
 
     const newActivity = {
         id: Date.now(),
@@ -124,6 +194,110 @@ app.post('/api/aktivnosti', activityUpload.array('images', 3), (req, res) => {
                 return res.status(500).send('Error writing data');
             }
             res.json({ success: true, activity: newActivity });
+        });
+    });
+});
+
+// ==================== NOVO: Uređivanje aktivnosti ====================
+// Frontend šalje: title, content, date, year, keepImages (JSON niz putanja) + nove datoteke pod "images"
+// Registrirano na dvije rute jer neki hostinzi (cPanel/LiteSpeed) blokiraju PUT.
+function updateActivityHandler(req, res) {
+    const activityId = req.params.id;
+
+    fs.readFile(ACTIVITIES_FILE, 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).json({ success: false, message: 'Error reading data' });
+        }
+
+        let activities = [];
+        try {
+            activities = JSON.parse(data);
+        } catch (e) {
+            return res.status(500).json({ success: false, message: 'Error parsing data' });
+        }
+
+        // Usporedba kao string - radi i ako su id-evi u JSON-u brojevi i ako su tekst
+        const index = activities.findIndex(a => String(a.id) === String(activityId));
+        if (index === -1) {
+            console.warn('UPDATE: aktivnost nije pronadena, id =', activityId,
+                '| prvih par postojecih id-eva:', activities.map(a => a.id).slice(0, 5));
+            return res.status(404).json({ success: false, message: 'Activity not found (id ' + activityId + ')' });
+        }
+
+        const activity = activities[index];
+        const oldImages = Array.isArray(activity.images) ? activity.images : [];
+
+        // Koje postojeće slike zadržavamo
+        let keepImages = oldImages;
+        if (req.body.keepImages) {
+            try {
+                const parsed = JSON.parse(req.body.keepImages);
+                if (Array.isArray(parsed)) keepImages = parsed;
+            } catch (e) {
+                console.warn('Neispravan keepImages, zadržavam sve slike');
+            }
+        }
+
+        // Obriši s diska slike koje je korisnik uklonio
+        const imagesDir = path.join(__dirname, 'aktivnosti-slike');
+        oldImages
+            .filter(src => !keepImages.includes(src))
+            .forEach(src => deleteImageFile(src, imagesDir));
+
+        // Nove uploadane slike
+        const newImages = collectActivityImages(req);
+
+        // Ažuriraj polja
+        if (req.body.title !== undefined) activity.title = req.body.title;
+        if (req.body.content !== undefined) activity.content = req.body.content;
+        if (req.body.date !== undefined) activity.date = req.body.date;
+        if (req.body.year !== undefined && req.body.year !== '') {
+            activity.year = parseInt(req.body.year) || activity.year;
+        }
+        activity.images = keepImages.concat(newImages).slice(0, 3);
+
+        activities[index] = activity;
+
+        fs.writeFile(ACTIVITIES_FILE, JSON.stringify(activities, null, 2), (err) => {
+            if (err) {
+                return res.status(500).json({ success: false, message: 'Error writing data' });
+            }
+            res.json({ success: true, activity: activity });
+        });
+    });
+}
+
+// Glavna ruta koju koristi frontend (POST radi svugdje)
+app.post('/api/aktivnosti/:id/update', activityFields, updateActivityHandler);
+// Alternativa, ako hosting dopušta PUT
+app.put('/api/aktivnosti/:id', activityFields, updateActivityHandler);
+
+// Brisanje preko POST-a (za hostinge koji blokiraju DELETE)
+app.post('/api/aktivnosti/:id/delete', (req, res) => {
+    fs.readFile(ACTIVITIES_FILE, 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).json({ success: false, message: 'Error reading data' });
+        }
+
+        let activities = [];
+        try {
+            activities = JSON.parse(data);
+        } catch (e) {
+            return res.status(500).json({ success: false, message: 'Error parsing data' });
+        }
+
+        const initialLength = activities.length;
+        activities = activities.filter(a => String(a.id) !== String(req.params.id));
+
+        if (activities.length === initialLength) {
+            return res.status(404).json({ success: false, message: 'Activity not found' });
+        }
+
+        fs.writeFile(ACTIVITIES_FILE, JSON.stringify(activities, null, 2), (err) => {
+            if (err) {
+                return res.status(500).json({ success: false, message: 'Error writing data' });
+            }
+            res.json({ success: true });
         });
     });
 });
@@ -207,10 +381,17 @@ const galleryStorage = multer.diskStorage({
 
 const galleryUpload = multer({ storage: galleryStorage });
 
-app.post('/api/galerija/upload', galleryUpload.single('image'), (req, res) => {
+app.post('/api/galerija/upload', galleryUpload.fields([
+    { name: 'image', maxCount: 1 },
+    { name: 'thumb', maxCount: 1 }
+]), (req, res) => {
+    req.file = req.files && req.files.image && req.files.image[0];
+    const thumbFile = req.files && req.files.thumb && req.files.thumb[0];
     if (!req.file) {
+        storeThumb(null, thumbFile);
         return res.status(400).json({ success: false, message: 'No file uploaded' });
     }
+    storeThumb(req.file, thumbFile);
 
     const category = req.body.category || 'povijest';
     const description = req.body.description || '';
@@ -397,39 +578,51 @@ app.delete('/api/radovi/:id', (req, res) => {
 });
 
 // Delete Gallery Image
+// U galerija.json starije slike imaju putanju bez vodeće kose crte ("galerija/..."),
+// a nove s njom ("/galerija/...") - uspoređuje se normalizirano. Kategorija se ne
+// uzima zdravo za gotovo (prikaz "Sve" u astrofotografiji šalje "all"), nego se
+// slika traži u svim kategorijama.
 app.post('/api/galerija/delete', (req, res) => {
-    const { src, category } = req.body;
+    const normalize = p => String(p || '').replace(/^\/+/, '');
+    const target = normalize(req.body && req.body.src);
+    if (!target) {
+        return res.status(400).json({ success: false, message: 'Missing src' });
+    }
 
     fs.readFile(GALLERY_FILE, 'utf8', (err, data) => {
         if (err) {
             return res.status(500).json({ success: false });
         }
 
-        let gallery = { povijest: [], astrofotografija: {}, posjete: [], ostalo: [] };
+        let gallery;
         try {
             gallery = JSON.parse(data);
         } catch (e) {
             return res.status(500).json({ success: false });
         }
 
-        if (topLevelCategories.includes(category)) {
-            if (gallery[category]) {
-                gallery[category] = gallery[category].filter(img => img.src !== src);
-            }
-        } else {
-            if (gallery.astrofotografija[category]) {
-                gallery.astrofotografija[category] = gallery.astrofotografija[category].filter(img => img.src !== src);
-            }
+        let removed = 0;
+        const filterList = list => {
+            if (!Array.isArray(list)) return list;
+            const kept = list.filter(img => normalize(img.src) !== target);
+            removed += list.length - kept.length;
+            return kept;
+        };
+
+        topLevelCategories.forEach(cat => { gallery[cat] = filterList(gallery[cat]); });
+        Object.keys(gallery.astrofotografija || {}).forEach(cat => {
+            gallery.astrofotografija[cat] = filterList(gallery.astrofotografija[cat]);
+        });
+
+        if (removed === 0) {
+            return res.status(404).json({ success: false, message: 'Image not found' });
         }
 
         fs.writeFile(GALLERY_FILE, JSON.stringify(gallery, null, 2), (err) => {
             if (err) {
                 return res.status(500).json({ success: false });
             }
-            // Optional: Delete physical file (careful with this in dev)
-            // const filePath = path.join(__dirname, src);
-            // if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
-
+            deleteImageFile(target, path.join(__dirname, 'galerija'));
             res.json({ success: true });
         });
     });
@@ -598,6 +791,7 @@ app.delete('/api/downloads/:id', (req, res) => {
 });
 
 // Start Server
+require('./tecaj/server/tecaj-api')(app);
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });

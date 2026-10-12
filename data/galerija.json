@@ -490,6 +490,34 @@
           "en": "Moon, T. Slamnik",
           "it": "Luna, T. Slamnik"
         }
+      },
+      {
+        "src": "/galerija/astrofotografija/mjesec/1789939856562-falcon 9 plume cropped.png",
+        "description": "Falcon 9 plume i Mjesec - Marko Nikolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/mjesec/1789939952465-Lunar eclipse august 28.jpg",
+        "description": "Pomrčina Mjeseca, 28.8.2026. - Marko Nikolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/mjesec/1789940158517-2026-08-04-0343_Clavius_100_SDG.jpg",
+        "description": "Clavicus - Gordan Bartolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/mjesec/1789940354371-Mineralni Mjesec 08_07_2017.jpg",
+        "description": "Minerali Mjesec - Gordan Bartolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/mjesec/1789940384109-Prva_Äetvrt_SDG.jpg",
+        "description": " - Gordan Bartolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/mjesec/1789941056212-Mjesec.jpg",
+        "description": "Mjesec - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/mjesec/1789941069898-Mjesec2.jpg",
+        "description": "Mjesec - Denis Štimac"
       }
     ],
     "venera": [
@@ -590,6 +618,10 @@
           "en": "Comet Lemmon C/2025, Seestar S50, on loan from D. Štimac",
           "it": "Cometa Lemmon C/2025, Seestar S50, in prestito da D. Štimac"
         }
+      },
+      {
+        "src": "/galerija/astrofotografija/kometi/1790877863855-ezgif.com-gif-maker.gif",
+        "description": "Asteroid 208 Lacrimosa, kojega je otkrio Johan Palisa sa Pulske Zvjezdarnice davne 1879 godine. Slikao Denis Štimac."
       }
     ],
     "mars": [
@@ -690,6 +722,34 @@
           "en": "Bolide over the dome",
           "it": "Bolide sopra la cupola"
         }
+      },
+      {
+        "src": "/galerija/astrofotografija/meteori/1786815561577-20260814_2305.jpg",
+        "description": "Bolid, Perzeid, 14.8.2026., 23:05 UTC"
+      },
+      {
+        "src": "/galerija/astrofotografija/meteori/1786815588366-20260815_0014.jpg",
+        "description": "Bolid, 15.8.2026., 00:14 UTC"
+      },
+      {
+        "src": "/galerija/astrofotografija/meteori/1786815654729-10-11.jpg",
+        "description": "Kompozitna snimka sa kamere Zvjezdarnice, Perzeidi, Kolovoz 2026., noć 10.-11."
+      },
+      {
+        "src": "/galerija/astrofotografija/meteori/1786815693283-12-13.jpg",
+        "description": "Kompozitna snimka sa kamere Zvjezdarnice, Perzeidi, Kolovoz 2026., noć 12.-13."
+      },
+      {
+        "src": "/galerija/astrofotografija/meteori/1786815709330-13-14.jpg",
+        "description": "Kompozitna snimka sa kamere Zvjezdarnice, Perzeidi, Kolovoz 2026., noć 13.-14."
+      },
+      {
+        "src": "/galerija/astrofotografija/meteori/1786815721959-14-15.jpg",
+        "description": "Kompozitna snimka sa kamere Zvjezdarnice, Perzeidi, Kolovoz 2026., noć 14.-15."
+      },
+      {
+        "src": "/galerija/astrofotografija/meteori/1789941284410-Suze Sv. Lovre.jpg",
+        "description": "Suze sv. Lovre - Denis Štimac"
       }
     ],
     "jupiter": [
@@ -716,6 +776,18 @@
           "en": "A. Celija, C11",
           "it": "A. Celija, C11"
         }
+      },
+      {
+        "src": "/galerija/astrofotografija/jupiter/1789940123370-2024-12-12-0025_300_SDG.jpg",
+        "description": "Jupiter 12.12.2024. - Gordan Bartolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/jupiter/1789940248038-JUP_2024-12-27-2246_300.jpg",
+        "description": "Jupiter, 27.12.2024 - Gordan Bartolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/jupiter/1789940305957-Jupiter_rotacija_19min.jpg",
+        "description": "Rotacija Jupitera u 19 minuta - Gordan Bartolić"
       }
     ],
     "saturn": [
@@ -726,6 +798,22 @@
           "en": "Saturn - photo 1",
           "it": "Saturno - foto 1"
         }
+      },
+      {
+        "src": "/galerija/astrofotografija/saturn/1789940402944-Sat-Jup_usp_SDG.jpg",
+        "description": "Saturn i Jupiter, usporedba - Gordan Bartolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/saturn/1789940460859-WhatsApp Image 2026-09-10 at 17.02.11.jpg",
+        "description": "Saturn, Cassini spokes - Gordan Bartolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/saturn/1789940502952-WhatsApp Image 2026-09-12 at 13.26.18(1).jpg",
+        "description": "Saturn sa Mimasom vidljivim desno, iznad prstena uz sam Saturn - Gordan Bartolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/saturn/1789941252822-Saturn.jpg",
+        "description": "Saturn - Denis Štimac"
       }
     ],
     "duboki-svemir": [
@@ -824,6 +912,214 @@
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1777715472585-bodes galaxy.jpg",
         "description": "M81, slikao Marko Nikolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1781250516995-Coma_Cluster.jpeg",
+        "description": "Coma Cluster - slikao Denis Štimac."
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1781250532327-Coma_Cluster_SkyAnnotFinal.jpg",
+        "description": "Coma Cluster, sa oznakama - slikao Denis Štimac."
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1784708331797-western veil.jpg",
+        "description": "Western Veil - Marko Nikolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1784708358162-m81-web.jpg",
+        "description": "M81 - Marko Nikolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1784708423990-m16-web.jpg",
+        "description": "M16 - Marko Nikolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1786815669753-11-12.jpg",
+        "description": "Kompozitna snimka sa kamere Zvjezdarnice, Perzeidi, Kolovoz 2026., noć 11.-12."
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789939876794-gotovo 7421 milky way.jpg",
+        "description": "Mliječna staza - Marko Nikolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789939926537-iris nebula 47 hrs.jpg",
+        "description": "Iris nebula - Marko Nikolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789939970652-m33 (1).jpg",
+        "description": "M33 - Marko Nikolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789939995160-propper m13 coma(1).jpg",
+        "description": "M13 - Marko Nikolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940214623-IC342_SDG.jpg",
+        "description": "IC342 - Gordan Bartolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940282170-M1_SDG.jpg",
+        "description": "M1 - Gordan Bartolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940320067-M31&M32_OK.jpg",
+        "description": "M31 i M32 - Gordan Bartolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940333795-M51_SDG.jpg",
+        "description": "M51 - Gordan Bartolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940369508-NGC2264_SDG.jpg",
+        "description": "NGC2264 - Gordan Bartolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940551099-Betelgeuse.jpg",
+        "description": "Betelguese - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940575148-Bubble.jpg",
+        "description": "Bubble nebula - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940587873-Caldwell 27.jpg",
+        "description": "Caldwell 27 - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940654248-Cygnus Wall.jpg",
+        "description": "Cygnus wall - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940671313-Final_HOO proba.jpg",
+        "description": "Caldwell 27, widefield - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940689163-Ghost of cassiopea.jpg",
+        "description": "Ghost of Cassiopea - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940710132-Helix.jpg",
+        "description": "Helix - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940739886-Image52.jpg",
+        "description": "Veil - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940758951-M16 Wide.jpg",
+        "description": "M16 - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940770692-M20.jpg",
+        "description": "M20 - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940800932-M33 IR Pass filter.jpg",
+        "description": "M33, IR Pass Filter - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940851706-M31.jpg",
+        "description": "Andromedina Galaksija M31 i M32 - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940869282-Casper.jpg",
+        "description": "Casper nebula (M78) - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940943123-M51.jpg",
+        "description": "M51 - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940953694-M42.jpg",
+        "description": "M42 - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940972492-M65 & M66 gotovo.jpg",
+        "description": "M65 i M66 - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940981852-M101.jpg",
+        "description": "M101 - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789940996437-M106.jpg",
+        "description": "M106 - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789941011519-M106-tiff.jpg",
+        "description": "M106 - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789941041013-Markarian.jpg",
+        "description": "Markarian Chain - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789941088464-Needle galaxy.jpg",
+        "description": "Needle Galaxy - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789941110018-NGC 6914.jpg",
+        "description": "NGC6914 - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789941120959-Orion testJPG.jpg",
+        "description": "M42 - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789941188647-Rho 1.jpg",
+        "description": "Rho Ophiuchi cloud complex 1 - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789941199779-Rho 2.jpg",
+        "description": "Rho Ophiuchi cloud complex 2 - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789941209930-Rho 3.jpg",
+        "description": "Rho Ophiuchi cloud complex 3 - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789941238243-Rosetta Wide.jpg",
+        "description": "Rosetta widefield - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789941267981-Skup.jpg",
+        "description": "M13 - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789941299387-Veil.jpg",
+        "description": "Veil - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789941306266-Veil2.jpg",
+        "description": "Veil - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789941313233-Veil4.jpg",
+        "description": "Veil - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789941363821-Wolf134.jpg",
+        "description": "Wolf134 - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789941395443-Wizard.jpg",
+        "description": "Wizard Nebula (NGC 7380) - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789941438803-IMG_1760.jpg",
+        "description": "Dust wall, Rosette Nebula - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789942047667-Rosetta 1000.jpg",
+        "description": "Rosetta, widefield - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789942132312-Stephenson 2-18.jpg",
+        "description": "Stephenson 2-18, teoretizirana kao najveća zvijezda, čak 2150 puta veća od Sunca. Slikao - Denis Štimac."
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1789942204695-Stephenson 2-18 IR pass.jpg",
+        "description": "Stephenson 2-18, teoretizirana kao najveća zvijezda, čak 2150 puta veća od Sunca. IR Pass filter prošupta infracrveni spektar, pa Stephenson 2-18, inače djelomično skriven oblakom prašine, probija isti i pokazuje svoj sjaj. Slikao - Denis Štimac."
       }
     ],
     "sunce": [
@@ -866,6 +1162,26 @@
           "en": "Sun - H-alpha telescope, D. Šegon",
           "it": "Sole - telescopio H-alfa, D. Šegon"
         }
+      },
+      {
+        "src": "/galerija/astrofotografija/sunce/1786704078770-edi_5.jpg",
+        "description": "Pomrčina Sunca 12.8.2026 - Edi Puh"
+      },
+      {
+        "src": "/galerija/astrofotografija/sunce/1786922752973-P1 copy.jpg",
+        "description": "Pomrčina Sunca, 12.8.2026. sa motivom dizalica - Copyright Duško Marušić Čiči, postavljeno sa dozvolom. "
+      },
+      {
+        "src": "/galerija/astrofotografija/sunce/1786923269143-WhatsApp Image 2026-08-13 at 19.04.08(1).jpeg",
+        "description": "Slikao: Gordan Bartolić\r\n\r\nObjekt: Sunce, pomrčina, H-alfa\r\nDatum, vrijeme: 12.08.2026. u 17:29:07 UT (sredina snimanja).\r\nLokacija: Pula (Monte Zaro, zvjezdarnica ADIP-a)\r\nTeleskop: Lunt 70 H-alfa teleskop\r\nMontaža: Celestron Alt-Az Go-To\r\nOptički sustav pri snimanju: primarno žarište teleskopa (F=420mm, D=70mm)\r\nSampling pri snimanju: 1.42 lučne sekunde po pikselu \r\nKamera: Player One Uranus-C (IMX585) + Astronomik L (2c) filter\r\nCapture Area=3856x2180\r\nEkspozicije: 9,1880ms, gain 100 (12%), ukupno 1386 sličica (video od 60 sekundi), FPS=23,1\r\nKombinirano 35% najboljih sličica iz videa\r\nSoftware: SharpCap Pro, Autostakkert! 4, PS CS2.\r\nPrikaz slike je 100%."
+      },
+      {
+        "src": "/galerija/astrofotografija/sunce/1789940198873-2029-08-12_174630UT_SDG.jpg",
+        "description": "12.8.2026. Pomrčina Sunca - Gordan Bartolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/sunce/1789940422583-S_E_172951UT_SDG.jpg",
+        "description": "Avion, detalj - Gordan Bartolić"
       }
     ]
   },
@@ -1093,6 +1409,66 @@
         "en": "Solar observation organized by D. Šegon",
         "it": "Osservazione solare organizzata da D. Šegon"
       }
+    },
+    {
+      "src": "/galerija/posjete/1786566737673-WhatsApp Image 2026-08-12 at 21.30.58.jpeg",
+      "description": "Pomrčina Sunca 12.8.2026."
+    },
+    {
+      "src": "/galerija/posjete/1786566787941-WhatsApp Image 2026-08-12 at 21.30.57.jpeg",
+      "description": "Pomrčina Sunca 12.8.2026."
+    },
+    {
+      "src": "/galerija/posjete/1786566829802-WhatsApp Image 2026-08-12 at 21.30.57(1).jpeg",
+      "description": "Pomrčina Sunca 12.8.2026."
+    },
+    {
+      "src": "/galerija/posjete/1786566884474-WhatsApp Image 2026-08-12 at 21.30.56.jpeg",
+      "description": "Pomrčina Sunca 12.8.2026."
+    },
+    {
+      "src": "/galerija/posjete/1786566980415-WhatsApp Image 2026-08-12 at 21.30.56(1).jpeg",
+      "description": "Pomrčina Sunca 12.8.2026."
+    },
+    {
+      "src": "/galerija/posjete/1786567002102-WhatsApp Image 2026-08-12 at 21.30.56(2).jpeg",
+      "description": "Pomrčina Sunca 12.8.2026."
+    },
+    {
+      "src": "/galerija/posjete/1786567020157-WhatsApp Image 2026-08-12 at 21.30.55.jpeg",
+      "description": "Pomrčina Sunca 12.8.2026."
+    },
+    {
+      "src": "/galerija/posjete/1786567033174-WhatsApp Image 2026-08-12 at 21.30.55(1).jpeg",
+      "description": "Pomrčina Sunca 12.8.2026."
+    },
+    {
+      "src": "/galerija/posjete/1786567046957-WhatsApp Image 2026-08-12 at 21.30.55(2).jpeg",
+      "description": "Pomrčina Sunca 12.8.2026."
+    },
+    {
+      "src": "/galerija/posjete/1786567103720-WhatsApp Image 2026-08-12 at 21.30.54.jpeg",
+      "description": "Pomrčina Sunca 12.8.2026."
+    },
+    {
+      "src": "/galerija/posjete/1786567254918-WhatsApp Image 2026-08-12 at 22.35.50.jpeg",
+      "description": "Pomrčina Sunca 12.8.2026. - predavanje Anton Perkov"
+    },
+    {
+      "src": "/galerija/posjete/1786567287582-WhatsApp Image 2026-08-12 at 22.35.50(1).jpeg",
+      "description": "Pomrčina Sunca 12.8.2026. - predavanje Anton Perkov"
+    },
+    {
+      "src": "/galerija/posjete/1786567313406-WhatsApp Image 2026-08-12 at 22.35.51.jpeg",
+      "description": "Pomrčina Sunca 12.8.2026. - predavanje Anton Perkov"
+    },
+    {
+      "src": "/galerija/posjete/1786704026964-edi_4.jpg",
+      "description": "Pomrčina Sunca 12.8.2026 - Edi Puh"
+    },
+    {
+      "src": "/galerija/posjete/1786704036240-edi_3.jpg",
+      "description": "Pomrčina Sunca 12.8.2026 - Edi Puh"
     }
   ],
   "ostalo": [
@@ -1311,6 +1687,10 @@
     {
       "src": "/galerija/ostalo/1774781943905-IMG_4830.JPG",
       "description": "Posjeta International Meteor Conference 2012 (La Palma)"
+    },
+    {
+      "src": "/galerija/ostalo/1786704043004-edi_2.jpg",
+      "description": "Pomrčina Sunca 12.8.2026 - Edi Puh"
     }
   ]
 }

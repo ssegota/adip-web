@@ -1,0 +1,4 @@
+[24-Mar-2022 13:57:24 Europe/Zagreb] PHP Fatal error:  Class 'ctools_export_ui' not found in /home/adip/public_html/sites/all/modules/ctools/ctools_access_ruleset/plugins/export_ui/ctools_access_ruleset_ui.class.php on line 3
+[16-Jun-2022 06:20:36 Europe/Zagreb] PHP Fatal error:  Class 'ctools_export_ui' not found in /home/adip/public_html/sites/all/modules/ctools/ctools_access_ruleset/plugins/export_ui/ctools_access_ruleset_ui.class.php on line 3
+[16-Jun-2022 06:20:40 Europe/Zagreb] PHP Fatal error:  Class 'ctools_export_ui' not found in /home/adip/public_html/sites/all/modules/ctools/ctools_access_ruleset/plugins/export_ui/ctools_access_ruleset_ui.class.php on line 3
+[16-Jun-2022 06:20:45 Europe/Zagreb] PHP Fatal error:  Class 'ctools_export_ui' not found in /home/adip/public_html/sites/all/modules/ctools/ctools_access_ruleset/plugins/export_ui/ctools_access_ruleset_ui.class.php on line 3

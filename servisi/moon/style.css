@@ -39,7 +39,7 @@ body {
     flex: 1;
     position: relative;
     overflow: hidden;
-    background: radial-gradient(circle at center, #1a1c2c 0%, #05070a 100%);
+    background: #1a1c2c;
     display: flex;
     align-items: center;
     justify-content: center;

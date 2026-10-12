@@ -37,14 +37,14 @@
 
             <nav class="nav" id="main-nav">
                 <button class="nav__close" id="nav-close">✕</button>
-                <a href="${basePath}index.html" class="nav__link">🏠 Naslovna</a>
-                <a href="${basePath}aktivnosti.html" class="nav__link">📅 Aktivnosti</a>
-                <a href="${basePath}galerija-slika.html" class="nav__link">🖼️ Galerija</a>
-                <a href="${basePath}povijest-zvjezdarnice.html" class="nav__link">📜 Povijest</a>
-                <a href="${basePath}posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Posjeti</a>
-                <a href="${basePath}radovi.html" class="nav__link">📚 Radovi</a>
-                <a href="${basePath}servisi.html" class="nav__link">⚙️ Servisi</a>
-                <a href="${basePath}astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ O nama</a>
+                <a href="${basePath}index.html" class="nav__link">Naslovna</a>
+                <a href="${basePath}aktivnosti.html" class="nav__link">Aktivnosti</a>
+                <a href="${basePath}galerija-slika.html" class="nav__link">Galerija</a>
+                <a href="${basePath}povijest-zvjezdarnice.html" class="nav__link">Povijest</a>
+                <a href="${basePath}posjet-pulskoj-zvjezdarnici.html" class="nav__link">Posjeti</a>
+                <a href="${basePath}radovi.html" class="nav__link">Radovi</a>
+                <a href="${basePath}servisi.html" class="nav__link">Servisi</a>
+                <a href="${basePath}astronomsko-drustvo-istra-pula.html" class="nav__link">O nama</a>
                 <div class="nav__spacer"></div>
                 <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Prijava</button>
             </nav>

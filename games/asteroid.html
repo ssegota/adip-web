@@ -40,7 +40,7 @@
         <option value="2" selected>Normal</option>
         <option value="1">Hard</option>
       </select>
-      <button id="image-mode" class="toggle-btn" type="button">🌑 Dark</button>
+      <button id="image-mode" class="toggle-btn" type="button">Dark</button>
     </div>
     <div class="stats">
       <span class="badge ok">Correct: <span id="score-ok">0</span></span>
@@ -227,7 +227,7 @@ const imageModeEl = document.getElementById('image-mode');
 imageModeEl.addEventListener('click', () => {
   const isDark = CONFIG.IMAGE_MODE === 'dark';
   CONFIG.IMAGE_MODE = isDark ? 'light' : 'dark';
-  imageModeEl.textContent = isDark ? '☀️ Light' : '🌑 Dark';
+  imageModeEl.textContent = isDark ? 'Light' : 'Dark';
   imageModeEl.classList.toggle('light', isDark);
   // Redraw current scene without regenerating positions
   clearCanvas(g1); clearCanvas(g2);

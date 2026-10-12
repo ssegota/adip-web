@@ -8,7 +8,7 @@
     <meta name="description"
         content="Galleria immagini della Società Astronomica Istra Pola - astrofotografie, eventi, osservatorio">
     <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
-    <link rel="stylesheet" href="../css/modern.css">
+    <link rel="stylesheet" href="../css/modern.css?v=20260928">
 </head>
 
 <body class="page-blur">
@@ -23,15 +23,15 @@
         </a>
         <nav class="nav" id="main-nav">
             <button class="nav__close" id="nav-close">✕</button>
-            <a href="index.html" class="nav__link">🏠 Home</a>
-            <a href="aktivnosti.html" class="nav__link">📅 Attività</a>
-            <a href="galerija-slika.html" class="nav__link active">🖼️ Galleria</a>
-            <a href="povijest-zvjezdarnice.html" class="nav__link">📜 Storia</a>
-            <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Visitaci</a>
-            <a href="radovi.html" class="nav__link">📚 Pubblicazioni</a>
-            <a href="servisi.html" class="nav__link">⚙️ Servizi</a>
-            <a href="downloads.html" class="nav__link">⬇️ Download</a>
-            <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ Chi siamo</a>
+            <a href="index.html" class="nav__link">Home</a>
+            <a href="aktivnosti.html" class="nav__link">Attività</a>
+            <a href="galerija-slika.html" class="nav__link active">Galleria</a>
+            <a href="povijest-zvjezdarnice.html" class="nav__link">Storia</a>
+            <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">Visitaci</a>
+            <a href="radovi.html" class="nav__link">Pubblicazioni</a>
+            <a href="servisi.html" class="nav__link">Servizi</a>
+            <a href="downloads.html" class="nav__link">Download</a>
+            <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">Chi siamo</a>
             <div class="nav__spacer"></div>
             <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Accedi</button>
         </nav>
@@ -57,7 +57,7 @@
 
             <!-- Admin Panel (visible only when logged in) -->
             <div class="admin-panel hidden glass-card" style="margin-bottom: 2rem;">
-                <h3 style="margin-bottom: 1rem;">📷 Carica nuova immagine</h3>
+                <h3 style="margin-bottom: 1rem;">Carica nuova immagine</h3>
                 <form id="upload-form" enctype="multipart/form-data">
                     <div class="form-group">
                         <label class="form-label">Categoria</label>
@@ -94,26 +94,26 @@
 
             <div class="grid grid--2">
                 <a href="galerija-povijest.html" class="glass-card" style="text-decoration: none;">
-                    <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">📸 Storia dell'osservatorio</h3>
+                    <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Storia dell'osservatorio</h3>
                     <p style="color: var(--text-secondary);">Foto storiche dell'Osservatorio di Pola attraverso gli
                         anni.</p>
                     <span style="color: var(--accent-secondary); font-size: 0.9rem;">45 foto →</span>
                 </a>
                 <a href="astrofotografija.html" class="glass-card" style="text-decoration: none;">
-                    <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">🌌 Astrofotografie</h3>
+                    <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Astrofotografie</h3>
                     <p style="color: var(--text-secondary);">Astrofotografie scattate dai membri della società.</p>
                     <span style="color: var(--accent-secondary); font-size: 0.9rem;">Luna, Marte, Giove, Saturno e altro
                         →</span>
                 </a>
                 <a href="galerija-posjete.html" class="glass-card" style="text-decoration: none;">
-                    <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">🔭 Visite, osservazioni e
+                    <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Visite, osservazioni e
                         conferenze</h3>
                     <p style="color: var(--text-secondary);">Foto di visite all'osservatorio, osservazioni pubbliche e
                         conferenze.</p>
                     <span style="color: var(--accent-secondary); font-size: 0.9rem;">Visualizza galleria →</span>
                 </a>
                 <a href="galerija-ostalo.html" class="glass-card" style="text-decoration: none;">
-                    <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">📷 Altre immagini</h3>
+                    <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Altre immagini</h3>
                     <p style="color: var(--text-secondary);">Varie foto dalle attività della Società Astronomica.</p>
                     <span style="color: var(--accent-secondary); font-size: 0.9rem;">Visualizza galleria →</span>
                 </a>
@@ -148,12 +148,14 @@
         </div>
     </div>
 
-    <script src="../js/main.js"></script>
+    <script src="../js/main.js?v=20260928"></script>
     <script>
         // Upload form for admin
         document.getElementById('upload-form')?.addEventListener('submit', async (e) => {
             e.preventDefault();
             const formData = new FormData(e.target);
+            const thumb = await makeThumb(formData.get('image'));
+            if (thumb) formData.append('thumb', thumb, 'thumb.jpg');
             const msg = document.getElementById('upload-message');
 
             try {

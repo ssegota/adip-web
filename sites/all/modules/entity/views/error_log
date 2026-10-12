@@ -1,0 +1,4 @@
+[24-Mar-2022 11:35:08 Europe/Zagreb] PHP Fatal error:  Class 'views_plugin_query' not found in /home/adip/public_html/sites/all/modules/entity/views/entity_views_example_query.php on line 20
+[15-Jun-2022 22:54:04 Europe/Zagreb] PHP Fatal error:  Class 'views_plugin_query' not found in /home/adip/public_html/sites/all/modules/entity/views/entity_views_example_query.php on line 20
+[15-Jun-2022 22:54:19 Europe/Zagreb] PHP Fatal error:  Class 'views_plugin_query' not found in /home/adip/public_html/sites/all/modules/entity/views/entity_views_example_query.php on line 20
+[15-Jun-2022 22:54:27 Europe/Zagreb] PHP Fatal error:  Class 'views_plugin_query' not found in /home/adip/public_html/sites/all/modules/entity/views/entity_views_example_query.php on line 20

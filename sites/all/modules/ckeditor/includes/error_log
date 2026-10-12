@@ -1,0 +1,8 @@
+[24-Mar-2022 02:38:39 Europe/Zagreb] PHP Fatal error:  Call to undefined function resolveUrl() in /home/adip/public_html/sites/all/modules/ckeditor/includes/filemanager.config.php on line 97
+[24-Mar-2022 02:38:40 Europe/Zagreb] PHP Fatal error:  Call to undefined function resolveUrl() in /home/adip/public_html/sites/all/modules/ckeditor/includes/filemanager.config.php on line 97
+[24-Mar-2022 02:38:55 Europe/Zagreb] PHP Fatal error:  Call to undefined function resolveUrl() in /home/adip/public_html/sites/all/modules/ckeditor/includes/filemanager.config.php on line 97
+[15-Jun-2022 16:07:00 Europe/Zagreb] PHP Fatal error:  Call to undefined function resolveUrl() in /home/adip/public_html/sites/all/modules/ckeditor/includes/filemanager.config.php on line 97
+[15-Jun-2022 16:07:23 Europe/Zagreb] PHP Fatal error:  Call to undefined function resolveUrl() in /home/adip/public_html/sites/all/modules/ckeditor/includes/filemanager.config.php on line 97
+[15-Jun-2022 16:07:34 Europe/Zagreb] PHP Fatal error:  Call to undefined function resolveUrl() in /home/adip/public_html/sites/all/modules/ckeditor/includes/filemanager.config.php on line 97
+[19-Jul-2024 19:31:00 Europe/Zagreb] PHP Fatal error:  Call to undefined function resolveUrl() in /home/adip/public_html/sites/all/modules/ckeditor/includes/filemanager.config.php on line 97
+[21-Jul-2024 17:29:44 Europe/Zagreb] PHP Fatal error:  Call to undefined function resolveUrl() in /home/adip/public_html/sites/all/modules/ckeditor/includes/filemanager.config.php on line 97

@@ -1,0 +1,10 @@
+# Vidljivost lekcija mijenja se povremeno i mora se vidjeti odmah nakon
+# zamjene datoteke, pa ovu mapu ne dopuštamo predmemorirati.
+# Sve je u <IfModule> pa ne može srušiti stranicu ako modul nije dostupan.
+<IfModule mod_headers.c>
+  Header set Cache-Control "no-cache, no-store, must-revalidate"
+  Header set Pragma "no-cache"
+</IfModule>
+<IfModule mod_expires.c>
+  ExpiresActive Off
+</IfModule>

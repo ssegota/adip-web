@@ -6,17 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zvjezdarnica nekada | Pulska Zvjezdarnica</title>
   <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
-  <link rel="stylesheet" href="../css/modern.css" />
+  <link rel="stylesheet" href="../css/modern.css?v=20260928" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
+    /* --- Slike --- */
     .history-img-container {
       text-align: center;
-      margin-bottom: 2rem;
+      margin: 0 0 2rem;
     }
 
     .history-img-container img {
       max-width: 100%;
       height: auto;
+      display: block;
+      margin: 0 auto;
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s ease;
@@ -26,27 +29,70 @@
       transform: scale(1.02);
     }
 
+    .history-img-container .img-caption {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+
+    /* Široka slika preko cijele širine kartice - ograničena da ne "pukne" layout */
+    .history-img-container--feature {
+      max-width: 760px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* --- Sekcije razdoblja --- */
     .period-card {
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
-      margin-bottom: 2rem;
-      padding-bottom: 2rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
       border-bottom: 1px solid var(--border-glass);
     }
 
-    @media(min-width: 768px) {
-      .period-card {
+    .period-card > * {
+      min-width: 0;
+    }
+
+    .period-content h3 {
+      margin-bottom: 1rem;
+    }
+
+    .period-content p + p {
+      margin-top: 1rem;
+    }
+
+    /* Sekcije bez slike - tekst ide punom širinom, bez praznog stupca */
+    .period-card--text .period-content {
+      flex: 1 1 100%;
+    }
+
+    .period-card:last-child,
+    .glass-card > *:last-child {
+      margin-bottom: 0;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    @media (min-width: 768px) {
+      .period-card--media {
         flex-direction: row;
         align-items: center;
       }
 
-      .period-card.reverse {
+      .period-card--media.reverse {
         flex-direction: row-reverse;
       }
 
       .period-img {
         flex: 0 0 300px;
+        margin-bottom: 0;
+      }
+
+      .period-img img {
+        width: 100%;
       }
 
       .period-content {
@@ -75,14 +121,14 @@
 
     <nav class="nav" id="main-nav">
       <button class="nav__close" id="nav-close">✕</button>
-      <a href="../index.html" class="nav__link">🏠 Naslovna</a>
-      <a href="../aktivnosti.html" class="nav__link">📅 Aktivnosti</a>
-      <a href="../galerija-slika.html" class="nav__link">🖼️ Galerija</a>
-      <a href="../povijest-zvjezdarnice.html" class="nav__link active">📜 Povijest</a>
-      <a href="../posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Posjeti</a>
-      <a href="../radovi.html" class="nav__link">📚 Radovi</a>
-      <a href="../servisi.html" class="nav__link">⚙️ Servisi</a>
-      <a href="../astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ O nama</a>
+      <a href="../index.html" class="nav__link">Naslovna</a>
+      <a href="../aktivnosti.html" class="nav__link">Aktivnosti</a>
+      <a href="../galerija-slika.html" class="nav__link">Galerija</a>
+      <a href="../povijest-zvjezdarnice.html" class="nav__link active">Povijest</a>
+      <a href="../posjet-pulskoj-zvjezdarnici.html" class="nav__link">Posjeti</a>
+      <a href="../radovi.html" class="nav__link">Radovi</a>
+      <a href="../servisi.html" class="nav__link">Servisi</a>
+      <a href="../astronomsko-drustvo-istra-pula.html" class="nav__link">O nama</a>
       <div class="nav__spacer"></div>
       <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Prijava</button>
     </nav>
@@ -115,12 +161,10 @@
     <!-- Content Card -->
     <div class="glass-card padding-2">
 
-      <!-- Austro-Hungary Section -->
-      <div class="period-card">
-        <div class="period-img history-img-container">
-          </div>
+      <!-- Austro-Ugarska -->
+      <div class="period-card period-card--text">
         <div class="period-content">
-          <h3 style="color: var(--accent-primary); margin-bottom: 1rem;">Mornarička Zvjezdarnica u
+          <h3 style="color: var(--accent-primary);">Mornarička Zvjezdarnica u
             Puli<br><small>(Marinesternwarte) Austro-ugarska</small></h3>
           <p>
             Mornarička zvjezdarnica u Puli utemeljena je 1869. godine kao jedan od odjela Carskog i Kraljevskog
@@ -131,16 +175,15 @@
         </div>
       </div>
 
-      <div class="history-img-container">
-        <img src="/sites/default/files/images/povijest_Zvmioni.jpg"
-          alt="Stara zgrada zvjezdarnice">
-        <p class="text-xs text-muted mt-2">Fotografija nove zgrade pulskog Hidrografskog zavoda (Zvjezdarnice) na Monte
+      <div class="history-img-container history-img-container--feature">
+        <img src="../sites/default/files/images/povijest_Zvmioni.jpg" alt="Stara zgrada zvjezdarnice">
+        <p class="img-caption">Fotografija nove zgrade pulskog Hidrografskog zavoda (Zvjezdarnice) na Monte
           Zaru (foto: Erminio Mioni).</p>
       </div>
 
-      <div class="period-card reverse">
+      <div class="period-card period-card--media reverse">
         <div class="period-img history-img-container">
-          <img src="/sites/default/files/images/povijest_Tegetthoff.jpg" alt="Tegetthoff">
+          <img src="../sites/default/files/images/povijest_Tegetthoff.jpg" alt="Tegetthoff">
         </div>
         <div class="period-content">
           <p>
@@ -149,14 +192,12 @@
             Vojno-pomorsku akademiju u Veneciji i u Trstu 1850. godine utemeljuje novu Mornaričku akademiju, u čijem se
             sklopu kao odjel nalazi i Zvjezdarnica.
           </p>
-          <br>
           <p>
             Utemeljenjem Hidrografskog zavoda u Puli 1869. god., u pulsku Zvjezdarnicu je preseljen dio inventara
             tršćanske Zvjezdarnice. Zavod je imao četiri odjela: Zvjezdarnica, Spremište nautičko-fizikalnih
             instrumenata, Spremište pomorskih karata i <strong><a href="mornaricka-knjiznica.html"
                 class="text-link">Mornarička biblioteka</a></strong>.
           </p>
-          <br>
           <p>
             U Mornaričkoj zvjezdarnici bile su ustrojene četiri službe: Služba točnog vremena, Kronometarska služba,
             Meteorološka služba i Geomagnetska služba. Koristili su se vrlo moderni <strong><a
@@ -172,28 +213,26 @@
         </p>
       </div>
 
-      <div class="my-4">
-        <p>
-          Zahvaljujući izuzetnom zalaganju austrijskog astronoma <strong><a href="povijesne-licnosti/johann-palisa.html"
-              class="text-link">Johanna PALISE</a></strong>, u desetak godina (1871-1880), Mornarička zvjezdarnica u
-          Puli upisala se u trajnu listu eminentnih astronomskih svjetskih promatračnica. Otkriveno je i evidentirano
-          čak <strong>28 novih planetoida</strong>, od kojih je jedan dobio naziv "Istra".
-        </p>
-        <br>
-        <p>
-          Uz Palisu, značajna imena su i <strong><a href="povijesne-licnosti/barun-ivo-benko-von-boinik.html"
-              class="text-link">Ivo BENKO</a></strong>, Bernhard WALTER, Spiridion GOPČEVIĆ (Leo Brenner), Oton KUČERA i
-          Niko MILIČEVIĆ.
-        </p>
+      <div class="period-card period-card--text">
+        <div class="period-content">
+          <p>
+            Zahvaljujući izuzetnom zalaganju austrijskog astronoma <strong><a href="povijesne-licnosti/johann-palisa.html"
+                class="text-link">Johanna PALISE</a></strong>, u desetak godina (1871-1880), Mornarička zvjezdarnica u
+            Puli upisala se u trajnu listu eminentnih astronomskih svjetskih promatračnica. Otkriveno je i evidentirano
+            čak <strong>28 novih planetoida</strong>, od kojih je jedan dobio naziv "Istra".
+          </p>
+          <p>
+            Uz Palisu, značajna imena su i <strong><a href="povijesne-licnosti/barun-ivo-benko-von-boinik.html"
+                class="text-link">Ivo BENKO</a></strong>, Bernhard WALTER, Spiridion GOPČEVIĆ (Leo Brenner), Oton KUČERA
+            i Niko MILIČEVIĆ.
+          </p>
+        </div>
       </div>
 
-      <!-- Italy Period -->
-      <div class="period-card">
-        <div class="period-img history-img-container">
-          <p class="text-xs text-muted">Izgled između dva svjetska rata</p>
-          </div>
+      <!-- Razdoblje između ratova -->
+      <div class="period-card period-card--text">
         <div class="period-content">
-          <h3 style="color: var(--accent-secondary); margin-bottom: 1rem;">Razdoblje između ratova</h3>
+          <h3 style="color: var(--accent-secondary);">Razdoblje između ratova</h3>
           <p>
             Sudbina Zvjezdarnice nakon raspada Austro-Ugarske monarhije i zaposjedanjem Istre po talijanskoj vojnoj
             sili, podudara se sa općom stagnacijom grada Pule. Astronomski instrumenti i biblioteka su preseljeni u Trst
@@ -203,19 +242,14 @@
         </div>
       </div>
 
-      <!-- WW2 and Destruction -->
-      <div class="period-card reverse">
-        <div class="period-img history-img-container">
-          <p class="text-xs text-muted">Sačuvano sjeveroistočno krilo</p>
-
-        </div>
+      <!-- Drugi svjetski rat -->
+      <div class="period-card period-card--text">
         <div class="period-content">
-          <h3 style="margin-bottom: 1rem;">Drugi svjetski rat i razaranje</h3>
+          <h3>Drugi svjetski rat i razaranje</h3>
           <p>
             1944. godine anglo-američko borbeno zrakoplovstvo je tijekom bombardiranja Pule razorilo zgradu Zavoda.
             Djelomično je ostao sačuvan samo dio sjeveroistočnog krila.
           </p>
-          <br>
           <p>
             Nakon obnove 1947/48. godine tu je smještena meteorološka postaja. Godine 1973. utemeljeno je
             <strong>Astronomsko društvo "Istra"</strong>, koje je 1982. godine obnovilo astronomske opservacije.
@@ -223,12 +257,10 @@
         </div>
       </div>
 
-      <!-- Modern Era -->
-      <div class="period-card">
-        <div class="period-img history-img-container">
-          </div>
+      <!-- Poslijeratno razdoblje -->
+      <div class="period-card period-card--text">
         <div class="period-content">
-          <h3 style="margin-bottom: 1rem;">Poslijeratno razdoblje i obnova</h3>
+          <h3>Poslijeratno razdoblje i obnova</h3>
           <p>
             Od povratka astronoma na pulsku Zvjezdarnicu, ulažu se ogromni napori u njenu obnovu:
           </p>
@@ -238,10 +270,6 @@
             <li>2009. U cijelosti obnovljena terasa, pročelje i okoliš.</li>
           </ul>
         </div>
-      </div>
-
-      <div class="history-img-container">
-        <p class="mt-2 font-bold">Današnji izgled Zvjezdarnice</p>
       </div>
 
     </div>
@@ -260,7 +288,7 @@
     </div>
   </footer>
 
-  <script src="../js/main.js"></script>
+  <script src="../js/main.js?v=20260928"></script>
 </body>
 
 </html>

@@ -7,7 +7,7 @@
     <title>Astrofotografia | Osservatorio di Pola</title>
     <meta name="description" content="Astrofotografie scattate dai membri della Società Astronomica Istra Pola">
     <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
-    <link rel="stylesheet" href="../css/modern.css">
+    <link rel="stylesheet" href="../css/modern.css?v=20260928">
     <style>
         .astro-categories {
             display: grid;
@@ -51,15 +51,15 @@
         </a>
         <nav class="nav" id="main-nav">
             <button class="nav__close" id="nav-close">✕</button>
-            <a href="index.html" class="nav__link">🏠 Home</a>
-            <a href="aktivnosti.html" class="nav__link">📅 Attività</a>
-            <a href="galerija-slika.html" class="nav__link active">🖼️ Galleria</a>
-            <a href="povijest-zvjezdarnice.html" class="nav__link">📜 Storia</a>
-            <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Visitaci</a>
-            <a href="radovi.html" class="nav__link">📚 Pubblicazioni</a>
-            <a href="servisi.html" class="nav__link">⚙️ Servizi</a>
-            <a href="downloads.html" class="nav__link">⬇️ Download</a>
-            <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ Chi siamo</a>
+            <a href="index.html" class="nav__link">Home</a>
+            <a href="aktivnosti.html" class="nav__link">Attività</a>
+            <a href="galerija-slika.html" class="nav__link active">Galleria</a>
+            <a href="povijest-zvjezdarnice.html" class="nav__link">Storia</a>
+            <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">Visitaci</a>
+            <a href="radovi.html" class="nav__link">Pubblicazioni</a>
+            <a href="servisi.html" class="nav__link">Servizi</a>
+            <a href="downloads.html" class="nav__link">Download</a>
+            <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">Chi siamo</a>
             <div class="nav__spacer"></div>
             <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Accedi</button>
         </nav>
@@ -87,43 +87,33 @@
 
             <div class="astro-categories">
                 <div class="astro-category active" data-category="all">
-                    <div class="astro-category-icon">🌌</div>
                     <div>Tutti</div>
                 </div>
                 <div class="astro-category" data-category="mjesec">
-                    <div class="astro-category-icon">🌙</div>
                     <div>Luna</div>
                 </div>
                 <div class="astro-category" data-category="sunce">
-                    <div class="astro-category-icon">☀️</div>
                     <div>Sole</div>
                 </div>
                 <div class="astro-category" data-category="venera">
-                    <div class="astro-category-icon">🌟</div>
                     <div>Venere</div>
                 </div>
                 <div class="astro-category" data-category="mars">
-                    <div class="astro-category-icon">🔴</div>
                     <div>Marte</div>
                 </div>
                 <div class="astro-category" data-category="jupiter">
-                    <div class="astro-category-icon">🟠</div>
                     <div>Giove</div>
                 </div>
                 <div class="astro-category" data-category="saturn">
-                    <div class="astro-category-icon">🪐</div>
                     <div>Saturno</div>
                 </div>
                 <div class="astro-category" data-category="kometi">
-                    <div class="astro-category-icon">☄️</div>
                     <div>Comete</div>
                 </div>
                 <div class="astro-category" data-category="meteori">
-                    <div class="astro-category-icon">💫</div>
                     <div>Meteore</div>
                 </div>
                 <div class="astro-category" data-category="duboki-svemir">
-                    <div class="astro-category-icon">✨</div>
                     <div>Spazio profondo</div>
                 </div>
             </div>
@@ -170,7 +160,7 @@
         </div>
     </div>
 
-    <script src="../js/main.js"></script>
+    <script src="../js/main.js?v=20260928"></script>
     <script>
         let currentCategory = 'mjesec';
         let astroData = {};
@@ -179,9 +169,15 @@
             initLightbox();
 
             // Load all astro data - use relative path for language subdir
-            const response = await fetch('../data/galerija.json');
-            const data = await response.json();
+            const data = await fetchGalleryData();
             astroData = data.astrofotografija || {};
+
+            // Obrisana slika mora nestati i iz lokalne kopije (inače se vrati pri promjeni kategorije)
+            document.addEventListener('gallery:deleted', (e) => {
+                Object.keys(astroData).forEach(cat => {
+                    astroData[cat] = (astroData[cat] || []).filter(img => img.src.replace(/^\/+/, '') !== e.detail.src);
+                });
+            });
 
             // Initial load
             loadAstroCategory('mjesec');
@@ -222,6 +218,15 @@
             Object.keys(astroData).forEach(cat => {
                 allImages = allImages.concat(astroData[cat] || []);
             });
+
+            // Redoslijed po vremenu dodavanja (bez obzira na kategoriju): upload dodaje
+            // timestamp na početak imena datoteke; stare slike bez njega idu na kraj.
+            // renderGallery okreće niz, pa ovdje slažemo od najstarije prema najnovijoj.
+            const addedAt = img => {
+              const m = (img.src || '').split('/').pop().match(/^(\d{13})-/);
+              return m ? Number(m[1]) : 0;
+            };
+            allImages.sort((a, b) => addedAt(a) - addedAt(b));
 
             if (allImages.length === 0) {
                 container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1;">Nessuna foto disponibile.</p>';

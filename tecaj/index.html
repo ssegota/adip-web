@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tečaj astronomije | Pulska Zvjezdarnica</title>
+  <meta name="description"
+    content="Tečaj astronomije Astronomskog društva Istra Pula - 16 lekcija s prezentacijama i interaktivnim primjerima, priprema za natjecanje iz astronomije.">
+  <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/tecaj.css?v=20260928">
+  <script src="data/vidljivost.js"></script>
+  <script>
+    /* Pristupna vrata: sakrij sadržaj prije prvog crtanja ako PIN nije unesen.
+       Otključavanje i sam upit su u js/tecaj.js. */
+    (function () {
+      var ulaz = false, urednik = false;
+      try { ulaz = sessionStorage.getItem('tecaj_ulaz') === '1'; } catch (e) { }
+      try { urednik = !!localStorage.getItem('adip_token'); } catch (e) { }
+      if (!ulaz && !urednik) document.documentElement.className += ' tecaj-zakljucano';
+    })();
+  </script>
+</head>
+
+<body>
+  <main class="page-content" style="padding-top:0">
+
+    <!-- Hero -->
+    <section class="course-hero">
+      <div class="container">
+        <h1 class="animate-in animate-delay-1">Tečaj <span class="text-gradient">astronomije</span></h1>
+        <p class="course-hero__lead animate-in animate-delay-2">
+          Šesnaest lekcija koje pokrivaju cijeli natjecateljski katalog — od prepoznavanja
+          zviježđa golim okom do dobi svemira. Svaka lekcija ima kratak opis teme,
+          prezentaciju za preuzimanje i interaktivne primjere u kojima sami mijenjate
+          vrijednosti i eksperimentirate.
+        </p>
+        <div class="hero-akcije animate-in animate-delay-3">
+          <a href="lekcija-01.html" class="btn btn--primary">Počni od prve lekcije →</a>
+          <div class="dropdown" data-dropdown>
+            <button type="button" class="btn btn--secondary dropdown__toggle" aria-haspopup="true"
+              aria-expanded="false">Udžbenik (PDF) <span class="dropdown__strelica" aria-hidden="true">▾</span></button>
+            <div class="dropdown__menu" role="menu" aria-label="Udžbenik po razredima">
+              <p class="dropdown__naslov">Osnovna škola</p>
+              <a href="pdf/astro5.pdf" class="dropdown__item" role="menuitem" download>5. razred</a>
+              <a href="pdf/astro6.pdf" class="dropdown__item" role="menuitem" download>6. razred</a>
+              <a href="pdf/astro7.pdf" class="dropdown__item" role="menuitem" download>7. razred</a>
+              <a href="pdf/astro8.pdf" class="dropdown__item" role="menuitem" download>8. razred</a>
+              <p class="dropdown__naslov">Srednja škola</p>
+              <a href="pdf/astro1.pdf" class="dropdown__item" role="menuitem" download>1. razred</a>
+              <a href="pdf/astro2.pdf" class="dropdown__item" role="menuitem" download>2. razred</a>
+              <a href="pdf/astro3.pdf" class="dropdown__item" role="menuitem" download>3. razred</a>
+              <a href="pdf/astro4.pdf" class="dropdown__item" role="menuitem" download>4. razred</a>
+            </div>
+          </div>
+          <a href="pdf/zbirka-1.pdf" class="btn btn--secondary" download>Zbirka zadataka (PDF)</a>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Urednička ploča (vidljiva samo prijavljenom uredniku) -->
+    <section class="container container--wide hidden" id="urednik-ploca"
+      style="padding-bottom:1rem"></section>
+
+    <!-- Mreža lekcija -->
+    <section class="container container--wide" id="lekcije" style="padding-bottom:2rem">
+      <div class="section__header">
+        <h2 class="section__title">Sve <span class="text-gradient">lekcije</span></h2>
+        <p class="section__subtitle">Klikom na karticu otvarate lekciju s prezentacijom i primjerima</p>
+      </div>
+      <div class="lesson-grid" id="lesson-grid"></div>
+    </section>
+
+    <!-- Literatura -->
+    <section class="container" style="padding-bottom:1rem">
+      <div class="glass-card">
+        <h2 style="font-size:1.3rem;margin-bottom:.75rem">Literatura i alati</h2>
+        <ul style="color:var(--text-secondary);margin-left:1.25rem">
+          <li>V. Vujnović, <em>Astronomija 1</em> i <em>Astronomija 2</em></li>
+          <li><a href="https://stellarium.org/" target="_blank" rel="noopener">Stellarium</a> — besplatni
+            planetarij, nezamjenjiv za vježbanje koordinata i pripremu opažanja</li>
+          <li><a href="https://www.azoo.hr/natjecanja-i-smotre-arhiva/testovi-i-rjesenja-sa-skolske-i-zupanijske-razine-natjecanja-iz-astronomije-2020/">Arhiva zadataka s prošlih natjecanja iz astronomije</a></li>
+        </ul>
+        <br>
+        <p style="color:var(--text-muted);font-size:.88rem;margin-bottom:0">
+          Autor tečaja: dr. sc. Sandi Baressi Šegota · Astronomsko društvo „Istra“ Pula
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/tecaj.js?v=20260928"></script>
+  <script>
+    TECAJ.init({});
+  </script>
+</body>
+
+</html>

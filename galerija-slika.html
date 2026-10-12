@@ -8,7 +8,7 @@
   <meta name="description"
     content="Galerija slika Astronomskog društva Istra Pula - astrofotografije, događanja, zvjezdarnica">
   <link rel="icon" href="sites/all/themes/black_hole/logo.png" type="image/png">
-  <link rel="stylesheet" href="css/modern.css">
+  <link rel="stylesheet" href="css/modern.css?v=20260928">
   <style>
     .gallery-category {
       margin-bottom: 3rem;
@@ -41,15 +41,16 @@
 
     <nav class="nav" id="main-nav">
       <button class="nav__close" id="nav-close">✕</button>
-      <a href="index.html" class="nav__link">🏠 Naslovna</a>
-      <a href="aktivnosti.html" class="nav__link">📅 Aktivnosti</a>
-      <a href="galerija-slika.html" class="nav__link active">🖼️ Galerija</a>
-      <a href="povijest-zvjezdarnice.html" class="nav__link">📜 Povijest</a>
-      <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">🔭 Posjeti</a>
-      <a href="radovi.html" class="nav__link">📚 Radovi</a>
-      <a href="servisi.html" class="nav__link">⚙️ Servisi</a>
-      <a href="downloads.html" class="nav__link">⬇️ Preuzimanja</a>
-      <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">ℹ️ O nama</a>
+      <a href="index.html" class="nav__link">Naslovna</a>
+      <a href="aktivnosti.html" class="nav__link">Aktivnosti</a>
+      <a href="galerija-slika.html" class="nav__link active">Galerija</a>
+      <a href="povijest-zvjezdarnice.html" class="nav__link">Povijest</a>
+      <a href="posjet-pulskoj-zvjezdarnici.html" class="nav__link">Posjeti</a>
+      <a href="radovi.html" class="nav__link">Radovi</a>
+      <a href="servisi.html" class="nav__link">Servisi</a>
+      <a href="downloads.html" class="nav__link">Preuzimanja</a>
+      <a href="tecaj/index.html" class="nav__link">Tečaj astronomije</a>
+      <a href="astronomsko-drustvo-istra-pula.html" class="nav__link">O nama</a>
       <div class="nav__spacer"></div>
       <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Prijava</button>
     </nav>
@@ -77,7 +78,7 @@
 
       <!-- Admin Panel (visible only when logged in) -->
       <div class="admin-panel hidden glass-card" style="margin-bottom: 2rem;">
-        <h3 style="margin-bottom: 1rem;">📷 Upload nove slike</h3>
+        <h3 style="margin-bottom: 1rem;">Upload nove slike</h3>
         <form id="upload-form" enctype="multipart/form-data">
           <div class="form-group">
             <label class="form-label">Kategorija</label>
@@ -110,31 +111,42 @@
           <button type="submit" class="btn btn--primary">Upload</button>
         </form>
         <div id="upload-message" style="margin-top: 1rem;"></div>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem;">
+          Napomena: slike uz aktivnosti dodaju se kroz stranicu
+          <a href="aktivnosti.html">Aktivnosti</a> i automatski se prikazuju u galeriji "Slike aktivnosti".
+        </p>
       </div>
 
       <!-- Gallery Categories -->
       <div class="grid grid--2">
         <a href="galerija-povijest.html" class="glass-card" style="text-decoration: none;">
-          <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">📸 Povijest zvjezdarnice</h3>
+          <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Povijest zvjezdarnice</h3>
           <p style="color: var(--text-secondary);">Povijesne fotografije Pulske zvjezdarnice kroz godine.</p>
           <span style="color: var(--accent-secondary); font-size: 0.9rem;">45 fotografija →</span>
         </a>
 
         <a href="astrofotografija.html" class="glass-card" style="text-decoration: none;">
-          <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">🌌 Astrofotografije</h3>
+          <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Astrofotografije</h3>
           <p style="color: var(--text-secondary);">Astrofotografije snimljene od članova društva.</p>
           <span style="color: var(--accent-secondary); font-size: 0.9rem;">Mjesec, Mars, Jupiter, Saturn i više →</span>
         </a>
 
+        <a href="galerija-aktivnosti.html" class="glass-card" style="text-decoration: none;">
+          <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Slike aktivnosti</h3>
+          <p style="color: var(--text-secondary);">Fotografije objavljene uz predavanja, promatranja i radionice.</p>
+          <span style="color: var(--accent-secondary); font-size: 0.9rem;" id="activity-gallery-teaser">Pogledaj
+            galeriju →</span>
+        </a>
+
         <a href="galerija-posjete.html" class="glass-card" style="text-decoration: none;">
-          <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">🔭 Posjete, promatranja i predavanja</h3>
+          <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Posjete, promatranja i predavanja</h3>
           <p style="color: var(--text-secondary);">Fotografije s posjeta zvjezdarnici, javnih promatranja i predavanja.
           </p>
           <span style="color: var(--accent-secondary); font-size: 0.9rem;">Pogledaj galeriju →</span>
         </a>
 
         <a href="galerija-ostalo.html" class="glass-card" style="text-decoration: none;">
-          <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">📷 Ostale slike</h3>
+          <h3 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Ostale slike</h3>
           <p style="color: var(--text-secondary);">Razne fotografije iz aktivnosti Astronomskog društva.</p>
           <span style="color: var(--accent-secondary); font-size: 0.9rem;">Pogledaj galeriju →</span>
         </a>
@@ -178,12 +190,30 @@
     </div>
   </div>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=20260928"></script>
   <script>
+    // Broj slika aktivnosti na kartici galerije
+    (async () => {
+      const teaser = document.getElementById('activity-gallery-teaser');
+      if (!teaser) return;
+      try {
+        const isSubdir = window.location.pathname.includes('/en/') || window.location.pathname.includes('/it/');
+        const res = await fetch((isSubdir ? '../' : '') + 'data/aktivnosti.json');
+        if (!res.ok) return;
+        const data = await res.json();
+        const count = (data || []).reduce((sum, a) => sum + ((a.images || []).length), 0);
+        if (count > 0) teaser.textContent = count + ' fotografija →';
+      } catch (err) {
+        // Tiho ignoriraj - ostaje zadani tekst
+      }
+    })();
+
     // Upload form for admin
     document.getElementById('upload-form')?.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);
+      const thumb = await makeThumb(formData.get('image'));
+      if (thumb) formData.append('thumb', thumb, 'thumb.jpg');
       const msg = document.getElementById('upload-message');
 
       try {

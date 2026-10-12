@@ -1,5 +1,135 @@
 [
   {
+    "id": 1788159255364,
+    "title": "The 2023 May 20 Queensland Superbolide: Multimodal Observations from Atmospheric Entry to Postdisruption Dust Cloud",
+    "authors": "E. Silber, M. Ronac Giannone, H. Devillepoix, M. Boslough, I. Clemente, L. Schaible, D. Vida, D. Šegon, Y. Ceballos, E. Sansom, L. Tyers, S. Anderson, H. Elbehiri, M. Yamamoto, C. Hetzer, K. Bermingham, H. Branco, H. Tornabene, L. Scamfer, R. Longenbaugh, Y. Nishikawa, and V. Sawal",
+    "abstract": "",
+    "year": 2026,
+    "link": "https://iopscience.iop.org/article/10.3847/1538-3881/ae9285",
+    "type": "link",
+    "dateAdded": "31. 08. 2026."
+  },
+  {
+    "id": 1786113571588,
+    "title": "Localization and Classification of Venusian Volcanoes Using Image Detection Algorithms",
+    "authors": "D. Đuranović; S. Baressi Šegota; I. Lorencin;   Z. Car",
+    "abstract": "",
+    "year": 2023,
+    "link": "https://www.mdpi.com/1424-8220/23/3/1224",
+    "type": "link",
+    "dateAdded": "07. 08. 2026."
+  },
+  {
+    "id": 1781469702286,
+    "title": "Analiza orbita Orionida od 2007. do 2011. godine",
+    "authors": "A. Perkov",
+    "abstract": "",
+    "year": 2013,
+    "link": "radovi-files/1781469702213-_2013__Anton_Perkov_Analiza__orbita_Orionida.pdf",
+    "type": "pdf",
+    "dateAdded": "14. 06. 2026."
+  },
+  {
+    "id": 1781469639978,
+    "title": "Analiza muti-station promatranja radijanata Orionida od 28.9. do 2.11.2009. godine",
+    "authors": "A. Perkov",
+    "abstract": "",
+    "year": 2012,
+    "link": "radovi-files/1781469639952-_2012__Anton_Perkov_-_Analiza_multi-station_radijanata_Orionida_iz_2009._godine.pdf",
+    "type": "pdf",
+    "dateAdded": "14. 06. 2026."
+  },
+  {
+    "id": 1781469607106,
+    "title": "Određivanje položaja radijanta Orionida za noć 22/23.10.2009.",
+    "authors": "A. Perkov",
+    "abstract": "",
+    "year": 2010,
+    "link": "radovi-files/1781469607035-_2010__AntonPerkov_-_Odre__ivanje_polo__aja_radijanta_Orionida.pdf",
+    "type": "pdf",
+    "dateAdded": "14. 06. 2026."
+  },
+  {
+    "id": 1781469559991,
+    "title": "Dnevno Gibanje radijanta Orionida od 17.10 do 1.11.2009. godine",
+    "authors": "A. Perkov",
+    "abstract": "",
+    "year": 2011,
+    "link": "radovi-files/1781469559984-_2011__Anton_Perkov_-_Dnevno_gibanje_radijanta_Orionida_od_17.10._do_1.11._2009._godine.pdf",
+    "type": "pdf",
+    "dateAdded": "14. 06. 2026."
+  },
+  {
+    "id": 1781469501708,
+    "title": "Sustavi praćenja Sunca",
+    "authors": "S. Baressi Šegota",
+    "abstract": "",
+    "year": 2013,
+    "link": "radovi-files/1781469501686-Sustavi_pra__enja_sunca.pdf",
+    "type": "pdf",
+    "dateAdded": "14. 06. 2026."
+  },
+  {
+    "id": 1781469471494,
+    "title": "O varijaciji prosječnih visina meteora",
+    "authors": "S. Baressi Šegota",
+    "abstract": "",
+    "year": 2013,
+    "link": "radovi-files/1781469471422-O_varijaciji_prosje__nih_visina_meteora.pdf",
+    "type": "pdf",
+    "dateAdded": "14. 06. 2026."
+  },
+  {
+    "id": 1781469409217,
+    "title": "Populacijski Indeks Perzeida",
+    "authors": "S. Baressi Šegota",
+    "abstract": "",
+    "year": 2010,
+    "link": "radovi-files/1781469409210-Populaijski_Indeks_Perzeida.pdf",
+    "type": "pdf",
+    "dateAdded": "14. 06. 2026."
+  },
+  {
+    "id": 1781469374870,
+    "title": "Suze Svetog Lovre",
+    "authors": "S. Baressi Šegota",
+    "abstract": "",
+    "year": 2008,
+    "link": "radovi-files/1781469374841-Suze_Svetog_Lovre.pdf",
+    "type": "pdf",
+    "dateAdded": "14. 06. 2026."
+  },
+  {
+    "id": 1781469340581,
+    "title": "Atmosferska scintilacija",
+    "authors": "I. Vrsaljko",
+    "abstract": "",
+    "year": 1981,
+    "link": "radovi-files/1781469340516-Atmosferska_scintilacija___Pula_1980-81.pdf",
+    "type": "pdf",
+    "dateAdded": "14. 06. 2026."
+  },
+  {
+    "id": 1781248268186,
+    "title": "Kako Razlikovati Mikrometeorite od Čestica Zemaljskog Porijekla?",
+    "authors": "M. Šegon",
+    "abstract": "",
+    "year": 2010,
+    "link": "radovi-files/1781248268156-mikrometeoriti-marko.pdf",
+    "type": "pdf",
+    "dateAdded": "12. 06. 2026."
+  },
+  {
+    "id": 1780595876332,
+    "title": "Promatranje pomrčine mjeseca 16.9.1978. iz Pule",
+    "authors": "D. Šegon",
+    "abstract": "",
+    "year": 1978,
+    "link": "radovi-files/1780595876327-IMG-20260404-WA0000.pdf",
+    "type": "pdf",
+    "dateAdded": "04. 06. 2026."
+  },
+  {
     "id": 1774968970156,
     "title": "Meteors in the Near-Infrared as Seen in the Ondrejov Catalogue of Representative Meteor Spectra",
     "authors": "D. Šegon; M. Vukic; M. Šegon; Z. Andreic; P. S. Gural",
