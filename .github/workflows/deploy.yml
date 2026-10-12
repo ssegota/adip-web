@@ -15,43 +15,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0
 
-      # Hosting nema shell pristup, pa se deploya preko FTPS-a.
-      # Mape koje puni admin panel se ne diraju (ni upload ni brisanje).
-      - name: FTPS upload
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          server-dir: repositories/adip-web/
-          exclude: |
-            **/.git*
-            **/.git*/**
-            .github/**
-            deploy/**
-            **/node_modules/**
-            deploy.zip
-            tmp/**
-            data/**
-            galerija/**
-            galerija-slika/**
-            aktivnosti-slike/**
-            radovi-files/**
-            downloads-files/**
-
-      - name: Restart Node aplikacije (Passenger)
+      # Hosting nema shell, a FTP je blokiran za GitHub IP-jeve - deploy ide preko SFTP-a.
+      - name: SFTP deploy
+        env:
+          SSH_TARGET: ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}
         run: |
-          mkdir -p tmp && date > tmp/restart.txt
-          curl -sS --ssl-reqd --ftp-create-dirs -T tmp/restart.txt \
-            -u "${{ secrets.FTP_USER }}:${{ secrets.FTP_PASSWORD }}" \
-            "ftp://${{ secrets.FTP_HOST }}/repositories/adip-web/tmp/restart.txt"
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key && chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "${{ secrets.DEPLOY_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          SSH_KEY=~/.ssh/deploy_key deploy/sftp-deploy.sh
 
       - name: Upozorenje za package.json
         run: |
-          if git diff --name-only HEAD~1 HEAD 2>/dev/null | grep -qE '^package(-lock)?\.json$'; then
+          if git diff --name-only HEAD~1 HEAD | grep -qE '^package(-lock)?\.json$'; then
             echo "::warning::package.json promijenjen - pokreni 'Run NPM Install' u cPanel -> Setup Node.js App"
           fi
 
