@@ -264,7 +264,7 @@
       'style="color:inherit;text-decoration:none;border-bottom:1px dotted rgba(255,255,255,.5)">' +
       'Zajednica tehničke kulture Pula</a><br>' +
       'Glavinićev uspon 1, 52100 Pula - HR<br>' +
-      'Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: 091/214-1966<br>' +
+      'Email: <a href="mailto:tajnik@adip.hr">tajnik@adip.hr</a> | Tel: 091/214-1966<br>' +
       '<span style="color:var(--text-muted)">Tečaj astronomije &middot; priprema za natjecanje &middot; ' +
       'dr. sc. Sandi Baressi Šegota</span>' +
       '</div>';

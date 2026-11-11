@@ -1,7 +1,6 @@
 // Email parts
-const userRaw = "astroistra.pu"; // real user
-const domain1 = "pu";
-const domain2 = "t-com";
+const userRaw = "tajnik"; // real user
+const domain1 = "adip";
 const tld = "hr";
 
 // Phone parts
@@ -10,8 +9,8 @@ const phoneMain = "214-1966";
 
 // Build obfuscated display
 const userObf = userRaw.replace(/\./g, " [dot] ");
-const emailDisplay = `${userObf} [at] ${domain1} [dot] ${domain2} [dot] ${tld}`;
-const emailLink = `${userRaw}@${domain1}.${domain2}.${tld}`;
+const emailDisplay = `${userObf} [at] ${domain1} [dot] ${tld}`;
+const emailLink = `${userRaw}@${domain1}.${tld}`;
 
 const phoneDisplay = `${phoneArea} / ${phoneMain}`;
 const phoneLink = `${phoneArea}${phoneMain.replace(/-/g, "")}`;
