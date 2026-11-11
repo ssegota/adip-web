@@ -25,7 +25,10 @@
       { stupac: 'az', oznaka: 'z', boja: '#a78bfa' }] },
     { id: 'lux', naslov: 'Osvijetljenost (lux)', serije: [{ stupac: 'lux', oznaka: 'lux', boja: '#facc15' }] },
     { id: 'infra', naslov: 'Infrazvuk 0,5–20 Hz (relativno / dBFS, osim ako je kalibrirano)', serije: [{ stupac: 'infra', oznaka: 'infra', boja: '#4ade80' }] },
-    { id: 'p', naslov: 'Tlak zraka (hPa)', serije: [{ stupac: 'p_hpa', oznaka: 'p', boja: '#f472b6' }] }
+    { id: 'p', naslov: 'Tlak zraka (hPa)', serije: [{ stupac: 'p_hpa', oznaka: 'p', boja: '#f472b6' }] },
+    // razina čujnog zvuka (RMS u dBFS po intervalu uzorkovanja, ≤ 0); stupac audio_db postoji od verzije 1.3
+    { id: 'zvuk', naslov: 'Zvuk (dBFS)', serije: [{ stupac: 'audio_db', oznaka: 'zvuk', boja: '#fb7185' }],
+      y: { suggestedMin: -100, suggestedMax: 0 } }
   ];
 
   var $ = function (id) { return document.getElementById(id); };
@@ -623,9 +626,9 @@
                    os.ticks = oznakeOsiX(raspon, os.$korak);
                  },
                  grid: { color: 'rgba(255,255,255,0.06)' } },
-            y: { ticks: { color: '#a0a0b0', callback: function (v, i, oznake) { return brojY(this, v, i, oznake); } },
+            y: Object.assign({ ticks: { color: '#a0a0b0', callback: function (v, i, oznake) { return brojY(this, v, i, oznake); } },
                  afterFit: function (os) { os.width = SIRINA_OSI_Y; },   // ista širina → poravnate osi x
-                 grid: { color: 'rgba(255,255,255,0.06)' } }
+                 grid: { color: 'rgba(255,255,255,0.06)' } }, g.y || {})
           }
         }
       });
