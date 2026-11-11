@@ -137,11 +137,52 @@
   flex-wrap: wrap;
 }
 
+.sz-detalj__akcije { align-items: center; }
+
+.sz-prozor {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.sz-prozor.hidden { display: none; }
+
+.sz-prozor select {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary, #e0e0e0);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 0.25rem 0.4rem;
+  font: inherit;
+}
+
+.sz-prozor option { background: #1a1a2e; }
+
+.sz-graf__nule {
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.sz-graf__nule.hidden { display: none; }
+
+/* vodoravno povlačenje grafa; okomito listanje stranice ostaje pregledniku */
+.sz-graf__platno canvas {
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.sz-graf__platno canvas.vuce { cursor: grabbing; }
+
 .sz-grafovi {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);   /* platno ne smije širiti karticu */
   gap: 1.25rem;
   margin-top: 1rem;
 }
+
+.sz-graf { min-width: 0; }
 
 .sz-graf h3 {
   font-size: 0.95rem;
