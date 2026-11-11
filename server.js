@@ -10,6 +10,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors());
+// Gzip za HTML/CSS/JS/JSON (slike su već komprimirane pa ih middleware preskače).
+// Ako paket još nije instaliran na hostingu (cPanel -> Run NPM Install), server radi i bez njega.
+try {
+    app.use(require('compression')());
+} catch (err) {
+    console.warn('compression nije instaliran - odgovori idu bez gzipa');
+}
 app.use(bodyParser.json());
 // Statika: slike se nikad ne mijenjaju (imena imaju timestamp) pa se smiju dugo keširati;
 // JSON podaci se uvijek provjeravaju da se promjene (npr. brisanje) odmah vide.
