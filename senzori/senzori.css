@@ -296,3 +296,41 @@
 
   .sz-popis-sesija { max-height: 40vh; }
 }
+
+/* ── administracija: stanje prijave ── */
+.sz-admin-traka {
+  margin: -0.25rem 0 0.75rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid rgba(74, 222, 128, 0.4);
+  border-radius: 8px;
+  background: rgba(74, 222, 128, 0.08);
+  font-size: 0.85rem;
+  color: #4ade80;
+}
+
+.sz-link {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--accent-primary);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.sz-prijava-link {
+  display: block;
+  margin: -0.25rem 0 0.75rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.sz-prijava { margin-top: 1rem; max-width: 420px; }
+
+.sz-prijava__red {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.sz-prijava__red .form-input { flex: 1; min-width: 0; }
