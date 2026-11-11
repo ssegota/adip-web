@@ -52,3 +52,11 @@ Službena web stranica Astronomskog društva "Istra" Pula. Projekt obuhvaća inf
 
 ---
 © Astronomsko društvo "Istra" Pula
+
+## Prijava za administraciju
+
+- Prijava: gumb »Prijava« u izborniku (`POST /api/login`). Server postavlja kolačić sesije `adip_sess` (HttpOnly, Secure, SameSite=Strict); vrijedi 12 h bez aktivnosti, najviše 7 dana.
+- Promjena lozinke: ikona ključa uz »Odjava« ili izravno `/user/password.html` (traži trenutnu lozinku; ostale prijave se odjavljuju).
+- Svaki zahtjev koji mijenja podatke traži prijavu, osim izričito javnih (`PUBLIC_WRITES` u `lib/auth.js`). Kôd: `lib/auth.js`.
+- Podaci prijave su u `data/.auth/` na serveru (samo scrypt hash, ne lozinka) — ne deployaju se i nisu dostupni preko weba. Ako se `data/.auth/users.json` obriše, pri idućem pokretanju vraća se početni račun.
+- Test: `node scripts/test-auth.js`.

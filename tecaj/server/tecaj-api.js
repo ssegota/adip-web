@@ -5,7 +5,7 @@
    Registrira dva poziva na postojeći Express `app`:
 
      GET  /api/tecaj-vidljivost   → trenutno stanje (za sinkronizaciju ploče)
-     POST /api/tecaj-vidljivost   → zapiši novo stanje (traži token)
+     POST /api/tecaj-vidljivost   → zapiši novo stanje (traži prijavu)
 
    POST zapisuje tecaj/data/vidljivost.js — datoteku koju stranice tečaja
    učitavaju običnom <script> oznakom. Zato izmjena odmah vrijedi za
@@ -31,10 +31,8 @@ const JSON_FILE = path.join(DATA_DIR, 'vidljivost.json');
 module.exports = function registrirajTecajApi(app, opcije) {
   opcije = opcije || {};
 
-  /* Isti token koji /api/login u server.js vraća pri uspješnoj prijavi.
-     Ako ga tamo promijeniš, proslijedi novi:
-         require('./tecaj/server/tecaj-api')(app, { token: 'novi-token' }); */
-  const TOKEN = opcije.token || 'fake-jwt-token-adip';
+  /* Prijavu (kolačić sesije) provjerava zajednički middleware u server.js
+     (lib/auth.js) za SVAKI POST — ovdje se više ne provjerava nikakav token. */
 
   /* Prihvati samo oblik { brojLekcije: boolean }. Sve drugo se odbacuje —
      da poziv izvana ne može upisati bilo što u datoteku koja se izvršava
@@ -94,10 +92,6 @@ module.exports = function registrirajTecajApi(app, opcije) {
 
   app.post('/api/tecaj-vidljivost', function (req, res) {
     const tijelo = req.body || {};
-
-    if (tijelo.token !== TOKEN) {
-      return res.status(401).json({ success: false, message: 'Nije dopušteno — prijavi se ponovno.' });
-    }
 
     const vid = ocisti(tijelo.vidljivost);
     if (!Object.keys(vid).length) {
