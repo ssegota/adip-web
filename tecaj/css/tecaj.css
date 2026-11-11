@@ -1319,11 +1319,10 @@ select option {
 }
 
 /* =========================================
-   Pristup: PIN vrata, urednički način
+   Pristup: skrivene lekcije, urednički način
    ========================================= */
 
-/* Dok PIN nije unesen, sadržaj se ne prikazuje.
-   Klasu postavlja mali skript u <head> svake stranice, pa nema bljeska. */
+/* Skrivena lekcija: sadržaj se ne prikazuje posjetitelju (postavlja zabrana() u js/tecaj.js). */
 html.tecaj-zakljucano body>main,
 html.tecaj-zakljucano body>.header,
 html.tecaj-zakljucano body>.footer,
