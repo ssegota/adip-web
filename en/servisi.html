@@ -7,47 +7,13 @@
   <title>Services - Astronomical Society "Istra" Pula</title>
   <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
   <link rel="stylesheet" href="../css/modern.css?v=20260928">
+  <link rel="stylesheet" href="../css/servisi-ui.css?v=20261111">
 
   <!-- External Libraries for Widgets -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/suncalc/1.9.0/suncalc.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
 
   <style>
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .service-card {
-      padding: 1.5rem;
-      border-radius: var(--radius-lg);
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 180px;
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--accent-primary);
-    }
-
-    .service-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .service-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-
     /* Modal Styles */
     .modal-overlay.active {
       display: flex;
@@ -377,6 +343,10 @@
   <script src="../js/sateliti.js?v=1"></script>
   <script src="../js/sunce.js?v=1"></script>
   <script src="../js/oprema.js?v=1"></script>
+
+  <!-- Izgled kartica, ikone, kategorije i pretraživanje -->
+  <script src="../js/ikone.js?v=20261111"></script>
+  <script src="../js/servisi-ui.js?v=20261111"></script>
 
   <script>
     // Handle Login Modal Close from Main.js trigger
