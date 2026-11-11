@@ -300,7 +300,8 @@ function escapeHtml(str) {
 /*
  * Thumbnail slike iz galerije/aktivnosti je <mapa>/thumbs/<ime>.jpg.
  * Nastaje pri uploadu (makeThumb, u pregledniku) ili skriptom scripts/generate-thumbs.sh.
- * Prikazi koriste thumbnail, a original se učitava tek u lightboxu.
+ * Prikazi koriste thumbnail, lightbox kopiju za prikaz (displayUrl), a original
+ * se otvara tek gumbom »Puna rezolucija«.
  * Ako thumbnail ne postoji, <img> se sam vrati na original.
  */
 const THUMB_SIZE = 400; // kraća stranica, px
@@ -310,6 +311,22 @@ function thumbUrl(src) {
     if (!/^\/?(galerija|aktivnosti-slike)\//.test(s)) return s;
     const i = s.lastIndexOf('/');
     return s.slice(0, i + 1) + 'thumbs/' + s.slice(i + 1).replace(/\.[^.]+$/, '') + '.jpg';
+}
+
+/*
+ * Kopija za prikaz u lightboxu: <mapa>/display/<ime>.jpg (duža stranica <= 2560 px).
+ * Radi je server (upload + pozadinski backfill, lib/display-copies.js). Ako ne postoji
+ * (još nije napravljena ili je original već malen), lightbox se vrati na original.
+ * Prima i relativne putanje (../galerija/...) i apsolutne URL-ove istog sitea.
+ */
+function displayUrl(src) {
+    const s = String(src || '');
+    const m = s.match(/^((?:https?:\/\/[^/]+)?(?:\.\.\/)*\/?)((?:galerija|aktivnosti-slike)\/.*)$/);
+    if (!m) return s;
+    const rest = m[2];
+    const i = rest.lastIndexOf('/');
+    if (/\.(gif|svg)$/i.test(rest)) return s;
+    return m[1] + rest.slice(0, i + 1) + 'display/' + rest.slice(i + 1).replace(/\.[^./]+$/, '') + '.jpg';
 }
 
 function setThumbSrc(img, src) {
@@ -1876,6 +1893,23 @@ function initLightbox() {
     const prevBtn = lightbox.querySelector('.lightbox__nav--prev');
     const nextBtn = lightbox.querySelector('.lightbox__nav--next');
 
+    // Gumb »Puna rezolucija« (otvara original u novoj kartici). Dodaje se i na
+    // stranice koje lightbox imaju u statičnom HTML-u.
+    if (!lightbox.querySelector('.lightbox__full')) {
+        const full = document.createElement('a');
+        full.className = 'lightbox__full';
+        full.id = 'lightbox-full';
+        full.target = '_blank';
+        full.rel = 'noopener';
+        full.innerHTML = '<svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>'
+            + '<span class="lightbox__full-label"></span><span class="lightbox__full-size"></span>';
+        full.querySelector('.lightbox__full-label').textContent =
+            tr({ hr: 'Puna rezolucija', en: 'Full resolution', it: 'Risoluzione piena' });
+        const content = lightbox.querySelector('.lightbox__content') || lightbox;
+        const caption = content.querySelector('.lightbox__caption');
+        content.insertBefore(full, caption || null);
+    }
+
     if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
     if (prevBtn) prevBtn.addEventListener('click', () => navigateLightbox(-1));
     if (nextBtn) nextBtn.addEventListener('click', () => navigateLightbox(1));
@@ -1950,15 +1984,63 @@ function updateLightboxImage() {
     const counterEl = document.getElementById('lightbox-counter');
 
     if (imgEl) {
-        imgEl.src = src;
+        // Prvo kopija za prikaz; ako je nema (404), original
+        const display = displayUrl(src);
+        imgEl.onerror = display === src ? null : function () {
+            if (imgEl.getAttribute('src') !== display) return; // već je druga slika
+            imgEl.onerror = null;
+            imgEl.src = src;
+        };
+        imgEl.src = display;
         imgEl.alt = desc || '';
     }
+    updateLightboxFullLink(src);
     if (capEl) capEl.textContent = desc || '';
     if (counterEl) {
         counterEl.textContent = lightboxImages.length > 1
             ? `${currentImageIndex + 1} / ${lightboxImages.length}`
             : '';
     }
+}
+
+// Veličine originala (HEAD zahtjev, jednom po slici) za natpis na gumbu
+const lightboxSizeCache = new Map();
+
+function formatFileSize(bytes) {
+    if (!(bytes > 0)) return '';
+    const lang = getCurrentLang();
+    const locale = lang === 'en' ? 'en-GB' : (lang === 'it' ? 'it-IT' : 'hr-HR');
+    const mb = bytes / (1024 * 1024);
+    if (mb >= 1) return mb.toLocaleString(locale, { maximumFractionDigits: mb >= 10 ? 0 : 1 }) + ' MB';
+    return Math.max(1, Math.round(bytes / 1024)) + ' KB';
+}
+
+function updateLightboxFullLink(src) {
+    const link = document.getElementById('lightbox-full');
+    if (!link) return;
+    const label = tr({ hr: 'Puna rezolucija', en: 'Full resolution', it: 'Risoluzione piena' });
+    const hint = tr({ hr: 'otvara original u novoj kartici', en: 'opens the original in a new tab', it: 'apre l\'originale in una nuova scheda' });
+    link.href = src;
+    const sizeEl = link.querySelector('.lightbox__full-size');
+    const setSize = bytes => {
+        if (link.getAttribute('href') !== src) return; // u međuvremenu druga slika
+        const size = formatFileSize(bytes);
+        if (sizeEl) sizeEl.textContent = size ? ` (${size})` : '';
+        link.setAttribute('aria-label', `${label}${size ? ', ' + size : ''} – ${hint}`);
+    };
+    setSize(lightboxSizeCache.get(src));
+    if (lightboxSizeCache.has(src)) return;
+    let url;
+    try { url = new URL(src, location.href); } catch (e) { return; }
+    if (url.origin !== location.origin) return;
+    lightboxSizeCache.set(src, 0);
+    fetch(url.href, { method: 'HEAD' })
+        .then(r => {
+            const len = r.ok ? parseInt(r.headers.get('Content-Length'), 10) : 0;
+            lightboxSizeCache.set(src, len || 0);
+            setSize(len);
+        })
+        .catch(() => { /* bez veličine */ });
 }
 
 // Load gallery from JSON

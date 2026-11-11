@@ -3,6 +3,7 @@
 # Rezultat: <mapa>/thumbs/<ime>.jpg - isti format koji stvara upload u pregledniku.
 # Postojeći thumbnailovi se preskaču; pokreni ponovno nakon ručnog dodavanja slika.
 # Potreban ImageMagick (convert ili magick).
+# Kopije za prikaz u lightboxu (display/, <= 2560 px): node scripts/generate-display.js
 set -euo pipefail
 cd "$(dirname "$0")/.."
 

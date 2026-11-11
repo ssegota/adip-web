@@ -1107,6 +1107,40 @@ option {
     font-size: 0.8rem;
 }
 
+/* Gumb »Puna rezolucija« - otvara original u novoj kartici */
+.lightbox__full {
+    margin-top: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 40px;
+    padding: 0.4rem 1rem;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-xl);
+    color: white;
+    font-size: 0.85rem;
+    text-decoration: none;
+    opacity: 0.85;
+    transition: var(--transition-fast);
+}
+
+.lightbox__full:hover,
+.lightbox__full:focus-visible {
+    opacity: 1;
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+}
+
+.lightbox__full:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+.lightbox__full-size {
+    opacity: 0.75;
+}
+
 /* Category Pills */
 .category-pills {
     display: flex;

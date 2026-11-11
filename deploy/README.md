@@ -11,6 +11,13 @@ Hosting nema shell pristup, a FTP je blokiran za GitHub IP-jeve, pa deploy ide p
 4. Provjeri da https://adip.hr/ vraća 200.
 5. Ako se promijenio `package.json`: cPanel → Setup Node.js App → Run NPM Install (ručno).
 
+## Kopije slika za lightbox (`display/`)
+Server sam radi umanjene kopije (≤ 2560 px) slika iz `galerija/` i `aktivnosti-slike/`
+(`lib/display-*.js`): pri uploadu i pozadinski nakon svakog restarta (samo one koje fale).
+Treba npm paket `sharp` (Run NPM Install); bez njega lightbox jednostavno prikazuje original.
+Stanje: https://adip.hr/api/version → `display` (engine, backfill, made, failed, lastError).
+Mape `display/` nisu u gitu.
+
 Ručni deploy s lokalnog računala (bez GitHuba):
 
     SSH_KEY=~/Documents/ADIP/adip_deploy SSH_TARGET=adip@adip.hr KNOWN_HOSTS=~/Documents/ADIP/adip_known_hosts deploy/sftp-deploy.sh
