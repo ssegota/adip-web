@@ -140,9 +140,10 @@ lekcija ne „blijesne“ prije upita.
 
 ## 5. Urednički način: uključivanje i isključivanje lekcija
 
-Prijava koristi **isti račun i isti mehanizam kao glavna stranica** — korisničko ime
-`admin`, lozinka `adip2026`, a stanje se pamti u `localStorage` pod ključem
-`adip_token`. Zato: ako ste prijavljeni na glavnoj stranici, u tečaju ste prijavljeni
+Prijava koristi **isti račun i isti mehanizam kao glavna stranica** (korisničko ime
+`admin`, lozinka se mijenja na `/user/password.html`). Sesija je u HttpOnly kolačiću
+`adip_sess` koji provjerava server; u `localStorage` pod ključem `adip_token` je samo
+oznaka za sučelje. Zato: ako ste prijavljeni na glavnoj stranici, u tečaju ste prijavljeni
 automatski, i obrnuto.
 
 Prijaviti se možete gumbom **Prijava** na dnu izbornika tečaja ili poveznicom

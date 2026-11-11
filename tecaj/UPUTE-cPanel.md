@@ -10,7 +10,7 @@ Trebaš:
 
 - pristup **cPanelu** za adip.hr
 - mapu **`ZA-UPLOAD/tecaj`** (ili `tecaj.zip`)
-- PIN tečaja: **1973** · urednički račun: **admin / adip2026**
+- PIN tečaja: **1973** · urednički račun: **admin** (lozinka kao za administraciju stranice)
 
 ---
 
@@ -147,7 +147,7 @@ stajati **Tečaj astronomije** i voditi na tečaj.
 
 ## Korak 6 — Provjeri urednički način
 
-1. U tečaju otvori izbornik → **Prijava** (dolje) → `admin` / `adip2026`
+1. U tečaju otvori izbornik → **Prijava** (dolje) → `admin` / lozinka administracije
 2. Na naslovnoj tečaja pojavi se ploča **Urednički način** s 16 prekidača
 3. Isključi jednu lekciju za test — kartica posivi i dobije oznaku *skriveno*
 4. Otvori tečaj u **anonimnom prozoru** (Ctrl+Shift+N), upiši PIN → te lekcije nema

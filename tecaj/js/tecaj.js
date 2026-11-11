@@ -396,7 +396,9 @@
 
   var KLJUC_ULAZ = 'tecaj_ulaz';        /* sessionStorage: traje dok je kartica otvorena */
   var KLJUC_VID = 'tecaj_vidljivost';   /* localStorage: uredničke izmjene, samo lokalno */
-  var KLJUC_TOKEN = 'adip_token';       /* isti kljuc kao glavna stranica */
+  /* Isti ključ kao glavna stranica. Sadrži samo oznaku '1' — pravi token sesije
+     je u HttpOnly kolačiću koji šalje preglednik, a provjerava server. */
+  var KLJUC_TOKEN = 'adip_token';
 
   /* sessionStorage ne radi na svim file:// postavkama — zato zamjena u memoriji */
   var memUlaz = false;
@@ -425,12 +427,16 @@
     try {
       fetch(TECAJ.ROOT + 'api/' + put, {
         method: 'POST',
+        credentials: 'same-origin',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(tijelo)
       }).then(function (r) {
         return r.text().then(function (txt) {
           var d = null;
           try { d = JSON.parse(txt); } catch (e) { }
+          if (r.status === 401 && put !== 'login') {
+            try { localStorage.removeItem(KLJUC_TOKEN); } catch (e) { }
+          }
           if (r.ok && d && d.success) fin(true, d, null);
           else if (d && d.message) fin(false, d, d.message);
           else fin(false, null, 'HTTP ' + r.status);
@@ -443,9 +449,8 @@
 
   /* Zapis vidljivosti na server — vrijedi za sve posjetitelje i sva računala */
   TECAJ.spremiVidljivost = function (o, cb) {
-    var tok = citaj('localStorage', KLJUC_TOKEN);
-    if (!tok) return cb(false, 'niste prijavljeni');
-    apiPoziv('tecaj-vidljivost', { token: tok, vidljivost: o }, function (ok, d, greska) {
+    if (!TECAJ.jeUrednik()) return cb(false, 'niste prijavljeni');
+    apiPoziv('tecaj-vidljivost', { vidljivost: o }, function (ok, d, greska) {
       cb(ok, greska);
     });
   };
@@ -576,25 +581,17 @@
         }, napomena ? 1600 : 600);
       }
 
-      /* Isto kao js/main.js glavne stranice: prvo pravi /api/login, pa token
-         koji server vrati. Bez njega server ne prihvaća zapis vidljivosti. */
+      /* Isto kao js/main.js glavne stranice: /api/login postavlja kolačić sesije */
       apiPoziv('login', { username: u, password: pw }, function (ok, d, greska) {
         if (gumb) gumb.disabled = false;
-        if (ok && d && d.token) {
-          pisi('localStorage', KLJUC_TOKEN, d.token);
+        if (ok) {
+          pisi('localStorage', KLJUC_TOKEN, '1');
           uspjeh();
           return;
         }
-        /* Server nedostupan → lokalna prijava kao rezerva (bez zapisa na server) */
-        if (u === 'admin' && pw === 'adip2026') {
-          pisi('localStorage', KLJUC_TOKEN, 'demo-token');
-          uspjeh('Prijavljeni ste, ali server nije odgovorio (' + (greska || '?') +
-            ') — izmjene će vrijediti samo na ovom računalu.');
-          return;
-        }
         msg.textContent = greska === 'server nedostupan' || greska === 'server ne odgovara'
-          ? 'Server nije dostupan, a podaci nisu ispravni.'
-          : 'Pogrešni podaci!';
+          ? 'Server nije dostupan.'
+          : (d && d.message) || 'Pogrešni podaci!';
         msg.style.color = '#f87171';
       });
     });
@@ -618,7 +615,7 @@
     btn.addEventListener('click', function () {
       if (TECAJ.jeUrednik()) {
         try { localStorage.removeItem(KLJUC_TOKEN); } catch (e) { }
-        location.reload();
+        apiPoziv('logout', {}, function () { location.reload(); });
       } else {
         prijavaModal(function () { location.reload(); });
       }
@@ -836,11 +833,8 @@
       }, 500);
     });
 
-    /* Uvodna poruka: je li server dostupan i jesmo li prijavljeni pravim tokenom */
-    if (citaj('localStorage', KLJUC_TOKEN) === 'demo-token') {
-      poruka('Prijavljeni ste bez servera — izmjene neće doći do posjetitelja. ' +
-        'Odjavite se i prijavite ponovno kad server bude dostupan.', 'bad');
-    } else if (lokalnaVidljivost()) {
+    /* Uvodna poruka: postoji li izmjena koja nije stigla na server */
+    if (lokalnaVidljivost()) {
       poruka('Postoji izmjena koja nije stigla na server. Pomaknite bilo koji prekidač ' +
         'da se pokuša ponovno, ili preuzmite datoteku ispod.', 'bad');
     }
@@ -876,7 +870,20 @@
       ozivi();
       oziviPadajuce();
       oziviPrijavu();
-      if (TECAJ.jeUrednik()) document.body.classList.add('urednik-aktivan');
+      if (TECAJ.jeUrednik()) {
+        document.body.classList.add('urednik-aktivan');
+        /* Oznaka prijave postoji, ali server sesiju više ne priznaje → odjava u sučelju */
+        try {
+          fetch(TECAJ.ROOT + 'api/session', { cache: 'no-store', credentials: 'same-origin' })
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .then(function (d) {
+              if (d && d.authenticated === false) {
+                try { localStorage.removeItem(KLJUC_TOKEN); } catch (e) { }
+                location.reload();
+              }
+            }).catch(function () { });
+        } catch (e) { }
+      }
 
       if (n === null) {
         TECAJ.mrezaLekcija('lesson-grid');

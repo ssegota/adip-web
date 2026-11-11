@@ -282,8 +282,57 @@ let allActivitiesData = [];
 
 /* ==================== Helpers ==================== */
 
+/* Prijava: pravi token sesije je u HttpOnly kolačiću (JS ga ne vidi). U localStorage
+   'adip_token' je samo oznaka '1' da sučelje zna prikazati administraciju; server
+   svaki zahtjev provjerava sam. Kad server javi 401, oznaka se briše. */
+const AUTH_MARKER = 'adip_token';
+
 function isLoggedIn() {
-    return !!localStorage.getItem('adip_token');
+    try { return !!localStorage.getItem(AUTH_MARKER); } catch (e) { return false; }
+}
+
+function clearAuthMarker() {
+    try { localStorage.removeItem(AUTH_MARKER); localStorage.removeItem('adip_pw'); } catch (e) { }
+}
+
+(function installAuthFetch() {
+    if (typeof window.fetch !== 'function' || window.__adipAuthFetch) return;
+    window.__adipAuthFetch = true;
+    const origFetch = window.fetch.bind(window);
+    let warned = false;
+    window.fetch = function (input, init) {
+        return origFetch(input, init).then(res => {
+            try {
+                const url = new URL(typeof input === 'string' ? input : input.url, location.href);
+                if (res.status === 401 && url.origin === location.origin && /^\/api\//.test(url.pathname)
+                    && !/^\/api\/(login|senzori)/.test(url.pathname) && isLoggedIn() && !warned) {
+                    warned = true;
+                    clearAuthMarker();
+                    alert(tr({
+                        hr: 'Sesija je istekla. Prijavite se ponovno.',
+                        en: 'Your session has expired. Please log in again.',
+                        it: 'La sessione è scaduta. Accedi di nuovo.'
+                    }));
+                    location.reload();
+                }
+            } catch (e) { }
+            return res;
+        });
+    };
+})();
+
+// Oznaka prijave postoji, ali server sesiju više ne priznaje -> makni administraciju
+function verifyAuthSession() {
+    if (!isLoggedIn()) return;
+    fetch('/api/session', { cache: 'no-store' })
+        .then(r => r.ok ? r.json() : null)
+        .then(d => {
+            if (d && d.authenticated === false) {
+                clearAuthMarker();
+                location.reload();
+            }
+        })
+        .catch(() => { });
 }
 
 function escapeHtml(str) {
@@ -491,6 +540,7 @@ function renderLocalNotice() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    verifyAuthSession();
     initNavigation();
     initLoginModal();
     initPasswordToggles();
@@ -1011,6 +1061,19 @@ function initWebmailLink() {
     mail.setAttribute('aria-label', 'Webmail');
     mail.innerHTML = '<svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>';
     row.appendChild(mail);
+
+    // Prijavljeni urednik: poveznica za promjenu lozinke
+    if (isLoggedIn()) {
+        const key = document.createElement('a');
+        key.id = 'nav-password';
+        key.className = 'btn btn--secondary nav__webmail';
+        key.href = '/user/password.html';
+        const label = tr({ hr: 'Promijeni lozinku', en: 'Change password', it: 'Cambia password' });
+        key.title = label;
+        key.setAttribute('aria-label', label);
+        key.innerHTML = '<svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3L21 2"/><path d="M16 7l3 3"/><path d="M18 5l2 2"/></svg>';
+        row.appendChild(key);
+    }
 }
 
 // ==================== Login Modal ====================
@@ -1025,12 +1088,13 @@ function initLoginModal() {
     updateLoginButton();
 
     function handleLoginClick() {
-        const token = localStorage.getItem('adip_token');
-        if (token) {
-            localStorage.removeItem('adip_token');
-            localStorage.removeItem('adip_pw');
-            updateLoginButton();
-            window.location.reload();
+        if (isLoggedIn()) {
+            const done = () => {
+                clearAuthMarker();
+                updateLoginButton();
+                window.location.reload();
+            };
+            fetch('/api/logout', { method: 'POST' }).then(done, done);
         } else {
             modal.classList.add('active');
         }
@@ -1067,25 +1131,23 @@ function initLoginModal() {
             loginMessage.textContent = '...';
             loginMessage.style.color = 'var(--text-secondary)';
 
-            let token = null;
+            let ok = false;
+            let errorText = '';
             try {
                 const res = await fetch('/api/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username, password })
                 });
-                const data = await res.json();
-                if (res.ok && data.success) token = data.token;
+                const data = await res.json().catch(() => ({}));
+                ok = res.ok && data.success;
+                if (res.status === 429 && data.message) errorText = data.message;
             } catch (err) {
-                // Server nedostupan - offline demo prijava
-                console.warn('Prijava bez servera:', err);
-                if (username === 'admin' && password === 'adip2026') {
-                    token = 'demo-token';
-                }
+                console.warn('Prijava nije uspjela:', err);
             }
 
-            if (token) {
-                localStorage.setItem('adip_token', token);
+            if (ok) {
+                localStorage.setItem(AUTH_MARKER, '1');
                 loginMessage.textContent = t('loginSuccess');
                 loginMessage.style.color = '#00ff88';
                 setTimeout(() => {
@@ -1094,7 +1156,7 @@ function initLoginModal() {
                     window.location.reload();
                 }, 800);
             } else {
-                loginMessage.textContent = t('loginError');
+                loginMessage.textContent = errorText || t('loginError');
                 loginMessage.style.color = '#ff4444';
             }
         });
@@ -1141,7 +1203,7 @@ function initPasswordToggles() {
 function updateLoginButton() {
     const loginBtn = document.getElementById('login-btn');
     const sidebarLoginBtn = document.getElementById('sidebar-login-btn');
-    const token = localStorage.getItem('adip_token');
+    const token = isLoggedIn();
 
     function updateBtn(btn) {
         if (btn) {

@@ -6,11 +6,30 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 const displayCopies = require('./lib/display-queue');
+const createAuth = require('./lib/auth');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const auth = createAuth();
+
+app.disable('x-powered-by');
+
+// Statika poslužuje cijeli direktorij, pa se ovdje blokira sve što nije za javnost:
+// tajne prijave (data/.auth), kôd servera, node_modules, skripte i datoteke s točkom.
+const PRIVATE_PATH = /^\/(?:node_modules|lib|deploy|scripts|tmp|senzori\/server|tecaj\/server)(?:\/|$)|^\/(?:server\.js|package(?:-lock)?\.json|fix-broken-images\.js|check_images\.py)$/i;
+app.use((req, res, next) => {
+    let p;
+    try { p = decodeURIComponent(req.path); } catch (e) { return res.status(400).end(); }
+    const hidden = p.split('/').some(seg => seg.startsWith('.') && seg !== '.well-known');
+    if (hidden || PRIVATE_PATH.test(p.replace(/\/{2,}/g, '/'))) return res.status(404).send('Not found');
+    next();
+});
 
 app.use(cors());
+// Prijava: svaki zahtjev koji mijenja podatke (POST/PUT/DELETE...) traži valjanu
+// sesiju, osim izričito javnih (lib/auth.js -> PUBLIC_WRITES). Ide prije parsera i
+// multera, pa se neprijavljeni upload ni ne zapisuje na disk.
+app.use(auth.guard);
 // Gzip za HTML/CSS/JS/JSON (slike su već komprimirane pa ih middleware preskače).
 // Ako paket još nije instaliran na hostingu (cPanel -> Run NPM Install), server radi i bez njega.
 try {
@@ -21,7 +40,10 @@ try {
 app.use(bodyParser.json());
 // Statika: slike se nikad ne mijenjaju (imena imaju timestamp) pa se smiju dugo keširati;
 // JSON podaci se uvijek provjeravaju da se promjene (npr. brisanje) odmah vide.
+// .well-known (npr. AutoSSL / ACME provjera) ostaje dostupan kao i prije
+app.use('/.well-known', express.static(path.join(__dirname, '.well-known')));
 app.use(express.static(__dirname, {
+    dotfiles: 'ignore',
     setHeaders: (res, filePath) => {
         if (/\.(jpe?g|png|gif|webp|svg|ico)$/i.test(filePath)) {
             res.setHeader('Cache-Control', 'public, max-age=2592000');
@@ -47,11 +69,28 @@ const storage = multer.diskStorage({
         cb(null, 'galerija-slika/')
     },
     filename: function (req, file, cb) {
-        cb(null, Date.now() + '-' + file.originalname)
+        cb(null, Date.now() + '-' + safeName(file.originalname))
     }
 });
 
-const upload = multer({ storage: storage });
+// Samo slike (bez SVG-a, koji može sadržavati skriptu); ime datoteke bez opasnih znakova
+const IMAGE_EXT = /\.(jpe?g|png|gif|webp|avif|bmp|tiff?)$/i;
+function safeName(name) {
+    return String(name || 'datoteka').replace(/[^a-zA-Z0-9._-]/g, '_').replace(/^\.+/, '_').slice(-120);
+}
+function imageFilter(req, file, cb) {
+    if (file.fieldname === 'thumb' || file.fieldname === 'thumbs') return cb(null, true); // provjerava storeThumb
+    if (/^image\//.test(file.mimetype) && file.mimetype !== 'image/svg+xml' && IMAGE_EXT.test(file.originalname)) return cb(null, true);
+    cb(httpError(400, 'Dopuštene su samo slike (JPG, PNG, GIF, WebP...).'));
+}
+function httpError(status, message) {
+    const e = new Error(message);
+    e.status = status;
+    return e;
+}
+const IMAGE_LIMITS = { fileSize: 64 * 1024 * 1024, files: 8, fields: 20 };
+
+const upload = multer({ storage: storage, fileFilter: imageFilter, limits: IMAGE_LIMITS });
 
 // Thumbnailovi: preglednik ih generira pri uploadu (canvas, JPEG) i šalje uz original.
 // Sprema se kao <mapa-slike>/thumbs/<ime-bez-ekstenzije>.jpg - frontend putanju izvodi iz src-a.
@@ -93,15 +132,8 @@ function deleteImageFile(src, allowedDir) {
     });
 }
 
-// Login Route (Simple/Hardcoded)
-app.post('/api/login', (req, res) => {
-    const { username, password } = req.body;
-    if (username === 'admin' && password === 'adip2026') {
-        res.json({ success: true, token: 'fake-jwt-token-adip' });
-    } else {
-        res.status(401).json({ success: false, message: 'Invalid credentials' });
-    }
-});
+// Prijava / odjava / provjera sesije / promjena lozinke (lib/auth.js)
+auth.install(app);
 
 // Activities API
 const ACTIVITIES_FILE = path.join(__dirname, 'data', 'aktivnosti.json');
@@ -125,6 +157,7 @@ const radoviStorage = multer.diskStorage({
 
 const radoviUpload = multer({
     storage: radoviStorage,
+    limits: { fileSize: 100 * 1024 * 1024, files: 1, fields: 20 },
     fileFilter: function (req, file, cb) {
         // Accept PDF only
         if (file.mimetype === 'application/pdf') {
@@ -145,11 +178,11 @@ const activityImageStorage = multer.diskStorage({
         cb(null, dir);
     },
     filename: function (req, file, cb) {
-        cb(null, Date.now() + '-' + file.originalname);
+        cb(null, Date.now() + '-' + safeName(file.originalname));
     }
 });
 
-const activityUpload = multer({ storage: activityImageStorage });
+const activityUpload = multer({ storage: activityImageStorage, fileFilter: imageFilter, limits: IMAGE_LIMITS });
 const activityFields = activityUpload.fields([
     { name: 'images', maxCount: 3 },
     { name: 'thumbs', maxCount: 3 }
@@ -368,10 +401,13 @@ app.get('/api/galerija', (req, res) => {
 // Gallery upload with category support
 // Top-level gallery categories (not astrofotografija subcategories)
 const topLevelCategories = ['povijest', 'posjete', 'ostalo'];
+const GALLERY_CATEGORY = /^[a-z0-9][a-z0-9-]{0,40}$/;
 
 const galleryStorage = multer.diskStorage({
     destination: function (req, file, cb) {
         const category = req.body.category || 'povijest';
+        // Kategorija ide u putanju - samo mala slova, brojke i crtica (bez ../)
+        if (!GALLERY_CATEGORY.test(category)) return cb(httpError(400, 'Neispravna kategorija.'));
         let dir = 'galerija/';
 
         if (topLevelCategories.includes(category)) {
@@ -386,11 +422,11 @@ const galleryStorage = multer.diskStorage({
         cb(null, dir);
     },
     filename: function (req, file, cb) {
-        cb(null, Date.now() + '-' + file.originalname);
+        cb(null, Date.now() + '-' + safeName(file.originalname));
     }
 });
 
-const galleryUpload = multer({ storage: galleryStorage });
+const galleryUpload = multer({ storage: galleryStorage, fileFilter: imageFilter, limits: IMAGE_LIMITS });
 
 app.post('/api/galerija/upload', galleryUpload.fields([
     { name: 'image', maxCount: 1 },
@@ -719,7 +755,16 @@ const downloadStorage = multer.diskStorage({
     }
 });
 
-const downloadsUpload = multer({ storage: downloadStorage });
+// Preuzimanja: bilo koji dokument, ali ne datoteke koje bi preglednik izvršio na adip.hr
+const DOWNLOAD_BLOCKED_EXT = /\.(html?|xhtml|shtml|svgz?|xml|xsl|js|mjs|php\d?|phtml|cgi|pl|py|sh|htaccess)$/i;
+const downloadsUpload = multer({
+    storage: downloadStorage,
+    limits: { fileSize: 200 * 1024 * 1024, files: 1, fields: 20 },
+    fileFilter: function (req, file, cb) {
+        if (DOWNLOAD_BLOCKED_EXT.test(file.originalname)) return cb(httpError(400, 'Ova vrsta datoteke nije dopuštena.'));
+        cb(null, true);
+    }
+});
 
 // Get all downloads
 app.get('/api/downloads', (req, res) => {
@@ -877,7 +922,7 @@ app.delete('/api/downloads/:id', (req, res) => {
 // Prima se samo za postojeći PDF koji još nema sličicu, samo JPEG do 600 KB.
 const downloadThumbUpload = multer({
     storage: multer.memoryStorage(),
-    limits: { fileSize: 600 * 1024, files: 1 }
+    limits: { fileSize: 600 * 1024, files: 1, fields: 0, parts: 1 }
 });
 
 app.post('/api/downloads/:id/thumbnail', (req, res) => {
@@ -924,6 +969,14 @@ app.post('/api/downloads/:id/thumbnail', (req, res) => {
 // Start Server
 require('./tecaj/server/tecaj-api')(app);
 require('./senzori/server/senzori-api')(app);
+
+// Greške uploada (multer limiti, filtri) -> 400 JSON umjesto HTML stranice s greškom
+app.use((err, req, res, next) => {
+    if (res.headersSent) return next(err);
+    const status = err.status || (err instanceof multer.MulterError ? 400 : 500);
+    if (status >= 500) console.error(err);
+    res.status(status).json({ success: false, message: status >= 500 ? 'Greška na serveru' : err.message });
+});
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
     // Pozadinski: kopije za prikaz za slike koje ih još nemaju (ne blokira zahtjeve)
