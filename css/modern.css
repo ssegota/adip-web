@@ -304,6 +304,38 @@ a:hover {
     width: 100%;
 }
 
+/* Prijava + webmail u istom retku */
+.nav__account {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.nav__account .nav__login {
+    margin-top: 0;
+    flex: 1;
+    width: auto;
+    justify-content: center;
+}
+
+.nav__webmail {
+    flex: 0 0 auto;
+    justify-content: center;
+    padding: 0 1rem;
+    color: var(--text-primary);
+}
+
+.nav__webmail:hover {
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.nav__webmail:focus-visible,
+.nav__account .nav__login:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
 /* Sidebar Overlay */
 .nav-overlay {
     position: fixed;

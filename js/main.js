@@ -985,6 +985,32 @@ function initNavigation() {
             link.addEventListener('click', closeNav);
         });
     }
+
+    initWebmailLink();
+}
+
+// Gumb za webmail (Roundcube) uz "Prijava" u izborniku
+const WEBMAIL_URL = 'https://webmail.adip.hr/';
+
+function initWebmailLink() {
+    const loginBtn = document.getElementById('sidebar-login-btn');
+    if (!loginBtn || document.getElementById('nav-webmail')) return;
+
+    const row = document.createElement('div');
+    row.className = 'nav__account';
+    loginBtn.parentNode.insertBefore(row, loginBtn);
+    row.appendChild(loginBtn);
+
+    const mail = document.createElement('a');
+    mail.id = 'nav-webmail';
+    mail.className = 'btn btn--secondary nav__webmail';
+    mail.href = WEBMAIL_URL;
+    mail.target = '_blank';
+    mail.rel = 'noopener';
+    mail.title = 'Webmail';
+    mail.setAttribute('aria-label', 'Webmail');
+    mail.innerHTML = '<svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>';
+    row.appendChild(mail);
 }
 
 // ==================== Login Modal ====================
