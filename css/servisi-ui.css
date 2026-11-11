@@ -1,0 +1,396 @@
+/* =====================================================================
+   Servisi - kartice s ikonama, kategorije, pretraživanje
+   (uz js/servisi-ui.js i js/ikone.js)
+   ===================================================================== */
+
+.ikona {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}
+
+/* --- Boje kategorija ------------------------------------------------- */
+.svc-card.svc-kat-nebo, .svc-chip.svc-kat-nebo    { --cat: #a78bfa; --cat-rgb: 167, 139, 250; }
+.svc-card.svc-kat-vrijeme, .svc-chip.svc-kat-vrijeme { --cat: #38bdf8; --cat-rgb: 56, 189, 248; }
+.svc-card.svc-kat-alati, .svc-chip.svc-kat-alati   { --cat: #fbbf24; --cat-rgb: 251, 191, 36; }
+.svc-card.svc-kat-igre, .svc-chip.svc-kat-igre    { --cat: #34d399; --cat-rgb: 52, 211, 153; }
+
+/* --- Traka: pretraga + filtri --------------------------------------- */
+.svc-toolbar {
+  position: sticky;
+  top: 72px;
+  z-index: 20;
+  margin: 0 auto 1.75rem;
+  padding: 0.85rem;
+  border-radius: var(--radius-lg);
+  background: rgba(12, 12, 20, 0.72);
+  border: 1px solid var(--border-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.6);
+}
+
+.svc-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.svc-search-icon {
+  position: absolute;
+  left: 1rem;
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+.svc-search-input {
+  width: 100%;
+  padding: 0.85rem 5.5rem 0.85rem 2.9rem;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.svc-search-input::-webkit-search-cancel-button { display: none; }
+.svc-search-input::placeholder { color: var(--text-muted); }
+
+.svc-search-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.15);
+}
+
+.svc-kbd {
+  position: absolute;
+  right: 0.9rem;
+  min-width: 1.6rem;
+  padding: 0.1rem 0.45rem;
+  font: 600 0.8rem/1.4 inherit;
+  font-family: inherit;
+  text-align: center;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-glass);
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.svc-search-input:focus ~ .svc-kbd,
+.svc-search-clear:not([hidden]) ~ .svc-kbd { display: none; }
+
+.svc-search-clear {
+  position: absolute;
+  right: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.svc-search-clear:hover,
+.svc-search-clear:focus-visible { color: var(--text-primary); background: rgba(255, 255, 255, 0.08); outline: none; }
+.svc-search-clear[hidden] { display: none; }
+
+/* kbd stoji desno; kad je gumb za brisanje vidljiv, kbd se skriva (vidi gore) */
+.svc-search .svc-kbd { order: 2; }
+
+.svc-filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.svc-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.svc-chip {
+  --cat: var(--accent-primary);
+  --cat-rgb: 0, 212, 255;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.8rem 0.4rem 0.9rem;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-glass);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), opacity var(--transition-fast);
+}
+
+.svc-chip::before {
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--cat);
+}
+.svc-chip[data-kat="sve"]::before { display: none; }
+
+.svc-chip:hover { color: var(--text-primary); border-color: rgba(var(--cat-rgb), 0.5); }
+.svc-chip:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
+
+.svc-chip[aria-pressed="true"] {
+  color: var(--text-primary);
+  background: rgba(var(--cat-rgb), 0.16);
+  border-color: rgba(var(--cat-rgb), 0.6);
+}
+
+.svc-chip.is-empty { opacity: 0.45; }
+
+.svc-chip-n {
+  min-width: 1.35rem;
+  padding: 0 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.35rem;
+  text-align: center;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 999px;
+}
+
+.svc-count {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+/* --- Mreža i kartice ------------------------------------------------- */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr));
+  gap: 1.25rem;
+}
+
+#user-services-grid:not(:empty) { margin-top: 1.25rem; }
+
+.svc-card {
+  --cat: var(--accent-primary);
+  --cat-rgb: 0, 212, 255;
+}
+
+.service-card.svc-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0.9rem;
+  min-height: 0;
+  padding: 1.25rem 1.25rem 1.15rem;
+  text-align: left;
+  cursor: pointer;
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(120% 80% at 0% 0%, rgba(var(--cat-rgb), 0.10), transparent 55%),
+    rgba(18, 18, 30, 0.62);
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  transition: transform var(--transition-smooth), border-color var(--transition-fast), box-shadow var(--transition-smooth), background var(--transition-fast);
+}
+
+/* tanka linija boje kategorije na vrhu kartice */
+.service-card.svc-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cat), transparent 70%);
+  opacity: 0.55;
+  transition: opacity var(--transition-fast);
+}
+
+.service-card.svc-card:hover,
+.service-card.svc-card:focus-visible {
+  transform: translateY(-4px);
+  border-color: rgba(var(--cat-rgb), 0.55);
+  box-shadow: 0 22px 45px -20px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(var(--cat-rgb), 0.15), 0 0 32px -8px rgba(var(--cat-rgb), 0.35);
+  outline: none;
+}
+.service-card.svc-card:hover::before,
+.service-card.svc-card:focus-visible::before { opacity: 1; }
+
+.service-card.svc-card:focus-visible {
+  box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px rgba(var(--cat-rgb), 0.9);
+}
+
+.service-card.svc-card[hidden] { display: none !important; }
+
+.svc-head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.svc-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.9rem;
+  height: 2.9rem;
+  font-size: 1.45rem;
+  color: var(--cat);
+  background: rgba(var(--cat-rgb), 0.12);
+  border: 1px solid rgba(var(--cat-rgb), 0.28);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: background var(--transition-fast), transform var(--transition-smooth);
+}
+
+.svc-card:hover .svc-badge,
+.svc-card:focus-visible .svc-badge {
+  background: rgba(var(--cat-rgb), 0.2);
+  transform: scale(1.05);
+}
+
+.svc-badge-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.svc-badge--logo { background: rgba(255, 255, 255, 0.92); border-color: rgba(255, 255, 255, 0.4); }
+.svc-badge--logo .svc-badge-img { object-fit: contain; padding: 0.25rem; }
+.svc-card:hover .svc-badge--logo { background: #fff; }
+
+.svc-head-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.svc-cat {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cat);
+  opacity: 0.9;
+}
+
+.svc-card .service-title {
+  margin: 0.1rem 0 0;
+  font-size: 1.08rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-primary);
+  text-align: left;
+}
+
+.svc-arrow {
+  align-self: flex-start;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  opacity: 0.6;
+  transition: color var(--transition-fast), opacity var(--transition-fast), transform var(--transition-smooth);
+}
+.svc-card:hover .svc-arrow,
+.svc-card:focus-visible .svc-arrow {
+  color: var(--cat);
+  opacity: 1;
+  transform: translate(2px, -2px);
+}
+
+.svc-desc {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.svc-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 0.25rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--cat);
+}
+.svc-cta .ikona { transition: transform var(--transition-smooth); }
+.svc-card:hover .svc-cta .ikona { transform: translateX(3px); }
+
+/* Kartice s podacima uživo (Sunce i Mjesec, plima, uvjeti...) */
+.svc-card--widget .widget-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.75rem 0.9rem;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+}
+
+.svc-card--widget .astro-stat { padding: 0.45rem 0; border-bottom-color: rgba(255, 255, 255, 0.07); }
+.svc-card--widget .astro-stat > span:first-child { color: var(--text-secondary); font-size: 0.9rem; }
+.svc-card--widget .astro-value { color: var(--cat); }
+
+/* --- Nema rezultata -------------------------------------------------- */
+.svc-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  color: var(--text-secondary);
+}
+.svc-empty[hidden] { display: none; }
+.svc-empty-icon { font-size: 2.5rem; color: var(--text-muted); }
+
+/* --- Mobitel --------------------------------------------------------- */
+@media (max-width: 768px) {
+  .svc-toolbar { top: 64px; padding: 0.65rem; margin-bottom: 1.25rem; }
+  .svc-kbd { display: none; }
+  .svc-filters { flex-direction: column; align-items: stretch; gap: 0.5rem; }
+  .svc-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin: 0 -0.65rem;
+    padding: 0 0.65rem 0.1rem;
+  }
+  .svc-chips::-webkit-scrollbar { display: none; }
+  .svc-chip { flex-shrink: 0; }
+  .svc-count { align-self: flex-end; }
+  .services-grid { gap: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card.svc-card,
+  .svc-badge,
+  .svc-arrow,
+  .svc-cta .ikona { transition: none; }
+  .service-card.svc-card:hover,
+  .service-card.svc-card:focus-visible { transform: none; }
+}
