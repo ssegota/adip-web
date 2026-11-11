@@ -855,9 +855,69 @@ app.delete('/api/downloads/:id', (req, res) => {
             } catch (e) {
                 console.error("Error deleting physical file:", e);
             }
+            // ...i njezinu sličicu
+            try {
+                const thumb = fileToDelete.thumbnailPath || '';
+                if (thumb.startsWith('downloads-files/thumbnails/')) {
+                    const thumbPath = path.join(__dirname, thumb);
+                    if (fs.existsSync(thumbPath)) fs.unlinkSync(thumbPath);
+                }
+            } catch (e) {
+                console.error("Error deleting thumbnail:", e);
+            }
 
             res.json({ success: true });
         });
+    });
+});
+
+// Sličica PDF-a iscrtana u pregledniku (pdf.js, downloads.js). Hosting nema
+// pdftoppm, pa prvi posjetitelj koji iscrta prvu stranicu pošalje JPEG ovamo,
+// a svi ostali dalje dobivaju gotovu malu sliku umjesto skidanja PDF-a.
+// Prima se samo za postojeći PDF koji još nema sličicu, samo JPEG do 600 KB.
+const downloadThumbUpload = multer({
+    storage: multer.memoryStorage(),
+    limits: { fileSize: 600 * 1024, files: 1 }
+});
+
+app.post('/api/downloads/:id/thumbnail', (req, res) => {
+    downloadThumbUpload.single('thumbnail')(req, res, (uploadErr) => {
+        if (uploadErr) return res.status(400).json({ success: false, message: 'Invalid upload' });
+        const buf = req.file && req.file.buffer;
+        // JPEG počinje s FF D8 FF
+        if (!buf || buf.length < 100 || buf[0] !== 0xFF || buf[1] !== 0xD8 || buf[2] !== 0xFF) {
+            return res.status(400).json({ success: false, message: 'JPEG required' });
+        }
+
+        let downloads;
+        try {
+            downloads = JSON.parse(fs.readFileSync(DOWNLOADS_FILE, 'utf8'));
+        } catch (e) {
+            return res.status(500).json({ success: false });
+        }
+
+        const fileId = parseInt(req.params.id, 10);
+        const entry = downloads.find(f => f.id === fileId);
+        if (!entry || String(entry.fileType).toLowerCase() !== 'pdf') {
+            return res.status(404).json({ success: false });
+        }
+        if (entry.thumbnailPath && fs.existsSync(path.join(__dirname, entry.thumbnailPath))) {
+            return res.status(409).json({ success: false, thumbnailPath: entry.thumbnailPath });
+        }
+
+        try {
+            const thumbDir = path.join(__dirname, 'downloads-files', 'thumbnails');
+            fs.mkdirSync(thumbDir, { recursive: true });
+            const base = path.basename(entry.filePath).replace(/\.pdf$/i, '').replace(/[^a-zA-Z0-9._-]/g, '_');
+            const rel = 'downloads-files/thumbnails/' + base + '-thumb.jpg';
+            fs.writeFileSync(path.join(__dirname, rel), buf);
+            entry.thumbnailPath = rel;
+            fs.writeFileSync(DOWNLOADS_FILE, JSON.stringify(downloads, null, 2));
+            res.json({ success: true, thumbnailPath: rel });
+        } catch (e) {
+            console.error('Error saving download thumbnail:', e);
+            res.status(500).json({ success: false });
+        }
     });
 });
 
