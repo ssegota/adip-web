@@ -10,7 +10,7 @@ Trebaš:
 
 - pristup **cPanelu** za adip.hr
 - mapu **`ZA-UPLOAD/tecaj`** (ili `tecaj.zip`)
-- PIN tečaja: **1973** · urednički račun: **admin** (lozinka kao za administraciju stranice)
+- urednički račun: **admin** (lozinka kao za administraciju stranice)
 
 ---
 
@@ -80,8 +80,8 @@ Otvori u pregledniku:
 https://adip.hr/tecaj/
 ```
 
-Trebaš dobiti **zaslon s PIN-om**. Upiši `1973` → otvara se popis 16 lekcija.
-Otvori bilo koju lekciju: PIN se **ne** traži ponovno, grafovi rade, PDF se preuzima.
+Trebaš odmah dobiti popis 16 lekcija (tečaj je javan, bez PIN-a).
+Otvori bilo koju lekciju: grafovi rade, PDF se preuzima.
 
 Ako umjesto toga dobiješ 404 ili popis datoteka, mapa je na pogrešnom mjestu — vrati se
 na Korak 2.
@@ -150,7 +150,7 @@ stajati **Tečaj astronomije** i voditi na tečaj.
 1. U tečaju otvori izbornik → **Prijava** (dolje) → `admin` / lozinka administracije
 2. Na naslovnoj tečaja pojavi se ploča **Urednički način** s 16 prekidača
 3. Isključi jednu lekciju za test — kartica posivi i dobije oznaku *skriveno*
-4. Otvori tečaj u **anonimnom prozoru** (Ctrl+Shift+N), upiši PIN → te lekcije nema
+4. Otvori tečaj u **anonimnom prozoru** (Ctrl+Shift+N) → te lekcije nema
 
 Prekidači djeluju **samo na tvom računalu**, za pregled. Da vrijede za sve:
 
@@ -161,16 +161,11 @@ Prekidači djeluju **samo na tvom računalu**, za pregled. Da vrijede za sve:
 
 ---
 
-## Korak 7 (neobavezno) — Zaštiti PDF-ove
+## Korak 7 — Licenca
 
-PIN je mekana brana: PDF-ovi su dohvatljivi izravno na
-`https://adip.hr/tecaj/pdf/01-….pdf`. Ako to ne želiš:
-
-cPanel → **Directory Privacy** → uđi u `public_html/tecaj` → označi mapu **`pdf`** →
-*Password protect this directory* → dodaj korisnika i lozinku → **Save**
-
-Nakon toga preglednik će za PDF tražiti tu lozinku. Tečaj i dalje radi normalno,
-samo se preuzimanje prezentacije dodatno pita.
+Tečaj je javan i objavljen pod licencom **CC BY-NC 4.0** (dijeljenje i prilagodba uz
+navođenje autora i društva, isključivo nekomercijalno). PDF-ove zato nije potrebno
+zaštićivati lozinkom.
 
 ---
 
@@ -181,7 +176,6 @@ samo se preuzimanje prezentacije dodatno pita.
 | `/tecaj/` daje 404 | mapa nije u istoj razini kao `index.html` — provjeri Korak 2 |
 | Stranica bez stilova, gola slova | nedostaje `tecaj/css/tecaj.css` — raspakiraj ZIP ponovno |
 | Nema pozadinske slike i loga | normalno ako `background.png` nije u korijenu; sve ostalo radi |
-| PIN se traži na svakoj lekciji | preglednik blokira `sessionStorage` (strogi privatni način) |
 | Grafovi se ne crtaju | JavaScript je isključen ili blokiran dodatkom |
 | Promijenio sam `vidljivost.js`, ne vidi se | Ctrl+Shift+R (tvrdo osvježavanje) |
 | Poveznica u izborniku dvaput | pokrenuo si skriptu s `--primijeni` na već izmijenjenim datotekama iz starije verzije — vrati iz `*.bak-tecaj` |
@@ -198,6 +192,6 @@ Kad mijenjaš samo sadržaj tečaja, dovoljno je poslati promijenjene datoteke:
 | naslov, opis, popis lekcija | `js/tecaj.js` |
 | nova verzija prezentacije | tu datoteku u `pdf/` |
 | koje su lekcije objavljene | `data/vidljivost.js` |
-| PIN | `js/tecaj.js` (redak `TECAJ.PIN`) |
+| napomena o licenci (CC BY-NC 4.0) | `index.html` i `podnozje()` u `js/tecaj.js` |
 
 Izbornik glavne stranice ne treba dirati ponovno.

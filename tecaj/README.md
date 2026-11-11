@@ -99,7 +99,7 @@ tecaj/
 ├── index.html            naslovna: mreža svih 16 lekcija
 ├── lekcija-01.html …     lekcija-16.html  (16 zasebnih stranica)
 ├── css/tecaj.css         svi stilovi (varijable su iste kao u modern.css)
-├── js/tecaj.js           podaci o lekcijama, izbornik, PIN, pomoćne funkcije
+├── js/tecaj.js           podaci o lekcijama, izbornik, prijava urednika, pomoćne funkcije
 ├── data/vidljivost.js    koje su lekcije objavljene (generira urednička ploča)
 ├── pdf/                  16 PDF prezentacija
 └── README.md             ovaj tekst
@@ -111,30 +111,17 @@ promjena jedne lekcije mogla pokvariti.
 
 ---
 
-## 4. Pristupni PIN
+## 4. Pristup i licenca
 
-Tečaj je zatvoren PIN-om **1973**. Mijenja se u `js/tecaj.js`:
+Tečaj je **javno dostupan** — nema PIN-a ni upita pri ulasku. Pojedine lekcije i dalje se
+mogu sakriti u uredničkom načinu (odjeljak 5); skrivena lekcija posjetitelju prikazuje
+„Lekcija trenutno nije dostupna“.
 
-```js
-TECAJ.PIN = '1973';
-```
-
-Kako se ponaša:
-
-- PIN se traži pri **prvom dolasku u tečaj** u toj kartici preglednika — bilo kroz
-  naslovnu, bilo upisom URL-a lekcije izravno (`…/tecaj/lekcija-01.html`).
-- Nakon unosa pamti se u `sessionStorage`, pa se **između lekcija ne traži ponovno**.
-- Zatvaranjem kartice se zaboravlja. Nova kartica ili novi prozor traže ga opet.
-- Prijavljeni urednik ga ne mora unositi.
-
-Sadržaj se skriva prije prvog crtanja (mali skript u `<head>` svake stranice), pa
-lekcija ne „blijesne“ prije upita.
-
-> **Iskrena napomena o razini zaštite.** Ovo je *mekana* brana — sprječava slučajne
-> posjetitelje i pretraživače, ali nije sigurnosna mjera. PIN je zapisan u JavaScriptu
-> koji svatko može pročitati, a PDF-ovi su dohvatljivi izravno na svojim URL-ovima
-> (`…/tecaj/pdf/01-….pdf`). Za pravu zaštitu trebala bi provjera na serveru
-> (npr. cPanel „Directory Privacy“ na mapi `tecaj/pdf/`, ili prijava kroz `server.js`).
+Sadržaj je objavljen pod licencom **[CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/deed.hr)**: smije se umnožavati,
+distribuirati i prilagođavati uz navođenje autora (dr. sc. Sandi Baressi Šegota) i
+Astronomskog društva „Istra“ Pula, isključivo u nekomercijalne svrhe. Napomena o licenci
+stoji na naslovnoj tečaja (`index.html`) i u podnožju svake stranice (`podnozje()` u
+`js/tecaj.js`).
 
 ---
 
@@ -147,7 +134,7 @@ oznaka za sučelje. Zato: ako ste prijavljeni na glavnoj stranici, u tečaju ste
 automatski, i obrnuto.
 
 Prijaviti se možete gumbom **Prijava** na dnu izbornika tečaja ili poveznicom
-*Prijava urednika* na PIN zaslonu.
+*Prijava urednika* — gumb je na dnu izbornika tečaja.
 
 Nakon prijave, na naslovnoj tečaja pojavljuje se ploča **Urednički način** s
 prekidačem za svaku od 16 lekcija. Isključena lekcija:

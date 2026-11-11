@@ -10,16 +10,6 @@
   <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
   <link rel="stylesheet" href="css/tecaj.css?v=20260928">
   <script src="data/vidljivost.js"></script>
-  <script>
-    /* Pristupna vrata: sakrij sadržaj prije prvog crtanja ako PIN nije unesen.
-       Otključavanje i sam upit su u js/tecaj.js. */
-    (function () {
-      var ulaz = false, urednik = false;
-      try { ulaz = sessionStorage.getItem('tecaj_ulaz') === '1'; } catch (e) { }
-      try { urednik = !!localStorage.getItem('adip_token'); } catch (e) { }
-      if (!ulaz && !urednik) document.documentElement.className += ' tecaj-zakljucano';
-    })();
-  </script>
 </head>
 
 <body>
@@ -86,6 +76,15 @@
         <br>
         <p style="color:var(--text-muted);font-size:.88rem;margin-bottom:0">
           Autor tečaja: dr. sc. Sandi Baressi Šegota · Astronomsko društvo „Istra“ Pula
+        </p>
+        <p class="tecaj-licenca" style="color:var(--text-muted);font-size:.88rem;margin:.75rem 0 0">
+          Sadržaj tečaja (tekstovi, slike, PDF-ovi i interaktivni primjeri) objavljen je pod licencom
+          <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.hr" target="_blank" rel="license noopener">Creative Commons Imenovanje –
+          Nekomercijalno 4.0 međunarodna (CC BY-NC 4.0)</a>, osim ako je drugačije navedeno.
+          Slobodno ga smijete umnožavati, distribuirati i prilagođavati <strong>isključivo u
+          nekomercijalne svrhe</strong>, uz navođenje autora i društva, npr.:
+          <em>„dr. sc. Sandi Baressi Šegota, Astronomsko društvo „Istra“ Pula – Tečaj astronomije,
+          adip.hr/tecaj (CC BY-NC 4.0)“</em>.
         </p>
       </div>
     </section>

@@ -266,7 +266,11 @@
       'Glavinićev uspon 1, 52100 Pula - HR<br>' +
       'Email: <a href="mailto:tajnik@adip.hr">tajnik@adip.hr</a> | Tel: 091/214-1966<br>' +
       '<span style="color:var(--text-muted)">Tečaj astronomije &middot; priprema za natjecanje &middot; ' +
-      'dr. sc. Sandi Baressi Šegota</span>' +
+      'dr. sc. Sandi Baressi Šegota</span><br>' +
+      '<span style="color:var(--text-muted);font-size:.85em">Sadržaj tečaja: ' +
+      '<a href="https://creativecommons.org/licenses/by-nc/4.0/deed.hr" target="_blank" rel="license noopener" style="color:inherit">CC BY-NC 4.0</a>' +
+      ' &middot; slobodno dijeljenje uz navođenje autora i Astronomskog društva &quot;Istra&quot; Pula, ' +
+      'isključivo u nekomercijalne svrhe</span>' +
       '</div>';
     return f;
   }
@@ -386,22 +390,14 @@
   }
 
   /* ---------------------------------------------------------
-     3. PRISTUP: PIN, prijava urednika, vidljivost lekcija
+     3. PRISTUP: prijava urednika, vidljivost lekcija
      --------------------------------------------------------- */
 
-  /* PIN za ulaz u tečaj. Ovo je mekana zaštita: sprječava slučajne
-     posjetitelje, ali nije sigurnosna mjera — PDF-ovi su dostupni na
-     svojim URL-ovima i svatko može pročitati ovu datoteku. */
-  TECAJ.PIN = '1973';
-
-  var KLJUC_ULAZ = 'tecaj_ulaz';        /* sessionStorage: traje dok je kartica otvorena */
   var KLJUC_VID = 'tecaj_vidljivost';   /* localStorage: uredničke izmjene, samo lokalno */
   /* Isti ključ kao glavna stranica. Sadrži samo oznaku '1' — pravi token sesije
      je u HttpOnly kolačiću koji šalje preglednik, a provjerava server. */
   var KLJUC_TOKEN = 'adip_token';
 
-  /* sessionStorage ne radi na svim file:// postavkama — zato zamjena u memoriji */
-  var memUlaz = false;
   function citaj(store, k) {
     try { return window[store].getItem(k); } catch (e) { return null; }
   }
@@ -454,9 +450,6 @@
       cb(ok, greska);
     });
   };
-  TECAJ.imaUlaz = function () {
-    return memUlaz || citaj('sessionStorage', KLJUC_ULAZ) === '1' || TECAJ.jeUrednik();
-  };
 
   /* --- Vidljivost lekcije ---
      Redoslijed prioriteta:
@@ -478,61 +471,6 @@
   };
   /* Ono što posjetitelj smije otvoriti (urednik smije sve) */
   TECAJ.dostupna = function (L) { return TECAJ.jeUrednik() || TECAJ.vidljiva(L); };
-
-  /* --- Zaslon s PIN-om --- */
-  function pinZaslon(nakon) {
-    var w = document.createElement('div');
-    w.className = 'pin-gate';
-    w.innerHTML =
-      '<div class="pin-box">' +
-      '<h1 class="pin-naslov">Tečaj <span class="text-gradient">astronomije</span></h1>' +
-      '<p class="pin-tekst">Sadržaj je namijenjen polaznicima tečaja. ' +
-      'Unesite pristupni PIN koji ste dobili na predavanju.</p>' +
-      '<form id="pin-form" autocomplete="off">' +
-      '<input class="pin-unos" id="pin-unos" type="text" inputmode="numeric" ' +
-      'maxlength="8" placeholder="PIN" aria-label="Pristupni PIN">' +
-      '<div class="pin-greska" id="pin-greska"></div>' +
-      '<button class="btn btn--primary" type="submit" style="width:100%">Otvori tečaj</button>' +
-      '</form>' +
-      '<div class="pin-alt">' +
-      '<button class="chip-btn" id="pin-prijava">Prijava urednika</button>' +
-      '<a class="chip-btn" href="' + TECAJ.ROOT + 'index.html">← Na glavnu stranicu</a>' +
-      '</div>' +
-      '<p class="pin-nota">PIN se pamti dok ne zatvorite karticu preglednika, ' +
-      'pa se između lekcija ne traži ponovno.</p>' +
-      '</div>';
-    document.body.appendChild(w);
-
-    var unos = w.querySelector('#pin-unos');
-    var greska = w.querySelector('#pin-greska');
-    setTimeout(function () { unos.focus(); }, 60);
-
-    w.querySelector('#pin-form').addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (unos.value.trim() === TECAJ.PIN) {
-        memUlaz = true;
-        pisi('sessionStorage', KLJUC_ULAZ, '1');
-        w.classList.add('pin-gate--off');
-        setTimeout(function () {
-          if (w.parentNode) w.parentNode.removeChild(w);
-        }, 320);
-        document.documentElement.classList.remove('tecaj-zakljucano');
-        nakon();
-      } else {
-        greska.textContent = 'PIN nije točan. Pokušajte ponovno.';
-        w.querySelector('.pin-box').classList.remove('pin-trese');
-        void w.querySelector('.pin-box').offsetWidth;
-        w.querySelector('.pin-box').classList.add('pin-trese');
-        unos.select();
-      }
-    });
-    w.querySelector('#pin-prijava').addEventListener('click', function () {
-      w.querySelector('.pin-box').style.display = 'none';
-      prijavaModal(function () { location.reload(); }, function () {
-        w.querySelector('.pin-box').style.display = '';
-      });
-    });
-  }
 
   /* --- Modal za prijavu urednika (isti podaci kao glavna stranica) --- */
   function prijavaModal(nakonPrijave, nakonOdustajanja) {
@@ -841,7 +779,7 @@
   };
 
   /* Poruka na stranici lekcije koju posjetitelj ne smije otvoriti.
-     Sadržaj se NE briše, samo skriva istim mehanizmom kao PIN vrata — inače
+     Sadržaj se NE briše, samo skriva klasom tecaj-zakljucano — inače
      bi skripte primjera na dnu stranice ostale bez svojih elemenata. */
   function zabrana() {
     document.documentElement.classList.add('tecaj-zakljucano');
@@ -907,8 +845,7 @@
       if (typeof opt.nakon === 'function') opt.nakon();
     }
 
-    if (TECAJ.imaUlaz()) sagradi();
-    else pinZaslon(sagradi);
+    sagradi();
   };
 
   /* ---------------------------------------------------------
