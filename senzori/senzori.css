@@ -1,0 +1,257 @@
+/* ADIP Senzori — stranica /senzori/ (nadopuna css/modern.css) */
+
+.sz-uvod {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.sz-uvod p { color: var(--text-secondary); }
+.sz-uvod strong { color: var(--text-primary); }
+
+.sz-popis {
+  margin: 0.75rem 0 0 1.25rem;
+  color: var(--text-secondary);
+}
+
+.sz-popis li { margin-bottom: 0.25rem; }
+
+.sz-uvod__akcije { text-align: center; }
+.sz-uvod__akcije .btn { justify-content: center; }
+
+.sz-napomena {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+.sz-raspored {
+  display: grid;
+  grid-template-columns: minmax(240px, 320px) 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.sz-raspored > * { min-width: 0; }
+
+.sz-sesije h2,
+.sz-detalj h2 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.sz-sesije__glava {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.sz-uzivo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.sz-popis-sesija {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.sz-sesija {
+  text-align: left;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.75rem;
+  color: var(--text-primary);
+  font: inherit;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.sz-sesija:hover { border-color: var(--accent-primary); }
+
+.sz-sesija.aktivna {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.15);
+}
+
+.sz-sesija__datum { font-weight: 600; font-size: 0.95rem; }
+
+.sz-sesija__info {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.sz-znacka {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0 0.45rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  background: #e74c3c;
+  color: #fff;
+  vertical-align: middle;
+  animation: sz-puls 1.6s ease-in-out infinite;
+}
+
+@keyframes sz-puls {
+  50% { opacity: 0.45; }
+}
+
+.sz-prazno {
+  color: var(--text-muted);
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.sz-detalj__glava {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.sz-detalj__glava h2 { word-break: break-all; }
+
+.sz-meta {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.sz-detalj__akcije {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.sz-grafovi {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.sz-graf h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  margin-bottom: 0.25rem;
+}
+
+.sz-graf__platno {
+  position: relative;
+  width: 100%;
+  height: 220px;
+}
+
+.sz-tokeni {
+  margin-top: 1.5rem;
+}
+
+.sz-tokeni summary {
+  cursor: pointer;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.sz-tokeni[open] summary { margin-bottom: 0.75rem; }
+
+.sz-forma {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 1rem;
+  margin-top: 1rem;
+}
+
+.sz-forma__gumbi {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.sz-poruka {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  min-height: 1.2em;
+}
+
+.sz-poruka.greska { color: #ff6b5b; }
+.sz-poruka.uspjeh { color: #4ade80; }
+
+.sz-novi-token {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--accent-primary);
+  border-radius: var(--radius-sm);
+  background: rgba(0, 212, 255, 0.05);
+}
+
+.sz-token-red {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 0.5rem 0;
+  flex-wrap: wrap;
+}
+
+.sz-token-red code {
+  flex: 1 1 280px;
+  min-width: 0;
+  word-break: break-all;
+  padding: 0.5rem 0.75rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+
+.sz-upute {
+  margin-left: 1.25rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.sz-tablica-omot { overflow-x: auto; }
+
+#sz-tablica-tokena h3 {
+  font-size: 1rem;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.sz-tablica {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.sz-tablica th,
+.sz-tablica td {
+  text-align: left;
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--border-glass);
+  white-space: nowrap;
+}
+
+.sz-tablica th { color: var(--text-secondary); font-weight: 500; }
+
+@media (max-width: 860px) {
+  .sz-uvod,
+  .sz-raspored,
+  .sz-forma {
+    grid-template-columns: 1fr;
+  }
+
+  .sz-popis-sesija { max-height: 40vh; }
+}

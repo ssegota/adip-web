@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADIP Senzori - Astronomsko društvo "Istra" Pula</title>
+  <meta name="description"
+    content="ADIP Senzori - Android aplikacija i web servis Astronomskog društva Istra Pula: akceleracija, svjetlo, infrazvuk i tlak, mjerenja uživo.">
+  <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
+  <link rel="stylesheet" href="../css/modern.css?v=20260928">
+  <link rel="stylesheet" href="senzori.css?v=1">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span><span></span><span></span>
+    </div>
+
+    <a href="../index.html" class="header__logo">
+      <img src="../sites/all/themes/black_hole/logo.png" alt="ADIP Logo">
+      <div>
+        <div class="header__title">Pulska Zvjezdarnica</div>
+        <div class="header__subtitle">Astronomsko društvo "Istra" Pula</div>
+      </div>
+    </a>
+
+    <nav class="nav" id="main-nav">
+      <button class="nav__close" id="nav-close">✕</button>
+      <a href="../index.html" class="nav__link">Naslovna</a>
+      <a href="../aktivnosti.html" class="nav__link">Aktivnosti</a>
+      <a href="../galerija-slika.html" class="nav__link">Galerija</a>
+      <a href="../povijest-zvjezdarnice.html" class="nav__link">Povijest</a>
+      <a href="../posjet-pulskoj-zvjezdarnici.html" class="nav__link">Posjeti</a>
+      <a href="../radovi.html" class="nav__link">Radovi</a>
+      <a href="../servisi.html" class="nav__link active">Servisi</a>
+      <a href="../downloads.html" class="nav__link">Preuzimanja</a>
+      <a href="../tecaj/index.html" class="nav__link">Tečaj astronomije</a>
+      <a href="../astronomsko-drustvo-istra-pula.html" class="nav__link">O nama</a>
+      <div class="nav__spacer"></div>
+      <button class="btn btn--secondary nav__login" id="sidebar-login-btn">Prijava</button>
+    </nav>
+    <div class="nav-overlay" id="nav-overlay"></div>
+    <div class="user-controls"></div>
+  </header>
+
+  <div class="content" style="padding-top: 100px;">
+    <section class="section">
+      <div class="container">
+        <div class="section__header">
+          <h1 class="section__title">ADIP <span class="text-gradient">Senzori</span></h1>
+          <p class="section__subtitle">Mjerenja mobitelom — akceleracija, svjetlo, infrazvuk i tlak, uživo na webu</p>
+        </div>
+
+        <!-- Uvod -->
+        <div class="glass-card sz-uvod">
+          <div>
+            <p>
+              <strong>ADIP Senzori</strong> je Android aplikacija Astronomskog društva »Istra« Pula koja
+              senzorima mobitela bilježi mjerenja i šalje ih na ovu stranicu, gdje ih svatko može
+              pregledati i preuzeti kao CSV.
+            </p>
+            <ul class="sz-popis">
+              <li><strong>Akceleracija</strong> — tri osi (x, y, z), m/s²</li>
+              <li><strong>Osvijetljenost</strong> — senzor svjetla, lux</li>
+              <li><strong>Infrazvuk</strong> — signal mikrofona filtriran na 0,5–20 Hz; relativne jedinice
+                (dBFS) osim ako je mikrofon kalibriran</li>
+              <li><strong>Tlak zraka</strong> — barometar, hPa (ako ga uređaj ima)</li>
+            </ul>
+          </div>
+          <div class="sz-uvod__akcije">
+            <a class="btn btn--primary"
+              href="https://github.com/ssegota/adip-senzori/releases/latest/download/adip-senzori.apk">Preuzmi
+              aplikaciju (APK)</a>
+            <p class="sz-napomena">Za Android. Za slanje mjerenja aplikaciji je potreban token
+              (vidi »Tokeni za aplikaciju« na dnu stranice).</p>
+          </div>
+        </div>
+
+        <!-- Sesije + grafovi -->
+        <div class="sz-raspored">
+          <aside class="glass-card sz-sesije">
+            <div class="sz-sesije__glava">
+              <h2>Sesije</h2>
+              <label class="sz-uzivo" title="Osvježavanje svake 3 sekunde">
+                <input type="checkbox" id="sz-uzivo"> Uživo
+              </label>
+            </div>
+            <div id="sz-popis" class="sz-popis-sesija">
+              <p class="sz-prazno">Učitavanje…</p>
+            </div>
+          </aside>
+
+          <main class="glass-card sz-detalj" id="sz-detalj">
+            <p class="sz-prazno" id="sz-odaberi">Odaberite sesiju s popisa.</p>
+            <div id="sz-sadrzaj" class="hidden">
+              <div class="sz-detalj__glava">
+                <div>
+                  <h2 id="sz-naslov"></h2>
+                  <p class="sz-meta" id="sz-meta"></p>
+                </div>
+                <div class="sz-detalj__akcije">
+                  <a class="btn btn--secondary btn--sm" id="sz-csv" href="#" download>Preuzmi CSV</a>
+                  <button class="btn btn--danger btn--sm hidden" id="sz-obrisi" type="button">Obriši sesiju</button>
+                </div>
+              </div>
+              <p class="sz-napomena" id="sz-prikaz-info"></p>
+              <div id="sz-grafovi" class="sz-grafovi"></div>
+            </div>
+          </main>
+        </div>
+
+        <!-- Tokeni -->
+        <details class="glass-card sz-tokeni" id="sz-tokeni">
+          <summary>Tokeni za aplikaciju</summary>
+          <p class="sz-napomena">
+            Aplikacija šalje mjerenja s tokenom. Token izrađuje član društva koji zna lozinku servisa.
+            Lozinka se ne sprema na ovom računalu (pamti se samo dok je otvorena ova kartica preglednika).
+          </p>
+          <form id="sz-forma-token" class="sz-forma" autocomplete="off">
+            <div class="form-group">
+              <label class="form-label" for="sz-lozinka">Lozinka servisa</label>
+              <input type="password" class="form-input" id="sz-lozinka" required autocomplete="current-password">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="sz-naziv">Naziv tokena (npr. uređaj ili ime)</label>
+              <input type="text" class="form-input" id="sz-naziv" maxlength="100" placeholder="Pixel 8 — Ivan">
+            </div>
+            <div class="sz-forma__gumbi">
+              <button type="submit" class="btn btn--primary btn--sm">Kreiraj token</button>
+              <button type="button" class="btn btn--secondary btn--sm" id="sz-popis-tokena">Prikaži tokene</button>
+              <button type="button" class="btn btn--secondary btn--sm" id="sz-zaboravi">Zaboravi lozinku</button>
+            </div>
+          </form>
+          <div id="sz-poruka" class="sz-poruka" role="status"></div>
+
+          <div id="sz-novi-token" class="sz-novi-token hidden">
+            <p><strong>Novi token</strong> — kopirajte ga sada, kasnije se više ne može prikazati:</p>
+            <div class="sz-token-red">
+              <code id="sz-token-vrijednost"></code>
+              <button type="button" class="btn btn--secondary btn--sm" id="sz-kopiraj">Kopiraj</button>
+            </div>
+            <ol class="sz-upute">
+              <li>U aplikaciji ADIP Senzori otvorite <strong>Postavke → Web servis</strong>.</li>
+              <li>URL: <code>https://adip.hr</code></li>
+              <li>Token: zalijepite gornji niz i spremite.</li>
+            </ol>
+          </div>
+
+          <div id="sz-tablica-tokena" class="hidden">
+            <h3>Postojeći tokeni</h3>
+            <div class="sz-tablica-omot">
+              <table class="sz-tablica">
+                <thead>
+                  <tr><th>Naziv</th><th>Id</th><th>Izrađen</th><th>Zadnje korišten</th><th></th></tr>
+                </thead>
+                <tbody id="sz-tokeni-tijelo"></tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__contact">
+      <strong>Astronomsko društvo "Istra" Pula</strong><br>
+      <a href="https://www.ztkpula.hr/hr/" target="_blank"
+        style="color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.5);">Zajednica
+        tehničke kulture Pula</a><br>
+      Glavinićev uspon 1, 52100 Pula - HR<br>
+      Email: <a href="mailto:astroistra.pu@pu.t-com.hr">astroistra.pu@pu.t-com.hr</a> | Tel: 091/214-1966<br>
+      <span style="color: var(--text-muted);">(Zvjezdarnica, Park Monte Zaro 2, Pula)</span>
+    </div>
+  </footer>
+
+  <!-- Login Modal (prijava urednika stranice, kao na ostalim stranicama) -->
+  <div class="modal-overlay" id="login-modal">
+    <div class="modal">
+      <div class="modal__header">
+        <h3 class="modal__title">Prijava</h3>
+        <p style="color: var(--text-secondary);">Unesite vaše podatke</p>
+      </div>
+      <form id="login-form">
+        <div class="form-group">
+          <label class="form-label">Korisničko ime</label>
+          <input type="text" class="form-input" id="login-username" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Lozinka</label>
+          <input type="password" class="form-input" id="login-password" required>
+        </div>
+        <div id="login-message" style="margin-bottom: 1rem; font-size: 0.9rem;"></div>
+        <button type="submit" class="btn btn--primary" style="width: 100%;">Prijavi se</button>
+      </form>
+      <button class="btn btn--secondary" style="width: 100%; margin-top: 0.5rem;" id="close-modal">Odustani</button>
+    </div>
+  </div>
+
+  <script src="../js/main.js?v=20260928"></script>
+  <script src="senzori.js?v=1"></script>
+</body>
+
+</html>
