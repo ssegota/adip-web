@@ -9,7 +9,7 @@
     content="ADIP Senzori - Android aplikacija i web servis Astronomskog društva Istra Pula: akceleracija, svjetlo, infrazvuk i tlak, mjerenja uživo.">
   <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
   <link rel="stylesheet" href="../css/modern.css?v=20260928">
-  <link rel="stylesheet" href="senzori.css?v=1">
+  <link rel="stylesheet" href="senzori.css?v=2">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
 
@@ -102,6 +102,20 @@
                   <p class="sz-meta" id="sz-meta"></p>
                 </div>
                 <div class="sz-detalj__akcije">
+                  <button class="btn btn--primary btn--sm hidden" id="sz-na-uzivo" type="button"
+                    title="Vrati prikaz na najnovija mjerenja">↦ Uživo</button>
+                  <button class="btn btn--secondary btn--sm hidden" id="sz-cijela" type="button">Cijela sesija</button>
+                  <label class="sz-prozor" id="sz-prozor-omot"
+                    title="Širina prikazanog vremenskog prozora (isto za sve grafove). Povlačenjem grafa vodoravno pomičete prikaz; Ctrl + kotačić ili dva prsta mijenjaju širinu.">
+                    Prozor
+                    <select id="sz-prozor">
+                      <option value="" hidden>—</option>
+                      <option value="10">10 s</option>
+                      <option value="30">30 s</option>
+                      <option value="60" selected>60 s</option>
+                      <option value="300">5 min</option>
+                    </select>
+                  </label>
                   <a class="btn btn--secondary btn--sm" id="sz-csv" href="#" download>Preuzmi CSV</a>
                   <button class="btn btn--danger btn--sm hidden" id="sz-obrisi" type="button">Obriši sesiju</button>
                 </div>
@@ -203,7 +217,7 @@
   </div>
 
   <script src="../js/main.js?v=20260928"></script>
-  <script src="senzori.js?v=1"></script>
+  <script src="senzori.js?v=2"></script>
 </body>
 
 </html>
