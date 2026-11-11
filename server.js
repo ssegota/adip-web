@@ -5,6 +5,7 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+const displayCopies = require('./lib/display-queue');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -35,7 +36,8 @@ app.get('/api/version', (req, res) => {
     res.json({
         version: 'update-routes-v1',
         file: __filename,
-        started: new Date().toISOString()
+        started: new Date().toISOString(),
+        display: displayCopies.status
     });
 });
 
@@ -62,6 +64,8 @@ function thumbPathFor(imagePath) {
 }
 
 function storeThumb(imageFile, thumbFile) {
+    // Uz thumbnail ide i kopija za prikaz u lightboxu (radi je server, u pozadini)
+    if (imageFile) displayCopies.queueDisplayCopy(path.resolve(__dirname, imageFile.path));
     if (!thumbFile) return;
     try {
         if (!imageFile || thumbFile.size > THUMB_MAX_BYTES || thumbFile.mimetype !== 'image/jpeg') {
@@ -76,11 +80,11 @@ function storeThumb(imageFile, thumbFile) {
     }
 }
 
-// Obriši sliku i njezin thumbnail, ali samo unutar dopuštene mape
+// Obriši sliku, njezin thumbnail i kopiju za prikaz, ali samo unutar dopuštene mape
 function deleteImageFile(src, allowedDir) {
     const filePath = path.join(__dirname, String(src).replace(/^\/+/, ''));
     if (!filePath.startsWith(allowedDir + path.sep)) return;
-    [filePath, thumbPathFor(filePath)].forEach(f => {
+    [filePath, thumbPathFor(filePath), displayCopies.displayPathFor(filePath)].forEach(f => {
         try {
             if (fs.existsSync(f)) fs.unlinkSync(f);
         } catch (e) {
@@ -862,4 +866,6 @@ require('./tecaj/server/tecaj-api')(app);
 require('./senzori/server/senzori-api')(app);
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
+    // Pozadinski: kopije za prikaz za slike koje ih još nemaju (ne blokira zahtjeve)
+    displayCopies.startBackfill(__dirname, ['galerija', 'aktivnosti-slike']);
 });

@@ -4,3 +4,6 @@ node_modules/
 deploy.zip
 tmp/
 data/senzori/
+# Kopije slika za lightbox (<= 2560 px) - generira ih server (lib/display-copies.js), ne idu u git
+galerija/**/display/
+aktivnosti-slike/**/display/
