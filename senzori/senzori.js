@@ -33,6 +33,7 @@
   var odabrana = null;            // sessionId
   var grafovi = {};               // id → Chart
   var timerUzivo = null, timerPopis = null, zauzeto = false;
+  var admin = false;              // lozinka potvrđena na serveru
   var prozorS = 60;               // zadana širina prozora uživo (s)
   /* Učitani redovi odabrane sesije, sortirani po t_ms. */
   var buf = null;                 // { id, uzivo, stupci, it, redovi, ukupno }
@@ -87,9 +88,55 @@
     try { return sessionStorage.getItem(KLJUC_LOZINKE) || ''; } catch (e) { return ''; }
   }
 
-  function zapamtiLozinku(l) {
-    try { if (l) sessionStorage.setItem(KLJUC_LOZINKE, l); else sessionStorage.removeItem(KLJUC_LOZINKE); } catch (e) { }
-    $('sz-obrisi').classList.toggle('hidden', !l || !odabrana);
+  /* Administracija: lozinka se sprema (sessionStorage) tek kad je server potvrdi
+     (GET /tokeni → 200). Kontrole za brisanje i tokene postoje samo u prijavljenom stanju;
+     server ih ionako odbija bez lozinke (401). */
+  function postaviAdmin(prijavljen, l) {
+    if (prijavljen) {
+      try { sessionStorage.setItem(KLJUC_LOZINKE, l); } catch (e) { }
+    } else if (l !== false) {                         // false = samo sučelje, spremljeno ostaje
+      try { sessionStorage.removeItem(KLJUC_LOZINKE); } catch (e) { }
+    }
+    admin = !!prijavljen;
+    $('sz-admin-traka').classList.toggle('hidden', !admin);
+    $('sz-prijava-link').classList.toggle('hidden', admin);
+    $('sz-forma-prijava').classList.toggle('hidden', admin);
+    $('sz-admin-blok').classList.toggle('hidden', !admin);
+    $('sz-obrisi').classList.toggle('hidden', !admin || !odabrana);
+    if (!admin) {
+      $('sz-tokeni-tijelo').innerHTML = '';
+      $('sz-tablica-tokena').classList.add('hidden');
+      $('sz-token-vrijednost').textContent = '';
+      $('sz-novi-token').classList.add('hidden');
+    }
+  }
+
+  function prijava(ev) {
+    ev.preventDefault();
+    var l = $('sz-lozinka').value;
+    if (!l) return;
+    poruka('Provjeravam lozinku…');
+    dohvati(API + '/tokeni', { headers: { 'X-Senzori-Lozinka': l } }).then(function (j) {
+      $('sz-lozinka').value = '';
+      postaviAdmin(true, l);
+      poruka('Prijavljeni ste (administracija).', 'uspjeh');
+      crtajTokene(j.tokeni || []);
+    }).catch(function (e) {
+      postaviAdmin(false);
+      poruka(e.status === 401 ? 'Pogrešna lozinka — niste prijavljeni.' : 'Prijava nije uspjela (' + e.message + ').', 'greska');
+    });
+  }
+
+  function odjava() {
+    postaviAdmin(false);
+    $('sz-lozinka').value = '';
+    poruka('Odjavljeni ste.');
+  }
+
+  /* 401 na administratorskom pozivu → lozinka više ne vrijedi */
+  function greskaAdmin(e) {
+    if (e.status === 401) { postaviAdmin(false); poruka('Lozinka više ne vrijedi — prijavite se ponovno.', 'greska'); return true; }
+    return false;
   }
 
   function poruka(tekst, vrsta) {
@@ -148,7 +195,7 @@
     $('sz-naslov').textContent = id;
     $('sz-csv').href = API + '/sesije/' + encodeURIComponent(id) + '/csv';
     $('sz-csv').setAttribute('download', id + '.csv');
-    $('sz-obrisi').classList.toggle('hidden', !lozinka());
+    $('sz-obrisi').classList.toggle('hidden', !admin);
     return ucitajSesiju();
   }
 
@@ -239,13 +286,19 @@
   }
 
   /* Razmak oznaka (ms) za zadani raspon — najviše ~10 oznaka. */
-  function korakZa(rasponMs, maxN) {
+  /* Razmak oznaka (ms): najveći broj oznaka maxN, ali barem 3 oznake ako raspon to dopušta
+     (svi koraci dijele minutu/sat, pa oznake padaju na okrugla vremena). */
+  var KORACI = [100, 200, 500, 1000, 2000, 3000, 4000, 5000, 10000, 15000, 20000, 30000, 60000, 120000,
+                300000, 600000, 900000, 1800000, 3600000, 7200000, 10800000, 21600000, 43200000, 86400000];
+  function brojOznaka(min, max, k) { return Math.floor(max / k) - Math.ceil(min / k) + 1; }
+  function korakZa(min, max, maxN) {
     maxN = maxN || 10;
-    var koraci = [100, 200, 500, 1000, 2000, 5000, 10000, 15000, 30000, 60000, 120000, 300000,
-                  600000, 900000, 1800000, 3600000, 7200000, 10800000, 21600000, 43200000, 86400000];
-    for (var i = 0; i < koraci.length; i++) if (rasponMs / koraci[i] <= maxN) return koraci[i];
-    return Math.ceil(rasponMs / maxN / 86400000) * 86400000;
+    var i = 0;
+    while (i < KORACI.length - 1 && brojOznaka(min, max, KORACI[i]) > maxN) i++;
+    while (i > 0 && brojOznaka(min, max, KORACI[i]) < 3) i--;
+    return KORACI[i];
   }
+
 
   /* Oznake na višekratnicima koraka (okrugle sekunde po satu), uvijek isti razmak. */
   function oznakeOsiX(raspon, k) {
@@ -306,7 +359,7 @@
       if (buf.uzivo && kraj >= g.zadnji) prikaz.prati = true;   // dovučeno do kraja → opet prati
       prikaz.kraj = kraj;
     }
-    return { min: kraj - sirina, max: kraj, korak: korakZa(sirina), epoha: g.prvi > 1e12 };
+    return { min: kraj - sirina, max: kraj, korak: korakZa(kraj - sirina, kraj), epoha: g.prvi > 1e12 };
   }
 
   var cekaCrtanje = false;
@@ -565,8 +618,8 @@
                  afterBuildTicks: function (os) {
                    if (!raspon) return;
                    // na uskom zaslonu rjeđe oznake (~60 px po oznaci); isti razmak na svim grafovima
-                   var n = Math.max(2, Math.min(10, Math.floor((os.chart.width - SIRINA_OSI_Y - 36) / 60)));
-                   os.$korak = korakZa(raspon.max - raspon.min, n);
+                   var n = Math.max(3, Math.min(10, Math.floor((os.chart.width - SIRINA_OSI_Y - 36) / 60)));
+                   os.$korak = korakZa(raspon.min, raspon.max, n);
                    os.ticks = oznakeOsiX(raspon, os.$korak);
                  },
                  grid: { color: 'rgba(255,255,255,0.06)' } },
@@ -600,7 +653,7 @@
 
   function obrisiSesiju() {
     var l = lozinka();
-    if (!odabrana || !l) return;
+    if (!odabrana || !admin || !l) return;
     if (!confirm('Trajno obrisati sesiju »' + odabrana + '«?')) return;
     dohvati(API + '/sesije/' + encodeURIComponent(odabrana), { method: 'DELETE', headers: { 'X-Senzori-Lozinka': l } })
       .then(function () {
@@ -612,75 +665,73 @@
         ucitajPopis();
       })
       .catch(function (e) {
-        if (e.status === 401) zapamtiLozinku('');
+        greskaAdmin(e);
         alert('Brisanje nije uspjelo: ' + e.message);
       });
   }
 
-  /* ── tokeni ── */
-
-  function lozinkaIzPolja() {
-    return $('sz-lozinka').value || lozinka();
-  }
+  /* ── tokeni (samo prijavljeni) ── */
 
   function kreirajToken(ev) {
     ev.preventDefault();
-    var l = lozinkaIzPolja();
+    var l = lozinka();
+    if (!admin || !l) return;
     poruka('Izrađujem token…');
     dohvati(API + '/tokeni', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ lozinka: l, naziv: $('sz-naziv').value.trim() })
     }).then(function (j) {
-      zapamtiLozinku(l);
       $('sz-token-vrijednost').textContent = j.token;
       $('sz-novi-token').classList.remove('hidden');
       $('sz-naziv').value = '';
       poruka('Token »' + j.naziv + '« je izrađen (id ' + j.id + ').', 'uspjeh');
-      if (!$('sz-tablica-tokena').classList.contains('hidden')) popisTokena();
+      popisTokena();
     }).catch(function (e) {
-      if (e.status === 401) zapamtiLozinku('');
-      poruka(e.message, 'greska');
+      if (!greskaAdmin(e)) poruka(e.message, 'greska');
     });
   }
 
   function popisTokena() {
-    var l = lozinkaIzPolja();
-    if (!l) { poruka('Upišite lozinku.', 'greska'); return; }
+    var l = lozinka();
+    if (!admin || !l) return;
     dohvati(API + '/tokeni', { headers: { 'X-Senzori-Lozinka': l } }).then(function (j) {
-      zapamtiLozinku(l);
-      var tb = $('sz-tokeni-tijelo');
-      tb.innerHTML = '';
-      if (!j.tokeni.length) {
-        var r0 = el('tr'); var td0 = el('td', null, 'Nema tokena.'); td0.colSpan = 5; r0.appendChild(td0); tb.appendChild(r0);
-      }
-      j.tokeni.forEach(function (t) {
-        var r = el('tr');
-        r.appendChild(el('td', null, t.naziv));
-        r.appendChild(el('td', null, t.id));
-        r.appendChild(el('td', null, datum(t.created)));
-        r.appendChild(el('td', null, t.lastUsed ? datum(t.lastUsed) : '—'));
-        var td = el('td');
-        var b = el('button', 'btn btn--danger btn--xs', 'Opozovi');
-        b.type = 'button';
-        b.addEventListener('click', function () { opozovi(t); });
-        td.appendChild(b);
-        r.appendChild(td);
-        tb.appendChild(r);
-      });
-      $('sz-tablica-tokena').classList.remove('hidden');
-      poruka('');
+      crtajTokene(j.tokeni || []);
     }).catch(function (e) {
-      if (e.status === 401) zapamtiLozinku('');
-      poruka(e.message, 'greska');
+      if (!greskaAdmin(e)) poruka(e.message, 'greska');
     });
   }
 
+  function crtajTokene(tokeni) {
+    if (!admin) return;
+    var tb = $('sz-tokeni-tijelo');
+    tb.innerHTML = '';
+    if (!tokeni.length) {
+      var r0 = el('tr'); var td0 = el('td', null, 'Nema tokena.'); td0.colSpan = 5; r0.appendChild(td0); tb.appendChild(r0);
+    }
+    tokeni.forEach(function (t) {
+      var r = el('tr');
+      r.appendChild(el('td', null, t.naziv));
+      r.appendChild(el('td', null, t.id));
+      r.appendChild(el('td', null, datum(t.created)));
+      r.appendChild(el('td', null, t.lastUsed ? datum(t.lastUsed) : '—'));
+      var td = el('td');
+      var b = el('button', 'btn btn--danger btn--xs', 'Opozovi');
+      b.type = 'button';
+      b.addEventListener('click', function () { opozovi(t); });
+      td.appendChild(b);
+      r.appendChild(td);
+      tb.appendChild(r);
+    });
+    $('sz-tablica-tokena').classList.remove('hidden');
+  }
+
   function opozovi(t) {
+    if (!admin) return;
     if (!confirm('Opozvati token »' + t.naziv + '« (' + t.id + ')? Aplikacija s tim tokenom više neće moći slati mjerenja.')) return;
-    dohvati(API + '/tokeni/' + encodeURIComponent(t.id), { method: 'DELETE', headers: { 'X-Senzori-Lozinka': lozinkaIzPolja() } })
+    dohvati(API + '/tokeni/' + encodeURIComponent(t.id), { method: 'DELETE', headers: { 'X-Senzori-Lozinka': lozinka() } })
       .then(function () { poruka('Token »' + t.naziv + '« je opozvan.', 'uspjeh'); popisTokena(); })
-      .catch(function (e) { poruka(e.message, 'greska'); });
+      .catch(function (e) { if (!greskaAdmin(e)) poruka(e.message, 'greska'); });
   }
 
   function kopiraj() {
@@ -703,7 +754,14 @@
   /* ── start ── */
 
   document.addEventListener('DOMContentLoaded', function () {
-    if (lozinka()) $('sz-lozinka').value = lozinka();
+    // spremljena lozinka (ista kartica) vrijedi tek kad je server ponovno potvrdi
+    postaviAdmin(false, false);
+    var spremljena = lozinka();
+    if (spremljena) {
+      dohvati(API + '/tokeni', { headers: { 'X-Senzori-Lozinka': spremljena } })
+        .then(function (j) { postaviAdmin(true, spremljena); crtajTokene(j.tokeni || []); })
+        .catch(function (e) { if (e.status === 401) postaviAdmin(false); });
+    }
     $('sz-uzivo').addEventListener('change', function () { postaviUzivo(this.checked); });
     $('sz-prozor').addEventListener('change', function () {
       var v = parseInt(this.value, 10);
@@ -720,11 +778,13 @@
     $('sz-forma-token').addEventListener('submit', kreirajToken);
     $('sz-popis-tokena').addEventListener('click', popisTokena);
     $('sz-kopiraj').addEventListener('click', kopiraj);
-    $('sz-zaboravi').addEventListener('click', function () {
-      zapamtiLozinku('');
-      $('sz-lozinka').value = '';
-      $('sz-tablica-tokena').classList.add('hidden');
-      poruka('Lozinka je zaboravljena.');
+    $('sz-forma-prijava').addEventListener('submit', prijava);
+    $('sz-odjava').addEventListener('click', odjava);
+    $('sz-odjava-2').addEventListener('click', odjava);
+    $('sz-prijava-link').addEventListener('click', function () {
+      $('sz-tokeni').open = true;
+      $('sz-tokeni').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(function () { $('sz-lozinka').focus(); }, 300);
     });
 
     ucitajPopis().then(function () {

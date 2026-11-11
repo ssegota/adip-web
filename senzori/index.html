@@ -9,7 +9,7 @@
     content="ADIP Senzori - Android aplikacija i web servis Astronomskog društva Istra Pula: akceleracija, svjetlo, infrazvuk i tlak, mjerenja uživo.">
   <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
   <link rel="stylesheet" href="../css/modern.css?v=20260928">
-  <link rel="stylesheet" href="senzori.css?v=2">
+  <link rel="stylesheet" href="senzori.css?v=3">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
 
@@ -75,7 +75,7 @@
               href="https://github.com/ssegota/adip-senzori/releases/latest/download/adip-senzori.apk">Preuzmi
               aplikaciju (APK)</a>
             <p class="sz-napomena">Za Android. Za slanje mjerenja aplikaciji je potreban token
-              (vidi »Tokeni za aplikaciju« na dnu stranice).</p>
+              (vidi »Administracija« na dnu stranice).</p>
           </div>
         </div>
 
@@ -88,6 +88,11 @@
                 <input type="checkbox" id="sz-uzivo"> Uživo
               </label>
             </div>
+            <div id="sz-admin-traka" class="sz-admin-traka hidden" role="status">
+              <span>🔓 Prijavljen (administracija)</span> ·
+              <button type="button" class="sz-link" id="sz-odjava">Odjava</button>
+            </div>
+            <button type="button" class="sz-link sz-prijava-link" id="sz-prijava-link">Prijava (administracija)</button>
             <div id="sz-popis" class="sz-popis-sesija">
               <p class="sz-prazno">Učitavanje…</p>
             </div>
@@ -126,54 +131,61 @@
           </main>
         </div>
 
-        <!-- Tokeni -->
+        <!-- Administracija: prijava lozinkom, tokeni za aplikaciju -->
         <details class="glass-card sz-tokeni" id="sz-tokeni">
-          <summary>Tokeni za aplikaciju</summary>
+          <summary>Administracija (lozinka) — tokeni za aplikaciju</summary>
           <p class="sz-napomena">
-            Aplikacija šalje mjerenja s tokenom. Token izrađuje član društva koji zna lozinku servisa.
-            Lozinka se ne sprema na ovom računalu (pamti se samo dok je otvorena ova kartica preglednika).
+            Aplikacija šalje mjerenja s tokenom. Tokene izrađuje i opoziva te sesije briše samo član društva
+            koji zna lozinku servisa. Lozinka se provjerava na serveru i pamti se samo dok je otvorena ova
+            kartica preglednika (»Odjava« je briše).
           </p>
-          <form id="sz-forma-token" class="sz-forma" autocomplete="off">
-            <div class="form-group">
-              <label class="form-label" for="sz-lozinka">Lozinka servisa</label>
+          <form id="sz-forma-prijava" class="sz-prijava">
+            <label class="form-label" for="sz-lozinka">Lozinka servisa</label>
+            <div class="sz-prijava__red">
               <input type="password" class="form-input" id="sz-lozinka" required autocomplete="current-password">
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="sz-naziv">Naziv tokena (npr. uređaj ili ime)</label>
-              <input type="text" class="form-input" id="sz-naziv" maxlength="100" placeholder="Pixel 8 — Ivan">
-            </div>
-            <div class="sz-forma__gumbi">
-              <button type="submit" class="btn btn--primary btn--sm">Kreiraj token</button>
-              <button type="button" class="btn btn--secondary btn--sm" id="sz-popis-tokena">Prikaži tokene</button>
-              <button type="button" class="btn btn--secondary btn--sm" id="sz-zaboravi">Zaboravi lozinku</button>
+              <button type="submit" class="btn btn--primary btn--sm">Prijava</button>
             </div>
           </form>
+
+          <div id="sz-admin-blok" class="hidden">
+            <form id="sz-forma-token" class="sz-forma" autocomplete="off">
+              <div class="form-group">
+                <label class="form-label" for="sz-naziv">Naziv novog tokena (npr. uređaj ili ime)</label>
+                <input type="text" class="form-input" id="sz-naziv" maxlength="100" placeholder="Pixel 8 — Ivan">
+              </div>
+              <div class="sz-forma__gumbi">
+                <button type="submit" class="btn btn--primary btn--sm">Kreiraj token</button>
+                <button type="button" class="btn btn--secondary btn--sm" id="sz-popis-tokena">Osvježi popis tokena</button>
+                <button type="button" class="btn btn--secondary btn--sm" id="sz-odjava-2">Odjava</button>
+              </div>
+            </form>
+
+            <div id="sz-novi-token" class="sz-novi-token hidden">
+              <p><strong>Novi token</strong> — kopirajte ga sada, kasnije se više ne može prikazati:</p>
+              <div class="sz-token-red">
+                <code id="sz-token-vrijednost"></code>
+                <button type="button" class="btn btn--secondary btn--sm" id="sz-kopiraj">Kopiraj</button>
+              </div>
+              <ol class="sz-upute">
+                <li>U aplikaciji ADIP Senzori otvorite <strong>Postavke → Web servis</strong>.</li>
+                <li>URL: <code>https://adip.hr</code></li>
+                <li>Token: zalijepite gornji niz i spremite.</li>
+              </ol>
+            </div>
+
+            <div id="sz-tablica-tokena" class="hidden">
+              <h3>Postojeći tokeni</h3>
+              <div class="sz-tablica-omot">
+                <table class="sz-tablica">
+                  <thead>
+                    <tr><th>Naziv</th><th>Id</th><th>Izrađen</th><th>Zadnje korišten</th><th></th></tr>
+                  </thead>
+                  <tbody id="sz-tokeni-tijelo"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
           <div id="sz-poruka" class="sz-poruka" role="status"></div>
-
-          <div id="sz-novi-token" class="sz-novi-token hidden">
-            <p><strong>Novi token</strong> — kopirajte ga sada, kasnije se više ne može prikazati:</p>
-            <div class="sz-token-red">
-              <code id="sz-token-vrijednost"></code>
-              <button type="button" class="btn btn--secondary btn--sm" id="sz-kopiraj">Kopiraj</button>
-            </div>
-            <ol class="sz-upute">
-              <li>U aplikaciji ADIP Senzori otvorite <strong>Postavke → Web servis</strong>.</li>
-              <li>URL: <code>https://adip.hr</code></li>
-              <li>Token: zalijepite gornji niz i spremite.</li>
-            </ol>
-          </div>
-
-          <div id="sz-tablica-tokena" class="hidden">
-            <h3>Postojeći tokeni</h3>
-            <div class="sz-tablica-omot">
-              <table class="sz-tablica">
-                <thead>
-                  <tr><th>Naziv</th><th>Id</th><th>Izrađen</th><th>Zadnje korišten</th><th></th></tr>
-                </thead>
-                <tbody id="sz-tokeni-tijelo"></tbody>
-              </table>
-            </div>
-          </div>
         </details>
 
       </div>
@@ -217,7 +229,7 @@
   </div>
 
   <script src="../js/main.js?v=20260928"></script>
-  <script src="senzori.js?v=3"></script>
+  <script src="senzori.js?v=4"></script>
 </body>
 
 </html>
