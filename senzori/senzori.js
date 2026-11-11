@@ -564,8 +564,8 @@
                           callback: function (v) { return raspon ? oznakaVremena(v, raspon.epoha, this.$korak || raspon.korak) : ''; } },
                  afterBuildTicks: function (os) {
                    if (!raspon) return;
-                   // na uskom zaslonu rjeđe oznake (~75 px po oznaci); isti razmak na svim grafovima
-                   var n = Math.max(2, Math.min(10, Math.floor((os.chart.width - SIRINA_OSI_Y - 36) / 75)));
+                   // na uskom zaslonu rjeđe oznake (~60 px po oznaci); isti razmak na svim grafovima
+                   var n = Math.max(2, Math.min(10, Math.floor((os.chart.width - SIRINA_OSI_Y - 36) / 60)));
                    os.$korak = korakZa(raspon.max - raspon.min, n);
                    os.ticks = oznakeOsiX(raspon, os.$korak);
                  },
