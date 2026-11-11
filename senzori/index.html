@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ADIP Senzori - Astronomsko društvo "Istra" Pula</title>
   <meta name="description"
-    content="ADIP Senzori - Android aplikacija i web servis Astronomskog društva Istra Pula: akceleracija, svjetlo, infrazvuk i tlak, mjerenja uživo.">
+    content="ADIP Senzori - Android aplikacija i web servis Astronomskog društva Istra Pula: akceleracija, svjetlo, infrazvuk, tlak i razina zvuka, mjerenja uživo.">
   <link rel="icon" href="../sites/all/themes/black_hole/logo.png" type="image/png">
   <link rel="stylesheet" href="../css/modern.css?v=20260928">
   <link rel="stylesheet" href="senzori.css?v=3">
@@ -51,7 +51,7 @@
       <div class="container">
         <div class="section__header">
           <h1 class="section__title">ADIP <span class="text-gradient">Senzori</span></h1>
-          <p class="section__subtitle">Mjerenja mobitelom — akceleracija, svjetlo, infrazvuk i tlak, uživo na webu</p>
+          <p class="section__subtitle">Mjerenja mobitelom — akceleracija, svjetlo, infrazvuk, tlak i zvuk, uživo na webu</p>
         </div>
 
         <!-- Uvod -->
@@ -68,6 +68,8 @@
               <li><strong>Infrazvuk</strong> — signal mikrofona filtriran na 0,5–20 Hz; relativne jedinice
                 (dBFS) osim ako je mikrofon kalibriran</li>
               <li><strong>Tlak zraka</strong> — barometar, hPa (ako ga uređaj ima)</li>
+              <li><strong>Zvuk</strong> — razina čujnog zvuka s mikrofona (RMS po intervalu uzorkovanja),
+                dBFS: 0 je najglasnije što mikrofon može zabilježiti, tiša okolina je oko −60 do −90</li>
             </ul>
           </div>
           <div class="sz-uvod__akcije">
@@ -229,7 +231,7 @@
   </div>
 
   <script src="../js/main.js?v=20260928"></script>
-  <script src="senzori.js?v=4"></script>
+  <script src="senzori.js?v=5"></script>
 </body>
 
 </html>
