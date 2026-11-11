@@ -852,6 +852,7 @@ app.delete('/api/downloads/:id', (req, res) => {
 
 // Start Server
 require('./tecaj/server/tecaj-api')(app);
+require('./senzori/server/senzori-api')(app);
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
