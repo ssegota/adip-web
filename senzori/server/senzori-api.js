@@ -52,7 +52,7 @@ const ID_UZORAK = /^[A-Za-z0-9_-]{1,64}$/;
 
 /* scrypt hash lozinke za upravljanje tokenima: 'scrypt$<sol hex>$<hash hex>'.
    Lozinka sama nije u repozitoriju. Promjena: vidi README.md. */
-const LOZINKA_HASH = 'scrypt$80a5dc86cab5017fae6f1879909abd55$167447d394e0562e22be2330cc3d1cad678ccf4fcc53eee85a91bd1c534d8df7';
+const LOZINKA_HASH = 'scrypt$928caa206ee1df8fe74e8b799b0baae4$a909f04aef87a3e72d4460cc8ca957db1fed4380ae50cb544cd39d63a0ebc00f';
 
 const MAX_PROMASAJA = 10;                 // pogrešnih lozinki po IP-u…
 const PROZOR_PROMASAJA = 15 * 60 * 1000;  // …u 15 minuta, zatim 429
