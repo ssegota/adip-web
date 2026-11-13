@@ -67,7 +67,7 @@ async function main() {
     fs.writeFileSync(path.join(dir, 'users.json'),
         JSON.stringify({ users: { admin: { hash: auth.hashPassword(PASS) } } }));
     const srv = spawn(process.execPath, ['server.js'], {
-        cwd: ROOT, env: Object.assign({}, process.env, { PORT: String(PORT), ADIP_AUTH_DIR: dir }),
+        cwd: ROOT, env: Object.assign({}, process.env, { PORT: String(PORT), ADIP_AUTH_DIR: dir, ADIP_AUTH_NO_RESET: '1' }),
         stdio: ['ignore', 'pipe', 'pipe']
     });
     let log = '';
