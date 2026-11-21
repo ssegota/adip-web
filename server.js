@@ -182,11 +182,31 @@ const activityImageStorage = multer.diskStorage({
     }
 });
 
-const activityUpload = multer({ storage: activityImageStorage, fileFilter: imageFilter, limits: IMAGE_LIMITS });
+// Aktivnost: do 10 slika (+ 10 sličica koje radi preglednik)
+const MAX_ACTIVITY_IMAGES = 10;
+const activityUpload = multer({
+    storage: activityImageStorage,
+    fileFilter: imageFilter,
+    limits: { fileSize: IMAGE_LIMITS.fileSize, files: MAX_ACTIVITY_IMAGES * 2, fields: 40 }
+});
 const activityFields = activityUpload.fields([
-    { name: 'images', maxCount: 3 },
-    { name: 'thumbs', maxCount: 3 }
+    { name: 'images', maxCount: MAX_ACTIVITY_IMAGES },
+    { name: 'thumbs', maxCount: MAX_ACTIVITY_IMAGES }
 ]);
+
+/* Glavna slika (prikazuje se na kartici) je uvijek prva u popisu.
+   mainImage = putanja postojeće slike ili "new:<i>" za i-tu novu uploadanu sliku. */
+function applyMainImage(images, mainImage, newImages) {
+    if (!mainImage) return images;
+    const main = String(mainImage);
+    const pick = main.startsWith('new:') ? newImages[parseInt(main.slice(4), 10)] : main;
+    const i = pick ? images.indexOf(pick) : -1;
+    if (i > 0) {
+        images.splice(i, 1);
+        images.unshift(pick);
+    }
+    return images;
+}
 
 // Spremi thumbnailove (i-ti thumb pripada i-toj slici) i vrati web putanje slika
 function collectActivityImages(req) {
@@ -219,10 +239,11 @@ function applyTranslations(target, body, fields) {
 const ACTIVITY_TRANSLATIONS = ['title_en', 'content_en', 'title_it', 'content_it'];
 const DOWNLOAD_TRANSLATIONS = ['title_en', 'description_en', 'title_it', 'description_it'];
 
-// Activity with images (up to 3)
+// Activity with images (up to MAX_ACTIVITY_IMAGES)
 app.post('/api/aktivnosti', activityFields, (req, res) => {
     const { title, content, date, year } = req.body;
-    const images = collectActivityImages(req);
+    const images = collectActivityImages(req).slice(0, MAX_ACTIVITY_IMAGES);
+    applyMainImage(images, req.body.mainImage, images.slice());
 
     const newActivity = {
         id: Date.now(),
@@ -312,7 +333,8 @@ function updateActivityHandler(req, res) {
             activity.year = parseInt(req.body.year) || activity.year;
         }
         applyTranslations(activity, req.body, ACTIVITY_TRANSLATIONS);
-        activity.images = keepImages.concat(newImages).slice(0, 3);
+        activity.images = applyMainImage(keepImages.concat(newImages), req.body.mainImage, newImages)
+            .slice(0, MAX_ACTIVITY_IMAGES);
 
         activities[index] = activity;
 
