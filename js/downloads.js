@@ -68,6 +68,16 @@ function dlLang() {
     return (typeof getCurrentLang === 'function') ? getCurrentLang() : 'hr';
 }
 
+/* Naslov/opis na jeziku stranice (title_en, description_it ...), inače hrvatski */
+function dlText(file, field) {
+    const lang = dlLang();
+    if (lang !== 'hr') {
+        const v = file && file[field + '_' + lang];
+        if (v && String(v).trim()) return String(v);
+    }
+    return (file && file[field]) ? String(file[field]) : '';
+}
+
 function dt(key) {
     const tr = downloadsTranslations[dlLang()] || downloadsTranslations.hr;
     return tr[key] || downloadsTranslations.hr[key] || key;
@@ -269,7 +279,7 @@ async function loadDownloads() {
         if (!response.ok) throw new Error('HTTP ' + response.status);
         allDownloads = await response.json();
         allDownloads.forEach(f => {
-            f._trazi = dlNorm([f.title, f.fileName, f.description, f.fileType].join(' '));
+            f._trazi = dlNorm([f.title, dlText(f, 'title'), f.fileName, f.description, dlText(f, 'description'), f.fileType].join(' '));
         });
         filtriraj();
 
@@ -321,7 +331,7 @@ function renderDownloads(files, searching) {
         card.className = 'dl-card dl-tip-' + tip.tip;
         card.tabIndex = 0;
         card.setAttribute('role', 'button');
-        card.setAttribute('aria-label', dt('preview') + ': ' + file.title);
+        card.setAttribute('aria-label', dt('preview') + ': ' + dlText(file, 'title'));
 
         // Sličica
         const thumb = document.createElement('div');
@@ -349,13 +359,13 @@ function renderDownloads(files, searching) {
         body.className = 'dl-body';
         const h = document.createElement('h3');
         h.className = 'dl-title';
-        h.textContent = file.title;
-        h.title = file.fileName || file.title;
+        h.textContent = dlText(file, 'title');
+        h.title = file.fileName || dlText(file, 'title');
         body.appendChild(h);
-        if (file.description) {
+        if (dlText(file, 'description')) {
             const d = document.createElement('p');
             d.className = 'dl-desc';
-            d.textContent = file.description;
+            d.textContent = dlText(file, 'description');
             body.appendChild(d);
         }
         const meta = document.createElement('div');
@@ -371,7 +381,7 @@ function renderDownloads(files, searching) {
         a.className = 'dl-download';
         a.href = fullPath;
         a.setAttribute('download', file.fileName || '');
-        a.setAttribute('aria-label', dt('download') + ': ' + file.title);
+        a.setAttribute('aria-label', dt('download') + ': ' + dlText(file, 'title'));
         a.title = dt('download');
         a.innerHTML = dlIkona('download');
         a.addEventListener('click', e => e.stopPropagation());
@@ -413,6 +423,21 @@ function initDownloadsAdmin() {
     if (token && adminPanel) {
         adminPanel.classList.remove('hidden');
 
+        const uploadForm = document.getElementById('download-upload-form');
+        if (uploadForm && !document.getElementById('file-title_en')) {
+            const details = document.createElement('details');
+            details.className = 'form-translations';
+            details.innerHTML = `
+                <summary>${tr({ hr: 'Prijevodi (EN / IT, neobavezno)', en: 'Translations (EN / IT, optional)', it: 'Traduzioni (EN / IT, facoltative)' })}</summary>
+                <div class="form-group"><label class="form-label" for="file-title_en">Title (English)</label><input type="text" class="form-input" id="file-title_en" lang="en"></div>
+                <div class="form-group"><label class="form-label" for="file-description_en">Description (English)</label><textarea class="form-input" id="file-description_en" rows="2" lang="en"></textarea></div>
+                <div class="form-group"><label class="form-label" for="file-title_it">Titolo (italiano)</label><input type="text" class="form-input" id="file-title_it" lang="it"></div>
+                <div class="form-group"><label class="form-label" for="file-description_it">Descrizione (italiano)</label><textarea class="form-input" id="file-description_it" rows="2" lang="it"></textarea></div>
+            `;
+            const submit = uploadForm.querySelector('[type="submit"]');
+            if (submit) submit.parentNode.insertBefore(details, submit); else uploadForm.appendChild(details);
+        }
+
         document.getElementById('download-upload-form').addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -426,6 +451,10 @@ function initDownloadsAdmin() {
             const formData = new FormData();
             formData.append('title', title);
             formData.append('description', desc);
+            ['title_en', 'description_en', 'title_it', 'description_it'].forEach(key => {
+                const el = document.getElementById('file-' + key);
+                if (el && el.value.trim()) formData.append(key, el.value);
+            });
             formData.append('file', fileInput.files[0]);
 
             try {
@@ -499,8 +528,8 @@ function openPreview(file) {
     const downloadLink = document.getElementById('download-link');
     const container = document.getElementById('preview-container');
 
-    title.textContent = file.title;
-    desc.textContent = file.description || '';
+    title.textContent = dlText(file, 'title');
+    desc.textContent = dlText(file, 'description');
     size.textContent = dlVelicina(file.fileSize);
     date.textContent = dlDatum(file);
 

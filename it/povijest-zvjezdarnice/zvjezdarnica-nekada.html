@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>L'Osservatorio nel passato | Osservatorio di Pola</title>
     <link rel="icon" href="../../sites/all/themes/black_hole/logo.png" type="image/png">
-    <link rel="stylesheet" href="../../css/modern.css?v=20260928" />
+    <link rel="stylesheet" href="../../css/modern.css?v=20261122" />
     <style>
         .history-img-container {
             text-align: center;
@@ -57,7 +57,7 @@
 
 <body>
     <header class="header">
-        <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Menu" aria-controls="main-nav" aria-expanded="false"><span></span><span></span><span></span></button>
         <a href="../index.html" class="header__logo">
             <img src="../../sites/all/themes/black_hole/logo.png" alt="ADIP Logo">
             <div>
@@ -66,7 +66,7 @@
             </div>
         </a>
         <nav class="nav" id="main-nav">
-            <button class="nav__close" id="nav-close">✕</button>
+            <button class="nav__close" id="nav-close" type="button" aria-label="Chiudi menu">✕</button>
             <a href="../index.html" class="nav__link">Home</a>
             <a href="../aktivnosti.html" class="nav__link">Attività</a>
             <a href="../galerija-slika.html" class="nav__link">Galleria</a>
@@ -235,14 +235,15 @@
     </main>
 
     <footer class="footer">
-        <div class="footer__contact">
-            <strong>Società Astronomica "Istra" Pola</strong><br>
-            Glavinićev uspon 1, 52100 Pola - HR<br>
-            Email: <a href="mailto:tajnik@adip.hr">tajnik@adip.hr</a> | Tel: +385 91 214 1966
-        </div>
+      <div class="footer__contact">
+        <strong>Società Astronomica "Istra" Pola</strong><br>
+        Osservatorio: Parco Monte Zaro 2, 52100 Pola, Croazia<br>
+        Email: <a href="mailto:tajnik@adip.hr">tajnik@adip.hr</a> | Tel: <a href="tel:+385912141966">+385 91 214 1966</a><br>
+        <span class="footer__seat"><a href="https://www.ztkpula.hr/hr/" target="_blank" rel="noopener">Associazione della Cultura Tecnica di Pola</a>, Glavinićev uspon 1, 52100 Pola</span>
+      </div>
     </footer>
 
-    <script src="../../js/main.js?v=20260928"></script>
+    <script src="../../js/main.js?v=20261122"></script>
 </body>
 
 </html>

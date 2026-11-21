@@ -7,7 +7,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #121212;
+    background-color: #0a0a0f;
     color: #e0e0e0;
     line-height: 1.6;
 }
@@ -18,7 +18,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 5%;
-    background-color: #1e1e1e;
+    background-color: #12121a;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     position: sticky;
     top: 0;
@@ -38,7 +38,7 @@ header {
 }
 
 .main-title a {
-    color: #27b0ff;
+    color: #00d4ff;
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: bold;
@@ -61,7 +61,7 @@ header {
 .menu-toggle span {
     width: 25px;
     height: 3px;
-    background-color: #27b0ff;
+    background-color: #00d4ff;
     border-radius: 2px;
     transition: all 0.3s ease;
 }
@@ -87,8 +87,8 @@ header {
 
 .nav-buttons li a:hover,
 .nav-buttons li a.active {
-    background-color: #27b0ff;
-    color: #121212;
+    background-color: #00d4ff;
+    color: #0a0a0f;
 }
 
 /* Wrapper and Content */
@@ -110,7 +110,7 @@ header {
         left: 0;
         width: 100%;
         flex-direction: column;
-        background-color: #1e1e1e;
+        background-color: #12121a;
         padding: 20px;
         align-items: center;
         transform: translateY(-150%);
@@ -143,8 +143,8 @@ header {
 /* Utilities */
 .hidden { display: none !important; }
 .btn-primary {
-    background-color: #27b0ff;
-    color: #121212;
+    background-color: #0066ff;
+    color: #fff;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;

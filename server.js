@@ -207,6 +207,18 @@ app.get('/api/aktivnosti', (req, res) => {
     });
 });
 
+// Neobavezni EN/IT prijevodi (aktivnosti i preuzimanja). Prazna vrijednost briše prijevod.
+function applyTranslations(target, body, fields) {
+    fields.forEach(key => {
+        if (body[key] === undefined) return;
+        const value = String(body[key]);
+        if (value.trim() === '') delete target[key];
+        else target[key] = value;
+    });
+}
+const ACTIVITY_TRANSLATIONS = ['title_en', 'content_en', 'title_it', 'content_it'];
+const DOWNLOAD_TRANSLATIONS = ['title_en', 'description_en', 'title_it', 'description_it'];
+
 // Activity with images (up to 3)
 app.post('/api/aktivnosti', activityFields, (req, res) => {
     const { title, content, date, year } = req.body;
@@ -220,6 +232,7 @@ app.post('/api/aktivnosti', activityFields, (req, res) => {
         content: content,
         images: images
     };
+    applyTranslations(newActivity, req.body, ACTIVITY_TRANSLATIONS);
 
     fs.readFile(ACTIVITIES_FILE, 'utf8', (err, data) => {
         let activities = [];
@@ -298,6 +311,7 @@ function updateActivityHandler(req, res) {
         if (req.body.year !== undefined && req.body.year !== '') {
             activity.year = parseInt(req.body.year) || activity.year;
         }
+        applyTranslations(activity, req.body, ACTIVITY_TRANSLATIONS);
         activity.images = keepImages.concat(newImages).slice(0, 3);
 
         activities[index] = activity;
@@ -841,6 +855,7 @@ app.post('/api/downloads/upload', downloadsUpload.single('file'), async (req, re
         dateAdded: new Date().toLocaleDateString('hr-HR'),
         uploadDateIso: new Date().toISOString()
     };
+    applyTranslations(newFile, req.body, DOWNLOAD_TRANSLATIONS);
 
     fs.readFile(DOWNLOADS_FILE, 'utf8', (err, data) => {
         let downloads = [];

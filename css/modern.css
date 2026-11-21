@@ -4,7 +4,24 @@
    Dark Theme with Glassmorphism & Animations
    ========================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* Inter s vlastitog servera (varijabilni font, sve težine u jednoj datoteci po podskupu) */
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("../fonts/inter-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("../fonts/inter-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 /* === CSS Variables === */
 :root {
@@ -16,11 +33,22 @@
 
     --text-primary: #ffffff;
     --text-secondary: #a0a0b0;
-    --text-muted: #606075;
+    --text-muted: #8a8aa0; /* ≥ 4.5:1 na tamnim pozadinama (bilo #606075 ≈ 3:1) */
 
     --accent-primary: #00d4ff;
     --accent-secondary: #7c3aed;
     --accent-gradient: var(--accent-primary);
+
+    /* Glavni gumb: jedna plava na cijelom webu */
+    --btn-primary: #0066ff;
+    --btn-primary-hover: #1a75ff;
+    --glow-blue: 0 4px 15px rgba(0, 102, 255, 0.4);
+    --glow-blue-hover: 0 8px 25px rgba(0, 102, 255, 0.5);
+
+    /* Poruke (uspjeh / upozorenje / greška) */
+    --success: #34d399;
+    --warning: #fbbf24;
+    --danger: #f87171;
 
     /* Scrollbar - tamnoplava paleta */
     --scroll-track: rgba(255, 255, 255, 0.04);
@@ -70,7 +98,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('../background.jpg') center center / cover no-repeat fixed;
+    background: url('../background.jpg') center center / cover no-repeat;
     z-index: -2;
 }
 
@@ -240,7 +268,8 @@ a:hover {
     border-right: 1px solid var(--border-glass);
     z-index: 1500;
     transform: translateX(-100%);
-    transition: var(--transition-smooth);
+    visibility: hidden;
+    transition: transform var(--transition-smooth), visibility 0s linear 0.4s;
     padding: 5rem 1.5rem 2rem;
     display: flex;
     flex-direction: column;
@@ -250,6 +279,8 @@ a:hover {
 
 .nav.active {
     transform: translateX(0);
+    visibility: visible;
+    transition: transform var(--transition-smooth), visibility 0s;
 }
 
 .nav__link {
@@ -360,6 +391,9 @@ a:hover {
     gap: 5px;
     cursor: pointer;
     padding: 10px;
+    background: none;
+    border: none;
+    border-radius: var(--radius-sm);
     z-index: 1100;
     position: relative;
 }
@@ -492,14 +526,17 @@ a:hover {
 }
 
 .btn--primary {
-    background: var(--accent-primary);
-    color: #000;
-    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+    background: var(--btn-primary);
+    color: #fff;
+    box-shadow: var(--glow-blue);
 }
 
+/* 6) tekst ostaje bijel i na hoveru (a:hover ga je mijenjao) */
 .btn--primary:hover {
+    background: var(--btn-primary-hover);
+    color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+    box-shadow: var(--glow-blue-hover);
 }
 
 .btn--secondary {
@@ -571,6 +608,7 @@ a:hover {
 
 /* === Activity Card === */
 .activity-card {
+    position: relative;
     background: var(--bg-card);
     border: 1px solid var(--border-glass);
     border-radius: var(--radius-lg);
@@ -738,8 +776,13 @@ a:hover {
 
 select,
 option {
-    background-color: #000000 !important;
-    color: #ffffff !important;
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+}
+
+select {
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
 }
 
 /* === Modal === */
@@ -755,12 +798,13 @@ option {
     padding: 2rem;
     opacity: 0;
     visibility: hidden;
-    transition: var(--transition-smooth);
+    transition: opacity var(--transition-smooth), visibility 0s linear 0.4s;
 }
 
 .modal-overlay.active {
     opacity: 1;
     visibility: visible;
+    transition: opacity var(--transition-smooth), visibility 0s;
 }
 
 .modal {
@@ -828,7 +872,7 @@ option {
     line-height: 1;
     cursor: pointer;
     z-index: 5;
-    transition: var(--transition-fast);
+    transition: color var(--transition-fast);
 }
 
 .modal__close:hover {
@@ -1025,7 +1069,7 @@ option {
 }
 
 .animate-in {
-    animation: fadeInUp 0.6s ease forwards;
+    animation: fadeInUp 0.6s ease both;
 }
 
 .animate-delay-1 {
@@ -1241,6 +1285,7 @@ option {
 }
 
 .lang-current {
+    white-space: nowrap;
     padding: 0.5rem 1rem;
     background: var(--bg-glass);
     border: 1px solid var(--border-glass);
@@ -1306,17 +1351,18 @@ option {
 
 /* Blue Visit Button Style */
 .btn--blue {
-    background: #0066ff;
+    background: var(--btn-primary);
     color: #fff;
-    box-shadow: 0 4px 15px rgba(0, 102, 255, 0.4);
+    box-shadow: var(--glow-blue);
     font-weight: 600;
     padding: 1rem 2rem;
     font-size: 1.05rem;
 }
 
 .btn--blue:hover {
+    background: var(--btn-primary-hover);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 102, 255, 0.5);
+    box-shadow: var(--glow-blue-hover);
     color: #fff;
 }
 
@@ -1327,4 +1373,122 @@ option {
 
 .radovi-item:hover {
     background: rgba(255, 255, 255, 0.05);
+}
+/* =========================================
+   Male izmjene (pristupačnost, ispravci) 2026-11
+   ========================================= */
+
+/* 13) Naslov kartice je <button>/<a>; ::after rasteže klik na cijelu karticu */
+.activity-card__link {
+    all: unset;
+    cursor: pointer;
+    color: inherit;
+}
+
+.activity-card__link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+}
+
+.activity-card:has(.activity-card__link:focus-visible) {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 3px;
+}
+
+/* Kartica publikacije: rub u boji naglaska (bilo ljubičasto) */
+.activity-card--rad {
+    border-left: 3px solid var(--accent-primary);
+}
+
+.activity-card__lang {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+/* 4) Greška pri učitavanju */
+.load-error {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-secondary);
+}
+
+/* 3) Footer: sjedište društva (ZTK) ispod kontakta zvjezdarnice */
+.footer__seat {
+    color: var(--text-muted);
+}
+
+.footer__seat a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+}
+
+/* 17) Preskoči na sadržaj */
+.skip-link {
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 3000;
+    padding: 0.75rem 1.25rem;
+    background: var(--btn-primary);
+    color: #fff;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    transform: translateY(-200%);
+}
+
+.skip-link:focus {
+    transform: none;
+    color: #fff;
+}
+
+[tabindex="-1"]:focus {
+    outline: none;
+}
+
+.menu-toggle:focus-visible,
+.nav__close:focus-visible,
+.lang-current:focus-visible,
+.lang-option:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+/* Admin: prijevodi u sklopivom bloku */
+.form-translations {
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+}
+
+.form-translations summary {
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.form-translations[open] summary {
+    margin-bottom: 1rem;
+}
+
+/* 16) Smanjeno kretanje */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
