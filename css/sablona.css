@@ -143,8 +143,8 @@ header {
 /* Utilities */
 .hidden { display: none !important; }
 .btn-primary {
-    background-color: #0066ff;
-    color: #fff;
+    background-color: #00d4ff;
+    color: #000;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;

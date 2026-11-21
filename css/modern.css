@@ -39,11 +39,12 @@
     --accent-secondary: #7c3aed;
     --accent-gradient: var(--accent-primary);
 
-    /* Glavni gumb: jedna plava na cijelom webu */
-    --btn-primary: #0066ff;
-    --btn-primary-hover: #1a75ff;
-    --glow-blue: 0 4px 15px rgba(0, 102, 255, 0.4);
-    --glow-blue-hover: 0 8px 25px rgba(0, 102, 255, 0.5);
+    /* Glavni gumb: cijan (boja naglaska) na cijelom webu, tamni tekst */
+    --btn-primary: #00d4ff;
+    --btn-primary-hover: #33ddff;
+    --btn-primary-text: #000;
+    --glow-primary: 0 4px 15px rgba(0, 212, 255, 0.3);
+    --glow-primary-hover: 0 8px 25px rgba(0, 212, 255, 0.4);
 
     /* Poruke (uspjeh / upozorenje / greška) */
     --success: #34d399;
@@ -527,16 +528,16 @@ a:hover {
 
 .btn--primary {
     background: var(--btn-primary);
-    color: #fff;
-    box-shadow: var(--glow-blue);
+    color: var(--btn-primary-text);
+    box-shadow: var(--glow-primary);
 }
 
-/* 6) tekst ostaje bijel i na hoveru (a:hover ga je mijenjao) */
+/* 6) tekst ostaje taman i na hoveru (a:hover ga je mijenjao u bijeli) */
 .btn--primary:hover {
     background: var(--btn-primary-hover);
-    color: #fff;
+    color: var(--btn-primary-text);
     transform: translateY(-2px);
-    box-shadow: var(--glow-blue-hover);
+    box-shadow: var(--glow-primary-hover);
 }
 
 .btn--secondary {
@@ -1352,8 +1353,8 @@ select {
 /* Blue Visit Button Style */
 .btn--blue {
     background: var(--btn-primary);
-    color: #fff;
-    box-shadow: var(--glow-blue);
+    color: var(--btn-primary-text);
+    box-shadow: var(--glow-primary);
     font-weight: 600;
     padding: 1rem 2rem;
     font-size: 1.05rem;
@@ -1362,8 +1363,8 @@ select {
 .btn--blue:hover {
     background: var(--btn-primary-hover);
     transform: translateY(-2px);
-    box-shadow: var(--glow-blue-hover);
-    color: #fff;
+    box-shadow: var(--glow-primary-hover);
+    color: var(--btn-primary-text);
 }
 
 /* Radovi List View */
@@ -1436,7 +1437,7 @@ select {
     z-index: 3000;
     padding: 0.75rem 1.25rem;
     background: var(--btn-primary);
-    color: #fff;
+    color: var(--btn-primary-text);
     font-weight: 600;
     border-radius: var(--radius-sm);
     transform: translateY(-200%);
@@ -1444,7 +1445,7 @@ select {
 
 .skip-link:focus {
     transform: none;
-    color: #fff;
+    color: var(--btn-primary-text);
 }
 
 [tabindex="-1"]:focus {
