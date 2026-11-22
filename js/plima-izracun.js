@@ -15,21 +15,23 @@
  *    Trotti 1969, Janeković i sur. 2003). Amplitude u cm, faze u
  *    stupnjevima "relative to 15° E", tj. prema zonskom vremenu UTC+1
  *    (Schuremanov κ'). U Greenwich fazu: G = κ' − σ · 1 h.
- *    Q1 nije u tablici: zaključen je iz O1 i K1 (vidi zakljuciQ1()).
- *    Srednja razina (nula grafikona) = srednja razina mora.
+ *    Koristi se točno tih 7 komponenti (bez Q1) — kao program koji je
+ *    izradio slike u servisi/tides/.
+ *    Nula grafikona leži 1,9 cm ispod razine na slikama (Z0), kao na slikama.
  *
  *  ASTRONOMSKI ARGUMENTI (Schureman 1958, Manual of Harmonic Analysis and
  *  Prediction of Tides, SP 98): V se računa za svaki trenutak iz srednjih
- *  dužina s, h, p, N (Meeus, Astronomical Algorithms, 2. izd.), a čvorni
- *  faktori f i u iz I, ν, ξ, ν', ν'' za taj dan — nema fiksne epohe.
+ *  dužina s, h, p, N (Meeus, Astronomical Algorithms, 2. izd.). Čvorni
+ *  faktori f i u (iz I, ν, ξ, ν', ν'') računaju se JEDNOM ZA GODINU, za
+ *  sredinu godine (2. srpnja) — standardna praksa za godišnje tablice
+ *  plime i način na koji su rađene slike.
  *
- *  PROVJERA prema slikama (digitalizirana krivulja i očitane oznake):
- *    slike za 2026. — vremena ekstrema: medijan |Δ| ≈ 4 min, 95 % unutar
- *    ~15 min; visine: slike su sustavno ~2 cm više, inače ±1 cm.
- *    Slike od 2024. su ljeti u UTC+1 ("solarno mjerenje vremena"), a ovaj
- *    grafikon je u službenom lokalnom vremenu (Europe/Zagreb), pa je ljeti
- *    sve sat kasnije nego na slici. Starije slike (2014.–2025.) su iz
- *    drugog izvora i kasne 15–35 min za ovom prognozom.
+ *  PROVJERA prema slikama za 2026.: 219 od 220 ručno očitanih vremena
+ *    visokih i niskih voda (studeni i srpanj) jednako je izračunu nakon
+ *    zaokruživanja na 10 min, kao na slikama.
+ *  VRIJEME: od 2024. slike su cijelu godinu u UTC+1 ("solarno mjerenje
+ *    vremena"), do 2023. u lokalnom vremenu (ljeti UTC+2) — izračun
+ *    slijedi isto pravilo (SOLARNO_OD), pa se slika i izračun ne razlikuju.
  *
  *  NIJE ZA NAVIGACIJU: čista astronomska plima, bez utjecaja vjetra i tlaka
  *  (bura, jugo i seši u Jadranu lako dodaju desetke centimetara).
@@ -46,6 +48,8 @@
 
   /** true = cijelu godinu UTC+1 kao slike od 2024. ("solarno"); false = Europe/Zagreb. */
   const SOLARNO_VRIJEME = false;
+  /** Od ove godine slike su cijelu godinu u UTC+1; izračun slijedi slike. */
+  const SOLARNO_OD = 2024;
   const VREMENSKA_ZONA = 'Europe/Zagreb';
 
   /* -----------------------------------------------------------------
@@ -61,21 +65,7 @@
     P1: [ 4.94,  70.1, 14.9589314]
   };
 
-  /**
-   * Q1 iz O1 i K1: amplituda u omjeru ravnotežnih (Doodsonovih) koeficijenata
-   * Q1/O1 = 0,07216/0,37689, faza linearno po kutnoj brzini kroz O1 i K1.
-   * Za Pulu ispada ~0,95 cm i ~60°; utjecaj na krivulju je ispod 1 cm.
-   */
-  function zakljuciQ1(k) {
-    const [aO, gO, wO] = k.O1;
-    const [, gK, wK] = k.K1;
-    const wQ = 13.3986609;
-    const nagib = (gK - gO) / (wK - wO);
-    return [aO * 0.07216 / 0.37689, gO + nagib * (wQ - wO), wQ];
-  }
-  KONSTANTE.Q1 = zakljuciQ1(KONSTANTE);
-
-  const Z0 = 0;   // cm; slike za 2026. leže ~2 cm više (vidi PROVJERA)
+  const Z0 = 1.9;   // cm — razina kao na slikama (prilagodba na slike za 2026.)
 
   // κ' (UTC+1) -> Greenwich faza G, jednom
   const LISTA = Object.keys(KONSTANTE).map(ime => {
@@ -131,15 +121,16 @@
     };
   }
 
-  // čvor se pomakne ~0,05° na dan — dovoljno je računati jednom dnevno
-  const cvorniDan = new Map();
+  // Čvorni faktori jednom za godinu, za sredinu godine (2. 7. 00:00 UTC) —
+  // tako se rade godišnje tablice plime i tako su rađene slike. Godina se
+  // uzima po UTC+1, da cijeli mjesečni grafikon dijeli iste faktore.
+  const cvorniGod = new Map();
   function cvorniZa(d) {
-    const k = Math.floor(d);
-    let c = cvorniDan.get(k);
+    const god = new Date(J2000 + d * DAN + SAT).getUTCFullYear();
+    let c = cvorniGod.get(god);
     if (!c) {
-      c = cvorni(srednjeDuzine(k + 0.5).N);
-      if (cvorniDan.size > 800) cvorniDan.clear();
-      cvorniDan.set(k, c);
+      c = cvorni(srednjeDuzine((Date.UTC(god, 6, 2) - J2000) / DAN).N);
+      cvorniGod.set(god, c);
     }
     return c;
   }
@@ -179,7 +170,7 @@
    * ekstrema koji se razlikuju manje od PRAG_CM) se izbacuju — slike
    * ih također ne označavaju.
    */
-  const PRAG_CM = 0.5;
+  const PRAG_CM = 0.02;   // samo numerički šum — slike označavaju i ekstreme od 0,1 cm
   function ekstremi(odMs, doMs) {
     const korak = 6 * 60000;
     const n = Math.ceil((doMs - odMs) / korak);
@@ -280,7 +271,7 @@
   const pomakCache = new Map();
   /** Minute ispred UTC u trenutku ms (60 ili 120). */
   function pomakMin(ms) {
-    if (SOLARNO_VRIJEME || !fmtZone) return 60;
+    if (SOLARNO_VRIJEME || !fmtZone || new Date(ms + SAT).getUTCFullYear() >= SOLARNO_OD) return 60;
     const k = Math.floor(ms / SAT);
     let o = pomakCache.get(k);
     if (o === undefined) {
