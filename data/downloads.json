@@ -1,15 +1,31 @@
 [
   {
+    "id": 1794235477863,
+    "title": "Upute za samogradnju radioteleskopa",
+    "description": "",
+    "fileName": "Upute_za_samogradnju_radioteleskopa.pdf",
+    "filePath": "downloads-files/1794235477825-Upute_za_samogradnju_radioteleskopa.pdf",
+    "thumbnailPath": "downloads-files/thumbnails/1794235477825-Upute_za_samogradnju_radioteleskopa-thumb.jpg",
+    "fileSize": "0.67 MB",
+    "fileType": "pdf",
+    "dateAdded": "09. 11. 2026.",
+    "uploadDateIso": "2026-11-09T14:44:37.989Z",
+    "title_en": "Instructions for building your own radio telescope",
+    "title_it": "Istruzioni per l'autocostruzione di un radiotelescopio"
+  },
+  {
     "id": 1791622533180,
     "title": "Kalendar 2027.",
     "description": "",
     "fileName": "adip-kalendar.pdf",
     "filePath": "downloads-files/1791622532833-adip-kalendar.pdf",
-    "thumbnailPath": "",
-    "fileSize": "10.02 MB",
+    "thumbnailPath": "downloads-files/thumbnails/1791622532833-adip-kalendar-thumb.jpg",
+    "fileSize": "0.50 MB",
     "fileType": "pdf",
     "dateAdded": "10. 10. 2026.",
-    "uploadDateIso": "2026-10-10T08:55:33.180Z"
+    "uploadDateIso": "2026-10-10T08:55:33.180Z",
+    "title_en": "Calendar 2027",
+    "title_it": "Calendario 2027"
   },
   {
     "id": 1791622512005,
@@ -17,11 +33,13 @@
     "description": "",
     "fileName": "adip-broÅ¡ura.pdf",
     "filePath": "downloads-files/1791622511361-adip-bro__ura.pdf",
-    "thumbnailPath": "",
-    "fileSize": "21.64 MB",
+    "thumbnailPath": "downloads-files/thumbnails/1791622511361-adip-bro__ura-thumb.jpg",
+    "fileSize": "0.62 MB",
     "fileType": "pdf",
     "dateAdded": "10. 10. 2026.",
-    "uploadDateIso": "2026-10-10T08:55:12.065Z"
+    "uploadDateIso": "2026-10-10T08:55:12.065Z",
+    "title_en": "World Space Week 2026 brochure",
+    "title_it": "Opuscolo per la Settimana Mondiale dello Spazio 2026"
   },
   {
     "id": 1786484299736,
@@ -29,11 +47,15 @@
     "description": "Kompilacija članaka iz repozitorija arhive Zvjezdarnica.com",
     "fileName": "hmm-10-godina.pdf",
     "filePath": "downloads-files/1786484299076-hmm-10-godina.pdf",
-    "thumbnailPath": "",
-    "fileSize": "8.62 MB",
+    "thumbnailPath": "downloads-files/thumbnails/1786484299076-hmm-10-godina-thumb.jpg",
+    "fileSize": "1.03 MB",
     "fileType": "pdf",
     "dateAdded": "11. 08. 2026.",
-    "uploadDateIso": "2026-08-11T21:38:19.827Z"
+    "uploadDateIso": "2026-08-11T21:38:19.827Z",
+    "title_en": "D. Šegon - 10 years of the Croatian Meteor Network",
+    "description_en": "A compilation of articles from the Zvjezdarnica.com archive repository",
+    "title_it": "D. Šegon - 10 anni della Rete meteorica croata",
+    "description_it": "Raccolta di articoli dal repository dell'archivio Zvjezdarnica.com"
   },
   {
     "id": 1781470240697,
@@ -41,11 +63,15 @@
     "description": "Korišteno u prezentaciji o Johannu Palisi",
     "fileName": "planethunt_equations-1.pdf",
     "filePath": "downloads-files/1781470240682-planethunt_equations-1.pdf",
-    "thumbnailPath": "",
-    "fileSize": "0.29 MB",
+    "thumbnailPath": "downloads-files/thumbnails/1781470240682-planethunt_equations-1-thumb.jpg",
+    "fileSize": "0.08 MB",
     "fileType": "pdf",
     "dateAdded": "14. 06. 2026.",
-    "uploadDateIso": "2026-06-14T20:50:40.698Z"
+    "uploadDateIso": "2026-06-14T20:50:40.698Z",
+    "title_en": "Equations for asteroid identification and orbit calculation",
+    "description_en": "Used in the presentation on Johann Palisa",
+    "title_it": "Equazioni per l'identificazione degli asteroidi e il calcolo dell'orbita",
+    "description_it": "Utilizzate nella presentazione su Johann Palisa"
   },
   {
     "id": 1770485003284,
@@ -53,11 +79,13 @@
     "description": "",
     "fileName": "Lunarij_2026.pdf",
     "filePath": "downloads-files/1770485003274-Lunarij_2026.pdf",
-    "fileSize": "3.31 MB",
+    "fileSize": "0.97 MB",
     "fileType": "pdf",
     "dateAdded": "07. 02. 2026.",
     "uploadDateIso": "2026-02-07T17:23:23.284Z",
-    "thumbnailPath": "downloads-files/thumbnails/1770485003274-Lunarij_2026-1.png"
+    "thumbnailPath": "downloads-files/thumbnails/1770485003274-Lunarij_2026-1.png",
+    "title_en": "Lunar calendar - 2026",
+    "title_it": "Lunario - 2026"
   },
   {
     "id": 1770484965619,
@@ -69,7 +97,11 @@
     "fileType": "pdf",
     "dateAdded": "07. 02. 2026.",
     "uploadDateIso": "2026-02-07T17:22:45.619Z",
-    "thumbnailPath": "downloads-files/thumbnails/1770484965611-adip-150-en_compressed-01.png"
+    "thumbnailPath": "downloads-files/thumbnails/1770484965611-adip-150-en_compressed-01.png",
+    "title_en": "Pula Observatory - 150 years",
+    "description_en": "A brochure describing the operation and history of Pula observatory in its last 150 years.",
+    "title_it": "Osservatorio di Pola - 150 anni (in inglese)",
+    "description_it": "Opuscolo che descrive l'attività e la storia dell'Osservatorio di Pola negli ultimi 150 anni."
   },
   {
     "id": 1770484882801,
@@ -81,6 +113,10 @@
     "fileType": "pdf",
     "dateAdded": "07. 02. 2026.",
     "uploadDateIso": "2026-02-07T17:21:22.825Z",
-    "thumbnailPath": "downloads-files/thumbnails/1770484882789-adip.150-hr_compressed-01.png"
+    "thumbnailPath": "downloads-files/thumbnails/1770484882789-adip.150-hr_compressed-01.png",
+    "title_en": "Pula Observatory - 150 years (in Croatian)",
+    "description_en": "A description of the work and history of the Pula Observatory over the 150 years of its existence.",
+    "title_it": "Osservatorio di Pola - 150 anni (in croato)",
+    "description_it": "Descrizione dell'attività e della storia dell'Osservatorio di Pola nei 150 anni della sua esistenza."
   }
 ]

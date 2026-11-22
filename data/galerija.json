@@ -468,7 +468,7 @@
         }
       },
       {
-        "src": "/galerija/astrofotografija/mjesec/1770490711749-2026-02-07_18-56_1.png",
+        "src": "/galerija/astrofotografija/mjesec/1770490711749-2026-02-07_18-56_1.jpg",
         "description": {
           "hr": "Mjesec tijekom djelomične pomrčine, K. Šprem",
           "en": "Moon during partial eclipse, K. Šprem",
@@ -476,7 +476,7 @@
         }
       },
       {
-        "src": "/galerija/astrofotografija/mjesec/1770490898318-2026-02-07_19-01.png",
+        "src": "/galerija/astrofotografija/mjesec/1770490898318-2026-02-07_19-01.jpg",
         "description": {
           "hr": "Pomrčina Mjeseca 2025, D. Štimac",
           "en": "Lunar Eclipse 2025, D. Štimac",
@@ -492,32 +492,60 @@
         }
       },
       {
-        "src": "/galerija/astrofotografija/mjesec/1789939856562-falcon 9 plume cropped.png",
-        "description": "Falcon 9 plume i Mjesec - Marko Nikolić"
+        "src": "/galerija/astrofotografija/mjesec/1789939856562-falcon 9 plume cropped.jpg",
+        "description": {
+          "hr": "Falcon 9 plume i Mjesec - Marko Nikolić",
+          "en": "Falcon 9 plume and the Moon - Marko Nikolić",
+          "it": "Pennacchio del Falcon 9 e la Luna - Marko Nikolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/mjesec/1789939952465-Lunar eclipse august 28.jpg",
-        "description": "Pomrčina Mjeseca, 28.8.2026. - Marko Nikolić"
+        "description": {
+          "hr": "Pomrčina Mjeseca, 28.8.2026. - Marko Nikolić",
+          "en": "Lunar eclipse, 28 August 2026 - Marko Nikolić",
+          "it": "Eclissi di Luna, 28 agosto 2026 - Marko Nikolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/mjesec/1789940158517-2026-08-04-0343_Clavius_100_SDG.jpg",
-        "description": "Clavicus - Gordan Bartolić"
+        "description": {
+          "hr": "Clavicus - Gordan Bartolić",
+          "en": "Clavius - Gordan Bartolić",
+          "it": "Clavius - Gordan Bartolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/mjesec/1789940354371-Mineralni Mjesec 08_07_2017.jpg",
-        "description": "Minerali Mjesec - Gordan Bartolić"
+        "description": {
+          "hr": "Minerali Mjesec - Gordan Bartolić",
+          "en": "Mineral Moon - Gordan Bartolić",
+          "it": "Luna minerale - Gordan Bartolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/mjesec/1789940384109-Prva_Äetvrt_SDG.jpg",
-        "description": " - Gordan Bartolić"
+        "description": {
+          "hr": " - Gordan Bartolić",
+          "en": " - Gordan Bartolić",
+          "it": " - Gordan Bartolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/mjesec/1789941056212-Mjesec.jpg",
-        "description": "Mjesec - Denis Štimac"
+        "description": {
+          "hr": "Mjesec - Denis Štimac",
+          "en": "Moon - Denis Štimac",
+          "it": "Luna - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/mjesec/1789941069898-Mjesec2.jpg",
-        "description": "Mjesec - Denis Štimac"
+        "description": {
+          "hr": "Mjesec - Denis Štimac",
+          "en": "Moon - Denis Štimac",
+          "it": "Luna - Denis Štimac"
+        }
       }
     ],
     "venera": [
@@ -621,7 +649,11 @@
       },
       {
         "src": "/galerija/astrofotografija/kometi/1790877863855-ezgif.com-gif-maker.gif",
-        "description": "Asteroid 208 Lacrimosa, kojega je otkrio Johan Palisa sa Pulske Zvjezdarnice davne 1879 godine. Slikao Denis Štimac."
+        "description": {
+          "hr": "Asteroid 208 Lacrimosa, kojega je otkrio Johan Palisa sa Pulske Zvjezdarnice davne 1879 godine. Slikao Denis Štimac.",
+          "en": "Asteroid 208 Lacrimosa, discovered by Johan Palisa at the Pula Observatory back in 1879. Photo by Denis Štimac.",
+          "it": "Asteroide 208 Lacrimosa, scoperto da Johan Palisa dall'Osservatorio di Pola nel lontano 1879. Foto di Denis Štimac."
+        }
       }
     ],
     "mars": [
@@ -725,31 +757,59 @@
       },
       {
         "src": "/galerija/astrofotografija/meteori/1786815561577-20260814_2305.jpg",
-        "description": "Bolid, Perzeid, 14.8.2026., 23:05 UTC"
+        "description": {
+          "hr": "Bolid, Perzeid, 14.8.2026., 23:05 UTC",
+          "en": "Fireball, Perseid, 14 August 2026, 23:05 UTC",
+          "it": "Bolide, Perseide, 14 agosto 2026, 23:05 UTC"
+        }
       },
       {
         "src": "/galerija/astrofotografija/meteori/1786815588366-20260815_0014.jpg",
-        "description": "Bolid, 15.8.2026., 00:14 UTC"
+        "description": {
+          "hr": "Bolid, 15.8.2026., 00:14 UTC",
+          "en": "Fireball, 15 August 2026, 00:14 UTC",
+          "it": "Bolide, 15 agosto 2026, 00:14 UTC"
+        }
       },
       {
         "src": "/galerija/astrofotografija/meteori/1786815654729-10-11.jpg",
-        "description": "Kompozitna snimka sa kamere Zvjezdarnice, Perzeidi, Kolovoz 2026., noć 10.-11."
+        "description": {
+          "hr": "Kompozitna snimka sa kamere Zvjezdarnice, Perzeidi, Kolovoz 2026., noć 10.-11.",
+          "en": "Composite image from the Observatory's camera, Perseids, August 2026, night of 10–11",
+          "it": "Immagine composita dalla camera dell'Osservatorio, Perseidi, agosto 2026, notte tra il 10 e l'11"
+        }
       },
       {
         "src": "/galerija/astrofotografija/meteori/1786815693283-12-13.jpg",
-        "description": "Kompozitna snimka sa kamere Zvjezdarnice, Perzeidi, Kolovoz 2026., noć 12.-13."
+        "description": {
+          "hr": "Kompozitna snimka sa kamere Zvjezdarnice, Perzeidi, Kolovoz 2026., noć 12.-13.",
+          "en": "Composite image from the Observatory's camera, Perseids, August 2026, night of 12–13",
+          "it": "Immagine composita dalla camera dell'Osservatorio, Perseidi, agosto 2026, notte tra il 12 e il 13"
+        }
       },
       {
         "src": "/galerija/astrofotografija/meteori/1786815709330-13-14.jpg",
-        "description": "Kompozitna snimka sa kamere Zvjezdarnice, Perzeidi, Kolovoz 2026., noć 13.-14."
+        "description": {
+          "hr": "Kompozitna snimka sa kamere Zvjezdarnice, Perzeidi, Kolovoz 2026., noć 13.-14.",
+          "en": "Composite image from the Observatory's camera, Perseids, August 2026, night of 13–14",
+          "it": "Immagine composita dalla camera dell'Osservatorio, Perseidi, agosto 2026, notte tra il 13 e il 14"
+        }
       },
       {
         "src": "/galerija/astrofotografija/meteori/1786815721959-14-15.jpg",
-        "description": "Kompozitna snimka sa kamere Zvjezdarnice, Perzeidi, Kolovoz 2026., noć 14.-15."
+        "description": {
+          "hr": "Kompozitna snimka sa kamere Zvjezdarnice, Perzeidi, Kolovoz 2026., noć 14.-15.",
+          "en": "Composite image from the Observatory's camera, Perseids, August 2026, night of 14–15",
+          "it": "Immagine composita dalla camera dell'Osservatorio, Perseidi, agosto 2026, notte tra il 14 e il 15"
+        }
       },
       {
         "src": "/galerija/astrofotografija/meteori/1789941284410-Suze Sv. Lovre.jpg",
-        "description": "Suze sv. Lovre - Denis Štimac"
+        "description": {
+          "hr": "Suze sv. Lovre - Denis Štimac",
+          "en": "Perseids (\"Tears of St. Lawrence\") - Denis Štimac",
+          "it": "Perseidi (\"Lacrime di San Lorenzo\") - Denis Štimac"
+        }
       }
     ],
     "jupiter": [
@@ -770,7 +830,7 @@
         }
       },
       {
-        "src": "/galerija/astrofotografija/jupiter/1770490563075-2026-02-07_18-57_1.png",
+        "src": "/galerija/astrofotografija/jupiter/1770490563075-2026-02-07_18-57_1.jpg",
         "description": {
           "hr": "A. Celija, C11",
           "en": "A. Celija, C11",
@@ -779,15 +839,27 @@
       },
       {
         "src": "/galerija/astrofotografija/jupiter/1789940123370-2024-12-12-0025_300_SDG.jpg",
-        "description": "Jupiter 12.12.2024. - Gordan Bartolić"
+        "description": {
+          "hr": "Jupiter 12.12.2024. - Gordan Bartolić",
+          "en": "Jupiter 12 December 2024 - Gordan Bartolić",
+          "it": "Giove 12 dicembre 2024 - Gordan Bartolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/jupiter/1789940248038-JUP_2024-12-27-2246_300.jpg",
-        "description": "Jupiter, 27.12.2024 - Gordan Bartolić"
+        "description": {
+          "hr": "Jupiter, 27.12.2024 - Gordan Bartolić",
+          "en": "Jupiter, 27 December 2024 - Gordan Bartolić",
+          "it": "Giove, 27 dicembre 2024 - Gordan Bartolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/jupiter/1789940305957-Jupiter_rotacija_19min.jpg",
-        "description": "Rotacija Jupitera u 19 minuta - Gordan Bartolić"
+        "description": {
+          "hr": "Rotacija Jupitera u 19 minuta - Gordan Bartolić",
+          "en": "Rotation of Jupiter over 19 minutes - Gordan Bartolić",
+          "it": "Rotazione di Giove in 19 minuti - Gordan Bartolić"
+        }
       }
     ],
     "saturn": [
@@ -801,19 +873,43 @@
       },
       {
         "src": "/galerija/astrofotografija/saturn/1789940402944-Sat-Jup_usp_SDG.jpg",
-        "description": "Saturn i Jupiter, usporedba - Gordan Bartolić"
+        "description": {
+          "hr": "Saturn i Jupiter, usporedba - Gordan Bartolić",
+          "en": "Saturn and Jupiter, comparison - Gordan Bartolić",
+          "it": "Saturno e Giove, confronto - Gordan Bartolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/saturn/1789940460859-WhatsApp Image 2026-09-10 at 17.02.11.jpg",
-        "description": "Saturn, Cassini spokes - Gordan Bartolić"
+        "description": {
+          "hr": "Saturn, Cassini spokes - Gordan Bartolić",
+          "en": "Saturn, Cassini spokes - Gordan Bartolić",
+          "it": "Saturno, spokes di Cassini - Gordan Bartolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/saturn/1789940502952-WhatsApp Image 2026-09-12 at 13.26.18(1).jpg",
-        "description": "Saturn sa Mimasom vidljivim desno, iznad prstena uz sam Saturn - Gordan Bartolić"
+        "description": {
+          "hr": "Saturn sa Mimasom vidljivim desno, iznad prstena uz sam Saturn - Gordan Bartolić",
+          "en": "Saturn with Mimas visible on the right, above the rings, right next to Saturn - Gordan Bartolić",
+          "it": "Saturno con Mimas visibile a destra, sopra gli anelli, proprio accanto a Saturno - Gordan Bartolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/saturn/1789941252822-Saturn.jpg",
-        "description": "Saturn - Denis Štimac"
+        "description": {
+          "hr": "Saturn - Denis Štimac",
+          "en": "Saturn - Denis Štimac",
+          "it": "Saturno - Denis Štimac"
+        }
+      },
+      {
+        "src": "/galerija/astrofotografija/saturn/1794953072405-saturn_moons.jpg",
+        "description": "Saturn sa Mjesecima, Marko Nikolić."
+      },
+      {
+        "src": "/galerija/astrofotografija/saturn/1794953155895-saturn_moon_animation_gif.gif",
+        "description": "Saturn sateliti - animacija. Marko Nikolić."
       }
     ],
     "duboki-svemir": [
@@ -899,227 +995,531 @@
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1771241181875-1000013340.jpg",
-        "description": "Seestar S50, M42"
+        "description": {
+          "hr": "Seestar S50, M42",
+          "en": "Seestar S50, M42",
+          "it": "Seestar S50, M42"
+        }
       },
       {
-        "src": "/galerija/astrofotografija/duboki-svemir/1777715315430-M65&M66 .png",
-        "description": "M65 & M66 - Slikao Denis Štimac"
+        "src": "/galerija/astrofotografija/duboki-svemir/1777715315430-M65&M66 .jpg",
+        "description": {
+          "hr": "M65 & M66 - Slikao Denis Štimac",
+          "en": "M65 & M66 - Photo by Denis Štimac",
+          "it": "M65 & M66 - Foto di Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1777715398675-horsehead wide2.jpg",
-        "description": "Horsehead nebula - widefield. Slikao Marko Nikolić"
+        "description": {
+          "hr": "Horsehead nebula - widefield. Slikao Marko Nikolić",
+          "en": "Horsehead Nebula - wide field. Photo by Marko Nikolić",
+          "it": "Nebulosa Testa di Cavallo - campo largo. Foto di Marko Nikolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1777715472585-bodes galaxy.jpg",
-        "description": "M81, slikao Marko Nikolić"
+        "description": {
+          "hr": "M81, slikao Marko Nikolić",
+          "en": "M81, photo by Marko Nikolić",
+          "it": "M81, foto di Marko Nikolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1781250516995-Coma_Cluster.jpeg",
-        "description": "Coma Cluster - slikao Denis Štimac."
+        "description": {
+          "hr": "Coma Cluster - slikao Denis Štimac.",
+          "en": "Coma Cluster - photo by Denis Štimac.",
+          "it": "Ammasso della Chioma - foto di Denis Štimac."
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1781250532327-Coma_Cluster_SkyAnnotFinal.jpg",
-        "description": "Coma Cluster, sa oznakama - slikao Denis Štimac."
+        "description": {
+          "hr": "Coma Cluster, sa oznakama - slikao Denis Štimac.",
+          "en": "Coma Cluster, annotated - photo by Denis Štimac.",
+          "it": "Ammasso della Chioma, con annotazioni - foto di Denis Štimac."
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1784708331797-western veil.jpg",
-        "description": "Western Veil - Marko Nikolić"
+        "description": {
+          "hr": "Western Veil - Marko Nikolić",
+          "en": "Western Veil - Marko Nikolić",
+          "it": "Velo Occidentale - Marko Nikolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1784708358162-m81-web.jpg",
-        "description": "M81 - Marko Nikolić"
+        "description": {
+          "hr": "M81 - Marko Nikolić",
+          "en": "M81 - Marko Nikolić",
+          "it": "M81 - Marko Nikolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1784708423990-m16-web.jpg",
-        "description": "M16 - Marko Nikolić"
+        "description": {
+          "hr": "M16 - Marko Nikolić",
+          "en": "M16 - Marko Nikolić",
+          "it": "M16 - Marko Nikolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1786815669753-11-12.jpg",
-        "description": "Kompozitna snimka sa kamere Zvjezdarnice, Perzeidi, Kolovoz 2026., noć 11.-12."
+        "description": {
+          "hr": "Kompozitna snimka sa kamere Zvjezdarnice, Perzeidi, Kolovoz 2026., noć 11.-12.",
+          "en": "Composite image from the Observatory's camera, Perseids, August 2026, night of 11–12",
+          "it": "Immagine composita dalla camera dell'Osservatorio, Perseidi, agosto 2026, notte tra l'11 e il 12"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789939876794-gotovo 7421 milky way.jpg",
-        "description": "Mliječna staza - Marko Nikolić"
+        "description": {
+          "hr": "Mliječna staza - Marko Nikolić",
+          "en": "Milky Way - Marko Nikolić",
+          "it": "Via Lattea - Marko Nikolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789939926537-iris nebula 47 hrs.jpg",
-        "description": "Iris nebula - Marko Nikolić"
+        "description": {
+          "hr": "Iris nebula - Marko Nikolić",
+          "en": "Iris Nebula - Marko Nikolić",
+          "it": "Nebulosa Iris - Marko Nikolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789939970652-m33 (1).jpg",
-        "description": "M33 - Marko Nikolić"
+        "description": {
+          "hr": "M33 - Marko Nikolić",
+          "en": "M33 - Marko Nikolić",
+          "it": "M33 - Marko Nikolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789939995160-propper m13 coma(1).jpg",
-        "description": "M13 - Marko Nikolić"
+        "description": {
+          "hr": "M13 - Marko Nikolić",
+          "en": "M13 - Marko Nikolić",
+          "it": "M13 - Marko Nikolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940214623-IC342_SDG.jpg",
-        "description": "IC342 - Gordan Bartolić"
+        "description": {
+          "hr": "IC342 - Gordan Bartolić",
+          "en": "IC342 - Gordan Bartolić",
+          "it": "IC342 - Gordan Bartolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940282170-M1_SDG.jpg",
-        "description": "M1 - Gordan Bartolić"
+        "description": {
+          "hr": "M1 - Gordan Bartolić",
+          "en": "M1 - Gordan Bartolić",
+          "it": "M1 - Gordan Bartolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940320067-M31&M32_OK.jpg",
-        "description": "M31 i M32 - Gordan Bartolić"
+        "description": {
+          "hr": "M31 i M32 - Gordan Bartolić",
+          "en": "M31 and M32 - Gordan Bartolić",
+          "it": "M31 e M32 - Gordan Bartolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940333795-M51_SDG.jpg",
-        "description": "M51 - Gordan Bartolić"
+        "description": {
+          "hr": "M51 - Gordan Bartolić",
+          "en": "M51 - Gordan Bartolić",
+          "it": "M51 - Gordan Bartolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940369508-NGC2264_SDG.jpg",
-        "description": "NGC2264 - Gordan Bartolić"
+        "description": {
+          "hr": "NGC2264 - Gordan Bartolić",
+          "en": "NGC2264 - Gordan Bartolić",
+          "it": "NGC2264 - Gordan Bartolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940551099-Betelgeuse.jpg",
-        "description": "Betelguese - Denis Štimac"
+        "description": {
+          "hr": "Betelguese - Denis Štimac",
+          "en": "Betelgeuse - Denis Štimac",
+          "it": "Betelgeuse - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940575148-Bubble.jpg",
-        "description": "Bubble nebula - Denis Štimac"
+        "description": {
+          "hr": "Bubble nebula - Denis Štimac",
+          "en": "Bubble Nebula - Denis Štimac",
+          "it": "Nebulosa Bolla - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940587873-Caldwell 27.jpg",
-        "description": "Caldwell 27 - Denis Štimac"
+        "description": {
+          "hr": "Caldwell 27 - Denis Štimac",
+          "en": "Caldwell 27 - Denis Štimac",
+          "it": "Caldwell 27 - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940654248-Cygnus Wall.jpg",
-        "description": "Cygnus wall - Denis Štimac"
+        "description": {
+          "hr": "Cygnus wall - Denis Štimac",
+          "en": "Cygnus Wall - Denis Štimac",
+          "it": "Muraglia del Cigno - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940671313-Final_HOO proba.jpg",
-        "description": "Caldwell 27, widefield - Denis Štimac"
+        "description": {
+          "hr": "Caldwell 27, widefield - Denis Štimac",
+          "en": "Caldwell 27, wide field - Denis Štimac",
+          "it": "Caldwell 27, campo largo - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940689163-Ghost of cassiopea.jpg",
-        "description": "Ghost of Cassiopea - Denis Štimac"
+        "description": {
+          "hr": "Ghost of Cassiopea - Denis Štimac",
+          "en": "Ghost of Cassiopeia - Denis Štimac",
+          "it": "Fantasma di Cassiopea - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940710132-Helix.jpg",
-        "description": "Helix - Denis Štimac"
+        "description": {
+          "hr": "Helix - Denis Štimac",
+          "en": "Helix - Denis Štimac",
+          "it": "Nebulosa Elica - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940739886-Image52.jpg",
-        "description": "Veil - Denis Štimac"
+        "description": {
+          "hr": "Veil - Denis Štimac",
+          "en": "Veil - Denis Štimac",
+          "it": "Velo - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940758951-M16 Wide.jpg",
-        "description": "M16 - Denis Štimac"
+        "description": {
+          "hr": "M16 - Denis Štimac",
+          "en": "M16 - Denis Štimac",
+          "it": "M16 - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940770692-M20.jpg",
-        "description": "M20 - Denis Štimac"
+        "description": {
+          "hr": "M20 - Denis Štimac",
+          "en": "M20 - Denis Štimac",
+          "it": "M20 - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940800932-M33 IR Pass filter.jpg",
-        "description": "M33, IR Pass Filter - Denis Štimac"
+        "description": {
+          "hr": "M33, IR Pass Filter - Denis Štimac",
+          "en": "M33, IR pass filter - Denis Štimac",
+          "it": "M33, filtro IR pass - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940851706-M31.jpg",
-        "description": "Andromedina Galaksija M31 i M32 - Denis Štimac"
+        "description": {
+          "hr": "Andromedina Galaksija M31 i M32 - Denis Štimac",
+          "en": "Andromeda Galaxy M31 and M32 - Denis Štimac",
+          "it": "Galassia di Andromeda M31 e M32 - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940869282-Casper.jpg",
-        "description": "Casper nebula (M78) - Denis Štimac"
+        "description": {
+          "hr": "Casper nebula (M78) - Denis Štimac",
+          "en": "Casper Nebula (M78) - Denis Štimac",
+          "it": "Nebulosa Casper (M78) - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940943123-M51.jpg",
-        "description": "M51 - Denis Štimac"
+        "description": {
+          "hr": "M51 - Denis Štimac",
+          "en": "M51 - Denis Štimac",
+          "it": "M51 - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940953694-M42.jpg",
-        "description": "M42 - Denis Štimac"
+        "description": {
+          "hr": "M42 - Denis Štimac",
+          "en": "M42 - Denis Štimac",
+          "it": "M42 - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940972492-M65 & M66 gotovo.jpg",
-        "description": "M65 i M66 - Denis Štimac"
+        "description": {
+          "hr": "M65 i M66 - Denis Štimac",
+          "en": "M65 and M66 - Denis Štimac",
+          "it": "M65 e M66 - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940981852-M101.jpg",
-        "description": "M101 - Denis Štimac"
+        "description": {
+          "hr": "M101 - Denis Štimac",
+          "en": "M101 - Denis Štimac",
+          "it": "M101 - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789940996437-M106.jpg",
-        "description": "M106 - Denis Štimac"
+        "description": {
+          "hr": "M106 - Denis Štimac",
+          "en": "M106 - Denis Štimac",
+          "it": "M106 - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789941011519-M106-tiff.jpg",
-        "description": "M106 - Denis Štimac"
+        "description": {
+          "hr": "M106 - Denis Štimac",
+          "en": "M106 - Denis Štimac",
+          "it": "M106 - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789941041013-Markarian.jpg",
-        "description": "Markarian Chain - Denis Štimac"
+        "description": {
+          "hr": "Markarian Chain - Denis Štimac",
+          "en": "Markarian's Chain - Denis Štimac",
+          "it": "Catena di Markarian - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789941088464-Needle galaxy.jpg",
-        "description": "Needle Galaxy - Denis Štimac"
+        "description": {
+          "hr": "Needle Galaxy - Denis Štimac",
+          "en": "Needle Galaxy - Denis Štimac",
+          "it": "Galassia Ago - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789941110018-NGC 6914.jpg",
-        "description": "NGC6914 - Denis Štimac"
+        "description": {
+          "hr": "NGC6914 - Denis Štimac",
+          "en": "NGC6914 - Denis Štimac",
+          "it": "NGC6914 - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789941120959-Orion testJPG.jpg",
-        "description": "M42 - Denis Štimac"
+        "description": {
+          "hr": "M42 - Denis Štimac",
+          "en": "M42 - Denis Štimac",
+          "it": "M42 - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789941188647-Rho 1.jpg",
-        "description": "Rho Ophiuchi cloud complex 1 - Denis Štimac"
+        "description": {
+          "hr": "Rho Ophiuchi cloud complex 1 - Denis Štimac",
+          "en": "Rho Ophiuchi cloud complex 1 - Denis Štimac",
+          "it": "Complesso di nubi di Rho Ophiuchi 1 - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789941199779-Rho 2.jpg",
-        "description": "Rho Ophiuchi cloud complex 2 - Denis Štimac"
+        "description": {
+          "hr": "Rho Ophiuchi cloud complex 2 - Denis Štimac",
+          "en": "Rho Ophiuchi cloud complex 2 - Denis Štimac",
+          "it": "Complesso di nubi di Rho Ophiuchi 2 - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789941209930-Rho 3.jpg",
-        "description": "Rho Ophiuchi cloud complex 3 - Denis Štimac"
+        "description": {
+          "hr": "Rho Ophiuchi cloud complex 3 - Denis Štimac",
+          "en": "Rho Ophiuchi cloud complex 3 - Denis Štimac",
+          "it": "Complesso di nubi di Rho Ophiuchi 3 - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789941238243-Rosetta Wide.jpg",
-        "description": "Rosetta widefield - Denis Štimac"
+        "description": {
+          "hr": "Rosetta widefield - Denis Štimac",
+          "en": "Rosette Nebula, wide field - Denis Štimac",
+          "it": "Nebulosa Rosetta, campo largo - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789941267981-Skup.jpg",
-        "description": "M13 - Denis Štimac"
+        "description": {
+          "hr": "M13 - Denis Štimac",
+          "en": "M13 - Denis Štimac",
+          "it": "M13 - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789941299387-Veil.jpg",
-        "description": "Veil - Denis Štimac"
+        "description": {
+          "hr": "Veil - Denis Štimac",
+          "en": "Veil - Denis Štimac",
+          "it": "Velo - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789941306266-Veil2.jpg",
-        "description": "Veil - Denis Štimac"
+        "description": {
+          "hr": "Veil - Denis Štimac",
+          "en": "Veil - Denis Štimac",
+          "it": "Velo - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789941313233-Veil4.jpg",
-        "description": "Veil - Denis Štimac"
+        "description": {
+          "hr": "Veil - Denis Štimac",
+          "en": "Veil - Denis Štimac",
+          "it": "Velo - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789941363821-Wolf134.jpg",
-        "description": "Wolf134 - Denis Štimac"
+        "description": {
+          "hr": "Wolf134 - Denis Štimac",
+          "en": "Wolf134 - Denis Štimac",
+          "it": "Wolf134 - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789941395443-Wizard.jpg",
-        "description": "Wizard Nebula (NGC 7380) - Denis Štimac"
+        "description": {
+          "hr": "Wizard Nebula (NGC 7380) - Denis Štimac",
+          "en": "Wizard Nebula (NGC 7380) - Denis Štimac",
+          "it": "Nebulosa Mago (NGC 7380) - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789941438803-IMG_1760.jpg",
-        "description": "Dust wall, Rosette Nebula - Denis Štimac"
+        "description": {
+          "hr": "Dust wall, Rosette Nebula - Denis Štimac",
+          "en": "Dust wall, Rosette Nebula - Denis Štimac",
+          "it": "Muro di polvere, Nebulosa Rosetta - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789942047667-Rosetta 1000.jpg",
-        "description": "Rosetta, widefield - Denis Štimac"
+        "description": {
+          "hr": "Rosetta, widefield - Denis Štimac",
+          "en": "Rosette Nebula, wide field - Denis Štimac",
+          "it": "Nebulosa Rosetta, campo largo - Denis Štimac"
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789942132312-Stephenson 2-18.jpg",
-        "description": "Stephenson 2-18, teoretizirana kao najveća zvijezda, čak 2150 puta veća od Sunca. Slikao - Denis Štimac."
+        "description": {
+          "hr": "Stephenson 2-18, teoretizirana kao najveća zvijezda, čak 2150 puta veća od Sunca. Slikao - Denis Štimac.",
+          "en": "Stephenson 2-18, theorised to be the largest known star, as much as 2150 times larger than the Sun. Photo: Denis Štimac.",
+          "it": "Stephenson 2-18, ipotizzata come la stella più grande, ben 2150 volte più grande del Sole. Foto: Denis Štimac."
+        }
       },
       {
         "src": "/galerija/astrofotografija/duboki-svemir/1789942204695-Stephenson 2-18 IR pass.jpg",
-        "description": "Stephenson 2-18, teoretizirana kao najveća zvijezda, čak 2150 puta veća od Sunca. IR Pass filter prošupta infracrveni spektar, pa Stephenson 2-18, inače djelomično skriven oblakom prašine, probija isti i pokazuje svoj sjaj. Slikao - Denis Štimac."
+        "description": {
+          "hr": "Stephenson 2-18, teoretizirana kao najveća zvijezda, čak 2150 puta veća od Sunca. IR Pass filter prošupta infracrveni spektar, pa Stephenson 2-18, inače djelomično skriven oblakom prašine, probija isti i pokazuje svoj sjaj. Slikao - Denis Štimac.",
+          "en": "Stephenson 2-18, theorised to be the largest known star, as much as 2150 times larger than the Sun. The IR pass filter lets through the infrared spectrum, so Stephenson 2-18, otherwise partly hidden by a dust cloud, shines through it and reveals its brightness. Photo: Denis Štimac.",
+          "it": "Stephenson 2-18, ipotizzata come la stella più grande, ben 2150 volte più grande del Sole. Il filtro IR pass lascia passare lo spettro infrarosso, così Stephenson 2-18, altrimenti parzialmente nascosta da una nube di polvere, la attraversa e mostra la sua luminosità. Foto: Denis Štimac."
+        }
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1791832621832-abell 194 galakticko jato.jpg",
+        "description": {
+          "hr": "Abell 194 galaktičko jato - Marko Nikolić",
+          "en": "Abell 194 galaxy cluster - Marko Nikolić",
+          "it": "Ammasso di galassie Abell 194 - Marko Nikolić"
+        }
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1791835285337-ngc 206 cluster.jpg",
+        "description": {
+          "hr": "NGC 206 – najveći i najsjajniji zvjezdani oblak u galaksiji Andromeda (M31), područje puno mladih, vrućih plavih zvijezda u jednom od njezinih spiralnih krakova - slikao Marko Nikolić",
+          "en": "NGC 206 – the largest and brightest star cloud in the Andromeda Galaxy (M31), a region full of young, hot blue stars in one of its spiral arms - photo by Marko Nikolić",
+          "it": "NGC 206 – la nube stellare più grande e luminosa della galassia di Andromeda (M31), una regione ricca di stelle giovani, calde e blu in uno dei suoi bracci a spirale - foto di Marko Nikolić"
+        }
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1791835288325-m32.jpg",
+        "description": {
+          "hr": "Patuljasta eliptična galaksija M32 – kompaktni satelit galaksije Andromeda, vidljiv kao sjajna mrlja uz rub njezina diska - slikao Marko Nikolić",
+          "en": "Dwarf elliptical galaxy M32 – a compact satellite of the Andromeda Galaxy, visible as a bright patch near the edge of its disc - photo by Marko Nikolić",
+          "it": "Galassia ellittica nana M32 – satellite compatto della galassia di Andromeda, visibile come una macchia luminosa vicino al bordo del suo disco - foto di Marko Nikolić"
+        }
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1791835291363-abell 194 galakticko jato oznaceno.jpg",
+        "description": {
+          "hr": "Galaktičko jato Abell 194 (označeno) – galaksije u kadru označene su kataloškim oznakama (PGC, NGC) s crvenim pomakom i udaljenošću; neke od njih udaljene su više od milijardu svjetlosnih godina - slikao Marko Nikolić",
+          "en": "Galaxy cluster Abell 194 (annotated) – the galaxies in the frame are labelled with their catalogue designations (PGC, NGC), redshift and distance; some of them are more than a billion light-years away - photo by Marko Nikolić",
+          "it": "Ammasso di galassie Abell 194 (annotato) – le galassie nell'inquadratura sono contrassegnate con le sigle di catalogo (PGC, NGC), il redshift e la distanza; alcune distano più di un miliardo di anni luce - foto di Marko Nikolić"
+        }
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1791835294654-abell 194 galakticko jato.jpg",
+        "description": {
+          "hr": "Galaktičko jato Abell 194 – jato galaksija u zviježđu Kit (Cetus), udaljeno oko 250 milijuna svjetlosnih godina - slikao Marko Nikolić",
+          "en": "Galaxy cluster Abell 194 – a cluster of galaxies in the constellation Cetus (the Whale), about 250 million light-years away - photo by Marko Nikolić",
+          "it": "Ammasso di galassie Abell 194 – ammasso di galassie nella costellazione della Balena (Cetus), distante circa 250 milioni di anni luce - foto di Marko Nikolić"
+        }
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1791835297539-M31 V-1 oznacena.jpg",
+        "description": {
+          "hr": "Cefeida M31-V1 u galaksiji Andromeda (označena) – crvena oznaka pokazuje položaj Hubbleove promjenjive zvijezde u spiralnom kraku M31 - slikao Marko Nikolić",
+          "en": "Cepheid M31-V1 in the Andromeda Galaxy (marked) – the red marker shows the position of Hubble's variable star in a spiral arm of M31 - photo by Marko Nikolić",
+          "it": "Cefeide M31-V1 nella galassia di Andromeda (contrassegnata) – il segno rosso indica la posizione della stella variabile di Hubble in un braccio a spirale di M31 - foto di Marko Nikolić"
+        }
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1791835301058-M31 V-1.jpg",
+        "description": {
+          "hr": "Cefeida M31-V1 u galaksiji Andromeda – promjenjiva zvijezda pomoću koje je Edwin Hubble 1923. dokazao da je Andromeda zasebna galaksija, udaljena oko 2,5 milijuna svjetlosnih godina - slikao Marko Nikolić",
+          "en": "Cepheid M31-V1 in the Andromeda Galaxy – the variable star with which Edwin Hubble proved in 1923 that Andromeda is a separate galaxy, about 2.5 million light-years away - photo by Marko Nikolić",
+          "it": "Cefeide M31-V1 nella galassia di Andromeda – la stella variabile con cui Edwin Hubble dimostrò nel 1923 che Andromeda è una galassia a sé stante, distante circa 2,5 milioni di anni luce - foto di Marko Nikolić"
+        }
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1791835304630-andromeda closeup.jpg",
+        "description": {
+          "hr": "Galaksija Andromeda (M31), detalj – spiralni krakovi s tamnim prašinastim pojasevima i satelitska galaksija M32; najbliža velika galaksija Mliječnoj stazi - slikao Marko Nikolić",
+          "en": "Andromeda Galaxy (M31), detail – spiral arms with dark dust lanes and the satellite galaxy M32; the nearest large galaxy to the Milky Way - photo by Marko Nikolić",
+          "it": "Galassia di Andromeda (M31), dettaglio – bracci a spirale con scure bande di polvere e la galassia satellite M32; la grande galassia più vicina alla Via Lattea - foto di Marko Nikolić"
+        }
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1794777658841-upitnik_nebula_-_LND_1272.jpg",
+        "description": "LND1272 - Upitnik Nebula - Marko Nikolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1794777718121-m45_process_3.jpg",
+        "description": "Pleiade - M45 - Marko Nikolić"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1794777829738-NGC_90.jpg",
+        "description": "NGC 90 - Denis Štimac"
+      },
+      {
+        "src": "/galerija/astrofotografija/duboki-svemir/1794777851492-IC_1613.jpg",
+        "description": "IC 1613 - Denis Štimac"
       }
     ],
     "sunce": [
@@ -1132,7 +1532,7 @@
         }
       },
       {
-        "src": "/galerija/astrofotografija/sunce/1770490693157-2026-02-07_18-57.png",
+        "src": "/galerija/astrofotografija/sunce/1770490693157-2026-02-07_18-57.jpg",
         "description": {
           "hr": "Pomrčina Sunca, djelomična, 2022. A. Celija",
           "en": "Partial Solar Eclipse, 2022. A. Celija",
@@ -1140,7 +1540,7 @@
         }
       },
       {
-        "src": "/galerija/astrofotografija/sunce/1770490739998-2026-02-07_18-55.png",
+        "src": "/galerija/astrofotografija/sunce/1770490739998-2026-02-07_18-55.jpg",
         "description": {
           "hr": "Djelomična pomrčina Sunca 2025, kroz oblake. R. Rašković, D. Šegon",
           "en": "Partial Solar Eclipse 2025, through clouds. R. Rašković, D. Šegon",
@@ -1148,7 +1548,7 @@
         }
       },
       {
-        "src": "/galerija/astrofotografija/sunce/1770490881695-2026-02-07_19-00_1.png",
+        "src": "/galerija/astrofotografija/sunce/1770490881695-2026-02-07_19-00_1.jpg",
         "description": {
           "hr": "H-alfa Sunce, D. Šegon, R. Rašković",
           "en": "H-alpha Sun, D. Šegon, R. Rašković",
@@ -1165,23 +1565,43 @@
       },
       {
         "src": "/galerija/astrofotografija/sunce/1786704078770-edi_5.jpg",
-        "description": "Pomrčina Sunca 12.8.2026 - Edi Puh"
+        "description": {
+          "hr": "Pomrčina Sunca 12.8.2026 - Edi Puh",
+          "en": "Solar eclipse 12 August 2026 - Edi Puh",
+          "it": "Eclissi di Sole 12 agosto 2026 - Edi Puh"
+        }
       },
       {
         "src": "/galerija/astrofotografija/sunce/1786922752973-P1 copy.jpg",
-        "description": "Pomrčina Sunca, 12.8.2026. sa motivom dizalica - Copyright Duško Marušić Čiči, postavljeno sa dozvolom. "
+        "description": {
+          "hr": "Pomrčina Sunca, 12.8.2026. sa motivom dizalica - Copyright Duško Marušić Čiči, postavljeno sa dozvolom. ",
+          "en": "Solar eclipse, 12 August 2026, with cranes in the frame - Copyright Duško Marušić Čiči, posted with permission.",
+          "it": "Eclissi di Sole, 12 agosto 2026, con le gru sullo sfondo - Copyright Duško Marušić Čiči, pubblicata con autorizzazione."
+        }
       },
       {
         "src": "/galerija/astrofotografija/sunce/1786923269143-WhatsApp Image 2026-08-13 at 19.04.08(1).jpeg",
-        "description": "Slikao: Gordan Bartolić\r\n\r\nObjekt: Sunce, pomrčina, H-alfa\r\nDatum, vrijeme: 12.08.2026. u 17:29:07 UT (sredina snimanja).\r\nLokacija: Pula (Monte Zaro, zvjezdarnica ADIP-a)\r\nTeleskop: Lunt 70 H-alfa teleskop\r\nMontaža: Celestron Alt-Az Go-To\r\nOptički sustav pri snimanju: primarno žarište teleskopa (F=420mm, D=70mm)\r\nSampling pri snimanju: 1.42 lučne sekunde po pikselu \r\nKamera: Player One Uranus-C (IMX585) + Astronomik L (2c) filter\r\nCapture Area=3856x2180\r\nEkspozicije: 9,1880ms, gain 100 (12%), ukupno 1386 sličica (video od 60 sekundi), FPS=23,1\r\nKombinirano 35% najboljih sličica iz videa\r\nSoftware: SharpCap Pro, Autostakkert! 4, PS CS2.\r\nPrikaz slike je 100%."
+        "description": {
+          "hr": "Slikao: Gordan Bartolić\r\n\r\nObjekt: Sunce, pomrčina, H-alfa\r\nDatum, vrijeme: 12.08.2026. u 17:29:07 UT (sredina snimanja).\r\nLokacija: Pula (Monte Zaro, zvjezdarnica ADIP-a)\r\nTeleskop: Lunt 70 H-alfa teleskop\r\nMontaža: Celestron Alt-Az Go-To\r\nOptički sustav pri snimanju: primarno žarište teleskopa (F=420mm, D=70mm)\r\nSampling pri snimanju: 1.42 lučne sekunde po pikselu \r\nKamera: Player One Uranus-C (IMX585) + Astronomik L (2c) filter\r\nCapture Area=3856x2180\r\nEkspozicije: 9,1880ms, gain 100 (12%), ukupno 1386 sličica (video od 60 sekundi), FPS=23,1\r\nKombinirano 35% najboljih sličica iz videa\r\nSoftware: SharpCap Pro, Autostakkert! 4, PS CS2.\r\nPrikaz slike je 100%.",
+          "en": "Photo: Gordan Bartolić\r\n\r\nObject: Sun, eclipse, H-alpha\r\nDate, time: 12 August 2026 at 17:29:07 UT (middle of capture).\r\nLocation: Pula (Monte Zaro, ADIP observatory)\r\nTelescope: Lunt 70 H-alpha telescope\r\nMount: Celestron Alt-Az Go-To\r\nOptical system used: prime focus of the telescope (F=420mm, D=70mm)\r\nSampling: 1.42 arcseconds per pixel\r\nCamera: Player One Uranus-C (IMX585) + Astronomik L (2c) filter\r\nCapture Area=3856x2180\r\nExposures: 9.1880ms, gain 100 (12%), 1386 frames in total (60-second video), FPS=23.1\r\nBest 35% of the video frames stacked\r\nSoftware: SharpCap Pro, Autostakkert! 4, PS CS2.\r\nImage shown at 100%.",
+          "it": "Foto: Gordan Bartolić\r\n\r\nOggetto: Sole, eclissi, H-alfa\r\nData, ora: 12 agosto 2026 alle 17:29:07 UT (metà della ripresa).\r\nLuogo: Pula (Monte Zaro, osservatorio dell'ADIP)\r\nTelescopio: telescopio H-alfa Lunt 70\r\nMontatura: Celestron Alt-Az Go-To\r\nSistema ottico di ripresa: fuoco primario del telescopio (F=420mm, D=70mm)\r\nCampionamento: 1,42 secondi d'arco per pixel\r\nCamera: Player One Uranus-C (IMX585) + filtro Astronomik L (2c)\r\nCapture Area=3856x2180\r\nEsposizioni: 9,1880ms, gain 100 (12%), in totale 1386 fotogrammi (video di 60 secondi), FPS=23,1\r\nCombinato il 35% dei migliori fotogrammi del video\r\nSoftware: SharpCap Pro, Autostakkert! 4, PS CS2.\r\nImmagine visualizzata al 100%."
+        }
       },
       {
         "src": "/galerija/astrofotografija/sunce/1789940198873-2029-08-12_174630UT_SDG.jpg",
-        "description": "12.8.2026. Pomrčina Sunca - Gordan Bartolić"
+        "description": {
+          "hr": "12.8.2026. Pomrčina Sunca - Gordan Bartolić",
+          "en": "12 August 2026 Solar eclipse - Gordan Bartolić",
+          "it": "12 agosto 2026 Eclissi di Sole - Gordan Bartolić"
+        }
       },
       {
         "src": "/galerija/astrofotografija/sunce/1789940422583-S_E_172951UT_SDG.jpg",
-        "description": "Avion, detalj - Gordan Bartolić"
+        "description": {
+          "hr": "Avion, detalj - Gordan Bartolić",
+          "en": "Aeroplane, detail - Gordan Bartolić",
+          "it": "Aereo, dettaglio - Gordan Bartolić"
+        }
       }
     ]
   },
@@ -1412,63 +1832,123 @@
     },
     {
       "src": "/galerija/posjete/1786566737673-WhatsApp Image 2026-08-12 at 21.30.58.jpeg",
-      "description": "Pomrčina Sunca 12.8.2026."
+      "description": {
+        "hr": "Pomrčina Sunca 12.8.2026.",
+        "en": "Solar eclipse 12 August 2026",
+        "it": "Eclissi di Sole 12 agosto 2026"
+      }
     },
     {
       "src": "/galerija/posjete/1786566787941-WhatsApp Image 2026-08-12 at 21.30.57.jpeg",
-      "description": "Pomrčina Sunca 12.8.2026."
+      "description": {
+        "hr": "Pomrčina Sunca 12.8.2026.",
+        "en": "Solar eclipse 12 August 2026",
+        "it": "Eclissi di Sole 12 agosto 2026"
+      }
     },
     {
       "src": "/galerija/posjete/1786566829802-WhatsApp Image 2026-08-12 at 21.30.57(1).jpeg",
-      "description": "Pomrčina Sunca 12.8.2026."
+      "description": {
+        "hr": "Pomrčina Sunca 12.8.2026.",
+        "en": "Solar eclipse 12 August 2026",
+        "it": "Eclissi di Sole 12 agosto 2026"
+      }
     },
     {
       "src": "/galerija/posjete/1786566884474-WhatsApp Image 2026-08-12 at 21.30.56.jpeg",
-      "description": "Pomrčina Sunca 12.8.2026."
+      "description": {
+        "hr": "Pomrčina Sunca 12.8.2026.",
+        "en": "Solar eclipse 12 August 2026",
+        "it": "Eclissi di Sole 12 agosto 2026"
+      }
     },
     {
       "src": "/galerija/posjete/1786566980415-WhatsApp Image 2026-08-12 at 21.30.56(1).jpeg",
-      "description": "Pomrčina Sunca 12.8.2026."
+      "description": {
+        "hr": "Pomrčina Sunca 12.8.2026.",
+        "en": "Solar eclipse 12 August 2026",
+        "it": "Eclissi di Sole 12 agosto 2026"
+      }
     },
     {
       "src": "/galerija/posjete/1786567002102-WhatsApp Image 2026-08-12 at 21.30.56(2).jpeg",
-      "description": "Pomrčina Sunca 12.8.2026."
+      "description": {
+        "hr": "Pomrčina Sunca 12.8.2026.",
+        "en": "Solar eclipse 12 August 2026",
+        "it": "Eclissi di Sole 12 agosto 2026"
+      }
     },
     {
       "src": "/galerija/posjete/1786567020157-WhatsApp Image 2026-08-12 at 21.30.55.jpeg",
-      "description": "Pomrčina Sunca 12.8.2026."
+      "description": {
+        "hr": "Pomrčina Sunca 12.8.2026.",
+        "en": "Solar eclipse 12 August 2026",
+        "it": "Eclissi di Sole 12 agosto 2026"
+      }
     },
     {
       "src": "/galerija/posjete/1786567033174-WhatsApp Image 2026-08-12 at 21.30.55(1).jpeg",
-      "description": "Pomrčina Sunca 12.8.2026."
+      "description": {
+        "hr": "Pomrčina Sunca 12.8.2026.",
+        "en": "Solar eclipse 12 August 2026",
+        "it": "Eclissi di Sole 12 agosto 2026"
+      }
     },
     {
       "src": "/galerija/posjete/1786567046957-WhatsApp Image 2026-08-12 at 21.30.55(2).jpeg",
-      "description": "Pomrčina Sunca 12.8.2026."
+      "description": {
+        "hr": "Pomrčina Sunca 12.8.2026.",
+        "en": "Solar eclipse 12 August 2026",
+        "it": "Eclissi di Sole 12 agosto 2026"
+      }
     },
     {
       "src": "/galerija/posjete/1786567103720-WhatsApp Image 2026-08-12 at 21.30.54.jpeg",
-      "description": "Pomrčina Sunca 12.8.2026."
+      "description": {
+        "hr": "Pomrčina Sunca 12.8.2026.",
+        "en": "Solar eclipse 12 August 2026",
+        "it": "Eclissi di Sole 12 agosto 2026"
+      }
     },
     {
       "src": "/galerija/posjete/1786567254918-WhatsApp Image 2026-08-12 at 22.35.50.jpeg",
-      "description": "Pomrčina Sunca 12.8.2026. - predavanje Anton Perkov"
+      "description": {
+        "hr": "Pomrčina Sunca 12.8.2026. - predavanje Anton Perkov",
+        "en": "Solar eclipse 12 August 2026 - lecture by Anton Perkov",
+        "it": "Eclissi di Sole 12 agosto 2026 - conferenza di Anton Perkov"
+      }
     },
     {
       "src": "/galerija/posjete/1786567287582-WhatsApp Image 2026-08-12 at 22.35.50(1).jpeg",
-      "description": "Pomrčina Sunca 12.8.2026. - predavanje Anton Perkov"
+      "description": {
+        "hr": "Pomrčina Sunca 12.8.2026. - predavanje Anton Perkov",
+        "en": "Solar eclipse 12 August 2026 - lecture by Anton Perkov",
+        "it": "Eclissi di Sole 12 agosto 2026 - conferenza di Anton Perkov"
+      }
     },
     {
       "src": "/galerija/posjete/1786567313406-WhatsApp Image 2026-08-12 at 22.35.51.jpeg",
-      "description": "Pomrčina Sunca 12.8.2026. - predavanje Anton Perkov"
+      "description": {
+        "hr": "Pomrčina Sunca 12.8.2026. - predavanje Anton Perkov",
+        "en": "Solar eclipse 12 August 2026 - lecture by Anton Perkov",
+        "it": "Eclissi di Sole 12 agosto 2026 - conferenza di Anton Perkov"
+      }
     },
     {
       "src": "/galerija/posjete/1786704026964-edi_4.jpg",
-      "description": "Pomrčina Sunca 12.8.2026 - Edi Puh"
+      "description": {
+        "hr": "Pomrčina Sunca 12.8.2026 - Edi Puh",
+        "en": "Solar eclipse 12 August 2026 - Edi Puh",
+        "it": "Eclissi di Sole 12 agosto 2026 - Edi Puh"
+      }
     },
     {
       "src": "/galerija/posjete/1786704036240-edi_3.jpg",
-      "description": "Pomrčina Sunca 12.8.2026 - Edi Puh"
+      "description": {
+        "hr": "Pomrčina Sunca 12.8.2026 - Edi Puh",
+        "en": "Solar eclipse 12 August 2026 - Edi Puh",
+        "it": "Eclissi di Sole 12 agosto 2026 - Edi Puh"
+      }
     }
   ],
   "ostalo": [
@@ -1522,7 +2002,11 @@
     },
     {
       "src": "/galerija/ostalo/1770490775593-2026-02-07_18-56.png",
-      "description": "Testiranje prepoznavanja meteorita Dronom, u suradnji sa učenicima Gimanzije Pula, S. Baressi Šegota"
+      "description": {
+        "hr": "Testiranje prepoznavanja meteorita Dronom, u suradnji sa učenicima Gimanzije Pula, S. Baressi Šegota",
+        "en": "Testing meteorite recognition by drone, in cooperation with students of Gimnazija Pula (Pula grammar school), S. Baressi Šegota",
+        "it": "Test di riconoscimento di meteoriti con drone, in collaborazione con gli studenti del liceo Gimnazija Pula, S. Baressi Šegota"
+      }
     },
     {
       "src": "/galerija/ostalo/1770490944271-487513368_4037696203132057_5902765861972678582_n.jpg",
@@ -1598,99 +2082,195 @@
     },
     {
       "src": "/galerija/ostalo/1774781569638-100_0951.JPG",
-      "description": "Posjeta International Meteor Conference 2008 (Šachtička, Slovakia)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2008 (Šachtička, Slovakia)",
+        "en": "Visit to the International Meteor Conference 2008 (Šachtička, Slovakia)",
+        "it": "Visita all'International Meteor Conference 2008 (Šachtička, Slovacchia)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781580828-100_0985.JPG",
-      "description": "Posjeta International Meteor Conference 2008 (Šachtička, Slovakia)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2008 (Šachtička, Slovakia)",
+        "en": "Visit to the International Meteor Conference 2008 (Šachtička, Slovakia)",
+        "it": "Visita all'International Meteor Conference 2008 (Šachtička, Slovacchia)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781591728-100_0995.JPG",
-      "description": "Posjeta International Meteor Conference 2008 (Šachtička, Slovakia)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2008 (Šachtička, Slovakia)",
+        "en": "Visit to the International Meteor Conference 2008 (Šachtička, Slovakia)",
+        "it": "Visita all'International Meteor Conference 2008 (Šachtička, Slovacchia)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781617099-IMC_2009_2009092427 004.jpg",
-      "description": "Posjeta International Meteor Conference 2009 (Poreč, Hrvatska)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2009 (Poreč, Hrvatska)",
+        "en": "Visit to the International Meteor Conference 2009 (Poreč, Croatia)",
+        "it": "Visita all'International Meteor Conference 2009 (Poreč, Croazia)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781624014-IMC_2009_2009092427 024.jpg",
-      "description": "Posjeta International Meteor Conference 2009 (Poreč, Hrvatska)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2009 (Poreč, Hrvatska)",
+        "en": "Visit to the International Meteor Conference 2009 (Poreč, Croatia)",
+        "it": "Visita all'International Meteor Conference 2009 (Poreč, Croazia)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781632105-IMC_2009_2009092427 055.jpg",
-      "description": "Posjeta International Meteor Conference 2009 (Poreč, Hrvatska)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2009 (Poreč, Hrvatska)",
+        "en": "Visit to the International Meteor Conference 2009 (Poreč, Croatia)",
+        "it": "Visita all'International Meteor Conference 2009 (Poreč, Croazia)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781641126-IMC_2009_2009092427 056.jpg",
-      "description": "Posjeta International Meteor Conference 2009 (Poreč, Hrvatska)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2009 (Poreč, Hrvatska)",
+        "en": "Visit to the International Meteor Conference 2009 (Poreč, Croatia)",
+        "it": "Visita all'International Meteor Conference 2009 (Poreč, Croazia)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781648078-IMC_2009_2009092427 058.jpg",
-      "description": "Posjeta International Meteor Conference 2009 (Poreč, Hrvatska)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2009 (Poreč, Hrvatska)",
+        "en": "Visit to the International Meteor Conference 2009 (Poreč, Croatia)",
+        "it": "Visita all'International Meteor Conference 2009 (Poreč, Croazia)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781684696-IMC_2010_IMG_2173.jpg",
-      "description": "Posjeta International Meteor Conference 2010 (Armagh, Northern Ireland)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2010 (Armagh, Northern Ireland)",
+        "en": "Visit to the International Meteor Conference 2010 (Armagh, Northern Ireland)",
+        "it": "Visita all'International Meteor Conference 2010 (Armagh, Irlanda del Nord)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781689597-IMC_2010_IMG_5741.jpg",
-      "description": "Posjeta International Meteor Conference 2010 (Armagh, Northern Ireland)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2010 (Armagh, Northern Ireland)",
+        "en": "Visit to the International Meteor Conference 2010 (Armagh, Northern Ireland)",
+        "it": "Visita all'International Meteor Conference 2010 (Armagh, Irlanda del Nord)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781694684-IMC_2010_IMG_5751.jpg",
-      "description": "Posjeta International Meteor Conference 2010 (Armagh, Northern Ireland)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2010 (Armagh, Northern Ireland)",
+        "en": "Visit to the International Meteor Conference 2010 (Armagh, Northern Ireland)",
+        "it": "Visita all'International Meteor Conference 2010 (Armagh, Irlanda del Nord)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781719730-IMGP4677.JPG",
-      "description": "Posjeta International Meteor Conference 2011 (Sibiu, Rumunjska)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2011 (Sibiu, Rumunjska)",
+        "en": "Visit to the International Meteor Conference 2011 (Sibiu, Romania)",
+        "it": "Visita all'International Meteor Conference 2011 (Sibiu, Romania)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781725339-IMGP4691.JPG",
-      "description": "Posjeta International Meteor Conference 2011 (Sibiu, Rumunjska)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2011 (Sibiu, Rumunjska)",
+        "en": "Visit to the International Meteor Conference 2011 (Sibiu, Romania)",
+        "it": "Visita all'International Meteor Conference 2011 (Sibiu, Romania)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781764942-IMG_4913.jpg",
-      "description": "Posjeta International Meteor Conference 2012 (La Palma)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2012 (La Palma)",
+        "en": "Visit to the International Meteor Conference 2012 (La Palma)",
+        "it": "Visita all'International Meteor Conference 2012 (La Palma)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781770213-IMG_5015.JPG",
-      "description": "Posjeta International Meteor Conference 2012 (La Palma)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2012 (La Palma)",
+        "en": "Visit to the International Meteor Conference 2012 (La Palma)",
+        "it": "Visita all'International Meteor Conference 2012 (La Palma)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781798471-IMG_8393.JPG",
-      "description": "Posjeta International Meteor Conference 2013 (Poznan, Poland)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2013 (Poznan, Poland)",
+        "en": "Visit to the International Meteor Conference 2013 (Poznan, Poland)",
+        "it": "Visita all'International Meteor Conference 2013 (Poznan, Polonia)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781807303-IMG_8400.JPG",
-      "description": "Posjeta International Meteor Conference 2013 (Poznan, Poland)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2013 (Poznan, Poland)",
+        "en": "Visit to the International Meteor Conference 2013 (Poznan, Poland)",
+        "it": "Visita all'International Meteor Conference 2013 (Poznan, Polonia)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781846044-IMC_2016_N9420.jpg",
-      "description": "Posjeta International Meteor Conference 2016 (Egmond, Nizozemska)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2016 (Egmond, Nizozemska)",
+        "en": "Visit to the International Meteor Conference 2016 (Egmond, Netherlands)",
+        "it": "Visita all'International Meteor Conference 2016 (Egmond, Paesi Bassi)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781854961-IMC_2016_N9508.jpg",
-      "description": "Posjeta International Meteor Conference 2016 (Egmond, Nizozemska)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2016 (Egmond, Nizozemska)",
+        "en": "Visit to the International Meteor Conference 2016 (Egmond, Netherlands)",
+        "it": "Visita all'International Meteor Conference 2016 (Egmond, Paesi Bassi)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781860294-IMC_2016_N9420.jpg",
-      "description": "Posjeta International Meteor Conference 2016 (Egmond, Nizozemska)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2016 (Egmond, Nizozemska)",
+        "en": "Visit to the International Meteor Conference 2016 (Egmond, Netherlands)",
+        "it": "Visita all'International Meteor Conference 2016 (Egmond, Paesi Bassi)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781892556-IMG_20170920_121626.jpg",
-      "description": "Posjeta International Meteor Conference 2017 (Petnica, Srbija)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2017 (Petnica, Srbija)",
+        "en": "Visit to the International Meteor Conference 2017 (Petnica, Serbia)",
+        "it": "Visita all'International Meteor Conference 2017 (Petnica, Serbia)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781898247-IMG_20170922_123622.jpg",
-      "description": "Posjeta International Meteor Conference 2017 (Petnica, Srbija)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2017 (Petnica, Srbija)",
+        "en": "Visit to the International Meteor Conference 2017 (Petnica, Serbia)",
+        "it": "Visita all'International Meteor Conference 2017 (Petnica, Serbia)"
+      }
     },
     {
       "src": "/galerija/ostalo/1774781943905-IMG_4830.JPG",
-      "description": "Posjeta International Meteor Conference 2012 (La Palma)"
+      "description": {
+        "hr": "Posjeta International Meteor Conference 2012 (La Palma)",
+        "en": "Visit to the International Meteor Conference 2012 (La Palma)",
+        "it": "Visita all'International Meteor Conference 2012 (La Palma)"
+      }
     },
     {
       "src": "/galerija/ostalo/1786704043004-edi_2.jpg",
-      "description": "Pomrčina Sunca 12.8.2026 - Edi Puh"
+      "description": {
+        "hr": "Pomrčina Sunca 12.8.2026 - Edi Puh",
+        "en": "Solar eclipse 12 August 2026 - Edi Puh",
+        "it": "Eclissi di Sole 12 agosto 2026 - Edi Puh"
+      }
     }
   ]
 }
