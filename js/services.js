@@ -459,6 +459,28 @@ function getTideImageUrl(year, month, basePath) {
   return `${basePath}adip_${year}-${String(month).padStart(2, '0')}.jpg`;
 }
 
+/** Kandidati za sliku plime: 2014.–2016. su spremljene kao adip_MM_YY.jpg. */
+function getTideImageUrls(year, month, basePath) {
+  const urls = [getTideImageUrl(year, month, basePath)];
+  if (year <= 2016) {
+    urls.push(`${basePath}adip_${String(month).padStart(2, '0')}_${String(year).slice(2)}.jpg`);
+  }
+  return urls;
+}
+
+/**
+ * Slika ili izračunati grafikon (js/plima-izracun.js) za odabrani mjesec.
+ * Bez plima-izracun.js ostaje staro ponašanje: samo slika.
+ */
+function showTideMonth(year, month) {
+  const urls = getTideImageUrls(year, month, getTideBasePath());
+  if (window.PlimaIzracun) {
+    window.PlimaIzracun.prikazi(year, month, urls);
+  } else {
+    document.getElementById('tide-image').src = urls[0];
+  }
+}
+
 function getMonthNames() {
   const l = getLocale();
   if (l.startsWith('en')) return ['January','February','March','April','May','June',
@@ -551,7 +573,8 @@ window.openTideModal = function () {
     getTideImageUrl(now.getUTCFullYear(), now.getUTCMonth() + 1, getTideBasePath()),
     'updateTideImage'
   );
-  wireImageFallback('tide');
+  if (window.PlimaIzracun) showTideMonth(now.getUTCFullYear(), now.getUTCMonth() + 1);
+  else wireImageFallback('tide');
   modal.classList.add('active');
 };
 
@@ -564,5 +587,5 @@ window.updateSunriseImage = function () {
 window.updateTideImage = function () {
   const m = parseInt(document.getElementById('tide-month-select').value, 10);
   const y = parseInt(document.getElementById('tide-year-select').value, 10);
-  document.getElementById('tide-image').src = getTideImageUrl(y, m, getTideBasePath());
+  showTideMonth(y, m);
 };
