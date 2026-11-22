@@ -183,7 +183,7 @@
     </div>
   </div>
 
-  <script src="js/main.js?v=20261122b"></script>
+  <script src="js/main.js?v=20261122c"></script>
   <script>
     // Broj slika aktivnosti na kartici galerije
     (async () => {
@@ -205,6 +205,8 @@
     document.getElementById('upload-form')?.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);
+      const smaller = await downscaleForUpload(formData.get('image'));
+      if (smaller && smaller !== formData.get('image')) formData.set('image', smaller, smaller.name);
       const thumb = await makeThumb(formData.get('image'));
       if (thumb) formData.append('thumb', thumb, 'thumb.jpg');
       const msg = document.getElementById('upload-message');

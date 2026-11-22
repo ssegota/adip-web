@@ -10,7 +10,7 @@ const translations = {
         openLink: 'Otvori poveznicu',
         noAbstract: 'Nema sažetka.',
         noContent: 'Nema sadržaja.',
-        readMore: 'Klikni za više →',
+        readMore: 'Pročitaj više →',
         errorLoading: 'Greška pri učitavanju sadržaja.',
         serverError: 'Greška servera.',
         delete: 'Obriši',
@@ -30,7 +30,7 @@ const translations = {
         publishSuccess: 'Aktivnost objavljena!',
         publishError: 'Greška pri objavi',
         publishDisabled: 'Objavljivanje nije omogućeno na statičkoj demo verziji.',
-        maxImages: 'Maksimalno 3 slike!',
+        maxImages: 'Najviše 10 slika!',
         allYears: 'Sve godine',
         serverConnectionError: 'Greška pri povezivanju sa serverom',
         // Uređivanje aktivnosti
@@ -44,8 +44,8 @@ const translations = {
         editYear: 'Godina',
         editContent: 'Sadržaj',
         editContentHint: 'Prazan red = novi paragraf. Jedan Enter = novi red.',
-        editImages: 'Slike (do 3)',
-        editImagesHint: 'Klikni ✕ za uklanjanje slike. Dodaj nove ispod.',
+        editImages: 'Slike (do 10)',
+        editImagesHint: '★ = glavna slika (prikazuje se na kartici). ✕ uklanja sliku. Nove dodaj ispod.',
         editAddImages: 'Dodaj slike',
         editSaved: 'Promjene spremljene!',
         editSavedLocal: 'Server nije dostupan - promjene su spremljene samo lokalno u ovom pregledniku.',
@@ -110,7 +110,7 @@ const translations = {
         publishSuccess: 'Activity published!',
         publishError: 'Error publishing',
         publishDisabled: 'Publishing is not enabled on static demo version.',
-        maxImages: 'Max 3 images!',
+        maxImages: 'Up to 10 images!',
         allYears: 'All years',
         serverConnectionError: 'Error connecting to server',
         // Editing
@@ -124,8 +124,8 @@ const translations = {
         editYear: 'Year',
         editContent: 'Content',
         editContentHint: 'Empty line = new paragraph. Single Enter = line break.',
-        editImages: 'Images (up to 3)',
-        editImagesHint: 'Click ✕ to remove an image. Add new ones below.',
+        editImages: 'Images (up to 10)',
+        editImagesHint: '★ = main image (shown on the card). ✕ removes an image. Add new ones below.',
         editAddImages: 'Add images',
         editSaved: 'Changes saved!',
         editSavedLocal: 'Server unavailable - changes saved locally in this browser only.',
@@ -190,7 +190,7 @@ const translations = {
         publishSuccess: 'Attività pubblicata!',
         publishError: 'Errore nella pubblicazione',
         publishDisabled: 'La pubblicazione non è abilitata nella versione demo.',
-        maxImages: 'Massimo 3 immagini!',
+        maxImages: 'Massimo 10 immagini!',
         allYears: 'Tutti gli anni',
         serverConnectionError: 'Errore di connessione al server',
         // Modifica
@@ -205,7 +205,7 @@ const translations = {
         editContent: 'Contenuto',
         editContentHint: 'Riga vuota = nuovo paragrafo. Un Invio = a capo.',
         editImages: 'Immagini (max 3)',
-        editImagesHint: 'Clicca ✕ per rimuovere. Aggiungi nuove sotto.',
+        editImagesHint: '★ = immagine principale (mostrata nella scheda). ✕ per rimuovere. Aggiungi nuove sotto.',
         editAddImages: 'Aggiungi immagini',
         editSaved: 'Modifiche salvate!',
         editSavedLocal: 'Server non disponibile - modifiche salvate solo in questo browser.',
@@ -278,12 +278,95 @@ function tr(texts) {
     return texts[getCurrentLang()] || texts.hr;
 }
 
+/* Lokalizirano polje (title_en, content_it ...), inače hrvatski izvornik.
+   fallback = true kad stranica nije na hrvatskom, a prijevoda nema. */
+function localized(item, field) {
+    const lang = getCurrentLang();
+    if (lang !== 'hr') {
+        const v = item && item[field + '_' + lang];
+        if (v && String(v).trim()) return { text: String(v), fallback: false };
+    }
+    return { text: (item && item[field]) ? String(item[field]) : '', fallback: lang !== 'hr' };
+}
+
+const DATE_LOCALES = { hr: 'hr-HR', en: 'en-GB', it: 'it-IT' };
+
+/* 18) Datum za prikaz: hr "21. 11. 2026.", en "21 Nov 2026", it "21 nov 2026" */
+function formatDate(dateStr) {
+    if (!dateStr) return '';
+    const raw = String(dateStr).trim();
+    if (/^\d{4}$/.test(raw)) return raw;
+    const d = parseDate(raw);
+    if (!d || Number.isNaN(d.getTime()) || d.getTime() === 0) return raw;
+    const lang = getCurrentLang();
+    if (lang === 'hr') return `${d.getUTCDate()}. ${d.getUTCMonth() + 1}. ${d.getUTCFullYear()}.`;
+    return d.toLocaleDateString(DATE_LOCALES[lang], { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+}
+
+/* Fokusiraj element čim postane vidljiv (ladica/modal se otvaraju uz CSS prijelaz) */
+function focusWhenVisible(el, tries = 30) {
+    if (!el) return;
+    el.focus();
+    if (document.activeElement !== el && tries > 0) {
+        requestAnimationFrame(() => focusWhenVisible(el, tries - 1));
+    }
+}
+
 let allActivitiesData = [];
 
 /* ==================== Helpers ==================== */
 
+/* Prijava: pravi token sesije je u HttpOnly kolačiću (JS ga ne vidi). U localStorage
+   'adip_token' je samo oznaka '1' da sučelje zna prikazati administraciju; server
+   svaki zahtjev provjerava sam. Kad server javi 401, oznaka se briše. */
+const AUTH_MARKER = 'adip_token';
+
 function isLoggedIn() {
-    return !!localStorage.getItem('adip_token');
+    try { return !!localStorage.getItem(AUTH_MARKER); } catch (e) { return false; }
+}
+
+function clearAuthMarker() {
+    try { localStorage.removeItem(AUTH_MARKER); localStorage.removeItem('adip_pw'); } catch (e) { }
+}
+
+(function installAuthFetch() {
+    if (typeof window.fetch !== 'function' || window.__adipAuthFetch) return;
+    window.__adipAuthFetch = true;
+    const origFetch = window.fetch.bind(window);
+    let warned = false;
+    window.fetch = function (input, init) {
+        return origFetch(input, init).then(res => {
+            try {
+                const url = new URL(typeof input === 'string' ? input : input.url, location.href);
+                if (res.status === 401 && url.origin === location.origin && /^\/api\//.test(url.pathname)
+                    && !/^\/api\/(login|senzori)/.test(url.pathname) && isLoggedIn() && !warned) {
+                    warned = true;
+                    clearAuthMarker();
+                    alert(tr({
+                        hr: 'Sesija je istekla. Prijavite se ponovno.',
+                        en: 'Your session has expired. Please log in again.',
+                        it: 'La sessione è scaduta. Accedi di nuovo.'
+                    }));
+                    location.reload();
+                }
+            } catch (e) { }
+            return res;
+        });
+    };
+})();
+
+// Oznaka prijave postoji, ali server sesiju više ne priznaje -> makni administraciju
+function verifyAuthSession() {
+    if (!isLoggedIn()) return;
+    fetch('/api/session', { cache: 'no-store' })
+        .then(r => r.ok ? r.json() : null)
+        .then(d => {
+            if (d && d.authenticated === false) {
+                clearAuthMarker();
+                location.reload();
+            }
+        })
+        .catch(() => { });
 }
 
 function escapeHtml(str) {
@@ -364,7 +447,51 @@ async function makeThumb(file) {
 
 // Dodaje slike i njihove thumbnailove u FormData. i-ti thumb pripada i-toj slici,
 // pa se za neuspjeli thumb šalje prazan placeholder koji server odbaci.
+/* Smanji sliku prije uploada: najviše UPLOAD_MAX_PX po duljoj strani, JPEG.
+   GIF/SVG ostaju netaknuti (animacija/vektor); PNG s prozirnošću ostaje PNG.
+   Ako smanjivanje ne pomaže (mala JPEG slika), šalje se original. */
+const UPLOAD_MAX_PX = 2560;
+const UPLOAD_JPEG_QUALITY = 0.86;
+
+async function downscaleForUpload(file) {
+    if (!file || !/^image\/(jpeg|png|webp|bmp|tiff)$/i.test(file.type) || typeof createImageBitmap !== 'function') return file;
+    try {
+        const bmp = await createImageBitmap(file, { imageOrientation: 'from-image' });
+        const scale = Math.min(1, UPLOAD_MAX_PX / Math.max(bmp.width, bmp.height));
+        if (scale === 1 && /jpeg/i.test(file.type) && file.size < 1.5 * 1024 * 1024) {
+            if (bmp.close) bmp.close();
+            return file;
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.max(1, Math.round(bmp.width * scale));
+        canvas.height = Math.max(1, Math.round(bmp.height * scale));
+        const ctx = canvas.getContext('2d');
+        ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(bmp, 0, 0, canvas.width, canvas.height);
+        if (bmp.close) bmp.close();
+
+        // PNG s prozirnim pikselima ostaje PNG (logotipi, grafike)
+        let keepPng = false;
+        if (/png/i.test(file.type)) {
+            const sample = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+            const step = Math.max(4, Math.floor(sample.length / 4 / 20000) * 4);
+            for (let i = 3; i < sample.length; i += step) {
+                if (sample[i] < 255) { keepPng = true; break; }
+            }
+        }
+        const type = keepPng ? 'image/png' : 'image/jpeg';
+        const blob = await new Promise(resolve => canvas.toBlob(resolve, type, UPLOAD_JPEG_QUALITY));
+        if (!blob || (scale === 1 && blob.size >= file.size)) return file;
+        const base = (file.name || 'slika').replace(/\.[^.]+$/, '');
+        return new File([blob], base + (keepPng ? '.png' : '.jpg'), { type, lastModified: Date.now() });
+    } catch (e) {
+        console.warn('Smanjivanje slike nije uspjelo, šaljem original:', e);
+        return file;
+    }
+}
+
 async function appendImagesWithThumbs(fd, files, imageField, thumbField) {
+    files = await Promise.all(files.map(downscaleForUpload));
     const thumbs = await Promise.all(files.map(makeThumb));
     files.forEach((f, i) => {
         fd.append(imageField, f);
@@ -491,6 +618,8 @@ function renderLocalNotice() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    verifyAuthSession();
+    initSkipLink();
     initNavigation();
     initLoginModal();
     initPasswordToggles();
@@ -498,6 +627,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initActivityModal();
     initActivityForm();
     ensureLightbox();
+    initDialogsA11y();
 
     // Load mixed content on homepage
     const activitiesContainer = document.getElementById('activities-container');
@@ -527,7 +657,7 @@ function dataBasePath() {
     return isSubdir ? '../' : '';
 }
 
-/* Dohvati JSON, a ako ne uspije vrati prazan niz umjesto pucanja */
+/* Dohvati JSON; ako ne uspije vrati null (pozivatelj prikazuje grešku s "Pokušaj ponovno") */
 async function fetchJsonSafe(relPath) {
     try {
         const res = await fetch(dataBasePath() + relPath);
@@ -535,8 +665,59 @@ async function fetchJsonSafe(relPath) {
         return await res.json();
     } catch (err) {
         console.warn('Ne mogu dohvatiti', relPath, err);
-        return [];
+        return null;
     }
+}
+
+function renderLoadError(container, retry) {
+    container.innerHTML = '';
+    const box = document.createElement('div');
+    box.className = 'load-error';
+    box.setAttribute('role', 'alert');
+    const msg = document.createElement('p');
+    msg.textContent = tr({
+        hr: 'Aktivnosti se trenutno ne mogu učitati. Provjerite vezu i pokušajte ponovno.',
+        en: 'Activities could not be loaded. Check your connection and try again.',
+        it: 'Impossibile caricare le attività. Controlla la connessione e riprova.'
+    });
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'btn btn--secondary btn--sm';
+    btn.textContent = tr({ hr: 'Pokušaj ponovno', en: 'Try again', it: 'Riprova' });
+    btn.addEventListener('click', () => {
+        container.innerHTML = '';
+        retry();
+    });
+    box.append(msg, btn);
+    container.appendChild(box);
+}
+
+/* 13) Kartica aktivnosti: naslov je <button>, ::after rasteže klik na cijelu karticu */
+function buildActivityCard(activity, truncateLen) {
+    const card = document.createElement('article');
+    card.className = 'activity-card';
+
+    const title = localized(activity, 'title');
+    const body = localized(activity, 'content');
+    const hrAttr = title.fallback ? ' lang="hr"' : '';
+    const imageHtml = (activity.images && activity.images.length)
+        ? thumbImgHtml(activity.images[0], title.text, 'activity-card__image')
+        : '';
+    const langNote = title.fallback
+        ? ` <span class="activity-card__lang">· ${tr({ hr: '', en: 'in Croatian', it: 'in croato' })}</span>`
+        : '';
+
+    card.innerHTML = `
+        ${imageHtml}
+        <div class="activity-card__content-wrapper">
+            <div class="activity-card__date">${escapeHtml(formatDate(activity.date) || 'N/A')}</div>
+            <h3 class="activity-card__title"${hrAttr}><button type="button" class="activity-card__link">${escapeHtml(title.text || t('untitled'))}</button></h3>
+            <p class="activity-card__content"${hrAttr}>${escapeHtml(truncateText(body.text, truncateLen))}</p>
+            <span style="color: var(--accent-primary); font-size: 0.85rem;" aria-hidden="true">${t('readMore')}</span>${langNote}
+        </div>
+    `;
+    card.querySelector('.activity-card__link').addEventListener('click', () => showActivityModal(activity));
+    return card;
 }
 
 async function loadHomepageContent(container, limit = 6) {
@@ -545,6 +726,11 @@ async function loadHomepageContent(container, limit = 6) {
             fetchJsonSafe('data/aktivnosti.json'),
             fetchJsonSafe('data/radovi.json')
         ]);
+
+        if (activitiesRaw === null && radoviRaw === null) {
+            renderLoadError(container, () => loadHomepageContent(container, limit));
+            return;
+        }
 
         const activities = applyLocalOverrides(activitiesRaw || []);
 
@@ -574,53 +760,29 @@ async function loadHomepageContent(container, limit = 6) {
 
         container.innerHTML = '';
 
-        mixed.forEach((entry, idx) => {
+        mixed.forEach(entry => {
             const item = entry.data;
-            const card = document.createElement('div');
-            card.className = 'activity-card';
-            card.style.cursor = 'pointer';
-            card.dataset.index = idx;
 
             if (entry.kind === 'rad') {
                 const isPdf = item.type === 'pdf';
                 const linkText = isPdf ? t('downloadPdf') : t('openLink');
+                const href = item.link || (dataBasePath() + 'radovi.html');
+                const external = !!item.link;
 
-                card.style.borderLeft = '3px solid var(--accent-secondary)';
+                const card = document.createElement('article');
+                card.className = 'activity-card activity-card--rad';
                 card.innerHTML = `
                     <div class="activity-card__date">${t('publication')} | ${escapeHtml(item.year)}</div>
-                    <h3 class="activity-card__title">${escapeHtml(item.title)}</h3>
+                    <h3 class="activity-card__title"><a class="activity-card__link" href="${escapeHtml(href)}"${external ? ' target="_blank" rel="noopener"' : ''}>${escapeHtml(item.title)}</a></h3>
                     ${item.authors ? `<p class="activity-card__content">${escapeHtml(item.authors)}</p>` : ''}
                     <div style="margin-top: 1rem;">
-                        <span class="btn btn--secondary btn--sm">${linkText}</span>
+                        <span class="btn btn--secondary btn--sm" aria-hidden="true">${linkText}</span>
                     </div>
                 `;
-
-                card.addEventListener('click', () => {
-                    if (item.link) {
-                        window.open(item.link, '_blank', 'noopener');
-                    } else {
-                        window.location.href = dataBasePath() + 'radovi.html';
-                    }
-                });
+                container.appendChild(card);
             } else {
-                const imageHtml = (item.images && item.images.length)
-                    ? thumbImgHtml(item.images[0], item.title, 'activity-card__image')
-                    : '';
-
-                card.innerHTML = `
-                    ${imageHtml}
-                    <div class="activity-card__content-wrapper">
-                        <div class="activity-card__date">${escapeHtml(item.date || '')}</div>
-                        <h3 class="activity-card__title">${escapeHtml(item.title || t('untitled'))}</h3>
-                        <p class="activity-card__content">${escapeHtml(truncateText(item.content, 120))}</p>
-                        <span style="color: var(--accent-primary); font-size: 0.85rem;">${t('readMore')}</span>
-                    </div>
-                `;
-
-                card.addEventListener('click', () => showActivityModal(item));
+                container.appendChild(buildActivityCard(item, 120));
             }
-
-            container.appendChild(card);
         });
 
     } catch (err) {
@@ -687,17 +849,17 @@ function initRadoviPage() {
 
                 if (result.success) {
                     messageDiv.textContent = t('successAdd');
-                    messageDiv.style.color = '#00ff88';
+                    messageDiv.style.color = 'var(--success)';
                     e.target.reset();
                     if (listContainer) loadRadovi(listContainer); // Reload list
                 } else {
                     messageDiv.textContent = t('errorAdd');
-                    messageDiv.style.color = '#ff4444';
+                    messageDiv.style.color = 'var(--danger)';
                 }
             } catch (err) {
                 console.error(err);
                 messageDiv.textContent = t('serverError');
-                messageDiv.style.color = '#ff4444';
+                messageDiv.style.color = 'var(--danger)';
             }
         });
     }
@@ -875,18 +1037,61 @@ window.deleteRad = async function (id) {
 };
 
 // ==================== Activity Form (Upload with Images) ====================
+const TRANSLATION_FIELDS = ['title_en', 'content_en', 'title_it', 'content_it'];
+const MAX_ACTIVITY_IMAGES = 10;
+
+function translationFieldsHtml(prefix) {
+    return `
+        <details class="form-translations">
+            <summary>${tr({ hr: 'Prijevodi (EN / IT, neobavezno)', en: 'Translations (EN / IT, optional)', it: 'Traduzioni (EN / IT, facoltative)' })}</summary>
+            <div class="form-group">
+                <label class="form-label" for="${prefix}-title_en">Title (English)</label>
+                <input type="text" class="form-input" id="${prefix}-title_en" lang="en">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="${prefix}-content_en">Content (English)</label>
+                <textarea class="form-textarea" id="${prefix}-content_en" lang="en"></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="${prefix}-title_it">Titolo (italiano)</label>
+                <input type="text" class="form-input" id="${prefix}-title_it" lang="it">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="${prefix}-content_it">Contenuto (italiano)</label>
+                <textarea class="form-textarea" id="${prefix}-content_it" lang="it"></textarea>
+            </div>
+        </details>
+    `;
+}
+
 function initActivityForm() {
     const form = document.getElementById('activity-form');
     const messageDiv = document.getElementById('post-message');
     const imageInput = document.getElementById('activity-images');
 
-    // Limit to 3 images
+    // Do 10 slika; pregled sa zvjezdicom za glavnu sliku
+    let newMainIndex = 0;
+    const previews = document.getElementById('new-image-previews');
+    const renderNewPreviews = () => {
+        if (!previews || !imageInput) return;
+        previews.querySelectorAll('img').forEach(img => URL.revokeObjectURL(img.src));
+        previews.innerHTML = '';
+        Array.from(imageInput.files || []).forEach((file, i) => {
+            const url = URL.createObjectURL(file);
+            previews.appendChild(buildThumb(url, true, null, {
+                isMain: i === newMainIndex,
+                onMakeMain: () => { newMainIndex = i; renderNewPreviews(); }
+            }));
+        });
+    };
     if (imageInput) {
         imageInput.addEventListener('change', () => {
-            if (imageInput.files.length > 3) {
+            if (imageInput.files.length > MAX_ACTIVITY_IMAGES) {
                 alert(t('maxImages'));
                 imageInput.value = '';
             }
+            newMainIndex = 0;
+            renderNewPreviews();
         });
     }
 
@@ -894,6 +1099,13 @@ function initActivityForm() {
     if (dateInput && !dateInput.value) {
         const today = new Date().toISOString().split('T')[0];
         dateInput.value = today;
+    }
+
+    if (form && !document.getElementById('new-title_en')) {
+        const submitBtn = form.querySelector('[type="submit"]');
+        const extra = document.createElement('div');
+        extra.innerHTML = translationFieldsHtml('new');
+        while (extra.firstElementChild) form.insertBefore(extra.firstElementChild, submitBtn);
     }
 
     if (form) {
@@ -912,10 +1124,16 @@ function initActivityForm() {
             if (dateField && dateField.value) {
                 formData.append('date', dateField.value);
             }
+            TRANSLATION_FIELDS.forEach(key => {
+                const el = document.getElementById('new-' + key);
+                if (el && el.value.trim()) formData.append(key, el.value);
+            });
 
             const images = document.getElementById('activity-images');
             if (images && images.files) {
-                await appendImagesWithThumbs(formData, Array.from(images.files).slice(0, 3), 'images', 'thumbs');
+                const chosen = Array.from(images.files).slice(0, MAX_ACTIVITY_IMAGES);
+                await appendImagesWithThumbs(formData, chosen, 'images', 'thumbs');
+                if (chosen.length) formData.append('mainImage', 'new:' + Math.min(newMainIndex, chosen.length - 1));
             }
 
             try {
@@ -928,21 +1146,21 @@ function initActivityForm() {
                 if (data.success) {
                     if (messageDiv) {
                         messageDiv.textContent = t('publishSuccess');
-                        messageDiv.style.color = '#00ff88';
+                        messageDiv.style.color = 'var(--success)';
                     }
                     form.reset();
                     setTimeout(() => window.location.reload(), 1000);
                 } else {
                     if (messageDiv) {
                         messageDiv.textContent = t('publishError');
-                        messageDiv.style.color = '#ff4444';
+                        messageDiv.style.color = 'var(--danger)';
                     }
                 }
             } catch (err) {
                 console.error(err);
                 if (messageDiv) {
                     messageDiv.textContent = t('serverConnectionError');
-                    messageDiv.style.color = '#ff4444';
+                    messageDiv.style.color = 'var(--danger)';
                 }
             }
         });
@@ -956,37 +1174,90 @@ function initNavigation() {
     const overlay = document.getElementById('nav-overlay');
     const navClose = document.getElementById('nav-close');
 
-    function toggleNav() {
-        nav.classList.toggle('active');
-        overlay.classList.toggle('active');
-        menuToggle.classList.toggle('active');
+    if (!nav) return;
+
+    nav.querySelectorAll('.nav__link.active').forEach(a => a.setAttribute('aria-current', 'page'));
+    // 11) zatvorena ladica je izvan ekrana: inert je miče iz redoslijeda tipke Tab
+    nav.inert = true;
+
+    function setOpen(open, restoreFocus = true) {
+        const wasOpen = nav.classList.contains('active');
+        nav.classList.toggle('active', open);
+        if (overlay) overlay.classList.toggle('active', open);
+        if (menuToggle) {
+            menuToggle.classList.toggle('active', open);
+            menuToggle.setAttribute('aria-expanded', String(open));
+        }
+        nav.inert = !open;
+        if (open) {
+            focusWhenVisible(navClose || nav.querySelector('a, button'));
+        } else if (wasOpen && restoreFocus && menuToggle) {
+            menuToggle.focus();
+        }
     }
 
-    function closeNav() {
-        nav.classList.remove('active');
-        overlay.classList.remove('active');
-        menuToggle.classList.remove('active');
-    }
-
-    if (menuToggle && nav) {
-        menuToggle.addEventListener('click', toggleNav);
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => setOpen(!nav.classList.contains('active')));
     }
 
     if (navClose) {
-        navClose.addEventListener('click', closeNav);
+        navClose.addEventListener('click', () => setOpen(false));
     }
 
     if (overlay) {
-        overlay.addEventListener('click', closeNav);
+        overlay.addEventListener('click', () => setOpen(false));
     }
 
-    if (nav) {
-        nav.querySelectorAll('.nav__link').forEach(link => {
-            link.addEventListener('click', closeNav);
-        });
-    }
+    nav.querySelectorAll('.nav__link').forEach(link => {
+        link.addEventListener('click', () => setOpen(false, false));
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.classList.contains('active')) setOpen(false);
+    });
 
     initWebmailLink();
+}
+
+/* 17) "Preskoči na sadržaj": prvi element za tipku Tab */
+function initSkipLink() {
+    if (document.querySelector('.skip-link')) return;
+    const target = document.querySelector('main')
+        || document.querySelector('.page-content')
+        || document.querySelector('.header ~ section');
+    if (!target) return;
+    if (!target.id) target.id = 'sadrzaj';
+    if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+
+    const link = document.createElement('a');
+    link.className = 'skip-link';
+    link.href = '#' + target.id;
+    link.textContent = tr({ hr: 'Preskoči na sadržaj', en: 'Skip to content', it: 'Vai al contenuto' });
+    document.body.prepend(link);
+}
+
+/* 14) Modali kao dijalozi + labele povezane s poljima */
+function initDialogsA11y() {
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        const dialog = overlay.querySelector('.modal');
+        if (!dialog) return;
+        dialog.setAttribute('role', 'dialog');
+        dialog.setAttribute('aria-modal', 'true');
+        const title = dialog.querySelector('.modal__title');
+        if (title) {
+            if (!title.id) title.id = (overlay.id || 'modal') + '-title';
+            dialog.setAttribute('aria-labelledby', title.id);
+        }
+        overlay.querySelectorAll('.modal__close').forEach(btn => {
+            if (!btn.getAttribute('aria-label')) btn.setAttribute('aria-label', tr({ hr: 'Zatvori', en: 'Close', it: 'Chiudi' }));
+        });
+    });
+
+    document.querySelectorAll('label.form-label:not([for])').forEach(label => {
+        const group = label.closest('.form-group');
+        const field = group && group.querySelector('input[id], select[id], textarea[id]');
+        if (field) label.htmlFor = field.id;
+    });
 }
 
 // Gumb za webmail (Roundcube) uz "Prijava" u izborniku
@@ -1011,6 +1282,19 @@ function initWebmailLink() {
     mail.setAttribute('aria-label', 'Webmail');
     mail.innerHTML = '<svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>';
     row.appendChild(mail);
+
+    // Prijavljeni urednik: poveznica za promjenu lozinke
+    if (isLoggedIn()) {
+        const key = document.createElement('a');
+        key.id = 'nav-password';
+        key.className = 'btn btn--secondary nav__webmail';
+        key.href = '/user/password.html';
+        const label = tr({ hr: 'Promijeni lozinku', en: 'Change password', it: 'Cambia password' });
+        key.title = label;
+        key.setAttribute('aria-label', label);
+        key.innerHTML = '<svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3L21 2"/><path d="M16 7l3 3"/><path d="M18 5l2 2"/></svg>';
+        row.appendChild(key);
+    }
 }
 
 // ==================== Login Modal ====================
@@ -1025,12 +1309,13 @@ function initLoginModal() {
     updateLoginButton();
 
     function handleLoginClick() {
-        const token = localStorage.getItem('adip_token');
-        if (token) {
-            localStorage.removeItem('adip_token');
-            localStorage.removeItem('adip_pw');
-            updateLoginButton();
-            window.location.reload();
+        if (isLoggedIn()) {
+            const done = () => {
+                clearAuthMarker();
+                updateLoginButton();
+                window.location.reload();
+            };
+            fetch('/api/logout', { method: 'POST' }).then(done, done);
         } else {
             modal.classList.add('active');
         }
@@ -1067,35 +1352,33 @@ function initLoginModal() {
             loginMessage.textContent = '...';
             loginMessage.style.color = 'var(--text-secondary)';
 
-            let token = null;
+            let ok = false;
+            let errorText = '';
             try {
                 const res = await fetch('/api/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username, password })
                 });
-                const data = await res.json();
-                if (res.ok && data.success) token = data.token;
+                const data = await res.json().catch(() => ({}));
+                ok = res.ok && data.success;
+                if (res.status === 429 && data.message) errorText = data.message;
             } catch (err) {
-                // Server nedostupan - offline demo prijava
-                console.warn('Prijava bez servera:', err);
-                if (username === 'admin' && password === 'adip2026') {
-                    token = 'demo-token';
-                }
+                console.warn('Prijava nije uspjela:', err);
             }
 
-            if (token) {
-                localStorage.setItem('adip_token', token);
+            if (ok) {
+                localStorage.setItem(AUTH_MARKER, '1');
                 loginMessage.textContent = t('loginSuccess');
-                loginMessage.style.color = '#00ff88';
+                loginMessage.style.color = 'var(--success)';
                 setTimeout(() => {
                     modal.classList.remove('active');
                     updateLoginButton();
                     window.location.reload();
                 }, 800);
             } else {
-                loginMessage.textContent = t('loginError');
-                loginMessage.style.color = '#ff4444';
+                loginMessage.textContent = errorText || t('loginError');
+                loginMessage.style.color = 'var(--danger)';
             }
         });
     }
@@ -1141,7 +1424,7 @@ function initPasswordToggles() {
 function updateLoginButton() {
     const loginBtn = document.getElementById('login-btn');
     const sidebarLoginBtn = document.getElementById('sidebar-login-btn');
-    const token = localStorage.getItem('adip_token');
+    const token = isLoggedIn();
 
     function updateBtn(btn) {
         if (btn) {
@@ -1171,6 +1454,10 @@ function updateLoginButton() {
 async function loadActivities(container, limit = 10, filterYear = null) {
     try {
         const raw = await fetchJsonSafe('data/aktivnosti.json');
+        if (raw === null) {
+            renderLoadError(container, () => loadActivities(container, limit, filterYear));
+            return;
+        }
         allActivitiesData = applyLocalOverrides(raw);
 
         renderLocalNotice();
@@ -1252,25 +1539,7 @@ function renderActivityCards(container, activities) {
     }
 
     activities.forEach(activity => {
-        const card = document.createElement('article');
-        card.className = 'activity-card';
-        card.style.cursor = 'pointer';
-
-        const imageHtml = (activity.images && activity.images.length)
-            ? thumbImgHtml(activity.images[0], activity.title, 'activity-card__image')
-            : '';
-
-        card.innerHTML = `
-            ${imageHtml}
-            <div class="activity-card__content-wrapper">
-                <div class="activity-card__date">${escapeHtml(activity.date || 'N/A')}</div>
-                <h3 class="activity-card__title">${escapeHtml(activity.title || t('untitled'))}</h3>
-                <p class="activity-card__content">${escapeHtml(truncateText(activity.content, 150))}</p>
-                <span style="color: var(--accent-primary); font-size: 0.85rem;">${t('readMore')}</span>
-            </div>
-        `;
-        card.addEventListener('click', () => showActivityModal(activity));
-        container.appendChild(card);
+        container.appendChild(buildActivityCard(activity, 150));
     });
 }
 
@@ -1325,12 +1594,16 @@ function initActivityModal() {
     });
 }
 
+let activityModalOpener = null;
+
 function closeActivityModal() {
     const modal = document.getElementById('activity-modal');
     if (!modal) return;
     exitEditMode();
     modal.classList.remove('active');
     document.body.style.overflow = '';
+    if (activityModalOpener && document.contains(activityModalOpener)) activityModalOpener.focus();
+    activityModalOpener = null;
 }
 
 function showActivityModal(activity) {
@@ -1348,6 +1621,7 @@ function showActivityModal(activity) {
 
     currentActivityId = activity.id;
     currentActivity = activity;
+    activityModalOpener = document.activeElement;
 
     renderActivityView(activity);
 
@@ -1355,6 +1629,7 @@ function showActivityModal(activity) {
     modal.scrollTop = 0;
     const inner = modal.querySelector('.modal');
     if (inner) inner.scrollTop = 0;
+    focusWhenVisible(document.getElementById('close-activity-modal'));
 }
 
 /* Prikaz (read-only) sadržaja u modalu */
@@ -1368,11 +1643,15 @@ function renderActivityView(activity) {
 
     exitEditMode(true);
 
-    title.textContent = activity.title || t('untitled');
-    if (date) date.textContent = activity.date || '';
+    const loc = localized(activity, 'title');
+    const body = localized(activity, 'content');
+    title.textContent = loc.text || t('untitled');
+    title.lang = loc.fallback ? 'hr' : '';
+    content.lang = body.fallback ? 'hr' : '';
+    if (date) date.textContent = formatDate(activity.date);
 
     // Paragrafi
-    renderParagraphs(content, activity.content);
+    renderParagraphs(content, body.text);
 
     // Delete gumb
     if (deleteBtn) {
@@ -1474,6 +1753,7 @@ function ensureEditForm() {
             <textarea class="form-textarea" id="edit-content"></textarea>
             <small class="activity-edit__hint">${t('editContentHint')}</small>
         </div>
+        ${translationFieldsHtml('edit')}
         <div class="form-group">
             <label class="form-label">${t('editImages')}</label>
             <div class="edit-thumbs" id="edit-thumbs"></div>
@@ -1489,7 +1769,7 @@ function ensureEditForm() {
     fileInput.addEventListener('change', () => {
         if (!editState) return;
         const files = Array.from(fileInput.files || []);
-        const free = 3 - (editState.images.length + editState.newFiles.length);
+        const free = MAX_ACTIVITY_IMAGES - (editState.images.length + editState.newFiles.length);
         if (files.length > free) {
             alert(t('maxImages'));
             fileInput.value = '';
@@ -1511,14 +1791,22 @@ function enterEditMode() {
 
     editState = {
         images: (currentActivity.images || []).slice(),
-        newFiles: []
+        newFiles: [],
+        main: null // { src } postojeća ili { file } nova; null = prva slika
     };
+    if (editState.images.length) editState.main = { src: editState.images[0] };
 
     document.getElementById('edit-title').value = currentActivity.title || '';
     document.getElementById('edit-date').value = currentActivity.date || '';
     document.getElementById('edit-year').value = currentActivity.year || '';
     document.getElementById('edit-content').value = String(currentActivity.content || '')
         .replace(/\\n/g, '\n');
+    TRANSLATION_FIELDS.forEach(key => {
+        const el = document.getElementById('edit-' + key);
+        if (el) el.value = currentActivity[key] || '';
+    });
+    const translations = document.querySelector('#activity-edit-container .form-translations');
+    if (translations) translations.open = !!(currentActivity.title_en || currentActivity.title_it);
     document.getElementById('edit-message').textContent = '';
 
     renderEditThumbs();
@@ -1563,16 +1851,40 @@ function toggleEl(id, show) {
     if (el) el.classList.toggle('hidden', !show);
 }
 
+/* Je li glavna slika još među slikama; ako nije, glavna postaje prva */
+function normalizeEditMain() {
+    const m = editState.main;
+    const ok = m && ((m.src && editState.images.includes(m.src)) || (m.file && editState.newFiles.includes(m.file)));
+    if (!ok) {
+        editState.main = editState.images.length ? { src: editState.images[0] }
+            : (editState.newFiles.length ? { file: editState.newFiles[0] } : null);
+    }
+}
+
+/* Redoslijed slika kakav će biti spremljen: glavna prva */
+function orderedEditImages(existing, added) {
+    const all = existing.concat(added);
+    const m = editState.main;
+    const pick = m ? (m.src || (m.file && added[editState.newFiles.indexOf(m.file)])) : null;
+    const i = pick ? all.indexOf(pick) : -1;
+    if (i > 0) { all.splice(i, 1); all.unshift(pick); }
+    return all;
+}
+
 function renderEditThumbs() {
     const wrap = document.getElementById('edit-thumbs');
     if (!wrap || !editState) return;
 
+    normalizeEditMain();
     wrap.innerHTML = '';
 
     editState.images.forEach((src, i) => {
         wrap.appendChild(buildThumb(src, false, () => {
             editState.images.splice(i, 1);
             renderEditThumbs();
+        }, {
+            isMain: !!(editState.main && editState.main.src === src),
+            onMakeMain: () => { editState.main = { src }; renderEditThumbs(); }
         }));
     });
 
@@ -1582,26 +1894,47 @@ function renderEditThumbs() {
             URL.revokeObjectURL(url);
             editState.newFiles.splice(i, 1);
             renderEditThumbs();
+        }, {
+            isMain: !!(editState.main && editState.main.file === file),
+            onMakeMain: () => { editState.main = { file }; renderEditThumbs(); }
         }));
     });
 }
 
-function buildThumb(src, isNew, onRemove) {
+function buildThumb(src, isNew, onRemove, opts = {}) {
     const div = document.createElement('div');
-    div.className = 'edit-thumb' + (isNew ? ' edit-thumb--new' : '');
+    div.className = 'edit-thumb' + (isNew ? ' edit-thumb--new' : '') + (opts.isMain ? ' edit-thumb--main' : '');
 
     const img = document.createElement('img');
-    setThumbSrc(img, src);
+    if (isNew && String(src).startsWith('blob:')) img.src = src; else setThumbSrc(img, src);
     img.alt = '';
     div.appendChild(img);
 
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'edit-thumb__remove';
-    btn.innerHTML = '&times;';
-    btn.title = '✕';
-    btn.addEventListener('click', onRemove);
-    div.appendChild(btn);
+    if (opts.onMakeMain) {
+        const star = document.createElement('button');
+        star.type = 'button';
+        star.className = 'edit-thumb__main';
+        star.textContent = '★';
+        const label = opts.isMain
+            ? tr({ hr: 'Glavna slika', en: 'Main image', it: 'Immagine principale' })
+            : tr({ hr: 'Postavi kao glavnu sliku', en: 'Set as main image', it: 'Imposta come immagine principale' });
+        star.title = label;
+        star.setAttribute('aria-label', label);
+        star.setAttribute('aria-pressed', String(!!opts.isMain));
+        star.addEventListener('click', opts.onMakeMain);
+        div.appendChild(star);
+    }
+
+    if (onRemove) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'edit-thumb__remove';
+        btn.innerHTML = '&times;';
+        btn.title = '✕';
+        btn.setAttribute('aria-label', tr({ hr: 'Ukloni sliku', en: 'Remove image', it: 'Rimuovi immagine' }));
+        btn.addEventListener('click', onRemove);
+        div.appendChild(btn);
+    }
 
     return div;
 }
@@ -1618,7 +1951,7 @@ async function saveActivityEdit() {
 
     if (!newTitle) {
         msg.textContent = t('editEmptyTitle');
-        msg.style.color = '#ff4444';
+        msg.style.color = 'var(--danger)';
         return;
     }
 
@@ -1632,7 +1965,18 @@ async function saveActivityEdit() {
     fd.append('date', newDate);
     fd.append('year', newYear);
     fd.append('content', newContent);
+    const translationValues = {};
+    TRANSLATION_FIELDS.forEach(key => {
+        const el = document.getElementById('edit-' + key);
+        if (!el) return;
+        translationValues[key] = el.value;
+        fd.append(key, el.value); // prazno = obriši prijevod na serveru
+    });
     fd.append('keepImages', JSON.stringify(editState.images));
+    normalizeEditMain();
+    if (editState.main) {
+        fd.append('mainImage', editState.main.src || ('new:' + editState.newFiles.indexOf(editState.main.file)));
+    }
     await appendImagesWithThumbs(fd, editState.newFiles, 'images', 'thumbs');
 
     let serverOk = false;
@@ -1671,6 +2015,9 @@ async function saveActivityEdit() {
         year: newYear ? Number(newYear) : currentActivity.year,
         content: newContent
     };
+    Object.keys(translationValues).forEach(key => {
+        patch[key] = translationValues[key].trim() ? translationValues[key] : undefined;
+    });
 
     let storageWarning = false;
 
@@ -1678,15 +2025,15 @@ async function saveActivityEdit() {
         currentActivity = serverActivity || Object.assign({}, currentActivity, patch);
     } else {
         // Lokalni fallback - nove slike pretvori u data URL
-        const localImages = editState.images.slice();
+        const added = [];
         try {
             for (const file of editState.newFiles) {
-                localImages.push(await fileToDataUrl(file));
+                added.push(await fileToDataUrl(file));
             }
         } catch (e) {
             storageWarning = true;
         }
-        patch.images = localImages;
+        patch.images = orderedEditImages(editState.images.slice(), added);
 
         try {
             saveLocalEdit(currentActivity.id, patch);
@@ -1697,7 +2044,7 @@ async function saveActivityEdit() {
                 saveLocalEdit(currentActivity.id, patch);
             } catch (e2) {
                 msg.textContent = t('editError') + ' ' + errorMessage;
-                msg.style.color = '#ff4444';
+                msg.style.color = 'var(--danger)';
                 if (saveBtn) saveBtn.disabled = false;
                 return;
             }
@@ -1719,10 +2066,10 @@ async function saveActivityEdit() {
     if (after) {
         if (serverOk) {
             after.textContent = t('editSaved');
-            after.style.color = '#00ff88';
+            after.style.color = 'var(--success)';
         } else {
             after.textContent = (storageWarning ? t('storageFull') : t('editSavedLocal')) + ' (' + errorMessage + ')';
-            after.style.color = '#ffb020';
+            after.style.color = 'var(--warning)';
         }
     }
     if (serverOk) {
@@ -1807,6 +2154,37 @@ function initLanguageToggle() {
     if (langCurrent) {
         const langLabels = { hr: 'HR', en: 'EN', it: 'IT' };
         langCurrent.textContent = langLabels[currentLang] + ' ▼';
+    }
+
+    if (langCurrent && langSelector) {
+        const dropdown = langSelector.querySelector('.lang-dropdown');
+        langCurrent.type = 'button';
+        langCurrent.setAttribute('aria-label', tr({ hr: 'Jezik: hrvatski', en: 'Language: English', it: 'Lingua: italiano' }));
+        langCurrent.setAttribute('aria-expanded', 'false');
+        if (dropdown) {
+            if (!dropdown.id) dropdown.id = 'lang-dropdown';
+            langCurrent.setAttribute('aria-controls', dropdown.id);
+        }
+        const setOpen = (open) => {
+            langSelector.classList.toggle('active', open);
+            langCurrent.setAttribute('aria-expanded', String(open));
+        };
+        langCurrent.addEventListener('click', (e) => {
+            e.stopPropagation();
+            setOpen(!langSelector.classList.contains('active'));
+        });
+        document.addEventListener('click', (e) => {
+            if (!langSelector.contains(e.target)) setOpen(false);
+        });
+        langSelector.addEventListener('focusout', (e) => {
+            if (!langSelector.contains(e.relatedTarget)) setOpen(false);
+        });
+        langSelector.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && langSelector.classList.contains('active')) {
+                setOpen(false);
+                langCurrent.focus();
+            }
+        });
     }
 
     langOptions.forEach(option => {
