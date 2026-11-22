@@ -170,7 +170,7 @@
    * ekstrema koji se razlikuju manje od PRAG_CM) se izbacuju — slike
    * ih također ne označavaju.
    */
-  const PRAG_CM = 0.02;   // samo numerički šum — slike označavaju i ekstreme od 0,1 cm
+  const PRAG_CM = 0.001;  // samo numerički šum — slike označavaju i ekstreme od 0,01 cm (9. 2. 2026.)
   function ekstremi(odMs, doMs) {
     const korak = 6 * 60000;
     const n = Math.ceil((doMs - odMs) / korak);
