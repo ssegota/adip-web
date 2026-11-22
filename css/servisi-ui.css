@@ -368,6 +368,45 @@
 .svc-empty[hidden] { display: none; }
 .svc-empty-icon { font-size: 2.5rem; color: var(--text-muted); }
 
+/* --- Plima: Slika / Izračun (js/plima-izracun.js) -------------------- */
+.plima-mod {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-glass);
+  border-radius: 999px;
+}
+.plima-mod button {
+  padding: 0.4rem 0.9rem;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+.plima-mod button:hover:not(:disabled) { color: var(--text-primary); }
+.plima-mod button:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
+.plima-mod button[aria-pressed="true"] {
+  color: var(--text-primary);
+  background: rgba(0, 212, 255, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(0, 212, 255, 0.6);
+}
+.plima-mod button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* isti omjer i granice kao slika adip_YYYY-MM.jpg (800 × 566) */
+.plima-platno {
+  display: block;
+  width: min(100%, 800px, calc(70vh * 800 / 566));
+  height: auto;
+  border-radius: 8px;
+}
+.plima-platno[hidden] { display: none; }
+
 /* --- Mobitel --------------------------------------------------------- */
 @media (max-width: 768px) {
   .svc-toolbar { top: 64px; padding: 0.65rem; margin-bottom: 1.25rem; }
